@@ -1,0 +1,173 @@
+---
+title: "Vignette Title"
+author: "Nicholas Tierney"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+
+knitr::opts_chunk$set(message = F)
+
+```
+
+
+This is a draft document/vignette that gets ggplot to display missingness into a plot. 
+
+
+```{r}
+library(dplyr)
+library(wakefield)
+df <- 
+  r_data_frame(
+  n = 30,
+  id,
+  race,
+  age,
+  sex,
+  hour,
+  iq,
+  height,
+  died,
+  Scoring = rnorm,
+  Smoker = valid
+  ) %>%
+  r_na(prob=.4)
+
+```
+
+
+```{r}
+library(ggplot2)
+
+ggplot(data = df,
+       aes(x = Height,
+           y = Age)) + 
+  geom_point()
+
+# idea was the plot the missing data as 10% below the minimum value for that variable.
+
+df %>%
+  # make missing values 10% below the minimum value for that variable
+  mutate(Height = ifelse(is.na(Height), 
+                         yes = min(Height, na.rm = T)*0.9,
+                         no = Height),
+         Age = ifelse(is.na(Age),
+                      yes = min(Age, na.rm = T)*0.9,
+                      no = Age)) %>%
+           ggplot(data = .,
+                  aes(x = Height,
+                      y = Age)) + 
+           geom_point()
+
+```
+
+
+```{r}
+
+is.na.data.frame(df)
+
+df.shadow <- as.data.frame(is.na.data.frame(df))
+
+# make a function for creating a true/false shadow matrix
+shadow_df <- function(x){
+  x %>%
+    is.na.data.frame %>%
+    as.data.frame %>% 
+    as_data_frame
+}
+
+# remember that TRUE = missing
+shadow_df(df)
+
+
+# Make a window function that transforms missing values to be 10% below the minimum value for that variable
+shadow_shift <- function(x){
+  ifelse(is.na(x), 
+         yes = min(x, na.rm = T)*0.9,
+         no = x)  
+       # min() might change to something related to the data range
+       # possibly use range() to determine the shadow shift
+       # Need to also add some jitter/noise to these points to seperate out repeats of the same value
+  # for factors, need to add another level (smaller than smallest)
+  # need to think about how time is handled as well.
+}
+
+
+df %>%
+  # make missing values 10% below the minimum value for that variable
+  mutate(Height = shadow_shift(Height),
+         Age = shadow_shift(Age)) %>%
+  ggplot(data = .,
+         aes(x = Height,
+             y = Age)) + 
+  geom_point()
+
+# OK, so it turns out that I can just shadow shift the data INSIDE ggplot.
+
+ggplot(data = df,
+       aes(x = shadow_shift(Height),
+           y = shadow_shift(Age))) + 
+  geom_point()
+
+# now we just need to add in some colour to these points, so that missing data sorta takes upon this "preattentive" phase.
+
+# let's make a new dataset, that is basically contains only the shifted data
+
+df.test <- 
+df %>%
+  mutate(Height = shadow_shift(Height)) %>% 
+  # filter out those observations that are greater than the min
+  filter(Height < (min(Height, na.rm = T)*1.1))
+
+df.test.2 <- 
+df %>%
+  mutate(Age = shadow_shift(Age)) %>% 
+  # filter out those observations that are greater than the min
+  filter(Age < (min(Age, na.rm = T)*1.1))
+
+# to manage the different quantities of the variables, I could put them into a list, or something that allows me to have a "ragged" dataset
+
+ggplot(data = df,
+       aes(x = shadow_shift(Height),
+           y = shadow_shift(Age))) + 
+  geom_point() + 
+  geom_point(data = df.test,
+             aes(x = Height),
+             colour = "Red") + 
+  geom_point(data = df.test.2,
+             aes(y = Age),
+             colour = "Red")
+
+
+```
+
+Possibly colour by `interaction`, which creates all the different combinations of levels of factors.
+
+```{r, eval = F, echo = T}
+
+a <- gl(2, 4, 8)
+b <- gl(2, 2, 8, labels = c("ctrl", "treat"))
+s <- gl(2, 1, 8, labels = c("M", "F"))
+
+a
+b
+s
+
+ggplot(data = df,
+       aes(x = shadow_shift(Height),
+           y = shadow_shift(Age))) + 
+  geom_point() + 
+  geom_point(data = shadow_df(df),
+             colour = interaction(Height, Age))
+
+
+df %>% shadow_df %>% select(Height, Age) %>% interaction
+
+interaction()
+
+```

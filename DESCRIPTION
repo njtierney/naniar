@@ -1,0 +1,16 @@
+Package: ggmissing
+Type: Package
+Title: enables ggplot to plot missing data
+Version: 0.1.0
+Author: Nicholas Tierney, Di Cook
+Maintainer: <nicholas.tierney@gmail.com>
+Description: Created functions that can be used to shift missing values and
+    create ggplot plots with missingness clearly indicated
+License: Unsure
+LazyData: TRUE
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Imports: dplyr
+RoxygenNote: 5.0.0

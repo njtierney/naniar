@@ -2,11 +2,9 @@
 title: "ggmissing: expanding ggplot to handle missing data"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: 
+  html_document: 
+    theme: readable
 ---
 
 ```{r setup}

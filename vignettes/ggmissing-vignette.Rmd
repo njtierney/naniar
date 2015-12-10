@@ -1,5 +1,5 @@
 ---
-title: "Vignette Title"
+title: "ggmissing: expanding ggplot to handle missing data"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -14,7 +14,6 @@ vignette: >
 knitr::opts_chunk$set(message = F)
 
 ```
-
 
 This is a draft document/vignette that gets ggplot to display missingness into a plot. 
 
@@ -146,28 +145,146 @@ ggplot(data = df,
 
 ```
 
-Possibly colour by `interaction`, which creates all the different combinations of levels of factors.
+Colour by `interaction`, which creates all the different combinations of levels of factors.
 
-```{r, eval = F, echo = T}
+```{r}
 
-a <- gl(2, 4, 8)
-b <- gl(2, 2, 8, labels = c("ctrl", "treat"))
-s <- gl(2, 1, 8, labels = c("M", "F"))
+miss_cat <- 
+  df %>% 
+  shadow_df %>% 
+  select(Height, Age) %>% 
+  interaction
 
-a
-b
-s
-
-ggplot(data = df,
-       aes(x = shadow_shift(Height),
-           y = shadow_shift(Age))) + 
-  geom_point() + 
-  geom_point(data = shadow_df(df),
-             colour = interaction(Height, Age))
-
-
-df %>% shadow_df %>% select(Height, Age) %>% interaction
-
-interaction()
+miss_cat
 
 ```
+
+We can then use this as a colour for missingness
+
+```{r}
+
+# we can then colour by the missingness
+df %>%
+  mutate(miss_cat = miss_cat) %>% 
+  ggplot(data = .,
+       aes(x = shadow_shift(Height),
+           y = shadow_shift(Age),
+           colour = miss_cat)) + 
+  geom_point() 
+
+```
+
+Getting closer now - we can now just filter the appropriate categories out, as we want TRUE.FALSE, TRUE.TRUE, and FALSE.TRUE to be the same level, we can then colour by missingness.
+
+So we have this variable `miss_cat`, which we add to the data.
+
+We can then use an ifelse statement to re-organise the factor levels.
+
+
+```{r}
+
+# we can then colour by the missingness
+df %>%
+  mutate(miss_cat = miss_cat) %>% 
+  mutate(miss_cat = ifelse(miss_cat == "TRUE.FALSE" | 
+                           miss_cat == "TRUE.TRUE" | 
+                           miss_cat == "FALSE.TRUE",
+                           yes = "Missing",
+                           no = "Not Missing")) %>%
+  ggplot(data = .,
+       aes(x = shadow_shift(Height),
+           y = shadow_shift(Age),
+           colour = miss_cat)) + 
+  geom_point() 
+
+```
+
+Ta da! It works. Not quite as elegant as I'd like, but we're getting there.
+
+Instead of having an ifelse each time we want to do this, let's generalize this to a function that reorganizes the miss_cat based upon the levels of missingness - `shadow_cat`
+
+```{r}
+
+shadow_cat <- function(x){
+  ifelse(x == "TRUE.FALSE" | 
+         x == "TRUE.TRUE" | 
+         x == "FALSE.TRUE",
+         yes = "Missing",
+         no = "Not Missing")
+}
+
+df %>%
+  mutate(miss_cat = miss_cat) %>% 
+  mutate(miss_cat = shadow_cat(miss_cat)) %>%
+  ggplot(data = .,
+       aes(x = shadow_shift(Height),
+           y = shadow_shift(Age),
+           colour = miss_cat)) + 
+  geom_point() 
+
+```
+
+We shouldn't have to create miss_cat to get this to work, so let's make it into a function, which takes the data, and the variables we want, and performs interaction on them.
+
+```{r}
+
+miss_cat <- function(df, var1, var2){
+  df %>% 
+    shadow_df %>% 
+    select(one_of(var1, var2)) %>% 
+    interaction
+}
+
+df %>%
+  mutate(miss_cat = miss_cat(., "Height", "Age")) %>% 
+  mutate(miss_cat = shadow_cat(miss_cat)) %>%
+  ggplot(data = .,
+       aes(x = shadow_shift(Height),
+           y = shadow_shift(Age),
+           colour = miss_cat)) + 
+  geom_point() 
+
+```
+
+But now we have this sorta redundant step of creating it using `miss_cat`, then refactoring it using `shadow_cat`. Really though, we can just put `shadow_cat` inside of `miss_cat`, to reduce coding.
+
+```{r}
+
+
+miss_cat <- function(df, var1, var2){
+  df %>% 
+    # make the data into a true/false data frame
+    shadow_df %>% 
+    # choose the variables of interest
+    select(one_of(var1, var2)) %>% 
+    # get all the combinations of the levels as factors
+    interaction %>%
+    # combine them into something sensible for our purposes
+    shadow_cat
+}
+
+df %>%
+  mutate(miss_cat = miss_cat(., "Height", "Age")) %>% 
+  ggplot(data = .,
+       aes(x = shadow_shift(Height),
+           y = shadow_shift(Age),
+           colour = miss_cat)) + 
+  geom_point() 
+
+
+```
+
+Miles had a couple of ideas, where we could combine all of the information within the data frame into one column, effectively encoding the missingness into a single column. However, one problem with this is that if columns are rearranged or removed, then this single column becomes incorrect. 
+
+In terms of things to do from here, I'd really want to create the same sort of plot as above, using some syntax like:
+
+```
+ggplot(data = df,
+       aes(x = Height,
+           y = Age)) + 
+  geom_point(missing = T) 
+
+```
+
+So I guess one possible way forward would be to create a function inside `geom_point()`, called `missing`, that is set to FALSE on default, but when TRUE, it munches the appropriate data and produces the plot.
+

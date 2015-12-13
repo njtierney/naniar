@@ -8,9 +8,15 @@
 #'
 #' @export
 
-shadow_df <- function(x){
-  x %>%
-    is.na.data.frame %>%
-    as.data.frame %>%
-    as_data_frame
+shadow_df <- function (x)
+{
+  y <- if (length(x)) {
+    as_data_frame(
+      lapply(x, "is.na")
+    )
+  }
+  else data_frame()
+  y
 }
+
+

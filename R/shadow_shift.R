@@ -10,8 +10,13 @@
 
 # Make a window function that transforms missing values to be 10% below the minimum value for that variable
 shadow_shift <- function(x){
+  # Check that x is numeric
+  #
+  xrange <- max(x, na.rm = T)-min(x, na.rm = T)
+  xmin <- min(x, na.rm = T)
+  xrunif <- (runif(length(x))-0.5)*xrange*0.05
   ifelse(is.na(x),
-         yes = min(x, na.rm = T)*0.9,
+         yes = xmin-xrange*0.1 + xrunif,
          no = x)
   # min() might change to something related to the data range
   # possibly use range() to determine the shadow shift

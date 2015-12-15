@@ -6,11 +6,38 @@
 #'
 #' @import dplyr
 #'
-#' @export
 
 # shadow_shift is a window function that transforms missing values to be about 10% below the minimum value for a given variable, plus some jittered noise, to separate repeated values, so that missing values can be visualised along with the rest of the data
+# ======================
+# Constructor function
+# ======================
 
-shadow_shift <- function(x){
+# create the S3 method
+#' @export
+shadow_shift <- function(x) UseMethod("shadow_shift")
+
+# =====
+# NULL
+# =====
+
+#' @export
+shadow_shift.NULL <- function(x) NULL
+
+# =====
+# default
+# =====
+
+#' @export
+shadow_shift.default <- function(x){
+  stop(
+    "shadow_shift does not know how to deal with data of class ",
+    class(x)
+  )
+
+}
+
+#' @export
+shadow_shift.numeric <- function(x){
 
   xrange <- max(x, na.rm = T) - min(x, na.rm = T)
 

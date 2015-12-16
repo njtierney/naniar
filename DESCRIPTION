@@ -8,10 +8,11 @@ Description: Created functions that can be used to shift missing values and
     create ggplot plots with missingness clearly indicated
 License: Unsure
 LazyData: TRUE
-Suggests:
+Suggests: 
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-Imports:
-    dplyr
+Imports: 
+    dplyr,
+    ggplot2
 RoxygenNote: 5.0.1

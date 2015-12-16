@@ -73,4 +73,4 @@ However, we will also need to consider other what other kinds of plots could be 
 
 - 1D, univaritae distribution plots
 - Categorical variables
-- Bivariate plots: Scatterplots, Density overlays,
+- Bivariate plots: Scatterplots, Density overlays.

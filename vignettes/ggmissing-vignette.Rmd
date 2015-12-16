@@ -286,3 +286,20 @@ ggplot(data = df,
 
 So I guess one possible way forward would be to create a function inside `geom_point()`, called `missing`, that is set to FALSE on default, but when TRUE, it munches the appropriate data and produces the plot.
 
+## Testing area
+
+```{r}
+# library(dplyr)
+# library(ggplot2)
+# library(ggmissing)
+data(brfss)
+# dim(brfss)
+# compute_missing_pct(brfss)
+brfss %>%
+  mutate(miss_cat = miss_cat(., "PHYSHLTH", "POORHLTH")) %>% 
+  ggplot(data = .,
+         aes(x = shadow_shift(PHYSHLTH),
+             y = shadow_shift(POORHLTH),
+             colour = miss_cat)) + 
+  geom_point() 
+```

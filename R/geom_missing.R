@@ -1,8 +1,6 @@
 #' geom_missing
 #'
-#' \code{geom_missing} does this thing
-#'
-#' @description geom_missing adds a geometry for displaying missingness.
+#' geom_missing adds a geometry for displaying missingness.
 #'
 #' @note At this stage geom_missing is limited to geom_point
 #'
@@ -11,9 +9,6 @@
 #' manipulate the colour aes so that the colours and legend appear.
 #' fix awful default point sizes.
 #' Warning message if na.rm = T is supplied.
-#'
-#' @note ggplot2 must be installed from GitHub (devtools::install_github("hadley/ggplot2")) to obtain the function `ggproto`
-#'
 #'
 #' @param ? unknown parameters...
 #'
@@ -28,20 +23,15 @@
 #             y = POORHLTH) ) +
 #  geom_missing()
 GeomMissing <- ggproto("GeomMissing",
-
                        Geom,
-
                        required_aes = c("x", "y"),
-
                        default_aes = aes(shape = 19,
                                          colour = "black",
                                          size = 0.5,
                                          fill = NA,
                                          alpha = NA,
                                          stroke = 1.5),
-
                        draw_key = draw_key_point,
-
                        setup_data = function(data, params){
                          #TODO: print warning if na.rm = T
                          data$x <- shadow_shift(data$x)

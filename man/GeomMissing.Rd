@@ -14,9 +14,6 @@ GeomMissing
 \description{
 geom_missing adds a geometry for displaying missingness.
 }
-\details{
-\code{geom_missing} does this thing
-}
 \note{
 At this stage geom_missing is limited to geom_point
 
@@ -25,8 +22,6 @@ Data plotting works. Still todo:
 manipulate the colour aes so that the colours and legend appear.
 fix awful default point sizes.
 Warning message if na.rm = T is supplied.
-
-ggplot2 must be installed from GitHub (devtools::install_github("hadley/ggplot2")) to obtain the function `ggproto`
 }
 \keyword{datasets}
 

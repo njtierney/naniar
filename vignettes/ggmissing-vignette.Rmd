@@ -288,7 +288,7 @@ So I guess one possible way forward would be to create a function inside `geom_p
 
 ## Testing area
 
-```{r}
+```{r, eval = F}
 # library(dplyr)
 # library(ggplot2)
 # library(ggmissing)

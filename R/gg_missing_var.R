@@ -1,4 +1,4 @@
-#' gg_col_missings
+#' gg_missing_var
 #'
 #' This function draws a ggplot plot of the number of missings in each column, rearranged to show which variables have the most missing data. At this point I'm still debating whether or not this should be with `geom_bar` or with `geom_lollipop` from hrbrmstr's `ggalt` package.
 #'
@@ -9,17 +9,17 @@
 #'
 #' @examples
 #'
-#' gg_col_missings(airquality)
+#' gg_missing_var(airquality)
 #'
-gg_col_missing <- function(x){
+gg_missing_var <- function(x){
 
   # get a tidy data frame of the number of missings in each column
   x %>%
-    col_missing() %>%
+    summary_missing_var() %>%
     ggplot(data = .,
            aes(x = n_missing,
-               y = reorder(variable, n_missing),
-               colour = variable)) +
+               y = reorder(variables, n_missing),
+               colour = variables)) +
     ggalt::geom_lollipop(horizontal = TRUE) +
     labs(x = "# Missing",
          y = "Variables") +

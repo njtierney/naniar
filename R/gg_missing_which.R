@@ -1,6 +1,6 @@
-#' which_missing
+#' gg_missing_which
 #'
-#' \code{which_missing} (need a better name!) produces a set of rectangles that indicate whether there is a missing element in a column or not
+#' \code{gg_missing_which} (need a better name!) produces a set of rectangles that indicate whether there is a missing element in a column or not
 #'
 #' @param x
 #'
@@ -8,12 +8,15 @@
 #'
 #' @export
 #'
-which_missing <- function(x){
+#' @examples
+#'
+#' gg_missing_which(airquality)
+#'
+gg_missing_which <- function(x){
 
   # tell us which columns have missing data
-  aq_ch <- colSums(is.na(airquality)) > 0
-
-  aq_ch %>%
+  airquality %>%
+    purrr::dmap(any_na) %>%
     purrr::dmap(function(x) ifelse(x == 0, "complete", "missing")) %>%
     tidyr::gather(key = "variable",
                   value = "value") %>%

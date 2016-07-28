@@ -1,8 +1,6 @@
-#' geom_missing
+#' geom_missing_point
 #'
-#' geom_missing adds a geometry for displaying missingness.
-#'
-#' @note At this stage geom_missing is limited to geom_point
+#' geom_missing_point adds a point geometry for displaying missingness.
 #'
 #' @note Very first attempt at creating a geom that is compatible with ggplot2.
 #' Data plotting works. Still todo:
@@ -22,7 +20,7 @@
 #         aes(x = PHYSHLTH,
 #             y = POORHLTH) ) +
 #  geom_missing()
-GeomMissing <- ggproto("GeomMissing",
+GeomMissingPoint <- ggproto("GeomMissingPoint",
                        Geom,
                        required_aes = c("x", "y"),
                        default_aes = aes(shape = 19,
@@ -52,7 +50,7 @@ GeomMissing <- ggproto("GeomMissing",
 )
 
 #' @export
-geom_missing <- function(mapping = NULL,
+geom_missing_point <- function(mapping = NULL,
                          data = NULL,
                          stat = "identity",
                          position = "identity",
@@ -64,7 +62,7 @@ geom_missing <- function(mapping = NULL,
     data = data,
     mapping = mapping,
     stat = stat,
-    geom = GeomMissing,
+    geom = GeomMissingPoint,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,

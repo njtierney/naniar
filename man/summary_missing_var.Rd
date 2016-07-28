@@ -13,6 +13,11 @@ summary_missing_var(dat)
 a data_frame of the percent of missing data in each variable
 }
 \description{
-summary_missing_var
+provide a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variables those variables make up
+}
+\examples{
+
+summary_missing_var(airquality)
+
 }
 

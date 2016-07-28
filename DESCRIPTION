@@ -9,9 +9,11 @@ License: MIT + file LICENSE
 LazyData: TRUE
 Suggests:
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr
 Imports:
     dplyr,
-    ggplot2
+    ggplot2,
+    purrr
 RoxygenNote: 5.0.1

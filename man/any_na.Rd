@@ -18,8 +18,8 @@ find whether a vector contains a missing value. Used internally.
 \examples{
 
 library(ggmissing)
-any_na(airqality$Solar.R)
-any_na(airqality$Wind)
+any_na(airquality$Solar.R)
+any_na(airquality$Wind)
 
 }
 

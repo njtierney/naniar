@@ -15,4 +15,11 @@ a list of
 \description{
 summarise_missingness performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
 }
+\examples{
+
+s_miss <- summarise_missingness(airquality)
+s_miss$percent_missing_df
+s_miss$table_missing_case
+
+}
 

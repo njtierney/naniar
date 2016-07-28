@@ -15,4 +15,9 @@ a data_frame of the percent of missing data in each case
 \description{
 summary_missing_case
 }
+\examples{
+
+summary_missing_case(airquality)
+
+}
 

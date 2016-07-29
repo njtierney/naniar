@@ -24,81 +24,90 @@ It is still very much under development, but will see more active development ov
 
 Plotting missing data might sound a little strange - how do you visualise something that is not there? In the past, GGobi and Manet have provided methods of visualising missingness, with one approach being to replace "NA" values with values 10% lower than the minimum value in that variable.
 
-To illustrate, let's create some toy data using the wakefield package.
+To illustrate, let's explore the relationship between Ozone and Solar radiation from the airquality dataset.
 
-```{r}
-library(wakefield)
+```{r messages = FALSE, error = FALSE}
 library(ggmissing)
 # devtools::install_github("njtierney/ggmissing")
 library(ggplot2)
 library(dplyr)
 
-df <- 
-  r_data_frame(
-  n = 30,
-  id,
-  race,
-  age,
-  sex,
-  hour,
-  iq,
-  height,
-  died,
-  Scoring = rnorm,
-  Smoker = valid
-  ) %>%
-  # add in some random missingness
-  r_na(prob=.4)
-
 ```
-
-Let's look at the relationship between Height and Age.
 
 ```{r}
 
-ggplot(data = df,
-       aes(x = Height,
-           y = Age)) +
+ggplot(data = airquality,
+       aes(x = Ozone,
+           y = Solar.R)) +
   geom_point()
 
 ```
 
 We get a little message, warning us about the missing values.
 
-We can instead use the `geom_point_missing` to display the missing data
+We can instead use the `geom_missing_point` to display the missing data
 
 ```{r}
 
 library(ggmissing)
 
-ggplot(data = df,
-       aes(x = Height,
-           y = Age)) +
+ggplot(data = airquality,
+       aes(x = Ozone,
+           y = Solar.R)) +
   geom_missing_point()
 
 ```
 
-`geom_missing_point()` has (albeit somewhat clumsily) shifted the missing values to now be 10% below the minimum value. However, the missing values need to be shown in a different colour so that missingness becomes preattentive. This code is currently being incorported into `geom_missing_point()`
+`geom_missing_point()` has (albeit somewhat clumsily) shifted the missing values to now be 10% below the minimum value. However, the missing values need to be shown in a different colour so that missingness becomes preattentive. One way to do this is to write the code as follows
 
 ```{r}
-df %>%
-  mutate(miss_cat = miss_cat(., "Height", "Age")) %>%
+  airquality %>%
+  mutate(miss_cat = miss_cat(., "Ozone", "Solar.R")) %>%
   ggplot(data = .,
-       aes(x = shadow_shift(Height),
-           y = shadow_shift(Age),
+       aes(x = shadow_shift(Ozone),
+           y = shadow_shift(Solar.R),
            colour = miss_cat)) + 
   geom_point() 
 ```
 
 However, this is a little verbose.
 
-Examples of the current work, in a stream-of-consciousness style can be seen in the vignette. The functions in this package are basically utility functions, `shadow_shift`, which shifts missing values to 10% below minimum, `shadow_df`  creates a shadow matrix, `miss_cat` creates a new column of missingness status that allows for the plot to create a factor out of missingness. `miss_cat` uses the utility function `shadow_cat`.
+We've worked out how to override ggplot removing the missing data, but are still working on automatically setting the colour of missing and non-missing
+
+Examples of the current work, in a stream-of-consciousness style can be seen in the vignette. 
+
+The functions in this package are basically utility functions, `shadow_shift`, which shifts missing values to 10% below minimum, `shadow_df` creates a shadow matrix, `miss_cat` creates a new column of missingness status that allows for the plot to create a factor out of missingness. `miss_cat` uses the utility function `shadow_cat`.
 
 # Missing data tidying functions
 
 `ggmissing` uses some missingness transformation functions to set up tables for visualisation.  
 
-The `summarise_missingness` function takes a `data.frame` and then returns a dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases. 
+```{r}
+
+# overall percentage of missing data
+percent_missing_df(airquality)
+
+# % of variables that contain missing data
+percent_missing_var(airquality)
+
+# % of cases that contain missing data
+percent_missing_case(airquality)
+
+# tabulations of missing data across cases
+table_missing_case(airquality)
+
+# tabulations of missing data across variables
+table_missing_var(airquality)
+
+# summary information (counts, percentrages) of missing data for variables and cases
+summary_missing_var(airquality)
+summary_missing_case(airquality)
+
+
+```
+
+
+Each of these functions can also be called all together using `summarise_missingness`, which takes a `data.frame` and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases. 
 
 ```{r}
 
@@ -127,35 +136,10 @@ s_miss$summary_missing_case
 
 ```
 
-Each of these functions can also be called invididually
-
-```{r}
-
-# overall percentage of missing data
-percent_missing_df(airquality)
-
-# % of variables that contain missing data
-percent_missing_var(airquality)
-
-# % of cases that contain missing data
-percent_missing_case(airquality)
-
-# tabulations of missing data across cases
-table_missing_case(airquality)
-
-# tabulations of missing data across variables
-table_missing_var(airquality)
-
-# summary information (counts, percentrages) of missing data for variables and cases
-summary_missing_var(airquality)
-summary_missing_case(airquality)
-
-
-```
 
 # Other plotting functions
 
-These tables could then be used in these plots
+These tables are then used in these plots
 
 ## gg_missing_var
 

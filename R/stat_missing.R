@@ -53,19 +53,21 @@ StatMissing <- ggproto("StatMissing", Stat,
                        default_aes = aes(colour = ..missing..),
                        setup_data = function(data, params){
                          #TODO: print warning if na.rm = T
+                         data$x_miss <- data$x
+                         data$y_miss <- data$y
                          data$x <- shadow_shift(data$x)
                          data$y <- shadow_shift(data$y)
-                         # data$..missing.. <- label_missing_2d(data$x, data$y)
                          data
                        } ,
 
                        handle_na = function(self, data, params) data,
                        compute_group = function(data, scales) {
 
-                         missing_label <- label_missing_2d(data$x, data$y)
+                         missing_label <- label_missing_2d(data$x_miss, data$y_miss)
 
-                         data.frame(x = shadow_shift(data$x),
-                                    y = shadow_shift(data$y),
+
+                         data.frame(x = data$x,
+                                    y = data$y,
                                     missing = missing_label)
 
                        }

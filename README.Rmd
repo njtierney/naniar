@@ -45,7 +45,7 @@ ggplot(data = airquality,
 
 We get a little message, warning us about the missing values.
 
-We can instead use the `geom_missing_point` to display the missing data
+We can instead use the `stat_missing()` to display the missing data
 
 ```{r}
 
@@ -54,29 +54,15 @@ library(ggmissing)
 ggplot(data = airquality,
        aes(x = Ozone,
            y = Solar.R)) +
-  geom_missing_point()
+  stat_missing()
 
 ```
 
-`geom_missing_point()` has (albeit somewhat clumsily) shifted the missing values to now be 10% below the minimum value. However, the missing values need to be shown in a different colour so that missingness becomes preattentive. One way to do this is to write the code as follows
-
-```{r}
-  airquality %>%
-  mutate(miss_cat = miss_cat(., "Ozone", "Solar.R")) %>%
-  ggplot(data = .,
-       aes(x = shadow_shift(Ozone),
-           y = shadow_shift(Solar.R),
-           colour = miss_cat)) + 
-  geom_point() 
-```
-
-However, this is a little verbose.
-
-We've worked out how to override ggplot removing the missing data, but are still working on automatically setting the colour of missing and non-missing
+`stat_missing()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes preattentive. 
 
 Examples of the current work, in a stream-of-consciousness style can be seen in the vignette. 
 
-The functions in this package are basically utility functions, `shadow_shift`, which shifts missing values to 10% below minimum, `shadow_df` creates a shadow matrix, `miss_cat` creates a new column of missingness status that allows for the plot to create a factor out of missingness. `miss_cat` uses the utility function `shadow_cat`.
+There are other utility, mostly now-unused-and-soon-to-be-removed, `shadow_shift`, which shifts missing values to 10% below minimum, `shadow_df` creates a shadow matrix, `miss_cat` creates a new column of missingness status that allows for the plot to create a factor out of missingness. `miss_cat` uses the utility function `shadow_cat`.
 
 # Missing data tidying functions
 
@@ -187,6 +173,6 @@ vis_miss(airquality)
 
 We will be considering how to display missing data with other visualisations, such as:
 
-- 1D, univaritae distribution plots
+- 1D, univariate distribution plots
 - Categorical variables
 - Bivariate plots: Scatterplots, Density overlays.

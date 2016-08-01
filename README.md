@@ -7,18 +7,18 @@ ggplot does not display missing data and currently provides a warning message an
 
 `ggmissing` is part of a larger plan for a set of tidy-verse packages focussing on how to tidy, transform, visualise, model, and communicate missing data.
 
-It is still very much under development, but will see more active development over the next 6 months.
+It is still very much under development, and may have unknown bugs, due to the fact that ggplot was not initially built to handle missing data in this way. We will see more active development over the next 6 months.
 
 What does it do?
 ----------------
 
-This package provides a key features:
+`ggmissing` provides:
 
-1.  A missing data geom for ggplot
+1.  Missing data geoms for ggplot (`geom_missing_point`)
 
-2.  Missing data tidiers
+2.  Tidy summaries of missing data (`summarise_missingness` and friends)
 
-3.  Extra Missing Data Plots
+3.  Standard plots for exploring missing data (`gg_missing_var`, `gg_missing_case`, `gg_missing_which`)
 
 Using ggmissing
 ---------------
@@ -73,14 +73,30 @@ ggplot(data = airquality,
 
 `geom_missing_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes preattentive.
 
-We plan to extend the `geom_missing` family in the coming months.
+This plays nicely with other parts of ggplot, like faceting - we can split the facet by month:
 
-Examples of the current work, in a stream-of-consciousness style can be seen in the vignette.
+``` r
+p1 <-
+ggplot(data = airquality,
+       aes(x = Ozone,
+           y = Solar.R)) + 
+  geom_missing_point() + 
+  facet_wrap(~Month, ncol = 2) + 
+  theme(legend.position = "bottom")
 
-There are other utility functions:
+p1
+```
 
--   `shadow_shift`, which shifts missing values to 10% below minimum
--   `miss_cat` creates a new column of missingness status that allows for the plot to create a factor out of missingness.
+![](README-unnamed-chunk-5-1.png)
+
+And then change the theme, just like you do with any other ggplot graphic
+
+``` r
+
+p1 + theme_bw()  
+```
+
+![](README-unnamed-chunk-6-1.png)
 
 Missing data tidying functions
 ==============================
@@ -237,7 +253,7 @@ gg\_missing\_var
 gg_missing_var(airquality)
 ```
 
-![](README-unnamed-chunk-7-1.png)
+![](README-unnamed-chunk-9-1.png)
 
 gg\_missing\_case
 -----------------
@@ -247,7 +263,7 @@ gg\_missing\_case
 gg_missing_case(airquality)
 ```
 
-![](README-unnamed-chunk-8-1.png)
+![](README-unnamed-chunk-10-1.png)
 
 gg\_missing\_which
 ------------------
@@ -259,7 +275,7 @@ This shows whether
 gg_missing_which(airquality)
 ```
 
-![](README-unnamed-chunk-9-1.png)
+![](README-unnamed-chunk-11-1.png)
 
 heatmap of missing data?
 ------------------------
@@ -273,15 +289,19 @@ library(visdat)
 vis_miss(airquality)
 ```
 
-![](README-unnamed-chunk-10-1.png)
+![](README-unnamed-chunk-12-1.png)
 
 Future Work
 ===========
 
-`ggmissing` has not seen much attention for the past 6 months or so, and so will be undergoing more changes over the next 6 months.
+`ggmissing` has not seen much attention for the past 6 months or so, and so will be undergoing more changes over the next 6 months, with plans to have the package in CRAN before the end of 2016.
 
-We will be considering how to display missing data with other visualisations, such as:
+As such, we plan to extend the `geom_missing` family to include:
 
 -   1D, univariate distribution plots
 -   Categorical variables
 -   Bivariate plots: Scatterplots, Density overlays.
+
+There are other utility functions:
+
+-   `shadow_shift`, which shifts missing values to 10% below minimum

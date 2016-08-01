@@ -7,7 +7,7 @@
 gg_missing_which(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{a dataframe}
 }
 \value{
 a ggplot plot

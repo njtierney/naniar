@@ -2,7 +2,7 @@
 % Please edit documentation in R/gg_missing_case.R
 \name{gg_missing_case}
 \alias{gg_missing_case}
-\title{gg_row_missing}
+\title{gg_missing_case}
 \usage{
 gg_missing_case(x)
 }

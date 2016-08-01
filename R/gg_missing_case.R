@@ -1,4 +1,4 @@
-#' gg_row_missing
+#' gg_missing_case
 #'
 #' This function draws a ggplot plot of the number of missings in each row.
 #' At this point I'm not sure how this plot should be arranged, as it currently looks ugly!

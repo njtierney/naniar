@@ -2,7 +2,7 @@
 #'
 #' \code{gg_missing_which} (need a better name!) produces a set of rectangles that indicate whether there is a missing element in a column or not
 #'
-#' @param x
+#' @param x a dataframe
 #'
 #' @return a ggplot plot
 #'

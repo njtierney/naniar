@@ -7,6 +7,9 @@
 #' @importFrom purrr map
 #' @importFrom purrr map_lgl
 #' @importFrom purrr dmap
+#' @importFrom ggalt geom_lollipop
+#' @importFrom ggalt GeomLollipop
+#' @import tibble
 #' @import dplyr
 #' @import ggplot2
 NULL

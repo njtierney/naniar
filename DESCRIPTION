@@ -1,10 +1,10 @@
 Package: ggmissing
 Type: Package
 Title: enables ggplot to plot missing data
-Version: 0.1.0
+Version: 0.2.9000
 Author: Nicholas Tierney, Miles McBain, Di Cook,
 Maintainer: <nicholas.tierney@gmail.com>
-Description: ggmissing helps display missing data in ggplot by adding custom `geom_`
+Description: ggmissing helps display missing data in ggplot
 License: MIT + file LICENSE
 LazyData: TRUE
 Suggests:
@@ -15,5 +15,6 @@ VignetteBuilder: knitr
 Imports:
     dplyr,
     ggplot2,
-    purrr
+    purrr,
+    tidyr
 RoxygenNote: 5.0.1

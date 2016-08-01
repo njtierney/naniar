@@ -22,6 +22,18 @@ It is still very much under development, but will see more active development ov
 
 ## What does it do?
 
+This package provides a key features: 
+
+1. A missing data geom for ggplot
+
+2. Missing data tidiers
+
+3. Extra Missing Data Plots
+
+## Using ggmissing {#ggplot}
+
+### How does it work?
+
 Plotting missing data might sound a little strange - how do you visualise something that is not there? In the past, GGobi and Manet have provided methods of visualising missingness, with one approach being to replace "NA" values with values 10% lower than the minimum value in that variable.
 
 To illustrate, let's explore the relationship between Ozone and Solar radiation from the airquality dataset.
@@ -45,7 +57,7 @@ ggplot(data = airquality,
 
 We get a little message, warning us about the missing values.
 
-We can instead use the `stat_missing()` to display the missing data
+We can instead use the `geom_missing_point()` to display the missing data
 
 ```{r}
 
@@ -54,17 +66,22 @@ library(ggmissing)
 ggplot(data = airquality,
        aes(x = Ozone,
            y = Solar.R)) +
-  stat_missing()
+  geom_missing_point()
 
 ```
 
-`stat_missing()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes preattentive. 
+`geom_missing_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes preattentive. 
+
+We plan to extend the `geom_missing` family in the coming months.
 
 Examples of the current work, in a stream-of-consciousness style can be seen in the vignette. 
 
-There are other utility, mostly now-unused-and-soon-to-be-removed, `shadow_shift`, which shifts missing values to 10% below minimum, `shadow_df` creates a shadow matrix, `miss_cat` creates a new column of missingness status that allows for the plot to create a factor out of missingness. `miss_cat` uses the utility function `shadow_cat`.
+There are other utility functions:
 
-# Missing data tidying functions
+- `shadow_shift`, which shifts missing values to 10% below minimum
+- `miss_cat` creates a new column of missingness status that allows for the plot to create a factor out of missingness.
+
+# Missing data tidying functions {#tidying}
 
 `ggmissing` uses some missingness transformation functions to set up tables for visualisation.  
 
@@ -123,9 +140,9 @@ s_miss$summary_missing_case
 ```
 
 
-# Other plotting functions
+# Other plotting functions {#extraplots}
 
-These tables are then used in these plots
+These dataframes from the tidying functions are then used in these plots
 
 ## gg_missing_var
 
@@ -160,12 +177,11 @@ I recommend the use of the `vis_miss` function from the [`visdat`](github.com/nj
 
 ```{r}
 
+# devtools::install_github("njtierney/visdat")
 library(visdat)
-
 vis_miss(airquality)
 
 ```
-
 
 # Future Work
 

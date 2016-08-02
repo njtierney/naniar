@@ -14,9 +14,15 @@ knitr::opts_chunk$set(
 
 # ggmissing
 
-ggplot does not display missing data and currently provides a warning message and omits the missing data.`ggmissing` aims to enable ggplot to display missingness. 
+`ggmissing` adds ggplot `geom`s to display missingness. 
+
+## Why?
+
+Missing data is ubiquitous in data analysis. However, vis  points are omitted in ggplot, and although it does provides a warning message telling you that you have missing data, it is tricky to visualise missing data.
 
 `ggmissing` is part of a larger plan for a set of tidy-verse packages focussing on how to tidy, transform, visualise, model, and communicate missing data.
+
+
 
 It is still very much under development, and may have unknown bugs, due to the fact that ggplot was not initially built to handle missing data in this way. We will see more active development over the next 6 months.
 

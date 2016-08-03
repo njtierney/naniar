@@ -121,7 +121,7 @@ table_missing_case <- function(dat){
   purrr::by_row(dat,
                 # how many are missing in each row?
                 function(x) sum(is.na(x)),
-                .collate = "rows",
+                .collate = "row",
                 .to = "n_missing_in_case") %>%
     dplyr::group_by(n_missing_in_case) %>%
     dplyr::tally() %>%
@@ -153,7 +153,7 @@ table_missing_case <- function(dat){
 table_missing_var <- function(dat){
   purrr::dmap(dat,
               function(x) sum(is.na(x))) %>%
-  tidyr::gather(key = "variables",
+  tidyr::gather(key = "variable",
                 value = "n_missing_in_var") %>%
     dplyr::group_by(n_missing_in_var) %>%
     dplyr::tally() %>%
@@ -185,7 +185,7 @@ table_missing_var <- function(dat){
     purrr::dmap(dat,
                 # how many are missing in each variable?
                 function(x) sum(is.na(x))) %>%
-      tidyr::gather(key = "variables",
+      tidyr::gather(key = "variable",
                     value = "n_missing") %>%
       dplyr::mutate(percent = (n_missing / nrow(dat) * 100))
 
@@ -205,11 +205,11 @@ table_missing_var <- function(dat){
 summary_missing_case <- function(dat){
   purrr::by_row(.d = dat,
                 ..f = function(x) (mean(is.na(x)) * 100),
-                .collate = "rows",
+                .collate = "row",
                 .to = "percent") %>%
   purrr::by_row(.d = .,
                 ..f = function(x) (sum(is.na(x))),
-                .collate = "rows",
+                .collate = "row",
                 .to = "n_missing") %>%
     dplyr::mutate(case = 1:nrow(dat)) %>%
     dplyr::select(case,

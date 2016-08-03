@@ -18,8 +18,8 @@ gg_missing_var <- function(x){
     summary_missing_var() %>%
     ggplot(data = .,
            aes(x = n_missing,
-               y = reorder(variables, n_missing),
-               colour = variables)) +
+               y = reorder(variable, n_missing),
+               colour = variable)) +
     ggalt::geom_lollipop(horizontal = TRUE) +
     labs(x = "# Missing",
          y = "Variables") +

@@ -2,3 +2,6 @@
 ^\.Rproj\.user$
 ^README\.Rmd$
 ^README-.*\.png$
+^appveyor\.yml$
+^CONDUCT\.md$
+^\.travis\.yml$

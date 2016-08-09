@@ -4,6 +4,10 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ggmissing?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ggmissing)
+
+<!-- [![Travis-CI Build Status](https://travis-ci.org/njtierney/ggmissing.svg?branch=master)](https://travis-ci.org/njtierney/ggmissing) -->
+
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -22,9 +26,9 @@ Missing data is ubiquitous in data analysis. However, vis  points are omitted in
 
 `ggmissing` is part of a larger plan for a set of tidy-verse packages focussing on how to tidy, transform, visualise, model, and communicate missing data.
 
-
-
 It is still very much under development, and may have unknown bugs, due to the fact that ggplot was not initially built to handle missing data in this way. We will see more active development over the next 6 months.
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ## What does it do?
 

@@ -2,7 +2,8 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ggmissing?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ggmissing)
 
-<!-- [![Travis-CI Build Status](https://travis-ci.org/njtierney/ggmissing.svg?branch=master)](https://travis-ci.org/njtierney/ggmissing) -->
+[![Travis-CI Build Status](https://travis-ci.org/njtierney/ggmissing.svg?branch=master)](https://travis-ci.org/njtierney/ggmissing)
+
 ggmissing
 =========
 

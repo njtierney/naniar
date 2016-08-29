@@ -4,10 +4,6 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ggmissing?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ggmissing)
-
-[![Travis-CI Build Status](https://travis-ci.org/njtierney/ggmissing.svg?branch=master)](https://travis-ci.org/njtierney/ggmissing)
-
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -17,6 +13,8 @@ knitr::opts_chunk$set(
 ```
 
 # ggmissing
+
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ggmissing?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ggmissing) [![Travis-CI Build Status](https://travis-ci.org/njtierney/ggmissing.svg?branch=master)](https://travis-ci.org/njtierney/ggmissing)
 
 `ggmissing` adds ggplot `geom`s to display missingness. 
 
@@ -36,9 +34,9 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 
 1. Missing data geoms for ggplot (`geom_missing_point`)
 
-2. Tidy summaries of missing data (`summarise_missingness` and friends)
+2. Tidyverse summary functions for missing data (`summarise_missingness` and friends)
 
-3. Standard plots for exploring missing data (`gg_missing_var`, `gg_missing_case`, `gg_missing_which`)
+3. ggplots for exploring missing data (`gg_missing_var`, `gg_missing_case`, `gg_missing_which`)
 
 ## Using ggmissing {#ggplot}
 
@@ -104,9 +102,6 @@ And then change the theme, just like you do with any other ggplot graphic
 p1 + theme_bw()  
 
 ```
-
-
-
 
 # Missing data tidying functions {#tidying}
 
@@ -190,7 +185,7 @@ gg_missing_case(airquality)
 
 ## gg_missing_which
 
-This shows whether
+This shows whether a given variable contains a missing variable. In this case grey = missing. Think of it as if you are shading the cell in, if it contains data.
 
 ```{r}
 
@@ -198,7 +193,7 @@ gg_missing_which(airquality)
 
 ```
 
-## heatmap of missing data?
+## Heatmap of missing data
 
 I recommend the use of the `vis_miss` function from the [`visdat`](github.com/njtierney/visdat) package.
 
@@ -219,6 +214,8 @@ As such, we plan to extend the `geom_missing` family to include:
 - 1D, univariate distribution plots
 - Categorical variables
 - Bivariate plots: Scatterplots, Density overlays.
+
+We might possibly move the `summarise_missingness` functions into a separate package.
 
 There are other utility functions:
 

@@ -8,8 +8,6 @@
 #' fix awful default point sizes.
 #' Warning message if na.rm = T is supplied.
 #'
-#' @param ? unknown parameters...
-#'
 #' @import ggplot2
 #'
 # this code messes up the documentation
@@ -20,40 +18,13 @@
 #         aes(x = PHYSHLTH,
 #             y = POORHLTH) ) +
 #  geom_missing()
-#' @export
-GeomMissingPoint <- ggproto("GeomMissingPoint", Geom,
-    required_aes = c("x", "y"),
-    default_aes = aes(shape = 19,
-                      colour = ..missing..,
-                      size = 0.5,
-                      fill = NA,
-                      alpha = NA,
-                      stroke = 1.5),
-    draw_key = draw_key_point,
-    setup_data = function(data, params){
-      #TODO: print warning if na.rm = T
-      data$x <- shadow_shift(data$x)
-      data$y <- shadow_shift(data$y)
-      data$missing <- label_missing_2d(data$x, data$y)
-      data
-      } ,
-    handle_na = function(self, data, params) data,
-    draw_panel = function(data, panel_scales, coord) {
-      coords <- coord$transform(data, panel_scales)
-      grid::pointsGrob(
-        coords$x, coords$y,
-        pch = coords$shape,
-        gp = grid::gpar(
-          col = coords$colour,
-          fill = alpha(coords$fill, coords$alpha),
-          # Stroke is added around the outside of the point
-          fontsize = coords$size * .pt + coords$stroke * .stroke / 2,
-          lwd = coords$stroke * .stroke / 2
-          )
-      )
-      }
-)
-
+#'
+#'
+#'
+#' @param ... other arguments passed on to \code{layer}. These are
+#'   often aesthetics, used to set an aesthetic to a fixed value, like
+#'   \code{color = "red"} or \code{size = 3}. They may also be parameters
+#'   to the paired geom/stat.
 #' @export
 geom_missing_point <- function(mapping = NULL,
                                data = NULL,
@@ -79,3 +50,41 @@ geom_missing_point <- function(mapping = NULL,
   )
 
 }
+
+#' @rdname ggplot2-ggproto
+#' @format NULL
+#' @usage NULL
+#' @export
+GeomMissingPoint <- ggproto("GeomMissingPoint", Geom,
+                            required_aes = c("x", "y"),
+                            default_aes = aes(shape = 19,
+                                              colour = ..missing..,
+                                              size = 0.5,
+                                              fill = NA,
+                                              alpha = NA,
+                                              stroke = 1.5),
+                            draw_key = draw_key_point,
+                            setup_data = function(data, params){
+                              #TODO: print warning if na.rm = T
+                              data$x <- shadow_shift(data$x)
+                              data$y <- shadow_shift(data$y)
+                              data$missing <- label_missing_2d(data$x, data$y)
+                              data
+                            } ,
+                            handle_na = function(self, data, params) data,
+                            draw_panel = function(data, panel_scales, coord) {
+                              coords <- coord$transform(data, panel_scales)
+                              grid::pointsGrob(
+                                coords$x, coords$y,
+                                pch = coords$shape,
+                                gp = grid::gpar(
+                                  col = coords$colour,
+                                  fill = alpha(coords$fill, coords$alpha),
+                                  # Stroke is added around the outside of the point
+                                  fontsize = coords$size * .pt + coords$stroke * .stroke / 2,
+                                  lwd = coords$stroke * .stroke / 2
+                                )
+                              )
+                            }
+)
+

@@ -187,7 +187,8 @@ table_missing_var <- function(dat){
                 function(x) sum(is.na(x))) %>%
       tidyr::gather(key = "variable",
                     value = "n_missing") %>%
-      dplyr::mutate(percent = (n_missing / nrow(dat) * 100))
+      dplyr::mutate(percent = (n_missing / nrow(dat) * 100)) %>%
+      dplyr::arrange(-n_missing)
 
   }
 

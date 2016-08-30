@@ -17,12 +17,14 @@ gg_missing_var <- function(x){
   x %>%
     summary_missing_var() %>%
     ggplot(data = .,
-           aes(x = n_missing,
-               y = reorder(variable, n_missing),
+           aes(x = reorder(variable, n_missing),
+               y = n_missing,
                colour = variable)) +
-    ggalt::geom_lollipop(horizontal = TRUE) +
-    labs(x = "# Missing",
-         y = "Variables") +
+    geom_bar(stat="identity", position="dodge", width = 0) +
+    geom_point() +
+    coord_flip() +
+    labs(y = "# Missing",
+         x = "Variables") +
     theme_minimal() +
     theme(legend.position = "none")
 

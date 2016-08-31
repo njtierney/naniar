@@ -13,7 +13,7 @@ gg_missing_var(x)
 a ggplot plot depicting the number of missings in a given column
 }
 \description{
-This function draws a ggplot plot of the number of missings in each column, rearranged to show which variables have the most missing data. At this point I'm still debating whether or not this should be with `geom_bar` or with `geom_lollipop` from hrbrmstr's `ggalt` package.
+This function draws a ggplot plot of the number of missings in each column, rearranged to show which variables have the most missing data.
 }
 \examples{
 

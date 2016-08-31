@@ -13,14 +13,15 @@
 #' gg_missing_case(airquality)
 #'
 gg_missing_case <- function(x){
-# x <- airquality
 
   ggplot(data = summary_missing_case(x),
-         aes(x = n_missing,
-             y = case)) +
-    ggalt::geom_lollipop(horizontal = TRUE) +
-    labs(x = "# Missing",
-         y = "Case") +
+         aes(y = n_missing,
+             x = case)) +
+    geom_bar(stat="identity", position="dodge", width = 0, colour="grey") +
+    geom_point() +
+    coord_flip() +
+    labs(y = "# Missing",
+         x = "Cases") +
     theme_minimal()
 
 }

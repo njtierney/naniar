@@ -1,7 +1,6 @@
-#' geom_missing_point
-#'
-#' geom_missing_point adds a point geometry for displaying missingness.
-#'
+#' @name geom_missing_point
+#' @title geom_missing_point 
+#' @description geom_missing_point adds a point geometry for displaying missingness.
 #' @note Very first attempt at creating a geom that is compatible with ggplot2.
 #' Data plotting works. Still todo:
 #' manipulate the colour aes so that the colours and legend appear.
@@ -51,9 +50,7 @@ geom_missing_point <- function(mapping = NULL,
 
 }
 
-#' @rdname ggplot2-ggproto
-#' @format NULL
-#' @usage NULL
+#' @rdname ggmissing-ggproto
 #' @export
 GeomMissingPoint <- ggproto("GeomMissingPoint", Geom,
                             required_aes = c("x", "y"),

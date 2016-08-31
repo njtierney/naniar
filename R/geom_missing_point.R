@@ -1,5 +1,5 @@
-#' geom_missing_point
-#'
+#' geom_missing_point 
+#' 
 #' geom_missing_point adds a point geometry for displaying missingness.
 #'
 #' @note Very first attempt at creating a geom that is compatible with ggplot2.
@@ -51,7 +51,7 @@ geom_missing_point <- function(mapping = NULL,
 
 }
 
-#' @rdname ggplot2-ggproto
+#' @rdname ggmissing-ggproto
 #' @format NULL
 #' @usage NULL
 #' @export

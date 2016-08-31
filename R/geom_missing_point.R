@@ -51,8 +51,6 @@ geom_missing_point <- function(mapping = NULL,
 }
 
 #' @rdname ggmissing-ggproto
-#' @format NULL
-#' @usage NULL
 #' @export
 GeomMissingPoint <- ggproto("GeomMissingPoint", Geom,
                             required_aes = c("x", "y"),

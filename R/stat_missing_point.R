@@ -1,6 +1,6 @@
-#' stat_missing_point
-#'
-#' stat_missing_point adds a geometry for displaying missingness to geom_point
+#' @name stat_missing_point
+#' @title stat_missing_point
+#' @description stat_missing_point adds a geometry for displaying missingness to geom_point
 #'
 #' @note Very first attempt at creating a geom that is compatible with ggplot2.
 #' Data plotting works. Still todo:
@@ -9,26 +9,29 @@
 #' @param ? unknown parameters...
 #'
 #' @import ggplot2
-#'
-# this code messes up the documentation
-# library(ggplot2)
-# library(ggmissing)
-#
-# ggplot(data = airquality,
-#        aes(x = Ozone,
-#            y = Solar.R)) +
-#   geom_point()
-#
-# ggplot(data = airquality,
-#        aes(x = Ozone,
-#            y = Solar.R)) +
-#   geom_missing_point()
-#
-
 #' @export
+stat_missing_point <- function(mapping = NULL,
+                               data = NULL,
+                               geom = "point",
+                               position = "identity",
+                               na.rm = FALSE,
+                               show.legend = NA,
+                               inherit.aes = TRUE,
+                               ...) {
+  ggplot2::layer(
+    stat = StatMissingPoint,
+    data = data,
+    mapping = mapping,
+    geom = geom,
+    position = position,
+    show.legend = show.legend,
+    inherit.aes = inherit.aes,
+    params = list(na.rm = na.rm, ...)
+  )
+  
+}
+
 #' @rdname ggmissing-ggproto
-#' @format NULL
-#' @usage NULL
 #' @export
 StatMissingPoint <- ggproto("StatMissingPoint", Stat,
     required_aes = c("x", "y"),
@@ -53,24 +56,4 @@ StatMissingPoint <- ggproto("StatMissingPoint", Stat,
       }
     )
 
-#' @export
-stat_missing_point <- function(mapping = NULL,
-                               data = NULL,
-                               geom = "point",
-                               position = "identity",
-                               na.rm = FALSE,
-                               show.legend = NA,
-                               inherit.aes = TRUE,
-                               ...) {
-  ggplot2::layer(
-    stat = StatMissingPoint,
-    data = data,
-    mapping = mapping,
-    geom = geom,
-    position = position,
-    show.legend = show.legend,
-    inherit.aes = inherit.aes,
-    params = list(na.rm = na.rm, ...)
-  )
 
-}

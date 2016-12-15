@@ -126,7 +126,7 @@ table_missing_case <- function(dat){
     dplyr::group_by(n_missing_in_case) %>%
     dplyr::tally() %>%
     dplyr::mutate(percent = (n / nrow(dat) * 100)) %>%
-    dplyr::rename(n_missing = n)
+    dplyr::rename(n_cases = n)
 # un-tidyverse
 # No_of_Case_missing <- table(apply(dat,
 #                                   1,
@@ -157,7 +157,7 @@ table_missing_var <- function(dat){
                 value = "n_missing_in_var") %>%
     dplyr::group_by(n_missing_in_var) %>%
     dplyr::tally() %>%
-    dplyr::rename(n_var = n) %>%
+    dplyr::rename(n_vars = n) %>%
     dplyr::mutate(percent = (n_var / nrow(dat) * 100))
 # un-tidyverse
 # No_of_Case_missing <- table(apply(dat,

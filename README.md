@@ -1,11 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ggmissing?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ggmissing)
-
-[![Travis-CI Build Status](https://travis-ci.org/njtierney/ggmissing.svg?branch=master)](https://travis-ci.org/njtierney/ggmissing)
-
 ggmissing
 =========
+
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ggmissing?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ggmissing) [![Travis-CI Build Status](https://travis-ci.org/njtierney/ggmissing.svg?branch=master)](https://travis-ci.org/njtierney/ggmissing)
 
 `ggmissing` adds ggplot `geom`s to display missingness.
 
@@ -27,9 +25,9 @@ What does it do?
 
 1.  Missing data geoms for ggplot (`geom_missing_point`)
 
-2.  Tidy summaries of missing data (`summarise_missingness` and friends)
+2.  Tidyverse summary functions for missing data (`summarise_missingness` and friends)
 
-3.  Standard plots for exploring missing data (`gg_missing_var`, `gg_missing_case`, `gg_missing_which`)
+3.  ggplots for exploring missing data (`gg_missing_var`, `gg_missing_case`, `gg_missing_which`)
 
 Using ggmissing
 ---------------
@@ -73,6 +71,7 @@ We can instead use the `geom_missing_point()` to display the missing data
 ``` r
 
 library(ggmissing)
+library(ggplot2)
 
 ggplot(data = airquality,
        aes(x = Ozone,
@@ -130,7 +129,7 @@ percent_missing_case(airquality)
 
 # tabulations of missing data across cases
 table_missing_case(airquality)
-#> # A tibble: 3 x 3
+#> # A tibble: 3 × 3
 #>   n_missing_in_case n_missing  percent
 #>               <int>     <int>    <dbl>
 #> 1                 0       111 72.54902
@@ -139,7 +138,7 @@ table_missing_case(airquality)
 
 # tabulations of missing data across variables
 table_missing_var(airquality)
-#> # A tibble: 3 x 3
+#> # A tibble: 3 × 3
 #>   n_missing_in_var n_var   percent
 #>              <int> <int>     <dbl>
 #> 1                0     4 2.6143791
@@ -148,7 +147,7 @@ table_missing_var(airquality)
 
 # summary information (counts, percentrages) of missing data for variables and cases
 summary_missing_var(airquality)
-#> # A tibble: 6 x 3
+#> # A tibble: 6 × 3
 #>   variable n_missing   percent
 #>      <chr>     <int>     <dbl>
 #> 1    Ozone        37 24.183007
@@ -158,7 +157,7 @@ summary_missing_var(airquality)
 #> 5    Month         0  0.000000
 #> 6      Day         0  0.000000
 summary_missing_case(airquality)
-#> # A tibble: 153 x 3
+#> # A tibble: 153 × 3
 #>     case n_missing  percent
 #>    <int>     <int>    <dbl>
 #> 1      1         0  0.00000
@@ -181,7 +180,7 @@ Each of these functions can also be called all together using `summarise_missing
 s_miss <- summarise_missingness(airquality)
 
 s_miss
-#> # A tibble: 1 x 7
+#> # A tibble: 1 × 7
 #>   percent_missing_df percent_missing_var percent_missing_case
 #>                <dbl>               <dbl>                <dbl>
 #> 1           4.793028            33.33333             27.45098
@@ -204,7 +203,7 @@ s_miss$percent_missing_case
 # tabulations of missing data across cases
 s_miss$table_missing_case
 #> [[1]]
-#> # A tibble: 3 x 3
+#> # A tibble: 3 × 3
 #>   n_missing_in_case n_missing  percent
 #>               <int>     <int>    <dbl>
 #> 1                 0       111 72.54902
@@ -214,7 +213,7 @@ s_miss$table_missing_case
 # tabulations of missing data across variables
 s_miss$table_missing_var
 #> [[1]]
-#> # A tibble: 3 x 3
+#> # A tibble: 3 × 3
 #>   n_missing_in_var n_var   percent
 #>              <int> <int>     <dbl>
 #> 1                0     4 2.6143791
@@ -224,7 +223,7 @@ s_miss$table_missing_var
 # summary information (counts, percentrages) of missing data for variables and cases
 s_miss$summary_missing_var
 #> [[1]]
-#> # A tibble: 6 x 3
+#> # A tibble: 6 × 3
 #>   variable n_missing   percent
 #>      <chr>     <int>     <dbl>
 #> 1    Ozone        37 24.183007
@@ -235,7 +234,7 @@ s_miss$summary_missing_var
 #> 6      Day         0  0.000000
 s_miss$summary_missing_case
 #> [[1]]
-#> # A tibble: 153 x 3
+#> # A tibble: 153 × 3
 #>     case n_missing  percent
 #>    <int>     <int>    <dbl>
 #> 1      1         0  0.00000
@@ -279,7 +278,7 @@ gg_missing_case(airquality)
 gg\_missing\_which
 ------------------
 
-This shows whether
+This shows whether a given variable contains a missing variable. In this case grey = missing. Think of it as if you are shading the cell in, if it contains data.
 
 ``` r
 
@@ -288,8 +287,8 @@ gg_missing_which(airquality)
 
 ![](README-unnamed-chunk-11-1.png)
 
-heatmap of missing data?
-------------------------
+Heatmap of missing data
+-----------------------
 
 I recommend the use of the `vis_miss` function from the [`visdat`](github.com/njtierney/visdat) package.
 
@@ -312,6 +311,8 @@ As such, we plan to extend the `geom_missing` family to include:
 -   1D, univariate distribution plots
 -   Categorical variables
 -   Bivariate plots: Scatterplots, Density overlays.
+
+We might possibly move the `summarise_missingness` functions into a separate package.
 
 There are other utility functions:
 

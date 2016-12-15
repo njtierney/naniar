@@ -13,7 +13,6 @@ knitr::opts_chunk$set(
 ```
 
 # ggmissing
-
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ggmissing?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ggmissing) [![Travis-CI Build Status](https://travis-ci.org/njtierney/ggmissing.svg?branch=master)](https://travis-ci.org/njtierney/ggmissing)
 
 `ggmissing` adds ggplot `geom`s to display missingness. 
@@ -70,6 +69,7 @@ We can instead use the `geom_missing_point()` to display the missing data
 ```{r}
 
 library(ggmissing)
+library(ggplot2)
 
 ggplot(data = airquality,
        aes(x = Ozone,

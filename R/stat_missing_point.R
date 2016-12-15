@@ -28,7 +28,7 @@ stat_missing_point <- function(mapping = NULL,
     inherit.aes = inherit.aes,
     params = list(na.rm = na.rm, ...)
   )
-  
+
 }
 
 #' @rdname ggmissing-ggproto

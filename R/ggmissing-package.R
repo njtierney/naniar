@@ -7,7 +7,7 @@
 #' @importFrom purrr map
 #' @importFrom purrr map_lgl
 #' @importFrom purrr dmap
-#' @importFrom magrittr `%>%`
+#' @importFrom magrittr %>%
 #' @import dplyr
 #' @import ggplot2
 NULL

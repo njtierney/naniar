@@ -70,8 +70,7 @@ percent_missing_var <- function(dat){
 #'
 percent_missing_case <- function(dat){
 
-  temp <-
-    dat %>%
+  temp <- dat %>%
     # which rows are complete?
     complete.cases() %>%
     mean()

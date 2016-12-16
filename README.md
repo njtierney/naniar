@@ -1,18 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-ggmissing
-=========
+naniar
+======
 
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ggmissing?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ggmissing) [![Travis-CI Build Status](https://travis-ci.org/njtierney/ggmissing.svg?branch=master)](https://travis-ci.org/njtierney/ggmissing)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar) [![Travis-CI Build Status](https://travis-ci.org/njtierney/naniar.svg?branch=master)](https://travis-ci.org/njtierney/naniar)
 
-`ggmissing` adds ggplot `geom`s to display missingness.
+`naniar` adds ggplot `geom`s to display missingness.
 
 Why?
 ----
 
 Missing data is ubiquitous in data analysis. However, vis points are omitted in ggplot, and although it does provides a warning message telling you that you have missing data, it is tricky to visualise missing data.
 
-`ggmissing` is part of a larger plan for a set of tidy-verse packages focussing on how to tidy, transform, visualise, model, and communicate missing data.
+`naniar` is part of a larger plan for a set of tidy-verse packages focussing on how to tidy, transform, visualise, model, and communicate missing data.
 
 It is still very much under development, and may have unknown bugs, due to the fact that ggplot was not initially built to handle missing data in this way. We will see more active development over the next 6 months.
 
@@ -21,7 +21,7 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 What does it do?
 ----------------
 
-`ggmissing` provides:
+`naniar` provides:
 
 1.  Missing data geoms for ggplot (`geom_missing_point`)
 
@@ -29,8 +29,8 @@ What does it do?
 
 3.  ggplots for exploring missing data (`gg_missing_var`, `gg_missing_case`, `gg_missing_which`)
 
-Using ggmissing
----------------
+Using naniar
+------------
 
 ### How does it work?
 
@@ -39,8 +39,8 @@ Plotting missing data might sound a little strange - how do you visualise someth
 To illustrate, let's explore the relationship between Ozone and Solar radiation from the airquality dataset.
 
 ``` r
-library(ggmissing)
-# devtools::install_github("njtierney/ggmissing")
+library(naniar)
+# devtools::install_github("njtierney/naniar")
 library(ggplot2)
 library(dplyr)
 #> 
@@ -70,7 +70,7 @@ We can instead use the `geom_missing_point()` to display the missing data
 
 ``` r
 
-library(ggmissing)
+library(naniar)
 library(ggplot2)
 
 ggplot(data = airquality,
@@ -111,7 +111,7 @@ p1 + theme_bw()
 Missing data tidying functions
 ==============================
 
-`ggmissing` uses some missingness transformation functions to set up tables for visualisation.
+`naniar` uses some missingness transformation functions to set up tables for visualisation.
 
 ``` r
 
@@ -130,20 +130,20 @@ percent_missing_case(airquality)
 # tabulations of missing data across cases
 table_missing_case(airquality)
 #> # A tibble: 3 × 3
-#>   n_missing_in_case n_missing  percent
-#>               <int>     <int>    <dbl>
-#> 1                 0       111 72.54902
-#> 2                 1        40 26.14379
-#> 3                 2         2  1.30719
+#>   n_missing_in_case n_cases  percent
+#>               <int>   <int>    <dbl>
+#> 1                 0     111 72.54902
+#> 2                 1      40 26.14379
+#> 3                 2       2  1.30719
 
 # tabulations of missing data across variables
 table_missing_var(airquality)
 #> # A tibble: 3 × 3
-#>   n_missing_in_var n_var   percent
-#>              <int> <int>     <dbl>
-#> 1                0     4 2.6143791
-#> 2                7     1 0.6535948
-#> 3               37     1 0.6535948
+#>   n_missing_in_var n_vars  percent
+#>              <int>  <int>    <dbl>
+#> 1                0      4 66.66667
+#> 2                7      1 16.66667
+#> 3               37      1 16.66667
 
 # summary information (counts, percentrages) of missing data for variables and cases
 summary_missing_var(airquality)
@@ -204,21 +204,21 @@ s_miss$percent_missing_case
 s_miss$table_missing_case
 #> [[1]]
 #> # A tibble: 3 × 3
-#>   n_missing_in_case n_missing  percent
-#>               <int>     <int>    <dbl>
-#> 1                 0       111 72.54902
-#> 2                 1        40 26.14379
-#> 3                 2         2  1.30719
+#>   n_missing_in_case n_cases  percent
+#>               <int>   <int>    <dbl>
+#> 1                 0     111 72.54902
+#> 2                 1      40 26.14379
+#> 3                 2       2  1.30719
 
 # tabulations of missing data across variables
 s_miss$table_missing_var
 #> [[1]]
 #> # A tibble: 3 × 3
-#>   n_missing_in_var n_var   percent
-#>              <int> <int>     <dbl>
-#> 1                0     4 2.6143791
-#> 2                7     1 0.6535948
-#> 3               37     1 0.6535948
+#>   n_missing_in_var n_vars  percent
+#>              <int>  <int>    <dbl>
+#> 1                0      4 66.66667
+#> 2                7      1 16.66667
+#> 3               37      1 16.66667
 
 # summary information (counts, percentrages) of missing data for variables and cases
 s_miss$summary_missing_var
@@ -304,7 +304,7 @@ vis_miss(airquality)
 Future Work
 ===========
 
-`ggmissing` has not seen much attention for the past 6 months or so, and so will be undergoing more changes over the next 6 months, with plans to have the package in CRAN before the end of 2016.
+`naniar` has not seen much attention for the past 6 months or so, and so will be undergoing more changes over the next 6 months, with plans to have the package in CRAN before the end of 2016.
 
 As such, we plan to extend the `geom_missing` family to include:
 

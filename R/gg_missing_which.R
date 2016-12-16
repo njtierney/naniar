@@ -16,7 +16,7 @@ gg_missing_which <- function(x){
 
   # tell us which columns have missing data
   airquality %>%
-    purrr::dmap(any_na) %>%
+    purrr::dmap(anyNA) %>%
     purrr::dmap(function(x) ifelse(x == 0, "complete", "missing")) %>%
     tidyr::gather(key = "variable",
                   value = "value") %>%

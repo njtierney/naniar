@@ -18,32 +18,12 @@
 #'
 percent_missing_df <- function(dat){
 
-  temp <- dat %>% is.na() %>% mean()
+  temp <- mean(is.na(dat))
   temp * 100
 
   # previous code
   # totalmissingpct <- mean(is.na(dat))
 
-}
-
-#' any_na
-#'
-#' find whether a vector contains a missing value. Used internally.
-#'
-#' @param x a vector
-#'
-#' @return Logical TRUE / FALSE
-#' @export
-#'
-#' @examples
-#'
-#' library(ggmissing)
-#' any_na(airquality$Solar.R)
-#' any_na(airquality$Wind)
-#'
-any_na <- function(x){
-  # does a vector contain a missing value?
-  x %>% is.na %>% any
 }
 
 #' percent_missing_var
@@ -64,7 +44,7 @@ percent_missing_var <- function(dat){
 
   # which variables contain a missing value
   # find the proportion of variables that contain missing values
-  temp <- purrr::map_lgl(dat, any_na) %>% mean
+  temp <- mean(purrr::map_lgl(dat, anyNA))
 
   # turn it into a percent
   temp * 100
@@ -151,14 +131,13 @@ table_missing_case <- function(dat){
 #'
 #'
 table_missing_var <- function(dat){
-  purrr::dmap(dat,
-              function(x) sum(is.na(x))) %>%
+  purrr::map_df(dat, ~sum(is.na(.))) %>%
   tidyr::gather(key = "variable",
                 value = "n_missing_in_var") %>%
     dplyr::group_by(n_missing_in_var) %>%
     dplyr::tally() %>%
     dplyr::rename(n_vars = n) %>%
-    dplyr::mutate(percent = (n_vars / nrow(dat) * 100))
+    dplyr::mutate(percent = (n_vars / ncol(dat) * 100))
 # un-tidyverse
 # No_of_Case_missing <- table(apply(dat,
 #                                   1,

@@ -17,7 +17,7 @@ calculate percent of missing data in each case (row)
 }
 \examples{
 
-library(ggmissing)
+library(naniar)
 percent_missing_case(airquality)
 
 }

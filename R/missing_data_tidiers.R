@@ -13,7 +13,7 @@
 #'
 #' @examples
 #'
-#' library(ggmissing)
+#' library(naniar)
 #' percent_missing_df(airquality)
 #'
 percent_missing_df <- function(dat){
@@ -36,7 +36,7 @@ percent_missing_df <- function(dat){
 #'
 #' @examples
 #'
-#' library(ggmissing)
+#' library(naniar)
 #'
 #' percent_missing_var(airquality)
 #'
@@ -65,7 +65,7 @@ percent_missing_var <- function(dat){
 #'
 #' @examples
 #'
-#' library(ggmissing)
+#' library(naniar)
 #' percent_missing_case(airquality)
 #'
 percent_missing_case <- function(dat){

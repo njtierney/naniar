@@ -1,10 +1,10 @@
-Package: ggmissing
+Package: naniar
 Type: Package
-Title: enables ggplot to plot missing data
+Title: Enables ggplot to plot missing data
 Version: 0.2.9000
 Author: Nicholas Tierney, Miles McBain, Di Cook,
 Maintainer: <nicholas.tierney@gmail.com>
-Description: ggmissing helps display missing data in ggplot
+Description: naniar helps display missing data in ggplot
 License: MIT + file LICENSE
 LazyData: TRUE
 Suggests:

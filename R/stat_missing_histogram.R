@@ -29,11 +29,11 @@ stat_missing_histogram <- function(mapping = NULL,
     inherit.aes = inherit.aes,
     params = list(na.rm = na.rm, ...)
   )
-  
+
 }
 
 
-#' @rdname ggmissing-ggproto
+#' @rdname naniar-ggproto
 #' @export
 StatMissingHistogram <- ggproto("StatMissingHistogram", Stat,
                             required_aes = c("x"),

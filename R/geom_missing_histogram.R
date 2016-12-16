@@ -2,7 +2,7 @@
 #' @name geom_missing_histogram
 #' @description geom_missing_histogram adds a point geometry for displaying missingness.
 #' @note Very first attempt at creating a geom that is compatible with ggplot2.
-#' 
+#'
 #' Data plotting works. Still todo:
 #' manipulate the colour aes so that the colours and legend appear.
 #' fix awful default point sizes.
@@ -39,10 +39,10 @@ geom_missing_histogram <- function(mapping = NULL,
       ...
     )
   )
-  
+
 }
 
-#' @rdname ggmissing-ggproto
+#' @rdname naniar-ggproto
 #' @export
 GeomMissingHistogram <- ggproto("GeomMissingHistogram", GeomRect,
 required_aes = "x",

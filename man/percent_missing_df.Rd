@@ -21,7 +21,7 @@ calculate percent of missing data in a dataframe.
 }
 \examples{
 
-library(ggmissing)
+library(naniar)
 percent_missing_df(airquality)
 
 }

@@ -11,7 +11,7 @@
 #'
 # this code messes up the documentation
 # library(ggplot2)
-# library(ggmissing)
+# library(naniar)
 #
 #  ggplot(data = brfss,
 #         aes(x = PHYSHLTH,
@@ -50,7 +50,7 @@ geom_missing_point <- function(mapping = NULL,
 
 }
 
-#' @rdname ggmissing-ggproto
+#' @rdname naniar-ggproto
 #' @export
 GeomMissingPoint <- ggproto("GeomMissingPoint", GeomPoint,
                             required_aes = c("x", "y"),

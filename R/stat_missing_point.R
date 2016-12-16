@@ -31,7 +31,7 @@ stat_missing_point <- function(mapping = NULL,
 
 }
 
-#' @rdname ggmissing-ggproto
+#' @rdname naniar-ggproto
 #' @export
 StatMissingPoint <- ggproto("StatMissingPoint", Stat,
     required_aes = c("x", "y"),

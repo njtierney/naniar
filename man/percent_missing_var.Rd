@@ -17,7 +17,7 @@ percent_missing_var
 }
 \examples{
 
-library(ggmissing)
+library(naniar)
 
 percent_missing_var(airquality)
 

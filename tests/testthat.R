@@ -1,4 +1,4 @@
 library(testthat)
-library(ggmissing)
+library(naniar)
 
-test_check("ggmissing")
+test_check("naniar")

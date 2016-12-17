@@ -1,3 +1,24 @@
+# nanar 0.0.3.9000 (2016/12/18)
+
+After a burst of effort on this package I have done some refactoring and thought hard about where this package is going to go. This meant that I had to make the decision to rename the package from ggmissing to naniar. The name may strike you as strange but it reflects the fact that there are many changes happening, and that we will be working on creating a nice utopia (like Narnia by CS Lewis) that helps us make it easier to work with missing data
+
+## NEW FEATURES (under development)
+
+* more shadows. These are mainly around `bind_shadow` and `gather_shadow`, which are helper functions to assist with creating 
+
+## BUG FIXES
+
+* `geom_missing_point()` broke after the new release of ggplot2 2.2.0, but this is now fixed by ensuring that it inherits from GeomPoint, rather than just a new Geom. Thanks to Mitchell O'hara-Wild for his help with this.
+
+* missing data summaries `table_missing_var` and `table_missing_case` also now return more sensible numbers and variable names. It is possible these function names will change in the future, as these are kind of verbose.
+
+* semantic versioning was incorrectly entered in the DESCRIPTION file as  0.2.9000, so I changed it to 0.0.2.9000, and then to 0.0.3.9000 now to indicate the new changes, hopefully this won't come back to bite me later. I think I accidentally did this with visdat at some point as well. Live and learn.
+
+## Other changes
+
+* gathered related functions into single R files rather than leaving them in 
+their own.
+
 # ggmissing 0.0.2.9000 (2016/07/29)
 =========================
 

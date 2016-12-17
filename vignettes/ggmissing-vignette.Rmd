@@ -298,3 +298,30 @@ ggplot(data = df,
   geom_missing_point()
 
 ```
+
+# looking at histograms
+
+```{r}
+# displaying missingness for univariate histograms:
+# this is quite a different routine compared to what I would be doing normally
+# which is to say something like the bind_shadows methods, or something
+library(dplyr)
+library(ggplot2)
+library(naniar)
+
+ggplot(data = airquality,
+       aes(x = Ozone)) + 
+  geom_histogram()
+
+airquality %>%
+  select(Ozone) %>%
+  mutate(miss_label = label_missing_1d(Ozone)) %>%
+  ggplot(data = .,
+         aes(x = shadow_shift(Ozone),
+             fill = miss_label)) + 
+  geom_histogram(binwidth = 1)
+
+# although, this now brings us to a strange question: how should we consider binning for missing values? And how will missing data be affected differently by different bins?
+
+```
+

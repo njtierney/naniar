@@ -6,7 +6,7 @@
 #'
 #' calculate percent of missing data in a dataframe.
 #'
-#' @param dat a dataframe
+#' @param data a dataframe
 #'
 #' @return numeric the percent of missing data in a dataframe
 #' @export
@@ -16,19 +16,16 @@
 #' library(naniar)
 #' percent_missing_df(airquality)
 #'
-percent_missing_df <- function(dat){
+percent_missing_df <- function(data){
 
-  temp <- mean(is.na(dat))
+  temp <- mean(is.na(data))
   temp * 100
-
-  # previous code
-  # totalmissingpct <- mean(is.na(dat))
 
 }
 
 #' percent_missing_var
 #'
-#' @param dat a dataframe
+#' @param data a dataframe
 #'
 #' @return numeric the percent of variables that contain missing data
 #'
@@ -40,11 +37,11 @@ percent_missing_df <- function(dat){
 #'
 #' percent_missing_var(airquality)
 #'
-percent_missing_var <- function(dat){
+percent_missing_var <- function(data){
 
   # which variables contain a missing value
   # find the proportion of variables that contain missing values
-  temp <- mean(purrr::map_lgl(dat, anyNA))
+  temp <- mean(purrr::map_lgl(data, anyNA))
 
   # turn it into a percent
   temp * 100
@@ -58,7 +55,7 @@ percent_missing_var <- function(dat){
 #'
 #' calculate percent of missing data in each case (row)
 #'
-#' @param dat a dataframe
+#' @param data a dataframe
 #'
 #' @return numeric the percentage of cases that contain a missing value
 #' @export
@@ -68,25 +65,47 @@ percent_missing_var <- function(dat){
 #' library(naniar)
 #' percent_missing_case(airquality)
 #'
-percent_missing_case <- function(dat){
+percent_missing_case <- function(data){
 
-  temp <- dat %>%
+  temp <- data %>%
     # which rows are complete?
     complete.cases() %>%
     mean()
 
   (1 - temp) * 100
 
-  # un-tidyverse
+  # previous
   # casemissingpct <- 1-mean(complete.cases(dat))*100
 
 }
+
+#' Proporitons of missings in data, variables, and cases.
+#'
+#' Return missing data info about the dataframe, the variables, and the cases. Specifically, returning how many elements in a dataframe contain a missing value, how many elements in a variable contain a missing value, and how many elements in a case contain a missing.
+#'
+#' @param data a dataframe
+#'
+#' @return a dataframe
+#' @export
+#'
+#' @examples
+#'
+#' prop_na(airquality)
+#'
+prop_na <- function(data){
+
+  tibble::tibble(df = percent_missing_df(data),
+                 var = percent_missing_var(data),
+                 case = percent_missing_case(data))
+
+}
+
 
 #' table_missing_case
 #'
 #' provide a tidy table of the number of cases with 0, 1, 2, up to n, missing values and the proportion of the number of cases those cases make up
 #'
-#' @param dat a dataframe
+#' @param data a dataframe
 #'
 #' @return a dataframe of the
 #' @export
@@ -96,17 +115,17 @@ percent_missing_case <- function(dat){
 #' table_missing_case(airquality)
 #'
 #'
-table_missing_case <- function(dat){
-  purrr::by_row(dat,
+table_missing_case <- function(data){
+  purrr::by_row(data,
                 # how many are missing in each row?
                 function(x) sum(is.na(x)),
                 .collate = "row",
                 .to = "n_missing_in_case") %>%
     dplyr::group_by(n_missing_in_case) %>%
     dplyr::tally() %>%
-    dplyr::mutate(percent = (n / nrow(dat) * 100)) %>%
+    dplyr::mutate(percent = (n / nrow(data) * 100)) %>%
     dplyr::rename(n_cases = n)
-# un-tidyverse
+# previous
 # No_of_Case_missing <- table(apply(dat,
 #                                   1,
 #                                   function(avec){sum(is.na(avec))}))
@@ -119,7 +138,7 @@ table_missing_case <- function(dat){
 #'
 #' provide a tidy table of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variablers those variables make up
 #'
-#' @param dat a dataframe
+#' @param data a dataframe
 #'
 #' @return a dataframe of the
 #' @export
@@ -129,15 +148,15 @@ table_missing_case <- function(dat){
 #' table_missing_var(airquality)
 #'
 #'
-table_missing_var <- function(dat){
-  purrr::map_df(dat, ~sum(is.na(.))) %>%
+table_missing_var <- function(data){
+  purrr::map_df(data, ~sum(is.na(.))) %>%
   tidyr::gather(key = "variable",
                 value = "n_missing_in_var") %>%
     dplyr::group_by(n_missing_in_var) %>%
     dplyr::tally() %>%
     dplyr::rename(n_vars = n) %>%
-    dplyr::mutate(percent = (n_vars / ncol(dat) * 100))
-# un-tidyverse
+    dplyr::mutate(percent = (n_vars / ncol(data) * 100))
+# previous
 # No_of_Case_missing <- table(apply(dat,
 #                                   1,
 #                                   function(avec){sum(is.na(avec))}))
@@ -150,7 +169,7 @@ table_missing_var <- function(dat){
 #'
 #' provide a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variables those variables make up
 #'
-#' @param dat a dataframe
+#' @param data a dataframe
 #'
 #' @return a data_frame of the percent of missing data in each variable
 #' @export
@@ -159,20 +178,20 @@ table_missing_var <- function(dat){
 #'
 #' summary_missing_var(airquality)
 #'
-  summary_missing_var <- function(dat){
-    purrr::dmap(dat,
+  summary_missing_var <- function(data){
+    purrr::dmap(data,
                 # how many are missing in each variable?
                 function(x) sum(is.na(x))) %>%
       tidyr::gather(key = "variable",
                     value = "n_missing") %>%
-      dplyr::mutate(percent = (n_missing / nrow(dat) * 100)) %>%
+      dplyr::mutate(percent = (n_missing / nrow(data) * 100)) %>%
       dplyr::arrange(-n_missing)
 
   }
 
 #' summary_missing_case
 #'
-#' @param dat a dataframe
+#' @param data a dataframe
 #'
 #' @return a data_frame of the percent of missing data in each case
 #' @export
@@ -181,8 +200,8 @@ table_missing_var <- function(dat){
 #'
 #' summary_missing_case(airquality)
 #'
-summary_missing_case <- function(dat){
-  purrr::by_row(.d = dat,
+summary_missing_case <- function(data){
+  purrr::by_row(.d = data,
                 ..f = function(x) (mean(is.na(x)) * 100),
                 .collate = "row",
                 .to = "percent") %>%
@@ -190,7 +209,7 @@ summary_missing_case <- function(dat){
                 ..f = function(x) (sum(is.na(x))),
                 .collate = "row",
                 .to = "n_missing") %>%
-    dplyr::mutate(case = 1:nrow(dat)) %>%
+    dplyr::mutate(case = 1:nrow(data)) %>%
     dplyr::select(case,
                   n_missing,
                   percent)
@@ -200,7 +219,7 @@ summary_missing_case <- function(dat){
 #'
 #' summarise_missingness performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
 #'
-#' @param dat a dataframe
+#' @param data a dataframe
 #'
 #' @return a list of
 #' @export
@@ -211,19 +230,19 @@ summary_missing_case <- function(dat){
 #' s_miss$percent_missing_df
 #' s_miss$table_missing_case
 #'
-summarise_missingness <- function(dat){
+summarise_missingness <- function(data){
 
-  stopifnot(is.data.frame(dat))
+  stopifnot(is.data.frame(data))
 
   return(
     tibble::data_frame(
-        percent_missing_df = percent_missing_df(dat),
-        percent_missing_var = percent_missing_var(dat),
-        percent_missing_case = percent_missing_case(dat),
-        table_missing_case = list(table_missing_case(dat)),
-        table_missing_var = list(table_missing_var(dat)),
-        summary_missing_var = list(summary_missing_var(dat)),
-        summary_missing_case = list(summary_missing_case(dat))
+        percent_missing_df = percent_missing_df(data),
+        percent_missing_var = percent_missing_var(data),
+        percent_missing_case = percent_missing_case(data),
+        table_missing_case = list(table_missing_case(data)),
+        table_missing_var = list(table_missing_var(data)),
+        summary_missing_var = list(summary_missing_var(data)),
+        summary_missing_case = list(summary_missing_case(data))
       )
     )
 

@@ -4,10 +4,10 @@
 \alias{percent_missing_case}
 \title{percent_missing_case}
 \usage{
-percent_missing_case(dat)
+percent_missing_case(data)
 }
 \arguments{
-\item{dat}{a dataframe}
+\item{data}{a dataframe}
 }
 \value{
 numeric the percentage of cases that contain a missing value

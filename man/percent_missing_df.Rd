@@ -4,10 +4,10 @@
 \alias{percent_missing_df}
 \title{Tidy methods for displaying missing data}
 \usage{
-percent_missing_df(dat)
+percent_missing_df(data)
 }
 \arguments{
-\item{dat}{a dataframe}
+\item{data}{a dataframe}
 }
 \value{
 numeric the percent of missing data in a dataframe

@@ -4,10 +4,10 @@
 \alias{percent_missing_var}
 \title{percent_missing_var}
 \usage{
-percent_missing_var(dat)
+percent_missing_var(data)
 }
 \arguments{
-\item{dat}{a dataframe}
+\item{data}{a dataframe}
 }
 \value{
 numeric the percent of variables that contain missing data

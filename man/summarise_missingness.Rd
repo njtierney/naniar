@@ -4,10 +4,10 @@
 \alias{summarise_missingness}
 \title{summarise_missingness}
 \usage{
-summarise_missingness(dat)
+summarise_missingness(data)
 }
 \arguments{
-\item{dat}{a dataframe}
+\item{data}{a dataframe}
 }
 \value{
 a list of

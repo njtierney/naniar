@@ -4,10 +4,10 @@
 \alias{summary_missing_case}
 \title{summary_missing_case}
 \usage{
-summary_missing_case(dat)
+summary_missing_case(data)
 }
 \arguments{
-\item{dat}{a dataframe}
+\item{data}{a dataframe}
 }
 \value{
 a data_frame of the percent of missing data in each case

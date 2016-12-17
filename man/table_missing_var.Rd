@@ -4,10 +4,10 @@
 \alias{table_missing_var}
 \title{table_missing_var}
 \usage{
-table_missing_var(dat)
+table_missing_var(data)
 }
 \arguments{
-\item{dat}{a dataframe}
+\item{data}{a dataframe}
 }
 \value{
 a dataframe of the

@@ -4,10 +4,10 @@
 \alias{table_missing_case}
 \title{table_missing_case}
 \usage{
-table_missing_case(dat)
+table_missing_case(data)
 }
 \arguments{
-\item{dat}{a dataframe}
+\item{data}{a dataframe}
 }
 \value{
 a dataframe of the

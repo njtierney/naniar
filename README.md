@@ -5,16 +5,23 @@ naniar
 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar) [![Travis-CI Build Status](https://travis-ci.org/njtierney/naniar.svg?branch=master)](https://travis-ci.org/njtierney/naniar)
 
-`naniar` adds ggplot `geom`s to display missingness.
+`naniar` helps open the door (or wardrobe) to a crazy world where there are tools to handle missings (NAs). At the moment it provides functions to:
+
+-   Visualise missingness by adding a ggplot `geom`, `geom_missing_point`
+-   Provide numerical summaries of missingness
+-   Create summary plots of missingness (`gg_missing_var`)
+-   convert and manipulate dataframes with metadata about missing values added.
+
+`naniar` was previously nammed `ggmissing`, but was changed to `naniar` to reflect the fact that this package is going to be bigger in scope.
 
 Why?
 ----
 
 Missing data is ubiquitous in data analysis. However, vis points are omitted in ggplot, and although it does provides a warning message telling you that you have missing data, it is tricky to visualise missing data.
 
-`naniar` is part of a larger plan for a set of tidy-verse packages focussing on how to tidy, transform, visualise, model, and communicate missing data.
+`naniar` aims to functions that play well with missing data representations in the predictable fashion, like in the tidyverse. In the future it will provide functions focussing on how to tidy, transform, visualise, model, and communicate missing data.
 
-It is still very much under development, and may have unknown bugs, due to the fact that ggplot was not initially built to handle missing data in this way. We will see more active development over the next 6 months.
+It is still very much under development, and may have unknown bugs, due to things like the fact that ggplot was not initially built to handle missing data in this way.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
@@ -304,7 +311,7 @@ vis_miss(airquality)
 Future Work
 ===========
 
-`naniar` has not seen much attention for the past 6 months or so, and so will be undergoing more changes over the next 6 months, with plans to have the package in CRAN before the end of 2016.
+`naniar` will be undergoing more changes over the next 6 months, with plans to have the package in CRAN before the end of 2016.
 
 As such, we plan to extend the `geom_missing` family to include:
 

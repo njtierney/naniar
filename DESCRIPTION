@@ -1,10 +1,15 @@
 Package: naniar
 Type: Package
-Title: Enables ggplot to plot missing data
-Version: 0.2.9000
+Title: Provides Sensible Summaries and Visualisations for Missing Data
+Version: 0.0.3.9000
 Author: Nicholas Tierney, Miles McBain, Di Cook,
 Maintainer: <nicholas.tierney@gmail.com>
-Description: naniar helps display missing data in ggplot
+Description: Missing values are ubiquitous in data and need to be explored and 
+    handled in the initial stages of analysis. naniar provides helpers for 
+    exploring missing data dependencies with minimal deviation from the common 
+    workflows of ggplot and tidy data. naniar builds data structures and 
+    functions that ensure missings are plotted easily and enables imputations 
+    to be examined.
 License: MIT + file LICENSE
 LazyData: TRUE
 Suggests:

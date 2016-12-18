@@ -19,6 +19,8 @@ After a burst of effort on this package I have done some refactoring and thought
 * gathered related functions into single R files rather than leaving them in 
 their own.
 
+* correctly imported the `%>%` operator from magrittr, and removed a lot of chaff around `@importFrom` - really don't need to use `@importFrom` that often.
+
 # ggmissing 0.0.2.9000 (2016/07/29)
 =========================
 

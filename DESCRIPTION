@@ -22,5 +22,7 @@ Imports:
     ggplot2,
     purrr,
     tidyr,
-    tibble
+    tibble,
+    magrittr,
+    stats
 RoxygenNote: 5.0.1

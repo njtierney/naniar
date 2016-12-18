@@ -2,11 +2,7 @@
 #'
 #' @name naniar
 #' @docType package
-#' @importFrom tidyr gather
-#' @importFrom purrr by_row
-#' @importFrom purrr map
-#' @importFrom purrr map_lgl
-#' @importFrom purrr dmap
+#' @importFrom magrittr %>%
 #' @import ggplot2
 NULL
 

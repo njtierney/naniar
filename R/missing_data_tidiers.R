@@ -69,7 +69,7 @@ percent_missing_case <- function(data){
 
   temp <- data %>%
     # which rows are complete?
-    complete.cases() %>%
+    stats::complete.cases() %>%
     mean()
 
   (1 - temp) * 100

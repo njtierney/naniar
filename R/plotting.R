@@ -82,7 +82,7 @@ gg_missing_which <- function(x){
     purrr::dmap(function(x) ifelse(x == 0, "complete", "missing")) %>%
     tidyr::gather(key = "variable",
                   value = "value") %>%
-    mutate(nheight = 1) %>%
+    dplyr::mutate(nheight = 1) %>%
     ggplot(data = .,
            aes(x = variable,
                y = nheight,

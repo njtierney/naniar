@@ -78,14 +78,13 @@ shadow_shift.numeric <- function(x){
 #'
 #' @export
 
-shadow_df <- function (x)
-{
+shadow_df <- function (x){
   y <- if (length(x)) {
-    as_data_frame(
+    dplyr::as_data_frame(
       lapply(x, "is.na")
     )
   }
-  else data_frame()
+  else dplyr::data_frame()
   y
 }
 
@@ -110,7 +109,7 @@ miss_cat <- function(df, var1, var2){
     # make the data into a true/false data frame
     shadow_df %>%
     # choose the variables of interest
-    select(one_of(var1, var2)) %>%
+    dplyr::select(dplyr::one_of(var1, var2)) %>%
     # get all the combinations of the levels as factors
     interaction %>%
     # combine them into something sensible for our purposes

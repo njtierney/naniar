@@ -15,52 +15,47 @@ knitr::opts_chunk$set(
 # naniar
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar) [![Travis-CI Build Status](https://travis-ci.org/njtierney/naniar.svg?branch=master)](https://travis-ci.org/njtierney/naniar)
 
-`naniar` helps open the door (or wardrobe) to a crazy world where there are tools to handle missings (NAs). At the moment it provides functions to:
+`naniar` aims to make it easy to summarise, visualise, and manipulate missing data. In the future it will provide functions focussing on how to tidy, transform, visualise, model, and communicate missing data.
 
-- Visualise missingness by adding a ggplot `geom`, `geom_missing_point`
-- Provide numerical summaries of missingness
-- Create summary plots of missingness (`gg_missing_var`) 
-- convert and manipulate dataframes with metadata about missing values added.
+Currently it provides
 
-`naniar` was previously nammed `ggmissing`, but was changed to `naniar` to reflect the fact that this package is going to be bigger in scope.
+- Data structures for missing data
+    + `as_shadow`
+    + `bind_shadow`
+    + `gather_shadow`
+    + `is_na`
+- Visualisation methods: 
+    + `geom_missing_point`
+    + `gg_missing_var`
+- Numerical summaries: 
+    + `n_miss`
+    + `percent_missing_*`
+    + `summary_missing_*`
+    + `table_missing_*`
 
-## Why?
+More detail is provided in this README. For a more formal description, you can read the vignette "building on ggplot2 for exploration of missing values".
 
-Missing data is ubiquitous in data analysis. However, vis points are omitted in ggplot, and although it does provides a warning message telling you that you have missing data, it is tricky to visualise missing data.
-
-`naniar` aims to functions that play well with missing data representations in the predictable fashion, like in the tidyverse. In the future it will provide functions focussing on how to tidy, transform, visualise, model, and communicate missing data.
-
-It is still very much under development, and may have unknown bugs, due to things like the fact that ggplot was not initially built to handle missing data in this way.
+`naniar` was previously nammed `ggmissing`. It was changed to `naniar` to reflect the fact that this package is going to be bigger in scope.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-## What does it do?
 
-`naniar` provides:
+# Data structures for missing data
 
-1. Missing data geoms for ggplot (`geom_missing_point`)
+Representing missing data structure is achieved using the shadow matrix, introduced in [Swayne and Buja](https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization). The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as "NA", and not missing is represented as "!NA". Although these may be represented as 1 and 0, respectively. This representation can be seen in the figure below, adding the suffix "_NA" to the variables. This structure can also be extended to allow for additional factor levels to be created. For example 0 indicates data presence, 1 indicates missing values, 2 indicates imputed value, and 3 might indicate a particular type or class of missingness, where reasons for missingness might be known or inferred. The data matrix can also be augmented to include the shadow matrix, which facilitates visualisation of univariate and bivariate missing data visualisations. Another format is to display it in long form, which facilitates heatmap style visualisations. This approach can be very helpful for giving an overview of which variables contain the most missingness. Methods can also be applied to rearrange rows and columns to find clusters, and identify other interesting features of the data that may have previously been hidden or unclear. 
 
-2. Tidyverse summary functions for missing data (`summarise_missingness` and friends)
+![](missingness-data-structures.png)
 
-3. ggplots for exploring missing data (`gg_missing_var`, `gg_missing_case`, `gg_missing_which`)
+__Illustration of data structures for facilitating visualisation of missings and not missings__
 
-## Using naniar {#ggplot}
+# Visualising missing data
 
-### How does it work?
+Visualising missing data might sound a little strange - how do you visualise something that is not there?  One approach to visualising missing data comes from ggobi and manet, where we replace "NA" values with values 10% lower than the minimum value in that variable. This is provided with the `geom_missing_point()` ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
 
-Plotting missing data might sound a little strange - how do you visualise something that is not there? In the past, GGobi and Manet have provided methods of visualising missingness, with one approach being to replace "NA" values with values 10% lower than the minimum value in that variable.
 
-To illustrate, let's explore the relationship between Ozone and Solar radiation from the airquality dataset.
+```{r regular-geom-point}
 
-```{r messages = FALSE, error = FALSE}
-library(naniar)
-# devtools::install_github("njtierney/naniar")
 library(ggplot2)
-library(dplyr)
-
-```
-
-```{r}
 
 ggplot(data = airquality,
        aes(x = Ozone,
@@ -69,14 +64,13 @@ ggplot(data = airquality,
 
 ```
 
-We get a little message, warning us about the missing values.
+ggplot2 does not handle these missing values, and we get a warning message about the missing values.
 
 We can instead use the `geom_missing_point()` to display the missing data
 
-```{r}
+```{r geom-missing-point}
 
 library(naniar)
-library(ggplot2)
 
 ggplot(data = airquality,
        aes(x = Ozone,
@@ -110,36 +104,91 @@ p1 + theme_bw()
 
 ```
 
-# Missing data tidying functions {#tidying}
-
-`naniar` uses some missingness transformation functions to set up tables for visualisation.  
+You can also look at the proportion of missings in each variable with gg_missing_var:
 
 ```{r}
 
-# overall percentage of missing data
-percent_missing_df(airquality)
+gg_missing_var(airquality)
 
-# % of variables that contain missing data
-percent_missing_var(airquality)
+```
 
-# % of cases that contain missing data
-percent_missing_case(airquality)
+You can also explore the whole dataset of missings using the `vis_miss` function from the [`visdat`](github.com/njtierney/visdat) package.
 
-# tabulations of missing data across cases
-table_missing_case(airquality)
+```{r}
 
-# tabulations of missing data across variables
-table_missing_var(airquality)
+# devtools::install_github("njtierney/visdat")
+library(visdat)
+vis_miss(airquality)
 
-# summary information (counts, percentrages) of missing data for variables and cases
-summary_missing_var(airquality)
-summary_missing_case(airquality)
+```
 
+Another approach can be to use **Univariate plots split by missingness**. We can do this using the `bind_shadow` argument to place the data and shadow side by side. This allows for us to examine univariate distributions according to the presence or absence of another variable. 
+
+```{r}
+library(naniar)
+
+aq_shadow <- bind_shadow(airquality)
+
+aq_shadow
+```
+
+
+The plot below shows the values of temperature when ozone is present and missing, on the left is a faceted histogram, and on the right is an overlaid density.
+
+```{r bind-shadow-density, fig.height = 4, fig.width = 10, results = "hold"}
+
+library(ggplot2)
+
+p1 <- ggplot(data = aq_shadow,
+       aes(x = Temp)) + 
+  geom_histogram() + 
+  facet_wrap(~Ozone_NA,
+             ncol = 1)
+
+p2 <- ggplot(data = aq_shadow,
+       aes(x = Temp,
+           colour = Ozone_NA)) + 
+  geom_density() 
+
+gridExtra::grid.arrange(p1, p2, ncol = 2)
 
 ```
 
 
-Each of these functions can also be called all together using `summarise_missingness`, which takes a `data.frame` and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases. 
+# Numerical summaries for missing data
+
+`naniar` provides numerical summaries of missing data. The `percent_missing_*` functions help find the proportion of missing values in the data overall, in cases, or in variables. 
+
+```{r numerical-percent-missing}
+
+# Proportion elements in dataset that contains missing values
+percent_missing_df(airquality)
+# Proportion of variables that contain any missing values
+percent_missing_var(airquality)
+ # Proportion of cases that contain any missing values
+percent_missing_case(airquality)
+
+```
+
+We can also look at the number and percent of missings in each case and variable with `summary_missing_case`, and `summary_missing_var`.
+
+```{r}
+
+summary_missing_case(airquality)
+summary_missing_var(airquality)
+
+```
+
+Tabulations of the number of missings in each case or variable can be calculated with `table_missing_case` and `table_missing_var`. 
+
+```{r}
+
+table_missing_case(airquality)
+table_missing_var(airquality)
+
+```
+
+All functions can be called at once using `summarise_missingness`, which takes a `data.frame` and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases. 
 
 ```{r}
 
@@ -167,7 +216,6 @@ s_miss$summary_missing_var
 s_miss$summary_missing_case
 
 ```
-
 
 # Other plotting functions {#extraplots}
 
@@ -200,30 +248,19 @@ gg_missing_which(airquality)
 
 ```
 
-## Heatmap of missing data
-
-I recommend the use of the `vis_miss` function from the [`visdat`](github.com/njtierney/visdat) package.
-
-```{r}
-
-# devtools::install_github("njtierney/visdat")
-library(visdat)
-vis_miss(airquality)
-
-```
 
 # Future Work
 
-`naniar` will be undergoing more changes over the next 6 months, with plans to have the package in CRAN before the end of 2016. 
+`naniar` will be undergoing more changes over the next 6 months, with plans to have the package in CRAN around the end of 2016. 
 
-As such, we plan to extend the `geom_missing` family to include:
+Other plans to extend the `geom_missing` family to include:
 
 - 1D, univariate distribution plots
 - Categorical variables
 - Bivariate plots: Scatterplots, Density overlays.
+- Provide
 
-We might possibly move the `summarise_missingness` functions into a separate package.
 
-There are other utility functions:
+## Acknowledgements
 
-- `shadow_shift`, which shifts missing values to 10% below minimum
+Naming credit (once again!) goes to @MilesMcBain, and to @hadley for the rearranged spelling. Also thank you to @dicook for her  and @hadley for putting up with my various questions and concerns, mainly around the name.

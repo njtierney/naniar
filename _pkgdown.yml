@@ -1,0 +1,27 @@
+home:
+  links:
+  - text: Learn more
+    href: https://github.com/njtierney/naniar
+reference:
+  - title: "Visualisation"
+    desc: >
+      Visualise missing data
+    contents:
+      - geom_missing_point
+      - starts_with("gg_missing_")
+  - title: "Numerical Summaries"
+    desc: >
+      Provide tidy data frame summaries of missingness
+    contents:
+      - n_miss
+      - starts_with("percent_missing_")
+      - starts_with("summary_missing_")
+      - starts_with("table_missing_")
+  - title: "Data structures for missing data"
+    desc: >
+      Creation and Manipulation of Shadow Matrices
+    contents:
+      - as_shadow
+      - bind_shadow
+      - gather_shadow
+      - is_na

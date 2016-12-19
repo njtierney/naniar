@@ -3,7 +3,11 @@ Type: Package
 Title: Provides Sensible Summaries and Visualisations for Missing Data
 Version: 0.0.3.9000
 Author: Nicholas Tierney, Miles McBain, Di Cook,
-Maintainer: <nicholas.tierney@gmail.com>
+Authors@R: c(
+    person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
+    person("Di", "Cook", , "dicook@monash.edu", role = "aut"),
+    person("Miles", "McBain", , "miles.mcbain@gmail.com", role = "aut")
+    )
 Description: Missing values are ubiquitous in data and need to be explored and 
     handled in the initial stages of analysis. naniar provides helpers for 
     exploring missing data dependencies with minimal deviation from the common 

@@ -1,5 +1,5 @@
 ---
-title: "ggmissing: expanding ggplot to handle missing data"
+title: "Mechanics of shadow_shift in ggplot2"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
 output: 
@@ -13,12 +13,15 @@ knitr::opts_chunk$set(message = F)
 
 ```
 
-This is a draft document/vignette that gets ggplot to display missingness into a plot. 
+This vignette describes the mechanics behind shadow_shift, and steps you through how the functions work. It is not intended to be a user guide on how to use naniar - for that please read the [README on GitHub](https://github.com/njtierney/naniar).
 
+
+We first create some data using the wakefield package
 
 ```{r}
 library(dplyr)
 library(wakefield)
+set.seed(1531)
 df <- 
   r_data_frame(
   n = 30,
@@ -37,6 +40,7 @@ df <-
 
 ```
 
+Exploring the data, we see that ggplot2 omits data points.
 
 ```{r}
 library(ggplot2)
@@ -46,7 +50,11 @@ ggplot(data = df,
            y = Age)) + 
   geom_point()
 
-# idea was the plot the missing data as 10% below the minimum value for that variable.
+```
+
+One idea is to plot the missing data as 10% below the minimum value for that variable.
+
+```{r}
 
 df %>%
   # make missing values 10% below the minimum value for that variable
@@ -64,9 +72,11 @@ df %>%
 ```
 
 
+So we can make a window function that transforms missing values to be 10% below the minmum value for a variable
+
 ```{r}
 
-is.na.data.frame(df)
+# is.na.data.frame(df)
 
 df.shadow <- as.data.frame(is.na.data.frame(df))
 
@@ -81,7 +91,6 @@ shadow_df <- function(x){
 # remember that TRUE = missing
 shadow_df(df)
 
-
 # Make a window function that transforms missing values to be 10% below the minimum value for that variable
 shadow_shift <- function(x){
   ifelse(is.na(x), 
@@ -94,26 +103,25 @@ shadow_shift <- function(x){
   # need to think about how time is handled as well.
 }
 
+```
 
-df %>%
+Which means we can do something like this
+
+```{r}
+
   # make missing values 10% below the minimum value for that variable
-  mutate(Height = shadow_shift(Height),
-         Age = shadow_shift(Age)) %>%
-  ggplot(data = .,
-         aes(x = Height,
-             y = Age)) + 
-  geom_point()
-
-# OK, so it turns out that I can just shadow shift the data INSIDE ggplot.
-
 ggplot(data = df,
        aes(x = shadow_shift(Height),
            y = shadow_shift(Age))) + 
   geom_point()
 
-# now we just need to add in some colour to these points, so that missing data sorta takes upon this "preattentive" phase.
+```
 
-# let's make a new dataset, that is basically contains only the shifted data
+
+However, we now we just need to add in some colour to these points, so that missing data sorta takes upon this "preattentive" phase. We make a new dataset, that is basically contains only the shifted data.
+
+
+```{r}
 
 df.test <- 
 df %>%
@@ -127,7 +135,11 @@ df %>%
   # filter out those observations that are greater than the min
   filter(Age < (min(Age, na.rm = T)*1.1))
 
-# to manage the different quantities of the variables, I could put them into a list, or something that allows me to have a "ragged" dataset
+```
+
+
+
+```{r}
 
 ggplot(data = df,
        aes(x = shadow_shift(Height),
@@ -178,7 +190,6 @@ So we have this variable `miss_cat`, which we add to the data.
 
 We can then use an ifelse statement to re-organise the factor levels.
 
-
 ```{r}
 
 # we can then colour by the missingness
@@ -196,8 +207,6 @@ df %>%
   geom_point() 
 
 ```
-
-Ta da! It works. Not quite as elegant as I'd like, but we're getting there.
 
 Instead of having an ifelse each time we want to do this, let's generalize this to a function that reorganizes the miss_cat based upon the levels of missingness - `shadow_cat`
 
@@ -272,34 +281,9 @@ df %>%
 
 ```
 
-Miles had a couple of ideas, where we could combine all of the information within the data frame into one column, effectively encoding the missingness into a single column. However, one problem with this is that if columns are rearranged or removed, then this single column becomes incorrect. 
+Miles had a couple of ideas, where we could combine all of the information within the data frame into one column, effectively encoding the missingness into a single column. However, one problem with this is that if columns are rearranged or removed, then this single column becomes incorrect.
 
-In terms of things to do from here, I'd really want to create the same sort of plot as above, using some syntax like:
-
-```
-ggplot(data = df,
-       aes(x = Height,
-           y = Age)) + 
-  geom_point(missing = T) 
-
-```
-
-So I guess one possible way forward would be to create a function inside `geom_point()`, called `missing`, that is set to FALSE on default, but when TRUE, it munches the appropriate data and produces the plot.
-
-#Stat approach
-
-Created a new stat `stat_missing_point()` that we use with `geom_missing_point()`.
-
-```{r}
-
-ggplot(data = df,
-       aes(x = Height,
-           y = Age)) + 
-  geom_missing_point()
-
-```
-
-# looking at histograms
+# A look at histograms
 
 ```{r}
 # displaying missingness for univariate histograms:

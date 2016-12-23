@@ -8,11 +8,11 @@ Authors@R: c(
     person("Di", "Cook", , "dicook@monash.edu", role = "aut"),
     person("Miles", "McBain", , "miles.mcbain@gmail.com", role = "aut")
     )
-Description: Missing values are ubiquitous in data and need to be explored and 
-    handled in the initial stages of analysis. naniar provides helpers for 
-    exploring missing data dependencies with minimal deviation from the common 
-    workflows of ggplot and tidy data. naniar builds data structures and 
-    functions that ensure missings are plotted easily and enables imputations 
+Description: Missing values are ubiquitous in data and need to be explored and
+    handled in the initial stages of analysis. naniar provides helpers for
+    exploring missing data dependencies with minimal deviation from the common
+    workflows of ggplot and tidy data. naniar builds data structures and
+    functions that ensure missings are plotted easily and enables imputations
     to be examined.
 License: MIT + file LICENSE
 LazyData: TRUE
@@ -30,3 +30,15 @@ Imports:
     magrittr,
     stats
 RoxygenNote: 5.0.1
+Collate:
+    'data.R'
+    'legend-draw.R'
+    'geom_missing_point.R'
+    'label_missings.R'
+    'missing_data_tidiers.R'
+    'naniar-ggproto.R'
+    'naniar-package.R'
+    'plotting.R'
+    'shadow_shifters.R'
+    'shadows.R'
+    'stat_missing_point.R'

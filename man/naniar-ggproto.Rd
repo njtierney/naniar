@@ -6,7 +6,7 @@
 \alias{StatMissingPoint}
 \alias{naniar-ggproto}
 \title{naniar-ggroto}
-\format{An object of class \code{GeomMissingPoint} (inherits from \code{GeomPoint}, \code{Geom}, \code{ggproto}) of length 6.}
+\format{An object of class \code{GeomMissingPoint} (inherits from \code{GeomPoint}, \code{Geom}, \code{ggproto}) of length 7.}
 \usage{
 GeomMissingPoint
 

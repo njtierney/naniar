@@ -1,3 +1,4 @@
+#' @include legend-draw.R
 #' @name geom_missing_point
 #' @title geom_missing_point
 #' @description geom_missing_point adds a point geometry for displaying missingness.
@@ -60,7 +61,7 @@ GeomMissingPoint <- ggproto("GeomMissingPoint", GeomPoint,
                                               fill = NA,
                                               alpha = NA,
                                               stroke = 1.5),
-                            # draw_key = draw_key_point,
+                            draw_key = draw_key_missing_point,
                             setup_data = function(data, params){
                               #TODO: print warning if na.rm = T
                               data$x <- shadow_shift(data$x)
@@ -75,7 +76,7 @@ GeomMissingPoint <- ggproto("GeomMissingPoint", GeomPoint,
                                 coords$x, coords$y,
                                 pch = coords$shape,
                                 gp = grid::gpar(
-                                  col = coords$colour,
+                                  col = alpha(coords$colour, coords$alpha),
                                   fill = alpha(coords$fill, coords$alpha),
                                   # Stroke is added around the outside of the point
                                   fontsize = coords$size * .pt + coords$stroke * .stroke / 2,

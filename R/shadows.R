@@ -9,8 +9,13 @@
 #'
 #' @export
 #'
+#' @examples
+#'
+#' n_miss(airquality)
+#' n_miss(airquality$Ozone)
+#'
 n_miss <- function(x){
-  length(is.na(x))
+  sum(is.na(x))
 }
 
 #' Give NAs a more meaningful label

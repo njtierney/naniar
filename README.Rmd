@@ -35,7 +35,12 @@ Currently it provides
 
 More detail is provided in this README. For a more formal description, you can read the vignette "building on ggplot2 for exploration of missing values".
 
-`naniar` was previously nammed `ggmissing`. It was changed to `naniar` to reflect the fact that this package is going to be bigger in scope.
+**Why `naniar`?**
+
+`naniar` was previously nammed `ggmissing`. It was changed to `naniar` to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2.
+
+To extend a bit on this. Missing values in data are like this other dimension.
+It's like they live in a closet where all these wierd and wonderful things exist, sort of like this world of Narnia - It's a different world. This package is about giving you the tools to survive, and the name "naniar" is a play on the "Narnia" books. e.g., naniar: The Last Battle (...with missing data). There's also some nice side effects of the name: naniar = na in r, and if you so desire, naniar may sound like "noneoya" in an nz/aussie accent.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
@@ -75,7 +80,7 @@ library(naniar)
 ggplot(data = airquality,
        aes(x = Ozone,
            y = Solar.R)) +
-  geom_missing_point()
+  geom_missing_point(alpha = 0.5)
 
 ```
 

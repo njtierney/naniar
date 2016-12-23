@@ -12,4 +12,10 @@ n_miss(x)
 \description{
 substitute for length(is.na())
 }
+\examples{
+
+n_miss(airquality)
+n_miss(airquality$Ozone)
+
+}
 

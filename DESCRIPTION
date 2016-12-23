@@ -19,7 +19,9 @@ LazyData: TRUE
 Suggests:
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    rpart,
+    rpart.plot
 VignetteBuilder: knitr
 Imports:
     dplyr,

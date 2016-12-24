@@ -80,13 +80,25 @@ library(naniar)
 ggplot(data = airquality,
        aes(x = Ozone,
            y = Solar.R)) +
-  geom_missing_point(alpha = 0.5)
+  geom_missing_point()
 
 ```
 
 `geom_missing_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes preattentive.
 
-This plays nicely with other parts of ggplot, like faceting - we can split the facet by month:
+This plays nicely with other parts of ggplot, like adding transparenty
+
+```{r}
+
+ggplot(data = airquality,
+       aes(x = Ozone,
+           y = Solar.R)) +
+  geom_missing_point(alpha = 0.5)
+```
+
+Thanks to Luke Smith for making this pull request.
+
+like faceting - we can split the facet by month:
 
 ```{r}
 p1 <-

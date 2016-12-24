@@ -25,7 +25,11 @@ Currently it provides
 
 More detail is provided in this README. For a more formal description, you can read the vignette "building on ggplot2 for exploration of missing values".
 
-`naniar` was previously nammed `ggmissing`. It was changed to `naniar` to reflect the fact that this package is going to be bigger in scope.
+**Why `naniar`?**
+
+`naniar` was previously nammed `ggmissing`. It was changed to `naniar` to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2.
+
+To extend a bit on this. Missing values in data are like this other dimension. It's like they live in a closet where all these wierd and wonderful things exist, sort of like this world of Narnia - It's a different world. This package is about giving you the tools to survive, and the name "naniar" is a play on the "Narnia" books. e.g., naniar: The Last Battle (...with missing data). There's also some nice side effects of the name: naniar = na in r, and if you so desire, naniar may sound like "noneoya" in an nz/aussie accent.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
@@ -74,7 +78,21 @@ ggplot(data = airquality,
 
 `geom_missing_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes preattentive.
 
-This plays nicely with other parts of ggplot, like faceting - we can split the facet by month:
+This plays nicely with other parts of ggplot, like adding transparenty
+
+``` r
+
+ggplot(data = airquality,
+       aes(x = Ozone,
+           y = Solar.R)) +
+  geom_missing_point(alpha = 0.5)
+```
+
+![](README-unnamed-chunk-2-1.png)
+
+Thanks to Luke Smith for making this pull request.
+
+like faceting - we can split the facet by month:
 
 ``` r
 p1 <-
@@ -88,7 +106,7 @@ ggplot(data = airquality,
 p1
 ```
 
-![](README-unnamed-chunk-2-1.png)
+![](README-unnamed-chunk-3-1.png)
 
 And then change the theme, just like you do with any other ggplot graphic
 
@@ -97,7 +115,7 @@ And then change the theme, just like you do with any other ggplot graphic
 p1 + theme_bw()  
 ```
 
-![](README-unnamed-chunk-3-1.png)
+![](README-unnamed-chunk-4-1.png)
 
 You can also look at the proportion of missings in each variable with gg\_missing\_var:
 
@@ -106,7 +124,7 @@ You can also look at the proportion of missings in each variable with gg\_missin
 gg_missing_var(airquality)
 ```
 
-![](README-unnamed-chunk-4-1.png)
+![](README-unnamed-chunk-5-1.png)
 
 You can also explore the whole dataset of missings using the `vis_miss` function from the [`visdat`](github.com/njtierney/visdat) package.
 
@@ -117,7 +135,7 @@ library(visdat)
 vis_miss(airquality)
 ```
 
-![](README-unnamed-chunk-5-1.png)
+![](README-unnamed-chunk-6-1.png)
 
 Another approach can be to use **Univariate plots split by missingness**. We can do this using the `bind_shadow` argument to place the data and shadow side by side. This allows for us to examine univariate distributions according to the presence or absence of another variable.
 
@@ -326,7 +344,7 @@ gg\_missing\_var
 gg_missing_var(airquality)
 ```
 
-![](README-unnamed-chunk-10-1.png)
+![](README-unnamed-chunk-11-1.png)
 
 gg\_missing\_case
 -----------------
@@ -336,7 +354,7 @@ gg\_missing\_case
 gg_missing_case(airquality)
 ```
 
-![](README-unnamed-chunk-11-1.png)
+![](README-unnamed-chunk-12-1.png)
 
 gg\_missing\_which
 ------------------
@@ -348,7 +366,7 @@ This shows whether a given variable contains a missing variable. In this case gr
 gg_missing_which(airquality)
 ```
 
-![](README-unnamed-chunk-12-1.png)
+![](README-unnamed-chunk-13-1.png)
 
 Future Work
 ===========

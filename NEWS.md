@@ -1,9 +1,11 @@
-# nanar 0.0.3.9001 (2016/12/18)
+# nanar 0.0.3.9901 (2016/12/18)
 
 ## NEW FEATURES
 
-* `add_n_miss` and `add_prop_miss` are helpers that add columns to a dataframe containing the number and proportion of missing values. An example has been provided to use decision trees to explore missing data structure as in Tierney et al ()
+* `add_n_miss` and `add_prop_miss` are helpers that add columns to a dataframe containing the number and proportion of missing values. An example has been provided to use decision trees to explore missing data structure as in [Tierney et al](bmjopen.bmj.com/content/5/6/e007450.full)
 
+* `geom_miss_point()` now supports transparency, thanks to @seasmith (Luke Smith)
+ 
 # nanar 0.0.3.9000 (2016/12/18)
 
 After a burst of effort on this package I have done some refactoring and thought hard about where this package is going to go. This meant that I had to make the decision to rename the package from ggmissing to naniar. The name may strike you as strange but it reflects the fact that there are many changes happening, and that we will be working on creating a nice utopia (like Narnia by CS Lewis) that helps us make it easier to work with missing data

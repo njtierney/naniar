@@ -33,6 +33,7 @@ Imports:
     stats
 RoxygenNote: 5.0.1
 Collate:
+    'add_cols.R'
     'data.R'
     'legend-draw.R'
     'geom_missing_point.R'

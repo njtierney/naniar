@@ -59,7 +59,9 @@
 <li><code>table_missing_*</code></li>
 </ul></li>
 </ul><p>More detail is provided in this README. For a more formal description, you can read the vignette &ldquo;building on ggplot2 for exploration of missing values&rdquo;.</p>
-<p><code>naniar</code> was previously nammed <code>ggmissing</code>. It was changed to <code>naniar</code> to reflect the fact that this package is going to be bigger in scope.</p>
+<p><strong>Why <code>naniar</code>?</strong></p>
+<p><code>naniar</code> was previously nammed <code>ggmissing</code>. It was changed to <code>naniar</code> to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2.</p>
+<p>To extend a bit on this. Missing values in data are like this other dimension. It&rsquo;s like they live in a closet where all these wierd and wonderful things exist, sort of like this world of Narnia - It&rsquo;s a different world. This package is about giving you the tools to survive, and the name &ldquo;naniar&rdquo; is a play on the &ldquo;Narnia&rdquo; books. e.g., naniar: The Last Battle (&hellip;with missing data). There&rsquo;s also some nice side effects of the name: naniar = na in r, and if you so desire, naniar may sound like &ldquo;noneoya&rdquo; in an nz/aussie accent.</p>
 <p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 <div id="data-structures-for-missing-data" class="section level1">
@@ -92,7 +94,15 @@
 <span class="st">  </span><span class="kw"><a href="reference/geom_missing_point.html">geom_missing_point</a></span>()</code></pre></div>
 <p><img src="README-geom-missing-point-1.png" width="672"></p>
 <p><code><a href="reference/geom_missing_point.html">geom_missing_point()</a></code> has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes preattentive.</p>
-<p>This plays nicely with other parts of ggplot, like faceting - we can split the facet by month:</p>
+<p>This plays nicely with other parts of ggplot, like adding transparenty</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw">ggplot</span>(<span class="dt">data =</span> airquality,
+       <span class="kw">aes</span>(<span class="dt">x =</span> Ozone,
+           <span class="dt">y =</span> Solar.R)) +
+<span class="st">  </span><span class="kw"><a href="reference/geom_missing_point.html">geom_missing_point</a></span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="README-unnamed-chunk-2-1.png" width="672"></p>
+<p>Thanks to Luke Smith for making this pull request.</p>
+<p>like faceting - we can split the facet by month:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p1 &lt;-
 <span class="kw">ggplot</span>(<span class="dt">data =</span> airquality,
        <span class="kw">aes</span>(<span class="dt">x =</span> Ozone,
@@ -102,21 +112,21 @@
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)
 
 p1</code></pre></div>
-<p><img src="README-unnamed-chunk-2-1.png" width="672"></p>
+<p><img src="README-unnamed-chunk-3-1.png" width="672"></p>
 <p>And then change the theme, just like you do with any other ggplot graphic</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 p1 +<span class="st"> </span><span class="kw">theme_bw</span>()  </code></pre></div>
-<p><img src="README-unnamed-chunk-3-1.png" width="672"></p>
+<p><img src="README-unnamed-chunk-4-1.png" width="672"></p>
 <p>You can also look at the proportion of missings in each variable with gg_missing_var:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/gg_missing_var.html">gg_missing_var</a></span>(airquality)</code></pre></div>
-<p><img src="README-unnamed-chunk-4-1.png" width="672"></p>
+<p><img src="README-unnamed-chunk-5-1.png" width="672"></p>
 <p>You can also explore the whole dataset of missings using the <code>vis_miss</code> function from the <a href="github.com/njtierney/visdat"><code>visdat</code></a> package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="co"># devtools::install_github("njtierney/visdat")</span>
 <span class="kw">library</span>(visdat)
 <span class="kw">vis_miss</span>(airquality)</code></pre></div>
-<p><img src="README-unnamed-chunk-5-1.png" width="672"></p>
+<p><img src="README-unnamed-chunk-6-1.png" width="672"></p>
 <p>Another approach can be to use <strong>Univariate plots split by missingness</strong>. We can do this using the <code>bind_shadow</code> argument to place the data and shadow side by side. This allows for us to examine univariate distributions according to the presence or absence of another variable.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(naniar)
 
@@ -294,20 +304,20 @@ s_miss$summary_missing_case
 <h2 class="hasAnchor"><a href="#gg_missing_var" class="anchor"> </a>gg_missing_var</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/gg_missing_var.html">gg_missing_var</a></span>(airquality)</code></pre></div>
-<p><img src="README-unnamed-chunk-10-1.png" width="672"></p>
+<p><img src="README-unnamed-chunk-11-1.png" width="672"></p>
 </div>
 <div id="gg_missing_case" class="section level2">
 <h2 class="hasAnchor"><a href="#gg_missing_case" class="anchor"> </a>gg_missing_case</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/gg_missing_case.html">gg_missing_case</a></span>(airquality)</code></pre></div>
-<p><img src="README-unnamed-chunk-11-1.png" width="672"></p>
+<p><img src="README-unnamed-chunk-12-1.png" width="672"></p>
 </div>
 <div id="gg_missing_which" class="section level2">
 <h2 class="hasAnchor"><a href="#gg_missing_which" class="anchor"> </a>gg_missing_which</h2>
 <p>This shows whether a given variable contains a missing variable. In this case grey = missing. Think of it as if you are shading the cell in, if it contains data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/gg_missing_which.html">gg_missing_which</a></span>(airquality)</code></pre></div>
-<p><img src="README-unnamed-chunk-12-1.png" width="672"></p>
+<p><img src="README-unnamed-chunk-13-1.png" width="672"></p>
 </div>
 </div>
 <div id="future-work" class="section level1">

@@ -17,6 +17,12 @@ reference:
       - starts_with("percent_missing_")
       - starts_with("summary_missing_")
       - starts_with("table_missing_")
+  - title: "Add columns"
+    desc: >
+      Add the number of missing and proportion of missing data
+    contents:
+      - add_n_miss
+      - add_prop_miss
   - title: "Data structures for missing data"
     desc: >
       Creation and Manipulation of Shadow Matrices

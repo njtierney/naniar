@@ -1,9 +1,8 @@
 # A set of functions that provide utility functions for creating "shadow" dataframes (shadaframes, nataframes, nabbles)
-#'
-#'
+#
 #' return the number of missing values
 #'
-#' substitute for length(is.na())
+#' substitute for \code{sum(is.na(data))}
 #'
 #' @param x a vector
 #'
@@ -126,8 +125,8 @@ gather_shadow <- function(data){
   as_shadow(data) %>%
     dplyr::mutate(rows = 1:nrow(.)) %>%
     tidyr::gather(key = "var",
-           value = "miss",
-           -rows)
+                  value = "miss",
+                  -rows)
 }
 
 # here is a different version of gather_shadow which preserves value

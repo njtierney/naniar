@@ -10,7 +10,7 @@ n_miss(x)
 \item{x}{a vector}
 }
 \description{
-substitute for length(is.na())
+substitute for \code{sum(is.na(data))}
 }
 \examples{
 

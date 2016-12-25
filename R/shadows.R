@@ -33,9 +33,13 @@ n_miss <- function(x){
 #' is_na(airquality$Ozone)
 #'
 is_na <- function(x) {
+  if (length(x) == 0) {
+    stop("x is of length 0, please check your inputs.")
+    } else{
   factor(is.na(x),
          levels = c(FALSE, TRUE),
          labels = c("!NA", "NA"))
+    }
 }
 
 

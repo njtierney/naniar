@@ -13,7 +13,7 @@ label_missing_1d(x1)
 a vector indicating whether any of these rows had missing values
 }
 \description{
-Label whether a value is missing in either row of two columns. This is a more appealing alternative to miss_cat, which seems a bit overcomplicated.
+Label whether a value is missing in either row of two columns. At the moment this is a more appealing alternative to miss_cat, which is at this stage a bit complicated.
 }
 \note{
 can we generalise label_missing to work for any number of variables?

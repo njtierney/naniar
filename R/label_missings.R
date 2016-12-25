@@ -1,6 +1,6 @@
 #' label_missing_1d
 #'
-#' Label whether a value is missing in either row of two columns. This is a more appealing alternative to miss_cat, which seems a bit overcomplicated.
+#' Label whether a value is missing in either row of two columns. At the moment this is a more appealing alternative to miss_cat, which is at this stage a bit complicated.
 #'
 #' @param x1 a variable of a dataframe
 #'

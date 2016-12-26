@@ -3,3 +3,11 @@
 language: R
 sudo: false
 cache: packages
+
+env:
+  global:
+    - _R_CHECK_FORCE_SUGGESTS_=false
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - Rscript -e 'covr::codecov()'

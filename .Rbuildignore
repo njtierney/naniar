@@ -5,3 +5,4 @@
 ^appveyor\.yml$
 ^CONDUCT\.md$
 ^\.travis\.yml$
+^codecov\.yml$

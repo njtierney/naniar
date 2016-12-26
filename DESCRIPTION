@@ -21,7 +21,8 @@ Suggests:
     rmarkdown,
     testthat,
     rpart,
-    rpart.plot
+    rpart.plot,
+    covr
 VignetteBuilder: knitr
 Imports:
     dplyr,

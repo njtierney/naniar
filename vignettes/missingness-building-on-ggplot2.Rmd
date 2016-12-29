@@ -7,7 +7,6 @@ vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-# bibliography: naniar.bib
 ---
 
 ```{r setup, include=FALSE}

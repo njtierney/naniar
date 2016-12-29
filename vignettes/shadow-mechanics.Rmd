@@ -2,9 +2,11 @@
 title: "Mechanics of shadow_shift in ggplot2"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
-output: 
-  html_document: 
-    theme: readable
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup}

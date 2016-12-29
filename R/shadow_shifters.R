@@ -4,6 +4,13 @@
 #'
 #' @param x is a variable, must be continuous
 #'
+#' @examples
+#' airquality$Ozone
+#' shadow_shift(airquality$Ozone)
+#' library(dplyr)
+#' airquality %>%
+#'     mutate(Ozone_shift = shadow_shift(Ozone))
+#'
 #' @export
 # Constructor function ---------------------------------------------------------
 # create the S3 method

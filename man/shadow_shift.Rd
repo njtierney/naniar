@@ -12,4 +12,12 @@ shadow_shift(x)
 \description{
 shadow_shift is a window function that transforms missing values to be about 10% below the minimum value for a given variable, plus some jittered noise, to separate repeated values, so that missing values can be visualised along with the rest of the data
 }
+\examples{
+airquality$Ozone
+shadow_shift(airquality$Ozone)
+library(dplyr)
+airquality \%>\%
+    mutate(Ozone_shift = shadow_shift(Ozone))
+
+}
 

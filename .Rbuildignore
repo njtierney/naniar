@@ -6,3 +6,6 @@
 ^CONDUCT\.md$
 ^\.travis\.yml$
 ^codecov\.yml$
+^docs$
+^_pkgdown\.yml$
+^missingness-data-structures\.png$

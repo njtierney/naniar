@@ -2,7 +2,7 @@
 % Please edit documentation in R/shadow_shifters.R
 \name{miss_cat}
 \alias{miss_cat}
-\title{miss_cat}
+\title{Create factor levels of missingness for two variables}
 \usage{
 miss_cat(df, var1, var2)
 }
@@ -14,9 +14,11 @@ miss_cat(df, var1, var2)
 \item{var2}{a dataframe}
 }
 \description{
-miss_cat takes a data frame `df`, and two variables as strings, `var1` and `var2`, and converts them to a missing TRUE/FALSE matrix, where TRUE = missing. It then uses `interaction`, to create all the different levels of missingness - TRUE.TRUE, TRUE.FALSE, FALSE.TRUE, and FALSE.FALSE. It then uses the function `shadow_cat` to collapse across these and put them into the relevant categories
+\code{miss_cat} takes a data frame, df , and two variables as strings, var1 and var2, and converts them to a missing TRUE/FALSE matrix, where TRUE = missing. It then uses \code{interaction}, to create all the different levels of missingness - TRUE.TRUE, TRUE.FALSE, FALSE.TRUE, and FALSE.FALSE. It then uses the function \code{shadow_cat} to collapse across these and put them into the relevant categories
 }
-\details{
-\code{miss_cat} creates factor levels of missingness for two variables
+\examples{
+
+miss_cat(airquality, Ozone, Solar.R)
+
 }
 

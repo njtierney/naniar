@@ -2,7 +2,7 @@
 % Please edit documentation in R/shadow_shifters.R
 \name{shadow_df}
 \alias{shadow_df}
-\title{shadow_df}
+\title{Create a shadow matrix}
 \usage{
 shadow_df(x)
 }
@@ -10,6 +10,11 @@ shadow_df(x)
 \item{x}{a dataframe}
 }
 \description{
-\code{shadow_df} creates a shadow matrix/data frame of class 'tbl_df' that denotes whether a given cell is missing or not - if a value is missing, it is denoted as TRUE
+\code{shadow_df} creates a shadow matrix/data frame of class \code{tbl_df} that denotes whether a given cell is missing or not - if a value is missing, it is denoted as TRUE.
+}
+\examples{
+
+shadow_df(airquality)
+
 }
 

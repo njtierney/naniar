@@ -2,7 +2,7 @@
 % Please edit documentation in R/shadow_shifters.R
 \name{shadow_shift}
 \alias{shadow_shift}
-\title{shadow_shift}
+\title{Shift missing values to 10\% below minimum value}
 \usage{
 shadow_shift(x)
 }

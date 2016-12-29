@@ -1,13 +1,10 @@
-#' shadow_cat
+#' Categorise specific missings into missing  / not missing
 #'
-#' \code{shadow_cat} reorganizes
+#' \code{shadow_cat} is a window function that rearranges factor levels from \code{interaction}.
 #'
-#' @description shadow_cat is a utility function that rearranges factor levels
-#'
-#' @param x a dataframe coming from `interaction`
+#' @param x dataframe coming from \code{interaction}
 #'
 #' @export
-# let's then make this a window function...shadow cat
 
 shadow_cat <- function(x){
   ifelse(x == "TRUE.FALSE" |
@@ -17,30 +14,23 @@ shadow_cat <- function(x){
          no = "Not Missing")
 }
 
-#' shadow_shift
+#' Shift missing values to 10\% below minimum value
 #'
 #' shadow_shift is a window function that transforms missing values to be about 10% below the minimum value for a given variable, plus some jittered noise, to separate repeated values, so that missing values can be visualised along with the rest of the data
 #'
 #' @param x is a variable, must be continuous
 #'
-# ======================
-# Constructor function
-# ======================
-
-# create the S3 method
 #' @export
+# Constructor function ---------------------------------------------------------
+# create the S3 method
 shadow_shift <- function(x) UseMethod("shadow_shift")
 
-# =====
-# NULL
-# =====
+# NULL -------------------------------------------------------------------------
 
 #' @export
 shadow_shift.NULL <- function(x) NULL
 
-# =====
-# default
-# =====
+# default ----------------------------------------------------------------------
 
 #' @export
 shadow_shift.default <- function(x){
@@ -68,13 +58,15 @@ shadow_shift.numeric <- function(x){
 
 } # close function
 
-#' shadow_df
+#' Create a shadow matrix
 #'
-#' @description \code{shadow_df} creates a shadow matrix/data frame of class 'tbl_df' that denotes whether a given cell is missing or not - if a value is missing, it is denoted as TRUE
+#' \code{shadow_df} creates a shadow matrix/data frame of class \code{tbl_df} that denotes whether a given cell is missing or not - if a value is missing, it is denoted as TRUE.
 #'
 #' @param x a dataframe
 #'
-#' @import dplyr
+#' @examples
+#'
+#' shadow_df(airquality)
 #'
 #' @export
 
@@ -89,11 +81,9 @@ shadow_df <- function (x){
 }
 
 
-#' miss_cat
+#' Create factor levels of missingness for two variables
 #'
-#' \code{miss_cat} creates factor levels of missingness for two variables
-#'
-#' @description miss_cat takes a data frame `df`, and two variables as strings, `var1` and `var2`, and converts them to a missing TRUE/FALSE matrix, where TRUE = missing. It then uses `interaction`, to create all the different levels of missingness - TRUE.TRUE, TRUE.FALSE, FALSE.TRUE, and FALSE.FALSE. It then uses the function `shadow_cat` to collapse across these and put them into the relevant categories
+#' \code{miss_cat} takes a data frame, df , and two variables as strings, var1 and var2, and converts them to a missing TRUE/FALSE matrix, where TRUE = missing. It then uses \code{interaction}, to create all the different levels of missingness - TRUE.TRUE, TRUE.FALSE, FALSE.TRUE, and FALSE.FALSE. It then uses the function \code{shadow_cat} to collapse across these and put them into the relevant categories
 #'
 #' @param df a dataframe
 #'
@@ -101,7 +91,9 @@ shadow_df <- function (x){
 #'
 #' @param var2 a dataframe
 #'
-#' @import dplyr
+#' @examples
+#'
+#' miss_cat(airquality, Ozone, Solar.R)
 #'
 #' @export
 miss_cat <- function(df, var1, var2){
@@ -109,6 +101,8 @@ miss_cat <- function(df, var1, var2){
     # make the data into a true/false data frame
     shadow_df %>%
     # choose the variables of interest
+    # dplyr::select_(quote(var1), quote(var2)) %>%
+
     dplyr::select(dplyr::one_of(var1, var2)) %>%
     # get all the combinations of the levels as factors
     interaction %>%

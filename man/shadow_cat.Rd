@@ -2,17 +2,14 @@
 % Please edit documentation in R/shadow_shifters.R
 \name{shadow_cat}
 \alias{shadow_cat}
-\title{shadow_cat}
+\title{Categorise specific missings into missing  / not missing}
 \usage{
 shadow_cat(x)
 }
 \arguments{
-\item{x}{a dataframe coming from `interaction`}
+\item{x}{dataframe coming from \code{interaction}}
 }
 \description{
-shadow_cat is a utility function that rearranges factor levels
-}
-\details{
-\code{shadow_cat} reorganizes
+\code{shadow_cat} is a window function that rearranges factor levels from \code{interaction}.
 }
 

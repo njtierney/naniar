@@ -2,9 +2,9 @@
 #'
 #' These methods prove tidy summaries of missing data information. The \code{percent_missing_df}, \code{percent_missing_var}, and \code{percent_missing_case} functions provide numeric summaries, for the percent of missing data for the data (\code{percent_missing_df}), the percent of variables that contain missing values (\code{percent_missing_var}), the percent of cases that contain mising values (\code{percent_missing_case}). \code{any_na} finds whether a vector contains a missing value. \code{table_missing_var} provides a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the percent of that variable that is missing; \code{table_missing_case} provides a tidy table of the number of cases with 0, 1, 2, up to n, missing values, and the percent of the number of cases that are missing; \code{summary_missing_var} a data_frame of the percent of missing data in each variable; \code{summary_missing_case} provides the ratio of observations that have missings, and the number of cases that have at 0, 1, up to n, missing values' \code{summarise_missingness} returns a data_frame with the \code{percent_missing} as numeric, and table_missing_ and summary_missing_ and friends as lists, where each is a data_frame
 
-#' percent_missing_df
+#' Percentage of missing data in a dataframe
 #'
-#' calculate percent of missing data in a dataframe.
+#' Calculate the percent (%) of missing data in a dataframe.
 #'
 #' @param data a dataframe
 #'
@@ -23,7 +23,9 @@ percent_missing_df <- function(data){
 
 }
 
-#' percent_missing_var
+#' Percentage of variables containing missings
+#'
+#' Calculate the percentage of variable that contain a single missing value.
 #'
 #' @param data a dataframe
 #'
@@ -51,9 +53,9 @@ percent_missing_var <- function(data){
 
 } # end function
 
-#' percent_missing_case
+#' Percentage of cases that contain a missing values.
 #'
-#' calculate percent of missing data in each case (row)
+#' Calculate the percentage of cases (rows) that contain a missing value.
 #'
 #' @param data a dataframe
 #'
@@ -62,11 +64,10 @@ percent_missing_var <- function(data){
 #'
 #' @examples
 #'
-#' library(naniar)
 #' percent_missing_case(airquality)
 #'
 percent_missing_case <- function(data){
-
+data = airquality
   temp <- data %>%
     # which rows are complete?
     stats::complete.cases() %>%
@@ -101,13 +102,13 @@ prop_na <- function(data){
 }
 
 
-#' table_missing_case
+#' Tabulate missings in cases.
 #'
-#' provide a tidy table of the number of cases with 0, 1, 2, up to n, missing values and the proportion of the number of cases those cases make up
+#' Provide a tidy table of the number of cases with 0, 1, 2, up to n, missing values and the proportion of the number of cases those cases make up
 #'
 #' @param data a dataframe
 #'
-#' @return a dataframe of the
+#' @return a dataframe
 #' @export
 #'
 #' @examples
@@ -134,13 +135,13 @@ table_missing_case <- function(data){
 
 }
 
-#' table_missing_var
+#' Tabulate the missings in the variables
 #'
-#' provide a tidy table of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variablers those variables make up
+#' Provide a tidy table of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variablers those variables make up
 #'
 #' @param data a dataframe
 #'
-#' @return a dataframe of the
+#' @return a dataframe
 #' @export
 #'
 #' @examples
@@ -165,9 +166,9 @@ table_missing_var <- function(data){
 
 }
 
-#' summary_missing_var
+#' Summarise the missingness in each variable
 #'
-#' provide a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variables those variables make up
+#' Provide a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variables those variables make up
 #'
 #' @param data a dataframe
 #'
@@ -189,7 +190,7 @@ table_missing_var <- function(data){
 
   }
 
-#' summary_missing_case
+#' Summarise the missingness in each case
 #'
 #' @param data a dataframe
 #'
@@ -215,13 +216,13 @@ summary_missing_case <- function(data){
                   percent)
 }
 
-#' summarise_missingness
+#' Collate summary measures from naniar into one tibble
 #'
-#' summarise_missingness performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
+#' \code{summarise_missingness} performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
 #'
 #' @param data a dataframe
 #'
-#' @return a list of
+#' @return a dataframe
 #' @export
 #'
 #' @examples
@@ -229,6 +230,7 @@ summary_missing_case <- function(data){
 #' s_miss <- summarise_missingness(airquality)
 #' s_miss$percent_missing_df
 #' s_miss$table_missing_case
+#' # etc, etc, etc.
 #'
 summarise_missingness <- function(data){
 

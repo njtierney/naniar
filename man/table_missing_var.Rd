@@ -2,7 +2,7 @@
 % Please edit documentation in R/missing_data_tidiers.R
 \name{table_missing_var}
 \alias{table_missing_var}
-\title{table_missing_var}
+\title{Tabulate the missings in the variables}
 \usage{
 table_missing_var(data)
 }
@@ -10,10 +10,10 @@ table_missing_var(data)
 \item{data}{a dataframe}
 }
 \value{
-a dataframe of the
+a dataframe
 }
 \description{
-provide a tidy table of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variablers those variables make up
+Provide a tidy table of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variablers those variables make up
 }
 \examples{
 

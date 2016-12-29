@@ -24,4 +24,22 @@ manipulate the colour aes so that the colours and legend appear.
 fix awful default point sizes.
 Warning message if na.rm = T is supplied.
 }
+\examples{
+
+library(ggplot2)
+library(naniar)
+
+# using regular geom_point()
+ggplot(airquality,
+       aes(x = Ozone,
+           y = Solar.R)) +
+geom_point()
+
+# using geom_missing_point()
+ggplot(airquality,
+       aes(x = Ozone,
+           y = Solar.R)) +
+geom_missing_point()
+
+}
 

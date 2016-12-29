@@ -2,7 +2,7 @@
 % Please edit documentation in R/missing_data_tidiers.R
 \name{summary_missing_var}
 \alias{summary_missing_var}
-\title{summary_missing_var}
+\title{Summarise the missingness in each variable}
 \usage{
 summary_missing_var(data)
 }
@@ -13,7 +13,7 @@ summary_missing_var(data)
 a data_frame of the percent of missing data in each variable
 }
 \description{
-provide a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variables those variables make up
+Provide a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variables those variables make up
 }
 \examples{
 

@@ -17,9 +17,7 @@ gather exists as we want to include this extra metadata about the rows that have
 }
 \examples{
 
-aq_shadow <- gather_shadow(airquality)
-
-aq_shadow
+gather_shadow(airquality)
 
 }
 

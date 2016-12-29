@@ -2,7 +2,7 @@
 % Please edit documentation in R/missing_data_tidiers.R
 \name{percent_missing_var}
 \alias{percent_missing_var}
-\title{percent_missing_var}
+\title{Percentage of variables containing missings}
 \usage{
 percent_missing_var(data)
 }
@@ -13,7 +13,7 @@ percent_missing_var(data)
 numeric the percent of variables that contain missing data
 }
 \description{
-percent_missing_var
+Calculate the percentage of variable that contain a single missing value.
 }
 \examples{
 

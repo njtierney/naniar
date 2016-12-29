@@ -2,7 +2,7 @@
 % Please edit documentation in R/missing_data_tidiers.R
 \name{summarise_missingness}
 \alias{summarise_missingness}
-\title{summarise_missingness}
+\title{Collate summary measures from naniar into one tibble}
 \usage{
 summarise_missingness(data)
 }
@@ -10,16 +10,17 @@ summarise_missingness(data)
 \item{data}{a dataframe}
 }
 \value{
-a list of
+a dataframe
 }
 \description{
-summarise_missingness performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
+\code{summarise_missingness} performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
 }
 \examples{
 
 s_miss <- summarise_missingness(airquality)
 s_miss$percent_missing_df
 s_miss$table_missing_case
+# etc, etc, etc.
 
 }
 

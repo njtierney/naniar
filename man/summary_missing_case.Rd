@@ -2,7 +2,7 @@
 % Please edit documentation in R/missing_data_tidiers.R
 \name{summary_missing_case}
 \alias{summary_missing_case}
-\title{summary_missing_case}
+\title{Summarise the missingness in each case}
 \usage{
 summary_missing_case(data)
 }
@@ -13,7 +13,7 @@ summary_missing_case(data)
 a data_frame of the percent of missing data in each case
 }
 \description{
-summary_missing_case
+Summarise the missingness in each case
 }
 \examples{
 

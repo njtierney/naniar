@@ -14,10 +14,10 @@ numeric the percent of missing data in a dataframe
 }
 \description{
 These methods prove tidy summaries of missing data information. The \code{percent_missing_df}, \code{percent_missing_var}, and \code{percent_missing_case} functions provide numeric summaries, for the percent of missing data for the data (\code{percent_missing_df}), the percent of variables that contain missing values (\code{percent_missing_var}), the percent of cases that contain mising values (\code{percent_missing_case}). \code{any_na} finds whether a vector contains a missing value. \code{table_missing_var} provides a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the percent of that variable that is missing; \code{table_missing_case} provides a tidy table of the number of cases with 0, 1, 2, up to n, missing values, and the percent of the number of cases that are missing; \code{summary_missing_var} a data_frame of the percent of missing data in each variable; \code{summary_missing_case} provides the ratio of observations that have missings, and the number of cases that have at 0, 1, up to n, missing values' \code{summarise_missingness} returns a data_frame with the \code{percent_missing} as numeric, and table_missing_ and summary_missing_ and friends as lists, where each is a data_frame
-percent_missing_df
+Percentage of missing data in a dataframe
 }
 \details{
-calculate percent of missing data in a dataframe.
+Calculate the percent (%) of missing data in a dataframe.
 }
 \examples{
 

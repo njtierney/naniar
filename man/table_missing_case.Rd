@@ -2,7 +2,7 @@
 % Please edit documentation in R/missing_data_tidiers.R
 \name{table_missing_case}
 \alias{table_missing_case}
-\title{table_missing_case}
+\title{Tabulate missings in cases.}
 \usage{
 table_missing_case(data)
 }
@@ -10,10 +10,10 @@ table_missing_case(data)
 \item{data}{a dataframe}
 }
 \value{
-a dataframe of the
+a dataframe
 }
 \description{
-provide a tidy table of the number of cases with 0, 1, 2, up to n, missing values and the proportion of the number of cases those cases make up
+Provide a tidy table of the number of cases with 0, 1, 2, up to n, missing values and the proportion of the number of cases those cases make up
 }
 \examples{
 

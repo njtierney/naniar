@@ -25,7 +25,8 @@ Suggests:
     covr,
     gridExtra,
     visdat,
-    tidyverse
+    tidyverse,
+    wakefield
 VignetteBuilder: knitr
 Imports:
     dplyr,

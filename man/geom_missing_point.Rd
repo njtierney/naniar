@@ -9,19 +9,46 @@ geom_missing_point(mapping = NULL, data = NULL, position = "identity",
   inherit.aes = TRUE, ...)
 }
 \arguments{
-\item{...}{other arguments passed on to \code{layer}. These are
-often aesthetics, used to set an aesthetic to a fixed value, like
-\code{color = "red"} or \code{size = 3}. They may also be parameters
-to the paired geom/stat.}
+\item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2]{aes}}
+or \code{\link[ggplot2]{aes_}}. If specified and \code{inherit.aes = TRUE}
+(the default), is combined with the default mapping at the top level of the
+plot. You only need to supply mapping if there isn't a mapping defined for
+the plot.}
+
+\item{data}{A data frame. If specified, overrides the default data frame
+defined at the top level of the plot.}
+
+\item{position}{Position adjustment, either as a string, or the result of a
+call to a position adjustment function.}
+
+\item{colour}{the colour chosen for the aesthetic}
+
+\item{na.rm}{If \code{FALSE} (the default), removes missing values with a
+warning. If \code{TRUE} silently removes missing values.}
+
+\item{show.legend}{logical. Should this layer be included in the legends?
+\code{NA}, the default, includes if any aesthetics are mapped. \code{FALSE}
+never includes, and \code{TRUE} always includes.}
+
+\item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics, rather
+than combining with them. This is most useful for helper functions that
+define both data and aesthetics and shouldn't inherit behaviour from the
+default plot specification, e.g. borders.}
+
+\item{...}{other arguments passed on to \code{\link[ggplot2]{layer}}. There
+are three types of arguments you can use here:
+\itemize{
+ \item{Aesthetics: to set an aesthetic to a fixed value, like
+ \code{color = "red"} or \code{size = 3.}}
+ \item{Other arguments to the layer, for example you override the default
+ \code{stat} associated with the layer.}
+ \item{Other arguments passed on to the stat.}
+}}
 }
 \description{
 geom_missing_point adds a point geometry for displaying missingness.
 }
 \note{
-Very first attempt at creating a geom that is compatible with ggplot2.
-Data plotting works. Still todo:
-manipulate the colour aes so that the colours and legend appear.
-fix awful default point sizes.
 Warning message if na.rm = T is supplied.
 }
 \examples{

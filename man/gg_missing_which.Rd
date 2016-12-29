@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotting.R
 \name{gg_missing_which}
 \alias{gg_missing_which}
-\title{gg_missing_which}
+\title{Plot which variables contain a missing value}
 \usage{
 gg_missing_which(x)
 }

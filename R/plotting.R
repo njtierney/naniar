@@ -1,9 +1,9 @@
 # plotting functions
 
-#' gg_missing_case
+#' Plot the number of missings per case (row)
 #'
-#' This function draws a ggplot plot of the number of missings in each row.
-#' At this point I'm not sure how this plot should be arranged, as it currently looks ugly!
+#' This function draws a ggplot of the number of missings in each row.
+#' At this point I'm not sure how this plot should be arranged, as it currently looks a bit ugly!
 #'
 #' @param x a dataframe
 #'
@@ -28,7 +28,7 @@ gg_missing_case <- function(x){
 
 }
 
-#' gg_missing_var
+#' Plot the number of missings for each variable
 #'
 #' This function draws a ggplot plot of the number of missings in each column, rearranged to show which variables have the most missing data.
 #'
@@ -60,7 +60,7 @@ gg_missing_var <- function(x){
 
 }
 
-#' gg_missing_which
+#' Plot which variables contain a missing value
 #'
 #' \code{gg_missing_which} (need a better name!) produces a set of rectangles that indicate whether there is a missing element in a column or not
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotting.R
 \name{gg_missing_var}
 \alias{gg_missing_var}
-\title{gg_missing_var}
+\title{Plot the number of missings for each variable}
 \usage{
 gg_missing_var(x)
 }

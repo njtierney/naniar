@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotting.R
 \name{gg_missing_case}
 \alias{gg_missing_case}
-\title{gg_missing_case}
+\title{Plot the number of missings per case (row)}
 \usage{
 gg_missing_case(x)
 }
@@ -13,8 +13,8 @@ gg_missing_case(x)
 a ggplot plot depicting the number of missings in a given case
 }
 \description{
-This function draws a ggplot plot of the number of missings in each row.
-At this point I'm not sure how this plot should be arranged, as it currently looks ugly!
+This function draws a ggplot of the number of missings in each row.
+At this point I'm not sure how this plot should be arranged, as it currently looks a bit ugly!
 }
 \examples{
 

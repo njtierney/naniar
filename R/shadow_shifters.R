@@ -1,19 +1,3 @@
-#' Categorise specific missings into missing  / not missing
-#'
-#' \code{shadow_cat} is a window function that rearranges factor levels from \code{interaction}.
-#'
-#' @param x dataframe coming from \code{interaction}
-#'
-#' @export
-
-shadow_cat <- function(x){
-  ifelse(x == "TRUE.FALSE" |
-           x == "TRUE.TRUE" |
-           x == "FALSE.TRUE",
-         yes = "Missing",
-         no = "Not Missing")
-}
-
 #' Shift missing values to 10\% below minimum value
 #'
 #' shadow_shift is a window function that transforms missing values to be about 10% below the minimum value for a given variable, plus some jittered noise, to separate repeated values, so that missing values can be visualised along with the rest of the data
@@ -49,7 +33,7 @@ shadow_shift.numeric <- function(x){
   xmin <- min(x, na.rm = T)
 
   # create the "jitter" to be added around the points.
-  xrunif <- (runif(length(x))-0.5)*xrange*0.05
+  xrunif <- (stats::runif(length(x))-0.5)*xrange*0.05
 
   ifelse(is.na(x),
          # add the jitter around the those values that are missing
@@ -91,21 +75,31 @@ shadow_df <- function (x){
 #'
 #' @param var2 a dataframe
 #'
-#' @examples
-#'
-#' miss_cat(airquality, Ozone, Solar.R)
-#'
-#' @export
+#' @note Unsure if this function is actually needed anymore.
+
 miss_cat <- function(df, var1, var2){
   df %>%
     # make the data into a true/false data frame
     shadow_df %>%
     # choose the variables of interest
     # dplyr::select_(quote(var1), quote(var2)) %>%
-
     dplyr::select(dplyr::one_of(var1, var2)) %>%
     # get all the combinations of the levels as factors
     interaction %>%
     # combine them into something sensible for our purposes
     shadow_cat
+}
+
+#' Categorise specific missings into missing  / not missing
+#'
+#' \code{shadow_cat} is a window function that rearranges factor levels from \code{interaction}.
+#'
+#' @param x dataframe coming from \code{interaction}
+
+shadow_cat <- function(x){
+  ifelse(x == "TRUE.FALSE" |
+           x == "TRUE.TRUE" |
+           x == "FALSE.TRUE",
+         yes = "Missing",
+         no = "Not Missing")
 }

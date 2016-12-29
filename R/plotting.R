@@ -47,7 +47,7 @@ gg_missing_var <- function(x){
   x %>%
     summary_missing_var() %>%
     ggplot(data = .,
-           aes(x = reorder(variable, n_missing),
+           aes(x = stats::reorder(variable, n_missing),
                y = n_missing,
                colour = variable)) +
     geom_bar(stat="identity", position="dodge", width = 0) +

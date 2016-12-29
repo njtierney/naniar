@@ -19,7 +19,8 @@ The data is collected by the Tropical Atmosphere Ocean project (
 \url{http://www.pmel.noaa.gov/tao/index.shtml}).
 
 Format: a data frame with 736 observations on the following 8
-variables. \describe{\item{\code{year}}{A factor with levels
+variables.
+\describe{\item{\code{year}}{A factor with levels
 \code{1993} \code{1997}.} \item{\code{latitude}}{A factor with
 levels \code{-5}  \code{-2} \code{0}.} \item{\code{longitude}}{A
 factor with levels \code{-110} \code{-95}.}

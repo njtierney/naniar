@@ -4,6 +4,12 @@ language: R
 sudo: false
 cache: packages
 
+# packages needed in the builds
+r_github_packages:
+  - tidyverse/tidyverse
+  - trinker/wakefield
+  - njtierney/visdat
+
 env:
   global:
     - _R_CHECK_FORCE_SUGGESTS_=false

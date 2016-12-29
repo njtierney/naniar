@@ -22,7 +22,10 @@ Suggests:
     testthat,
     rpart,
     rpart.plot,
-    covr
+    covr,
+    gridExtra,
+    visdat,
+    tidyverse
 VignetteBuilder: knitr
 Imports:
     dplyr,

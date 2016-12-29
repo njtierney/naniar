@@ -10,21 +10,29 @@
 #'
 #' @import ggplot2
 #'
-# this code messes up the documentation
-# library(ggplot2)
-# library(naniar)
-#
-#  ggplot(data = brfss,
-#         aes(x = PHYSHLTH,
-#             y = POORHLTH) ) +
-#  geom_missing()
-#'
-#'
 #'
 #' @param ... other arguments passed on to \code{layer}. These are
 #'   often aesthetics, used to set an aesthetic to a fixed value, like
 #'   \code{color = "red"} or \code{size = 3}. They may also be parameters
 #'   to the paired geom/stat.
+#'
+#' @examples
+#'
+#' library(ggplot2)
+#' library(naniar)
+#'
+#' # using regular geom_point()
+#' ggplot(airquality,
+#'        aes(x = Ozone,
+#'            y = Solar.R)) +
+#' geom_point()
+#'
+#' # using geom_missing_point()
+#' ggplot(airquality,
+#'        aes(x = Ozone,
+#'            y = Solar.R)) +
+#' geom_missing_point()
+#'
 #' @export
 geom_missing_point <- function(mapping = NULL,
                                data = NULL,

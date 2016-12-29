@@ -119,10 +119,7 @@ bind_shadow <- function(data){
 #'
 #' @examples
 #'
-#' aq_shadow <- gather_shadow(airquality)
-#'
-#' aq_shadow
-
+#' gather_shadow(airquality)
 #'
 gather_shadow <- function(data){
 

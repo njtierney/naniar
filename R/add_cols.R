@@ -43,7 +43,8 @@ add_n_miss <- function(data){
 #' library(magrittr)
 #' airquality %>% add_prop_miss()
 #'
-#' # this can be applied to model the proportion of missing data as in Tierney et al \url{bmjopen.bmj.com/content/5/6/e007450.full}
+#' # this can be applied to model the proportion of missing data
+#' # as in Tierney et al \url{bmjopen.bmj.com/content/5/6/e007450.full}
 #' library(rpart)
 #' library(rpart.plot)
 #'

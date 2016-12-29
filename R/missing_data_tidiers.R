@@ -126,12 +126,11 @@ table_missing_case <- function(data){
     dplyr::tally() %>%
     dplyr::mutate(percent = (n / nrow(data) * 100)) %>%
     dplyr::rename(n_cases = n)
+
 # previous
 # No_of_Case_missing <- table(apply(dat,
 #                                   1,
 #                                   function(avec){sum(is.na(avec))}))
-# tidyverse
-# In each row, how many are missing?
 
 }
 

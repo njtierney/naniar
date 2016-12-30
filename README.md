@@ -50,6 +50,8 @@ Visualising missing data might sound a little strange - how do you visualise som
 ``` r
 
 library(ggplot2)
+#> Use suppressPackageStartupMessages() to eliminate package startup
+#> messages.
 
 ggplot(data = airquality,
        aes(x = Ozone,

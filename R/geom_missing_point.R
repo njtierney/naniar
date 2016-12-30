@@ -1,3 +1,7 @@
+#' Plot Missing Data Points
+#'
+#' \code{geom_missing_point} goes
+#'
 #' @include legend-draw.R
 #' @name geom_missing_point
 #' @title geom_missing_point

@@ -85,22 +85,69 @@
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
+      <dt>mapping</dt>
+      <dd>Set of aesthetic mappings created by <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></code>
+or <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes_'>aes_</a></code>. If specified and <code>inherit.aes = TRUE</code>
+(the default), is combined with the default mapping at the top level of the
+plot. You only need to supply mapping if there isn&#39;t a mapping defined for
+the plot.</dd>
+      <dt>data</dt>
+      <dd>A data frame. If specified, overrides the default data frame
+defined at the top level of the plot.</dd>
+      <dt>position</dt>
+      <dd>Position adjustment, either as a string, or the result of a
+call to a position adjustment function.</dd>
+      <dt>colour</dt>
+      <dd>the colour chosen for the aesthetic</dd>
+      <dt>na.rm</dt>
+      <dd>If <code>FALSE</code> (the default), removes missing values with a
+warning. If <code>TRUE</code> silently removes missing values.</dd>
+      <dt>show.legend</dt>
+      <dd>logical. Should this layer be included in the legends?
+<code>NA</code>, the default, includes if any aesthetics are mapped. <code>FALSE</code>
+never includes, and <code>TRUE</code> always includes.</dd>
+      <dt>inherit.aes</dt>
+      <dd>If <code>FALSE</code>, overrides the default aesthetics, rather
+than combining with them. This is most useful for helper functions that
+define both data and aesthetics and shouldn&#39;t inherit behaviour from the
+default plot specification, e.g. borders.</dd>
       <dt>...</dt>
-      <dd>other arguments passed on to <code>layer</code>. These are
-often aesthetics, used to set an aesthetic to a fixed value, like
-<code>color = &quot;red&quot;</code> or <code>size = 3</code>. They may also be parameters
-to the paired geom/stat.</dd>
+      <dd>other arguments passed on to <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/layer'>layer</a></code>. There
+are three types of arguments you can use here:
+<ul>
+<li>Aesthetics: to set an aesthetic to a fixed value, like
+ <code>color = &quot;red&quot;</code> or <code>size = 3.</code>
+ </li>
+<li>Other arguments to the layer, for example you override the default
+ <code>stat</code> associated with the layer.
+ </li>
+<li>Other arguments passed on to the stat.
+</li>
+</ul>
+</dd>
     </dl>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Very first attempt at creating a geom that is compatible with ggplot2.
-Data plotting works. Still todo:
-manipulate the colour aes so that the colours and legend appear.
-fix awful default point sizes.
-Warning message if na.rm = T is supplied.</p>
+    <p>Warning message if na.rm = T is supplied.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
+<span class='fu'>library</span>(<span class='no'>naniar</span>)
+
+<span class='co'># using regular geom_point()</span>
+<span class='fu'>ggplot</span>(<span class='no'>airquality</span>,
+       <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>,
+           <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R</span>)) +
+<span class='fu'>geom_point</span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 42 rows containing missing values (geom_point).</span></div><img src='geom_missing_point-3.png' alt='' width='540' height='400' /><div class='input'>
+<span class='co'># using geom_missing_point()</span>
+<span class='fu'>ggplot</span>(<span class='no'>airquality</span>,
+       <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>,
+           <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R</span>)) +
+<span class='fu'>geom_missing_point</span>()</div><img src='geom_missing_point-5.png' alt='' width='540' height='400' /><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -108,7 +155,9 @@ Warning message if na.rm = T is supplied.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#note">Note</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

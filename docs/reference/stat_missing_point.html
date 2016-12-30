@@ -85,8 +85,46 @@
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>?</dt>
-      <dd>unknown parameters...</dd>
+      <dt>mapping</dt>
+      <dd>Set of aesthetic mappings created by <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></code>
+or <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes_'>aes_</a></code>. If specified and <code>inherit.aes = TRUE</code>
+(the default), is combined with the default mapping at the top level of the
+plot. You only need to supply mapping if there isn&#39;t a mapping defined for
+the plot.</dd>
+      <dt>data</dt>
+      <dd>A data frame. If specified, overrides the default data frame
+defined at the top level of the plot.</dd>
+      <dt>geom, </dt>
+      <dd>stat Override the default connection between <code>geom_point</code> and <code>stat_point</code>.</dd>
+      <dt>position</dt>
+      <dd>Position adjustment, either as a string, or the result of a
+call to a position adjustment function</dd>
+      <dt>na.rm</dt>
+      <dd>If <code>FALSE</code> (the default), removes missing values with a
+warning. If <code>TRUE</code> silently removes missing values.</dd>
+      <dt>show.legend</dt>
+      <dd>logical. Should this layer be included in the legends?
+<code>NA</code>, the default, includes if any aesthetics are mapped. <code>FALSE</code>
+never includes, and <code>TRUE</code> always includes.</dd>
+      <dt>inherit.aes</dt>
+      <dd>If <code>FALSE</code>, overrides the default aesthetics, rather
+than combining with them. This is most useful for helper functions that
+define both data and aesthetics and shouldn&#39;t inherit behaviour from the
+default plot specification, e.g. borders.</dd>
+      <dt>...</dt>
+      <dd>other arguments passed on to <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/layer'>layer</a></code>. There
+are three types of arguments you can use here:
+<ul>
+<li>Aesthetics: to set an aesthetic to a fixed value, like
+ <code>color = &quot;red&quot;</code> or <code>size = 3.</code>
+ </li>
+<li>Other arguments to the layer, for example you override the default
+ <code>stat</code> associated with the layer.
+ </li>
+<li>Other arguments passed on to the stat.
+</li>
+</ul>
+</dd>
     </dl>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>

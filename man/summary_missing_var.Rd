@@ -13,7 +13,7 @@ summary_missing_var(data)
 a data_frame of the percent of missing data in each variable
 }
 \description{
-Provide a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variables those variables make up
+Provide a data_frame containing the variable names, the number of missing values, in each variable, and the percent of missing values in each variable.
 }
 \examples{
 

@@ -46,7 +46,10 @@ are three types of arguments you can use here:
 }}
 }
 \description{
-geom_missing_point adds a point geometry for displaying missingness.
+Plot Missing Data Points
+}
+\details{
+\code{geom_missing_point} adds a missing data point geometry to ggplot2. This displays missing data points 10% below the minimum value.
 }
 \note{
 Warning message if na.rm = T is supplied.

@@ -167,7 +167,7 @@ table_missing_var <- function(data){
 
 #' Summarise the missingness in each variable
 #'
-#' Provide a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variables those variables make up
+#' Provide a data_frame containing the variable names, the number of missing values, in each variable, and the percent of missing values in each variable.
 #'
 #' @param data a dataframe
 #'
@@ -190,6 +190,8 @@ table_missing_var <- function(data){
   }
 
 #' Summarise the missingness in each case
+#'
+#' Provide a data_frame containing each case (row), the number of missing values in each case,  and the percent of missing values in each case.
 #'
 #' @param data a dataframe
 #'

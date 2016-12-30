@@ -1,11 +1,10 @@
 #' Plot Missing Data Points
 #'
-#' \code{geom_missing_point} goes
+#' \code{geom_missing_point} adds a missing data point geometry to ggplot2. This displays missing data points 10% below the minimum value.
 #'
 #' @include legend-draw.R
 #' @name geom_missing_point
 #' @title geom_missing_point
-#' @description geom_missing_point adds a point geometry for displaying missingness.
 #' @note Warning message if na.rm = T is supplied.
 #'
 #' @param mapping Set of aesthetic mappings created by \code{\link[ggplot2]{aes}}

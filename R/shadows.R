@@ -58,6 +58,10 @@ is_na <- function(x) {
 #'
 as_shadow <- function(data){
 
+  if(is.data.frame(data) == FALSE){
+    stop("Input must be a data.frame", call. = FALSE)
+  }
+
   data_shadow <- purrr::map_df(data, is_na)
 
   names(data_shadow) <- paste0(names(data),"_NA")
@@ -99,6 +103,10 @@ as_shadow <- function(data){
 #'              ncol = 1)
 #'
 bind_shadow <- function(data){
+
+  if(is.data.frame(data) == FALSE){
+    stop("Input must be a data.frame", call. = FALSE)
+  }
 
   data_shadow <- as_shadow(data)
 

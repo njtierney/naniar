@@ -36,7 +36,7 @@ For a more formal description, you can read the vignette "building on ggplot2 fo
 
 **Why `naniar`?**
 
-`naniar` was previously nammed `ggmissing` and initially provided a ggplot geom and some visual summaries. It was changed to `naniar` to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data. 
+`naniar` was previously named `ggmissing` and initially provided a ggplot geom and some visual summaries. It was changed to `naniar` to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data. 
 
 > But why `naniar`?
 
@@ -84,9 +84,9 @@ ggplot(data = airquality,
 
 ```
 
-`geom_missing_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes preattentive.
+`geom_missing_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive.
 
-This plays nicely with other parts of ggplot, like adding transparenty
+This plays nicely with other parts of ggplot, like adding transparency
 
 ```{r}
 

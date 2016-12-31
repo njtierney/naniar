@@ -74,7 +74,7 @@ df %>%
 ```
 
 
-So we can make a window function that transforms missing values to be 10% below the minmum value for a variable
+So we can make a window function that transforms missing values to be 10% below the minimum value for a variable
 
 ```{r}
 
@@ -120,7 +120,7 @@ ggplot(data = df,
 ```
 
 
-However, we now we just need to add in some colour to these points, so that missing data sorta takes upon this "preattentive" phase. We make a new dataset, that is basically contains only the shifted data.
+However, we now we just need to add in some colour to these points, so that missing data  takes upon this "pre-attentive" phase. We make a new dataset, that is basically contains only the shifted data.
 
 
 ```{r}
@@ -255,7 +255,7 @@ df %>%
 
 ```
 
-But now we have this sorta redundant step of creating it using `miss_cat`, then refactoring it using `shadow_cat`. Really though, we can just put `shadow_cat` inside of `miss_cat`, to reduce coding.
+But now we have this  redundant step of creating it using `miss_cat`, then refactoring it using `shadow_cat`. Really though, we can just put `shadow_cat` inside of `miss_cat`, to reduce coding.
 
 ```{r}
 

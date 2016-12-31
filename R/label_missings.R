@@ -16,6 +16,8 @@
 #'
 label_missing_1d <- function(x1){
 
+  # Catch NULL entries
+  if(is.null(x1)) stop("Input cannot be NULL", call. = FALSE)
   # find which are missing and which are not.
   temp <- data.frame(x1) %>% is.na %>% rowSums()
   ifelse(temp == 0, # 0 means not missing
@@ -40,6 +42,8 @@ label_missing_1d <- function(x1){
 #'
 label_missing_2d <- function(x1, x2){
 
+  # Catch NULL entries
+  if(is.null(x1) | is.null(x2)) stop("Input cannot be NULL", call. = FALSE)
   # find which are missing and which are not.
   temp <- data.frame(x1,x2) %>% is.na %>% rowSums()
   ifelse(temp == 0, # 0 means not missing

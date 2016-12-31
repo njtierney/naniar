@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
-Title: Provides Sensible Summaries and Visualisations for Missing Data
-Version: 0.0.3.9901
+Title: Provide Summaries and Visualisations for Missing Data
+Version: 0.0.4.9000
 Author: Nicholas Tierney, Miles McBain, Di Cook,
 Authors@R: c(
     person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
@@ -45,6 +45,7 @@ Collate:
     'missing_data_tidiers.R'
     'naniar-ggproto.R'
     'naniar-package.R'
+    'old_shadow_shifters.R'
     'plotting.R'
     'shadow_shifters.R'
     'shadows.R'

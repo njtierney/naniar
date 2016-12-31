@@ -1,20 +1,34 @@
-# nanar 0.0.3.9901 (2016/12/18)
+# naniar 0.0.4.9000 (2016/12/31)
 
-## NEW FEATURES
+## New features
+
+* `n_complete` is a complement to `n_miss`, and counts the number of complete values in a vector, matrix, or dataframe.
+
+## Bug fixes
+
+* `shadow_shift` now handles cases where there is only 1 complete value in a vector.
+
+## Other changes
+
+* added much more comprehensive testing with `testthat`.
+
+# naniar 0.0.3.9901 (2016/12/18)
+
+## New features
 
 * `add_n_miss` and `add_prop_miss` are helpers that add columns to a dataframe containing the number and proportion of missing values. An example has been provided to use decision trees to explore missing data structure as in [Tierney et al](bmjopen.bmj.com/content/5/6/e007450.full)
 
 * `geom_miss_point()` now supports transparency, thanks to @seasmith (Luke Smith)
  
-# nanar 0.0.3.9000 (2016/12/18)
+# naniar 0.0.3.9000 (2016/12/18)
 
 After a burst of effort on this package I have done some refactoring and thought hard about where this package is going to go. This meant that I had to make the decision to rename the package from ggmissing to naniar. The name may strike you as strange but it reflects the fact that there are many changes happening, and that we will be working on creating a nice utopia (like Narnia by CS Lewis) that helps us make it easier to work with missing data
 
-## NEW FEATURES (under development)
+## New Features (under development)
 
 * more shadows. These are mainly around `bind_shadow` and `gather_shadow`, which are helper functions to assist with creating 
 
-## BUG FIXES
+## Bug fixes
 
 * `geom_missing_point()` broke after the new release of ggplot2 2.2.0, but this is now fixed by ensuring that it inherits from GeomPoint, rather than just a new Geom. Thanks to Mitchell O'hara-Wild for his help with this.
 
@@ -32,7 +46,7 @@ their own.
 # ggmissing 0.0.2.9000 (2016/07/29)
 =========================
 
-## NEW FEATURE (under development)
+## New Feature (under development)
 
 - `geom_missing_point()` now works in a way that we expect! Thanks to Miles McBain for working out how to get this to work.
 
@@ -40,7 +54,7 @@ their own.
 # ggmissing 0.0.1.9000 (2016/07/29)
 =========================
 
-## NEW FEATURE (under development)
+## New Feature (under development)
 
 - tidy summaries for missing data: 
     + `percent_missing_df` returns the percentage of missing data for a data.frame

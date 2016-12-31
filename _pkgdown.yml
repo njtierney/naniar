@@ -14,6 +14,7 @@ reference:
       Provide tidy data frame summaries of missingness
     contents:
       - n_miss
+      - n_complete
       - starts_with("percent_missing_")
       - starts_with("summary_missing_")
       - starts_with("table_missing_")

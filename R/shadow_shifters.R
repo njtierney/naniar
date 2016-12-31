@@ -27,7 +27,9 @@ shadow_shift.NULL <- function(x) NULL
 shadow_shift.default <- function(x){
   stop(
     "shadow_shift does not know how to deal with data of class ",
-    class(x)
+    class(x),
+    "please check your input is more than length one",
+    call. = FALSE
   )
 
 }

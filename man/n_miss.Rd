@@ -2,12 +2,15 @@
 % Please edit documentation in R/shadows.R
 \name{n_miss}
 \alias{n_miss}
-\title{return the number of missing values}
+\title{Return the number of missing values}
 \usage{
 n_miss(x)
 }
 \arguments{
 \item{x}{a vector}
+}
+\value{
+numeric the number of missing values
 }
 \description{
 substitute for \code{sum(is.na(data))}

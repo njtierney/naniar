@@ -18,14 +18,20 @@
 #'
 percent_missing_df <- function(data){
 
-  temp <- mean(is.na(data))
-  temp * 100
+  # test for null input
+  if(is.null(data)){
+    stop("data must not be NULL", call. = FALSE)
+    # test for dataframe
+  } else if(inherits(data, "data.frame")){
+    temp <- mean(is.na(data))
+    temp * 100
+    } else stop("data must inherit from data.frame", call. = FALSE)
 
 }
 
 #' Percentage of variables containing missings
 #'
-#' Calculate the percentage of variable that contain a single missing value.
+#' Calculate the percentage of variables that contain a single missing value.
 #'
 #' @param data a dataframe
 #'
@@ -41,12 +47,17 @@ percent_missing_df <- function(data){
 #'
 percent_missing_var <- function(data){
 
+  if(is.null(data)){
+    stop("data must not be NULL", call. = FALSE)
+    # test for dataframe
+  } else if(inherits(data, "data.frame")){
   # which variables contain a missing value
   # find the proportion of variables that contain missing values
   temp <- mean(purrr::map_lgl(data, anyNA))
 
   # turn it into a percent
   temp * 100
+  } else stop("data must inherit from data.frame", call. = FALSE)
 
   # previous code
   # varmissingpct <- mean(sapply(dat,function(avec){any(is.na(avec))}))*100
@@ -67,14 +78,18 @@ percent_missing_var <- function(data){
 #' percent_missing_case(airquality)
 #'
 percent_missing_case <- function(data){
-data = airquality
+
+  if(is.null(data)){
+    stop("data must not be NULL", call. = FALSE)
+    # test for dataframe
+  } else if(inherits(data, "data.frame")){
   temp <- data %>%
     # which rows are complete?
     stats::complete.cases() %>%
     mean()
 
   (1 - temp) * 100
-
+  } else stop("data must inherit from data.frame", call. = FALSE)
   # previous
   # casemissingpct <- 1-mean(complete.cases(dat))*100
 
@@ -95,9 +110,15 @@ data = airquality
 #'
 prop_na <- function(data){
 
+
+  if(is.null(data)){
+    stop("data must not be NULL", call. = FALSE)
+    # test for dataframe
+  } else if(inherits(data, "data.frame")){
   tibble::tibble(df = percent_missing_df(data),
                  var = percent_missing_var(data),
                  case = percent_missing_case(data))
+  } else stop("data must inherit from data.frame", call. = FALSE)
 
 }
 
@@ -117,6 +138,11 @@ prop_na <- function(data){
 #'
 #'
 table_missing_case <- function(data){
+
+  if(is.null(data)){
+    stop("data must not be NULL", call. = FALSE)
+    # test for dataframe
+  } else if(inherits(data, "data.frame")){
   purrr::by_row(data,
                 # how many are missing in each row?
                 function(x) sum(is.na(x)),
@@ -126,6 +152,7 @@ table_missing_case <- function(data){
     dplyr::tally() %>%
     dplyr::mutate(percent = (n / nrow(data) * 100)) %>%
     dplyr::rename(n_cases = n)
+  } else stop("data must inherit from data.frame", call. = FALSE)
 
 # previous
 # No_of_Case_missing <- table(apply(dat,
@@ -149,6 +176,11 @@ table_missing_case <- function(data){
 #'
 #'
 table_missing_var <- function(data){
+
+  if(is.null(data)){
+    stop("data must not be NULL", call. = FALSE)
+    # test for dataframe
+  } else if(inherits(data, "data.frame")){
   purrr::map_df(data, ~sum(is.na(.))) %>%
   tidyr::gather(key = "variable",
                 value = "n_missing_in_var") %>%
@@ -156,6 +188,7 @@ table_missing_var <- function(data){
     dplyr::tally() %>%
     dplyr::rename(n_vars = n) %>%
     dplyr::mutate(percent = (n_vars / ncol(data) * 100))
+  } else stop("data must inherit from data.frame", call. = FALSE)
 # previous
 # No_of_Case_missing <- table(apply(dat,
 #                                   1,
@@ -179,6 +212,11 @@ table_missing_var <- function(data){
 #' summary_missing_var(airquality)
 #'
   summary_missing_var <- function(data){
+
+    if(is.null(data)){
+      stop("data must not be NULL", call. = FALSE)
+      # test for dataframe
+    } else if(inherits(data, "data.frame")){
     purrr::dmap(data,
                 # how many are missing in each variable?
                 function(x) sum(is.na(x))) %>%
@@ -187,6 +225,7 @@ table_missing_var <- function(data){
       dplyr::mutate(percent = (n_missing / nrow(data) * 100)) %>%
       dplyr::arrange(-n_missing)
 
+    } else stop("data must inherit from data.frame", call. = FALSE)
   }
 
 #' Summarise the missingness in each case
@@ -203,6 +242,11 @@ table_missing_var <- function(data){
 #' summary_missing_case(airquality)
 #'
 summary_missing_case <- function(data){
+
+  if(is.null(data)){
+    stop("data must not be NULL", call. = FALSE)
+    # test for dataframe
+  } else if(inherits(data, "data.frame")){
   purrr::by_row(.d = data,
                 ..f = function(x) (mean(is.na(x)) * 100),
                 .collate = "row",
@@ -215,6 +259,7 @@ summary_missing_case <- function(data){
     dplyr::select(case,
                   n_missing,
                   percent)
+  } else stop("data must inherit from data.frame", call. = FALSE)
 }
 
 #' Collate summary measures from naniar into one tibble

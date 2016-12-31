@@ -6,7 +6,6 @@ cache: packages
 
 # packages needed in the builds
 r_github_packages:
-  - tidyverse/tidyverse
   - trinker/wakefield
   - njtierney/visdat
 

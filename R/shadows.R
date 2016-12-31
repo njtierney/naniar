@@ -1,10 +1,12 @@
 # A set of functions that provide utility functions for creating "shadow" dataframes (shadaframes, nataframes, nabbles)
 #
-#' return the number of missing values
+#' Return the number of missing values
 #'
 #' substitute for \code{sum(is.na(data))}
 #'
 #' @param x a vector
+#'
+#' @return numeric the number of missing values
 #'
 #' @export
 #'
@@ -15,6 +17,28 @@
 #'
 n_miss <- function(x){
   sum(is.na(x))
+}
+
+#' Return the number of complete values
+#'
+#' A complement to \code{n_miss}
+#'
+#' @param x a vector
+#'
+#' @return numeric number of complete values
+#'
+#' @export
+#'
+#' @examples
+#'
+#' n_complete(airquality)
+#' n_complete(airquality$Ozone)
+#'
+n_complete <- function(x){
+
+  # number of total elements - number of missings
+  length(is.na(x)) - n_miss(x)
+
 }
 
 #' Give NAs a more meaningful label

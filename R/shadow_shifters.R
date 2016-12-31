@@ -64,6 +64,10 @@ shadow_shift.numeric <- function(x){
 #' @export
 
 shadow_df <- function (x){
+
+  # catch entries that are not dataframes
+  stopifnot(is.data.frame(x))
+
   y <- if (length(x)) {
     dplyr::as_data_frame(
       lapply(x, "is.na")

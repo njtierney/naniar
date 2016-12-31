@@ -131,6 +131,10 @@ bind_shadow <- function(data){
 #'
 gather_shadow <- function(data){
 
+  if(is.data.frame(data) == FALSE){
+    stop("Input must be a data.frame", call. = FALSE)
+  }
+
   as_shadow(data) %>%
     dplyr::mutate(rows = 1:nrow(.)) %>%
     tidyr::gather(key = "var",

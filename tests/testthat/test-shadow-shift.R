@@ -13,15 +13,15 @@ test_that("shadow_shift returns NA values less than minimum for one location",{
                    min(miss_vec_5, na.rm = TRUE))
 })
 
-#
-# miss_vec_5 <- c(10,10,9,NA,3)
-#
-# which_miss <- function(x) which(is.na(x))
-#
-# test_that("shadow_shift returns NA values less than minimum for many locations",{
-#   expect_lt(shadow_shift(miss_vec_5)[which_miss(miss_vec_5)],
-#                    min(miss_vec_5, na.rm = TRUE))
-# })
+miss_vec <- rnorm(100)
+
+# add 20 missing values
+miss_vec[sample(1:100,20)] <- NA
+
+test_that("shadow_shift returns NA values less than min for many locations",{
+  expect_lt(min(shadow_shift(miss_vec)[which_miss(miss_vec)]),
+                   min(miss_vec, na.rm = TRUE))
+})
 
 test_that("shadow_shift returns the same input when length == 1",{
   expect_equal(shadow_shift(1),1)

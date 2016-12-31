@@ -37,6 +37,22 @@ shadow_shift.default <- function(x){
 #' @export
 shadow_shift.numeric <- function(x){
 
+
+  # add an exception for when length x == 1
+  if(n_complete(x) == 1){
+
+    xmin <- min(x, na.rm = T)
+
+    x_shift <- xmin - xmin*0.1
+
+    x_jitter <- (stats::runif(length(x))-0.5)*x_shift*0.05
+
+    ifelse(is.na(x),
+           yes = x_shift + x_jitter,
+           no = x)
+
+  } else {
+
   xrange <- max(x, na.rm = T) - min(x, na.rm = T)
 
   xmin <- min(x, na.rm = T)
@@ -48,6 +64,8 @@ shadow_shift.numeric <- function(x){
          # add the jitter around the those values that are missing
          yes = xmin-xrange*0.1 + xrunif,
          no = x)
+
+  } # close else statement
 
 } # close function
 

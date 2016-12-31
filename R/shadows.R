@@ -34,7 +34,7 @@ n_miss <- function(x){
 #'
 is_na <- function(x) {
   if (length(x) == 0) {
-    stop("x is of length 0, please check your inputs.")
+    stop("Input is of length 0, please check your inputs.", call. = FALSE)
     } else{
   factor(is.na(x),
          levels = c(FALSE, TRUE),

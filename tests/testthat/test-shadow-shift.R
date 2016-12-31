@@ -4,6 +4,12 @@ test_that("shadow_shift returns NULL when given NULL",{
   expect_null(shadow_shift(NULL))
 })
 
+test_that("shadow_shift returns an error when given the wrong kind of object",{
+  expect_error(shadow_shift("c"))
+  expect_error(shadow_shift(iris$Species))
+  expect_error(shadow_shift(as.character(iris$Species)))
+})
+
 
 miss_vec_5 <- c(10,10,9,NA,3)
 

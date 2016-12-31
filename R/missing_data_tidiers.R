@@ -280,7 +280,10 @@ summary_missing_case <- function(data){
 #'
 summarise_missingness <- function(data){
 
-  stopifnot(is.data.frame(data))
+  if(is.null(data)){
+    stop("Input must not be NULL", call. = FALSE)
+    # test for dataframe
+  } else if(inherits(data, "data.frame")){
 
   return(
     tibble::data_frame(
@@ -293,5 +296,5 @@ summarise_missingness <- function(data){
         summary_missing_case = list(summary_missing_case(data))
       )
     )
-
+  } else stop("Input must inherit from data.frame", call. = FALSE)
   }

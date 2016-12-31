@@ -13,7 +13,7 @@ percent_missing_var(data)
 numeric the percent of variables that contain missing data
 }
 \description{
-Calculate the percentage of variable that contain a single missing value.
+Calculate the percentage of variables that contain a single missing value.
 }
 \examples{
 

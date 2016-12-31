@@ -9,9 +9,12 @@ miss_cat(df, var1, var2)
 \arguments{
 \item{df}{a dataframe}
 
-\item{var1}{a dataframe}
+\item{var1}{a variable}
 
-\item{var2}{a dataframe}
+\item{var2}{a variable}
+}
+\value{
+character vector containing "Not Missing" and "Missing"
 }
 \description{
 \code{miss_cat} takes a data frame, df , and two variables as strings, var1 and var2, and converts them to a missing TRUE/FALSE matrix, where TRUE = missing. It then uses \code{interaction}, to create all the different levels of missingness - TRUE.TRUE, TRUE.FALSE, FALSE.TRUE, and FALSE.FALSE. It then uses the function \code{shadow_cat} to collapse across these and put them into the relevant categories

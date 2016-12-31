@@ -31,35 +31,33 @@ shadow_df <- function (x){
 #'
 #' @param df a dataframe
 #'
-#' @param var1 a dataframe
+#' @param var1 a variable
 #'
-#' @param var2 a dataframe
+#' @param var2 a variable
+#'
+#' @return character vector containing "Not Missing" and "Missing"
 #'
 #' @note Unsure if this function is actually needed anymore.
+#'
+#' @export
 
 miss_cat <- function(df, var1, var2){
-  df %>%
-    # make the data into a true/false data frame
-    shadow_df %>%
+
+  stopifnot(is.data.frame(df))
+  stopifnot(is.character(var1))
+  stopifnot(is.character(var2))
+
     # choose the variables of interest
-    # dplyr::select_(quote(var1), quote(var2)) %>%
-    dplyr::select(dplyr::one_of(var1, var2)) %>%
+  miss_vec <- dplyr::select_(df, var1, var2) %>%
+    # make the data into a true/false data frame
+    shadow_df() %>%
     # get all the combinations of the levels as factors
-    interaction %>%
+    interaction
     # combine them into something sensible for our purposes
-    shadow_cat
-}
 
-#' Categorise specific missings into missing  / not missing
-#'
-#' \code{shadow_cat} is a window function that rearranges factor levels from \code{interaction}.
-#'
-#' @param x dataframe coming from \code{interaction}
-
-shadow_cat <- function(x){
-  ifelse(x == "TRUE.FALSE" |
-           x == "TRUE.TRUE" |
-           x == "FALSE.TRUE",
-         yes = "Missing",
-         no = "Not Missing")
+    ifelse(miss_vec == "TRUE.FALSE" |
+           miss_vec == "TRUE.TRUE" |
+           miss_vec == "FALSE.TRUE",
+           yes = "Missing",
+           no = "Not Missing")
 }

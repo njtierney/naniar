@@ -35,7 +35,7 @@
       <h1>Mechanics of shadow_shift in ggplot2</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2016-12-30</h4>
+            <h4 class="date">2016-12-31</h4>
           </div>
 
     
@@ -85,7 +85,7 @@ df &lt;-<span class="st"> </span>
                       <span class="dt">y =</span> Age)) +<span class="st"> </span>
 <span class="st">           </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="shadow-mechanics_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
-<p>So we can make a window function that transforms missing values to be 10% below the minmum value for a variable</p>
+<p>So we can make a window function that transforms missing values to be 10% below the minimum value for a variable</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># is.na.data.frame(df)</span>
 
 df.shadow &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">is.na.data.frame</span>(df))
@@ -132,7 +132,7 @@ shadow_shift &lt;-<span class="st"> </span>function(x){
            <span class="dt">y =</span> <span class="kw"><a href="../reference/shadow_shift.html">shadow_shift</a></span>(Age))) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="shadow-mechanics_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
-<p>However, we now we just need to add in some colour to these points, so that missing data sorta takes upon this &ldquo;preattentive&rdquo; phase. We make a new dataset, that is basically contains only the shifted data.</p>
+<p>However, we now we just need to add in some colour to these points, so that missing data takes upon this &ldquo;pre-attentive&rdquo; phase. We make a new dataset, that is basically contains only the shifted data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.test &lt;-<span class="st"> </span>
 df %&gt;%
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Height =</span> <span class="kw"><a href="../reference/shadow_shift.html">shadow_shift</a></span>(Height)) %&gt;%<span class="st"> </span>
@@ -232,7 +232,7 @@ df %&gt;%
            <span class="dt">colour =</span> miss_cat)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() </code></pre></div>
 <p><img src="shadow-mechanics_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
-<p>But now we have this sorta redundant step of creating it using <code>miss_cat</code>, then refactoring it using <code>shadow_cat</code>. Really though, we can just put <code>shadow_cat</code> inside of <code>miss_cat</code>, to reduce coding.</p>
+<p>But now we have this redundant step of creating it using <code>miss_cat</code>, then refactoring it using <code>shadow_cat</code>. Really though, we can just put <code>shadow_cat</code> inside of <code>miss_cat</code>, to reduce coding.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">miss_cat &lt;-<span class="st"> </span>function(df, var1, var2){
   df %&gt;%<span class="st"> </span>
 <span class="st">    </span><span class="co"># make the data into a true/false data frame</span>

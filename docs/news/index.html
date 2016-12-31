@@ -77,35 +77,56 @@
     </div>
 
     <div class="contents">
-    <div id="nanar-0-0-3-9901-20161218" class="section level1">
+    <div id="naniar-0-0-4-9000-20161231" class="section level1">
 <h1 class="hasAnchor">
-<a href="#nanar-0-0-3-9901-20161218" class="anchor"> </a>nanar 0.0.3.9901 (2016/12/18)</h1>
+<a href="#naniar-0-0-4-9000-20161231" class="anchor"> </a>naniar 0.0.4.9000 (2016/12/31)</h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"> </a>NEW FEATURES</h2>
-<ul><li><p><code>add_n_miss</code> and <code>add_prop_miss</code> are helpers that add columns to a dataframe containing the number and proportion of missing values. An example has been provided to use decision trees to explore missing data structure as in <a href="bmjopen.bmj.com/content/5/6/e007450.full">Tierney et al</a></p></li>
-<li><p><code>geom_miss_point()</code> now supports transparency, thanks to @seasmith (Luke Smith)</p></li>
-</ul></div>
-</div>
-    <div id="nanar-0-0-3-9000-20161218" class="section level1">
-<h1 class="hasAnchor">
-<a href="#nanar-0-0-3-9000-20161218" class="anchor"> </a>nanar 0.0.3.9000 (2016/12/18)</h1>
-<p>After a burst of effort on this package I have done some refactoring and thought hard about where this package is going to go. This meant that I had to make the decision to rename the package from ggmissing to naniar. The name may strike you as strange but it reflects the fact that there are many changes happening, and that we will be working on creating a nice utopia (like Narnia by CS Lewis) that helps us make it easier to work with missing data</p>
-<div id="new-features-under-development" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-features-under-development" class="anchor"> </a>NEW FEATURES (under development)</h2>
-<ul><li>more shadows. These are mainly around <code>bind_shadow</code> and <code>gather_shadow</code>, which are helper functions to assist with creating</li>
+<a href="#new-features" class="anchor"> </a>New features</h2>
+<ul><li>
+<code>n_complete</code> is a complement to <code>n_miss</code>, and counts the number of complete values in a vector, matrix, or dataframe.</li>
 </ul></div>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"> </a>BUG FIXES</h2>
-<ul><li><p><code><a href="../reference/geom_missing_point.html">geom_missing_point()</a></code> broke after the new release of ggplot2 2.2.0, but this is now fixed by ensuring that it inherits from GeomPoint, rather than just a new Geom. Thanks to Mitchell O’hara-Wild for his help with this.</p></li>
-<li><p>missing data summaries <code>table_missing_var</code> and <code>table_missing_case</code> also now return more sensible numbers and variable names. It is possible these function names will change in the future, as these are kind of verbose.</p></li>
-<li><p>semantic versioning was incorrectly entered in the DESCRIPTION file as 0.2.9000, so I changed it to 0.0.2.9000, and then to 0.0.3.9000 now to indicate the new changes, hopefully this won’t come back to bite me later. I think I accidentally did this with visdat at some point as well. Live and learn.</p></li>
+<a href="#bug-fixes" class="anchor"> </a>Bug fixes</h2>
+<ul><li>
+<code>shadow_shift</code> now handles cases where there is only 1 complete value in a vector.</li>
 </ul></div>
 <div id="other-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#other-changes" class="anchor"> </a>Other changes</h2>
+<ul><li>added much more comprehensive testing with <code>testthat</code>.</li>
+</ul></div>
+</div>
+    <div id="naniar-0-0-3-9901-20161218" class="section level1">
+<h1 class="hasAnchor">
+<a href="#naniar-0-0-3-9901-20161218" class="anchor"> </a>naniar 0.0.3.9901 (2016/12/18)</h1>
+<div id="new-features-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features-1" class="anchor"> </a>New features</h2>
+<ul><li><p><code>add_n_miss</code> and <code>add_prop_miss</code> are helpers that add columns to a dataframe containing the number and proportion of missing values. An example has been provided to use decision trees to explore missing data structure as in <a href="bmjopen.bmj.com/content/5/6/e007450.full">Tierney et al</a></p></li>
+<li><p><code>geom_miss_point()</code> now supports transparency, thanks to @seasmith (Luke Smith)</p></li>
+</ul></div>
+</div>
+    <div id="naniar-0-0-3-9000-20161218" class="section level1">
+<h1 class="hasAnchor">
+<a href="#naniar-0-0-3-9000-20161218" class="anchor"> </a>naniar 0.0.3.9000 (2016/12/18)</h1>
+<p>After a burst of effort on this package I have done some refactoring and thought hard about where this package is going to go. This meant that I had to make the decision to rename the package from ggmissing to naniar. The name may strike you as strange but it reflects the fact that there are many changes happening, and that we will be working on creating a nice utopia (like Narnia by CS Lewis) that helps us make it easier to work with missing data</p>
+<div id="new-features-under-development" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features-under-development" class="anchor"> </a>New Features (under development)</h2>
+<ul><li>more shadows. These are mainly around <code>bind_shadow</code> and <code>gather_shadow</code>, which are helper functions to assist with creating</li>
+</ul></div>
+<div id="bug-fixes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes-1" class="anchor"> </a>Bug fixes</h2>
+<ul><li><p><code><a href="../reference/geom_missing_point.html">geom_missing_point()</a></code> broke after the new release of ggplot2 2.2.0, but this is now fixed by ensuring that it inherits from GeomPoint, rather than just a new Geom. Thanks to Mitchell O’hara-Wild for his help with this.</p></li>
+<li><p>missing data summaries <code>table_missing_var</code> and <code>table_missing_case</code> also now return more sensible numbers and variable names. It is possible these function names will change in the future, as these are kind of verbose.</p></li>
+<li><p>semantic versioning was incorrectly entered in the DESCRIPTION file as 0.2.9000, so I changed it to 0.0.2.9000, and then to 0.0.3.9000 now to indicate the new changes, hopefully this won’t come back to bite me later. I think I accidentally did this with visdat at some point as well. Live and learn.</p></li>
+</ul></div>
+<div id="other-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-changes-1" class="anchor"> </a>Other changes</h2>
 <ul><li><p>gathered related functions into single R files rather than leaving them in their own.</p></li>
 <li><p>correctly imported the <code>%&gt;%</code> operator from magrittr, and removed a lot of chaff around <code>@importFrom</code> - really don’t need to use <code>@importFrom</code> that often.</p></li>
 </ul></div>
@@ -117,8 +138,9 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#nanar-0-0-3-9901-20161218">0.0.3.9901</a></li>
-        <li><a href="#nanar-0-0-3-9000-20161218">0.0.3.9000</a></li>
+        <li><a href="#naniar-0-0-4-9000-20161231">0.0.4.9000</a></li>
+        <li><a href="#naniar-0-0-3-9901-20161218">0.0.3.9901</a></li>
+        <li><a href="#naniar-0-0-3-9000-20161218">0.0.3.9000</a></li>
       </ul>
     </div>
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Percentage of variables containing missings — percent_missing_var • naniar</title>
+<title>Return the number of complete values — n_complete • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -72,31 +72,29 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Percentage of variables containing missings</h1>
+    <h1>Return the number of complete values</h1>
     </div>
 
     
-    <p>Calculate the percentage of variables that contain a single missing value.</p>
+    <p>A complement to <code>n_miss</code></p>
     
 
-    <pre><span class='fu'>percent_missing_var</span>(<span class='no'>data</span>)</pre>
+    <pre><span class='fu'>n_complete</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>data</dt>
-      <dd>a dataframe</dd>
+      <dt>x</dt>
+      <dd>a vector</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>numeric the percent of variables that contain missing data</p>
+    <p>numeric number of complete values</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>library</span>(<span class='no'>naniar</span>)
-
-<span class='fu'>percent_missing_var</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; [1] 33.33333</div><div class='input'>
+<span class='fu'>n_complete</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; [1] 874</div><div class='input'><span class='fu'>n_complete</span>(<span class='no'>airquality</span>$<span class='no'>Ozone</span>)</div><div class='output co'>#&gt; [1] 116</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

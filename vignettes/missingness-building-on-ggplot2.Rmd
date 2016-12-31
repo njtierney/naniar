@@ -16,16 +16,6 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = "100%")
 ```
 
-```{r library-calls, echo = FALSE, include = FALSE}
-
-# install ggplot2 version 2.1.0
-# # devtools::install_version("ggplot2","2.1.0")
-# library(ggmissing)
-library(tidyverse)
-library(naniar)
-library(visdat)
-```
-
 # Introduction
 
 Missing values are ubiquitous in data and need to be explored and handled in the initial stages of analysis. This paper describes a package, `naniar`, for exploring missing data dependencies with minimal deviation from the common workflows of ggplot and tidy data (Wickham,2014). Typically, ggplot2 throws an warning about missings but then omits them for plotting (Wickham,2009). This extension builds data structures and functions that ensure missings are plotted easily and enables imputations to be examined. Principles of tidy data states that each row is an observation and each column is a variable, which makes it easy and consistent to perform data manipulation and wrangling. However, there are currently no guidelines for representing additional missing data structures in a tidy format. This paper describes approaches for exploring missing data structure with minimal deviation from the common workflows of ggplot and tidy data structures.
@@ -83,6 +73,9 @@ An advantage of the augmented shadow format, where the data and shadow are side 
 
 
 ```{r bind-shadow-density, fig.height = 4, fig.width = 10}
+
+library(naniar)
+library(ggplot2)
 
 p1 <- ggplot(data = bind_shadow(airquality),
        aes(x = Temp)) + 

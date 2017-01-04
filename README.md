@@ -17,6 +17,7 @@ naniar
     -   `gg_missing_var`
 -   Numerical summaries:
     -   `n_miss`
+    -   `n_complete`
     -   `percent_missing_*`
     -   `summary_missing_*`
     -   `table_missing_*`

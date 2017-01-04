@@ -50,3 +50,5 @@ Collate:
     'shadow_shifters.R'
     'shadows.R'
     'stat_missing_point.R'
+URL: https://github.com/njtierney/naniar
+BugReports: https://github.com/njtierney/naniar/issues

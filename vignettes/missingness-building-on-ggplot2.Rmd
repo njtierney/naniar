@@ -126,29 +126,29 @@ Numerical summaries of missing data are also made easy with some helper function
 ```{r numerical-percent-missing}
 
 # Proportion elements in dataset that contains missing values
-percent_missing_df(airquality)
+miss_df_pct(airquality)
 # Proportion of variables that contain any missing values
-percent_missing_var(airquality)
+miss_var_pct(airquality)
  # Proportion of cases that contain any missing values
-percent_missing_case(airquality)
+miss_case_pct(airquality)
 
 ```
 
 We can also look at the number and percent of missings in each case and variable with `summary_missing_case`, and `summary_missing_var`.
 
-```{r}
+```{r miss-var-case-summary}
 
-summary_missing_case(airquality)
-summary_missing_var(airquality)
+miss_case_summary(airquality)
+miss_var_summary(airquality)
 
 ```
 
 Tabulations of the number of missings in each case or variable can be calculated with `table_missing_case` and `table_missing_var`. 
 
-```{r}
+```{r miss-var-case-table}
 
-table_missing_case(airquality)
-table_missing_var(airquality)
+miss_case_table(airquality)
+miss_var_table(airquality)
 
 ```
 

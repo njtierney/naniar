@@ -1,10 +1,8 @@
-#' Tidy methods for displaying missing data
-#'
-#' These methods prove tidy summaries of missing data information. The \code{percent_missing_df}, \code{percent_missing_var}, and \code{percent_missing_case} functions provide numeric summaries, for the percent of missing data for the data (\code{percent_missing_df}), the percent of variables that contain missing values (\code{percent_missing_var}), the percent of cases that contain mising values (\code{percent_missing_case}). \code{any_na} finds whether a vector contains a missing value. \code{table_missing_var} provides a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the percent of that variable that is missing; \code{table_missing_case} provides a tidy table of the number of cases with 0, 1, 2, up to n, missing values, and the percent of the number of cases that are missing; \code{summary_missing_var} a data_frame of the percent of missing data in each variable; \code{summary_missing_case} provides the ratio of observations that have missings, and the number of cases that have at 0, 1, up to n, missing values' \code{summarise_missingness} returns a data_frame with the \code{percent_missing} as numeric, and table_missing_ and summary_missing_ and friends as lists, where each is a data_frame
+# Tidy methods for displaying missing data
 
 #' Percentage of missing data in a dataframe
 #'
-#' Calculate the percent (%) of missing data in a dataframe.
+#' Calculate the percent of missing data in a dataframe.
 #'
 #' @param data a dataframe
 #'
@@ -14,9 +12,9 @@
 #' @examples
 #'
 #' library(naniar)
-#' percent_missing_df(airquality)
+#' miss_df_pct(airquality)
 #'
-percent_missing_df <- function(data){
+miss_df_pct <- function(data){
 
   # test for null input
   if(is.null(data)){
@@ -43,9 +41,9 @@ percent_missing_df <- function(data){
 #'
 #' library(naniar)
 #'
-#' percent_missing_var(airquality)
+#' miss_var_pct(airquality)
 #'
-percent_missing_var <- function(data){
+miss_var_pct <- function(data){
 
   if(is.null(data)){
     stop("Input must not be NULL", call. = FALSE)
@@ -75,9 +73,9 @@ percent_missing_var <- function(data){
 #'
 #' @examples
 #'
-#' percent_missing_case(airquality)
+#' miss_case_pct(airquality)
 #'
-percent_missing_case <- function(data){
+miss_case_pct <- function(data){
 
   if(is.null(data)){
     stop("Input must not be NULL", call. = FALSE)
@@ -115,9 +113,9 @@ prop_na <- function(data){
     stop("Input must not be NULL", call. = FALSE)
     # test for dataframe
   } else if(inherits(data, "data.frame")){
-  tibble::tibble(df = percent_missing_df(data),
-                 var = percent_missing_var(data),
-                 case = percent_missing_case(data))
+  tibble::tibble(df = miss_df_pct(data),
+                 var = miss_var_pct(data),
+                 case = miss_case_pct(data))
   } else stop("Input must inherit from data.frame", call. = FALSE)
 
 }
@@ -134,10 +132,10 @@ prop_na <- function(data){
 #'
 #' @examples
 #'
-#' table_missing_case(airquality)
+#' miss_case_table(airquality)
 #'
 #'
-table_missing_case <- function(data){
+miss_case_table <- function(data){
 
   if(is.null(data)){
     stop("Input must not be NULL", call. = FALSE)
@@ -172,10 +170,10 @@ table_missing_case <- function(data){
 #'
 #' @examples
 #'
-#' table_missing_var(airquality)
+#' miss_var_table(airquality)
 #'
 #'
-table_missing_var <- function(data){
+miss_var_table <- function(data){
 
   if(is.null(data)){
     stop("Input must not be NULL", call. = FALSE)
@@ -209,9 +207,9 @@ table_missing_var <- function(data){
 #'
 #' @examples
 #'
-#' summary_missing_var(airquality)
+#' miss_var_summary(airquality)
 #'
-  summary_missing_var <- function(data){
+miss_var_summary <- function(data){
 
     if(is.null(data)){
       stop("Input must not be NULL", call. = FALSE)
@@ -239,9 +237,9 @@ table_missing_var <- function(data){
 #'
 #' @examples
 #'
-#' summary_missing_case(airquality)
+#' miss_case_summary(airquality)
 #'
-summary_missing_case <- function(data){
+miss_case_summary <- function(data){
 
   if(is.null(data)){
     stop("Input must not be NULL", call. = FALSE)
@@ -273,12 +271,12 @@ summary_missing_case <- function(data){
 #'
 #' @examples
 #'
-#' s_miss <- summarise_missingness(airquality)
+#' s_miss <- miss_summary(airquality)
 #' s_miss$percent_missing_df
 #' s_miss$table_missing_case
 #' # etc, etc, etc.
 #'
-summarise_missingness <- function(data){
+miss_summary <- function(data){
 
   if(is.null(data)){
     stop("Input must not be NULL", call. = FALSE)
@@ -287,13 +285,13 @@ summarise_missingness <- function(data){
 
   return(
     tibble::data_frame(
-        percent_missing_df = percent_missing_df(data),
-        percent_missing_var = percent_missing_var(data),
-        percent_missing_case = percent_missing_case(data),
-        table_missing_case = list(table_missing_case(data)),
-        table_missing_var = list(table_missing_var(data)),
-        summary_missing_var = list(summary_missing_var(data)),
-        summary_missing_case = list(summary_missing_case(data))
+        miss_df_pct = miss_df_pct(data),
+        miss_var_pct = miss_var_pct(data),
+        miss_case_pct = miss_case_pct(data),
+        miss_case_table = list(miss_case_table(data)),
+        miss_var_table = list(miss_var_table(data)),
+        miss_var_summary = list(miss_var_summary(data)),
+        miss_case_summary = list(miss_case_summary(data))
       )
     )
   } else stop("Input must inherit from data.frame", call. = FALSE)

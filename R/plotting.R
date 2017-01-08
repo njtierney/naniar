@@ -16,7 +16,7 @@
 #'
 gg_missing_case <- function(x){
 
-  ggplot(data = summary_missing_case(x),
+  ggplot(data = miss_case_summary(x),
          aes(y = n_missing,
              x = case)) +
     geom_bar(stat="identity", position="dodge", width = 0, colour="grey") +
@@ -45,7 +45,7 @@ gg_missing_var <- function(x){
 
   # get a tidy data frame of the number of missings in each column
   x %>%
-    summary_missing_var() %>%
+    miss_var_summary() %>%
     ggplot(data = .,
            aes(x = stats::reorder(variable, n_missing),
                y = n_missing,

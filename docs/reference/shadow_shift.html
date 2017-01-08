@@ -60,7 +60,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/njtierney/naniar">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -118,14 +123,8 @@
 #&gt; [127]  91.00000  47.00000  32.00000  20.00000  23.00000  21.00000  24.00000
 #&gt; [134]  44.00000  21.00000  28.00000   9.00000  13.00000  46.00000  18.00000
 #&gt; [141]  13.00000  24.00000  16.00000  13.00000  23.00000  36.00000   7.00000
-#&gt; [148]  14.00000  30.00000 -16.86060  14.00000  18.00000  20.00000</div><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
+#&gt; [148]  14.00000  30.00000 -16.86060  14.00000  18.00000  20.00000</div><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
     <span class='fu'>mutate</span>(<span class='kw'>Ozone_shift</span> <span class='kw'>=</span> <span class='fu'>shadow_shift</span>(<span class='no'>Ozone</span>))</div><div class='output co'>#&gt;     Ozone Solar.R Wind Temp Month Day Ozone_shift
 #&gt; 1      41     190  7.4   67     5   1    41.00000
 #&gt; 2      36     118  8.0   72     5   2    36.00000

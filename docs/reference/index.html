@@ -60,7 +60,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/njtierney/naniar">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -73,7 +78,7 @@
   <div class="col-md-9">
     <div class="page-header">
       <h1>Function reference</h1>
-      <h4>version&nbsp;0.0.4.9000</h4>
+      <h4>version&nbsp;0.0.5.9000</h4>
     </div>
 
     <div class="contents">
@@ -104,6 +109,51 @@
       <p class="section-desc"><p>Provide tidy data frame summaries of missingness</p></p>
 
       
+      <p><a href="miss_case_pct.html">Percentage of cases that contain a missing values.</a></p>
+      <ul>
+        <li><code><a href="miss_case_pct.html">percent_missing_case</a></code></li><li><code><a href="miss_case_pct.html">miss_case_pct</a></code></li>
+      </ul>
+      
+      <p><a href="miss_case_summary.html">Summarise the missingness in each case</a></p>
+      <ul>
+        <li><code><a href="miss_case_summary.html">summary_missing_case</a></code></li><li><code><a href="miss_case_summary.html">miss_case_summary</a></code></li>
+      </ul>
+      
+      <p><a href="miss_case_table.html">Tabulate missings in cases.</a></p>
+      <ul>
+        <li><code><a href="miss_case_table.html">table_missing_case</a></code></li><li><code><a href="miss_case_table.html">miss_case_table</a></code></li>
+      </ul>
+      
+      <p><a href="miss_cat.html">Create factor levels of missingness for two variables</a></p>
+      <ul>
+        <li><code><a href="miss_cat.html">miss_cat</a></code></li>
+      </ul>
+      
+      <p><a href="miss_df_pct.html">Percentage of missing data in a dataframe</a></p>
+      <ul>
+        <li><code><a href="miss_df_pct.html">miss_df_pct</a></code></li>
+      </ul>
+      
+      <p><a href="miss_summary.html">Collate summary measures from naniar into one tibble</a></p>
+      <ul>
+        <li><code><a href="miss_summary.html">summarise_missingness</a></code></li><li><code><a href="miss_summary.html">miss_summary</a></code></li>
+      </ul>
+      
+      <p><a href="miss_var_pct.html">Percentage of variables containing missings</a></p>
+      <ul>
+        <li><code><a href="miss_var_pct.html">percent_missing_var</a></code></li><li><code><a href="miss_var_pct.html">miss_var_pct</a></code></li>
+      </ul>
+      
+      <p><a href="miss_var_summary.html">Summarise the missingness in each variable</a></p>
+      <ul>
+        <li><code><a href="miss_var_summary.html">summary_missing_var</a></code></li><li><code><a href="miss_var_summary.html">miss_var_summary</a></code></li>
+      </ul>
+      
+      <p><a href="miss_var_table.html">Tabulate the missings in the variables</a></p>
+      <ul>
+        <li><code><a href="miss_var_table.html">table_missing_var</a></code></li><li><code><a href="miss_var_table.html">miss_var_table</a></code></li>
+      </ul>
+      
       <p><a href="n_complete.html">Return the number of complete values</a></p>
       <ul>
         <li><code><a href="n_complete.html">n_complete</a></code></li>
@@ -112,41 +162,6 @@
       <p><a href="n_miss.html">Return the number of missing values</a></p>
       <ul>
         <li><code><a href="n_miss.html">n_miss</a></code></li>
-      </ul>
-      
-      <p><a href="percent_missing_case.html">Percentage of cases that contain a missing values.</a></p>
-      <ul>
-        <li><code><a href="percent_missing_case.html">percent_missing_case</a></code></li>
-      </ul>
-      
-      <p><a href="percent_missing_df.html">Tidy methods for displaying missing data</a></p>
-      <ul>
-        <li><code><a href="percent_missing_df.html">percent_missing_df</a></code></li>
-      </ul>
-      
-      <p><a href="percent_missing_var.html">Percentage of variables containing missings</a></p>
-      <ul>
-        <li><code><a href="percent_missing_var.html">percent_missing_var</a></code></li>
-      </ul>
-      
-      <p><a href="summary_missing_case.html">Summarise the missingness in each case</a></p>
-      <ul>
-        <li><code><a href="summary_missing_case.html">summary_missing_case</a></code></li>
-      </ul>
-      
-      <p><a href="summary_missing_var.html">Summarise the missingness in each variable</a></p>
-      <ul>
-        <li><code><a href="summary_missing_var.html">summary_missing_var</a></code></li>
-      </ul>
-      
-      <p><a href="table_missing_case.html">Tabulate missings in cases.</a></p>
-      <ul>
-        <li><code><a href="table_missing_case.html">table_missing_case</a></code></li>
-      </ul>
-      
-      <p><a href="table_missing_var.html">Tabulate the missings in the variables</a></p>
-      <ul>
-        <li><code><a href="table_missing_var.html">table_missing_var</a></code></li>
       </ul>
           <h2 id="section-add-columns" class="hasAnchor"><a href="#section-add-columns" class="anchor"></a>Add columns</h2>
       <p class="section-desc"><p>Add the number of missing and proportion of missing data</p></p>

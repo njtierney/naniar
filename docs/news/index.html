@@ -60,7 +60,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/njtierney/naniar">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -77,26 +82,54 @@
     </div>
 
     <div class="contents">
+    <div id="naniar-0-0-5-9000-20160108" class="section level1">
+<h1 class="hasAnchor">
+<a href="#naniar-0-0-5-9000-20160108" class="anchor"> </a>naniar 0.0.5.9000 (2016/01/08)</h1>
+<div id="deprecated-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#deprecated-functions" class="anchor"> </a>Deprecated functions</h2>
+<ul>
+<li>To address <a href="https://github.com/njtierney/naniar/issues/38">Issue #38</a>, I am moving towards the format miss_type_value/fun, because it makes more sense to me when tabbing through functions.</li>
+<li>
+<code>miss_*</code> = I want to explore missing values</li>
+<li>
+<code>miss_case_*</code> = I want to explore missing cases</li>
+<li>
+<code>miss_case_pct</code> = I want to find the percentage of cases containing a missing value</li>
+<li>
+<code>miss_case_summary</code> = I want to find the number / percentage of missings in each case <code>miss_case_table</code> = I want a tabulation of the number / percentage of cases missing</li>
+</ul>
+<p>This is more consistent and easier to reason with.</p>
+<p>Thus, I have renamed the following functions: - <code><a href="../reference/percent_missing_case.html">percent_missing_case()</a></code> –&gt; <code><a href="../reference/percent_missing_case.html">miss_case_pct()</a></code> - <code><a href="../reference/percent_missing_var.html">percent_missing_var()</a></code> –&gt; <code><a href="../reference/percent_missing_var.html">miss_var_pct()</a></code> - <code><a href="../reference/percent_missing_df.html">percent_missing_df()</a></code> –&gt; <code><a href="../reference/miss_df_pct.html">miss_df_pct()</a></code> - <code><a href="../reference/summary_missing_case.html">summary_missing_case()</a></code> –&gt; <code><a href="../reference/summary_missing_case.html">miss_case_summary()</a></code> - <code><a href="../reference/summary_missing_var.html">summary_missing_var()</a></code> –&gt; <code><a href="../reference/summary_missing_var.html">miss_var_summary()</a></code> - <code><a href="../reference/table_missing_case.html">table_missing_case()</a></code> –&gt; <code><a href="../reference/table_missing_case.html">miss_case_table()</a></code> - <code><a href="../reference/table_missing_var.html">table_missing_var()</a></code> –&gt; <code><a href="../reference/table_missing_var.html">miss_var_table()</a></code></p>
+<p>These will be made defunct in the next release, 0.0.6.9000 (“The Bell and The Hammer”).</p>
+</div>
+</div>
     <div id="naniar-0-0-4-9000-20161231" class="section level1">
 <h1 class="hasAnchor">
 <a href="#naniar-0-0-4-9000-20161231" class="anchor"> </a>naniar 0.0.4.9000 (2016/12/31)</h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"> </a>New features</h2>
-<ul><li>
+<ul>
+<li>
 <code>n_complete</code> is a complement to <code>n_miss</code>, and counts the number of complete values in a vector, matrix, or dataframe.</li>
-</ul></div>
+</ul>
+</div>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"> </a>Bug fixes</h2>
-<ul><li>
+<ul>
+<li>
 <code>shadow_shift</code> now handles cases where there is only 1 complete value in a vector.</li>
-</ul></div>
+</ul>
+</div>
 <div id="other-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#other-changes" class="anchor"> </a>Other changes</h2>
-<ul><li>added much more comprehensive testing with <code>testthat</code>.</li>
-</ul></div>
+<ul>
+<li>added much more comprehensive testing with <code>testthat</code>.</li>
+</ul>
+</div>
 </div>
     <div id="naniar-0-0-3-9901-20161218" class="section level1">
 <h1 class="hasAnchor">
@@ -104,9 +137,11 @@
 <div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features-1" class="anchor"> </a>New features</h2>
-<ul><li><p><code>add_n_miss</code> and <code>add_prop_miss</code> are helpers that add columns to a dataframe containing the number and proportion of missing values. An example has been provided to use decision trees to explore missing data structure as in <a href="bmjopen.bmj.com/content/5/6/e007450.full">Tierney et al</a></p></li>
+<ul>
+<li><p><code>add_n_miss</code> and <code>add_prop_miss</code> are helpers that add columns to a dataframe containing the number and proportion of missing values. An example has been provided to use decision trees to explore missing data structure as in <a href="bmjopen.bmj.com/content/5/6/e007450.full">Tierney et al</a></p></li>
 <li><p><code>geom_miss_point()</code> now supports transparency, thanks to @seasmith (Luke Smith)</p></li>
-</ul></div>
+</ul>
+</div>
 </div>
     <div id="naniar-0-0-3-9000-20161218" class="section level1">
 <h1 class="hasAnchor">
@@ -115,21 +150,27 @@
 <div id="new-features-under-development" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features-under-development" class="anchor"> </a>New Features (under development)</h2>
-<ul><li>more shadows. These are mainly around <code>bind_shadow</code> and <code>gather_shadow</code>, which are helper functions to assist with creating</li>
-</ul></div>
+<ul>
+<li>more shadows. These are mainly around <code>bind_shadow</code> and <code>gather_shadow</code>, which are helper functions to assist with creating</li>
+</ul>
+</div>
 <div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes-1" class="anchor"> </a>Bug fixes</h2>
-<ul><li><p><code><a href="../reference/geom_missing_point.html">geom_missing_point()</a></code> broke after the new release of ggplot2 2.2.0, but this is now fixed by ensuring that it inherits from GeomPoint, rather than just a new Geom. Thanks to Mitchell O’hara-Wild for his help with this.</p></li>
+<ul>
+<li><p><code><a href="../reference/geom_missing_point.html">geom_missing_point()</a></code> broke after the new release of ggplot2 2.2.0, but this is now fixed by ensuring that it inherits from GeomPoint, rather than just a new Geom. Thanks to Mitchell O’hara-Wild for his help with this.</p></li>
 <li><p>missing data summaries <code>table_missing_var</code> and <code>table_missing_case</code> also now return more sensible numbers and variable names. It is possible these function names will change in the future, as these are kind of verbose.</p></li>
 <li><p>semantic versioning was incorrectly entered in the DESCRIPTION file as 0.2.9000, so I changed it to 0.0.2.9000, and then to 0.0.3.9000 now to indicate the new changes, hopefully this won’t come back to bite me later. I think I accidentally did this with visdat at some point as well. Live and learn.</p></li>
-</ul></div>
+</ul>
+</div>
 <div id="other-changes-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#other-changes-1" class="anchor"> </a>Other changes</h2>
-<ul><li><p>gathered related functions into single R files rather than leaving them in their own.</p></li>
+<ul>
+<li><p>gathered related functions into single R files rather than leaving them in their own.</p></li>
 <li><p>correctly imported the <code>%&gt;%</code> operator from magrittr, and removed a lot of chaff around <code>@importFrom</code> - really don’t need to use <code>@importFrom</code> that often.</p></li>
-</ul></div>
+</ul>
+</div>
 </div>
     </div>
   </div>
@@ -138,6 +179,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#naniar-0-0-5-9000-20160108">0.0.5.9000</a></li>
         <li><a href="#naniar-0-0-4-9000-20161231">0.0.4.9000</a></li>
         <li><a href="#naniar-0-0-3-9901-20161218">0.0.3.9901</a></li>
         <li><a href="#naniar-0-0-3-9000-20161218">0.0.3.9000</a></li>

@@ -15,9 +15,7 @@ reference:
     contents:
       - n_miss
       - n_complete
-      - starts_with("percent_missing_")
-      - starts_with("summary_missing_")
-      - starts_with("table_missing_")
+      - starts_with("miss_")
   - title: "Add columns"
     desc: >
       Add the number of missing and proportion of missing data

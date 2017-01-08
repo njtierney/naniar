@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Proporitons of missings in data, variables, and cases. — prop_na • naniar</title>
+<title>Collate summary measures from naniar into one tibble — summarise_missingness • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -77,14 +77,18 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Proporitons of missings in data, variables, and cases.</h1>
+    <h1>Collate summary measures from naniar into one tibble</h1>
     </div>
 
     
-    <p>Return missing data info about the dataframe, the variables, and the cases. Specifically, returning how many elements in a dataframe contain a missing value, how many elements in a variable contain a missing value, and how many elements in a case contain a missing.</p>
+    <p>Collate summary measures from naniar into one tibble</p>
+
+    <p><code>summarise_missingness</code> performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?</p>
     
 
-    <pre><span class='fu'>prop_na</span>(<span class='no'>data</span>)</pre>
+    <pre><span class='fu'>summarise_missingness</span>(<span class='no'>data</span>)
+
+<span class='fu'>miss_summary</span>(<span class='no'>data</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -99,11 +103,8 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>prop_na</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 1 × 3
-#&gt;         df      var     case
-#&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-#&gt; 1 4.793028 33.33333 27.45098</div><div class='input'>
-</div></pre>
+<span class='no'>s_miss</span> <span class='kw'>&lt;-</span> <span class='fu'>miss_summary</span>(<span class='no'>airquality</span>)
+<span class='no'>s_miss</span>$<span class='no'>percent_missing_df</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown column &#39;percent_missing_df&#39;</span></div><div class='output co'>#&gt; NULL</div><div class='input'><span class='no'>s_miss</span>$<span class='no'>table_missing_case</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown column &#39;table_missing_case&#39;</span></div><div class='output co'>#&gt; NULL</div><div class='input'><span class='co'># etc, etc, etc.</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

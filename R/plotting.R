@@ -97,3 +97,8 @@ gg_missing_which <- function(x){
     labs(x = "",
          y = "")
 }
+
+
+#' @importFrom visdat vis_miss
+#' @export
+visdat::vis_miss

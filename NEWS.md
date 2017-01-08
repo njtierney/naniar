@@ -1,3 +1,27 @@
+# naniar 0.0.5.9000 (2016/01/08)
+
+## Deprecated functions
+
+* To address [Issue #38](https://github.com/njtierney/naniar/issues/38), I am moving towards the format miss_type_value/fun, because it makes more sense to me when tabbing through functions.
+* `miss_*` = I want to explore missing values
+* `miss_case_*` = I want to explore missing cases
+* `miss_case_pct` = I want to find the percentage of cases containing a missing value
+* `miss_case_summary` = I want to find the number / percentage of missings in each case
+`miss_case_table` = I want a tabulation of the number / percentage of cases missing
+
+This is more consistent and easier to reason with.
+
+Thus, I have renamed the following functions:
+    - `percent_missing_case()`  --> `miss_case_pct()`
+    - `percent_missing_var()`   --> `miss_var_pct()`
+    - `percent_missing_df()`    --> `miss_df_pct()`
+    - `summary_missing_case()`  --> `miss_case_summary()`
+    - `summary_missing_var()`   --> `miss_var_summary()`
+    - `table_missing_case()`   --> `miss_case_table()`
+    - `table_missing_var()`    --> `miss_var_table()`
+
+These will be made defunct in the next release, 0.0.6.9000 ("The Bell and The Hammer"). 
+
 # naniar 0.0.4.9000 (2016/12/31)
 
 ## New features

@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Provide Summaries and Visualisations for Missing Data
-Version: 0.0.4.9000
+Version: 0.0.5.9000
 Author: Nicholas Tierney, Miles McBain, Di Cook,
 Authors@R: c(
     person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
@@ -37,10 +37,11 @@ Imports:
     visdat
 Remotes:
     njtierney/visdat
-RoxygenNote: 5.0.1
-Collate:
+RoxygenNote: 5.0.1.9000
+Collate: 
     'add_cols.R'
     'data.R'
+    'deprecated_missing_data_tidiers.R'
     'legend-draw.R'
     'geom_missing_point.R'
     'label_missings.R'

@@ -21,4 +21,3 @@ n_miss(airquality)
 n_miss(airquality$Ozone)
 
 }
-

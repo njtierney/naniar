@@ -20,4 +20,3 @@ Provide a data_frame containing the variable names, the number of missing values
 summary_missing_var(airquality)
 
 }
-

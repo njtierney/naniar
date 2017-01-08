@@ -20,4 +20,3 @@ Provide a data_frame containing each case (row), the number of missing values in
 summary_missing_case(airquality)
 
 }
-

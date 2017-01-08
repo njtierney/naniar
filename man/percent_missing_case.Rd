@@ -20,4 +20,3 @@ Calculate the percentage of cases (rows) that contain a missing value.
 percent_missing_case(airquality)
 
 }
-

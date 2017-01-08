@@ -22,4 +22,3 @@ library(naniar)
 percent_missing_var(airquality)
 
 }
-

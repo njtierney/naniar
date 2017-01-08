@@ -21,4 +21,3 @@ At this point I'm not sure how this plot should be arranged, as it currently loo
 gg_missing_case(airquality)
 
 }
-

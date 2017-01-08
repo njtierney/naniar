@@ -20,4 +20,3 @@ Return a tibble that in shadow matrix form, where the variables are the same but
 as_shadow(airquality)
 
 }
-

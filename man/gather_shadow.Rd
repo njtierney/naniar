@@ -20,4 +20,3 @@ gather exists as we want to include this extra metadata about the rows that have
 gather_shadow(airquality)
 
 }
-

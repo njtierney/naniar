@@ -17,4 +17,3 @@ shadow_df(x)
 shadow_df(airquality)
 
 }
-

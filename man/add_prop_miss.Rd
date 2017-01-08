@@ -32,4 +32,3 @@ prp(type = 4,
     extra = 101,
     prefix = "prop_miss = ")
 }
-

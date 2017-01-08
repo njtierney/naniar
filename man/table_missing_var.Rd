@@ -21,4 +21,3 @@ table_missing_var(airquality)
 
 
 }
-

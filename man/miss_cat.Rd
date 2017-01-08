@@ -22,4 +22,3 @@ character vector containing "Not Missing" and "Missing"
 \note{
 Unsure if this function is actually needed anymore.
 }
-

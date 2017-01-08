@@ -25,4 +25,3 @@ library(naniar)
 percent_missing_df(airquality)
 
 }
-

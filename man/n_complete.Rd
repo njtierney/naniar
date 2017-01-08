@@ -21,4 +21,3 @@ n_complete(airquality)
 n_complete(airquality$Ozone)
 
 }
-

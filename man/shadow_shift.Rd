@@ -20,4 +20,3 @@ airquality \%>\%
     mutate(Ozone_shift = shadow_shift(Ozone))
 
 }
-

@@ -20,4 +20,3 @@ Return missing data info about the dataframe, the variables, and the cases. Spec
 prop_na(airquality)
 
 }
-

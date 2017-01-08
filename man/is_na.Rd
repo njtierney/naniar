@@ -23,4 +23,3 @@ is_na(airquality$Ozone)
 \seealso{
 as_shadow
 }
-

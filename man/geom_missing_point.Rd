@@ -72,4 +72,3 @@ ggplot(airquality,
 geom_missing_point()
 
 }
-

@@ -53,4 +53,3 @@ Very first attempt at creating a geom that is compatible with ggplot2.
 Data plotting works. Still todo:
 Warning message if na.rm = T is supplied.
 }
-

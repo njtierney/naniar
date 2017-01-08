@@ -23,4 +23,3 @@ Each Geom has an associated function that draws the key when the geom needs
 to be displayed in a legend. These are the options built into naniar.
 }
 \keyword{internal}
-

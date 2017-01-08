@@ -23,4 +23,3 @@ can we generalise label_missing to work for any number of variables?
 label_missing_1d(airquality$Ozone)
 
 }
-

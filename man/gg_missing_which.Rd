@@ -20,4 +20,3 @@ a ggplot plot
 gg_missing_which(airquality)
 
 }
-

@@ -22,4 +22,3 @@ Label whether a value is missing in either row of two columns. This is a more ap
 label_missing_2d(airquality$Ozone, airquality$Solar.R)
 
 }
-

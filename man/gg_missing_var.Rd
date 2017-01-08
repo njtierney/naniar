@@ -20,4 +20,3 @@ This function draws a ggplot plot of the number of missings in each column, rear
 gg_missing_var(airquality)
 
 }
-

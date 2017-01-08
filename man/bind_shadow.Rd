@@ -39,4 +39,3 @@ ggplot(data = airquality,
              ncol = 1)
 
 }
-

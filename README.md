@@ -18,9 +18,16 @@ naniar
 -   Numerical summaries:
     -   `n_miss`
     -   `n_complete`
-    -   `percent_missing_*`
-    -   `summary_missing_*`
-    -   `table_missing_*`
+    -   `miss_case_*`
+        -   `pct`
+        -   `summary`
+        -   `table`
+    -   `miss_var_*`
+        -   `pct`
+        -   `summary`
+        -   `table`
+    -   `miss_df_*`
+        -   `pct`
 
 For a more formal description, you can read the vignette "building on ggplot2 for exploration of missing values".
 
@@ -28,7 +35,7 @@ For a more formal description, you can read the vignette "building on ggplot2 fo
 
 `naniar` was previously named `ggmissing` and initially provided a ggplot geom and some visual summaries. It was changed to `naniar` to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.
 
-> But why `naniar`?
+> ...But *why* `naniar`?
 
 Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like Narnia - a different world, hidden away. Close, but very different. So the name, "naniar", is a play on the "Narnia" books. e.g., naniar: The Last Battle (...with missing data). Also, `NA`niar, naniar = na in r, and if you so desire, naniar may sound like "noneoya" in an nz/aussie accent.
 
@@ -39,7 +46,7 @@ Data structures for missing data
 
 Representing missing data structure is achieved using the shadow matrix, introduced in [Swayne and Buja](https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization). The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as "NA", and not missing is represented as "!NA". Although these may be represented as 1 and 0, respectively. This representation can be seen in the figure below, adding the suffix "\_NA" to the variables. This structure can also be extended to allow for additional factor levels to be created. For example 0 indicates data presence, 1 indicates missing values, 2 indicates imputed value, and 3 might indicate a particular type or class of missingness, where reasons for missingness might be known or inferred. The data matrix can also be augmented to include the shadow matrix, which facilitates visualisation of univariate and bivariate missing data visualisations. Another format is to display it in long form, which facilitates heatmap style visualisations. This approach can be very helpful for giving an overview of which variables contain the most missingness. Methods can also be applied to rearrange rows and columns to find clusters, and identify other interesting features of the data that may have previously been hidden or unclear.
 
-![](missingness-data-structures.png)
+<img src="missingness-data-structures.png" width="400px" />
 
 **Illustration of data structures for facilitating visualisation of missings and not missings**
 
@@ -89,13 +96,16 @@ ggplot(data = airquality,
   geom_missing_point(alpha = 0.5)
 ```
 
-![](README-unnamed-chunk-2-1.png)
+![](README-geom-missing-point-alpha-1.png)
 
 Thanks to Luke Smith for making this pull request.
 
-like faceting - we can split the facet by month:
+We can also add features such as faceting, just like any regular ggplot plot.
+
+For example, we can split the facet by month:
 
 ``` r
+
 p1 <-
 ggplot(data = airquality,
        aes(x = Ozone,
@@ -107,7 +117,7 @@ ggplot(data = airquality,
 p1
 ```
 
-![](README-unnamed-chunk-3-1.png)
+![](README-facet-by-month-1.png)
 
 And then change the theme, just like you do with any other ggplot graphic
 
@@ -116,7 +126,7 @@ And then change the theme, just like you do with any other ggplot graphic
 p1 + theme_bw()  
 ```
 
-![](README-unnamed-chunk-4-1.png)
+![](README-facet-add-theme-1.png)
 
 You can also look at the proportion of missings in each variable with gg\_missing\_var:
 
@@ -125,23 +135,20 @@ You can also look at the proportion of missings in each variable with gg\_missin
 gg_missing_var(airquality)
 ```
 
-![](README-unnamed-chunk-5-1.png)
+![](README-gg-missing-var-1.png)
 
-You can also explore the whole dataset of missings using the `vis_miss` function from the [`visdat`](github.com/njtierney/visdat) package.
+You can also explore the whole dataset of missings using the `vis_miss` function, which is exported from the [`visdat`](github.com/njtierney/visdat) package.
 
 ``` r
 
-# devtools::install_github("njtierney/visdat")
-library(visdat)
 vis_miss(airquality)
 ```
 
-![](README-unnamed-chunk-6-1.png)
+![](README-viss-miss-1.png)
 
 Another approach can be to use **Univariate plots split by missingness**. We can do this using the `bind_shadow` argument to place the data and shadow side by side. This allows for us to examine univariate distributions according to the presence or absence of another variable.
 
 ``` r
-library(naniar)
 
 aq_shadow <- bind_shadow(airquality)
 
@@ -189,26 +196,36 @@ gridExtra::grid.arrange(p1, p2, ncol = 2)
 Numerical summaries for missing data
 ====================================
 
-`naniar` provides numerical summaries of missing data. The `percent_missing_*` functions help find the proportion of missing values in the data overall, in cases, or in variables.
+`naniar` provides numerical summaries of missing data. For variables, cases, and dataframes there are the function families `miss_var_*`, `miss_case_*`, and `miss_df_*`. To find the percent missng variables, cases, and dataframes:
 
 ``` r
 
-# Proportion elements in dataset that contains missing values
-percent_missing_df(airquality)
-#> [1] 4.793028
 # Proportion of variables that contain any missing values
-percent_missing_var(airquality)
+miss_var_pct(airquality)
 #> [1] 33.33333
  # Proportion of cases that contain any missing values
-percent_missing_case(airquality)
+miss_case_pct(airquality)
 #> [1] 27.45098
+# Proportion elements in dataset that contains missing values
+miss_df_pct(airquality)
+#> [1] 4.793028
 ```
 
-We can also look at the number and percent of missings in each case and variable with `summary_missing_case`, and `summary_missing_var`.
+We can also look at the number and percent of missings in each case and variable with `miss_var_summary`, and `miss_case_summary`.
 
 ``` r
 
-summary_missing_case(airquality)
+miss_var_summary(airquality)
+#> # A tibble: 6 × 3
+#>   variable n_missing   percent
+#>      <chr>     <int>     <dbl>
+#> 1    Ozone        37 24.183007
+#> 2  Solar.R         7  4.575163
+#> 3     Wind         0  0.000000
+#> 4     Temp         0  0.000000
+#> 5    Month         0  0.000000
+#> 6      Day         0  0.000000
+miss_case_summary(airquality)
 #> # A tibble: 153 × 3
 #>     case n_missing  percent
 #>    <int>     <int>    <dbl>
@@ -223,113 +240,74 @@ summary_missing_case(airquality)
 #> 9      9         0  0.00000
 #> 10    10         1 16.66667
 #> # ... with 143 more rows
-summary_missing_var(airquality)
-#> # A tibble: 6 × 3
-#>   variable n_missing   percent
-#>      <chr>     <int>     <dbl>
-#> 1    Ozone        37 24.183007
-#> 2  Solar.R         7  4.575163
-#> 3     Wind         0  0.000000
-#> 4     Temp         0  0.000000
-#> 5    Month         0  0.000000
-#> 6      Day         0  0.000000
 ```
 
-Tabulations of the number of missings in each case or variable can be calculated with `table_missing_case` and `table_missing_var`.
+Tabulations of the number of missings in each case or variable can be calculated with `miss_var_table` and `miss_case_table`.
 
 ``` r
 
-table_missing_case(airquality)
-#> # A tibble: 3 × 3
-#>   n_missing_in_case n_cases  percent
-#>               <int>   <int>    <dbl>
-#> 1                 0     111 72.54902
-#> 2                 1      40 26.14379
-#> 3                 2       2  1.30719
-table_missing_var(airquality)
+miss_var_table(airquality)
 #> # A tibble: 3 × 3
 #>   n_missing_in_var n_vars  percent
 #>              <int>  <int>    <dbl>
 #> 1                0      4 66.66667
 #> 2                7      1 16.66667
 #> 3               37      1 16.66667
+miss_case_table(airquality)
+#> # A tibble: 3 × 3
+#>   n_missing_in_case n_cases  percent
+#>               <int>   <int>    <dbl>
+#> 1                 0     111 72.54902
+#> 2                 1      40 26.14379
+#> 3                 2       2  1.30719
 ```
 
-All functions can be called at once using `summarise_missingness`, which takes a `data.frame` and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases.
+All functions can be called at once using `miss_summary`, which takes a data.frame and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases.
 
 ``` r
 
-s_miss <- summarise_missingness(airquality)
+s_miss <- miss_summary(airquality)
 
 s_miss
 #> # A tibble: 1 × 7
-#>   percent_missing_df percent_missing_var percent_missing_case
-#>                <dbl>               <dbl>                <dbl>
-#> 1           4.793028            33.33333             27.45098
-#> # ... with 4 more variables: table_missing_case <list>,
-#> #   table_missing_var <list>, summary_missing_var <list>,
-#> #   summary_missing_case <list>
+#>   miss_df_pct miss_var_pct miss_case_pct  miss_case_table   miss_var_table
+#>         <dbl>        <dbl>         <dbl>           <list>           <list>
+#> 1    4.793028     33.33333      27.45098 <tibble [3 × 3]> <tibble [3 × 3]>
+#> # ... with 2 more variables: miss_var_summary <list>,
+#> #   miss_case_summary <list>
 
 # overall % missing data
 s_miss$percent_missing_df
-#> [1] 4.793028
+#> Warning: Unknown column 'percent_missing_df'
+#> NULL
 
 # % of variables that contain missing data
 s_miss$percent_missing_var
-#> [1] 33.33333
+#> Warning: Unknown column 'percent_missing_var'
+#> NULL
 
 # % of cases that contain missing data
 s_miss$percent_missing_case
-#> [1] 27.45098
+#> Warning: Unknown column 'percent_missing_case'
+#> NULL
 
 # tabulations of missing data across cases
 s_miss$table_missing_case
-#> [[1]]
-#> # A tibble: 3 × 3
-#>   n_missing_in_case n_cases  percent
-#>               <int>   <int>    <dbl>
-#> 1                 0     111 72.54902
-#> 2                 1      40 26.14379
-#> 3                 2       2  1.30719
+#> Warning: Unknown column 'table_missing_case'
+#> NULL
 
 # tabulations of missing data across variables
 s_miss$table_missing_var
-#> [[1]]
-#> # A tibble: 3 × 3
-#>   n_missing_in_var n_vars  percent
-#>              <int>  <int>    <dbl>
-#> 1                0      4 66.66667
-#> 2                7      1 16.66667
-#> 3               37      1 16.66667
+#> Warning: Unknown column 'table_missing_var'
+#> NULL
 
 # summary information (counts, percentrages) of missing data for variables and cases
 s_miss$summary_missing_var
-#> [[1]]
-#> # A tibble: 6 × 3
-#>   variable n_missing   percent
-#>      <chr>     <int>     <dbl>
-#> 1    Ozone        37 24.183007
-#> 2  Solar.R         7  4.575163
-#> 3     Wind         0  0.000000
-#> 4     Temp         0  0.000000
-#> 5    Month         0  0.000000
-#> 6      Day         0  0.000000
+#> Warning: Unknown column 'summary_missing_var'
+#> NULL
 s_miss$summary_missing_case
-#> [[1]]
-#> # A tibble: 153 × 3
-#>     case n_missing  percent
-#>    <int>     <int>    <dbl>
-#> 1      1         0  0.00000
-#> 2      2         0  0.00000
-#> 3      3         0  0.00000
-#> 4      4         0  0.00000
-#> 5      5         2 33.33333
-#> 6      6         1 16.66667
-#> 7      7         0  0.00000
-#> 8      8         0  0.00000
-#> 9      9         0  0.00000
-#> 10    10         1 16.66667
-#> # ... with 143 more rows
+#> Warning: Unknown column 'summary_missing_case'
+#> NULL
 ```
 
 Other plotting functions
@@ -345,7 +323,7 @@ gg\_missing\_var
 gg_missing_var(airquality)
 ```
 
-![](README-unnamed-chunk-11-1.png)
+![](README-unnamed-chunk-3-1.png)
 
 gg\_missing\_case
 -----------------
@@ -355,7 +333,7 @@ gg\_missing\_case
 gg_missing_case(airquality)
 ```
 
-![](README-unnamed-chunk-12-1.png)
+![](README-unnamed-chunk-4-1.png)
 
 gg\_missing\_which
 ------------------
@@ -367,7 +345,7 @@ This shows whether a given variable contains a missing variable. In this case gr
 gg_missing_which(airquality)
 ```
 
-![](README-unnamed-chunk-13-1.png)
+![](README-unnamed-chunk-5-1.png)
 
 Future Work
 ===========

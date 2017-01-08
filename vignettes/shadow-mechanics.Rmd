@@ -1,5 +1,5 @@
 ---
-title: "Mechanics of shadow_shift in ggplot2"
+title: "Mechanics of shadow_shift in naniar"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -15,10 +15,9 @@ knitr::opts_chunk$set(message = F)
 
 ```
 
-This vignette describes the mechanics behind shadow_shift, and steps you through how the functions work. It is not intended to be a user guide on how to use naniar - for that please read the [README on GitHub](https://github.com/njtierney/naniar).
+This vignette describes the mechanics behind `shadow_shift`, and steps you through how the functions work. It is not intended to be a user guide on how to use naniar - for that please read the [README on GitHub](https://github.com/njtierney/naniar). Instead, it serves to document my initial process for creating the functions
 
-
-We first create some data using the wakefield package
+We first create some data using the `wakefield` package
 
 ```{r}
 library(dplyr)
@@ -54,7 +53,7 @@ ggplot(data = df,
 
 ```
 
-One idea is to plot the missing data as 10% below the minimum value for that variable.
+The missing values are ommitted. This isn't great. One idea is to plot the missing data as 10% below the minimum value for that variable.
 
 ```{r}
 

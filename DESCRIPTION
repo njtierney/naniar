@@ -35,6 +35,8 @@ Imports:
     magrittr,
     stats,
     visdat
+Remotes:
+    njtierney/visdat
 RoxygenNote: 5.0.1
 Collate:
     'add_cols.R'

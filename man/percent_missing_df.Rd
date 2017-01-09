@@ -4,8 +4,14 @@
 \alias{percent_missing_df}
 \title{Percentage of missing data in a dataframe}
 \usage{
-percent_missing_df(data)
+percent_missing_df(...)
+}
+\arguments{
+\item{...}{so that users can still receive meaningful error}
 }
 \description{
-Percentage of missing data in a dataframe
+Deprecated as of version 0.0.6.9000. Please use miss_df_pct instead.
+}
+\seealso{
+miss_df_pct
 }

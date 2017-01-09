@@ -60,7 +60,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/njtierney/naniar">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -76,44 +81,30 @@
     </div>
 
     
-    <p>Provide a data_frame containing the variable names, the number of missing values, in each variable, and the percent of missing values in each variable.</p>
+    <p>Deprecated as of version 0.0.6.9000. Please use miss_var_summary instead.</p>
     
 
-    <pre><span class='fu'>summary_missing_var</span>(<span class='no'>data</span>)</pre>
+    <pre><span class='fu'>summary_missing_var</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>data</dt>
-      <dd>a dataframe</dd>
+      <dt>...</dt>
+      <dd>so that users can still receive meaningful error</dd>
     </dl>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>a data_frame of the percent of missing data in each variable</p>
+    <p>miss_var_summary</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>summary_missing_var</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 6 × 3
-#&gt;   variable n_missing   percent
-#&gt;      &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;
-#&gt; 1    Ozone        37 24.183007
-#&gt; 2  Solar.R         7  4.575163
-#&gt; 3     Wind         0  0.000000
-#&gt; 4     Temp         0  0.000000
-#&gt; 5    Month         0  0.000000
-#&gt; 6      Day         0  0.000000</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>

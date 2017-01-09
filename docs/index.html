@@ -229,17 +229,17 @@ gridExtra::<span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol =<
 <p><code>naniar</code> provides numerical summaries of missing data. For variables, cases, and dataframes there are the function families <code>miss_var_*</code>, <code>miss_case_*</code>, and <code>miss_df_*</code>. To find the percent missng variables, cases, and dataframes:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="co"># Proportion of variables that contain any missing values</span>
-<span class="kw"><a href="reference/percent_missing_var.html">miss_var_pct</a></span>(airquality)
+<span class="kw"><a href="reference/miss_var_pct.html">miss_var_pct</a></span>(airquality)
 <span class="co">#&gt; [1] 33.33333</span>
  <span class="co"># Proportion of cases that contain any missing values</span>
-<span class="kw"><a href="reference/percent_missing_case.html">miss_case_pct</a></span>(airquality)
+<span class="kw"><a href="reference/miss_case_pct.html">miss_case_pct</a></span>(airquality)
 <span class="co">#&gt; [1] 27.45098</span>
 <span class="co"># Proportion elements in dataset that contains missing values</span>
 <span class="kw"><a href="reference/miss_df_pct.html">miss_df_pct</a></span>(airquality)
 <span class="co">#&gt; [1] 4.793028</span></code></pre></div>
 <p>We can also look at the number and percent of missings in each case and variable with <code>miss_var_summary</code>, and <code>miss_case_summary</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/summary_missing_var.html">miss_var_summary</a></span>(airquality)
+<span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)
 <span class="co">#&gt; # A tibble: 6 × 3</span>
 <span class="co">#&gt;   variable n_missing   percent</span>
 <span class="co">#&gt;      &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;</span>
@@ -249,7 +249,7 @@ gridExtra::<span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol =<
 <span class="co">#&gt; 4     Temp         0  0.000000</span>
 <span class="co">#&gt; 5    Month         0  0.000000</span>
 <span class="co">#&gt; 6      Day         0  0.000000</span>
-<span class="kw"><a href="reference/summary_missing_case.html">miss_case_summary</a></span>(airquality)
+<span class="kw"><a href="reference/miss_case_summary.html">miss_case_summary</a></span>(airquality)
 <span class="co">#&gt; # A tibble: 153 × 3</span>
 <span class="co">#&gt;     case n_missing  percent</span>
 <span class="co">#&gt;    &lt;int&gt;     &lt;int&gt;    &lt;dbl&gt;</span>
@@ -266,14 +266,14 @@ gridExtra::<span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol =<
 <span class="co">#&gt; # ... with 143 more rows</span></code></pre></div>
 <p>Tabulations of the number of missings in each case or variable can be calculated with <code>miss_var_table</code> and <code>miss_case_table</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/table_missing_var.html">miss_var_table</a></span>(airquality)
+<span class="kw"><a href="reference/miss_var_table.html">miss_var_table</a></span>(airquality)
 <span class="co">#&gt; # A tibble: 3 × 3</span>
 <span class="co">#&gt;   n_missing_in_var n_vars  percent</span>
 <span class="co">#&gt;              &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1                0      4 66.66667</span>
 <span class="co">#&gt; 2                7      1 16.66667</span>
 <span class="co">#&gt; 3               37      1 16.66667</span>
-<span class="kw"><a href="reference/table_missing_case.html">miss_case_table</a></span>(airquality)
+<span class="kw"><a href="reference/miss_case_table.html">miss_case_table</a></span>(airquality)
 <span class="co">#&gt; # A tibble: 3 × 3</span>
 <span class="co">#&gt;   n_missing_in_case n_cases  percent</span>
 <span class="co">#&gt;               &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;</span>
@@ -282,7 +282,7 @@ gridExtra::<span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol =<
 <span class="co">#&gt; 3                 2       2  1.30719</span></code></pre></div>
 <p>All functions can be called at once using <code>miss_summary</code>, which takes a data.frame and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-s_miss &lt;-<span class="st"> </span><span class="kw"><a href="reference/summarise_missingness.html">miss_summary</a></span>(airquality)
+s_miss &lt;-<span class="st"> </span><span class="kw"><a href="reference/miss_summary.html">miss_summary</a></span>(airquality)
 
 s_miss
 <span class="co">#&gt; # A tibble: 1 × 7</span>

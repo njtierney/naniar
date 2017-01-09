@@ -60,7 +60,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/njtierney/naniar">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -76,43 +81,30 @@
     </div>
 
     
-    <p><code>summarise_missingness</code> performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?</p>
+    <p>Deprecated as of version 0.0.6.9000. Please use miss_summary instead.</p>
     
 
-    <pre><span class='fu'>summarise_missingness</span>(<span class='no'>data</span>)</pre>
+    <pre><span class='fu'>summarise_missingness</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>data</dt>
-      <dd>a dataframe</dd>
+      <dt>...</dt>
+      <dd>so that users can still receive meaningful error</dd>
     </dl>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>a dataframe</p>
+    <p>miss_summary</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='no'>s_miss</span> <span class='kw'>&lt;-</span> <span class='fu'>summarise_missingness</span>(<span class='no'>airquality</span>)
-<span class='no'>s_miss</span>$<span class='no'>percent_missing_df</span></div><div class='output co'>#&gt; [1] 4.793028</div><div class='input'><span class='no'>s_miss</span>$<span class='no'>table_missing_case</span></div><div class='output co'>#&gt; [[1]]
-#&gt; # A tibble: 3 × 3
-#&gt;   n_missing_in_case n_cases  percent
-#&gt;               &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;
-#&gt; 1                 0     111 72.54902
-#&gt; 2                 1      40 26.14379
-#&gt; 3                 2       2  1.30719
-#&gt; </div><div class='input'><span class='co'># etc, etc, etc.</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>

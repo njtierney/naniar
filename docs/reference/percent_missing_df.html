@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tidy methods for displaying missing data — percent_missing_df • naniar</title>
+<title>Percentage of missing data in a dataframe — percent_missing_df • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -60,7 +60,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/njtierney/naniar">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -72,48 +77,34 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tidy methods for displaying missing data</h1>
+    <h1>Percentage of missing data in a dataframe</h1>
     </div>
 
     
-    <p>These methods prove tidy summaries of missing data information. The <code>percent_missing_df</code>, <code>percent_missing_var</code>, and <code>percent_missing_case</code> functions provide numeric summaries, for the percent of missing data for the data (<code>percent_missing_df</code>), the percent of variables that contain missing values (<code>percent_missing_var</code>), the percent of cases that contain mising values (<code>percent_missing_case</code>). <code>any_na</code> finds whether a vector contains a missing value. <code>table_missing_var</code> provides a data_frame of the number of variables with 0, 1, 2, up to n, missing values and the percent of that variable that is missing; <code>table_missing_case</code> provides a tidy table of the number of cases with 0, 1, 2, up to n, missing values, and the percent of the number of cases that are missing; <code>summary_missing_var</code> a data_frame of the percent of missing data in each variable; <code>summary_missing_case</code> provides the ratio of observations that have missings, and the number of cases that have at 0, 1, up to n, missing values&#39; <code>summarise_missingness</code> returns a data_frame with the <code>percent_missing</code> as numeric, and table_missing_ and summary_missing_ and friends as lists, where each is a data_frame
-Percentage of missing data in a dataframe</p>
+    <p>Deprecated as of version 0.0.6.9000. Please use miss_df_pct instead.</p>
     
 
-    <pre><span class='fu'>percent_missing_df</span>(<span class='no'>data</span>)</pre>
+    <pre><span class='fu'>percent_missing_df</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>data</dt>
-      <dd>a dataframe</dd>
+      <dt>...</dt>
+      <dd>so that users can still receive meaningful error</dd>
     </dl>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>numeric the percent of missing data in a dataframe</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Calculate the percent (<!-- %) of missing data in a dataframe. --></p>
+    <p>miss_df_pct</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>library</span>(<span class='no'>naniar</span>)
-<span class='fu'>percent_missing_df</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; [1] 4.793028</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>

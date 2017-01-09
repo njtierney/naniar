@@ -60,7 +60,7 @@
       <h1>Building on ggplot2 for exploration of missing values</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2017-01-08</h4>
+            <h4 class="date">2017-01-10</h4>
           </div>
 
     
@@ -152,13 +152,13 @@ gridExtra::<span class="kw">grid.arrange</span>(p1,p2,<span class="dt">ncol=</sp
 <span class="kw"><a href="../reference/miss_df_pct.html">miss_df_pct</a></span>(airquality)</code></pre></div>
 <pre><code>## [1] 4.793028</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Proportion of variables that contain any missing values</span>
-<span class="kw"><a href="../reference/percent_missing_var.html">miss_var_pct</a></span>(airquality)</code></pre></div>
+<span class="kw"><a href="../reference/miss_var_pct.html">miss_var_pct</a></span>(airquality)</code></pre></div>
 <pre><code>## [1] 33.33333</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="co"># Proportion of cases that contain any missing values</span>
-<span class="kw"><a href="../reference/percent_missing_case.html">miss_case_pct</a></span>(airquality)</code></pre></div>
+<span class="kw"><a href="../reference/miss_case_pct.html">miss_case_pct</a></span>(airquality)</code></pre></div>
 <pre><code>## [1] 27.45098</code></pre>
 <p>We can also look at the number and percent of missings in each case and variable with <code>summary_missing_case</code>, and <code>summary_missing_var</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/summary_missing_case.html">miss_case_summary</a></span>(airquality)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_case_summary.html">miss_case_summary</a></span>(airquality)</code></pre></div>
 <pre><code>## # A tibble: 153 × 3
 ##     case n_missing  percent
 ##    &lt;int&gt;     &lt;int&gt;    &lt;dbl&gt;
@@ -173,7 +173,7 @@ gridExtra::<span class="kw">grid.arrange</span>(p1,p2,<span class="dt">ncol=</sp
 ## 9      9         0  0.00000
 ## 10    10         1 16.66667
 ## # ... with 143 more rows</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/summary_missing_var.html">miss_var_summary</a></span>(airquality)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)</code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   variable n_missing   percent
 ##      &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;
@@ -184,14 +184,14 @@ gridExtra::<span class="kw">grid.arrange</span>(p1,p2,<span class="dt">ncol=</sp
 ## 5    Month         0  0.000000
 ## 6      Day         0  0.000000</code></pre>
 <p>Tabulations of the number of missings in each case or variable can be calculated with <code>table_missing_case</code> and <code>table_missing_var</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/table_missing_case.html">miss_case_table</a></span>(airquality)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_case_table.html">miss_case_table</a></span>(airquality)</code></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ##   n_missing_in_case n_cases  percent
 ##               &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;
 ## 1                 0     111 72.54902
 ## 2                 1      40 26.14379
 ## 3                 2       2  1.30719</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/table_missing_var.html">miss_var_table</a></span>(airquality)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_var_table.html">miss_var_table</a></span>(airquality)</code></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ##   n_missing_in_var n_vars  percent
 ##              &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;

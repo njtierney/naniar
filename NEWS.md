@@ -1,3 +1,18 @@
+# naniar 0.0.6.9000
+
+## Defunct functions
+
+* As stated in 0.0.5.9000, to address [Issue #38](https://github.com/njtierney/naniar/issues/38), I am moving towards the format miss_type_value/fun, because it makes more sense to me when tabbing through functions.
+
+The left hand side functions have been made defunct in favour of the right hand side.
+    - `percent_missing_case()`  --> `miss_case_pct()`
+    - `percent_missing_var()`   --> `miss_var_pct()`
+    - `percent_missing_df()`    --> `miss_df_pct()`
+    - `summary_missing_case()`  --> `miss_case_summary()`
+    - `summary_missing_var()`   --> `miss_var_summary()`
+    - `table_missing_case()`   --> `miss_case_table()`
+    - `table_missing_var()`    --> `miss_var_table()`
+
 # naniar 0.0.5.9000 (2016/01/08)
 
 ## Deprecated functions
@@ -20,7 +35,7 @@ Thus, I have renamed the following functions:
     - `table_missing_case()`   --> `miss_case_table()`
     - `table_missing_var()`    --> `miss_var_table()`
 
-These will be made defunct in the next release, 0.0.6.9000 ("The Bell and The Hammer"). 
+These will be made defunct in the next release, 0.0.6.9000 ("The Wood Between Worlds"). 
 
 # naniar 0.0.4.9000 (2016/12/31)
 

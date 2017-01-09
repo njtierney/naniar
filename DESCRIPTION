@@ -25,7 +25,8 @@ Suggests:
     covr,
     gridExtra,
     wakefield,
-    vdiffr
+    vdiffr,
+    here
 VignetteBuilder: knitr
 Imports:
     dplyr,
@@ -38,6 +39,7 @@ Imports:
     visdat
 Remotes:
     njtierney/visdat
+    krlmlr/here
 RoxygenNote: 5.0.1.9000
 Collate:
     'add_cols.R'

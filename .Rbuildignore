@@ -9,3 +9,4 @@
 ^docs$
 ^_pkgdown\.yml$
 ^missingness-data-structures\.png$
+^README-figs$

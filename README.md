@@ -46,7 +46,7 @@ Data structures for missing data
 
 Representing missing data structure is achieved using the shadow matrix, introduced in [Swayne and Buja](https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization). The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as "NA", and not missing is represented as "!NA". Although these may be represented as 1 and 0, respectively. This representation can be seen in the figure below, adding the suffix "\_NA" to the variables. This structure can also be extended to allow for additional factor levels to be created. For example 0 indicates data presence, 1 indicates missing values, 2 indicates imputed value, and 3 might indicate a particular type or class of missingness, where reasons for missingness might be known or inferred. The data matrix can also be augmented to include the shadow matrix, which facilitates visualisation of univariate and bivariate missing data visualisations. Another format is to display it in long form, which facilitates heatmap style visualisations. This approach can be very helpful for giving an overview of which variables contain the most missingness. Methods can also be applied to rearrange rows and columns to find clusters, and identify other interesting features of the data that may have previously been hidden or unclear.
 
-<img src="missingness-data-structures.png" width="400px" />
+<img src="/Users/tierneyn/Google Drive/ALL THE THINGS/PhD/code/R/naniar/missingness-data-structures.png" width="800px" />
 
 **Illustration of data structures for facilitating visualisation of missings and not missings**
 
@@ -66,7 +66,7 @@ ggplot(data = airquality,
 #> Warning: Removed 42 rows containing missing values (geom_point).
 ```
 
-![](README-regular-geom-point-1.png)
+![](README-figs/README-regular-geom-point-1.png)
 
 ggplot2 does not handle these missing values, and we get a warning message about the missing values.
 
@@ -82,7 +82,7 @@ ggplot(data = airquality,
   geom_missing_point()
 ```
 
-![](README-geom-missing-point-1.png)
+![](README-figs/README-geom-missing-point-1.png)
 
 `geom_missing_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive.
 
@@ -96,7 +96,7 @@ ggplot(data = airquality,
   geom_missing_point(alpha = 0.5)
 ```
 
-![](README-geom-missing-point-alpha-1.png)
+![](README-figs/README-geom-missing-point-alpha-1.png)
 
 Thanks to Luke Smith for making this pull request.
 
@@ -117,7 +117,7 @@ ggplot(data = airquality,
 p1
 ```
 
-![](README-facet-by-month-1.png)
+![](README-figs/README-facet-by-month-1.png)
 
 And then change the theme, just like you do with any other ggplot graphic
 
@@ -126,7 +126,7 @@ And then change the theme, just like you do with any other ggplot graphic
 p1 + theme_bw()  
 ```
 
-![](README-facet-add-theme-1.png)
+![](README-figs/README-facet-add-theme-1.png)
 
 You can also look at the proportion of missings in each variable with gg\_missing\_var:
 
@@ -135,7 +135,7 @@ You can also look at the proportion of missings in each variable with gg\_missin
 gg_missing_var(airquality)
 ```
 
-![](README-gg-missing-var-1.png)
+![](README-figs/README-gg-missing-var-1.png)
 
 You can also explore the whole dataset of missings using the `vis_miss` function, which is exported from the [`visdat`](github.com/njtierney/visdat) package.
 
@@ -144,7 +144,7 @@ You can also explore the whole dataset of missings using the `vis_miss` function
 vis_miss(airquality)
 ```
 
-![](README-viss-miss-1.png)
+![](README-figs/README-viss-miss-1.png)
 
 Another approach can be to use **Univariate plots split by missingness**. We can do this using the `bind_shadow` argument to place the data and shadow side by side. This allows for us to examine univariate distributions according to the presence or absence of another variable.
 
@@ -191,7 +191,7 @@ gridExtra::grid.arrange(p1, p2, ncol = 2)
 #> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](README-bind-shadow-density-1.png)
+![](README-figs/README-bind-shadow-density-1.png)
 
 Numerical summaries for missing data
 ====================================
@@ -323,7 +323,7 @@ gg\_missing\_var
 gg_missing_var(airquality)
 ```
 
-![](README-unnamed-chunk-3-1.png)
+![](README-figs/README-unnamed-chunk-3-1.png)
 
 gg\_missing\_case
 -----------------
@@ -333,7 +333,7 @@ gg\_missing\_case
 gg_missing_case(airquality)
 ```
 
-![](README-unnamed-chunk-4-1.png)
+![](README-figs/README-unnamed-chunk-4-1.png)
 
 gg\_missing\_which
 ------------------
@@ -345,7 +345,7 @@ This shows whether a given variable contains a missing variable. In this case gr
 gg_missing_which(airquality)
 ```
 
-![](README-unnamed-chunk-5-1.png)
+![](README-figs/README-unnamed-chunk-5-1.png)
 
 Future Work
 ===========

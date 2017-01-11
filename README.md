@@ -5,7 +5,9 @@ naniar
 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar) [![Travis-CI Build Status](https://travis-ci.org/njtierney/naniar.svg?branch=master)](https://travis-ci.org/njtierney/naniar) [![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://codecov.io/github/njtierney/naniar?branch=master)
 
-`naniar` aims to make it easy to summarise, visualise, and manipulate missing data. Currently it provides:
+`naniar` aims to make it easy to summarise, visualise, and manipulate missing data in a tidy fashion.
+
+Currently it provides:
 
 -   Data structures for missing data
     -   `as_shadow`
@@ -29,7 +31,7 @@ naniar
     -   `miss_df_*`
         -   `pct`
 
-For a more formal description, you can read the vignette "building on ggplot2 for exploration of missing values".
+For a more formal description, you can read the vignette ["building on ggplot2 for exploration of missing values"](http://www.njtierney.com/naniar/articles/missingness-building-on-ggplot2.html).
 
 **Why `naniar`?**
 

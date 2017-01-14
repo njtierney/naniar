@@ -10,26 +10,23 @@ naniar
 Currently it provides:
 
 -   Data structures for missing data
-    -   `as_shadow`
-    -   `bind_shadow`
-    -   `gather_shadow`
-    -   `is_na`
+    -   `as_shadow()`
+    -   `bind_shadow()`
+    -   `gather_shadow()`
+    -   `is_na()`
 -   Visualisation methods:
-    -   `geom_missing_point`
-    -   `gg_missing_var`
+    -   `geom_missing_point()`
+    -   `gg_missing_var()`
 -   Numerical summaries:
-    -   `n_miss`
-    -   `n_complete`
-    -   `miss_case_*`
-        -   `pct`
-        -   `summary`
-        -   `table`
-    -   `miss_var_*`
-        -   `pct`
-        -   `summary`
-        -   `table`
-    -   `miss_df_*`
-        -   `pct`
+    -   `n_miss()`
+    -   `n_complete()`
+    -   `miss_case_pct()`
+    -   `miss_case_summary()`
+    -   `miss_case_table()`
+    -   `miss_var_pct()`
+    -   `miss_var_summary()`
+    -   `miss_var_table()`
+    -   `miss_df_pct()`
 
 For a more formal description, you can read the vignette ["building on ggplot2 for exploration of missing values"](http://www.njtierney.com/naniar/articles/missingness-building-on-ggplot2.html).
 
@@ -39,7 +36,7 @@ For a more formal description, you can read the vignette ["building on ggplot2 f
 
 > ...But *why* `naniar`?
 
-Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like Narnia - a different world, hidden away. Close, but very different. So the name, "naniar", is a play on the "Narnia" books. e.g., naniar: The Last Battle (...with missing data). Also, `NA`niar, naniar = na in r, and if you so desire, naniar may sound like "noneoya" in an nz/aussie accent.
+Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like Narnia - a different world, hidden away. Close, but very different. So the name, "naniar", is a play on the "Narnia" books. e.g., naniar: The Last Battle (...with missing data). Also, `NA`niar, naniar = na in r, and if you so desire, naniar may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
@@ -148,7 +145,7 @@ vis_miss(airquality)
 
 ![](README-figs/README-viss-miss-1.png)
 
-Another approach can be to use **Univariate plots split by missingness**. We can do this using the `bind_shadow` argument to place the data and shadow side by side. This allows for us to examine univariate distributions according to the presence or absence of another variable.
+Another approach can be to use **Univariate plots split by missingness**. We can do this using the `bind_shadow()` argument to place the data and shadow side by side. This allows for us to examine univariate distributions according to the presence or absence of another variable.
 
 ``` r
 
@@ -213,7 +210,7 @@ miss_df_pct(airquality)
 #> [1] 4.793028
 ```
 
-We can also look at the number and percent of missings in each case and variable with `miss_var_summary`, and `miss_case_summary`.
+We can also look at the number and percent of missings in each case and variable with `miss_var_summary()`, and `miss_case_summary()`.
 
 ``` r
 
@@ -244,7 +241,7 @@ miss_case_summary(airquality)
 #> # ... with 143 more rows
 ```
 
-Tabulations of the number of missings in each case or variable can be calculated with `miss_var_table` and `miss_case_table`.
+Tabulations of the number of missings in each case or variable can be calculated with `miss_var_table()` and `miss_case_table()`.
 
 ``` r
 
@@ -264,7 +261,7 @@ miss_case_table(airquality)
 #> 3                 2       2  1.30719
 ```
 
-All functions can be called at once using `miss_summary`, which takes a data.frame and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases.
+All functions can be called at once using `miss_summary()`, which takes a data.frame and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases.
 
 ``` r
 
@@ -352,9 +349,9 @@ gg_missing_which(airquality)
 Future Work
 ===========
 
-`naniar` will be undergoing more changes over the next 6 months, with plans to have the package in CRAN around the end of 2016.
+`naniar` will be undergoing more changes over the next 6 months. The current plan is to submit it for rOpenSci onboarding by the end of January, and then to submit it to CRAN after that.
 
-Other plans to extend the `geom_missing` family to include:
+Other plans to extend the `geom_missing_` family to include:
 
 -   1D, univariate distribution plots
 -   Categorical variables
@@ -364,4 +361,4 @@ Other plans to extend the `geom_missing` family to include:
 Acknowledgements
 ----------------
 
-Naming credit (once again!) goes to @MilesMcBain, and to @hadley for the rearranged spelling. Also thank you to @dicook for her and @hadley for putting up with my various questions and concerns, mainly around the name.
+Naming credit (once again!) goes to @MilesMcBain, and to @hadley for the rearranged spelling. Also thank you to @dicook and @hadley for putting up with my various questions and concerns, mainly around the name.

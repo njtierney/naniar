@@ -172,7 +172,7 @@ gather_shadow <- function(data){
 #
 #   df_val_type <- df %>%
 #     tibble::as_tibble() %>%
-#     purrr::dmap(visdat:::fingerprint) %>%
+#     purrr::map_df(visdat:::fingerprint) %>%
 #     dplyr::mutate(rows = 1:nrow(df)) %>%
 #     tidyr::gather_(key_col = "variable",
 #                    value_col = "valueType",

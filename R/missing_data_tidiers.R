@@ -215,7 +215,7 @@ miss_var_summary <- function(data){
       stop("Input must not be NULL", call. = FALSE)
       # test for dataframe
     } else if(inherits(data, "data.frame")){
-    purrr::dmap(data,
+    purrr::map_df(data,
                 # how many are missing in each variable?
                 function(x) sum(is.na(x))) %>%
       tidyr::gather(key = "variable",
@@ -245,6 +245,7 @@ miss_case_summary <- function(data){
     stop("Input must not be NULL", call. = FALSE)
     # test for dataframe
   } else if(inherits(data, "data.frame")){
+
   purrr::by_row(.d = data,
                 ..f = function(x) (mean(is.na(x)) * 100),
                 .collate = "row",

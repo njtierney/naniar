@@ -45,7 +45,7 @@ Data structures for missing data
 
 Representing missing data structure is achieved using the shadow matrix, introduced in [Swayne and Buja](https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization). The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as "NA", and not missing is represented as "!NA". Although these may be represented as 1 and 0, respectively. This representation can be seen in the figure below, adding the suffix "\_NA" to the variables. This structure can also be extended to allow for additional factor levels to be created. For example 0 indicates data presence, 1 indicates missing values, 2 indicates imputed value, and 3 might indicate a particular type or class of missingness, where reasons for missingness might be known or inferred. The data matrix can also be augmented to include the shadow matrix, which facilitates visualisation of univariate and bivariate missing data visualisations. Another format is to display it in long form, which facilitates heatmap style visualisations. This approach can be very helpful for giving an overview of which variables contain the most missingness. Methods can also be applied to rearrange rows and columns to find clusters, and identify other interesting features of the data that may have previously been hidden or unclear.
 
-<img src="/Users/tierneyn/Google Drive/ALL THE THINGS/PhD/code/R/naniar/missingness-data-structures.png" width="800px" />
+<img src="missingness-data-structures.png" width="800px" />
 
 **Illustration of data structures for facilitating visualisation of missings and not missings**
 
@@ -132,6 +132,8 @@ You can also look at the proportion of missings in each variable with gg\_missin
 ``` r
 
 gg_missing_var(airquality)
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
 ```
 
 ![](README-figs/README-gg-missing-var-1.png)
@@ -215,6 +217,8 @@ We can also look at the number and percent of missings in each case and variable
 ``` r
 
 miss_var_summary(airquality)
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
 #> # A tibble: 6 × 3
 #>   variable n_missing   percent
 #>      <chr>     <int>     <dbl>
@@ -225,6 +229,10 @@ miss_var_summary(airquality)
 #> 5    Month         0  0.000000
 #> 6      Day         0  0.000000
 miss_case_summary(airquality)
+#> `by_row()` is deprecated; please use a combination of:
+#> tidyr::nest(); dplyr::mutate(); purrr::map()
+#> `by_row()` is deprecated; please use a combination of:
+#> tidyr::nest(); dplyr::mutate(); purrr::map()
 #> # A tibble: 153 × 3
 #>     case n_missing  percent
 #>    <int>     <int>    <dbl>
@@ -253,6 +261,8 @@ miss_var_table(airquality)
 #> 2                7      1 16.66667
 #> 3               37      1 16.66667
 miss_case_table(airquality)
+#> `by_row()` is deprecated; please use a combination of:
+#> tidyr::nest(); dplyr::mutate(); purrr::map()
 #> # A tibble: 3 × 3
 #>   n_missing_in_case n_cases  percent
 #>               <int>   <int>    <dbl>
@@ -266,6 +276,14 @@ All functions can be called at once using `miss_summary()`, which takes a data.f
 ``` r
 
 s_miss <- miss_summary(airquality)
+#> `by_row()` is deprecated; please use a combination of:
+#> tidyr::nest(); dplyr::mutate(); purrr::map()
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
+#> `by_row()` is deprecated; please use a combination of:
+#> tidyr::nest(); dplyr::mutate(); purrr::map()
+#> `by_row()` is deprecated; please use a combination of:
+#> tidyr::nest(); dplyr::mutate(); purrr::map()
 
 s_miss
 #> # A tibble: 1 × 7
@@ -320,6 +338,8 @@ gg\_missing\_var
 ``` r
 
 gg_missing_var(airquality)
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
 ```
 
 ![](README-figs/README-unnamed-chunk-3-1.png)
@@ -330,6 +350,10 @@ gg\_missing\_case
 ``` r
 
 gg_missing_case(airquality)
+#> `by_row()` is deprecated; please use a combination of:
+#> tidyr::nest(); dplyr::mutate(); purrr::map()
+#> `by_row()` is deprecated; please use a combination of:
+#> tidyr::nest(); dplyr::mutate(); purrr::map()
 ```
 
 ![](README-figs/README-unnamed-chunk-4-1.png)
@@ -342,6 +366,10 @@ This shows whether a given variable contains a missing variable. In this case gr
 ``` r
 
 gg_missing_which(airquality)
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
+#> dmap() is deprecated. Please use the new colwise family in dplyr.
+#> E.g., summarise_all(), mutate_all(), etc.
 ```
 
 ![](README-figs/README-unnamed-chunk-5-1.png)

@@ -39,7 +39,7 @@ Imports:
     visdat
 Remotes:
     njtierney/visdat
-RoxygenNote: 5.0.1.9000
+RoxygenNote: 6.0.1.9000
 Collate: 
     'add_cols.R'
     'data.R'

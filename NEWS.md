@@ -1,3 +1,7 @@
+# naniar 0.0.6.9100 (2017/03/21)
+
+* Added `prop_miss` and the complement `prop_complete`. Where `n_miss` returns the number of missing values, `prop_miss` returns the proportion of missing values. Likewise, `prop_complete` returns the proportion of complete values. 
+
 # naniar 0.0.6.9000
 
 ## Defunct functions

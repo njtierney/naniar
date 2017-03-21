@@ -40,6 +40,46 @@ n_complete <- function(x){
   length(is.na(x)) - n_miss(x)
 
 }
+#' Return the proportion of missing values
+#'
+#' substitute for \code{mean(is.na(data))}
+#'
+#' @param x a vector
+#'
+#' @return numeric the proportion of missing values
+#'
+#' @export
+#'
+#' @examples
+#'
+#' prop_miss(airquality)
+#' prop_miss(airquality$Ozone)
+#'
+prop_miss <- function(x){
+  mean(is.na(x))
+}
+
+#' Return the proportion of complete values
+#'
+#' The complement to \code{prop_miss}
+#'
+#' @param x a vector
+#'
+#' @return numeric proprtion of complete values
+#'
+#' @export
+#'
+#' @examples
+#'
+#' prop_complete(airquality)
+#' prop_complete(airquality$Ozone)
+#'
+prop_complete <- function(x){
+
+  # 1 - proportion of missings
+  1 - mean(is.na(x))
+
+}
 
 #' Give NAs a more meaningful label
 #'

@@ -13,7 +13,8 @@ knitr::opts_chunk$set(
 ```
 
 # narnia
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/narnia?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/narnia) [![Travis-CI Build Status](https://travis-ci.org/njtierney/narnia.svg?branch=master)](https://travis-ci.org/njtierney/narnia)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/narnia?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/narnia)
+[![Travis-CI Build Status](https://travis-ci.org/njtierney/narnia.svg?branch=master)](https://travis-ci.org/njtierney/narnia)
 [![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/narnia/master.svg)](https://codecov.io/github/njtierney/narnia?branch=master)
 
 `narnia` aims to make it easy to summarise, visualise, and manipulate missing data in a tidy fashion. 

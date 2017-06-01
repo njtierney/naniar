@@ -26,7 +26,8 @@ Suggests:
     gridExtra,
     wakefield,
     vdiffr,
-    here
+    here,
+    simputation
 VignetteBuilder: knitr
 Imports:
     dplyr,

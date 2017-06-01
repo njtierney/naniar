@@ -15,7 +15,7 @@
 #'
 add_n_miss <- function(data){
 
-  purrr::by_row(.d = data,
+  purrrlyr::by_row(.d = data,
                 ..f = function(x) n_miss(x),
                 .collate = "row",
                 .to = "n_miss")
@@ -58,7 +58,7 @@ add_n_miss <- function(data){
 
 add_prop_miss <- function(data){
 
-  purrr::by_row(.d = data,
+  purrrlyr::by_row(.d = data,
                 ..f = function(x) (mean(is.na(x))),
                 .collate = "row",
                 .to = "prop_miss")

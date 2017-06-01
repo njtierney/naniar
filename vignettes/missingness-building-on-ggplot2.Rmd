@@ -30,7 +30,7 @@ There are a two approaches to analysis of data with missing values, deletion and
 
 Software focussing on missing data typically focus on imputation or visualisation. Packages such as mice, mi, norm, and Amelia provide functions to facilitate imputation, and use a wide range of methods, from mean or median imputation, to regression or machine learning, to Bayesian methodologies, as well as providing diagnostics on the imputations themselves (mice; mi; norm; Amelia).
 
-Missing data visualisation packages include the R package VIM, and the stand alone software MANET, ggobi, MissingDataGUI, and to a more limited extent, ggplot2 (Cheng,2015; Unwin,1996; Swayne,2003; vim; Wickham,2009).  MANET (Missings Are Now Equally Treated), provides univariate visualisations of missing data using linked brushing between a reference plot of the missingness for each variable, and a plot of the data as a histogram or barplot. ggobi extends the univariate linked brushing of MANET to multivariate, using parallel co-ordinate plots. ggobi also provided incorporated missingness into scatterplots, displaying missing values from one variable as 10% below the minimum value on the other axis. MissingDataGUI provides a user interface for exploring missing data structure both numerically and visually. Using a GUI to explore missing data makes it easier to glean valuable insights into important structures, but may then make it hard to incorporate these unscripted insights into reproducible analyses, and may also distract and break the workflow from statistical analysis.
+Missing data visualisation packages include the R package VIM, and the stand alone software MANET, ggobi, MissingDataGUI, and to a more limited extent, ggplot2 (Cheng,2015; Unwin,1996; Swayne,2003; vim; Wickham,2009).  MANET (Missings Are Now Equally Treated), provides univariate visualisations of missing data using linked brushing between a reference plot of the missingness for each variable, and a plot of the data as a histogram or barplot. ggobi extends the univariate linked brushing of MANET to multivariate, using parallel co-ordinate plots. ggobi also incorporated missingness into scatterplots, displaying missing values from one variable as 10% below the minimum value on the other axis. MissingDataGUI provides a user interface for exploring missing data structure both numerically and visually. Using a GUI to explore missing data makes it easier to glean valuable insights into important structures, but may then make it hard to incorporate these unscripted insights into reproducible analyses, and may also distract and break the workflow from statistical analysis.
 
 VIM (Visualising and Imputing Missing Data) is an R package that provides methods for both imputation and visualisation of missing data. In particular it provides visualisations that identify observed, imputed, and missing values. VIM also identifies imputed cases by adding a suffix to a variable, so Var1 would have a sibling indicator column, Var1_imp, where each case is TRUE or FALSE to indicate imputation. Although VIM provides R functions to visualise and impute missing data, it's syntax for data manipulation and visualisation is difficult to extend, and does not follow tidy data principles. ggplot2 currently only provides visualisation of missing values for categories treating categories as NA values. For all other plots, ggplot2 prints a warning message of the number of missing values omitted.
 
@@ -135,7 +135,7 @@ miss_case_pct(airquality)
 
 ```
 
-We can also look at the number and percent of missings in each case and variable with `summary_missing_case`, and `summary_missing_var`.
+We can also look at the number and percent of missings in each case and variable with `miss_case_summary`, and `miss_var_summary`.
 
 ```{r miss-var-case-summary}
 
@@ -144,7 +144,7 @@ miss_var_summary(airquality)
 
 ```
 
-Tabulations of the number of missings in each case or variable can be calculated with `table_missing_case` and `table_missing_var`. 
+Tabulations of the number of missings in each case or variable can be calculated with `miss_case_table` and `miss_var_table`. 
 
 ```{r miss-var-case-table}
 

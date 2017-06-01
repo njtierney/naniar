@@ -132,8 +132,6 @@ You can also look at the proportion of missings in each variable with gg\_missin
 ``` r
 
 gg_missing_var(airquality)
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
 ```
 
 ![](README-figs/README-gg-missing-var-1.png)
@@ -154,18 +152,18 @@ Another approach can be to use **Univariate plots split by missingness**. We can
 aq_shadow <- bind_shadow(airquality)
 
 aq_shadow
-#> # A tibble: 153 × 12
+#> # A tibble: 153 x 12
 #>    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA Solar.R_NA Wind_NA
 #>    <int>   <int> <dbl> <int> <int> <int>   <fctr>     <fctr>  <fctr>
-#> 1     41     190   7.4    67     5     1      !NA        !NA     !NA
-#> 2     36     118   8.0    72     5     2      !NA        !NA     !NA
-#> 3     12     149  12.6    74     5     3      !NA        !NA     !NA
-#> 4     18     313  11.5    62     5     4      !NA        !NA     !NA
-#> 5     NA      NA  14.3    56     5     5       NA         NA     !NA
-#> 6     28      NA  14.9    66     5     6      !NA         NA     !NA
-#> 7     23     299   8.6    65     5     7      !NA        !NA     !NA
-#> 8     19      99  13.8    59     5     8      !NA        !NA     !NA
-#> 9      8      19  20.1    61     5     9      !NA        !NA     !NA
+#>  1    41     190   7.4    67     5     1      !NA        !NA     !NA
+#>  2    36     118   8.0    72     5     2      !NA        !NA     !NA
+#>  3    12     149  12.6    74     5     3      !NA        !NA     !NA
+#>  4    18     313  11.5    62     5     4      !NA        !NA     !NA
+#>  5    NA      NA  14.3    56     5     5       NA         NA     !NA
+#>  6    28      NA  14.9    66     5     6      !NA         NA     !NA
+#>  7    23     299   8.6    65     5     7      !NA        !NA     !NA
+#>  8    19      99  13.8    59     5     8      !NA        !NA     !NA
+#>  9     8      19  20.1    61     5     9      !NA        !NA     !NA
 #> 10    NA     194   8.6    69     5    10       NA        !NA     !NA
 #> # ... with 143 more rows, and 3 more variables: Temp_NA <fctr>,
 #> #   Month_NA <fctr>, Day_NA <fctr>
@@ -217,9 +215,7 @@ We can also look at the number and percent of missings in each case and variable
 ``` r
 
 miss_var_summary(airquality)
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
-#> # A tibble: 6 × 3
+#> # A tibble: 6 x 3
 #>   variable n_missing   percent
 #>      <chr>     <int>     <dbl>
 #> 1    Ozone        37 24.183007
@@ -229,22 +225,18 @@ miss_var_summary(airquality)
 #> 5    Month         0  0.000000
 #> 6      Day         0  0.000000
 miss_case_summary(airquality)
-#> `by_row()` is deprecated; please use a combination of:
-#> tidyr::nest(); dplyr::mutate(); purrr::map()
-#> `by_row()` is deprecated; please use a combination of:
-#> tidyr::nest(); dplyr::mutate(); purrr::map()
-#> # A tibble: 153 × 3
+#> # A tibble: 153 x 3
 #>     case n_missing  percent
 #>    <int>     <int>    <dbl>
-#> 1      1         0  0.00000
-#> 2      2         0  0.00000
-#> 3      3         0  0.00000
-#> 4      4         0  0.00000
-#> 5      5         2 33.33333
-#> 6      6         1 16.66667
-#> 7      7         0  0.00000
-#> 8      8         0  0.00000
-#> 9      9         0  0.00000
+#>  1     1         0  0.00000
+#>  2     2         0  0.00000
+#>  3     3         0  0.00000
+#>  4     4         0  0.00000
+#>  5     5         2 33.33333
+#>  6     6         1 16.66667
+#>  7     7         0  0.00000
+#>  8     8         0  0.00000
+#>  9     9         0  0.00000
 #> 10    10         1 16.66667
 #> # ... with 143 more rows
 ```
@@ -254,16 +246,14 @@ Tabulations of the number of missings in each case or variable can be calculated
 ``` r
 
 miss_var_table(airquality)
-#> # A tibble: 3 × 3
+#> # A tibble: 3 x 3
 #>   n_missing_in_var n_vars  percent
 #>              <int>  <int>    <dbl>
 #> 1                0      4 66.66667
 #> 2                7      1 16.66667
 #> 3               37      1 16.66667
 miss_case_table(airquality)
-#> `by_row()` is deprecated; please use a combination of:
-#> tidyr::nest(); dplyr::mutate(); purrr::map()
-#> # A tibble: 3 × 3
+#> # A tibble: 3 x 3
 #>   n_missing_in_case n_cases  percent
 #>               <int>   <int>    <dbl>
 #> 1                 0     111 72.54902
@@ -276,54 +266,46 @@ All functions can be called at once using `miss_summary()`, which takes a data.f
 ``` r
 
 s_miss <- miss_summary(airquality)
-#> `by_row()` is deprecated; please use a combination of:
-#> tidyr::nest(); dplyr::mutate(); purrr::map()
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
-#> `by_row()` is deprecated; please use a combination of:
-#> tidyr::nest(); dplyr::mutate(); purrr::map()
-#> `by_row()` is deprecated; please use a combination of:
-#> tidyr::nest(); dplyr::mutate(); purrr::map()
 
 s_miss
-#> # A tibble: 1 × 7
+#> # A tibble: 1 x 7
 #>   miss_df_pct miss_var_pct miss_case_pct  miss_case_table   miss_var_table
 #>         <dbl>        <dbl>         <dbl>           <list>           <list>
-#> 1    4.793028     33.33333      27.45098 <tibble [3 × 3]> <tibble [3 × 3]>
+#> 1    4.793028     33.33333      27.45098 <tibble [3 x 3]> <tibble [3 x 3]>
 #> # ... with 2 more variables: miss_var_summary <list>,
 #> #   miss_case_summary <list>
 
 # overall % missing data
 s_miss$percent_missing_df
-#> Warning: Unknown column 'percent_missing_df'
+#> Warning: Unknown or uninitialised column: 'percent_missing_df'.
 #> NULL
 
 # % of variables that contain missing data
 s_miss$percent_missing_var
-#> Warning: Unknown column 'percent_missing_var'
+#> Warning: Unknown or uninitialised column: 'percent_missing_var'.
 #> NULL
 
 # % of cases that contain missing data
 s_miss$percent_missing_case
-#> Warning: Unknown column 'percent_missing_case'
+#> Warning: Unknown or uninitialised column: 'percent_missing_case'.
 #> NULL
 
 # tabulations of missing data across cases
 s_miss$table_missing_case
-#> Warning: Unknown column 'table_missing_case'
+#> Warning: Unknown or uninitialised column: 'table_missing_case'.
 #> NULL
 
 # tabulations of missing data across variables
 s_miss$table_missing_var
-#> Warning: Unknown column 'table_missing_var'
+#> Warning: Unknown or uninitialised column: 'table_missing_var'.
 #> NULL
 
 # summary information (counts, percentrages) of missing data for variables and cases
 s_miss$summary_missing_var
-#> Warning: Unknown column 'summary_missing_var'
+#> Warning: Unknown or uninitialised column: 'summary_missing_var'.
 #> NULL
 s_miss$summary_missing_case
-#> Warning: Unknown column 'summary_missing_case'
+#> Warning: Unknown or uninitialised column: 'summary_missing_case'.
 #> NULL
 ```
 
@@ -338,8 +320,6 @@ gg\_missing\_var
 ``` r
 
 gg_missing_var(airquality)
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
 ```
 
 ![](README-figs/README-unnamed-chunk-3-1.png)
@@ -350,10 +330,6 @@ gg\_missing\_case
 ``` r
 
 gg_missing_case(airquality)
-#> `by_row()` is deprecated; please use a combination of:
-#> tidyr::nest(); dplyr::mutate(); purrr::map()
-#> `by_row()` is deprecated; please use a combination of:
-#> tidyr::nest(); dplyr::mutate(); purrr::map()
 ```
 
 ![](README-figs/README-unnamed-chunk-4-1.png)
@@ -366,10 +342,6 @@ This shows whether a given variable contains a missing variable. In this case gr
 ``` r
 
 gg_missing_which(airquality)
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
-#> dmap() is deprecated. Please use the new colwise family in dplyr.
-#> E.g., summarise_all(), mutate_all(), etc.
 ```
 
 ![](README-figs/README-unnamed-chunk-5-1.png)

@@ -141,7 +141,7 @@ miss_case_table <- function(data){
     stop("Input must not be NULL", call. = FALSE)
     # test for dataframe
   } else if(inherits(data, "data.frame")){
-  purrr::by_row(data,
+  purrrlyr::by_row(data,
                 # how many are missing in each row?
                 function(x) sum(is.na(x)),
                 .collate = "row",
@@ -246,11 +246,11 @@ miss_case_summary <- function(data){
     # test for dataframe
   } else if(inherits(data, "data.frame")){
 
-  purrr::by_row(.d = data,
+  purrrlyr::by_row(.d = data,
                 ..f = function(x) (mean(is.na(x)) * 100),
                 .collate = "row",
                 .to = "percent") %>%
-  purrr::by_row(.d = .,
+  purrrlyr::by_row(.d = .,
                 ..f = function(x) (sum(is.na(x))),
                 .collate = "row",
                 .to = "n_missing") %>%

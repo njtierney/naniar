@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>West Pacific Tropical Atmosphere Ocean Data, 1993 &amp; 1997. — tao • narnia</title>
+<title>Which rows and cols contain missings? — which_na • narnia</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -79,61 +79,89 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>West Pacific Tropical Atmosphere Ocean Data, 1993 &amp; 1997.</h1>
+    <h1>Which rows and cols contain missings?</h1>
     </div>
 
     
-    <p>Real-time data from moored ocean buoys for improved detection,
-understanding and prediction of El Ni'o and La Ni'a.</p>
+    <p>Internal function that creates a matrix containing the location of missing
+values in a dataframe. This may be used in the future `impl_df` class.</p>
     
 
-    <pre class="usage"><span class='fu'>data</span>(<span class='no'>tao</span>)</pre>
-        
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href = 'http://www.pmel.noaa.gov/tao/data_deliv/deliv.html'>http://www.pmel.noaa.gov/tao/data_deliv/deliv.html</a></p>
+    <pre class="usage"><span class='fu'>which_na</span>(<span class='no'>x</span>)</pre>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The data is collected by the Tropical Atmosphere Ocean project (
-<a href = 'http://www.pmel.noaa.gov/tao/index.shtml'>http://www.pmel.noaa.gov/tao/index.shtml</a>).</p>
-<p>Format: a data frame with 736 observations on the following 8
-variables.</p><dl class='dl-horizontal'>
- <dt><code>latitude</code></dt><dd><p>A factor with
-levels <code>-5</code>  <code>-2</code> <code>0</code>.</p></dd> <dt><code>longitude</code></dt><dd><p>A
-factor with levels <code>-110</code> <code>-95</code>.</p></dd>
-<dt><code>sea.surface.temp</code></dt><dd><p>Sea surface temperature(degree
-Celsius), measured by the TAO buoys at one meter below the
-surface.</p></dd>  <dt><code>air.temp</code></dt><dd><p>Air temperature(degree Celsius),
-measured by the TAO buoys three meters above the sea surface.</p></dd>
-<dt><code>humidity</code></dt><dd><p>Relative humidity(<!-- %), measured by the TAO -->
-buoys 3 meters above the sea surface.</p></dd> <dt><code>uwind</code></dt><dd><p>The
-East-West wind vector components(M/s).  TAO buoys measure the wind
-speed and direction four meters above the sea surface. If it is
-positive, the East-West component of the wind is blowing towards
-the East. If it is negative, this component is blowing towards the
-West.</p></dd><dt><code>vwind</code></dt><dd><p>The North-South wind vector
-components(M/s). TAO buoys measure the wind speed and direction
-four meters above the sea surface. If it is positive, the
-North-South component of the wind is blowing towards the North.
-If it is negative, this component is blowing towards the South.</p></dd></dl>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>a dataframe</p></td>
+    </tr>
+    </table>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>library(MissingDataGUI)</p>
+    <p>a matrix with columns "row" and "col", which refer to the row and
+    column that identify the position of a missing value in a dataframe</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'>narnia</span><span class='kw'>:::</span><span class='fu'>which_na</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt;       row col
+#&gt;  [1,]   5   1
+#&gt;  [2,]  10   1
+#&gt;  [3,]  25   1
+#&gt;  [4,]  26   1
+#&gt;  [5,]  27   1
+#&gt;  [6,]  32   1
+#&gt;  [7,]  33   1
+#&gt;  [8,]  34   1
+#&gt;  [9,]  35   1
+#&gt; [10,]  36   1
+#&gt; [11,]  37   1
+#&gt; [12,]  39   1
+#&gt; [13,]  42   1
+#&gt; [14,]  43   1
+#&gt; [15,]  45   1
+#&gt; [16,]  46   1
+#&gt; [17,]  52   1
+#&gt; [18,]  53   1
+#&gt; [19,]  54   1
+#&gt; [20,]  55   1
+#&gt; [21,]  56   1
+#&gt; [22,]  57   1
+#&gt; [23,]  58   1
+#&gt; [24,]  59   1
+#&gt; [25,]  60   1
+#&gt; [26,]  61   1
+#&gt; [27,]  65   1
+#&gt; [28,]  72   1
+#&gt; [29,]  75   1
+#&gt; [30,]  83   1
+#&gt; [31,]  84   1
+#&gt; [32,] 102   1
+#&gt; [33,] 103   1
+#&gt; [34,] 107   1
+#&gt; [35,] 115   1
+#&gt; [36,] 119   1
+#&gt; [37,] 150   1
+#&gt; [38,]   5   2
+#&gt; [39,]   6   2
+#&gt; [40,]  11   2
+#&gt; [41,]  27   2
+#&gt; [42,]  96   2
+#&gt; [43,]  97   2
+#&gt; [44,]  98   2</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#source">Source</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-          </ul>
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

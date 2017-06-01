@@ -11,7 +11,6 @@
 #'
 #' @examples
 #'
-#' library(naniar)
 #' miss_df_pct(airquality)
 #'
 miss_df_pct <- function(data){
@@ -38,8 +37,6 @@ miss_df_pct <- function(data){
 #' @export
 #'
 #' @examples
-#'
-#' library(naniar)
 #'
 #' miss_var_pct(airquality)
 #'
@@ -261,7 +258,7 @@ miss_case_summary <- function(data){
   } else stop("Input must inherit from data.frame", call. = FALSE)
 }
 
-#' Collate summary measures from naniar into one tibble
+#' Collate summary measures from narnia into one tibble
 #'
 #' \code{summarise_missingness} performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
 #'

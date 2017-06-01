@@ -2,7 +2,7 @@
 % Please edit documentation in R/missing_data_tidiers.R
 \name{miss_summary}
 \alias{miss_summary}
-\title{Collate summary measures from naniar into one tibble}
+\title{Collate summary measures from narnia into one tibble}
 \usage{
 miss_summary(data)
 }

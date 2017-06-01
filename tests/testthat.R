@@ -1,4 +1,4 @@
 library(testthat)
-library(naniar)
+library(narnia)
 
-test_check("naniar")
+test_check("narnia")

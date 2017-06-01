@@ -1,3 +1,7 @@
+# narnia 0.0.7.9000 (2017/06/02)
+
+* renamed package from `naniar` to `narnia` - I had to explain the spelling a few times when I was introducing the package and I realised that I should change the name. Fortunately it isn't on CRAN yet.
+
 # naniar 0.0.6.9100 (2017/03/21)
 
 * Added `prop_miss` and the complement `prop_complete`. Where `n_miss` returns the number of missing values, `prop_miss` returns the proportion of missing values. Likewise, `prop_complete` returns the proportion of complete values. 

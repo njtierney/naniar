@@ -57,7 +57,6 @@ Warning message if na.rm = T is supplied.
 \examples{
 
 library(ggplot2)
-library(naniar)
 
 # using regular geom_point()
 ggplot(airquality,

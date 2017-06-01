@@ -2,7 +2,7 @@
 % Please edit documentation in R/defunct_missing_data_tidiers.R
 \name{summarise_missingness}
 \alias{summarise_missingness}
-\title{Collate summary measures from naniar into one tibble}
+\title{Collate summary measures from narnia into one tibble}
 \usage{
 summarise_missingness(...)
 }

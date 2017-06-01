@@ -17,7 +17,6 @@ Calculate the percent of missing data in a dataframe.
 }
 \examples{
 
-library(naniar)
 miss_df_pct(airquality)
 
 }

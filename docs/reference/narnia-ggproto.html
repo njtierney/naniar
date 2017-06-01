@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>West Pacific Tropical Atmosphere Ocean Data, 1993 &amp; 1997. — tao • narnia</title>
+<title>narnia-ggroto — GeomMissingPoint • narnia</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -79,48 +79,18 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>West Pacific Tropical Atmosphere Ocean Data, 1993 &amp; 1997.</h1>
+    <h1>narnia-ggroto</h1>
     </div>
 
     
-    <p>Real-time data from moored ocean buoys for improved detection,
-understanding and prediction of El Ni'o and La Ni'a.</p>
+    <p>These are the stat and geom overrides using ggproto from ggplot2 that make narnia work.</p>
     
 
-    <pre class="usage"><span class='fu'>data</span>(<span class='no'>tao</span>)</pre>
+    <pre class="usage"><span class='no'>StatMissingPoint</span></pre>
         
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><a href = 'http://www.pmel.noaa.gov/tao/data_deliv/deliv.html'>http://www.pmel.noaa.gov/tao/data_deliv/deliv.html</a></p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The data is collected by the Tropical Atmosphere Ocean project (
-<a href = 'http://www.pmel.noaa.gov/tao/index.shtml'>http://www.pmel.noaa.gov/tao/index.shtml</a>).</p>
-<p>Format: a data frame with 736 observations on the following 8
-variables.</p><dl class='dl-horizontal'>
- <dt><code>latitude</code></dt><dd><p>A factor with
-levels <code>-5</code>  <code>-2</code> <code>0</code>.</p></dd> <dt><code>longitude</code></dt><dd><p>A
-factor with levels <code>-110</code> <code>-95</code>.</p></dd>
-<dt><code>sea.surface.temp</code></dt><dd><p>Sea surface temperature(degree
-Celsius), measured by the TAO buoys at one meter below the
-surface.</p></dd>  <dt><code>air.temp</code></dt><dd><p>Air temperature(degree Celsius),
-measured by the TAO buoys three meters above the sea surface.</p></dd>
-<dt><code>humidity</code></dt><dd><p>Relative humidity(<!-- %), measured by the TAO -->
-buoys 3 meters above the sea surface.</p></dd> <dt><code>uwind</code></dt><dd><p>The
-East-West wind vector components(M/s).  TAO buoys measure the wind
-speed and direction four meters above the sea surface. If it is
-positive, the East-West component of the wind is blowing towards
-the East. If it is negative, this component is blowing towards the
-West.</p></dd><dt><code>vwind</code></dt><dd><p>The North-South wind vector
-components(M/s). TAO buoys measure the wind speed and direction
-four meters above the sea surface. If it is positive, the
-North-South component of the wind is blowing towards the North.
-If it is negative, this component is blowing towards the South.</p></dd></dl>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>library(MissingDataGUI)</p>
+    <p>An object of class <code>StatMissingPoint</code> (inherits from <code>Stat</code>, <code>ggproto</code>) of length 6.</p>
     
 
   </div>
@@ -128,11 +98,7 @@ If it is negative, this component is blowing towards the South.</p></dd></dl>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
-      <li><a href="#source">Source</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#format">Format</a></li>
           </ul>
 
   </div>

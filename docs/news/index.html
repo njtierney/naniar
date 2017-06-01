@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • naniar</title>
+<title>All news • narnia</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -44,7 +46,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <a class="navbar-brand" href="../index.html">narnia</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -61,7 +63,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/njtierney/naniar">
+  <a href="https://github.com/njtierney/narnia">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -82,12 +84,19 @@
     </div>
 
     <div class="contents">
+    <div id="naniar-0-0-6-9100-20170321" class="section level1">
+<h1 class="hasAnchor">
+<a href="#naniar-0-0-6-9100-20170321" class="anchor"></a>naniar 0.0.6.9100 (2017/03/21)</h1>
+<ul>
+<li>Added <code>prop_miss</code> and the complement <code>prop_complete</code>. Where <code>n_miss</code> returns the number of missing values, <code>prop_miss</code> returns the proportion of missing values. Likewise, <code>prop_complete</code> returns the proportion of complete values.</li>
+</ul>
+</div>
     <div id="naniar-0-0-6-9000" class="section level1">
 <h1 class="hasAnchor">
-<a href="#naniar-0-0-6-9000" class="anchor"> </a>naniar 0.0.6.9000</h1>
+<a href="#naniar-0-0-6-9000" class="anchor"></a>naniar 0.0.6.9000</h1>
 <div id="defunct-functions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#defunct-functions" class="anchor"> </a>Defunct functions</h2>
+<a href="#defunct-functions" class="anchor"></a>Defunct functions</h2>
 <ul>
 <li>As stated in 0.0.5.9000, to address <a href="https://github.com/njtierney/naniar/issues/38">Issue #38</a>, I am moving towards the format miss_type_value/fun, because it makes more sense to me when tabbing through functions.</li>
 </ul>
@@ -96,10 +105,10 @@
 </div>
     <div id="naniar-0-0-5-9000-20160108" class="section level1">
 <h1 class="hasAnchor">
-<a href="#naniar-0-0-5-9000-20160108" class="anchor"> </a>naniar 0.0.5.9000 (2016/01/08)</h1>
+<a href="#naniar-0-0-5-9000-20160108" class="anchor"></a>naniar 0.0.5.9000 (2016/01/08)</h1>
 <div id="deprecated-functions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#deprecated-functions" class="anchor"> </a>Deprecated functions</h2>
+<a href="#deprecated-functions" class="anchor"></a>Deprecated functions</h2>
 <ul>
 <li>To address <a href="https://github.com/njtierney/naniar/issues/38">Issue #38</a>, I am moving towards the format miss_type_value/fun, because it makes more sense to me when tabbing through functions.</li>
 <li>
@@ -118,10 +127,10 @@
 </div>
     <div id="naniar-0-0-4-9000-20161231" class="section level1">
 <h1 class="hasAnchor">
-<a href="#naniar-0-0-4-9000-20161231" class="anchor"> </a>naniar 0.0.4.9000 (2016/12/31)</h1>
+<a href="#naniar-0-0-4-9000-20161231" class="anchor"></a>naniar 0.0.4.9000 (2016/12/31)</h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"> </a>New features</h2>
+<a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
 <li>
 <code>n_complete</code> is a complement to <code>n_miss</code>, and counts the number of complete values in a vector, matrix, or dataframe.</li>
@@ -129,7 +138,7 @@
 </div>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"> </a>Bug fixes</h2>
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code>shadow_shift</code> now handles cases where there is only 1 complete value in a vector.</li>
@@ -137,7 +146,7 @@
 </div>
 <div id="other-changes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#other-changes" class="anchor"> </a>Other changes</h2>
+<a href="#other-changes" class="anchor"></a>Other changes</h2>
 <ul>
 <li>added much more comprehensive testing with <code>testthat</code>.</li>
 </ul>
@@ -145,10 +154,10 @@
 </div>
     <div id="naniar-0-0-3-9901-20161218" class="section level1">
 <h1 class="hasAnchor">
-<a href="#naniar-0-0-3-9901-20161218" class="anchor"> </a>naniar 0.0.3.9901 (2016/12/18)</h1>
+<a href="#naniar-0-0-3-9901-20161218" class="anchor"></a>naniar 0.0.3.9901 (2016/12/18)</h1>
 <div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"> </a>New features</h2>
+<a href="#new-features-1" class="anchor"></a>New features</h2>
 <ul>
 <li><p><code>add_n_miss</code> and <code>add_prop_miss</code> are helpers that add columns to a dataframe containing the number and proportion of missing values. An example has been provided to use decision trees to explore missing data structure as in <a href="bmjopen.bmj.com/content/5/6/e007450.full">Tierney et al</a></p></li>
 <li><p><code>geom_miss_point()</code> now supports transparency, thanks to @seasmith (Luke Smith)</p></li>
@@ -157,18 +166,18 @@
 </div>
     <div id="naniar-0-0-3-9000-20161218" class="section level1">
 <h1 class="hasAnchor">
-<a href="#naniar-0-0-3-9000-20161218" class="anchor"> </a>naniar 0.0.3.9000 (2016/12/18)</h1>
+<a href="#naniar-0-0-3-9000-20161218" class="anchor"></a>naniar 0.0.3.9000 (2016/12/18)</h1>
 <p>After a burst of effort on this package I have done some refactoring and thought hard about where this package is going to go. This meant that I had to make the decision to rename the package from ggmissing to naniar. The name may strike you as strange but it reflects the fact that there are many changes happening, and that we will be working on creating a nice utopia (like Narnia by CS Lewis) that helps us make it easier to work with missing data</p>
 <div id="new-features-under-development" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-under-development" class="anchor"> </a>New Features (under development)</h2>
+<a href="#new-features-under-development" class="anchor"></a>New Features (under development)</h2>
 <ul>
 <li>more shadows. These are mainly around <code>bind_shadow</code> and <code>gather_shadow</code>, which are helper functions to assist with creating</li>
 </ul>
 </div>
 <div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"> </a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li><p><code><a href="../reference/geom_missing_point.html">geom_missing_point()</a></code> broke after the new release of ggplot2 2.2.0, but this is now fixed by ensuring that it inherits from GeomPoint, rather than just a new Geom. Thanks to Mitchell O’hara-Wild for his help with this.</p></li>
 <li><p>missing data summaries <code>table_missing_var</code> and <code>table_missing_case</code> also now return more sensible numbers and variable names. It is possible these function names will change in the future, as these are kind of verbose.</p></li>
@@ -177,7 +186,7 @@
 </div>
 <div id="other-changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#other-changes-1" class="anchor"> </a>Other changes</h2>
+<a href="#other-changes-1" class="anchor"></a>Other changes</h2>
 <ul>
 <li><p>gathered related functions into single R files rather than leaving them in their own.</p></li>
 <li><p>correctly imported the <code>%&gt;%</code> operator from magrittr, and removed a lot of chaff around <code>@importFrom</code> - really don’t need to use <code>@importFrom</code> that often.</p></li>
@@ -191,6 +200,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#naniar-0-0-6-9100-20170321">0.0.6.9100</a></li>
         <li><a href="#naniar-0-0-6-9000">0.0.6.9000</a></li>
         <li><a href="#naniar-0-0-5-9000-20160108">0.0.5.9000</a></li>
         <li><a href="#naniar-0-0-4-9000-20161231">0.0.4.9000</a></li>

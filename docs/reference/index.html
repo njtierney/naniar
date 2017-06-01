@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • naniar</title>
+<title>Function reference • narnia</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -44,7 +46,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <a class="navbar-brand" href="../index.html">narnia</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -61,7 +63,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/njtierney/naniar">
+  <a href="https://github.com/njtierney/narnia">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -77,129 +79,180 @@
       <div class="row">
   <div class="col-md-9">
     <div class="page-header">
-      <h1>Function reference</h1>
-      <h4>version&nbsp;0.0.6.9000</h4>
+      <h1>
+        Reference
+        <small>version&nbsp;0.0.6.9100</small>
+      </h1>
     </div>
 
     <div class="contents">
-      <h2 id="section-visualisation" class="hasAnchor"><a href="#section-visualisation" class="anchor"></a>Visualisation</h2>
-      <p class="section-desc"><p>Visualise missing data</p></p>
+      <table class="ref-index">
 
-      
-      <p><a href="geom_missing_point.html">geom_missing_point</a></p>
-      <ul>
-        <li><code><a href="geom_missing_point.html">geom_missing_point</a></code></li>
-      </ul>
-      
-      <p><a href="gg_missing_case.html">Plot the number of missings per case (row)</a></p>
-      <ul>
-        <li><code><a href="gg_missing_case.html">gg_missing_case</a></code></li>
-      </ul>
-      
-      <p><a href="gg_missing_var.html">Plot the number of missings for each variable</a></p>
-      <ul>
-        <li><code><a href="gg_missing_var.html">gg_missing_var</a></code></li>
-      </ul>
-      
-      <p><a href="gg_missing_which.html">Plot which variables contain a missing value</a></p>
-      <ul>
-        <li><code><a href="gg_missing_which.html">gg_missing_which</a></code></li>
-      </ul>
-          <h2 id="section-numerical-summaries" class="hasAnchor"><a href="#section-numerical-summaries" class="anchor"></a>Numerical Summaries</h2>
-      <p class="section-desc"><p>Provide tidy data frame summaries of missingness</p></p>
+      <colgroup>
+        <col class="alias" />
+        <col class="title" />
+      </colgroup>
 
-      
-      <p><a href="miss_case_pct.html">Percentage of cases that contain a missing values.</a></p>
-      <ul>
-        <li><code><a href="miss_case_pct.html">miss_case_pct</a></code></li>
-      </ul>
-      
-      <p><a href="miss_case_summary.html">Summarise the missingness in each case</a></p>
-      <ul>
-        <li><code><a href="miss_case_summary.html">miss_case_summary</a></code></li>
-      </ul>
-      
-      <p><a href="miss_case_table.html">Tabulate missings in cases.</a></p>
-      <ul>
-        <li><code><a href="miss_case_table.html">miss_case_table</a></code></li>
-      </ul>
-      
-      <p><a href="miss_cat.html">Create factor levels of missingness for two variables</a></p>
-      <ul>
-        <li><code><a href="miss_cat.html">miss_cat</a></code></li>
-      </ul>
-      
-      <p><a href="miss_df_pct.html">Percentage of missing data in a dataframe</a></p>
-      <ul>
-        <li><code><a href="miss_df_pct.html">miss_df_pct</a></code></li>
-      </ul>
-      
-      <p><a href="miss_summary.html">Collate summary measures from naniar into one tibble</a></p>
-      <ul>
-        <li><code><a href="miss_summary.html">miss_summary</a></code></li>
-      </ul>
-      
-      <p><a href="miss_var_pct.html">Percentage of variables containing missings</a></p>
-      <ul>
-        <li><code><a href="miss_var_pct.html">miss_var_pct</a></code></li>
-      </ul>
-      
-      <p><a href="miss_var_summary.html">Summarise the missingness in each variable</a></p>
-      <ul>
-        <li><code><a href="miss_var_summary.html">miss_var_summary</a></code></li>
-      </ul>
-      
-      <p><a href="miss_var_table.html">Tabulate the missings in the variables</a></p>
-      <ul>
-        <li><code><a href="miss_var_table.html">miss_var_table</a></code></li>
-      </ul>
-      
-      <p><a href="n_complete.html">Return the number of complete values</a></p>
-      <ul>
-        <li><code><a href="n_complete.html">n_complete</a></code></li>
-      </ul>
-      
-      <p><a href="n_miss.html">Return the number of missing values</a></p>
-      <ul>
-        <li><code><a href="n_miss.html">n_miss</a></code></li>
-      </ul>
-          <h2 id="section-add-columns" class="hasAnchor"><a href="#section-add-columns" class="anchor"></a>Add columns</h2>
-      <p class="section-desc"><p>Add the number of missing and proportion of missing data</p></p>
-
-      
-      <p><a href="add_n_miss.html">Add column containing number of missing data values</a></p>
-      <ul>
-        <li><code><a href="add_n_miss.html">add_n_miss</a></code></li>
-      </ul>
-      
-      <p><a href="add_prop_miss.html">Add column containing proportion of missing data values</a></p>
-      <ul>
-        <li><code><a href="add_prop_miss.html">add_prop_miss</a></code></li>
-      </ul>
-          <h2 id="section-data-structures-for-missing-data" class="hasAnchor"><a href="#section-data-structures-for-missing-data" class="anchor"></a>Data structures for missing data</h2>
-      <p class="section-desc"><p>Creation and Manipulation of Shadow Matrices</p></p>
-
-      
-      <p><a href="as_shadow.html">Create shadow data</a></p>
-      <ul>
-        <li><code><a href="as_shadow.html">as_shadow</a></code></li>
-      </ul>
-      
-      <p><a href="bind_shadow.html">Column bind a shadow dataframe to original data</a></p>
-      <ul>
-        <li><code><a href="bind_shadow.html">bind_shadow</a></code></li>
-      </ul>
-      
-      <p><a href="gather_shadow.html">gather_shadow</a></p>
-      <ul>
-        <li><code><a href="gather_shadow.html">gather_shadow</a></code></li>
-      </ul>
-      
-      <p><a href="is_na.html">Give NAs a more meaningful label</a></p>
-      <ul>
-        <li><code><a href="is_na.html">is_na</a></code></li>
-      </ul>
-    
+      <tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-visualisation" class="hasAnchor"><a href="#section-visualisation" class="anchor"></a>Visualisation</h2>
+            <p class="section-desc"><p>Visualise missing data</p></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="geom_missing_point.html">geom_missing_point</a></code> </p>
+          </td>
+          <td><p>geom_missing_point</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="gg_missing_case.html">gg_missing_case</a></code> </p>
+          </td>
+          <td><p>Plot the number of missings per case (row)</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="gg_missing_var.html">gg_missing_var</a></code> </p>
+          </td>
+          <td><p>Plot the number of missings for each variable</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="gg_missing_which.html">gg_missing_which</a></code> </p>
+          </td>
+          <td><p>Plot which variables contain a missing value</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-numerical-summaries" class="hasAnchor"><a href="#section-numerical-summaries" class="anchor"></a>Numerical Summaries</h2>
+            <p class="section-desc"><p>Provide tidy data frame summaries of missingness</p></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="n_miss.html">n_miss</a></code> </p>
+          </td>
+          <td><p>Return the number of missing values</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="n_complete.html">n_complete</a></code> </p>
+          </td>
+          <td><p>Return the number of complete values</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="miss_case_pct.html">miss_case_pct</a></code> </p>
+          </td>
+          <td><p>Percentage of cases that contain a missing values.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="miss_case_summary.html">miss_case_summary</a></code> </p>
+          </td>
+          <td><p>Summarise the missingness in each case</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="miss_case_table.html">miss_case_table</a></code> </p>
+          </td>
+          <td><p>Tabulate missings in cases.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="miss_cat.html">miss_cat</a></code> </p>
+          </td>
+          <td><p>Create factor levels of missingness for two variables</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="miss_df_pct.html">miss_df_pct</a></code> </p>
+          </td>
+          <td><p>Percentage of missing data in a dataframe</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="miss_summary.html">miss_summary</a></code> </p>
+          </td>
+          <td><p>Collate summary measures from narnia into one tibble</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="miss_var_pct.html">miss_var_pct</a></code> </p>
+          </td>
+          <td><p>Percentage of variables containing missings</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="miss_var_summary.html">miss_var_summary</a></code> </p>
+          </td>
+          <td><p>Summarise the missingness in each variable</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="miss_var_table.html">miss_var_table</a></code> </p>
+          </td>
+          <td><p>Tabulate the missings in the variables</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-add-columns" class="hasAnchor"><a href="#section-add-columns" class="anchor"></a>Add columns</h2>
+            <p class="section-desc"><p>Add the number of missing and proportion of missing data</p></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="add_n_miss.html">add_n_miss</a></code> </p>
+          </td>
+          <td><p>Add column containing number of missing data values</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="add_prop_miss.html">add_prop_miss</a></code> </p>
+          </td>
+          <td><p>Add column containing proportion of missing data values</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-data-structures-for-missing-data" class="hasAnchor"><a href="#section-data-structures-for-missing-data" class="anchor"></a>Data structures for missing data</h2>
+            <p class="section-desc"><p>Creation and Manipulation of Shadow Matrices</p></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="as_shadow.html">as_shadow</a></code> </p>
+          </td>
+          <td><p>Create shadow data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="bind_shadow.html">bind_shadow</a></code> </p>
+          </td>
+          <td><p>Column bind a shadow dataframe to original data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="gather_shadow.html">gather_shadow</a></code> </p>
+          </td>
+          <td><p>gather_shadow</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="is_na.html">is_na</a></code> </p>
+          </td>
+          <td><p>Give NAs a more meaningful label</p></td>
+        </tr>
+      </tbody>
+      </table>
     </div>
   </div>
 

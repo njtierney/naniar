@@ -102,7 +102,7 @@ summary_missing_case <- function(...){
            use 'miss_case_summary' instead")
 }
 
-#' Collate summary measures from naniar into one tibble
+#' Collate summary measures from narnia into one tibble
 #'
 #' Deprecated as of version 0.0.6.9000. Please use miss_summary instead.
 #'

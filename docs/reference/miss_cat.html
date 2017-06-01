@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create factor levels of missingness for two variables — miss_cat • naniar</title>
+<title>Create factor levels of missingness for two variables — miss_cat • narnia</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,12 +25,14 @@
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -44,7 +46,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <a class="navbar-brand" href="../index.html">narnia</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -61,7 +63,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/njtierney/naniar">
+  <a href="https://github.com/njtierney/narnia">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -84,21 +86,28 @@
     <p><code>miss_cat</code> takes a data frame, df , and two variables as strings, var1 and var2, and converts them to a missing TRUE/FALSE matrix, where TRUE = missing. It then uses <code>interaction</code>, to create all the different levels of missingness - TRUE.TRUE, TRUE.FALSE, FALSE.TRUE, and FALSE.FALSE. It then uses the function <code>shadow_cat</code> to collapse across these and put them into the relevant categories</p>
     
 
-    <pre><span class='fu'>miss_cat</span>(<span class='no'>df</span>, <span class='no'>var1</span>, <span class='no'>var2</span>)</pre>
+    <pre class="usage"><span class='fu'>miss_cat</span>(<span class='no'>df</span>, <span class='no'>var1</span>, <span class='no'>var2</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>df</dt>
-      <dd>a dataframe</dd>
-      <dt>var1</dt>
-      <dd>a variable</dd>
-      <dt>var2</dt>
-      <dd>a variable</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>df</th>
+      <td><p>a dataframe</p></td>
+    </tr>
+    <tr>
+      <th>var1</th>
+      <td><p>a variable</p></td>
+    </tr>
+    <tr>
+      <th>var2</th>
+      <td><p>a variable</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>character vector containing &quot;Not Missing&quot; and &quot;Missing&quot;</p>
+    <p>character vector containing "Not Missing" and "Missing"</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 

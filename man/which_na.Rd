@@ -19,6 +19,6 @@ values in a dataframe. This may be used in the future `impl_df` class.
 }
 \examples{
 
-which_na(airquality)
+narnia:::which_na(airquality)
 
 }

@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 # Introduction
 
-Missing values are ubiquitous in data and need to be explored and handled in the initial stages of analysis. This paper describes a package, `naniar`, for exploring missing data dependencies with minimal deviation from the common workflows of ggplot and tidy data (Wickham,2014). Typically, ggplot2 throws an warning about missings but then omits them for plotting (Wickham,2009). This extension builds data structures and functions that ensure missings are plotted easily and enables imputations to be examined. Principles of tidy data states that each row is an observation and each column is a variable, which makes it easy and consistent to perform data manipulation and wrangling. However, there are currently no guidelines for representing additional missing data structures in a tidy format. This paper describes approaches for exploring missing data structure with minimal deviation from the common workflows of ggplot and tidy data structures.
+Missing values are ubiquitous in data and need to be explored and handled in the initial stages of analysis. This paper describes a package, `narnia`, for exploring missing data dependencies with minimal deviation from the common workflows of ggplot and tidy data (Wickham,2014). Typically, ggplot2 throws an warning about missings but then omits them for plotting (Wickham,2009). This extension builds data structures and functions that ensure missings are plotted easily and enables imputations to be examined. Principles of tidy data states that each row is an observation and each column is a variable, which makes it easy and consistent to perform data manipulation and wrangling. However, there are currently no guidelines for representing additional missing data structures in a tidy format. This paper describes approaches for exploring missing data structure with minimal deviation from the common workflows of ggplot and tidy data structures.
 
 # Missing Data Mechanisms
 
@@ -75,7 +75,7 @@ An advantage of the augmented shadow format, where the data and shadow are side 
 
 ```{r bind-shadow-density, fig.height = 4, fig.width = 10}
 
-library(naniar)
+library(narnia)
 library(ggplot2)
 
 p1 <- ggplot(data = bind_shadow(airquality),
@@ -97,7 +97,7 @@ __Figure 3., Two representations of temperature showing missingness on ozone (le
 
 Using this data structure allows for the user to directly refer to the variable for which they want to explore the effect of missingness using the suffix _NA after the variable. In the case above, the user is looking at a histogram of temperature, but is then able to look at how many temperature values are affected by missingness of ozone. In cases where there is no missing data in the variable that they want to "split" the missingness by, the plot simple returns a single facetted plot.
 
-Another method of visualisation can be explored using `geom_missing_point()` from the `naniar` package:
+Another method of visualisation can be explored using `geom_missing_point()` from the `narnia` package:
 
 ```{r ggeom_missing, fig.height = 4, fig.width = 8}
 
@@ -122,7 +122,7 @@ This replaces missing values to be 10% below the minimum value, a technique borr
 
 # Numerical Summaries for missing data
 
-Numerical summaries of missing data are also made easy with some helper functions from the `naniar` package, which provides tidy functions that return either single numbers or dataframes. The `percent_missing_*` functions help find the proportion of missing values in the data overall, in cases, or in variables. 
+Numerical summaries of missing data are also made easy with some helper functions from the `narnia` package, which provides tidy functions that return either single numbers or dataframes. The `percent_missing_*` functions help find the proportion of missing values in the data overall, in cases, or in variables. 
 
 ```{r numerical-percent-missing}
 
@@ -157,7 +157,7 @@ miss_var_table(airquality)
 
 # Discussion
 
-In this paper we discussed missing data mechanisms, existing packages for imputation and visualisation of missing data, and the limitations of current missing data exploration and visualisation software. We then discussed data structures for missing data, and showed how these can be used following tidy data principles, and how to effectively present visualisations and numerical summaries using the R packages naniar and visdat, available for download on github: https://github.com/njtierney/naniar, and https://github.com/njtierney/visdat.
+In this paper we discussed missing data mechanisms, existing packages for imputation and visualisation of missing data, and the limitations of current missing data exploration and visualisation software. We then discussed data structures for missing data, and showed how these can be used following tidy data principles, and how to effectively present visualisations and numerical summaries using the R packages narnia and visdat, available for download on github: https://github.com/njtierney/narnia, and https://github.com/njtierney/visdat.
 
 It is worthwhile to note the trade off between storage and computation of the augmented shadow matrix. When storage of data is an issue, it may not be practical to bind the shadow matrix to the regular data. Instead, it may be more effective to perform the computation for the column of interest when necessary. However, the shadow matrix can also allow for more complex types of missingness to be expressed, and so there are additional benefits to storing data in this way. For example, missing, `NA`, and not missing, `!NA`, could be extended to describe different mechanisms for missingness, e.g., `NA_mechanism_A`, and `NA_mechanism_B`, or even imputed values `value_imputed`. These could then be combined with the same sorts of plots and numerical summaries to provide diagnostics. These data structures should facilitate future research in missing data handling and imputation methods.
 

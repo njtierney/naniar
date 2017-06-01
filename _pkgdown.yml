@@ -1,7 +1,7 @@
 home:
   links:
   - text: Learn more
-    href: https://github.com/njtierney/naniar
+    href: https://github.com/njtierney/narnia
 reference:
   - title: "Visualisation"
     desc: >

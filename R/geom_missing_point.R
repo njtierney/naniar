@@ -48,7 +48,6 @@
 #' @examples
 #'
 #' library(ggplot2)
-#' library(naniar)
 #'
 #' # using regular geom_point()
 #' ggplot(airquality,
@@ -88,7 +87,7 @@ geom_missing_point <- function(mapping = NULL,
 
 }
 
-#' @rdname naniar-ggproto
+#' @rdname narnia-ggproto
 #' @format NULL
 #' @usage NULL
 #' @export

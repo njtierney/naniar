@@ -10,7 +10,7 @@
 #'
 #' @examples
 #'
-#' which_na(airquality)
+#' narnia:::which_na(airquality)
 #'
 which_na <- function(x){
   which(is.na(x), arr.ind = TRUE)

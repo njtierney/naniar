@@ -1,4 +1,4 @@
-Package: naniar
+Package: narnia
 Type: Package
 Title: Provide Summaries and Visualisations for Missing Data
 Version: 0.0.6.9100
@@ -9,9 +9,9 @@ Authors@R: c(
     person("Miles", "McBain", , "miles.mcbain@gmail.com", role = "aut")
     )
 Description: Missing values are ubiquitous in data and need to be explored and
-    handled in the initial stages of analysis. naniar provides helpers for
+    handled in the initial stages of analysis. narnia provides helpers for
     exploring missing data dependencies with minimal deviation from the common
-    workflows of ggplot and tidy data. naniar builds data structures and
+    workflows of ggplot and tidy data. narnia builds data structures and
     functions that ensure missings are plotted easily and enables imputations
     to be examined.
 License: MIT + file LICENSE
@@ -42,7 +42,7 @@ Imports:
 Remotes:
     njtierney/visdat
 RoxygenNote: 6.0.1.9000
-Collate:
+Collate: 
     'add_cols.R'
     'data.R'
     'defunct_missing_data_tidiers.R'
@@ -50,13 +50,13 @@ Collate:
     'geom_missing_point.R'
     'label_missings.R'
     'missing_data_tidiers.R'
-    'naniar-ggproto.R'
-    'naniar-package.R'
+    'narnia-ggproto.R'
+    'narnia-package.R'
     'old_shadow_shifters.R'
     'plotting.R'
     'shadow_shifters.R'
     'shadows.R'
     'stat_missing_point.R'
     'utils.R'
-URL: https://github.com/njtierney/naniar
-BugReports: https://github.com/njtierney/naniar/issues
+URL: https://github.com/njtierney/narnia
+BugReports: https://github.com/njtierney/narnia/issues

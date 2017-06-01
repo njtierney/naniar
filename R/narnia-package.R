@@ -1,6 +1,6 @@
-#' naniar
+#' narnia
 #'
-#' @name naniar
+#' @name narnia
 #' @docType package
 #' @importFrom magrittr %>%
 #' @import ggplot2

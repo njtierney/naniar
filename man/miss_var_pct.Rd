@@ -17,8 +17,6 @@ Calculate the percentage of variables that contain a single missing value.
 }
 \examples{
 
-library(naniar)
-
 miss_var_pct(airquality)
 
 }

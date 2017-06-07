@@ -22,3 +22,6 @@ values in a dataframe. This may be used in the future `impl_df` class.
 narnia:::which_na(airquality)
 
 }
+\seealso{
+where_na
+}

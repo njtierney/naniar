@@ -10,7 +10,7 @@ where_na(x)
 \item{x}{a dataframe}
 }
 \value{
-integer locations of where the missing values are
+integers that describe the location of missing values
 }
 \description{
 Internal function that is short for `which(is.na(x))`. Creates integer
@@ -19,7 +19,7 @@ class.
 }
 \examples{
 
-narnia:::which_na(airquality)
+narnia:::where_na(airquality)
 
 }
 \seealso{

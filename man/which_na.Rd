@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{which_na}
 \alias{which_na}
-\title{Which rows and cols contain missings?}
+\title{Which elements contain missings?}
 \usage{
 which_na(x)
 }

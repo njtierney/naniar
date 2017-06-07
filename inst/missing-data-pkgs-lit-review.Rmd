@@ -1,0 +1,117 @@
+---
+title: "State of Missing data in CRAN"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libraries}
+library(tidyverse)
+```
+
+Missing data is an annoying and pervasive problem in datascience. Consequently, there are a lot of ways to handle missing data, and a lot of packages on CRAN that help with this.
+
+I have only heard of a couple of main packages for missing data and imputation in R, these were:
+
+- VIM / VIMGUI
+- mice
+- mi
+- Amelia
+- imputeTS
+- simputation
+- MissingDataGUI
+
+I asked twitter: 
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Do <a href="https://twitter.com/hashtag/rstats?src=hash">#rstats</a> people use/prefer one of the following packages for missing data imputation/exploration? Reply for different package! :)</p>&mdash; Nicholas Tierney (@nj_tierney) <a href="https://twitter.com/nj_tierney/status/871607459965673472">June 5, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+From 43 people:
+
+- 43% used mice
+- 7% used mi
+- 19% used Amelia
+- 11% simputation
+
+I also found a few other examples I had not come across:
+
+- Hmisc::aregImpute
+- vtreat
+
+However, this is a small sample. 
+
+Can we explore how many are downloaded?
+
+Julia Silge provided a really interesting blog post that looked at all of the CRAN package description files and did some really nifty text analysis. I won't (yet!) be using tidytext, but she used the function `tools::CRAN_package_db()` to get a list of the R packages available on CRAN.
+
+```{r}
+# super handy code from Julia Silge's blog:
+# https://juliasilge.com/blog/mining-cran-description/
+
+cran <- tools::CRAN_package_db()
+
+# the returned data frame has two columns with the same name???
+cran <- cran[,-65]
+
+# make it a tibble
+cran <- tbl_df(cran)
+
+# I want to find which packages mention the words "missing data" in their description.
+
+cran_miss <- cran %>%
+  select(Package,
+         Description) %>% 
+  mutate(has_missing = grepl("imput | miss", Description)) %>%
+  filter(has_missing)
+
+```
+
+So now we have a dataframe of the R packages that contain "imput" or "miss" in their description file. 
+
+There's probably a lot of packages in there that we aren't actually interested in, but for the moment, lets see what is popular, by seeing which are downloaded. We can get a count of the number of downloads every month using `cranlongs`.
+
+```{r}
+
+library(cranlogs)
+
+# use cranlogs to find how often packages are downloaded
+cran_miss_download <- cran_downloads(packages = cran_miss$Package,
+               when = "last-month") %>%
+  as_tibble() %>%
+  group_by(package) %>%
+  mutate(n_dl = sum(count)) %>%
+  select(package, n_dl) %>%
+  ungroup() %>%
+  distinct() %>%
+  arrange(-n_dl)
+
+```
+
+We can then do a bar plot of the top 20 packages
+
+```{r}
+
+cran_miss_download %>%
+  slice(1:20) %>%
+  ggplot(aes(x = reorder(package, n_dl),
+             y = n_dl)) + 
+  geom_col() +
+  coord_flip()
+```
+
+OK, what if we filter out Hmisc, Purrr, gtools, and R.methodsS3
+
+```{r}
+
+cran_miss_download %>%
+  slice(5:25) %>%
+  ggplot(aes(x = reorder(package, n_dl),
+             y = n_dl)) + 
+  geom_col() +
+  coord_flip()
+
+```
+
+Next, I will filter down the packages used, and find what is good, and what is bad.

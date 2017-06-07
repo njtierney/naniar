@@ -1,4 +1,15 @@
+# narnia 0.0.7.9200 (2017/06/07)
+
+## New features
+
+* First pass at time series missing data summaries and plots: 
+  - `miss_ts_run()`: return the number of missings / complete in a single run
+  - `miss_ts_summary()`: return the number of missings in a given time period
+  - `gg_miss_ts()`: plot the number of missings in a given time period
+
 # narnia 0.0.7.9000 (2017/06/02)
+
+## Name changes
 
 * renamed package from `naniar` to `narnia` - I had to explain the spelling a few times when I was introducing the package and I realised that I should change the name. Fortunately it isn't on CRAN yet.
 

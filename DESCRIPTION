@@ -1,7 +1,7 @@
 Package: narnia
 Type: Package
 Title: Provide Summaries and Visualisations for Missing Data
-Version: 0.0.6.9100
+Version: 0.0.7.9200
 Author: Nicholas Tierney, Miles McBain, Di Cook,
 Authors@R: c(
     person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
@@ -57,6 +57,7 @@ Collate:
     'shadow_shifters.R'
     'shadows.R'
     'stat_missing_point.R'
+    'tidiers_time_series.R'
     'utils.R'
 URL: https://github.com/njtierney/narnia
 BugReports: https://github.com/njtierney/narnia/issues

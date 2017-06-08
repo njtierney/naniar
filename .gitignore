@@ -2,3 +2,4 @@ inst/doc
 .Rproj.user
 .Rhistory
 .RData
+inst/*.html

@@ -284,6 +284,55 @@ df %>%
 
 Miles had a couple of ideas, where we could combine all of the information within the data frame into one column, effectively encoding the missingness into a single column. However, one problem with this is that if columns are rearranged or removed, then this single column becomes incorrect.
 
+# The mechanics of shadows
+
+
+One approach used in programs such as MANET, and ggobi, is to shift missing values below the minimum value, so that they can be plotted on the same axis. We can demonstrate shift these values using a function called `shadow_shift`.
+
+
+```{r}
+
+library(dplyr)
+airquality %>%
+  select(Ozone) %>%
+  head() %>%
+  mutate(air_temp_shift = shadow_shift(Ozone))
+
+```
+
+However, doing this for each variable, so that you can plot this information might involve some code like this:
+
+```{r echo = TRUE}
+library(ggplot2)
+library(narnia)
+ggplot(data = airquality,
+       aes(x = shadow_shift(Ozone),
+           y = shadow_shift(Solar.R))) +
+   geom_point()
+
+```
+
+But then you need to keep track of the missing values, so you can go away and write a function to do this:
+
+```{r}
+library(dplyr)
+airquality %>%
+  mutate(miss_cat = miss_cat(., "Ozone", "Solar.R")) %>%
+  ggplot(aes(x = shadow_shift(Ozone),
+             y = shadow_shift(Solar.R),
+             colour = miss_cat)) +
+   geom_point()
+```
+
+Which is rather involved, and not ideal, because you are no longer trying to explore missing data, you have now spent time working out how to correctly shift missing values, keep track of what was missing, and then plot this, then add colour, and identify which values are missing.
+
+To make this simpler, you use the ggplot2 geom `geom_missing_point()`. This `geom` allows for missing values to be displayed, and also works with the rest of ggplot2 - themes, and facets as well.
+
+**What is imputed, stays imputed**
+
+**it's invisible!!**
+
+
 # A look at histograms
 
 ```{r}

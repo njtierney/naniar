@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Which rows and cols contain missings? — which_na • narnia</title>
+<title>Which elements contain missings? — which_na • narnia</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -79,7 +79,7 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Which rows and cols contain missings?</h1>
+    <h1>Which elements contain missings?</h1>
     </div>
 
     
@@ -103,54 +103,16 @@ values in a dataframe. This may be used in the future `impl_df` class.</p>
     <p>a matrix with columns "row" and "col", which refer to the row and
     column that identify the position of a missing value in a dataframe</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>where_na</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>narnia</span><span class='kw'>:::</span><span class='fu'>which_na</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt;       row col
-#&gt;  [1,]   5   1
-#&gt;  [2,]  10   1
-#&gt;  [3,]  25   1
-#&gt;  [4,]  26   1
-#&gt;  [5,]  27   1
-#&gt;  [6,]  32   1
-#&gt;  [7,]  33   1
-#&gt;  [8,]  34   1
-#&gt;  [9,]  35   1
-#&gt; [10,]  36   1
-#&gt; [11,]  37   1
-#&gt; [12,]  39   1
-#&gt; [13,]  42   1
-#&gt; [14,]  43   1
-#&gt; [15,]  45   1
-#&gt; [16,]  46   1
-#&gt; [17,]  52   1
-#&gt; [18,]  53   1
-#&gt; [19,]  54   1
-#&gt; [20,]  55   1
-#&gt; [21,]  56   1
-#&gt; [22,]  57   1
-#&gt; [23,]  58   1
-#&gt; [24,]  59   1
-#&gt; [25,]  60   1
-#&gt; [26,]  61   1
-#&gt; [27,]  65   1
-#&gt; [28,]  72   1
-#&gt; [29,]  75   1
-#&gt; [30,]  83   1
-#&gt; [31,]  84   1
-#&gt; [32,] 102   1
-#&gt; [33,] 103   1
-#&gt; [34,] 107   1
-#&gt; [35,] 115   1
-#&gt; [36,] 119   1
-#&gt; [37,] 150   1
-#&gt; [38,]   5   2
-#&gt; [39,]   6   2
-#&gt; [40,]  11   2
-#&gt; [41,]  27   2
-#&gt; [42,]  96   2
-#&gt; [43,]  97   2
-#&gt; [44,]  98   2</div><div class='input'>
+<span class='kw'>narnia</span><span class='kw'>:::</span><span class='fu'>which_na</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt;  [1]   5  10  25  26  27  32  33  34  35  36  37  39  42  43  45  46  52  53  54
+#&gt; [20]  55  56  57  58  59  60  61  65  72  75  83  84 102 103 107 115 119 150 158
+#&gt; [39] 159 164 180 249 250 251</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -159,6 +121,8 @@ values in a dataframe. This may be used in the future `impl_df` class.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

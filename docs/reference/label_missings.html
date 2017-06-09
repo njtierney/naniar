@@ -142,9 +142,7 @@
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'>
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>mutate</span>(<span class='kw'>is_missing</span> <span class='kw'>=</span> <span class='fu'>label_missings</span>(<span class='no'>airquality</span>))</div><div class='output co'>#&gt;     Ozone Solar.R Wind Temp Month Day  is_missing
@@ -290,7 +288,17 @@
 #&gt; 140    18     224 13.8   67     9  17 Not Missing
 #&gt; 141    13      27 10.3   76     9  18 Not Missing
 #&gt; 142    24     238 10.3   68     9  19 Not Missing
-#&gt;  [ reached getOption("max.print") -- omitted 11 rows ]</div><div class='input'>
+#&gt; 143    16     201  8.0   82     9  20 Not Missing
+#&gt; 144    13     238 12.6   64     9  21 Not Missing
+#&gt; 145    23      14  9.2   71     9  22 Not Missing
+#&gt; 146    36     139 10.3   81     9  23 Not Missing
+#&gt; 147     7      49 10.3   69     9  24 Not Missing
+#&gt; 148    14      20 16.6   63     9  25 Not Missing
+#&gt; 149    30     193  6.9   70     9  26 Not Missing
+#&gt; 150    NA     145 13.2   77     9  27     Missing
+#&gt; 151    14     191 14.3   75     9  28 Not Missing
+#&gt; 152    18     131  8.0   76     9  29 Not Missing
+#&gt; 153    20     223 11.5   68     9  30 Not Missing</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

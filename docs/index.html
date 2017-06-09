@@ -66,7 +66,7 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#narnia" class="anchor"></a>narnia</h1></div>
 
-<p><code>narnia</code> aims to make it easy to summarise, visualise, and manipulate missing data in a tidy fashion.</p>
+<p><code>narnia</code> aims to make it easy to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data.</p>
 <p>Currently it provides:</p>
 <ul>
 <li>Data structures for missing data
@@ -97,13 +97,13 @@
 </ul>
 </li>
 </ul>
-<p>For a more formal description, you can read the vignette <a href="http://www.njtierney.com/narnia/articles/missingness-building-on-ggplot2.html">“building on ggplot2 for exploration of missing values”</a>.</p>
+<p>For details on how to use each of these functions, and their usage, you can read the vignette <a href="http://www.njtierney.com/narnia/articles/missingness-building-on-ggplot2.html">“Getting Started with Narnia”</a>.</p>
 <p><strong>Why <code>narnia</code>?</strong></p>
 <p><code>narnia</code> was previously named <code>ggmissing</code> and initially provided a ggplot geom and some visual summaries. It was changed to <code>narnia</code> to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.</p>
 <blockquote>
 <p>…But <em>why</em> <code>narnia</code>?</p>
 </blockquote>
-<p>Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like Narnia - a different world, hidden away. Close, but very different. So the name, “narnia”, is a play on the “Narnia” books. e.g., narnia: The Last Battle (…with missing data). Also, <code>NA</code>niar, narnia = na in r, and if you so desire, narnia may sound like “noneoya” in an nz/aussie accent. Full credit to <span class="citation">@MilesMcbain</span> for the name.</p>
+<p>Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like <a href="https://en.wikipedia.org/wiki/The_Chronicles_of_Narnia">C.S. Lewis’s Narnia</a> - a different world, hidden away. You go inside, and sometimes it seems like you’ve spent no time in there but time has passed very quickly, or the opposite. Also, <code>NA</code>rnia = na in r, and if you so desire, narnia may sound like “noneoya” in an nz/aussie accent. Full credit to <span class="citation">@MilesMcbain</span> for the name.</p>
 <p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 <div id="data-structures-for-missing-data" class="section level1">
@@ -311,10 +311,9 @@ s_miss<span class="op">$</span>summary_missing_case
 <span class="co">#&gt; Warning: Unknown or uninitialised column: 'summary_missing_case'.</span>
 <span class="co">#&gt; NULL</span></code></pre></div>
 </div>
-<div id="extraplots" class="section level1">
+<div id="other-plotting-functions" class="section level1">
 <h1 class="hasAnchor">
-<a href="#extraplots" class="anchor"></a>Other plotting functions</h1>
-<p>These dataframes from the tidying functions are then used in these plots</p>
+<a href="#other-plotting-functions" class="anchor"></a>Other plotting functions</h1>
 <div id="gg_missing_var" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gg_missing_var" class="anchor"></a>gg_missing_var</h2>
@@ -341,18 +340,15 @@ s_miss<span class="op">$</span>summary_missing_case
 <div id="future-work" class="section level1">
 <h1 class="hasAnchor">
 <a href="#future-work" class="anchor"></a>Future Work</h1>
-<p><code>narnia</code> will be undergoing more changes over the next 6 months. The current plan is to submit it for rOpenSci onboarding by the end of January, and then to submit it to CRAN after that.</p>
 <p>Other plans to extend the <code>geom_missing_</code> family to include:</p>
 <ul>
-<li>1D, univariate distribution plots</li>
 <li>Categorical variables</li>
 <li>Bivariate plots: Scatterplots, Density overlays.</li>
-<li>Provide</li>
 </ul>
 <div id="acknowledgements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
-<p>Naming credit (once again!) goes to <span class="citation">@MilesMcBain</span>, and to <span class="citation">@hadley</span> for the rearranged spelling. Also thank you to <span class="citation">@dicook</span> and <span class="citation">@hadley</span> for putting up with my various questions and concerns, mainly around the name.</p>
+<p>Naming credit (once again!) goes to <span class="citation">@MilesMcBain</span>. Also thank you to <span class="citation">@dicook</span> and <span class="citation">@hadley</span> for putting up with my various questions and concerns, mainly around the name.</p>
 </div>
 </div>
 </div>

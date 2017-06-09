@@ -5,7 +5,7 @@ narnia
 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/narnia?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/narnia) [![Travis-CI Build Status](https://travis-ci.org/njtierney/narnia.svg?branch=master)](https://travis-ci.org/njtierney/narnia) [![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/narnia/master.svg)](https://codecov.io/github/njtierney/narnia?branch=master)
 
-`narnia` aims to make it easy to summarise, visualise, and manipulate missing data in a tidy fashion.
+`narnia` aims to make it easy to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data.
 
 Currently it provides:
 
@@ -28,7 +28,7 @@ Currently it provides:
     -   `miss_var_table()`
     -   `miss_df_pct()`
 
-For a more formal description, you can read the vignette ["building on ggplot2 for exploration of missing values"](http://www.njtierney.com/narnia/articles/missingness-building-on-ggplot2.html).
+For details on how to use each of these functions, and their usage, you can read the vignette ["Getting Started with Narnia"](http://www.njtierney.com/narnia/articles/missingness-building-on-ggplot2.html).
 
 **Why `narnia`?**
 
@@ -36,7 +36,7 @@ For a more formal description, you can read the vignette ["building on ggplot2 f
 
 > ...But *why* `narnia`?
 
-Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like Narnia - a different world, hidden away. Close, but very different. So the name, "narnia", is a play on the "Narnia" books. e.g., narnia: The Last Battle (...with missing data). Also, `NA`niar, narnia = na in r, and if you so desire, narnia may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name.
+Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like [C.S. Lewis's Narnia](https://en.wikipedia.org/wiki/The_Chronicles_of_Narnia) - a different world, hidden away. You go inside, and sometimes it seems like you've spent no time in there but time has passed very quickly, or the opposite. Also, `NA`rnia = na in r, and if you so desire, narnia may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
@@ -312,8 +312,6 @@ s_miss$summary_missing_case
 Other plotting functions
 ========================
 
-These dataframes from the tidying functions are then used in these plots
-
 gg\_missing\_var
 ----------------
 
@@ -349,16 +347,12 @@ gg_missing_which(airquality)
 Future Work
 ===========
 
-`narnia` will be undergoing more changes over the next 6 months. The current plan is to submit it for rOpenSci onboarding by the end of January, and then to submit it to CRAN after that.
-
 Other plans to extend the `geom_missing_` family to include:
 
--   1D, univariate distribution plots
 -   Categorical variables
 -   Bivariate plots: Scatterplots, Density overlays.
--   Provide
 
 Acknowledgements
 ----------------
 
-Naming credit (once again!) goes to @MilesMcBain, and to @hadley for the rearranged spelling. Also thank you to @dicook and @hadley for putting up with my various questions and concerns, mainly around the name.
+Naming credit (once again!) goes to @MilesMcBain. Also thank you to @dicook and @hadley for putting up with my various questions and concerns, mainly around the name.

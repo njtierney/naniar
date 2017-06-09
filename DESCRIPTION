@@ -27,7 +27,8 @@ Suggests:
     wakefield,
     vdiffr,
     here,
-    simputation
+    simputation,
+    imputeTS
 VignetteBuilder: knitr
 Imports:
     dplyr,
@@ -42,7 +43,7 @@ Imports:
 Remotes:
     njtierney/visdat
 RoxygenNote: 6.0.1.9000
-Collate: 
+Collate:
     'add_cols.R'
     'data.R'
     'defunct_missing_data_tidiers.R'

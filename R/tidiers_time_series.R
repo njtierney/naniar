@@ -49,7 +49,7 @@ add_period_counter <- function(data, period_length) {
 #' period = 100)
 #' }
 #'
-miss_ts_summary <- function(data_ts,
+miss_ts_summary <- function(dat_ts,
                             period){
 
   tibble::tibble(ts = data_ts) %>%
@@ -146,6 +146,9 @@ miss_ts_run <- function(dat_ts){
   tibble::as_tibble(c(rle(is.na(dat_ts)))) %>%
     dplyr::rename(run_length = lengths,
                   is_na = values)
+    # dplyr::mutate(is_na = dplyr::if_else(is_na == TRUE,
+    #                                      true = NA,
+    #                                      false = ))
 }
 
 # Need to make this work for:

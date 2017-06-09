@@ -4,12 +4,12 @@
 \alias{miss_ts_summary}
 \title{Summarise the number of missings in a given period for a ts object}
 \usage{
-miss_ts_summary(data_ts, period)
+miss_ts_summary(dat_ts, period)
 }
 \arguments{
-\item{period}{integer describing the length of the period to be explored}
-
 \item{dat_ts}{ts object}
+
+\item{period}{integer describing the length of the period to be explored}
 }
 \value{
 dataframe with variables `n_miss`, `n_complete`, `prop_miss`, and

@@ -1,3 +1,9 @@
+# narnia 0.0.7.9300 (2017/06/07)
+
+## New features
+
+* New dataset, `pedestrian` - contains hourly counts of pedestrians
+
 # narnia 0.0.7.9200 (2017/06/07)
 
 ## New features

@@ -4,10 +4,10 @@
 \alias{add_period_counter}
 \title{Add a counter variable for the period of time}
 \usage{
-add_period_counter(data, period_length)
+add_period_counter(dat, period_length)
 }
 \arguments{
-\item{data}{data.frame}
+\item{dat}{data.frame}
 
 \item{period_length}{integer}
 }

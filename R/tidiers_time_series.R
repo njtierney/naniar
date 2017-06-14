@@ -4,7 +4,7 @@
 #' inside `narnia` to facilitate the counting of missing values over a given
 #' time period.
 #'
-#' @param data data.frame
+#' @param dat data.frame
 #' @param period_length integer
 #'
 #' @return data.frame with extra variable "period_counter".
@@ -17,11 +17,12 @@
 #' }
 
 #'
-add_period_counter <- function(data, period_length) {
-  data %>%
-    dplyr::mutate(period_counter = rep(x = 1:ceiling(nrow(data)),
+add_period_counter <- function(dat, period_length) {
+
+    dplyr::mutate(dat,
+                  period_counter = rep(x = 1:ceiling(nrow(dat)),
                                        each = period_length,
-                                       length.out = nrow(data)))
+                                       length.out = nrow(dat)))
 }
 
 #' Summarise the number of missings in a given period for a ts object
@@ -51,13 +52,14 @@ add_period_counter <- function(data, period_length) {
 #'
 miss_ts_summary <- function(dat_ts,
                             period){
-
-  tibble::tibble(ts = data_ts) %>%
+dat_ts = tsNH4
+period = 1000
+  tibble::tibble(ts = dat_ts) %>%
     add_period_counter(period_length = period) %>%
     dplyr::group_by(period_counter) %>%
     dplyr::tally(is.na(ts)) %>%
     dplyr::rename(n_miss = n) %>%
-    dplyr::mutate(n_complete = length(data_ts) - n_miss,
+    dplyr::mutate(n_complete = period - n_miss,
                   prop_miss = n_miss / period,
                   prop_complete = 1 - prop_miss)
 

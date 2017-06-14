@@ -145,26 +145,18 @@ as_shadow <- function(data){
 #'
 #' @examples
 #'
-#' bind_shadow(airquality)
+#' aq_shadow <- bind_shadow(airquality)
 #'
 #' # explore missing data visually
 #' library(ggplot2)
 #'
 #' # using the bounded shadow
 #'
-#' ggplot(data = bind_shadow(airquality),
+#' ggplot(data = aq_shadow,
 #'        aes(x = Ozone)) +
 #'        geom_histogram() +
 #'        facet_wrap(~Solar.R_NA,
 #'        ncol = 1)
-#'
-#' # using the is_na function
-#'
-#' ggplot(data = airquality,
-#'        aes(x = Ozone)) +
-#'   geom_histogram() +
-#'   facet_wrap(~is_na(Solar.R),
-#'              ncol = 1)
 #'
 bind_shadow <- function(data){
 
@@ -180,13 +172,13 @@ bind_shadow <- function(data){
 
 }
 
-#' gather_shadow
+#' Long form representation of a shadow matrix
 #'
 #' gather exists as we want to include this extra metadata about the rows that have missing data, but I also wanted to include some extra information about the class of the data, in case we need to gather the data back into a wider, rather than long, format. Here it takes a function `visdat`, `visdat:::fingerprint`, which is currently not a particularly complex function.
 #'
 #' @param data a dataframe
 #'
-#' @return a dataframe in long, or  "molten" format, containing information about the missings
+#' @return a dataframe in long, or "molten" format, containing information about the missings
 #' @export
 #'
 #' @examples

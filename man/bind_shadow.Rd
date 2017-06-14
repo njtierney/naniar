@@ -17,25 +17,17 @@ Binding a shadow dataframe to a regular dataframe helps visualise and work with 
 }
 \examples{
 
-bind_shadow(airquality)
+aq_shadow <- bind_shadow(airquality)
 
 # explore missing data visually
 library(ggplot2)
 
 # using the bounded shadow
 
-ggplot(data = bind_shadow(airquality),
+ggplot(data = aq_shadow,
        aes(x = Ozone)) +
        geom_histogram() +
        facet_wrap(~Solar.R_NA,
        ncol = 1)
-
-# using the is_na function
-
-ggplot(data = airquality,
-       aes(x = Ozone)) +
-  geom_histogram() +
-  facet_wrap(~is_na(Solar.R),
-             ncol = 1)
 
 }

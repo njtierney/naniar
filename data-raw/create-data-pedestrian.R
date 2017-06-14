@@ -51,7 +51,7 @@ library(lubridate)
 #          Date_Time < "2017-01-01 01:00:00 UTC")
 
 pedestrian <- ped_full %>%
-  mutate(Year = year(Date_Time),
+  mutate(Year = as.integer(year(Date_Time)),   # force year to be an integer
          Month = month(Date_Time, label = TRUE, abbr = FALSE),
          Mdate = mday(Date_Time),
          Day = wday(Date_Time, label = TRUE, abbr = FALSE),
@@ -67,7 +67,9 @@ pedestrian <- ped_full %>%
          sensor_id = Sensor_ID,
          sensor_name = Sensor_Name,
          hourly_counts = Hourly_Counts) %>%
-  filter(year == 2015 | year == 2016) %>%
+  filter(year == 2016) %>%
+  # Birrarung Marr, Bourke Street Mall, Flagstaff, Spencer St-Collins St (south)
+  filter(sensor_id %in% c(2,7,23,13)) %>%
   select(hourly_counts,
          everything())
 
@@ -87,3 +89,36 @@ use_data(pedestrian,
 #
 
 # rename vars and case to cols and row
+# library(dplyr)
+# library(ggplot2)
+#
+# pedestrian %>%
+#   # filter(sensor_id %in% c(1,2,13,22,34,38)) %>%
+#   # filter(sensor_id %in% c(1,2,13)) %>%
+#   group_by(sensor_name, sensor_id) %>%
+#   summarise(n_miss = n_miss(hourly_counts),
+#             prop_miss = prop_miss(hourly_counts),
+#             n_complete = n_complete(hourly_counts)) %>%
+#   arrange(-n_miss)
+#
+# pedestrian %>%
+#   filter(sensor_id %in% c(2,7,23,13)) %>%
+#   filter(year == 2016)
+#   group_by(sensor_name, sensor_id, year) %>%
+#   summarise(n_miss = n_miss(hourly_counts),
+#             prop_miss = prop_miss(hourly_counts),
+#             n_complete = n_complete(hourly_counts),
+#             total = n())
+#
+# pedestrian %>%
+#   # filter(sensor_id %in% c(7,2,23,2,13)) %>%
+#   # filter(sensor_id %in% c(7,2,23,13)) %>%
+#   # filter(year == 2015) %>%
+#   filter(sensor_id %in% c(2,7,23,13)) %>%
+#   filter(year == 2016) %>%
+#   ggplot(aes(x = date_time,
+#              y = hourly_counts)) +
+#   geom_line() +
+#   facet_wrap(~sensor_name)
+#   summarise(mean = mean(hourly_counts, na.rm = TRUE),
+#             sd = sd(hourly_counts, na.rm = TRUE))

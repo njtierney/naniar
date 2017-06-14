@@ -1,4 +1,14 @@
-# narnia 0.0.7.9300 (2017/06/07)
+# narnia 0.0.7.9400 (2017/06/14)
+
+## Removed functions
+
+* Removed old functions `miss_cat`, `shadow_df` and `shadow_cat`, as they are no longer needed, and have been superceded by `label_missing_2d`, `as_shadow`, and `is_na`.
+
+## Small changes 
+
+* drastically reduced the size of the pedestrian dataset, consider 4 sensor locations, just for 2016.
+
+# narnia 0.0.7.9300 (2017/06/13)
 
 ## New features
 

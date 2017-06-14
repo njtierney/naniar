@@ -1,7 +1,7 @@
 Package: narnia
 Type: Package
 Title: Provide Summaries and Visualisations for Missing Data
-Version: 0.0.7.9300
+Version: 0.0.7.9400
 Author: Nicholas Tierney, Miles McBain, Di Cook,
 Authors@R: c(
     person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
@@ -30,6 +30,8 @@ Suggests:
     simputation,
     imputeTS
 VignetteBuilder: knitr
+Depends:
+    R (>= 3.1.2)
 Imports:
     dplyr,
     ggplot2,
@@ -39,7 +41,8 @@ Imports:
     magrittr,
     stats,
     visdat,
-    purrrlyr
+    purrrlyr,
+    rlang
 Remotes:
     njtierney/visdat
 RoxygenNote: 6.0.1.9000
@@ -54,7 +57,6 @@ Collate:
     'missing_data_tidiers.R'
     'narnia-ggproto.R'
     'narnia-package.R'
-    'old_shadow_shifters.R'
     'plotting.R'
     'shadow_shifters.R'
     'shadows.R'

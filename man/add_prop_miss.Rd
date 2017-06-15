@@ -4,10 +4,14 @@
 \alias{add_prop_miss}
 \title{Add column containing proportion of missing data values}
 \usage{
-add_prop_miss(data)
+add_prop_miss(data, vars = NULL, label = "prop_miss")
 }
 \arguments{
 \item{data}{a dataframe}
+
+\item{vars}{character string of variable names, default is all variables}
+
+\item{label}{character string of what you need to name variable}
 }
 \value{
 a dataframe
@@ -17,8 +21,11 @@ It can be useful when doing data analysis to add the proportion of missing data 
 }
 \examples{
 
-library(magrittr)
-airquality \%>\% add_prop_miss()
+add_prop_miss(airquality)
+
+add_prop_miss(airquality, "Month", label = "testing")
+
+add_prop_miss(airquality, "Month")
 
 # this can be applied to model the proportion of missing data
 # as in Tierney et al bmjopen.bmj.com/content/5/6/e007450.full

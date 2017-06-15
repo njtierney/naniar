@@ -55,6 +55,8 @@ add_n_miss <- function(data){
 #' It can be useful when doing data analysis to add the proportion of missing data values into your dataframe. add_prop_miss adds a column named "prop_miss", which contains the proportion of missing values in that row.
 #'
 #' @param data a dataframe
+#' @param vars character string of variable names, default is all variables
+#' @param label character string of what you need to name variable
 #'
 #' @return a dataframe
 #'
@@ -62,8 +64,11 @@ add_n_miss <- function(data){
 #'
 #' @examples
 #'
-#' library(magrittr)
-#' airquality %>% add_prop_miss()
+#' add_prop_miss(airquality)
+#'
+#' add_prop_miss(airquality, "Month", label = "testing")
+#'
+#' add_prop_miss(airquality, "Month")
 #'
 #' # this can be applied to model the proportion of missing data
 #' # as in Tierney et al bmjopen.bmj.com/content/5/6/e007450.full
@@ -78,13 +83,24 @@ add_n_miss <- function(data){
 #'     prefix = "prop_miss = ")
 
 
-add_prop_miss <- function(data){
+add_prop_miss <- function(data, vars = NULL, label = "prop_miss"){
 
-  purrrlyr::by_row(.d = data,
-                ..f = function(x) (mean(is.na(x))),
-                .collate = "row",
-                .to = "prop_miss")
+  if(is.null(vars)){
+    purrrlyr::by_row(.d = data,
+                     ..f = function(x) (mean(is.na(x))),
+                     .collate = "row",
+                     .to = "prop_miss")
+  } else {
 
+  quo_vars <- rlang::quos(vars)
+
+  selected_data <- dplyr::select(data, !!!quo_vars)
+
+  purrrlyr::by_row(.d = selected_data,
+                   ..f = function(x) (mean(is.na(x))),
+                   .collate = "row",
+                   .to = label)
+}
   # old approach
   # df %>%
   #   add_n_miss() %>%

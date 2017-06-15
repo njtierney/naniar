@@ -1,3 +1,19 @@
+# narnia 0.0.7.9400 (2017/06/15)
+
+## New features
+
+* added github issue / contribution / pull request guides
+* `ts` generic functions are now `miss_var_span` and `miss_var_run`, and `gg_miss_span` and work on `data.frame`'s, as opposed to just `ts` objects.
+* `add_shadow_shift()` adds a column of shadow_shifted values to the current dataframe, adding "_shift" as a suffix
+* `cast_shadow()` - acts like `bind_shadow()` but allows for specifying which columns to add
+* `shadow_shift` now has a method for factors - powered by `forcats::fct_explicit_na()` #3
+
+## name changes
+
+* changed `is_na` function to `label_na`
+* renamed most files to have `tidy-miss-[topic]`
+* 
+
 # narnia 0.0.7.9400 (2017/06/14)
 
 ## Removed functions

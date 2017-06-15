@@ -1,7 +1,7 @@
 Package: narnia
 Type: Package
 Title: Provide Summaries and Visualisations for Missing Data
-Version: 0.0.7.9400
+Version: 0.0.7.9800
 Author: Nicholas Tierney, Miles McBain, Di Cook,
 Authors@R: c(
     person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
@@ -42,26 +42,28 @@ Imports:
     stats,
     visdat,
     purrrlyr,
-    rlang
+    rlang,
+    forcats
 Remotes:
     njtierney/visdat
 RoxygenNote: 6.0.1.9000
-Collate: 
-    'add_cols.R'
+Collate:
     'data-pedestrian.R'
     'data.R'
-    'defunct_missing_data_tidiers.R'
+    'defunct-tidy-miss.R'
     'legend-draw.R'
-    'geom_missing_point.R'
-    'label_missings.R'
-    'missing_data_tidiers.R'
+    'geom-missing-point.R'
     'narnia-ggproto.R'
     'narnia-package.R'
     'plotting.R'
-    'shadow_shifters.R'
+    'shadow-shifters.R'
     'shadows.R'
-    'stat_missing_point.R'
+    'stat-missing-point.R'
     'tidiers_time_series.R'
+    'tidy-miss-add-cols.R'
+    'tidy-miss-family.R'
+    'tidy-miss-label.R'
+    'tidy-miss-scalars.R'
     'utils.R'
 URL: https://github.com/njtierney/narnia
 BugReports: https://github.com/njtierney/narnia/issues

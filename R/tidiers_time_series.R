@@ -1,120 +1,70 @@
-#' Add a counter variable for the period of time
-#'
-#' This adds a period_counter variable to the dataframe. It is used internally
-#' inside `narnia` to facilitate the counting of missing values over a given
-#' time period.
-#'
-#' @param dat data.frame
-#' @param period_length integer
-#'
-#' @return data.frame with extra variable "period_counter".
-#'
-#' @examples
-#' \dontrun{
-#' library(imputeTS)
-#' add_period_counter(as_tibble(tsNH4),
-#'                    period_length = 3)
-#' }
-
-#'
-add_period_counter <- function(dat, period_length) {
-
-    dplyr::mutate(dat,
-                  period_counter = rep(x = 1:ceiling(nrow(dat)),
-                                       each = period_length,
-                                       length.out = nrow(dat)))
-}
-
-#' Summarise the number of missings in a given period for a ts object
+#' Summarise the number of missings for a given repeating span on a variable
 #'
 #' To summarise the missing values in a time series object it can be useful to
 #'     calculate the number of missing values in a given time period.
-#'     `miss_ts_summary` takes a `ts` object and a `period` argument and
-#'      returns a dataframe containing the number of missing values within each
-#'      period.
+#'     `miss_var_span` takes a data.frame object, a variable, and a `span_every`
+#'     argument and returns a dataframe containing the number of missing values
+#'     within each span.
 #'
-#' @param dat_ts ts object
-#' @param period integer describing the length of the period to be explored
+#' @param data data.frame
+#' @param var variable of interest. Currently just one variable
+#' @param span_every integer describing the length of the span to be explored
 #'
 #' @return dataframe with variables `n_miss`, `n_complete`, `prop_miss`, and
 #'     `prop_complete`, which describe the number, or proportion of missing or
-#'     complete values within that given time period
+#'     complete values within that given time span.
 #'
 #' @export
 #'
 #' @examples
 #'
-#' \dontrun{
-#' library(imputeTS)
-#' miss_ts_summary(data_ts = tsNH4,
-#' period = 100)
-#' }
+#' miss_var_span(data = pedestrian,
+#'               var = hourly_counts,
+#'               span_every = 168)
 #'
-miss_ts_summary <- function(dat_ts,
-                            period){
-dat_ts = tsNH4
-period = 1000
-  tibble::tibble(ts = dat_ts) %>%
-    add_period_counter(period_length = period) %>%
-    dplyr::group_by(period_counter) %>%
-    dplyr::tally(is.na(ts)) %>%
+miss_var_span <- function(data,
+                          var,
+                          span_every){
+
+  var_enquo <- rlang::enquo(var)
+
+  # grouping <- rlang::quos(...)
+
+  dat_ts_summary <- dplyr::select(data,!!var_enquo)
+
+  dat_ts_summary %>%
+    # dplyr::group_by(!!!grouping) %>%
+    # need to make add_span_counter respect grouping structure, somehow
+    add_span_counter(span_size = span_every) %>%
+    dplyr::group_by(span_counter) %>%
+    dplyr::tally(is.na(!!var_enquo)) %>%
     dplyr::rename(n_miss = n) %>%
-    dplyr::mutate(n_complete = period - n_miss,
-                  prop_miss = n_miss / period,
+    dplyr::mutate(n_complete = span_every - n_miss,
+                  prop_miss = n_miss / span_every,
                   prop_complete = 1 - prop_miss)
 
 }
 
-#' Plot the number of missings in a given period
-#'
-#' This is a replacement function to
-#' imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100), which shows the
-#' number of missings in a given time period
-#'
-#' @param dat_ts ts object
-#' @param period integer describing the length of the period to be explored
-#'
-#' @return ggplot2 object
-#' @export
-#'
-#' @examples
-#' \dontrun{
-#' library(imputeTS)
-#' gg_miss_ts(tsNH4, period = 100)
-#' }
-gg_miss_ts <- function(dat_ts,
-                       period){
-
-  miss_ts_summary(dat_ts,
-                  period) %>%
-    tidyr::gather(key = variable,
-                  value = value,
-                  prop_miss:prop_complete) %>%
-    ggplot2::ggplot(ggplot2::aes(x = period_counter,
-                                 y = value,
-                                 fill = variable)) +
-    ggplot2::geom_col(colour = "white") +
-    ggplot2::scale_fill_manual(name = "",
-                               values = c("grey80",
-                                          "grey20"),
-                               label = c("Present",
-                                         "Missing")) +
-    ggplot2::theme_minimal() +
-    ggplot2::labs(title = "Proportion of missing values",
-                  subtitle = sprintf("Over a period of %s", period),
-                  x = "Time Period",
-                  y = "Proportion Missing")
-
-}
+# some alternative names
+# miss_var_interval
+# miss_var_stretch
+# miss_var_term
+# miss_var_span
+# miss_var_phase
+# miss_var_run
+# miss_var_period
+# miss_var_cycle
+# miss_var_window
 
 #' Return the number of missing or complete values in a single run
 #'
 #' In time series it can be useful to determine the number of missing values
-#'     that occur in a single run. This function `miss_ts_run` returns a
+#'     that occur in a single run. This function `miss_var_run` returns a
 #'     dataframe with the column names "run_length" and "is_na", which describe
 #'     the length of the run, and whether that run describes a missing value
 #'
-#' @param dat_ts a ts object
+#' @param data data.frame
+#' @param var a bare variable name
 #'
 #' @return dataframe with column names "run_length" and "is_na", which describe
 #'     the length of the run, and whether that run describes a missing value.
@@ -123,34 +73,38 @@ gg_miss_ts <- function(dat_ts,
 #'
 #' @examples
 #'
-#' \dontrun{
-#' library(imputeTS)
 #' library(ggplot2)
 #' library(dplyr)
 #'
 #' # explore the number of missings in a given run
-#' miss_ts_run(tsNH4) %>%
-#' filter(is_na) %>%
-#' count(run_length) %>%
-#' ggplot(aes(x = run_length,
-#'            y = n)) +
-#'      geom_col()
+#' miss_var_run(pedestrian, hourly_counts) %>%
+#'   filter(is_na) %>%
+#'   count(run_length) %>%
+#'   ggplot(aes(x = run_length,
+#'              y = n)) +
+#'       geom_col()
 #'
 #' # look at the number of missing values and the run length of these.
-#' miss_ts_run(tsNH4) %>%
+#' miss_var_run(pedestrian, hourly_counts) %>%
 #'   ggplot(aes(x = is_na,
 #'              y = run_length)) +
-#'      geom_boxplot()
+#'       geom_boxplot()
 #'
-#'}
 #'
-miss_ts_run <- function(dat_ts){
-  tibble::as_tibble(c(rle(is.na(dat_ts)))) %>%
+miss_var_run <- function(data, var){
+
+  var_enquo <- rlang::enquo(var)
+
+  # grouping <- rlang::quos(...)
+
+  data_pull <-  data %>%
+    dplyr::pull(!!var_enquo)
+    # dplyr::group_by(!!!grouping) %>%
+    tibble::as_tibble(c(rle(is.na(data_pull)))) %>%
     dplyr::rename(run_length = lengths,
                   is_na = values)
-    # dplyr::mutate(is_na = dplyr::if_else(is_na == TRUE,
-    #                                      true = NA,
-    #                                      false = ))
+    # narnia::is_na(TRUE)
+
 }
 
 # Need to make this work for:
@@ -167,3 +121,83 @@ miss_ts_run <- function(dat_ts){
 # size_period = c(3,10,100) OR
 # size_period = c(100) OR
 # size_period = c(100,50)
+
+
+# regarding the use of miss_var_run, it might also be useful to summarise the frequency of the size of the runs
+# so I want variables like:
+# || run_size | n_missing | n_complete | prop_missing | prop_complete ||
+
+# possible implementation for multiple spans
+
+# pedestrian %>%
+#   mutate(weekday = if_else(Day == "Saturday" | Day == "Sunday",
+#                            true = "weekend",
+#                            false = "weekday")) %>%
+#   group_by(Sensor_Name,
+#            weekday) %>%
+#   # miss_ts_summary(time_index = Date_Time,
+#   #                 variable = Hourly_Counts
+#   # narnia:::add_period_counter(period_length = ) %>%
+#   # dplyr::group_by(period_counter) %>%
+#   dplyr::tally(is.na(Hourly_Counts))
+# dplyr::rename(n_miss = n) %>%
+#   dplyr::mutate(n_complete = length(dat_ts) - n_miss,
+#                 prop_miss = n_miss / period,
+#                 prop_complete = 1 - prop_miss)
+#
+
+# library(imputeTS)
+
+# How can I improve the summaries below?
+# statsNA(tsNH4)
+
+# [1] "Stats for Bins"
+# [1] "  Bin 1 (1138 values from 1 to 1138) :      233 NAs (20.5%)"
+# [1] "  Bin 2 (1138 values from 1139 to 2276) :      433 NAs (38%)"
+# [1] "  Bin 3 (1138 values from 2277 to 3414) :      135 NAs (11.9%)"
+# [1] "  Bin 4 (1138 values from 3415 to 4552) :      82 NAs (7.21%)"
+#
+# [1] "Longest NA gap (series of consecutive NAs)"
+# [1] "157 in a row"
+
+# [1] "Most frequent gap size (series of consecutive NA series)"
+# [1] "1 NA in a row (occuring 68 times)"
+
+# [1] "Gap size accounting for most NAs"
+# [1] "157 NA in a row (occuring 1 times, making up for overall 157 NAs)"
+
+# [1] "Overview NA series"
+# [1] "  1 NA in a row: 68 times"
+# [1] "  2 NA in a row: 26 times"
+# [1] "  3 NA in a row: 16 times"
+# [1] "  4 NA in a row: 10 times"
+# [1] "  5 NA in a row: 8 times"
+# [1] "  6 NA in a row: 4 times"
+# [1] "  7 NA in a row: 2 times"
+# [1] "  8 NA in a row: 3 times"
+# [1] "  9 NA in a row: 2 times"
+# [1] "  10 NA in a row: 1 times"
+# [1] "  11 NA in a row: 1 times"
+# [1] "  12 NA in a row: 2 times"
+# [1] "  14 NA in a row: 1 times"
+# [1] "  16 NA in a row: 1 times"
+# [1] "  17 NA in a row: 1 times"
+# [1] "  21 NA in a row: 1 times"
+# [1] "  25 NA in a row: 1 times"
+# [1] "  26 NA in a row: 1 times"
+# [1] "  27 NA in a row: 1 times"
+# [1] "  32 NA in a row: 1 times"
+# [1] "  42 NA in a row: 2 times"
+# [1] "  91 NA in a row: 1 times"
+# [1] "  157 NA in a row: 1 times"
+
+#
+# n_miss(tsNH4)
+# n_complete(tsNH4)
+# prop_miss(tsNH4)
+# prop_complete(tsNH4)
+#
+# # Stats for bins?
+#
+# miss_ts_run(tsNH4)
+# miss_ts_summary(dat_ts = tsNH4, period = 100)

@@ -9,6 +9,14 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r knitr-setup, include = FALSE}
+knitr::opts_chunk$set(fig.align = "center",
+                      fig.width = 5,
+                      fig.height = 4)
+
+```
+
+
 # Introduction
 
 Missing values are ubiquitous in data and need to be carefully explored and handled in the initial stages of analysis. In this vignette we describe the tools in the package `narnia` for exploring missing data structures with minimal deviation from the common workflows of ggplot and tidy data [@Wickham2014; @Wickham2009].
@@ -175,13 +183,27 @@ The `bind_shadow` argument attaches a shadow to the current dataframe
 
 aq_shadow <- bind_shadow(airquality)
 
-library(dplyr)
+library(tidyverse)
 
 glimpse(aq_shadow)
 
 ```
 
 Doing this provides a consistent syntax for referring to variables with missing values.
+
+`bind_shadow()` also provides a useful pattern to explore missing values by grouping by the missing/complete of one variable and looking at the mean and other summary values. Below we show the mean, sd, variance, and min and max values of Solar.R for when Ozone is present, and when it is missing.
+
+```{r bind-shadow-pattern}
+
+airquality %>%
+  bind_shadow() %>%
+  group_by(Ozone_NA) %>%
+  summarise_at(.vars = "Solar.R",
+               .funs = c("mean", "sd", "var", "min", "max"),
+               na.rm = TRUE)
+```
+
+
 
 Below, we can plot the distribution of Temperature, plotting for values of temperature when Ozone is missing, and when it is not missing.
 

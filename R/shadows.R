@@ -1,89 +1,7 @@
-# A set of functions that provide utility functions for creating "shadow" dataframes (shadaframes, nataframes, nabbles)
-#
-#' Return the number of missing values
-#'
-#' substitute for \code{sum(is.na(data))}
-#'
-#' @param x a vector
-#'
-#' @return numeric the number of missing values
-#'
-#' @export
-#'
-#' @examples
-#'
-#' n_miss(airquality)
-#' n_miss(airquality$Ozone)
-#'
-n_miss <- function(x){
-  sum(is.na(x))
-}
-
-#' Return the number of complete values
-#'
-#' A complement to \code{n_miss}
-#'
-#' @param x a vector
-#'
-#' @return numeric number of complete values
-#'
-#' @export
-#'
-#' @examples
-#'
-#' n_complete(airquality)
-#' n_complete(airquality$Ozone)
-#'
-n_complete <- function(x){
-
-  # number of total elements - number of missings
-  length(is.na(x)) - n_miss(x)
-
-}
-#' Return the proportion of missing values
-#'
-#' substitute for \code{mean(is.na(data))}
-#'
-#' @param x a vector
-#'
-#' @return numeric the proportion of missing values
-#'
-#' @export
-#'
-#' @examples
-#'
-#' prop_miss(airquality)
-#' prop_miss(airquality$Ozone)
-#'
-prop_miss <- function(x){
-  mean(is.na(x))
-}
-
-#' Return the proportion of complete values
-#'
-#' The complement to \code{prop_miss}
-#'
-#' @param x a vector
-#'
-#' @return numeric proprtion of complete values
-#'
-#' @export
-#'
-#' @examples
-#'
-#' prop_complete(airquality)
-#' prop_complete(airquality$Ozone)
-#'
-prop_complete <- function(x){
-
-  # 1 - proportion of missings
-  1 - mean(is.na(x))
-
-}
-
 #' Give NAs a more meaningful label
 #'
-#' Returns a binary factor of !NA and NA, where !NA indicates a datum that is not missing, and NA indicats missingness.
+#' Returns a binary factor of !NA and NA, where !NA indicates a datum that is not
+#'   missing, and NA indicats missingness.
 #'
 #' @param x a vector
 #'
@@ -94,9 +12,9 @@ prop_complete <- function(x){
 #'
 #' @examples
 #'
-#' is_na(airquality$Ozone)
+#' label_na(airquality$Ozone)
 #'
-is_na <- function(x) {
+label_na <- function(x) {
   if (length(x) == 0) {
     stop("Input is of length 0, please check your inputs.", call. = FALSE)
     } else{
@@ -106,33 +24,60 @@ is_na <- function(x) {
     }
 }
 
+#' S3 method for create shadows
+#'
+#' Shadows have _NA as a suffix
+#'
+#' @param data dataframe
+#' @param ... selected variables to use
+#'
+#' @return appended shadow with column names
+#' @export
+
+as_shadow <- function(data, ...) UseMethod("as_shadow")
 
 #' Create shadow data
 #'
 #' Return a tibble that in shadow matrix form, where the variables are the same but have a suffix _NA attached to indicate their difference.
 #'
-#' @param data a dataframe
-#'
-#' @return a dataframe with appended
-#' @export
+#' @inheritParams as_shadow
 #'
 #' @examples
 #'
 #' as_shadow(airquality)
 #'
-as_shadow <- function(data){
+#' @export
+as_shadow.data.frame <- function(data, ...){
 
-  if(is.data.frame(data) == FALSE){
-    stop("Input must be a data.frame", call. = FALSE)
-  }
+  # if (is.null(vars)){
 
-  data_shadow <- purrr::map_df(data, is_na)
+    data_shadow <- purrr::map_df(data, label_na)
 
-  names(data_shadow) <- paste0(names(data),"_NA")
+    names(data_shadow) <- paste0(names(data),"_NA")
 
-  data_shadow
+    data_shadow
+
+    # future dev - try and create a vars argument to only
+  # } else {
+
+    # data_shadow <- dplyr::select(data, rlang::.data[[vars]])
+
+
+    # data_shadow
+
+    # print(data_shadow)
+
+    # %>%  purrr::map_df(label_na)
+
+    # names(data_shadow) <- paste0(names(.data),"_NA")
+
+    # data_shadow
+
+  # }
 
 }
+
+
 
 #' Column bind a shadow dataframe to original data
 #'

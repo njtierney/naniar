@@ -29,4 +29,4 @@ reference:
       - as_shadow
       - bind_shadow
       - gather_shadow
-      - is_na
+      - label_na

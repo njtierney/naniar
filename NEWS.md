@@ -12,7 +12,6 @@
 
 * changed `is_na` function to `label_na`
 * renamed most files to have `tidy-miss-[topic]`
-* 
 
 # narnia 0.0.7.9400 (2017/06/14)
 

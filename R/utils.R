@@ -1,3 +1,7 @@
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
+
 #' Which rows and cols contain missings?
 #'
 #' Internal function that is short for `which(is.na(x))`. Creates integer

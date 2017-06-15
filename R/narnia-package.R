@@ -8,7 +8,6 @@
 #' @docType package
 #' @import ggplot2
 #' @import rlang
-#' @importFrom magrittr %>%
 NULL
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))

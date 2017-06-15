@@ -1,4 +1,4 @@
-# Tidy methods for displaying missing data
+ # Tidy methods for displaying missing data summaries
 
 #' Percentage of missing data in a dataframe
 #'

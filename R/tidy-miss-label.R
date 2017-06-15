@@ -54,7 +54,8 @@ label_missing_2d <- function(x1, x2){
 
 #' Is there a missing value in the row of a dataframe?
 #'
-#' Creates a character vector describing whether there are missing or not missing values
+#' Creates a character vector describing whether there are missing or not missing
+#'   values
 #'
 #' @param data a dataframe or set of vectors of the same length
 #'
@@ -62,7 +63,7 @@ label_missing_2d <- function(x1, x2){
 #'
 #' @export
 #'
-#' @note could this be a nice window function? Like `data %>% mutate(add_is_missing(var1,var2))` ?
+#' @note should be an add_missing_labels function so you can do `data %>% add_missing_labels()`
 #'
 #' @examples
 #'
@@ -88,3 +89,16 @@ label_missings <- function(data){
                  false = "Not Missing")
 
 }
+
+# there should be a missing labeller...
+
+# label_na(data,
+#          missing_level = ,
+#          missing_label = ,
+#          complete_level = ,
+#          complete_label =
+# )
+#
+#
+#
+# forcats::fct_explicit_na()

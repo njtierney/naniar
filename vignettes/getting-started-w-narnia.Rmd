@@ -183,7 +183,7 @@ The `bind_shadow` argument attaches a shadow to the current dataframe
 
 aq_shadow <- bind_shadow(airquality)
 
-library(tidyverse)
+library(dplyr)
 
 glimpse(aq_shadow)
 

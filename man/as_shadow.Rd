@@ -2,21 +2,18 @@
 % Please edit documentation in R/shadows.R
 \name{as_shadow}
 \alias{as_shadow}
-\title{Create shadow data}
+\title{S3 method for create shadows}
 \usage{
-as_shadow(data)
+as_shadow(data, ...)
 }
 \arguments{
-\item{data}{a dataframe}
+\item{data}{dataframe}
+
+\item{...}{selected variables to use}
 }
 \value{
-a dataframe with appended
+appended shadow with column names
 }
 \description{
-Return a tibble that in shadow matrix form, where the variables are the same but have a suffix _NA attached to indicate their difference.
-}
-\examples{
-
-as_shadow(airquality)
-
+Shadows have _NA as a suffix
 }

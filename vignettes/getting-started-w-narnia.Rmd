@@ -305,27 +305,30 @@ miss_var_table(airquality)
 
 ```
 
-# Time series summaries
+There are also summary functions for exploring missings that occur over a particular span or period of the dataset, or the number of missings in a single run:
 
-There are also summary functions for time series data:
+- `miss_var_run()`, and 
+- `miss_var_span()`
 
-- `miss_ts_run`, and 
-- `miss_ts_summary`
+`miss_var_run` can be particularly useful in time series data, as it allows you to provide summaries for the number of missings or complete values in a single run. The function `miss_var_run()` provides a data.frame of the run length of missings and complete values. To explore this function we will use the built-in dataset, `pedestrian`, which contains hourly counts of pedestrians from four locations around Melbourne, Australia, from 2016.
 
-In time series data it can be useful to provide summaries for the number of missings or complete values in a single run.
-
-`miss_ts_run` provides a data.frame of the run length of missings and complete values.
+To use `miss_var_run`, you specify the variable that you want to explore the runs of missingness for, in this case, `hourly_counts`:
 
 ```{r}
-library(imputeTS)
-miss_ts_run(tsNH4)
+miss_var_run(pedestrian,
+             hourly_counts)
 ```
+
+`miss_var_span()` is used to determine the number of missings over a specified repeating span of rows in variable of a dataframe. Similar to `miss_var_run`, you specify the variable that you wish to explore, you then also specify the size of the span with the `span_every` argument.
 
 ```{r}
-# so I want variables like:
-# || run_size | n_missing | n_complete | prop_missing | prop_complete ||
+
+miss_var_span(pedestrian,
+              hourly_counts,
+              span_every = 100)
 
 ```
+
 
 The final question we proposed in this vignette was: 
 
@@ -370,16 +373,15 @@ The tools in `narnia` help us identify where missingness is, while maintaining a
 - Continue making `narnia` play well with `dplyr` and `tidyr`.
 - Make `narnia` work with big data tools like `sparklyr`, and `sparklingwater`.
 - Expand ggplot `geom_missing_*` family.
-- Develop methods for handling and visualising imputations, and multiple imputation.
+- Further develop methods for handling and visualising imputations, and multiple imputation.
 
 # Thank you
 
-A huge thanks of course to Di Cook and Miles McBain for their assistance on this project, and its development. In particular, I thank Di for providing the large conceptual ideas of how to display missings, and the use of the shadow matrix. I also thank Miles for his instrumental work in getting 
+A huge thanks of course to Di Cook and Miles McBain for their assistance on this project, and its development. In particular, I thank Di for providing the large conceptual ideas of how to display missings, and the use of the shadow matrix. I also thank Miles for his instrumental work in getting `stat_missing_point` and `geom_missing_point()` working as they do now.
 
 # References
 
 - MANET: http://www.rosuda.org/MANET/
 - ggobi: http://www.ggobi.org/
+- visdat: https://www.github.com/njtierney/visdat
 - Tierney NJ, Harden FA, Harden MJ, Mengersen, KA, Using decision trees to understand structure in missing data BMJ Open 2015;5:e007450. doi: 10.1136/bmjopen-2014-007450
-- https://www.github.com/njtierney/visdat
-- https://www.github.com/njtierney/narnia

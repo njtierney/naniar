@@ -1,4 +1,9 @@
-# plotting functions
+# plotting functions for narnia
+
+
+#' @importFrom visdat vis_miss
+#' @export
+visdat::vis_miss
 
 #' Plot the number of missings per case (row)
 #'
@@ -99,6 +104,67 @@ gg_missing_which <- function(x){
 }
 
 
-#' @importFrom visdat vis_miss
+#' Plot the number of missings in a given repeating span
+#'
+#' This is a replacement function to
+#' imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100), which shows the
+#' number of missings in a given span
+#'
+#' @param data data.frame
+#' @param var a bare unquoted variable name
+#' @param span_size integer describing the length of the span to be explored
+#'
+#' @return ggplot2 object
 #' @export
-visdat::vis_miss
+#'
+#' @examples
+#'
+#' gg_miss_span(pedestrian, span_size = 100)
+
+gg_miss_span <- function(data,
+                         var,
+                         span_size){
+
+  miss_var_span(data,
+                var,
+                span_size) %>%
+    tidyr::gather(key = variable,
+                  value = value,
+                  prop_miss:prop_complete) %>%
+    ggplot2::ggplot(ggplot2::aes(x = span_counter,
+                                 y = value,
+                                 fill = variable)) +
+    ggplot2::geom_col(colour = "white") +
+    ggplot2::scale_fill_manual(name = "",
+                               values = c("grey80",
+                                          "grey20"),
+                               label = c("Present",
+                                         "Missing")) +
+    ggplot2::theme_minimal() +
+    ggplot2::labs(title = "Proportion of missing values",
+                  subtitle = sprintf("Over a repeating span of %s", span_size),
+                  x = "Span",
+                  y = "Proportion Missing")
+
+}
+
+# possible alternative plot for missings over a span, using loess to control
+# the smoothing of the missingness
+#
+# tsNH4_NA %>%
+#   ggplot(aes(x = date_time,
+#              y = x_NA)) +
+#   geom_point()
+#
+# loess_NA <- loess(as.numeric(x_NA) ~ as.numeric(date_time),
+#                   data = tsNH4_NA,
+#                   degree = 0,
+#                   span = 0.75)
+#
+# modelr::add_predictions(data = tsNH4_NA,
+#                         model = loess_NA) %>%
+#   mutate(pred = pred - 1) %>%
+#   ggplot(aes(x = date_time,
+#              y = pred)) +
+#   geom_line() +
+#   ylim(0,1)

@@ -3,3 +3,4 @@ inst/doc
 .Rhistory
 .RData
 inst/*.html
+.DS_Store

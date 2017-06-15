@@ -1,8 +1,15 @@
-#' Shift missing values to 10\% below minimum value
+#' Shift missing values to facilite missing data exploration/visualisation
 #'
-#' shadow_shift is a window function that transforms missing values to be about 10% below the minimum value for a given variable, plus some jittered noise, to separate repeated values, so that missing values can be visualised along with the rest of the data
+#' `shadow_shift` is a window function that transforms missing values to
+#'     facilitate visualisation. This has different behaviour for different
+#'     types of variables. For numeric variables, the values are shifted to 10%
+#'     below the minimum value for a given variable plus some jittered noise,
+#'     to separate repeated values, so that missing values can be visualised
+#'     along with the rest of the data. There are different shifts that can
+#'     take place in different kinds of variables, which are currently under
+#'     development.
 #'
-#' @param x is a variable, must be continuous
+#' @param x a variable of interest to shift
 #'
 #' @examples
 #' airquality$Ozone
@@ -28,7 +35,7 @@ shadow_shift.default <- function(x){
   stop(
     "shadow_shift does not know how to deal with data of class ",
     class(x),
-    "please check your input is more than length one",
+    " please check your input is more than length one",
     call. = FALSE
   )
 
@@ -36,7 +43,6 @@ shadow_shift.default <- function(x){
 
 #' @export
 shadow_shift.numeric <- function(x){
-
 
   # add an exception for when length x == 1
   if(n_complete(x) == 1){
@@ -69,3 +75,15 @@ shadow_shift.numeric <- function(x){
   } # close else statement
 
 } # close function
+
+#' @export
+shadow_shift.factor <- function(x){
+  forcats::fct_explicit_na(x, na_level = "missing")
+}
+#
+# library(narnia)
+# brfss <- tibble::as_tibble(brfss)
+#
+# brfss %>%
+#   add_shadow_shift(vars = c("AVEDRNK2", "STOPSMK2")) %>%
+#   select(AVEDRNK2, AVEDRNK2_shift, STOPSMK2, STOPSMK2_shift)

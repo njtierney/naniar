@@ -80,6 +80,13 @@ shadow_shift.numeric <- function(x){
 shadow_shift.factor <- function(x){
   forcats::fct_explicit_na(x, na_level = "missing")
 }
+
+#' @export
+shadow_shift.character <- function(x){
+  dplyr::if_else(is.na(x),
+                 true = "missing",
+                 false = x)
+}
 #
 # library(narnia)
 # brfss <- tibble::as_tibble(brfss)

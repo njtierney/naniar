@@ -173,3 +173,77 @@ cast_shadow <- function(data, vars){
   tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
 
 }
+
+cast_shadow_shift <- function(data, vars){
+
+  quo_vars <- rlang::quos(vars)
+
+  # shadow all (using purrr:map_df)
+  shadow_vars <- dplyr::select(data, !!!quo_vars) %>% as_shadow
+  shift_vars <- dplyr::select(data, !!!quo_vars) %>% add_shadow_shift
+  # cannot get this to take multiple variables
+  # shadow_vars <- dplyr::select(data, .data[[vars]]) %>% as_shadow
+
+  tibble::as_tibble(dplyr::bind_cols(data,
+                                     shadow_vars,
+                                     shift_vars))
+
+}
+
+# perhaps what I need are functions like:
+# add_any_miss
+# add_all_miss
+# add_any_complete
+# add_all_complete
+# which take variables
+# these would be built off of the functions `any_miss` and `all_miss` and their
+# complements
+
+    # all(is.na(x))
+    # all(!is.na(x))
+    # any(is.na(x))
+    # any(!is.na(x))
+
+# but they would return "missing" or "complete"
+# they would also work row-wise, for the selected variables
+
+
+#' Add a column that tells you if there are any missing values
+#'
+#'
+#'
+#' @param data data.frame
+#' @param vars quoted variables
+#' @param label label for the column, defaults to "any_miss"
+#'
+#' @return data.frame with data and the column labelling whether that row (for
+#'     those variables) has any missing values - indicated by "missing" and
+#'     "complete".
+#'
+#' @note perhaps there should be a general function for this
+#'
+#' @export
+#'
+#' @examples
+#'
+#' add_any_miss(airquality, c("Ozone", "Solar.R"))
+#'
+add_any_miss <- function(data, vars, label = "any_miss"){
+
+  quo_vars <- rlang::quos(vars)
+
+  stub_data <- dplyr::select(data, !!!quo_vars)
+
+  stub_data_label <- stub_data %>%
+    dplyr::mutate(.temp = any_row_miss(stub_data),
+                  .temp_label = dplyr::if_else(condition = .temp == TRUE,
+                                               true = "missing",
+                                               false = "complete")) %>%
+    dplyr::select(.temp_label) %>%
+    tibble::as_tibble()
+
+  names(stub_data_label) <- label
+
+  dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
+
+}

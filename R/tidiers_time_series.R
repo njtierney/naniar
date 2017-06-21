@@ -78,7 +78,7 @@ miss_var_span <- function(data,
 #'
 #' # explore the number of missings in a given run
 #' miss_var_run(pedestrian, hourly_counts) %>%
-#'   filter(is_na) %>%
+#'   filter(is_na == "missing") %>%
 #'   count(run_length) %>%
 #'   ggplot(aes(x = run_length,
 #'              y = n)) +
@@ -102,7 +102,11 @@ miss_var_run <- function(data, var){
     # dplyr::group_by(!!!grouping) %>%
     tibble::as_tibble(c(rle(is.na(data_pull)))) %>%
     dplyr::rename(run_length = lengths,
-                  is_na = values)
+                  is_na = values) %>%
+      dplyr::mutate(is_na = if_else(is_na == TRUE,
+                                    true = "missing",
+                                    false = "complete"))
+    # also look into `label_na`
     # narnia::is_na(TRUE)
 
 }

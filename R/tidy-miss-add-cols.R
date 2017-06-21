@@ -96,22 +96,24 @@ add_prop_miss <- function(data, vars = NULL, label = "prop_miss"){
 
   selected_data <- dplyr::select(data, !!!quo_vars)
 
-  purrrlyr::by_row(.d = selected_data,
-                   ..f = function(x) (mean(is.na(x))),
-                   .collate = "row",
-                   .to = label)
-}
+  prop_selected_data <- purrrlyr::by_row(.d = selected_data,
+                                         ..f = function(x) (mean(is.na(x))),
+                                         .collate = "row",
+                                         .to = label)
+
+  prop_selected_data
+  # unsure if this should return just the variables computed -----
+    # perhaps add a label to this to sescribe which variable were used in its calculation?
+    # dplyr::select(!!as.name(label))
+  # dplyr::as_tibble(dplyr::bind_cols(data, prop_selected_data))
+
   # old approach
   # df %>%
   #   add_n_miss() %>%
   #   dplyr::mutate(pct_miss = n_miss/ncol(df)) %>%
   #   dplyr::select(-n_miss)
-
+  }
 }
-
-# purrr::by_row may be deprecated soon, keeping old methods below
-# just as a fallback
-
 
 #' Add a shadow shifted column to a dataset
 #'
@@ -150,7 +152,7 @@ add_shadow_shift <- function(data, vars, suffix = "shift"){
 
 #' Add a shadow column to a dataset
 #'
-#' Shifting the values of a numeric
+#' Shifting the values to make them easier to display
 #'
 #' @param data data.frame or .tbl
 #' @param vars quoted variablename
@@ -170,25 +172,39 @@ cast_shadow <- function(data, vars){
   # cannot get this to take multiple variables
   # shadow_vars <- dplyr::select(data, .data[[vars]]) %>% as_shadow
 
-  tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
+  my_data <- dplyr::select(data, !!!quo_vars)
+
+  tibble::as_tibble(dplyr::bind_cols(my_data, shadow_vars))
 
 }
 
+#' Add a shadow and a shadow_shift column to a dataset
+#'
+#' Shift the values and add the shadow
+#'
+#' @param data data.frame
+#' @param vars character string for variables
+#'
+#' @return data.frame with the shadow and shadow_shift vars
+#'
+#' @export
+#'
+#' @examples
+#'
+#' airquality %>% cast_shadow_shift("Ozone")
+#' airquality %>% cast_shadow_shift(c("Ozone", "Temp"))
+#'
 cast_shadow_shift <- function(data, vars){
 
   quo_vars <- rlang::quos(vars)
 
-  # shadow all (using purrr:map_df)
-  shadow_vars <- dplyr::select(data, !!!quo_vars) %>% as_shadow
-  shift_vars <- dplyr::select(data, !!!quo_vars) %>% add_shadow_shift
-  # cannot get this to take multiple variables
-  # shadow_vars <- dplyr::select(data, .data[[vars]]) %>% as_shadow
+  shadow_vars <- dplyr::select(data, !!!quo_vars) %>% cast_shadow(vars)
 
-  tibble::as_tibble(dplyr::bind_cols(data,
-                                     shadow_vars,
-                                     shift_vars))
+  # shift those values selected
+  add_shadow_shift(shadow_vars, vars)
 
 }
+
 
 # perhaps what I need are functions like:
 # add_any_miss

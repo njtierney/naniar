@@ -28,7 +28,7 @@ library(dplyr)
 
 # explore the number of missings in a given run
 miss_var_run(pedestrian, hourly_counts) \%>\%
-  filter(is_na) \%>\%
+  filter(is_na == "missing") \%>\%
   count(run_length) \%>\%
   ggplot(aes(x = run_length,
              y = n)) +

@@ -8,25 +8,47 @@ reference:
       Visualise missing data
     contents:
       - geom_missing_point
+      - stat_missing_point
       - starts_with("gg_missing_")
+      - starts_with("gg_miss_")
   - title: "Numerical Summaries"
     desc: >
       Provide tidy data frame summaries of missingness
     contents:
       - n_miss
       - n_complete
+      - prop_miss
+      - prop_complete
       - starts_with("miss_")
   - title: "Add columns"
     desc: >
-      Add the number of missing and proportion of missing data
+      Add missing data summaries/tool columns
     contents:
-      - add_n_miss
-      - add_prop_miss
+      - starts_with("add_")
+  - title: "Cast Shadows"
+    desc: >
+      Add shadow information to the dataframe while reducing it to the
+      variables of interest
+    contents:
+      - starts_with("cast_")
   - title: "Data structures for missing data"
     desc: >
       Creation and Manipulation of Shadow Matrices
     contents:
-      - as_shadow
+      - starts_with("as_shadow")
       - bind_shadow
       - gather_shadow
       - label_na
+      - starts_with("shadow_shift")
+  - title: "Misc helpers"
+    desc: >
+      Misc helpers
+    contents:
+      - all_row_complete
+      - all_row_miss
+      - any_row_miss
+      - label_missing_1d
+      - label_missing_2d
+      - label_missings
+      - where_na
+      - which_na

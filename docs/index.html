@@ -74,7 +74,7 @@
 <li><code><a href="reference/as_shadow.html">as_shadow()</a></code></li>
 <li><code><a href="reference/bind_shadow.html">bind_shadow()</a></code></li>
 <li><code><a href="reference/gather_shadow.html">gather_shadow()</a></code></li>
-<li><code><a href="reference/is_na.html">is_na()</a></code></li>
+<li><code>is_na()</code></li>
 </ul>
 </li>
 <li>Visualisation methods:
@@ -120,10 +120,10 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">library</span>(ggplot2)
 
-<span class="kw">ggplot</span>(<span class="dt">data =</span> airquality,
-       <span class="kw">aes</span>(<span class="dt">x =</span> Ozone,
+<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> airquality,
+       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>()
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()
 <span class="co">#&gt; Warning: Removed 42 rows containing missing values (geom_point).</span></code></pre></div>
 <p><img src="README-figs/README-regular-geom-point-1.png" width="672"></p>
 <p>ggplot2 does not handle these missing values, and we get a warning message about the missing values.</p>
@@ -131,16 +131,16 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">library</span>(narnia)
 
-<span class="kw">ggplot</span>(<span class="dt">data =</span> airquality,
-       <span class="kw">aes</span>(<span class="dt">x =</span> Ozone,
+<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> airquality,
+       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="reference/geom_missing_point.html">geom_missing_point</a></span>()</code></pre></div>
 <p><img src="README-figs/README-geom-missing-point-1.png" width="672"></p>
 <p><code><a href="reference/geom_missing_point.html">geom_missing_point()</a></code> has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive.</p>
 <p>This plays nicely with other parts of ggplot, like adding transparency</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw">ggplot</span>(<span class="dt">data =</span> airquality,
-       <span class="kw">aes</span>(<span class="dt">x =</span> Ozone,
+<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> airquality,
+       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="reference/geom_missing_point.html">geom_missing_point</a></span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>)</code></pre></div>
 <p><img src="README-figs/README-geom-missing-point-alpha-1.png" width="672"></p>
@@ -149,18 +149,18 @@
 <p>For example, we can split the facet by month:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 p1 &lt;-
-<span class="kw">ggplot</span>(<span class="dt">data =</span> airquality,
-       <span class="kw">aes</span>(<span class="dt">x =</span> Ozone,
+<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> airquality,
+       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="reference/geom_missing_point.html">geom_missing_point</a></span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Month, <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>Month, <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)
 
 p1</code></pre></div>
 <p><img src="README-figs/README-facet-by-month-1.png" width="672"></p>
 <p>And then change the theme, just like you do with any other ggplot graphic</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-p1 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()  </code></pre></div>
+p1 <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>()  </code></pre></div>
 <p><img src="README-figs/README-facet-add-theme-1.png" width="672"></p>
 <p>You can also look at the proportion of missings in each variable with gg_missing_var:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
@@ -168,7 +168,7 @@ p1 <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</
 <p><img src="README-figs/README-gg-missing-var-1.png" width="672"></p>
 <p>You can also explore the whole dataset of missings using the <code>vis_miss</code> function, which is exported from the <a href="github.com/njtierney/visdat"><code>visdat</code></a> package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/reexports.html">vis_miss</a></span>(airquality)</code></pre></div>
+<span class="kw"><a href="http://www.rdocumentation.org/packages/visdat/topics/vis_miss">vis_miss</a></span>(airquality)</code></pre></div>
 <p><img src="README-figs/README-viss-miss-1.png" width="672"></p>
 <p>Another approach can be to use <strong>Univariate plots split by missingness</strong>. We can do this using the <code><a href="reference/bind_shadow.html">bind_shadow()</a></code> argument to place the data and shadow side by side. This allows for us to examine univariate distributions according to the presence or absence of another variable.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
@@ -194,18 +194,18 @@ aq_shadow
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">library</span>(ggplot2)
 
-p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> aq_shadow,
-       <span class="kw">aes</span>(<span class="dt">x =</span> Temp)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Ozone_NA,
+p1 &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> aq_shadow,
+       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Temp)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram">geom_histogram</a></span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>Ozone_NA,
              <span class="dt">ncol =</span> <span class="dv">1</span>)
 
-p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> aq_shadow,
-       <span class="kw">aes</span>(<span class="dt">x =</span> Temp,
+p2 &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> aq_shadow,
+       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Temp,
            <span class="dt">colour =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_density</span>() 
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_density">geom_density</a></span>() 
 
-gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, <span class="dt">ncol =</span> <span class="dv">2</span>)
+gridExtra<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/gridExtra/topics/arrangeGrob">grid.arrange</a></span>(p1, p2, <span class="dt">ncol =</span> <span class="dv">2</span>)
 <span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
 <p><img src="README-figs/README-bind-shadow-density-1.png" width="960"></p>
 </div>
@@ -355,7 +355,8 @@ s_miss<span class="op">$</span>summary_missing_case
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Links</h2>
+    <h2 class="hasAnchor">
+<a href="#sidebar" class="anchor"></a>Links</h2>
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/njtierney/narnia">https://​github.com/​njtierney/​narnia</a>
 </li>
@@ -365,7 +366,7 @@ s_miss<span class="op">$</span>summary_missing_case
 </li>
 </ul>
 <h2>License</h2>
-<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE">LICENSE</a></p>
+<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE.html">LICENSE</a></p>
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Nicholas Tierney <br><small class="roles"> Author, maintainer </small> </li>

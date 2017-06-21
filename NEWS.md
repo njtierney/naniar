@@ -1,4 +1,10 @@
-# narnia 0.0.7.9400 (2017/06/15)
+# narnia 0.0.7.9900 (2017/06/21)
+
+## bug fixes
+
+- shadow_shift.numeric works when there is no variance (#37)
+
+# narnia 0.0.7.9800 (2017/06/15)
 
 ## New features
 

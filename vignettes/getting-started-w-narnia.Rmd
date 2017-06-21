@@ -2,9 +2,16 @@
 title: "Getting Started with Narnia"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+  html_document:
+    fig_caption: false
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    toc_depth: 3
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Getting Started with Narnia}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

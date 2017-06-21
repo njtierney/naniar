@@ -103,9 +103,9 @@ miss_var_run <- function(data, var){
     tibble::as_tibble(c(rle(is.na(data_pull)))) %>%
     dplyr::rename(run_length = lengths,
                   is_na = values) %>%
-      dplyr::mutate(is_na = if_else(is_na == TRUE,
-                                    true = "missing",
-                                    false = "complete"))
+      dplyr::mutate(is_na = dplyr::if_else(is_na == TRUE,
+                                           true = "missing",
+                                           false = "complete"))
     # also look into `label_na`
     # narnia::is_na(TRUE)
 

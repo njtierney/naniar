@@ -15,7 +15,7 @@ cast_shadow(data, vars)
 .data with the added variable shifted named as `var_NA`
 }
 \description{
-Shifting the values of a numeric
+Shifting the values to make them easier to display
 }
 \examples{
 

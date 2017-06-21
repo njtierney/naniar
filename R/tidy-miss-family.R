@@ -101,9 +101,9 @@ miss_case_pct <- function(data){
 #'
 #' @examples
 #'
-#' prop_na(airquality)
+#' miss_prop_summary(airquality)
 #'
-prop_na <- function(data){
+miss_prop_summary <- function(data){
 
 
   if(is.null(data)){

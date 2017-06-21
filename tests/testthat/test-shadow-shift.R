@@ -5,17 +5,13 @@ test_that("shadow_shift returns NULL when given NULL",{
 })
 
 test_that("shadow_shift returns an error when given the wrong kind of object",{
-  expect_error(shadow_shift("c"))
-  # expect_error(shadow_shift(iris$Species))
-  expect_error(shadow_shift(as.character(iris$Species)))
+  expect_error(shadow_shift(as.POSIXct(111, origin = "1970-01-01")))
 })
 
 
 miss_vec_5 <- c(10,10,9,NA,3)
 
 which_miss <- function(x) which(is.na(x))
-
-
 
 test_that("shadow_shift returns NA values less than minimum for one location",{
   expect_lt(shadow_shift(miss_vec_5)[which_miss(miss_vec_5)],
@@ -53,3 +49,8 @@ test_vec <- runif(100)
 test_that("shadow_shift returns same input when there are no missing values",{
   expect_equal(shadow_shift(test_vec),test_vec)
 })
+
+# need to add tests for test-success for new classes supported by shadow_shift
+
+# expect_error(shadow_shift("c"))
+# expect_error(shadow_shift(iris$Species))

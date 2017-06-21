@@ -1,4 +1,10 @@
-# narnia 0.0.7.9900 (2017/06/21)
+# narnia 0.0.7.9990 (2017/06/21)
+
+## new features
+
+- `add_label_missings`
+- `cast_shadow`
+- `cast_shadow_shift`
 
 ## bug fixes
 

@@ -9,7 +9,7 @@ add_shadow_shift(data, vars, suffix = "shift")
 \arguments{
 \item{data}{data.frame or .tbl}
 
-\item{vars}{quoted variables}
+\item{vars}{quoted variables that you want to shift}
 
 \item{suffix}{suffix to add to variable, defaults to "shift"}
 }

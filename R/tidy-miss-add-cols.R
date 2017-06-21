@@ -120,7 +120,7 @@ add_prop_miss <- function(data, vars = NULL, label = "prop_miss"){
 #' Shifting the values of a numeric
 #'
 #' @param data data.frame or .tbl
-#' @param vars quoted variables
+#' @param vars quoted variables that you want to shift
 #' @param suffix suffix to add to variable, defaults to "shift"
 #'
 #' @return .data with the added variable shifted named as `var_suffix`
@@ -226,8 +226,6 @@ cast_shadow_shift <- function(data, vars){
 
 #' Add a column that tells you if there are any missing values
 #'
-#'
-#'
 #' @param data data.frame
 #' @param vars quoted variables
 #' @param label label for the column, defaults to "any_miss"
@@ -261,5 +259,46 @@ add_any_miss <- function(data, vars, label = "any_miss"){
   names(stub_data_label) <- label
 
   dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
+
+}
+
+
+#' Add a column describing if there are any missings in the dataset
+#'
+#' @param data data.frame
+#'
+#' @return data.frame with a column "any_missing" that is either "Not Missing" or "Missing" for the purposes of plotting / exploration / nice print methods
+#' @export
+#'
+#' @examples
+#'
+#' airquality %>% add_label_missings()
+#'
+add_label_missings <- function(data){
+
+  data %>%
+    dplyr::mutate(any_missing = label_missings(.))
+
+}
+
+#' Add a column of the shadows to the dataframe
+#'
+#' @param data data.frame
+#' @param vars quoted character string
+#'
+#' @return data.frame
+#' @export
+#'
+#' @examples
+#'
+#' airquality %>% add_shadow(c("Ozone", "Solar.R"))
+#'
+add_shadow <- function(data, vars){
+
+  quo_vars <- rlang::quos(vars)
+
+  shadow_df <- dplyr::select(data, !!!quo_vars) %>% as_shadow()
+
+  dplyr::bind_cols(data, shadow_df) %>% dplyr::as_tibble()
 
 }

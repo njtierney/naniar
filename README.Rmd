@@ -28,7 +28,9 @@ Currently it provides:
     + `is_na()`
 - Visualisation methods: 
     + `geom_missing_point()`
-    + `gg_missing_var()`
+    + `gg_miss_var()`
+    + `gg_miss_case()`
+    + `gg_miss_which()`
 - Numerical summaries: 
     + `n_miss()`
     + `n_complete()`

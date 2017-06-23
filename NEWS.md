@@ -1,10 +1,18 @@
-# narnia 0.0.7.9990 (2017/06/21)
+# narnia 0.0.8.9000 (2017/06/23)
+
+## new features
+
+- updated datasets `brfss` and `tao` as per #59
+
+# narnia 0.0.7.9992 (2017/06/22)
 
 ## new features
 
 - `add_label_missings`
+- `add_label_shadow`
 - `cast_shadow`
 - `cast_shadow_shift`
+- `cast_shadow_shift_label`
 
 ## bug fixes
 
@@ -24,6 +32,7 @@
 
 * changed `is_na` function to `label_na`
 * renamed most files to have `tidy-miss-[topic]`
+* `gg_missing_*` is changed to `gg_miss_*` to fit with other syntax
 
 # narnia 0.0.7.9400 (2017/06/14)
 
@@ -59,8 +68,6 @@
 # naniar 0.0.6.9100 (2017/03/21)
 
 * Added `prop_miss` and the complement `prop_complete`. Where `n_miss` returns the number of missing values, `prop_miss` returns the proportion of missing values. Likewise, `prop_complete` returns the proportion of complete values. 
-
-# naniar 0.0.6.9000
 
 ## Defunct functions
 
@@ -115,17 +122,14 @@ These will be made defunct in the next release, 0.0.6.9000 ("The Wood Between Wo
 
 # naniar 0.0.3.9901 (2016/12/18)
 
-## New features
+After a burst of effort on this package I have done some refactoring and thought hard about where this package is going to go. This meant that I had to make the decision to rename the package from ggmissing to naniar. The name may strike you as strange but it reflects the fact that there are many changes happening, and that we will be working on creating a nice utopia (like Narnia by CS Lewis) that helps us make it easier to work with missing data
+
+## New Features (under development)
 
 * `add_n_miss` and `add_prop_miss` are helpers that add columns to a dataframe containing the number and proportion of missing values. An example has been provided to use decision trees to explore missing data structure as in [Tierney et al](bmjopen.bmj.com/content/5/6/e007450.full)
 
 * `geom_miss_point()` now supports transparency, thanks to @seasmith (Luke Smith)
  
-# naniar 0.0.3.9000 (2016/12/18)
-
-After a burst of effort on this package I have done some refactoring and thought hard about where this package is going to go. This meant that I had to make the decision to rename the package from ggmissing to naniar. The name may strike you as strange but it reflects the fact that there are many changes happening, and that we will be working on creating a nice utopia (like Narnia by CS Lewis) that helps us make it easier to work with missing data
-
-## New Features (under development)
 
 * more shadows. These are mainly around `bind_shadow` and `gather_shadow`, which are helper functions to assist with creating 
 

@@ -89,8 +89,7 @@ shadow_shift.character <- function(x){
 }
 #
 # library(narnia)
-# brfss <- tibble::as_tibble(brfss)
 #
-# brfss %>%
-#   add_shadow_shift(vars = c("AVEDRNK2", "STOPSMK2")) %>%
-#   select(AVEDRNK2, AVEDRNK2_shift, STOPSMK2, STOPSMK2_shift)
+# riskfactors %>%
+#   add_shadow_shift(vars = c("drink_average", "smoke_stop")) %>%
+#   select(drink_average, drink_average_shift, smoke_stop, smoke_stop_shift)

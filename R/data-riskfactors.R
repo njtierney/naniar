@@ -141,10 +141,10 @@
 #'     }
 #'
 #'
-#' @name behaviour
+#' @name riskfactors
 #' @docType data
-#' @usage data(behaviour)
+#' @usage data(riskfactors)
 #' @source \url{http://www.cdc.gov/BRFSS/technical_infodata/surveydata/2009.htm}
 #' @keywords datasets
 #' @seealso library(MissingDataGUI) (named brfss)
-"behaviour"
+"riskfactors"

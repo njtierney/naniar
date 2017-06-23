@@ -27,10 +27,10 @@
 #'     surface. If it is positive, the North-South component of the wind is
 #'     blowing towards the North. If it is negative, this component is blowing
 #'     towards the South.}}
-#' @name tropics
+#' @name oceanbuoys
 #' @docType data
-#' @usage data(tropics)
+#' @usage data(oceanbuoys)
 #' @source \url{http://www.pmel.noaa.gov/tao/data_deliv/deliv.html}
 #' @keywords datasets
 #' @seealso library(MissingDataGUI) (data named "tao")
-"tropics"
+"oceanbuoys"

@@ -4,9 +4,7 @@ library(tidyverse)
 library(janitor)
 library(narnia)
 
-head(brfss)
-
-behaviour <- brfss %>%
+riskfactors <- brfss %>%
   tibble::as_tibble() %>%
   janitor::clean_names() %>%
   dplyr::rename(hispanic = hispanc2,
@@ -54,5 +52,8 @@ behaviour <- brfss %>%
                 hispanic,
                 dplyr::everything())
 
-devtools::use_data(behaviour)
+#
+# riskfactors <- behaviour
+
+devtools::use_data(riskfactors, overwrite = TRUE)
 # then erase brfss

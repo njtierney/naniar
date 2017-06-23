@@ -51,7 +51,7 @@ as_shadow.data.frame <- function(data, ...){
 
   # if (is.null(vars)){
 
-    data_shadow <- purrr::map_df(data, label_na)
+    data_shadow <- purrr::map_df(data, shadow_shift)
 
     names(data_shadow) <- paste0(names(data),"_NA")
 

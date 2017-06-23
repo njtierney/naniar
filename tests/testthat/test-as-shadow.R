@@ -22,6 +22,7 @@ test_that("The dimensions are the same after using as_shadow",{
 })
 
 test_that("as_shadow returns only factors",{
+  #Is this test no longer valid?
   expect_equal(sum(purrr:::map(as_shadow(airquality),class) == "factor"),
                ncol(airquality))
 })

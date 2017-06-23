@@ -9,7 +9,6 @@ reference:
     contents:
       - geom_missing_point
       - stat_missing_point
-      - starts_with("gg_missing_")
       - starts_with("gg_miss_")
   - title: "Numerical Summaries"
     desc: >

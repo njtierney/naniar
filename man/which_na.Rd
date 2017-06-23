@@ -15,7 +15,7 @@ a matrix with columns "row" and "col", which refer to the row and
 }
 \description{
 Internal function that creates a matrix containing the location of missing
-values in a dataframe. This may be used in the future `impl_df` class.
+  values in a dataframe. This may be used in the future `impl_df` class.
 }
 \examples{
 

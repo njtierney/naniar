@@ -5,8 +5,8 @@ magrittr::`%>%`
 #' Which rows and cols contain missings?
 #'
 #' Internal function that is short for `which(is.na(x))`. Creates integer
-#' locations of missing values in a dataframe. May be used in future `impl_df`
-#' class.
+#'   locations of missing values in a dataframe. May be used in future `impl_df`
+#'   class.
 #'
 #' @param x a dataframe
 #'
@@ -25,7 +25,7 @@ where_na <- function(x){
 #' Which elements contain missings?
 #'
 #' Internal function that creates a matrix containing the location of missing
-#' values in a dataframe. This may be used in the future `impl_df` class.
+#'   values in a dataframe. This may be used in the future `impl_df` class.
 #'
 #' @param x a dataframe
 #'

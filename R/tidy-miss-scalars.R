@@ -1,8 +1,6 @@
-# A set of functions that provide utility functions for creating "shadow" dataframes (shadaframes, nataframes, nabbles)
-#
 #' Return the number of missing values
 #'
-#' substitute for \code{sum(is.na(data))}
+#' Substitute for \code{sum(is.na(data))}
 #'
 #' @param x a vector
 #'
@@ -21,7 +19,7 @@ n_miss <- function(x){
 
 #' Return the number of complete values
 #'
-#' A complement to \code{n_miss}
+#' A complement to `n_miss``
 #'
 #' @param x a vector
 #'
@@ -42,11 +40,11 @@ n_complete <- function(x){
 }
 #' Return the proportion of missing values
 #'
-#' substitute for \code{mean(is.na(data))}
+#' This is shorthand for `mean(is.na(x))`
 #'
-#' @param x a vector
+#' @param x vector or data.frame
 #'
-#' @return numeric the proportion of missing values
+#' @return numeric the proportion of missing values in x
 #'
 #' @export
 #'
@@ -61,11 +59,11 @@ prop_miss <- function(x){
 
 #' Return the proportion of complete values
 #'
-#' The complement to \code{prop_miss}
+#' The complement to `prop_miss`
 #'
-#' @param x a vector
+#' @param x vector or data.frame
 #'
-#' @return numeric proprtion of complete values
+#' @return numeric proportion of complete values
 #'
 #' @export
 #'

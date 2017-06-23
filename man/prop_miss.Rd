@@ -7,13 +7,13 @@
 prop_miss(x)
 }
 \arguments{
-\item{x}{a vector}
+\item{x}{vector or data.frame}
 }
 \value{
-numeric the proportion of missing values
+numeric the proportion of missing values in x
 }
 \description{
-substitute for \code{mean(is.na(data))}
+This is shorthand for `mean(is.na(x))`
 }
 \examples{
 

@@ -19,4 +19,6 @@ Shifting the values to make them easier to display
 }
 \examples{
 
+airquality \%>\% cast_shadow("Ozone")
+
 }

@@ -45,7 +45,7 @@ shadow_shift.default <- function(x){
 shadow_shift.numeric <- function(x){
 
   # add an exception for when length x == 1
-  if(n_complete(x) == 1 | var(x, na.rm = TRUE) == 0){
+  if(n_complete(x) == 1 | stats::var(x, na.rm = TRUE) == 0){
 
     xmin <- min(x, na.rm = TRUE)
 

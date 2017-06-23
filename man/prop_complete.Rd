@@ -7,13 +7,13 @@
 prop_complete(x)
 }
 \arguments{
-\item{x}{a vector}
+\item{x}{vector or data.frame}
 }
 \value{
-numeric proprtion of complete values
+numeric proportion of complete values
 }
 \description{
-The complement to \code{prop_miss}
+The complement to `prop_miss`
 }
 \examples{
 

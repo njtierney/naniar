@@ -14,8 +14,8 @@ integers that describe the location of missing values
 }
 \description{
 Internal function that is short for `which(is.na(x))`. Creates integer
-locations of missing values in a dataframe. May be used in future `impl_df`
-class.
+  locations of missing values in a dataframe. May be used in future `impl_df`
+  class.
 }
 \examples{
 

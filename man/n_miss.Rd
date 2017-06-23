@@ -13,7 +13,7 @@ n_miss(x)
 numeric the number of missing values
 }
 \description{
-substitute for \code{sum(is.na(data))}
+Substitute for \code{sum(is.na(data))}
 }
 \examples{
 

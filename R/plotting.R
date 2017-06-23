@@ -17,9 +17,9 @@ visdat::vis_miss
 #'
 #' @examples
 #'
-#' gg_missing_case(airquality)
+#' gg_miss_case(airquality)
 #'
-gg_missing_case <- function(x){
+gg_miss_case <- function(x){
 
   ggplot(data = miss_case_summary(x),
          aes(y = n_missing,
@@ -44,9 +44,9 @@ gg_missing_case <- function(x){
 #'
 #' @examples
 #'
-#' gg_missing_var(airquality)
+#' gg_miss_var(airquality)
 #'
-gg_missing_var <- function(x){
+gg_miss_var <- function(x){
 
   # get a tidy data frame of the number of missings in each column
   x %>%
@@ -67,7 +67,7 @@ gg_missing_var <- function(x){
 
 #' Plot which variables contain a missing value
 #'
-#' \code{gg_missing_which} (need a better name!) produces a set of rectangles that indicate whether there is a missing element in a column or not
+#' `gg_miss_which` (need a better name!) produces a set of rectangles that indicate whether there is a missing element in a column or not
 #'
 #' @param x a dataframe
 #'
@@ -77,9 +77,9 @@ gg_missing_var <- function(x){
 #'
 #' @examples
 #'
-#' gg_missing_which(airquality)
+#' gg_miss_which(airquality)
 #'
-gg_missing_which <- function(x){
+gg_miss_which <- function(x){
 
   # tell us which columns have missing data
   airquality %>%

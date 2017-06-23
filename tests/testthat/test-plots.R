@@ -13,23 +13,23 @@ test_that("geom_miss_point works",{
 })
 
 
-gg_missing_case_plot <- gg_missing_case(airquality)
+gg_miss_case_plot <- gg_miss_case(airquality)
 
-test_that("gg_missing_case_works",{
-  vdiffr::expect_doppelganger("gg_missing_case",
-                              gg_missing_case_plot)
+test_that("gg_miss_case_works",{
+  vdiffr::expect_doppelganger("gg_miss_case",
+                              gg_miss_case_plot)
 })
 
-gg_missing_var_plot <- gg_missing_var(airquality)
+gg_miss_var_plot <- gg_miss_var(airquality)
 
-test_that("gg_missing_var_works",{
-  vdiffr::expect_doppelganger("gg_missing_var",
-                              gg_missing_var_plot)
+test_that("gg_miss_var_works",{
+  vdiffr::expect_doppelganger("gg_miss_var",
+                              gg_miss_var_plot)
 })
 
-gg_missing_which_plot <- gg_missing_which(airquality)
+gg_miss_which_plot <- gg_miss_which(airquality)
 
-test_that("gg_missing_which_works",{
-  vdiffr::expect_doppelganger("gg_missing_which",
-                              gg_missing_which_plot)
+test_that("gg_miss_which_works",{
+  vdiffr::expect_doppelganger("gg_miss_which",
+                              gg_miss_which_plot)
 })

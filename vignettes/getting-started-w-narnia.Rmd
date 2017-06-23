@@ -156,11 +156,11 @@ ggplot(airquality,
 
 ## Visualising missings in variables
 
-Another approach to visualising the missings in a dataset is to use the `gg_missing_var` plot:
+Another approach to visualising the missings in a dataset is to use the `gg_miss_var` plot:
 
 ```{r}
 
-gg_missing_var(airquality)
+gg_miss_var(airquality)
 
 ```
 

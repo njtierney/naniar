@@ -163,6 +163,8 @@ add_shadow_shift <- function(data, vars, suffix = "shift"){
 #'
 #' @examples
 #'
+#' airquality %>% cast_shadow("Ozone")
+#'
 cast_shadow <- function(data, vars){
 
   quo_vars <- rlang::quos(vars)
@@ -202,6 +204,32 @@ cast_shadow_shift <- function(data, vars){
 
   # shift those values selected
   add_shadow_shift(shadow_vars, vars)
+
+}
+
+#' Add a shadow and a shadow_shift column to a dataset
+#'
+#' Shift the values, add shadow, add missing label
+#'
+#' @param data data.frame
+#' @param vars character string for variables
+#'
+#' @return data.frame with the shadow and shadow_shift vars, and missing labels
+#' @export
+#'
+#' @examples
+#'
+#' airquality %>% cast_shadow_shift_label("Ozone")
+#' airquality %>% cast_shadow_shift_label(c("Ozone", "Solar.R"))
+#'
+cast_shadow_shift_label <- function(data, vars){
+
+  quo_vars <- rlang::quos(vars)
+
+  shadow_vars <- dplyr::select(data, !!!quo_vars) %>% cast_shadow(vars)
+
+  # shift those values selected
+  add_shadow_shift(shadow_vars, vars) %>% add_label_missings()
 
 }
 
@@ -280,6 +308,61 @@ add_label_missings <- function(data){
     dplyr::mutate(any_missing = label_missings(.))
 
 }
+
+
+#' Label shadow values as missing or not missing
+#'
+#' This is used to power add_label_shadow. It may be exported later, but for the
+#'   moment this is an internal function
+#'
+#' @param data data.frame
+#'
+#' @return "Missing" or "Not Missing"
+#'
+label_shadow <- function(data){
+
+# it is called a shade because if you are IN a shadow, then you are IN the shade
+# might also possibly need to work with factors
+# this might be helpful if the shadows are their own class or have special
+# factor attributes, then all you need is to to a test to see if they are of
+# that class?
+
+  any_shade <- function(x) any(grepl("^NA|^NA_", x))
+
+  any_row_shade <- function(x){
+    apply(data.frame(x), MARGIN = 1, FUN = function(x) any_shade(x))
+  }
+
+  temp <- any_row_shade(data)
+    dplyr::if_else(condition = temp == TRUE, # TRUE means missing
+                   true = "Missing",
+                   false = "Not Missing")
+
+}
+
+#' Add a column describing whether there is a shadow
+#'
+#' @param data data.frame
+#'
+#' @return data.frame with
+#'
+#' @export
+#'
+#' @examples
+#'
+#' airquality %>%
+#' add_shadow(c("Ozone", "Solar.R")) %>%
+#' add_label_shadow()
+
+#'
+add_label_shadow <- function(data){
+
+  data %>%
+    dplyr::mutate(any_missing = label_shadow(.))
+
+}
+
+
 
 #' Add a column of the shadows to the dataframe
 #'

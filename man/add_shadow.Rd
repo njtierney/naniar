@@ -4,12 +4,13 @@
 \alias{add_shadow}
 \title{Add a column of the shadows to the dataframe}
 \usage{
-add_shadow(data, vars)
+add_shadow(data, ...)
 }
 \arguments{
 \item{data}{data.frame}
 
-\item{vars}{quoted character string}
+\item{...}{One or more unquoted expressions separated by commas. These also
+respect the dplyr verbs "starts_with", "contains", "ends_with", etc.}
 }
 \value{
 data.frame
@@ -19,6 +20,7 @@ Add a column of the shadows to the dataframe
 }
 \examples{
 
-airquality \%>\% add_shadow(c("Ozone", "Solar.R"))
+airquality \%>\% add_shadow(Ozone)
+airquality \%>\% add_shadow(Ozone, Solar.R)
 
 }

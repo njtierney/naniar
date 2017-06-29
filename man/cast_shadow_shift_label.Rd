@@ -4,12 +4,13 @@
 \alias{cast_shadow_shift_label}
 \title{Add a shadow and a shadow_shift column to a dataset}
 \usage{
-cast_shadow_shift_label(data, vars)
+cast_shadow_shift_label(data, ...)
 }
 \arguments{
 \item{data}{data.frame}
 
-\item{vars}{character string for variables}
+\item{...}{One or more unquoted expressions separated by commas. These also
+respect the dplyr verbs "starts_with", "contains", "ends_with", etc.}
 }
 \value{
 data.frame with the shadow and shadow_shift vars, and missing labels
@@ -19,7 +20,7 @@ Shift the values, add shadow, add missing label
 }
 \examples{
 
-airquality \%>\% cast_shadow_shift_label("Ozone")
-airquality \%>\% cast_shadow_shift_label(c("Ozone", "Solar.R"))
+airquality \%>\% cast_shadow_shift_label(Ozone)
+airquality \%>\% cast_shadow_shift_label(Ozone, Solar.R)
 
 }

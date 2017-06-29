@@ -4,12 +4,17 @@
 \alias{add_prop_miss}
 \title{Add column containing proportion of missing data values}
 \usage{
-add_prop_miss(data, vars = NULL, label = "prop_miss")
+add_prop_miss(data, ..., label = "prop_miss")
 }
 \arguments{
 \item{data}{a dataframe}
 
-\item{vars}{character string of variable names, default is all variables}
+\item{...}{Variable names to use instead of the whole dataset. By default this
+looks at the whole dataset. Otherwise, this is one or more unquoted
+expressions separated by commas. These also respect the dplyr verbs
+"starts_with", "contains", "ends_with", etc. By default will add "_all" to
+the label if left blank, otherwise will add "_vars" to distinguish that it
+has not been used on all of the variables.}
 
 \item{label}{character string of what you need to name variable}
 }
@@ -17,15 +22,21 @@ add_prop_miss(data, vars = NULL, label = "prop_miss")
 a dataframe
 }
 \description{
-It can be useful when doing data analysis to add the proportion of missing data values into your dataframe. add_prop_miss adds a column named "prop_miss", which contains the proportion of missing values in that row.
+It can be useful when doing data analysis to add the proportion of missing
+  data values into your dataframe. add_prop_miss adds a column named
+  "prop_miss", which contains the proportion of missing values in that row.
+  You can specify the variables that you would like to show the missingness
+  for.
 }
 \examples{
 
-add_prop_miss(airquality)
+airquality \%>\% add_prop_miss()
 
-add_prop_miss(airquality, "Month", label = "testing")
+airquality \%>\% add_prop_miss(Solar.R)
 
-add_prop_miss(airquality, "Month")
+airquality \%>\% add_prop_miss(Solar.R, Ozone)
+
+airquality \%>\% add_prop_miss(Solar.R, Ozone, label = "testing")
 
 # this can be applied to model the proportion of missing data
 # as in Tierney et al bmjopen.bmj.com/content/5/6/e007450.full
@@ -34,7 +45,7 @@ library(rpart.plot)
 
 airquality \%>\%
 add_prop_miss() \%>\%
-rpart(prop_miss ~ ., data = .) \%>\%
+rpart(prop_miss_all ~ ., data = .) \%>\%
 prp(type = 4,
     extra = 101,
     prefix = "prop_miss = ")

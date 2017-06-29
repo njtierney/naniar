@@ -18,7 +18,7 @@ Add a column describing whether there is a shadow
 \examples{
 
 airquality \%>\%
-add_shadow(c("Ozone", "Solar.R")) \%>\%
+add_shadow(Ozone, Solar.R) \%>\%
 add_label_shadow()
 
 }

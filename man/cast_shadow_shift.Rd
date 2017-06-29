@@ -4,12 +4,13 @@
 \alias{cast_shadow_shift}
 \title{Add a shadow and a shadow_shift column to a dataset}
 \usage{
-cast_shadow_shift(data, vars)
+cast_shadow_shift(data, ...)
 }
 \arguments{
 \item{data}{data.frame}
 
-\item{vars}{character string for variables}
+\item{...}{One or more unquoted expressions separated by commas. These also
+respect the dplyr verbs "starts_with", "contains", "ends_with", etc.}
 }
 \value{
 data.frame with the shadow and shadow_shift vars
@@ -19,7 +20,9 @@ Shift the values and add the shadow
 }
 \examples{
 
-airquality \%>\% cast_shadow_shift("Ozone")
-airquality \%>\% cast_shadow_shift(c("Ozone", "Temp"))
+airquality \%>\% cast_shadow_shift(Ozone)
+airquality \%>\% cast_shadow_shift(Ozone,Temp)
+
+airquality \%>\% cast_shadow_shift(dplyr::contains("o"))
 
 }

@@ -4,21 +4,23 @@
 \alias{cast_shadow}
 \title{Add a shadow column to a dataset}
 \usage{
-cast_shadow(data, vars)
+cast_shadow(data, ...)
 }
 \arguments{
-\item{data}{data.frame or .tbl}
+\item{data}{data.frame}
 
-\item{vars}{quoted variablename}
+\item{...}{One or more unquoted expressions separated by commas. These also
+respect the dplyr verbs "starts_with", "contains", "ends_with", etc.}
 }
 \value{
-.data with the added variable shifted named as `var_NA`
+data with the added variable shifted and the suffix `_NA`
 }
 \description{
 Shifting the values to make them easier to display
 }
 \examples{
 
-airquality \%>\% cast_shadow("Ozone")
+airquality \%>\% cast_shadow(Ozone)
+airquality \%>\% cast_shadow(Ozone, Solar.R)
 
 }

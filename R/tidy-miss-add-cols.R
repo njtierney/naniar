@@ -89,7 +89,7 @@ add_prop_miss <- function(data, vars = NULL, label = "prop_miss"){
     purrrlyr::by_row(.d = data,
                      ..f = function(x) (mean(is.na(x))),
                      .collate = "row",
-                     .to = "prop_miss")
+                     .to = label)
   } else {
 
   quo_vars <- rlang::quos(vars)

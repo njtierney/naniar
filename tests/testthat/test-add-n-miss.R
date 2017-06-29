@@ -20,6 +20,11 @@ test_that("add_n_miss adds a column named 'n_miss_all'",{
                c(names(test_df),"n_miss_all"))
 })
 
+test_that("add_n_miss adds a column named 'n_miss_vars' when a variable is selected",{
+  expect_equal(names(add_n_miss(test_df, y)),
+               c(names(test_df),"n_miss_vars"))
+})
+
 test_that("add_n_miss returns the correct number",{
 
   expect_equal(add_n_miss(test_df),test_df_answer)

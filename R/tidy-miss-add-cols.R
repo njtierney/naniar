@@ -223,6 +223,10 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
 #'
 cast_shadow <- function(data, ...){
 
+  if (missing(...)) {
+    stop("please include variables to be selected after the data")
+  } else {
+
   quo_vars <- rlang::quos(...)
 
   # shadow all (using purrr:map_df)
@@ -233,6 +237,8 @@ cast_shadow <- function(data, ...){
   my_data <- dplyr::select(data, !!!quo_vars)
 
   tibble::as_tibble(dplyr::bind_cols(my_data, shadow_vars))
+
+  } # close else loop
 
 }
 
@@ -284,12 +290,18 @@ cast_shadow_shift <- function(data, ...){
 #'
 cast_shadow_shift_label <- function(data, ...){
 
+  if (missing(...)) {
+    stop("please include variables to be selected after the data")
+  } else {
+
   quo_vars <- rlang::quos(...)
 
   shadow_vars <- dplyr::select(data, !!!quo_vars) %>% cast_shadow(...)
 
   # shift those values selected
   add_shadow_shift(shadow_vars, ...) %>% add_label_missings()
+
+  } # close else loop
 
 }
 

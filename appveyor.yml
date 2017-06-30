@@ -14,7 +14,7 @@ install:
 
 build_script:
   - travis-tool.sh install_deps
-  - travis-tool.sh install_github njtierney/visdat lionel-/vdiffr
+  - travis-tool.sh install_github njtierney/visdat
 
 test_script:
   - travis-tool.sh run_tests

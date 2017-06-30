@@ -402,7 +402,8 @@ add_any_miss <- function(data, ..., label = "any_miss"){
 add_label_missings <- function(data){
 
   data %>%
-    dplyr::mutate(any_missing = label_missings(.))
+    dplyr::mutate(any_missing = label_missings(.)) %>%
+    dplyr::as_tibble()
 
 }
 
@@ -475,10 +476,16 @@ add_label_shadow <- function(data){
 #'
 add_shadow <- function(data, ...){
 
+  if (missing(...)) {
+    stop("please include variables to be selected after the data")
+  } else {
+
   quo_vars <- rlang::quos(...)
 
   shadow_df <- dplyr::select(data, !!!quo_vars) %>% as_shadow()
 
   dplyr::bind_cols(data, shadow_df) %>% dplyr::as_tibble()
+
+  } # close else statement
 
 }

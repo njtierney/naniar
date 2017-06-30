@@ -4,24 +4,26 @@
 \alias{add_shadow_shift}
 \title{Add a shadow shifted column to a dataset}
 \usage{
-add_shadow_shift(data, vars, suffix = "shift")
+add_shadow_shift(data, ..., suffix = "shift")
 }
 \arguments{
 \item{data}{data.frame or .tbl}
 
-\item{vars}{quoted variables that you want to shift}
+\item{...}{One or more unquoted expressions separated by commas. These also
+respect the dplyr verbs "starts_with", "contains", "ends_with", etc.}
 
 \item{suffix}{suffix to add to variable, defaults to "shift"}
 }
 \value{
-.data with the added variable shifted named as `var_suffix`
+data with the added variable shifted named as `var_suffix`
 }
 \description{
 Shifting the values of a numeric
 }
 \examples{
 
-add_shadow_shift(pedestrian, vars = "hourly_counts")
-add_shadow_shift(airquality, vars = c("Ozone", "Solar.R"))
+pedestrian \%>\% add_shadow_shift(hourly_counts)
+
+airquality \%>\% add_shadow_shift(Ozone, Solar.R)
 
 }

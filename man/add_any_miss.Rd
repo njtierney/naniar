@@ -4,12 +4,17 @@
 \alias{add_any_miss}
 \title{Add a column that tells you if there are any missing values}
 \usage{
-add_any_miss(data, vars, label = "any_miss")
+add_any_miss(data, ..., label = "any_miss")
 }
 \arguments{
 \item{data}{data.frame}
 
-\item{vars}{quoted variables}
+\item{...}{Variable names to use instead of the whole dataset. By default this
+looks at the whole dataset. Otherwise, this is one or more unquoted
+expressions separated by commas. These also respect the dplyr verbs
+"starts_with", "contains", "ends_with", etc. By default will add "_all" to
+the label if left blank, otherwise will add "_vars" to distinguish that it
+has not been used on all of the variables.}
 
 \item{label}{label for the column, defaults to "any_miss"}
 }
@@ -26,6 +31,7 @@ perhaps there should be a general function for this
 }
 \examples{
 
-add_any_miss(airquality, c("Ozone", "Solar.R"))
+airquality \%>\% add_any_miss()
+airquality \%>\% add_any_miss(Ozone, Solar.R)
 
 }

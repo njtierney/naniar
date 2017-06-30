@@ -6,9 +6,7 @@ cache: packages
 
 # packages needed in the builds
 r_github_packages:
-  - trinker/wakefield
   - njtierney/visdat
-  - lionel-/vdiffr
 
 env:
   global:

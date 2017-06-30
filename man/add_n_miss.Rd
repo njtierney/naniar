@@ -4,10 +4,19 @@
 \alias{add_n_miss}
 \title{Add column containing number of missing data values}
 \usage{
-add_n_miss(data)
+add_n_miss(data, ..., label = "n_miss")
 }
 \arguments{
 \item{data}{a dataframe}
+
+\item{...}{Variable names to use instead of the whole dataset. By default this
+looks at the whole dataset. Otherwise, this is one or more unquoted
+expressions separated by commas. These also respect the dplyr verbs
+"starts_with", "contains", "ends_with", etc. By default will add "_all" to
+the label if left blank, otherwise will add "_vars" to distinguish that it
+has not been used on all of the variables.}
+
+\item{label}{character default is "n_miss".}
 }
 \value{
 a dataframe
@@ -16,8 +25,10 @@ a dataframe
 It can be useful when doing data analysis to add the number of missing data points into your dataframe. add_n_miss adds a column named "n_miss", which contains the number of missing values in that row.
 }
 \examples{
-library(magrittr)
+
 airquality \%>\% add_n_miss()
+airquality \%>\% add_n_miss(Ozone, Solar.R)
+airquality \%>\% add_n_miss(dplyr::contains("o"))
 
 
 }

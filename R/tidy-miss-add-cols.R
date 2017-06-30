@@ -25,37 +25,75 @@ add_span_counter <- function(data, span_size) {
 #' It can be useful when doing data analysis to add the number of missing data points into your dataframe. add_n_miss adds a column named "n_miss", which contains the number of missing values in that row.
 #'
 #' @param data a dataframe
+#' @param ... Variable names to use instead of the whole dataset. By default this
+#'   looks at the whole dataset. Otherwise, this is one or more unquoted
+#'   expressions separated by commas. These also respect the dplyr verbs
+#'   "starts_with", "contains", "ends_with", etc. By default will add "_all" to
+#'   the label if left blank, otherwise will add "_vars" to distinguish that it
+#'   has not been used on all of the variables.
+#' @param label character default is "n_miss".
 #'
 #' @return a dataframe
 #'
 #' @export
 #'
 #' @examples
-#' library(magrittr)
+#'
 #' airquality %>% add_n_miss()
+#' airquality %>% add_n_miss(Ozone, Solar.R)
+#' airquality %>% add_n_miss(dplyr::contains("o"))
 #'
 #'
-add_n_miss <- function(data){
+add_n_miss <- function(data, ..., label = "n_miss"){
 
-  purrrlyr::by_row(.d = data,
-                ..f = function(x) n_miss(x),
-                .collate = "row",
-                .to = "n_miss")
+  if (missing(...)) {
+    purrrlyr::by_row(.d = data,
+                     ..f = function(x) n_miss(x),
+                     .collate = "row",
+                     .to = paste0(label,"_all"))
+  } else {
+
+    quo_vars <- rlang::quos(...)
+
+    selected_data <- dplyr::select(data, !!!quo_vars)
+
+    prop_selected_data <- purrrlyr::by_row(.d = selected_data,
+                                           ..f = function(x) n_miss(x),
+                                           .collate = "row",
+                                           .to =  paste0(label,"_vars"))
+
+    # add only the variables prop_miss function, not the whole data.frame...
+    prop_selected_data_cut <- prop_selected_data %>%
+      dplyr::select(!!as.name(paste0(label,"_vars")))
+
+    dplyr::bind_cols(data, prop_selected_data_cut) %>% dplyr::as_tibble()
+
 
   # old approach
   # # create a numeric vector of n_missing
-  # col_n_miss <- data.frame(n_miss = apply(df,1,n_miss))
+  # col_n_miss <- data.frame(n_miss = apply(data,1,n_miss))
   #
   # dplyr::bind_cols(df,col_n_miss)
+
+  } # close else loop
 
 }
 
 #' Add column containing proportion of missing data values
 #'
-#' It can be useful when doing data analysis to add the proportion of missing data values into your dataframe. add_prop_miss adds a column named "prop_miss", which contains the proportion of missing values in that row.
+#' It can be useful when doing data analysis to add the proportion of missing
+#'   data values into your dataframe. add_prop_miss adds a column named
+#'   "prop_miss", which contains the proportion of missing values in that row.
+#'   You can specify the variables that you would like to show the missingness
+#'   for.
 #'
 #' @param data a dataframe
-#' @param vars character string of variable names, default is all variables
+#' @param ... Variable names to use instead of the whole dataset. By default this
+#'   looks at the whole dataset. Otherwise, this is one or more unquoted
+#'   expressions separated by commas. These also respect the dplyr verbs
+#'   "starts_with", "contains", "ends_with", etc. By default will add "_all" to
+#'   the label if left blank, otherwise will add "_vars" to distinguish that it
+#'   has not been used on all of the variables.
 #' @param label character string of what you need to name variable
 #'
 #' @return a dataframe
@@ -64,11 +102,13 @@ add_n_miss <- function(data){
 #'
 #' @examples
 #'
-#' add_prop_miss(airquality)
+#' airquality %>% add_prop_miss()
 #'
-#' add_prop_miss(airquality, "Month", label = "testing")
+#' airquality %>% add_prop_miss(Solar.R)
 #'
-#' add_prop_miss(airquality, "Month")
+#' airquality %>% add_prop_miss(Solar.R, Ozone)
+#'
+#' airquality %>% add_prop_miss(Solar.R, Ozone, label = "testing")
 #'
 #' # this can be applied to model the proportion of missing data
 #' # as in Tierney et al bmjopen.bmj.com/content/5/6/e007450.full
@@ -77,35 +117,35 @@ add_n_miss <- function(data){
 #'
 #' airquality %>%
 #' add_prop_miss() %>%
-#' rpart(prop_miss ~ ., data = .) %>%
+#' rpart(prop_miss_all ~ ., data = .) %>%
 #' prp(type = 4,
 #'     extra = 101,
 #'     prefix = "prop_miss = ")
 
 
-add_prop_miss <- function(data, vars = NULL, label = "prop_miss"){
+add_prop_miss <- function(data, ..., label = "prop_miss"){
 
-  if(is.null(vars)){
+  if (missing(...)) {
     purrrlyr::by_row(.d = data,
                      ..f = function(x) (mean(is.na(x))),
                      .collate = "row",
-                     .to = label)
+                     .to = paste0(label,"_all"))
   } else {
 
-  quo_vars <- rlang::quos(vars)
+  quo_vars <- rlang::quos(...)
 
   selected_data <- dplyr::select(data, !!!quo_vars)
 
   prop_selected_data <- purrrlyr::by_row(.d = selected_data,
-                                         ..f = function(x) (mean(is.na(x))),
+                                         ..f = function(x) prop_miss(x),
                                          .collate = "row",
-                                         .to = label)
+                                         .to =  paste0(label,"_vars"))
 
-  prop_selected_data
-  # unsure if this should return just the variables computed -----
-    # perhaps add a label to this to sescribe which variable were used in its calculation?
-    # dplyr::select(!!as.name(label))
-  # dplyr::as_tibble(dplyr::bind_cols(data, prop_selected_data))
+  # add only the variables prop_miss function, not the whole data.frame...
+  prop_selected_data_cut <- prop_selected_data %>%
+    dplyr::select(!!as.name(paste0(label,"_vars")))
+
+  dplyr::bind_cols(data, prop_selected_data_cut) %>% dplyr::as_tibble()
 
   # old approach
   # df %>%
@@ -120,22 +160,36 @@ add_prop_miss <- function(data, vars = NULL, label = "prop_miss"){
 #' Shifting the values of a numeric
 #'
 #' @param data data.frame or .tbl
-#' @param vars quoted variables that you want to shift
+#' @param ... One or more unquoted expressions separated by commas. These also
+#'   respect the dplyr verbs "starts_with", "contains", "ends_with", etc.
 #' @param suffix suffix to add to variable, defaults to "shift"
 #'
-#' @return .data with the added variable shifted named as `var_suffix`
+#' @return data with the added variable shifted named as `var_suffix`
 #'
 #' @export
 #'
 #' @examples
 #'
-#' add_shadow_shift(pedestrian, vars = "hourly_counts")
-#' add_shadow_shift(airquality, vars = c("Ozone", "Solar.R"))
+#' pedestrian %>% add_shadow_shift(hourly_counts)
 #'
-add_shadow_shift <- function(data, vars, suffix = "shift"){
+#' airquality %>% add_shadow_shift(Ozone, Solar.R)
+#'
+add_shadow_shift <- function(data, ..., suffix = "shift"){
+
+  # if no variables are selected use all of the variables
+  if(missing(...)){
+
+    shadow_shifted_df <- purrr::map_df(data, shadow_shift)
+
+    # change names
+    names(shadow_shifted_df) <- paste0(names(shadow_shifted_df),"_",suffix)
+
+    tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
+
+  } else {
 
   # select variables
-    quo_vars <- rlang::quos(vars)
+    quo_vars <- rlang::quos(...)
 
     shadow_shifted_vars <- dplyr::select(data, !!!quo_vars)
 
@@ -147,36 +201,44 @@ add_shadow_shift <- function(data, vars, suffix = "shift"){
   names(shadow_shifted_df) <- paste0(names(shadow_shifted_df),"_",suffix)
 
   tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
-
+  } # close the else brace
 }
 
 #' Add a shadow column to a dataset
 #'
 #' Shifting the values to make them easier to display
 #'
-#' @param data data.frame or .tbl
-#' @param vars quoted variablename
+#' @param data data.frame
+#' @param ... One or more unquoted expressions separated by commas. These also
+#'   respect the dplyr verbs "starts_with", "contains", "ends_with", etc.
 #'
-#' @return .data with the added variable shifted named as `var_NA`
+#' @return data with the added variable shifted and the suffix `_NA`
 #'
 #' @export
 #'
 #' @examples
 #'
-#' airquality %>% cast_shadow("Ozone")
+#' airquality %>% cast_shadow(Ozone)
+#' airquality %>% cast_shadow(Ozone, Solar.R)
 #'
-cast_shadow <- function(data, vars){
+cast_shadow <- function(data, ...){
 
-  quo_vars <- rlang::quos(vars)
+  if (missing(...)) {
+    stop("please include variables to be selected after the data")
+  } else {
+
+  quo_vars <- rlang::quos(...)
 
   # shadow all (using purrr:map_df)
-  shadow_vars <- dplyr::select(data, !!!quo_vars) %>% as_shadow
+  shadow_vars <- dplyr::select(data, !!!quo_vars) %>% as_shadow()
   # cannot get this to take multiple variables
   # shadow_vars <- dplyr::select(data, .data[[vars]]) %>% as_shadow
 
   my_data <- dplyr::select(data, !!!quo_vars)
 
   tibble::as_tibble(dplyr::bind_cols(my_data, shadow_vars))
+
+  } # close else loop
 
 }
 
@@ -185,7 +247,8 @@ cast_shadow <- function(data, vars){
 #' Shift the values and add the shadow
 #'
 #' @param data data.frame
-#' @param vars character string for variables
+#' @param ... One or more unquoted expressions separated by commas. These also
+#'   respect the dplyr verbs "starts_with", "contains", "ends_with", etc.
 #'
 #' @return data.frame with the shadow and shadow_shift vars
 #'
@@ -193,17 +256,19 @@ cast_shadow <- function(data, vars){
 #'
 #' @examples
 #'
-#' airquality %>% cast_shadow_shift("Ozone")
-#' airquality %>% cast_shadow_shift(c("Ozone", "Temp"))
+#' airquality %>% cast_shadow_shift(Ozone)
+#' airquality %>% cast_shadow_shift(Ozone,Temp)
 #'
-cast_shadow_shift <- function(data, vars){
+#' airquality %>% cast_shadow_shift(dplyr::contains("o"))
+#'
+cast_shadow_shift <- function(data, ...){
 
-  quo_vars <- rlang::quos(vars)
+  quo_vars <- rlang::quos(...)
 
-  shadow_vars <- dplyr::select(data, !!!quo_vars) %>% cast_shadow(vars)
+  shadow_vars <- dplyr::select(data, !!!quo_vars) %>% cast_shadow(...)
 
   # shift those values selected
-  add_shadow_shift(shadow_vars, vars)
+  add_shadow_shift(shadow_vars, ...)
 
 }
 
@@ -212,24 +277,31 @@ cast_shadow_shift <- function(data, vars){
 #' Shift the values, add shadow, add missing label
 #'
 #' @param data data.frame
-#' @param vars character string for variables
+#' @param ... One or more unquoted expressions separated by commas. These also
+#'   respect the dplyr verbs "starts_with", "contains", "ends_with", etc.
 #'
 #' @return data.frame with the shadow and shadow_shift vars, and missing labels
 #' @export
 #'
 #' @examples
 #'
-#' airquality %>% cast_shadow_shift_label("Ozone")
-#' airquality %>% cast_shadow_shift_label(c("Ozone", "Solar.R"))
+#' airquality %>% cast_shadow_shift_label(Ozone)
+#' airquality %>% cast_shadow_shift_label(Ozone, Solar.R)
 #'
-cast_shadow_shift_label <- function(data, vars){
+cast_shadow_shift_label <- function(data, ...){
 
-  quo_vars <- rlang::quos(vars)
+  if (missing(...)) {
+    stop("please include variables to be selected after the data")
+  } else {
 
-  shadow_vars <- dplyr::select(data, !!!quo_vars) %>% cast_shadow(vars)
+  quo_vars <- rlang::quos(...)
+
+  shadow_vars <- dplyr::select(data, !!!quo_vars) %>% cast_shadow(...)
 
   # shift those values selected
-  add_shadow_shift(shadow_vars, vars) %>% add_label_missings()
+  add_shadow_shift(shadow_vars, ...) %>% add_label_missings()
+
+  } # close else loop
 
 }
 
@@ -255,7 +327,12 @@ cast_shadow_shift_label <- function(data, vars){
 #' Add a column that tells you if there are any missing values
 #'
 #' @param data data.frame
-#' @param vars quoted variables
+#' @param ... Variable names to use instead of the whole dataset. By default this
+#'   looks at the whole dataset. Otherwise, this is one or more unquoted
+#'   expressions separated by commas. These also respect the dplyr verbs
+#'   "starts_with", "contains", "ends_with", etc. By default will add "_all" to
+#'   the label if left blank, otherwise will add "_vars" to distinguish that it
+#'   has not been used on all of the variables.
 #' @param label label for the column, defaults to "any_miss"
 #'
 #' @return data.frame with data and the column labelling whether that row (for
@@ -268,11 +345,29 @@ cast_shadow_shift_label <- function(data, vars){
 #'
 #' @examples
 #'
-#' add_any_miss(airquality, c("Ozone", "Solar.R"))
+#' airquality %>% add_any_miss()
+#' airquality %>% add_any_miss(Ozone, Solar.R)
 #'
-add_any_miss <- function(data, vars, label = "any_miss"){
+add_any_miss <- function(data, ..., label = "any_miss"){
 
-  quo_vars <- rlang::quos(vars)
+  # if no variables are specified, do for all, and add the label "all"
+  if(missing(...)){
+
+    stub_data_label <- data %>%
+      dplyr::mutate(.temp = any_row_miss(data),
+                    .temp_label = dplyr::if_else(condition = .temp == TRUE,
+                                                 true = "missing",
+                                                 false = "complete")) %>%
+      dplyr::select(.temp_label) %>%
+      tibble::as_tibble()
+
+    names(stub_data_label) <- paste0(label,"_all")
+
+    dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
+
+  } else {
+
+  quo_vars <- rlang::quos(...)
 
   stub_data <- dplyr::select(data, !!!quo_vars)
 
@@ -284,9 +379,11 @@ add_any_miss <- function(data, vars, label = "any_miss"){
     dplyr::select(.temp_label) %>%
     tibble::as_tibble()
 
-  names(stub_data_label) <- label
+  names(stub_data_label) <- paste0(label,"_vars")
 
   dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
+
+  }
 
 }
 
@@ -305,7 +402,8 @@ add_any_miss <- function(data, vars, label = "any_miss"){
 add_label_missings <- function(data){
 
   data %>%
-    dplyr::mutate(any_missing = label_missings(.))
+    dplyr::mutate(any_missing = label_missings(.)) %>%
+    dplyr::as_tibble()
 
 }
 
@@ -351,7 +449,7 @@ label_shadow <- function(data){
 #' @examples
 #'
 #' airquality %>%
-#' add_shadow(c("Ozone", "Solar.R")) %>%
+#' add_shadow(Ozone, Solar.R) %>%
 #' add_label_shadow()
 
 #'
@@ -362,26 +460,32 @@ add_label_shadow <- function(data){
 
 }
 
-
-
 #' Add a column of the shadows to the dataframe
 #'
 #' @param data data.frame
-#' @param vars quoted character string
+#' @param ... One or more unquoted expressions separated by commas. These also
+#'   respect the dplyr verbs "starts_with", "contains", "ends_with", etc.
 #'
 #' @return data.frame
 #' @export
 #'
 #' @examples
 #'
-#' airquality %>% add_shadow(c("Ozone", "Solar.R"))
+#' airquality %>% add_shadow(Ozone)
+#' airquality %>% add_shadow(Ozone, Solar.R)
 #'
-add_shadow <- function(data, vars){
+add_shadow <- function(data, ...){
 
-  quo_vars <- rlang::quos(vars)
+  if (missing(...)) {
+    stop("please include variables to be selected after the data")
+  } else {
+
+  quo_vars <- rlang::quos(...)
 
   shadow_df <- dplyr::select(data, !!!quo_vars) %>% as_shadow()
 
   dplyr::bind_cols(data, shadow_df) %>% dplyr::as_tibble()
+
+  } # close else statement
 
 }

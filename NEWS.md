@@ -1,3 +1,11 @@
+# narnia 0.0.9.9000 (2017/06/30)
+
+## new features
+
+- removed defunct functions as per #63
+- made add_* functions handle bare unqouted names where appropriate as per #61
+- added tests for the add_* family
+
 # narnia 0.0.8.9100 (2017/06/23)
 
 ## new features
@@ -8,11 +16,11 @@
 
 ## new features
 
-- `add_label_missings`
-- `add_label_shadow`
-- `cast_shadow`
-- `cast_shadow_shift`
-- `cast_shadow_shift_label`
+- `add_label_missings()`
+- `add_label_shadow()`
+- `cast_shadow()`
+- `cast_shadow_shift()`
+- `cast_shadow_shift_label()`
 
 ## bug fixes
 

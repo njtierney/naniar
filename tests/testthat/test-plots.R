@@ -8,8 +8,7 @@ geom_missing_point_plot <-
   geom_missing_point()
 
 test_that("geom_miss_point works",{
-  vdiffr::expect_doppelganger("geom_missing_point",
-                              geom_missing_point_plot)
+  vdiffr::expect_doppelganger("geom_missing_point", geom_missing_point_plot)
 })
 
 

@@ -4,10 +4,12 @@
 \alias{shadow_shift}
 \title{Shift missing values to facilite missing data exploration/visualisation}
 \usage{
-shadow_shift(x)
+shadow_shift(x, ...)
 }
 \arguments{
 \item{x}{a variable of interest to shift}
+
+\item{...}{extra arguments to pass}
 }
 \description{
 `shadow_shift` is a window function that transforms missing values to

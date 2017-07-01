@@ -1,10 +1,11 @@
-# narnia 0.0.9.9000 (2017/06/30)
+# narnia 0.0.9.9001 (2017/07/01)
 
 ## new features
 
 - removed defunct functions as per #63
 - made add_* functions handle bare unqouted names where appropriate as per #61
 - added tests for the add_* family
+- got the svgs generated from vdiffr, thanks @karawoo!
 
 # narnia 0.0.8.9100 (2017/06/23)
 

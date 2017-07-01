@@ -10,6 +10,7 @@
 #'     development.
 #'
 #' @param x a variable of interest to shift
+#' @param ... extra arguments to pass
 #'
 #' @examples
 #' airquality$Ozone
@@ -21,17 +22,17 @@
 #' @export
 # Constructor function ---------------------------------------------------------
 # create the S3 method
-shadow_shift <- function(x) UseMethod("shadow_shift")
+shadow_shift <- function(x, ...) UseMethod("shadow_shift")
 
 # NULL -------------------------------------------------------------------------
 
 #' @export
-shadow_shift.NULL <- function(x) NULL
+shadow_shift.NULL <- function(x, ...) NULL
 
 # default ----------------------------------------------------------------------
 
 #' @export
-shadow_shift.default <- function(x){
+shadow_shift.default <- function(x, ...){
   stop(
     "shadow_shift does not know how to deal with data of class ",
     class(x),
@@ -42,7 +43,8 @@ shadow_shift.default <- function(x){
 }
 
 #' @export
-shadow_shift.numeric <- function(x){
+shadow_shift.numeric <- function(x, seed_shift = 2017-7-1-1850, ...){
+
 
   # add an exception for when length x == 1
   if(n_complete(x) == 1 | stats::var(x, na.rm = TRUE) == 0){
@@ -51,6 +53,8 @@ shadow_shift.numeric <- function(x){
 
     x_shift <- xmin - xmin*0.1
 
+    # set the seed here
+    set.seed(seed_shift)
     x_jitter <- (stats::runif(length(x))-0.50)*x_shift*0.10
 
     ifelse(is.na(x),
@@ -65,6 +69,7 @@ shadow_shift.numeric <- function(x){
   xmin <- min(x, na.rm = T)
 
   # create the "jitter" to be added around the points.
+  set.seed(seed_shift)
   xrunif <- (stats::runif(length(x))-0.5)*xrange*0.05
 
   ifelse(is.na(x),
@@ -77,12 +82,12 @@ shadow_shift.numeric <- function(x){
 } # close function
 
 #' @export
-shadow_shift.factor <- function(x){
+shadow_shift.factor <- function(x, ...){
   forcats::fct_explicit_na(x, na_level = "missing")
 }
 
 #' @export
-shadow_shift.character <- function(x){
+shadow_shift.character <- function(x, ...){
   dplyr::if_else(is.na(x),
                  true = "missing",
                  false = x)

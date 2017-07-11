@@ -28,6 +28,7 @@ This function draws a ggplot plot of the number of missings in each column, rear
 gg_miss_var(airquality)
 gg_miss_var(airquality, ylab = "Number of missing values")
 gg_miss_var(airquality, title = "Missing values in airquality")
+library(ggplot2)
 gg_miss_var(airquality, panel.background = element_rect(fill = "grey"))
 
 

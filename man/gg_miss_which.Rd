@@ -28,5 +28,6 @@ a ggplot plot
 gg_miss_which(airquality)
 gg_miss_which(airquality, xlab = "Variables", ylab = "Height")
 gg_miss_which(airquality, title = "Missing values in airquality")
+library(ggplot2)
 gg_miss_which(airquality, panel.background = element_rect(fill = "grey"))
 }

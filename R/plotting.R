@@ -58,6 +58,7 @@ gg_miss_case <- function(x, xlab = "Cases", ylab = "# Missing", title = NULL, ..
 #' gg_miss_var(airquality)
 #' gg_miss_var(airquality, ylab = "Number of missing values")
 #' gg_miss_var(airquality, title = "Missing values in airquality")
+#' library(ggplot2)
 #' gg_miss_var(airquality, panel.background = element_rect(fill = "grey"))
 #'
 #'
@@ -100,6 +101,7 @@ gg_miss_var <- function(x, xlab = "Variables", ylab = "# Missing", title = NULL,
 #' gg_miss_which(airquality)
 #' gg_miss_which(airquality, xlab = "Variables", ylab = "Height")
 #' gg_miss_which(airquality, title = "Missing values in airquality")
+#' library(ggplot2)
 #' gg_miss_which(airquality, panel.background = element_rect(fill = "grey"))
 
 gg_miss_which <- function(x, xlab = " ", ylab = " ", title = NULL, ...){

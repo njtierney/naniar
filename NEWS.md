@@ -1,3 +1,9 @@
+# narnia 0.0.9.9101 (2017/07/11)
+
+## new features
+
+- `gg_miss_` functions now return a ggplot object, which behave as such. `gg_miss_` basic themes can be overriden with ggplot functions.
+
 # narnia 0.0.9.9001 (2017/07/01)
 
 ## new features

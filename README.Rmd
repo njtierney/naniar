@@ -136,11 +136,11 @@ p1 + theme_bw()
 
 ```
 
-You can also look at the proportion of missings in each variable with gg_missing_var:
+You can also look at the proportion of missings in each variable with gg_miss_var:
 
 ```{r gg-missing-var}
 
-gg_missing_var(airquality)
+gg_miss_var(airquality)
 
 ```
 
@@ -247,30 +247,30 @@ s_miss$summary_missing_case
 
 # Other plotting functions
 
-## gg_missing_var
+## gg_miss_var
 
 ```{r}
 
-gg_missing_var(airquality)
+gg_miss_var(airquality)
 
 ```
 
 
-## gg_missing_case
+## gg_miss_case
 
 ```{r}
 
-gg_missing_case(airquality)
+gg_miss_case(airquality)
 
 ```
 
-## gg_missing_which
+## gg_miss_which
 
 This shows whether a given variable contains a missing variable. In this case grey = missing. Think of it as if you are shading the cell in, if it contains data.
 
 ```{r}
 
-gg_missing_which(airquality)
+gg_miss_which(airquality)
 
 ```
 

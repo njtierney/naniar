@@ -30,6 +30,7 @@ globalVariables(
     "values",
     "n_missing_in_case",
     "n_missing_in_var",
-    "n_vars"
+    "n_vars",
+    "span_every"
     )
   )

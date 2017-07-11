@@ -118,6 +118,36 @@ gg_miss_which <- function(x){
          x = " ")
 }
 
+#' Plot the number of missings for each variable, broken down by a factor
+#'
+#' This function draws a ggplot plot of the number of missings in each column, broken down by a categorical variable from the dataset.
+#' The plot is a ggplot object with a basic customisation.
+#' You can customise it the way you wish, just like classic ggplot.
+#'
+#' @param x a dataframe
+#' @param fac the column containing the factor variable
+#'
+#' @return a ggplot object depicting the number of missings
+#' @export
+#'
+#' @examples
+#'
+#' gg_miss_fac(x = riskfactors, fac = marital)
+#' library(ggplot2)
+#' gg_miss_fac(x = riskfactors, fac = marital) + theme_bw()
+#' gg_miss_fac(x = riskfactors, fac = marital) + labs(title = "NA in Risk Factors and Marital status")
+
+gg_miss_fac <- function(x, fac){
+  cond <- enquo(fac)
+  tab <- x %>%
+    group_by(!!cond) %>%
+    do(miss_var_summary(.))
+  names(tab)[1] <- "Factor"
+  ggobject <- tab %>%
+    ggplot(aes(Factor, variable, fill = n_missing)) +
+    geom_tile()
+  return(ggobject)
+}
 
 #' Plot the number of missings in a given repeating span
 #'
@@ -193,3 +223,5 @@ gg_miss_span <- function(data,
 #              y = pred)) +
 #   geom_line() +
 #   ylim(0,1)
+
+

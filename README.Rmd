@@ -144,6 +144,15 @@ gg_miss_var(airquality)
 
 ```
 
+The plots created with the `gg_miss` family all have a basic theme, but you can customise them, just like usual ggplot objects. If you call any ggplot customisation functions with a `gg_miss` object, the default args will be overridden. 
+
+```{r}
+gg_miss_var(airquality) + theme_bw() 
+
+gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
+
+```
+
 You can also explore the whole dataset of missings using the `vis_miss` function, which is exported from the [`visdat`](github.com/njtierney/visdat) package.
 
 ```{r viss-miss}

@@ -4,10 +4,18 @@
 \alias{gg_miss_case}
 \title{Plot the number of missings per case (row)}
 \usage{
-gg_miss_case(x)
+gg_miss_case(x, xlab = "Cases", ylab = "# Missing", title = NULL, ...)
 }
 \arguments{
 \item{x}{a dataframe}
+
+\item{xlab}{legend for the x axis. Default is "# Missing".}
+
+\item{ylab}{legend for the y axis. Default is "Cases".}
+
+\item{title}{title for the plot. Default is NULL.}
+
+\item{...}{you can pass more ggplot theme parameters inside the ...}
 }
 \value{
 a ggplot plot depicting the number of missings in a given case
@@ -19,5 +27,6 @@ At this point I'm not sure how this plot should be arranged, as it currently loo
 \examples{
 
 gg_miss_case(airquality)
+gg_miss_case(airquality, title = "Missing cases")
 
 }

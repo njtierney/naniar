@@ -11,6 +11,10 @@ visdat::vis_miss
 #' At this point I'm not sure how this plot should be arranged, as it currently looks a bit ugly!
 #'
 #' @param x a dataframe
+#' @param xlab legend for the x axis. Default is "# Missing".
+#' @param ylab legend for the y axis. Default is "Cases".
+#' @param title title for the plot. Default is NULL.
+#' @param ... you can pass more ggplot theme parameters inside the ...
 #'
 #' @return a ggplot plot depicting the number of missings in a given case
 #' @export
@@ -18,8 +22,9 @@ visdat::vis_miss
 #' @examples
 #'
 #' gg_miss_case(airquality)
+#' gg_miss_case(airquality, title = "Missing cases")
 #'
-gg_miss_case <- function(x){
+gg_miss_case <- function(x, xlab = "Cases", ylab = "# Missing", title = NULL, ...){
 
   ggplot(data = miss_case_summary(x),
          aes(y = n_missing,
@@ -27,9 +32,11 @@ gg_miss_case <- function(x){
     geom_bar(stat="identity", position="dodge", width = 0, colour="grey") +
     geom_point() +
     coord_flip() +
-    labs(y = "# Missing",
-         x = "Cases") +
-    theme_minimal()
+    labs(y = ylab,
+         x = xlab,
+         title = title) +
+    theme_minimal() +
+    theme(...)
 
 }
 
@@ -38,6 +45,10 @@ gg_miss_case <- function(x){
 #' This function draws a ggplot plot of the number of missings in each column, rearranged to show which variables have the most missing data.
 #'
 #' @param x a dataframe
+#' @param xlab legend for the x axis. Default is "# Missing".
+#' @param ylab legend for the y axis. Default is "Variables".
+#' @param title title for the plot. Default is NULL.
+#' @param ... you can pass more ggplot theme parameters inside the ...
 #'
 #' @return a ggplot plot depicting the number of missings in a given column
 #' @export
@@ -45,8 +56,12 @@ gg_miss_case <- function(x){
 #' @examples
 #'
 #' gg_miss_var(airquality)
+#' gg_miss_var(airquality, ylab = "Number of missing values")
+#' gg_miss_var(airquality, title = "Missing values in airquality")
+#' gg_miss_var(airquality, panel.background = element_rect(fill = "grey"))
 #'
-gg_miss_var <- function(x){
+#'
+gg_miss_var <- function(x, xlab = "Variables", ylab = "# Missing", title = NULL, ...){
 
   # get a tidy data frame of the number of missings in each column
   x %>%
@@ -58,10 +73,11 @@ gg_miss_var <- function(x){
     geom_bar(stat="identity", position="dodge", width = 0) +
     geom_point() +
     coord_flip() +
-    labs(y = "# Missing",
-         x = "Variables") +
+    labs(y = ylab,
+         x = xlab,
+         title = title) +
     theme_minimal() +
-    theme(legend.position = "none")
+    theme(legend.position = "none", ...)
 
 }
 
@@ -70,6 +86,10 @@ gg_miss_var <- function(x){
 #' `gg_miss_which` (need a better name!) produces a set of rectangles that indicate whether there is a missing element in a column or not
 #'
 #' @param x a dataframe
+#' @param xlab legend for the x axis. Default is " ".
+#' @param ylab legend for the y axis. Default is " ".
+#' @param title title for the plot. Default is NULL.
+#' @param ... you can pass more ggplot theme parameters inside the ...
 #'
 #' @return a ggplot plot
 #'
@@ -78,8 +98,11 @@ gg_miss_var <- function(x){
 #' @examples
 #'
 #' gg_miss_which(airquality)
-#'
-gg_miss_which <- function(x){
+#' gg_miss_which(airquality, xlab = "Variables", ylab = "Height")
+#' gg_miss_which(airquality, title = "Missing values in airquality")
+#' gg_miss_which(airquality, panel.background = element_rect(fill = "grey"))
+
+gg_miss_which <- function(x, xlab = " ", ylab = " ", title = NULL, ...){
 
   # tell us which columns have missing data
   # airquality %>%
@@ -100,8 +123,10 @@ gg_miss_which <- function(x){
     theme(legend.position = "none") +
     scale_y_discrete(breaks=c(""),
                      labels=c("")) +
-    labs(x = "",
-         y = "")
+    labs(y = ylab,
+         x = xlab,
+         title = title) +
+    theme(...)
 }
 
 
@@ -112,8 +137,13 @@ gg_miss_which <- function(x){
 #' number of missings in a given span
 #'
 #' @param data data.frame
-#' @param var a single bare unquoted variable name
-#' @param span_every integer describing the length of the span to be explored
+#' @param var a bare unquoted variable name
+#' @param span_size integer describing the length of the span to be explored
+#' @param xlab legend for the x axis. Default is "Span".
+#' @param ylab legend for the y axis. Default is "Proportion Missing".
+#' @param title title for the plot. Default is "Proportion of missing values".
+#' @param subtitle subtitle for the plot. Default paste "Over a repeating span of" and span_size.
+#' @param ... you can pass more ggplot theme parameters inside the ...
 #'
 #' @return ggplot2 object
 #' @export
@@ -125,11 +155,14 @@ gg_miss_which <- function(x){
 #' gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
 #' }
 
-gg_miss_span <- function(data, var, span_every){
-
-  # var_enquo <- rlang::enquo(var)
-  # var_quo <- rlang::quo(var)
-  # dat_ts_summary <- dplyr::select(data,!!!var_enquo)
+gg_miss_span <- function(data,
+                         var,
+                         span_size,
+                         title = "Proportion of missing values",
+                         subtitle = sprintf("Over a repeating span of %s", span_size),
+                         xlab = "Span",
+                         ylab = "Proportion Missing",
+                         ...){
 
   miss_var_span(data = data,
                 var = var,
@@ -148,10 +181,11 @@ gg_miss_span <- function(data, var, span_every){
                                label = c("Present",
                                          "Missing")) +
     ggplot2::theme_minimal() +
-    ggplot2::labs(title = "Proportion of missing values",
-                  subtitle = sprintf("Over a repeating span of %s", span_every),
-                  x = "Span",
-                  y = "Proportion Missing")
+    ggplot2::labs(title = title,
+                  subtitle = subtitle,
+                  x = xlab,
+                  y = ylab) +
+    ggplot2::theme(...)
 
 }
 

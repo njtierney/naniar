@@ -27,17 +27,17 @@ miss_var_span <- function(data,
                           span_every){
 
   var_enquo <- rlang::enquo(var)
+  # var_quo <- rlang::quo(var)
 
-  # grouping <- rlang::quos(...)
-
-  dat_ts_summary <- dplyr::select(data,!!var_enquo)
+  dat_ts_summary <- dplyr::select(data,!!!var_enquo)
+  # dat_ts_summary <- dplyr::select(data,!!!var_quo)
 
   dat_ts_summary %>%
-    # dplyr::group_by(!!!grouping) %>%
     # need to make add_span_counter respect grouping structure, somehow
     add_span_counter(span_size = span_every) %>%
     dplyr::group_by(span_counter) %>%
-    dplyr::tally(is.na(!!var_enquo)) %>%
+    dplyr::tally(is.na(!!!var_enquo)) %>%
+    # dplyr::tally(is.na(!!var_quo)) %>%
     dplyr::rename(n_miss = n) %>%
     dplyr::mutate(n_complete = span_every - n_miss,
                   prop_miss = n_miss / span_every,

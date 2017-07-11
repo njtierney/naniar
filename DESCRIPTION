@@ -1,6 +1,6 @@
 Package: narnia
 Type: Package
-Title: Provide Summaries and Visualisations for Missing Data
+Title: Data Structures, Summaries, and Visualisations for Missing Data
 Version: 0.0.9.9001
 Author: Nicholas Tierney, Miles McBain, Di Cook,
 Authors@R: c(
@@ -9,11 +9,11 @@ Authors@R: c(
     person("Miles", "McBain", , "miles.mcbain@gmail.com", role = "aut")
     )
 Description: Missing values are ubiquitous in data and need to be explored and
-    handled in the initial stages of analysis. narnia provides helpers for
+    handled in the initial stages of analysis. 'narnia' provides helpers for
     exploring missing data dependencies with minimal deviation from the common
-    workflows of ggplot and tidy data. narnia builds data structures and
-    functions that ensure missings are plotted easily and enables imputations
-    to be examined.
+    workflow of 'ggplot2' and tidy data. 'narnia' builds data structures and
+    functions that facilitate plotting of missing values and examination of
+    imputations.
 License: MIT + file LICENSE
 LazyData: TRUE
 Suggests:

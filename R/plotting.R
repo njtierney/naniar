@@ -105,7 +105,8 @@ gg_miss_var <- function(x, xlab = "Variables", ylab = "# Missing", title = NULL,
 gg_miss_which <- function(x, xlab = " ", ylab = " ", title = NULL, ...){
 
   # tell us which columns have missing data
-  airquality %>%
+  # airquality %>%
+  x %>%
     purrr::map_df(anyNA) %>%
     purrr::map_df(function(x) ifelse(x == 0, "complete", "missing")) %>%
     tidyr::gather(key = "variable",
@@ -149,7 +150,10 @@ gg_miss_which <- function(x, xlab = " ", ylab = " ", title = NULL, ...){
 #'
 #' @examples
 #'
-#' gg_miss_span(pedestrian, span_size = 100)
+#'\dontrun{
+#' miss_var_span(pedestrian, hourly_counts, span_every = 3000)
+#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
+#' }
 
 gg_miss_span <- function(data,
                          var,
@@ -160,9 +164,10 @@ gg_miss_span <- function(data,
                          ylab = "Proportion Missing",
                          ...){
 
-  miss_var_span(data,
-                var,
-                span_size) %>%
+  miss_var_span(data = data,
+                var = var,
+                span_every = span_every) %>%
+    # miss_var_span(pedestrian, hourly_counts, span_every = 3000) %>%
     tidyr::gather(key = variable,
                   value = value,
                   prop_miss:prop_complete) %>%

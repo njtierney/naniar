@@ -4,14 +4,16 @@
 \alias{gg_miss_span}
 \title{Plot the number of missings in a given repeating span}
 \usage{
+
 gg_miss_span(data, var, span_size, title = "Proportion of missing values",
   subtitle = sprintf("Over a repeating span of \%s", span_size),
   xlab = "Span", ylab = "Proportion Missing", ...)
+
 }
 \arguments{
 \item{data}{data.frame}
 
-\item{var}{a bare unquoted variable name}
+\item{var}{a single bare unquoted variable name}
 
 \item{span_size}{integer describing the length of the span to be explored}
 
@@ -24,6 +26,7 @@ gg_miss_span(data, var, span_size, title = "Proportion of missing values",
 \item{ylab}{legend for the y axis. Default is "Proportion Missing".}
 
 \item{...}{you can pass more ggplot theme parameters inside the ...}
+
 }
 \value{
 ggplot2 object
@@ -35,5 +38,8 @@ number of missings in a given span
 }
 \examples{
 
-gg_miss_span(pedestrian, span_size = 100)
+\dontrun{
+miss_var_span(pedestrian, hourly_counts, span_every = 3000)
+gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
+}
 }

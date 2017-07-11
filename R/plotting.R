@@ -82,7 +82,8 @@ gg_miss_var <- function(x){
 gg_miss_which <- function(x){
 
   # tell us which columns have missing data
-  airquality %>%
+  # airquality %>%
+  x %>%
     purrr::map_df(anyNA) %>%
     purrr::map_df(function(x) ifelse(x == 0, "complete", "missing")) %>%
     tidyr::gather(key = "variable",
@@ -111,23 +112,29 @@ gg_miss_which <- function(x){
 #' number of missings in a given span
 #'
 #' @param data data.frame
-#' @param var a bare unquoted variable name
-#' @param span_size integer describing the length of the span to be explored
+#' @param var a single bare unquoted variable name
+#' @param span_every integer describing the length of the span to be explored
 #'
 #' @return ggplot2 object
 #' @export
 #'
 #' @examples
 #'
-#' gg_miss_span(pedestrian, span_size = 100)
+#'\dontrun{
+#' miss_var_span(pedestrian, hourly_counts, span_every = 3000)
+#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
+#' }
 
-gg_miss_span <- function(data,
-                         var,
-                         span_size){
+gg_miss_span <- function(data, var, span_every){
 
-  miss_var_span(data,
-                var,
-                span_size) %>%
+  # var_enquo <- rlang::enquo(var)
+  # var_quo <- rlang::quo(var)
+  # dat_ts_summary <- dplyr::select(data,!!!var_enquo)
+
+  miss_var_span(data = data,
+                var = var,
+                span_every = span_every) %>%
+    # miss_var_span(pedestrian, hourly_counts, span_every = 3000) %>%
     tidyr::gather(key = variable,
                   value = value,
                   prop_miss:prop_complete) %>%
@@ -142,7 +149,7 @@ gg_miss_span <- function(data,
                                          "Missing")) +
     ggplot2::theme_minimal() +
     ggplot2::labs(title = "Proportion of missing values",
-                  subtitle = sprintf("Over a repeating span of %s", span_size),
+                  subtitle = sprintf("Over a repeating span of %s", span_every),
                   x = "Span",
                   y = "Proportion Missing")
 

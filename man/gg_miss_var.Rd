@@ -4,10 +4,18 @@
 \alias{gg_miss_var}
 \title{Plot the number of missings for each variable}
 \usage{
-gg_miss_var(x)
+gg_miss_var(x, xlab = "Variables", ylab = "# Missing", title = NULL, ...)
 }
 \arguments{
 \item{x}{a dataframe}
+
+\item{xlab}{legend for the x axis. Default is "# Missing".}
+
+\item{ylab}{legend for the y axis. Default is "Variables".}
+
+\item{title}{title for the plot. Default is NULL.}
+
+\item{...}{you can pass more ggplot theme parameters inside the ...}
 }
 \value{
 a ggplot plot depicting the number of missings in a given column
@@ -18,5 +26,9 @@ This function draws a ggplot plot of the number of missings in each column, rear
 \examples{
 
 gg_miss_var(airquality)
+gg_miss_var(airquality, ylab = "Number of missing values")
+gg_miss_var(airquality, title = "Missing values in airquality")
+gg_miss_var(airquality, panel.background = element_rect(fill = "grey"))
+
 
 }

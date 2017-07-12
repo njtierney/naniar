@@ -143,18 +143,15 @@ gg_miss_fct <- function(x, fct){
 
   enquo_fct <- rlang::enquo(fct)
 
-  miss_var_sum_fct <- x %>%
+  ggobject <- x %>%
     dplyr::group_by(!!enquo_fct) %>%
-    dplyr::do(miss_var_summary(.))
-
-  names(miss_var_sum_fct)[1] <- "factor"
-
-  ggobject <- miss_var_sum_fct %>%
-    ggplot(aes(factor,
-               variable,
-               fill = n_missing)) +
+    dplyr::do(miss_var_summary(.)) %>%
+    ggplot(aes_string(quo_name(enquo_fct),
+               "variable",
+               fill = "percent")) +
     geom_tile() +
     viridis::scale_fill_viridis()
+
   return(ggobject)
 }
 

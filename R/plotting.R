@@ -8,64 +8,57 @@ visdat::vis_miss
 #' Plot the number of missings per case (row)
 #'
 #' This function draws a ggplot of the number of missings in each row.
-#' At this point I'm not sure how this plot should be arranged, as it currently looks a bit ugly!
+#' The plot is a ggplot object with a basic customisation.
+#' You can customise it the way you wish, just like classic ggplot.
 #'
 #' @param x a dataframe
-#' @param xlab legend for the x axis. Default is "# Missing".
-#' @param ylab legend for the y axis. Default is "Cases".
-#' @param title title for the plot. Default is NULL.
-#' @param ... you can pass more ggplot theme parameters inside the ...
 #'
-#' @return a ggplot plot depicting the number of missings in a given case
+#' @return a ggplot object depicting the number of missings in a given case.
 #' @export
 #'
 #' @examples
 #'
 #' gg_miss_case(airquality)
-#' gg_miss_case(airquality, title = "Missing cases")
+#' library(ggplot2)
+#' gg_miss_case(airquality) + labs(x = "Number of Cases")
+#' gg_miss_case(airquality) + theme_linedraw()
 #'
-gg_miss_case <- function(x, xlab = "Cases", ylab = "# Missing", title = NULL, ...){
+gg_miss_case <- function(x){
 
-  ggplot(data = miss_case_summary(x),
+  ggobject <- ggplot(data = miss_case_summary(x),
          aes(y = n_missing,
              x = case)) +
     geom_bar(stat="identity", position="dodge", width = 0, colour="grey") +
     geom_point() +
     coord_flip() +
-    labs(y = ylab,
-         x = xlab,
-         title = title) +
-    theme_minimal() +
-    theme(...)
-
+    labs(y = "# Missing",
+         x = "Cases") +
+    theme_minimal()
+  return(ggobject)
 }
 
 #' Plot the number of missings for each variable
 #'
 #' This function draws a ggplot plot of the number of missings in each column, rearranged to show which variables have the most missing data.
+#' The plot is a ggplot object with a basic customisation.
+#' You can customise it the way you wish, just like classic ggplot.
 #'
 #' @param x a dataframe
-#' @param xlab legend for the x axis. Default is "# Missing".
-#' @param ylab legend for the y axis. Default is "Variables".
-#' @param title title for the plot. Default is NULL.
-#' @param ... you can pass more ggplot theme parameters inside the ...
 #'
-#' @return a ggplot plot depicting the number of missings in a given column
+#' @return a ggplot object depicting the number of missings in a given column
 #' @export
 #'
 #' @examples
 #'
 #' gg_miss_var(airquality)
-#' gg_miss_var(airquality, ylab = "Number of missing values")
-#' gg_miss_var(airquality, title = "Missing values in airquality")
 #' library(ggplot2)
-#' gg_miss_var(airquality, panel.background = element_rect(fill = "grey"))
+#' gg_miss_var(airquality) + theme_bw()
+#' gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 #'
-#'
-gg_miss_var <- function(x, xlab = "Variables", ylab = "# Missing", title = NULL, ...){
+gg_miss_var <- function(x){
 
   # get a tidy data frame of the number of missings in each column
-  x %>%
+  ggobject <- x %>%
     miss_var_summary() %>%
     ggplot(data = .,
            aes(x = stats::reorder(variable, n_missing),
@@ -74,41 +67,37 @@ gg_miss_var <- function(x, xlab = "Variables", ylab = "# Missing", title = NULL,
     geom_bar(stat="identity", position="dodge", width = 0) +
     geom_point() +
     coord_flip() +
-    labs(y = ylab,
-         x = xlab,
-         title = title) +
-    theme_minimal() +
-    theme(legend.position = "none", ...)
-
+    scale_color_discrete(guide = FALSE) +
+    labs(y = "# Missing",
+         x = "Variables") +
+    theme_minimal()
+  return(ggobject)
 }
 
 #' Plot which variables contain a missing value
 #'
 #' `gg_miss_which` (need a better name!) produces a set of rectangles that indicate whether there is a missing element in a column or not
+#' The plot is a ggplot object with a basic customisation.
+#' You can customise it the way you wish, just like classic ggplot.
 #'
 #' @param x a dataframe
-#' @param xlab legend for the x axis. Default is " ".
-#' @param ylab legend for the y axis. Default is " ".
-#' @param title title for the plot. Default is NULL.
-#' @param ... you can pass more ggplot theme parameters inside the ...
 #'
-#' @return a ggplot plot
+#' @return a ggplot object
 #'
 #' @export
 #'
 #' @examples
 #'
 #' gg_miss_which(airquality)
-#' gg_miss_which(airquality, xlab = "Variables", ylab = "Height")
-#' gg_miss_which(airquality, title = "Missing values in airquality")
 #' library(ggplot2)
-#' gg_miss_which(airquality, panel.background = element_rect(fill = "grey"))
+#' gg_miss_which(airquality) + theme(panel.background = element_rect(fill = "grey"))
+#'
 
-gg_miss_which <- function(x, xlab = " ", ylab = " ", title = NULL, ...){
+gg_miss_which <- function(x){
 
   # tell us which columns have missing data
   # airquality %>%
-  x %>%
+  ggobject <- x %>%
     purrr::map_df(anyNA) %>%
     purrr::map_df(function(x) ifelse(x == 0, "complete", "missing")) %>%
     tidyr::gather(key = "variable",
@@ -125,27 +114,54 @@ gg_miss_which <- function(x, xlab = " ", ylab = " ", title = NULL, ...){
     theme(legend.position = "none") +
     scale_y_discrete(breaks=c(""),
                      labels=c("")) +
-    labs(y = ylab,
-         x = xlab,
-         title = title) +
-    theme(...)
+    labs(y = " ",
+         x = " ")
 }
 
+#' Plot the number of missings for each variable, broken down by a factor
+#'
+#' This function draws a ggplot plot of the number of missings in each column, broken down by a categorical variable from the dataset.
+#' The plot is a ggplot object with a basic customisation.
+#' You can customise it the way you wish, just like classic ggplot.
+#'
+#' @param x a dataframe
+#' @param fac the column containing the factor variable
+#'
+#' @return a ggplot object depicting the number of missings
+#' @export
+#'
+#' @examples
+#'
+#' gg_miss_fac(x = riskfactors, fac = marital)
+#' library(ggplot2)
+#' gg_miss_fac(x = riskfactors, fac = marital) + theme_bw()
+#' gg_miss_fac(x = riskfactors, fac = marital) + labs(title = "NA in Risk Factors and Marital status")
+
+gg_miss_fac <- function(x, fac){
+  cond <- enquo(fac)
+  tab <- x %>%
+    group_by(!!cond) %>%
+    do(miss_var_summary(.))
+  names(tab)[1] <- "Factor"
+  ggobject <- tab %>%
+    ggplot(aes(Factor, variable, fill = n_missing)) +
+    geom_tile()
+  return(ggobject)
+}
 
 #' Plot the number of missings in a given repeating span
 #'
 #' This is a replacement function to
 #' imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100), which shows the
-#' number of missings in a given span
+#' number of missings in a given span.
+#'
+#' The plot is a ggplot object with a basic customisation.
+#' You can customise it the way you wish, just like classic ggplot.
+#'
 #'
 #' @param data data.frame
 #' @param var a bare unquoted variable name
 #' @param span_size integer describing the length of the span to be explored
-#' @param xlab legend for the x axis. Default is "Span".
-#' @param ylab legend for the y axis. Default is "Proportion Missing".
-#' @param title title for the plot. Default is "Proportion of missing values".
-#' @param subtitle subtitle for the plot. Default paste "Over a repeating span of" and span_size.
-#' @param ... you can pass more ggplot theme parameters inside the ...
 #'
 #' @return ggplot2 object
 #' @export
@@ -154,19 +170,15 @@ gg_miss_which <- function(x, xlab = " ", ylab = " ", title = NULL, ...){
 #'
 #'\dontrun{
 #' miss_var_span(pedestrian, hourly_counts, span_every = 3000)
-#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
+#' library(ggplot2)
+#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_classic()
 #' }
 
 gg_miss_span <- function(data,
                          var,
-                         span_size,
-                         title = "Proportion of missing values",
-                         subtitle = sprintf("Over a repeating span of %s", span_size),
-                         xlab = "Span",
-                         ylab = "Proportion Missing",
-                         ...){
+                         span_size){
 
-  miss_var_span(data = data,
+  ggobject <-  miss_var_span(data = data,
                 var = var,
                 span_every = span_every) %>%
     # miss_var_span(pedestrian, hourly_counts, span_every = 3000) %>%
@@ -183,11 +195,11 @@ gg_miss_span <- function(data,
                                label = c("Present",
                                          "Missing")) +
     ggplot2::theme_minimal() +
-    ggplot2::labs(title = title,
-                  subtitle = subtitle,
-                  x = xlab,
-                  y = ylab) +
-    ggplot2::theme(...)
+    ggplot2::labs(title = "Proportion of missing values",
+                  subtitle = sprintf("Over a repeating span of %s", span_size),
+                  x = "Span",
+                  y = "Proportion Missing")
+  return(ggobject)
 
 }
 
@@ -211,3 +223,5 @@ gg_miss_span <- function(data,
 #              y = pred)) +
 #   geom_line() +
 #   ylim(0,1)
+
+

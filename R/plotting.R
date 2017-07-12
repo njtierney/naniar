@@ -120,32 +120,41 @@ gg_miss_which <- function(x){
 
 #' Plot the number of missings for each variable, broken down by a factor
 #'
-#' This function draws a ggplot plot of the number of missings in each column, broken down by a categorical variable from the dataset.
+#' This function draws a ggplot plot of the number of missings in each column,
+#' broken down by a categorical variable from the dataset.
 #' The plot is a ggplot object with a basic customisation.
 #' You can customise it the way you wish, just like classic ggplot.
 #'
-#' @param x a dataframe
-#' @param fac the column containing the factor variable
+#' @param x dataframe
+#' @param fct column containing the factor variable
 #'
-#' @return a ggplot object depicting the number of missings
+#' @return ggplot object depicting the number of missings
 #' @export
 #'
 #' @examples
 #'
-#' gg_miss_fac(x = riskfactors, fac = marital)
+#' gg_miss_fct(x = riskfactors, fct = marital)
 #' library(ggplot2)
-#' gg_miss_fac(x = riskfactors, fac = marital) + theme_bw()
-#' gg_miss_fac(x = riskfactors, fac = marital) + labs(title = "NA in Risk Factors and Marital status")
+#' gg_miss_fct(x = riskfactors, fct = marital) + theme_bw()
+#' gg_miss_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
+#'
 
-gg_miss_fac <- function(x, fac){
-  cond <- enquo(fac)
-  tab <- x %>%
-    group_by(!!cond) %>%
-    do(miss_var_summary(.))
-  names(tab)[1] <- "Factor"
-  ggobject <- tab %>%
-    ggplot(aes(Factor, variable, fill = n_missing)) +
-    geom_tile()
+gg_miss_fct <- function(x, fct){
+
+  enquo_fct <- rlang::enquo(fct)
+
+  miss_var_sum_fct <- x %>%
+    dplyr::group_by(!!enquo_fct) %>%
+    dplyr::do(miss_var_summary(.))
+
+  names(miss_var_sum_fct)[1] <- "factor"
+
+  ggobject <- miss_var_sum_fct %>%
+    ggplot(aes(factor,
+               variable,
+               fill = n_missing)) +
+    geom_tile() +
+    viridis::scale_fill_viridis()
   return(ggobject)
 }
 

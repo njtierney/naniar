@@ -1,8 +1,18 @@
+# narnia 0.0.9.9201 (2017/07/12)
+
+## new features
+
+- `gg_miss_fct` returns a heatmap of the number of missings per variable for 
+  each level of a factor. This feature was very kindly contributed by 
+  [Colin Fay](https://github.com/ColinFay).
+
 # narnia 0.0.9.9101 (2017/07/11)
 
 ## new features
 
-- `gg_miss_` functions now return a ggplot object, which behave as such. `gg_miss_` basic themes can be overriden with ggplot functions.
+- `gg_miss_` functions now return a ggplot object, which behave as such. 
+  `gg_miss_` basic themes can be overriden with ggplot functions. This fix
+  was very kindly contributed by [Colin Fay](https://github.com/ColinFay).
 
 # narnia 0.0.9.9001 (2017/07/01)
 

@@ -148,6 +148,7 @@ gg_miss_fct <- function(x, fct){
     dplyr::do(miss_var_summary(.)) %>%
     ggplot(aes_string(quo_name(enquo_fct),
                "variable",
+
                fill = "percent")) +
     geom_tile() +
     viridis::scale_fill_viridis()

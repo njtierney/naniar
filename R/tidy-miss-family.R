@@ -21,7 +21,6 @@ miss_df_pct <- function(data){
     # test for dataframe
   } else if(inherits(data, "data.frame")){
     temp <- mean(is.na(data))
-    temp * 100
     } else stop("Input must inherit from data.frame", call. = FALSE)
 
 }
@@ -82,8 +81,20 @@ miss_case_pct <- function(data){
     # which rows are complete?
     stats::complete.cases() %>%
     mean()
-
-  (1 - temp) * 100
+   
+    # Return 100 if temp is 1
+    # Prevent error when all the rows contain a NA and then mean is 1
+    # so (1 -1)*100 = 0, whereas function should return 100.
+    if(temp == 1){
+      return(100)
+    } else if (temp == 0){
+      # Return 0 if temp is 0
+      # Prevent error when no row contains a NA and then mean is 0
+      # so (1 -0)*100 = 100, whereas function should return 0.
+      return(0)
+    } else {
+      return((1 - temp) * 100)
+    }
   } else stop("Input must inherit from data.frame", call. = FALSE)
   # previous
   # casemissingpct <- 1-mean(complete.cases(dat))*100

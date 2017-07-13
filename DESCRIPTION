@@ -16,6 +16,7 @@ Description: Missing values are ubiquitous in data and need to be explored and
     imputations.
 License: MIT + file LICENSE
 LazyData: TRUE
+ByteCompile: TRUE
 Suggests:
     knitr,
     rmarkdown,

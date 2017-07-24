@@ -17,7 +17,7 @@ gg_miss_span(data, var, span_every)
 ggplot2 object
 }
 \description{
-`gg_miss_var_span` is a replacement function to
+`gg_miss_span` is a replacement function to
 `imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100)``, which shows the
 number of missings in a given span, or breaksize. The produced plot is a
 ggplot object which you can customise the way you  wish, just like classic

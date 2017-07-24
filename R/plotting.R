@@ -146,9 +146,9 @@ gg_miss_fct <- function(x, fct){
   ggobject <- x %>%
     dplyr::group_by(!!enquo_fct) %>%
     dplyr::do(miss_var_summary(.)) %>%
-    ggplot(aes_string(quo_name(enquo_fct),
-               "variable",
-               fill = "percent")) +
+    ggplot(aes_string(x = quo_name(enquo_fct),
+                      y = "variable",
+                      fill = "percent")) +
     geom_tile() +
     viridis::scale_fill_viridis()
 

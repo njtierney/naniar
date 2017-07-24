@@ -5,8 +5,8 @@ sudo: false
 cache: packages
 
 # packages needed in the builds
-r_github_packages:
-  - njtierney/visdat
+# r_github_packages:
+#  - njtierney/visdat
 
 env:
   global:

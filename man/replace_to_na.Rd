@@ -13,6 +13,9 @@ replace_to_na(data, replace = list(), ...)
 
 \item{to_na}{A named list given the NA to replace values}
 }
+\value{
+values replaced by NA
+}
 \description{
 Specify variables and their values that you want to convert to missing values.
 This is a complement to `tidyr::replace_na`.
@@ -26,24 +29,19 @@ dat_ms <- tibble::tribble(~x,  ~y,    ~z,
                          -99, "E",   -101,
                          -98, "F",   -1)
 
-# works
 replace_to_na(dat_ms,
              to_na = list(x = -99))
 
-# works
 replace_to_na(dat_ms,
              to_na = list(x = -98))
 
-# works
 replace_to_na(dat_ms,
              to_na = list(x = c(-99, -98)))
 
-# works
 replace_to_na(dat_ms,
              to_na = list(x = c(-99, -98),
                           y = c("N/A")))
 
-# works?
 replace_to_na(dat_ms,
              to_na = list(x = c(-99, -98),
                           y = c("N/A"),

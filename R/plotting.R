@@ -167,7 +167,7 @@ gg_miss_fct <- function(x, fct){
 #'
 #' @param data data.frame
 #' @param var a bare unquoted variable name
-#' @param span_size integer describing the length of the span to be explored
+#' @param span_every integer describing the length of the span to be explored
 #'
 #' @return ggplot2 object
 #' @export
@@ -182,11 +182,11 @@ gg_miss_fct <- function(x, fct){
 
 gg_miss_span <- function(data,
                          var,
-                         span_size){
+                         span_every){
 
   ggobject <-  miss_var_span(data = data,
-                var = var,
-                span_every = span_every) %>%
+                             var = var,
+                             span_every = span_every) %>%
     # miss_var_span(pedestrian, hourly_counts, span_every = 3000) %>%
     tidyr::gather(key = variable,
                   value = value,

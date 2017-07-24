@@ -4,14 +4,14 @@
 \alias{gg_miss_span}
 \title{Plot the number of missings in a given repeating span}
 \usage{
-gg_miss_span(data, var, span_size)
+gg_miss_span(data, var, span_every)
 }
 \arguments{
 \item{data}{data.frame}
 
 \item{var}{a bare unquoted variable name}
 
-\item{span_size}{integer describing the length of the span to be explored}
+\item{span_every}{integer describing the length of the span to be explored}
 }
 \value{
 ggplot2 object

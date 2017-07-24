@@ -39,3 +39,10 @@ test_that("gg_miss_fct works",{
   vdiffr::expect_doppelganger("gg_miss_fct",
                               gg_miss_fct_plot)
 })
+
+gg_miss_span_plot <- gg_miss_span(pedestrian, hourly_counts, 4000)
+
+test_that("gg_miss_span works",{
+  vdiffr::expect_doppelganger("gg_miss_span",
+                              gg_miss_span_plot)
+})

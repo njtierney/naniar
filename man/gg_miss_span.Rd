@@ -2,14 +2,14 @@
 % Please edit documentation in R/plotting.R
 \name{gg_miss_span}
 \alias{gg_miss_span}
-\title{Plot the number of missings in a given repeating span}
+\title{Plot the proportion of missings in a given repeating span}
 \usage{
 gg_miss_span(data, var, span_every)
 }
 \arguments{
 \item{data}{data.frame}
 
-\item{var}{a bare unquoted variable name}
+\item{var}{a bare unquoted variable name from the data.frame}
 
 \item{span_every}{integer describing the length of the span to be explored}
 }
@@ -17,19 +17,18 @@ gg_miss_span(data, var, span_every)
 ggplot2 object
 }
 \description{
-This is a replacement function to
-imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100), which shows the
-number of missings in a given span.
-}
-\details{
-The plot is a ggplot object with a basic customisation.
-You can customise it the way you wish, just like classic ggplot.
+`gg_miss_var_span` is a replacement function to
+`imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100)``, which shows the
+number of missings in a given span, or breaksize. The produced plot is a
+ggplot object which you can customise the way you  wish, just like classic
+ggplot.
 }
 \examples{
 
-\dontrun{
 miss_var_span(pedestrian, hourly_counts, span_every = 3000)
 library(ggplot2)
-gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_classic()
-}
+gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
+# works with the rest of ggplot
+gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
+gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
 }

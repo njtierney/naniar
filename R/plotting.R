@@ -155,18 +155,16 @@ gg_miss_fct <- function(x, fct){
   return(ggobject)
 }
 
-#' Plot the number of missings in a given repeating span
+#' Plot the proportion of missings in a given repeating span
 #'
-#' This is a replacement function to
-#' imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100), which shows the
-#' number of missings in a given span.
-#'
-#' The plot is a ggplot object with a basic customisation.
-#' You can customise it the way you wish, just like classic ggplot.
-#'
+#' `gg_miss_span` is a replacement function to
+#' `imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100)``, which shows the
+#' number of missings in a given span, or breaksize. The produced plot is a
+#' ggplot object which you can customise the way you  wish, just like classic
+#' ggplot.
 #'
 #' @param data data.frame
-#' @param var a bare unquoted variable name
+#' @param var a bare unquoted variable name from the data.frame
 #' @param span_every integer describing the length of the span to be explored
 #'
 #' @return ggplot2 object
@@ -174,18 +172,21 @@ gg_miss_fct <- function(x, fct){
 #'
 #' @examples
 #'
-#'\dontrun{
 #' miss_var_span(pedestrian, hourly_counts, span_every = 3000)
 #' library(ggplot2)
-#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_classic()
-#' }
+#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
+#' # works with the rest of ggplot
+#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
+#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
 
 gg_miss_span <- function(data,
                          var,
                          span_every){
 
+  var_enquo <- rlang::enquo(var)
+
   ggobject <-  miss_var_span(data = data,
-                             var = var,
+                             var = !!var_enquo,
                              span_every = span_every) %>%
     # miss_var_span(pedestrian, hourly_counts, span_every = 3000) %>%
     tidyr::gather(key = variable,
@@ -202,7 +203,7 @@ gg_miss_span <- function(data,
                                          "Missing")) +
     ggplot2::theme_minimal() +
     ggplot2::labs(title = "Proportion of missing values",
-                  subtitle = sprintf("Over a repeating span of %s", span_size),
+                  subtitle = sprintf("Over a repeating span of %s", span_every),
                   x = "Span",
                   y = "Proportion Missing")
   return(ggobject)

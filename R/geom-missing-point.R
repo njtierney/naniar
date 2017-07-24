@@ -1,10 +1,10 @@
 #' Plot Missing Data Points
 #'
-#' \code{geom_missing_point} adds a missing data point geometry to ggplot2. This displays missing data points 10% below the minimum value.
+#' \code{ geom_miss_point} adds a missing data point geometry to ggplot2. This displays missing data points 10% below the minimum value.
 #'
 #' @include legend-draw.R
-#' @name geom_missing_point
-#' @title geom_missing_point
+#' @name  geom_miss_point
+#' @title  geom_miss_point
 #' @note Warning message if na.rm = T is supplied.
 #'
 #' @param mapping Set of aesthetic mappings created by \code{\link[ggplot2]{aes}}
@@ -55,14 +55,14 @@
 #'            y = Solar.R)) +
 #' geom_point()
 #'
-#' # using geom_missing_point()
+#' # using  geom_miss_point()
 #' ggplot(airquality,
 #'        aes(x = Ozone,
 #'            y = Solar.R)) +
-#' geom_missing_point()
+#'  geom_miss_point()
 #'
 #' @export
-geom_missing_point <- function(mapping = NULL,
+ geom_miss_point <- function(mapping = NULL,
                                data = NULL,
                                # stat = "identity",
                                position = "identity",
@@ -74,8 +74,8 @@ geom_missing_point <- function(mapping = NULL,
   layer(
     data = data,
     mapping = mapping,
-    stat = StatMissingPoint,
-    geom = GeomMissingPoint,
+    stat = StatMissPoint,
+    geom = GeomMissPoint,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
@@ -91,7 +91,7 @@ geom_missing_point <- function(mapping = NULL,
 #' @format NULL
 #' @usage NULL
 #' @export
-GeomMissingPoint <- ggproto("GeomMissingPoint", GeomPoint,
+GeomMissPoint <- ggproto("GeomMissPoint", GeomPoint,
                             required_aes = c("x", "y"),
                             default_aes = aes(shape = 19,
                                               colour = ..missing..,

@@ -2,14 +2,14 @@
 % Please edit documentation in R/geom-missing-point.R, R/narnia-ggproto.R,
 %   R/stat-missing-point.R
 \docType{data}
-\name{GeomMissingPoint}
-\alias{GeomMissingPoint}
+\name{GeomMissPoint}
+\alias{GeomMissPoint}
 \alias{narnia-ggproto}
-\alias{StatMissingPoint}
+\alias{StatMissPoint}
 \title{narnia-ggroto}
-\format{An object of class \code{StatMissingPoint} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 6.}
+\format{An object of class \code{StatMissPoint} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 6.}
 \usage{
-StatMissingPoint
+StatMissPoint
 }
 \description{
 These are the stat and geom overrides using ggproto from ggplot2 that make narnia work.

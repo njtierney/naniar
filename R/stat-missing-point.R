@@ -1,6 +1,6 @@
-#' @name stat_missing_point
-#' @title stat_missing_point
-#' @description stat_missing_point adds a geometry for displaying missingness to geom_point
+#' @name stat_miss_point
+#' @title stat_miss_point
+#' @description stat_miss_point adds a geometry for displaying missingness to geom_point
 #'
 #' @note Very first attempt at creating a geom that is compatible with ggplot2.
 #' Data plotting works. Still todo:
@@ -43,7 +43,7 @@
 #' }
 #'
 #' @export
-stat_missing_point <- function(mapping = NULL,
+stat_miss_point <- function(mapping = NULL,
                                data = NULL,
                                geom = "point",
                                position = "identity",
@@ -52,7 +52,7 @@ stat_missing_point <- function(mapping = NULL,
                                inherit.aes = TRUE,
                                ...) {
   ggplot2::layer(
-    stat = StatMissingPoint,
+    stat = StatMissPoint,
     data = data,
     mapping = mapping,
     geom = geom,
@@ -66,7 +66,7 @@ stat_missing_point <- function(mapping = NULL,
 
 #' @rdname narnia-ggproto
 #' @export
-StatMissingPoint <- ggproto("StatMissingPoint", Stat,
+StatMissPoint <- ggproto("StatMissPoint", Stat,
     required_aes = c("x", "y"),
     default_aes = aes(colour = ..missing..),
     setup_data = function(data, params){

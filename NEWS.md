@@ -1,9 +1,13 @@
-# narnia 0.0.9.9300 (2017/07/24)
+# narnia 0.0.9.4000 (2017/07/24)
 
 ## new features
 
 - `replace_to_na` is a complement to `tidyr::replace_na` and replaces a specified
 value from a variable to NA.
+
+## breaking changes
+
+- changed `geom_missing_point()` to `geom_miss_point()`.
 
 # narnia 0.0.9.9201 (2017/07/12)
 

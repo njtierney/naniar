@@ -7,8 +7,7 @@ reference:
     desc: >
       Visualise missing data
     contents:
-      - geom_missing_point
-      - stat_missing_point
+      - geom_miss_point
       - starts_with("gg_miss_")
   - title: "Numerical Summaries"
     desc: >

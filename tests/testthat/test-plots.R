@@ -1,14 +1,14 @@
 context("narnia-plots")
 
 library(ggplot2)
-geom_missing_point_plot <-
+geom_miss_point_plot <-
   ggplot(airquality,
          aes(x = Solar.R,
              y = Ozone)) +
-  geom_missing_point()
+  geom_miss_point()
 
 test_that("geom_miss_point works",{
-  vdiffr::expect_doppelganger("geom_missing_point", geom_missing_point_plot)
+  vdiffr::expect_doppelganger("geom_miss_point", geom_miss_point_plot)
 })
 
 

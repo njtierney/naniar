@@ -326,7 +326,7 @@ airquality %>%
 
 Which is rather involved, and not ideal, because you are no longer trying to explore missing data, you have now spent time working out how to correctly shift missing values, keep track of what was missing, and then plot this, then add colour, and identify which values are missing.
 
-To make this simpler, you use the ggplot2 geom `geom_missing_point()`. This `geom` allows for missing values to be displayed, and also works with the rest of ggplot2 - themes, and facets as well.
+To make this simpler, you use the ggplot2 geom `geom_miss_point()`. This `geom` allows for missing values to be displayed, and also works with the rest of ggplot2 - themes, and facets as well.
 
 **What is imputed, stays imputed**
 

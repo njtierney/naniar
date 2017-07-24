@@ -1,7 +1,7 @@
 Package: narnia
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.0.9.9101
+Version: 0.0.9.9300
 Author: Nicholas Tierney, Miles McBain, Di Cook,
 Authors@R: c(
     person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
@@ -49,7 +49,7 @@ Imports:
 Remotes:
     njtierney/visdat
 RoxygenNote: 6.0.1.9000
-Collate:
+Collate: 
     'data-oceanbuoys.R'
     'data-pedestrian.R'
     'data-riskfactors.R'
@@ -58,6 +58,7 @@ Collate:
     'narnia-ggproto.R'
     'narnia-package.R'
     'plotting.R'
+    'replace_to_na.R'
     'shadow-shifters.R'
     'shadows.R'
     'stat-missing-point.R'

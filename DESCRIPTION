@@ -1,12 +1,13 @@
 Package: narnia
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.0.9.9101
-Author: Nicholas Tierney, Miles McBain, Di Cook,
+Version: 0.0.9.9301
+Author: Nicholas Tierney, Miles McBain, Di Cook, Colin Fay
 Authors@R: c(
     person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
     person("Di", "Cook", , "dicook@monash.edu", role = "aut"),
-    person("Miles", "McBain", , "miles.mcbain@gmail.com", role = "aut")
+    person("Miles", "McBain", , "miles.mcbain@gmail.com", role = "aut"), 
+    person("Colin", "Fay", , "contact@colinfay.me", role = "aut")
     )
 Description: Missing values are ubiquitous in data and need to be explored and
     handled in the initial stages of analysis. 'narnia' provides helpers for
@@ -45,11 +46,13 @@ Imports:
     purrrlyr,
     rlang,
     forcats,
-    viridis
+    viridis,
+    stringr
 Remotes:
     njtierney/visdat
 RoxygenNote: 6.0.1.9000
 Collate:
+    'data-breizh.R'
     'data-oceanbuoys.R'
     'data-pedestrian.R'
     'data-riskfactors.R'
@@ -58,6 +61,7 @@ Collate:
     'narnia-ggproto.R'
     'narnia-package.R'
     'plotting.R'
+    'replace-to-na.R'
     'shadow-shifters.R'
     'shadows.R'
     'stat-missing-point.R'

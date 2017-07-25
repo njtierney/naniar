@@ -9,6 +9,8 @@ narnia
 
 Currently it provides:
 
+-   Converting to missing data
+    -   `replace_to_na()`
 -   Data structures for missing data
     -   `as_shadow()`
     -   `bind_shadow()`
@@ -19,6 +21,9 @@ Currently it provides:
     -   `gg_miss_var()`
     -   `gg_miss_case()`
     -   `gg_miss_which()`
+    -   `gg_miss_fct()`
+    -   `gg_miss_var_cumsum()`
+    -   `gg_miss_case_cumsum()`
 -   Numerical summaries:
     -   `n_miss()`
     -   `n_complete()`
@@ -29,6 +34,8 @@ Currently it provides:
     -   `miss_var_summary()`
     -   `miss_var_table()`
     -   `miss_df_pct()`
+    -   `miss_var_cumsum()`
+    -   `miss_case_cumsum()`
 
 For details on how to use each of these functions, and their usage, you can read the vignette ["Getting Started with Narnia"](http://www.njtierney.com/narnia/articles/getting-started-w-narnia.html).
 
@@ -41,6 +48,32 @@ For details on how to use each of these functions, and their usage, you can read
 Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like [C.S. Lewis's Narnia](https://en.wikipedia.org/wiki/The_Chronicles_of_Narnia) - a different world, hidden away. You go inside, and sometimes it seems like you've spent no time in there but time has passed very quickly, or the opposite. Also, `NA`rnia = na in r, and if you so desire, narnia may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+Prelude 
+========
+
+Sometimes, `NA` are not encoded as `NA`, but as various strings/numeric such as `"Not Available"`, `-99`, and so on. If needed, you can convert these strings/numeric with the function `replace_to_na`, which takes as parameters a data.frame or vector, and a series of strings and/or numbers to be converted as NA. 
+
+``` r
+iris %>%
+  replace_to_na("setosa")
+```
+
+You may want to convert the strings once and for all at the beginning of your analysis. In that cas you may want to use `%<>%` from the `magrittr` package.
+
+``` r
+library(magrittr)
+iris %<>%
+  replace_to_na("setosa")
+```
+You can also simply use the function inside a narnia pipe:
+
+``` r
+library(magrittr)
+iris %>%
+  mutate(Species = replace_to_na(Species, "setosa")) %>%
+  miss_var_summary()
+```
 
 Data structures for missing data
 ================================
@@ -193,6 +226,18 @@ gridExtra::grid.arrange(p1, p2, ncol = 2)
 ```
 
 ![](README-figs/README-bind-shadow-density-1.png)
+
+``` r
+gg_miss_fct(x = riskfactors, fct = marital) 
+```
+![](README-figs/README-gg-miss-fct.png)
+
+
+``` r
+gg_miss_case_cumsum(airquality)
+```
+![](README-figs/README-gg-miss-case-cumsum.png)
+
 
 Numerical summaries for missing data
 ====================================

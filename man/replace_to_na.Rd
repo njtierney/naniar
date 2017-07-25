@@ -4,14 +4,14 @@
 \alias{replace_to_na}
 \title{Replace values with missings}
 \usage{
-replace_to_na(data, replace = list(), ...)
+replace_to_na(data, to_na = list(), ...)
 }
 \arguments{
 \item{data}{A data.frame}
 
-\item{...}{additional arguments for methods.}
-
 \item{to_na}{A named list given the NA to replace values}
+
+\item{...}{additional arguments for methods.}
 }
 \value{
 values replaced by NA

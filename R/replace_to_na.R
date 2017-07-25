@@ -36,7 +36,7 @@
 #'              to_na = list(x = c(-99, -98),
 #'                           y = c("N/A"),
 #'                           z = c(-101)))
-replace_to_na <- function(data, replace = list(), ...){
+replace_to_na <- function(data, to_na = list(), ...){
   UseMethod("replace_to_na")
 }
 

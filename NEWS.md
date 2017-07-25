@@ -1,3 +1,35 @@
+# narnia 0.0.9.9301 (2017/07/23)
+
+## Major changes
+
+- three new functions : `miss_case_cumsum` / `miss_var_cumsum` / `replace_to_na`
+- two new visualisations : `gg_var_cumsum` & `gg_case_cumsum`
+
+## Not so major changes
+
+- New dataset `breizh`
+- `miss_var_summary` & `miss_case_summary` now have consistent output (one was ordered by n_missing, not the other). It's now possible wether to order them or not. Default is TRUE. 
+- Updated README
+
+## Minor edits
+
+- prevent error `in miss_case_pct`
+- `enquo_x` is now `x` (as adviced by [Hadley](https://twitter.com/hadleywickham/status/885993307968593920))
+- Now has ByteCompile to TRUE
+- add Colin to auth
+- `miss_summary` docs was not up to date
+
+## TO DO
+
+- Update Vignette 
+- Maybe write a "Visualisation with {narnia}" vignette
+- add more tests 
+- Make it possible to do `replace_to_na(x < 10)`
+- `replace_to_na_if`
+- `replace_to_na_at`
+- `replace_to_na_all`
+- check why some tests are failing, and add more tests
+
 # narnia 0.0.9.9201 (2017/07/12)
 
 ## new features

@@ -21,7 +21,7 @@ You can customise it the way you wish, just like classic ggplot.
 
 gg_miss_var(airquality)
 library(ggplot2)
-gg_miss_var(airquality) + theme_bw()
+gg_miss_var(breizh) + theme_bw()
 gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 
 }

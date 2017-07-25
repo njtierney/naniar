@@ -24,7 +24,7 @@ You can customise it the way you wish, just like classic ggplot.
 
 gg_miss_fct(x = riskfactors, fct = marital)
 library(ggplot2)
-gg_miss_fct(x = riskfactors, fct = marital) + theme_bw()
+gg_miss_fct(x = breizh, fct = MillesimeMandatement) + theme_bw()
 gg_miss_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
 
 }

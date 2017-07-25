@@ -18,5 +18,6 @@ Calculate the percentage of variables that contain a single missing value.
 \examples{
 
 miss_var_pct(airquality)
+breizh \%>\% replace_to_na("empty", "not_available") \%>\% miss_df_pct
 
 }

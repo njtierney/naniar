@@ -4,10 +4,12 @@
 \alias{miss_var_summary}
 \title{Summarise the missingness in each variable}
 \usage{
-miss_var_summary(data)
+miss_var_summary(data, order_output = TRUE)
 }
 \arguments{
 \item{data}{a dataframe}
+
+\item{order_output}{wether or not the output should be ordered by n_missing}
 }
 \value{
 a data_frame of the percent of missing data in each variable

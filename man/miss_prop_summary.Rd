@@ -17,6 +17,6 @@ Return missing data info about the dataframe, the variables, and the cases. Spec
 }
 \examples{
 
-miss_prop_summary(airquality)
+miss_prop_summary(breizh)
 
 }

@@ -17,6 +17,7 @@ Calculate the percent of missing data in a dataframe.
 }
 \examples{
 
-miss_df_pct(airquality)
+miss_df_pct(breizh)
+breizh \%>\% replace_to_na("empty", "not_available") \%>\% miss_df_pct
 
 }

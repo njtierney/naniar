@@ -13,13 +13,13 @@ miss_summary(data)
 a dataframe
 }
 \description{
-\code{summarise_missingness} performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
+\code{miss_summary} performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
 }
 \examples{
 
-s_miss <- miss_summary(airquality)
-s_miss$percent_missing_df
-s_miss$table_missing_case
+s_miss <- miss_summary(breizh)
+s_miss$miss_df_pct
+s_miss$miss_case_table
 # etc, etc, etc.
 
 }

@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with Narnia"
+title: "Getting Started with naniar"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
 output:
@@ -11,7 +11,7 @@ output:
       smooth_scroll: false
     toc_depth: 3
 vignette: >
-  %\VignetteIndexEntry{Getting Started with Narnia}
+  %\VignetteIndexEntry{Getting Started with naniar}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -26,7 +26,7 @@ knitr::opts_chunk$set(fig.align = "center",
 
 # Introduction
 
-Missing values are ubiquitous in data and need to be carefully explored and handled in the initial stages of analysis. In this vignette we describe the tools in the package `narnia` for exploring missing data structures with minimal deviation from the common workflows of ggplot and tidy data [@Wickham2014; @Wickham2009].
+Missing values are ubiquitous in data and need to be carefully explored and handled in the initial stages of analysis. In this vignette we describe the tools in the package `naniar` for exploring missing data structures with minimal deviation from the common workflows of ggplot and tidy data [@Wickham2014; @Wickham2009].
 
 Sometimes researchers or analysts will introduce or describe a mechanism for missingness. For example, they might explain that data from a weather station might has a malfunction when there are extreme weather events, and does not record temperature data when gusts speeds are high. This seems like a nice simple, logical explanation. However, like all good explanations, this one is simple, but the process to get there, probably was not, and likely involved more time than you would have liked developing exploratory data analyses and models. 
 
@@ -36,7 +36,7 @@ So when someone presents a really obvious plot like this, with a nice sensible e
 
 As if they somehow _accidentally_ solved the problem, it was so easy. They couldn't not solve it. However, I think that if you manage to get that on the first go, that is more like turning around and throwing a rock into a lake and it landing in a cup in a boat. Unlikely.
 
-With that thought in mind, this vignette aims to work with the following three questions, using the tools developed in narnia and another package, visdat. Namely, how do we:
+With that thought in mind, this vignette aims to work with the following three questions, using the tools developed in naniar and another package, visdat. Namely, how do we:
 
 1. Start looking at missing data? 
 2. Explore missingness mechanisms? 
@@ -120,7 +120,7 @@ ggplot(airquality,
            y = Ozone)) + 
   geom_point()
 
-library(narnia)
+library(naniar)
 
 ggplot(airquality, 
        aes(x = Solar.R, 
@@ -268,7 +268,7 @@ aq_shadow %>%
 
 ## Numerical summaries of missing values
 
-`narnia` also provide numerical summaries for missing data. Two convenient counters of complete values and missings are `n_miss` and `n_complete`. These work on both dataframes and vectors, similar to `dplyr::n_distinct`
+`naniar` also provide numerical summaries for missing data. Two convenient counters of complete values and missings are `n_miss` and `n_complete`. These work on both dataframes and vectors, similar to `dplyr::n_distinct`
 
 ```{r echo = TRUE}
 
@@ -283,7 +283,7 @@ n_complete(airquality$Ozone)
 
 ```
 
-The syntax for the other numerical sumamries in `narnia` are `miss_`, and then `case`, `var`, or `df`, and then `summary` or `table`. There are also some summary functions for `ts` objects that are being worked on, which currently have `miss_ts_run` and `miss_ts_summary` functions.
+The syntax for the other numerical sumamries in `naniar` are `miss_`, and then `case`, `var`, or `df`, and then `summary` or `table`. There are also some summary functions for `ts` objects that are being worked on, which currently have `miss_ts_run` and `miss_ts_summary` functions.
 
 To demonstrate, below are the `miss_case_*` family of functions.
 
@@ -404,12 +404,12 @@ Here we can see that this produces quite a complex tree - this can be pruned bac
 
 # Summary
 
-The tools in `narnia` help us identify where missingness is, while maintaining a tidy workflow. We care about these mechanisms or these patterns because they can help us understand potential mechanisms, such as equipment failures, and then identify possible solutions based upon this evidence.
+The tools in `naniar` help us identify where missingness is, while maintaining a tidy workflow. We care about these mechanisms or these patterns because they can help us understand potential mechanisms, such as equipment failures, and then identify possible solutions based upon this evidence.
 	  
 # Future development
 
-- Continue making `narnia` play well with `dplyr` and `tidyr`.
-- Make `narnia` work with big data tools like `sparklyr`, and `sparklingwater`.
+- Continue making `naniar` play well with `dplyr` and `tidyr`.
+- Make `naniar` work with big data tools like `sparklyr`, and `sparklingwater`.
 - Expand ggplot `geom_miss_*` family.
 - Further develop methods for handling and visualising imputations, and multiple imputation.
 

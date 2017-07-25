@@ -107,7 +107,7 @@ miss_var_run <- function(data, var){
                                            true = "missing",
                                            false = "complete"))
     # also look into `label_na`
-    # narnia::is_na(TRUE)
+    # naniar::is_na(TRUE)
 
 }
 
@@ -141,7 +141,7 @@ miss_var_run <- function(data, var){
 #            weekday) %>%
 #   # miss_ts_summary(time_index = Date_Time,
 #   #                 variable = Hourly_Counts
-#   # narnia:::add_period_counter(period_length = ) %>%
+#   # naniar:::add_period_counter(period_length = ) %>%
 #   # dplyr::group_by(period_counter) %>%
 #   dplyr::tally(is.na(Hourly_Counts))
 # dplyr::rename(n_miss = n) %>%

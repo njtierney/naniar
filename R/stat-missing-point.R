@@ -64,7 +64,7 @@ stat_miss_point <- function(mapping = NULL,
 
 }
 
-#' @rdname narnia-ggproto
+#' @rdname naniar-ggproto
 #' @export
 StatMissPoint <- ggproto("StatMissPoint", Stat,
     required_aes = c("x", "y"),

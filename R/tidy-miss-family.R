@@ -81,7 +81,7 @@ miss_case_pct <- function(data){
     # which rows are complete?
     stats::complete.cases() %>%
     mean()
-   
+
     # Return 100 if temp is 1
     # Prevent error when all the rows contain a NA and then mean is 1
     # so (1 -1)*100 = 0, whereas function should return 100.
@@ -209,6 +209,7 @@ miss_var_table <- function(data){
 #' Provide a data_frame containing the variable names, the number of missing values, in each variable, and the percent of missing values in each variable.
 #'
 #' @param data a dataframe
+#' @param ... extra arguments
 #'
 #' @return a data_frame of the percent of missing data in each variable
 #' @export
@@ -217,7 +218,8 @@ miss_var_table <- function(data){
 #'
 #' miss_var_summary(airquality)
 #'
-miss_var_summary <- function(data){
+#' @export
+miss_var_summary <- function(data, ...){
 
     if(is.null(data)){
       stop("Input must not be NULL", call. = FALSE)
@@ -269,7 +271,7 @@ miss_case_summary <- function(data){
   } else stop("Input must inherit from data.frame", call. = FALSE)
 }
 
-#' Collate summary measures from narnia into one tibble
+#' Collate summary measures from naniar into one tibble
 #'
 #' \code{summarise_missingness} performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
 #'

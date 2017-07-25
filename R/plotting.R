@@ -1,4 +1,4 @@
-# plotting functions for narnia
+# plotting functions for naniar
 
 
 #' @importFrom visdat vis_miss

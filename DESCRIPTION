@@ -1,7 +1,7 @@
-Package: narnia
+Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.0.9.9300
+Version: 0.0.9.9400
 Author: Nicholas Tierney, Miles McBain, Di Cook,
 Authors@R: c(
     person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
@@ -9,9 +9,9 @@ Authors@R: c(
     person("Miles", "McBain", , "miles.mcbain@gmail.com", role = "aut")
     )
 Description: Missing values are ubiquitous in data and need to be explored and
-    handled in the initial stages of analysis. 'narnia' provides helpers for
+    handled in the initial stages of analysis. 'naniar' provides helpers for
     exploring missing data dependencies with minimal deviation from the common
-    workflow of 'ggplot2' and tidy data. 'narnia' builds data structures and
+    workflow of 'ggplot2' and tidy data. 'naniar' builds data structures and
     functions that facilitate plotting of missing values and examination of
     imputations.
 License: MIT + file LICENSE
@@ -53,8 +53,8 @@ Collate:
     'data-riskfactors.R'
     'legend-draw.R'
     'geom-missing-point.R'
-    'narnia-ggproto.R'
-    'narnia-package.R'
+    'naniar-ggproto.R'
+    'naniar-package.R'
     'plotting.R'
     'replace_to_na.R'
     'shadow-shifters.R'
@@ -66,5 +66,5 @@ Collate:
     'tidy-miss-label.R'
     'tidy-miss-scalars.R'
     'utils.R'
-URL: https://github.com/njtierney/narnia
-BugReports: https://github.com/njtierney/narnia/issues
+URL: https://github.com/njtierney/naniar
+BugReports: https://github.com/njtierney/naniar/issues

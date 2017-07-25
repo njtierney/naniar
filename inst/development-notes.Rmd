@@ -14,7 +14,7 @@ These are various notes that I want to keep track off online
 ```{r}
 library(simputation)
 library(tidyverse)
-library(narnia)
+library(naniar)
 library(visdat)
 
 # are there missings in the data?
@@ -40,7 +40,7 @@ head(da1,3)
 ```{r}
 
 library(simputation)
-library(narnia)
+library(naniar)
 library(visdat)
 library(tibble)
 
@@ -136,17 +136,17 @@ It may provide something different with and `impl` objects, giving summaries abo
 
 This may also have implications further down the track with ggplot.
 
-Related to this topic, is how these values will be stored, and how imputation will occur in `narnia`.
+Related to this topic, is how these values will be stored, and how imputation will occur in `naniar`.
 
 
 # stat_impute would then take a imple object, and highlight/differentiate the
 # missing values from ggplot
 
-# Imputation in narnia ---------------------------------------------------------
+# Imputation in naniar ---------------------------------------------------------
 
 # the `imputation()` or `na_impute` function.
 # this would take a dataframe, and then some function for imputing values
-# narnia "freezes" the dataframe input, and takes a record of the missing values
+# naniar "freezes" the dataframe input, and takes a record of the missing values
 # and stores them as a sparse matrix (to save space)
 # and then imputes the values.
 
@@ -213,11 +213,11 @@ ggplot(data = airquality_nibble,
 # stat_impute would then take a imple object, and highlight/differentiate the
 # missing values from ggplot
 
-# Imputation in narnia ---------------------------------------------------------
+# Imputation in naniar ---------------------------------------------------------
 
 # the `imputation()` or `na_impute` function.
 # this would take a dataframe, and then some function for imputing values
-# narnia "freezes" the dataframe input, and takes a record of the missing values
+# naniar "freezes" the dataframe input, and takes a record of the missing values
 # and stores them as a sparse matrix (to save space)
 # and then imputes the values.
 

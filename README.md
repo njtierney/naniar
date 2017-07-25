@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-narnia
+naniar
 ======
 
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/narnia?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/narnia) [![Travis-CI Build Status](https://travis-ci.org/njtierney/narnia.svg?branch=master)](https://travis-ci.org/njtierney/narnia) [![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/narnia/master.svg)](https://codecov.io/github/njtierney/narnia?branch=master)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar) [![Travis-CI Build Status](https://travis-ci.org/njtierney/naniar.svg?branch=master)](https://travis-ci.org/njtierney/naniar) [![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://codecov.io/github/njtierney/naniar?branch=master)
 
-`narnia` aims to make it easy to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data.
+`naniar` aims to make it easy to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data.
 
 Currently it provides:
 
@@ -15,7 +15,7 @@ Currently it provides:
     -   `gather_shadow()`
     -   `is_na()`
 -   Visualisation methods:
-    -   `geom_missing_point()`
+    -   `geom_miss__point()`
     -   `gg_miss_var()`
     -   `gg_miss_case()`
     -   `gg_miss_which()`
@@ -30,15 +30,15 @@ Currently it provides:
     -   `miss_var_table()`
     -   `miss_df_pct()`
 
-For details on how to use each of these functions, and their usage, you can read the vignette ["Getting Started with Narnia"](http://www.njtierney.com/narnia/articles/getting-started-w-narnia.html).
+For details on how to use each of these functions, and their usage, you can read the vignette ["Getting Started with naniar"](http://www.njtierney.com/naniar/articles/getting-started-w-naniar.html).
 
-**Why `narnia`?**
+**Why `naniar`?**
 
-`narnia` was previously named `ggmissing` and initially provided a ggplot geom and some visual summaries. It was changed to `narnia` to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.
+`naniar` was previously named `ggmissing` and initially provided a ggplot geom and some visual summaries. It was changed to `naniar` to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.
 
-> ...But *why* `narnia`?
+> ...But *why* `naniar`?
 
-Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like [C.S. Lewis's Narnia](https://en.wikipedia.org/wiki/The_Chronicles_of_Narnia) - a different world, hidden away. You go inside, and sometimes it seems like you've spent no time in there but time has passed very quickly, or the opposite. Also, `NA`rnia = na in r, and if you so desire, narnia may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name.
+Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like [C.S. Lewis's naniar](https://en.wikipedia.org/wiki/The_Chronicles_of_naniar) - a different world, hidden away. You go inside, and sometimes it seems like you've spent no time in there but time has passed very quickly, or the opposite. Also, `NA`rnia = na in r, and if you so desire, naniar may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
@@ -54,7 +54,7 @@ Representing missing data structure is achieved using the shadow matrix, introdu
 Visualising missing data
 ========================
 
-Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace "NA" values with values 10% lower than the minimum value in that variable. This is provided with the `geom_missing_point()` ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
+Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace "NA" values with values 10% lower than the minimum value in that variable. This is provided with the `geom_miss_point()` ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
 
 ``` r
 
@@ -71,21 +71,21 @@ ggplot(data = airquality,
 
 ggplot2 does not handle these missing values, and we get a warning message about the missing values.
 
-We can instead use the `geom_missing_point()` to display the missing data
+We can instead use the `geom_miss_point()` to display the missing data
 
 ``` r
 
-library(narnia)
+library(naniar)
 
 ggplot(data = airquality,
        aes(x = Ozone,
            y = Solar.R)) +
-  geom_missing_point()
+  geom_miss_point()
 ```
 
 ![](README-figs/README-geom-missing-point-1.png)
 
-`geom_missing_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive.
+`geom_miss_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive.
 
 This plays nicely with other parts of ggplot, like adding transparency
 
@@ -94,7 +94,7 @@ This plays nicely with other parts of ggplot, like adding transparency
 ggplot(data = airquality,
        aes(x = Ozone,
            y = Solar.R)) +
-  geom_missing_point(alpha = 0.5)
+  geom_miss_point(alpha = 0.5)
 ```
 
 ![](README-figs/README-geom-missing-point-alpha-1.png)
@@ -111,7 +111,7 @@ p1 <-
 ggplot(data = airquality,
        aes(x = Ozone,
            y = Solar.R)) + 
-  geom_missing_point() + 
+  geom_miss_point() + 
   facet_wrap(~Month, ncol = 2) + 
   theme(legend.position = "bottom")
 
@@ -129,14 +129,29 @@ p1 + theme_bw()
 
 ![](README-figs/README-facet-add-theme-1.png)
 
-You can also look at the proportion of missings in each variable with gg\_missing\_var:
+You can also look at the proportion of missings in each variable with gg\_miss\_var:
 
 ``` r
 
-gg_missing_var(airquality)
+gg_miss_var(airquality)
 ```
 
 ![](README-figs/README-gg-missing-var-1.png)
+
+The plots created with the `gg_miss` family all have a basic theme, but you can customise them, just like usual ggplot objects. If you call any ggplot customisation functions with a `gg_miss` object, the default args will be overridden.
+
+``` r
+gg_miss_var(airquality) + theme_bw() 
+```
+
+![](README-figs/README-unnamed-chunk-3-1.png)
+
+``` r
+
+gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
+```
+
+![](README-figs/README-unnamed-chunk-3-2.png)
 
 You can also explore the whole dataset of missings using the `vis_miss` function, which is exported from the [`visdat`](github.com/njtierney/visdat) package.
 
@@ -197,7 +212,7 @@ gridExtra::grid.arrange(p1, p2, ncol = 2)
 Numerical summaries for missing data
 ====================================
 
-`narnia` provides numerical summaries of missing data. For variables, cases, and dataframes there are the function families `miss_var_*`, `miss_case_*`, and `miss_df_*`. To find the percent missng variables, cases, and dataframes:
+`naniar` provides numerical summaries of missing data. For variables, cases, and dataframes there are the function families `miss_var_*`, `miss_case_*`, and `miss_df_*`. To find the percent missng variables, cases, and dataframes:
 
 ``` r
 
@@ -209,7 +224,6 @@ miss_case_pct(airquality)
 #> [1] 27.45098
 # Proportion elements in dataset that contains missing values
 miss_df_pct(airquality)
-#> [1] 4.793028
 ```
 
 We can also look at the number and percent of missings in each case and variable with `miss_var_summary()`, and `miss_case_summary()`.
@@ -273,7 +287,7 @@ s_miss
 #> # A tibble: 1 x 7
 #>   miss_df_pct miss_var_pct miss_case_pct  miss_case_table   miss_var_table
 #>         <dbl>        <dbl>         <dbl>           <list>           <list>
-#> 1    4.793028     33.33333      27.45098 <tibble [3 x 3]> <tibble [3 x 3]>
+#> 1  0.04793028     33.33333      27.45098 <tibble [3 x 3]> <tibble [3 x 3]>
 #> # ... with 2 more variables: miss_var_summary <list>,
 #> #   miss_case_summary <list>
 
@@ -314,42 +328,40 @@ s_miss$summary_missing_case
 Other plotting functions
 ========================
 
-gg\_missing\_var
-----------------
+gg\_miss\_var
+-------------
 
 ``` r
 
-gg_missing_var(airquality)
-```
-
-![](README-figs/README-unnamed-chunk-3-1.png)
-
-gg\_missing\_case
------------------
-
-``` r
-
-gg_missing_case(airquality)
+gg_miss_var(airquality)
 ```
 
 ![](README-figs/README-unnamed-chunk-4-1.png)
 
-gg\_missing\_which
-------------------
+gg\_miss\_case
+--------------
+
+``` r
+
+gg_miss_case(airquality)
+```
+
+![](README-figs/README-unnamed-chunk-5-1.png)
+
+gg\_miss\_which
+---------------
 
 This shows whether a given variable contains a missing variable. In this case grey = missing. Think of it as if you are shading the cell in, if it contains data.
 
 ``` r
 
-gg_missing_which(airquality)
+gg_miss_which(airquality)
 ```
-
-![](README-figs/README-unnamed-chunk-5-1.png)
 
 Future Work
 ===========
 
-Other plans to extend the `geom_missing_` family to include:
+Other plans to extend the `geom_miss_` family to include:
 
 -   Categorical variables
 -   Bivariate plots: Scatterplots, Density overlays.

@@ -93,7 +93,7 @@ shadow_shift.character <- function(x, ...){
                  false = x)
 }
 #
-# library(narnia)
+# library(naniar)
 #
 # riskfactors %>%
 #   add_shadow_shift(vars = c("drink_average", "smoke_stop")) %>%

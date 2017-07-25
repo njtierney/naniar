@@ -4,10 +4,12 @@
 \alias{miss_var_summary}
 \title{Summarise the missingness in each variable}
 \usage{
-miss_var_summary(data)
+miss_var_summary(data, ...)
 }
 \arguments{
 \item{data}{a dataframe}
+
+\item{...}{extra arguments}
 }
 \value{
 a data_frame of the percent of missing data in each variable

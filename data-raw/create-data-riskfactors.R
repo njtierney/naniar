@@ -2,7 +2,7 @@
 
 library(tidyverse)
 library(janitor)
-library(narnia)
+library(naniar)
 
 riskfactors <- brfss %>%
   tibble::as_tibble() %>%

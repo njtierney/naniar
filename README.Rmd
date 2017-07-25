@@ -12,12 +12,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-# narnia
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/narnia?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/narnia)
-[![Travis-CI Build Status](https://travis-ci.org/njtierney/narnia.svg?branch=master)](https://travis-ci.org/njtierney/narnia)
-[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/narnia/master.svg)](https://codecov.io/github/njtierney/narnia?branch=master)
+# naniar
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar)
+[![Travis-CI Build Status](https://travis-ci.org/njtierney/naniar.svg?branch=master)](https://travis-ci.org/njtierney/naniar)
+[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://codecov.io/github/njtierney/naniar?branch=master)
 
-`narnia` aims to make it easy to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data.
+`naniar` aims to make it easy to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data.
 
 Currently it provides:
 
@@ -42,15 +42,15 @@ Currently it provides:
     + `miss_var_table()`
     + `miss_df_pct()`
 
-For details on how to use each of these functions, and their usage, you can read the vignette ["Getting Started with Narnia"](http://www.njtierney.com/narnia/articles/getting-started-w-narnia.html).
+For details on how to use each of these functions, and their usage, you can read the vignette ["Getting Started with naniar"](http://www.njtierney.com/naniar/articles/getting-started-w-naniar.html).
 
-**Why `narnia`?**
+**Why `naniar`?**
 
-`narnia` was previously named `ggmissing` and initially provided a ggplot geom and some visual summaries. It was changed to `narnia` to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data. 
+`naniar` was previously named `ggmissing` and initially provided a ggplot geom and some visual summaries. It was changed to `naniar` to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data. 
 
-> ...But _why_ `narnia`?
+> ...But _why_ `naniar`?
 
-Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like [C.S. Lewis's Narnia](https://en.wikipedia.org/wiki/The_Chronicles_of_Narnia) - a different world, hidden away. You go inside, and sometimes it seems like you've spent no time in there but time has passed very quickly, or the opposite. Also, `NA`rnia = na in r, and if you so desire, narnia may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name.
+Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like [C.S. Lewis's naniar](https://en.wikipedia.org/wiki/The_Chronicles_of_naniar) - a different world, hidden away. You go inside, and sometimes it seems like you've spent no time in there but time has passed very quickly, or the opposite. Also, `NA`rnia = na in r, and if you so desire, naniar may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
@@ -86,7 +86,7 @@ We can instead use the `geom_miss_point()` to display the missing data
 
 ```{r geom-missing-point}
 
-library(narnia)
+library(naniar)
 
 ggplot(data = airquality,
        aes(x = Ozone,
@@ -194,7 +194,7 @@ gridExtra::grid.arrange(p1, p2, ncol = 2)
 
 # Numerical summaries for missing data
 
-`narnia` provides numerical summaries of missing data. For variables, cases, and dataframes there are the function families `miss_var_*`, `miss_case_*`, and `miss_df_*`. To find the percent missng variables, cases, and dataframes:
+`naniar` provides numerical summaries of missing data. For variables, cases, and dataframes there are the function families `miss_var_*`, `miss_case_*`, and `miss_df_*`. To find the percent missng variables, cases, and dataframes:
 
 ```{r numerical-percent-missing}
 

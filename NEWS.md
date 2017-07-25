@@ -1,4 +1,4 @@
-# narnia 0.0.9.4000 (2017/07/24)
+# narnia 0.0.9.9400 (2017/07/24)
 
 ## new features
 
@@ -7,7 +7,7 @@ value from a variable to NA.
 
 ## breaking changes
 
-- changed `geom_missing_point()` to `geom_miss_point()`.
+- changed `geom_missing_point()` to `geom_miss_point()`, to keep consistent with the rest of the functions in `naniar`.
 
 # narnia 0.0.9.9201 (2017/07/12)
 

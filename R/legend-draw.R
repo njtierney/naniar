@@ -1,7 +1,7 @@
 #' Key drawing functions
 #'
 #' Each Geom has an associated function that draws the key when the geom needs
-#' to be displayed in a legend. These are the options built into narnia.
+#' to be displayed in a legend. These are the options built into naniar.
 #'
 #' @return A grid grob.
 #' @param data A single row data frame containing the scaled aesthetics to

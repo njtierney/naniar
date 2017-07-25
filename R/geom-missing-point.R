@@ -87,7 +87,7 @@
 
 }
 
-#' @rdname narnia-ggproto
+#' @rdname naniar-ggproto
 #' @format NULL
 #' @usage NULL
 #' @export

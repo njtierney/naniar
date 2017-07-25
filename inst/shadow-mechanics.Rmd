@@ -1,5 +1,5 @@
 ---
-title: "Mechanics of shadow_shift in narnia"
+title: "Mechanics of shadow_shift in naniar"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(message = F)
 
 ```
 
-This vignette describes the mechanics behind `shadow_shift`, and steps you through how the functions work. It is not intended to be a user guide on how to use narnia - for that please read the [README on GitHub](https://github.com/njtierney/narnia). Instead, it serves to document my initial process for creating the functions
+This vignette describes the mechanics behind `shadow_shift`, and steps you through how the functions work. It is not intended to be a user guide on how to use naniar - for that please read the [README on GitHub](https://github.com/njtierney/naniar). Instead, it serves to document my initial process for creating the functions
 
 We first create some data using the `wakefield` package
 
@@ -304,7 +304,7 @@ However, doing this for each variable, so that you can plot this information mig
 
 ```{r echo = TRUE}
 library(ggplot2)
-library(narnia)
+library(naniar)
 ggplot(data = airquality,
        aes(x = shadow_shift(Ozone),
            y = shadow_shift(Solar.R))) +
@@ -341,7 +341,7 @@ To make this simpler, you use the ggplot2 geom `geom_miss_point()`. This `geom` 
 # which is to say something like the bind_shadows methods, or something
 library(dplyr)
 library(ggplot2)
-library(narnia)
+library(naniar)
 
 ggplot(data = airquality,
        aes(x = Ozone)) + 

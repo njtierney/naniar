@@ -1,6 +1,6 @@
 # modify the tao data
 
-library(narnia)
+library(naniar)
 library(dplyr)
 
 oceanbuoys <- tao %>%

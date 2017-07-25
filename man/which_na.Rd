@@ -19,7 +19,7 @@ Internal function that creates a matrix containing the location of missing
 }
 \examples{
 
-narnia:::which_na(airquality)
+naniar:::which_na(airquality)
 
 }
 \seealso{

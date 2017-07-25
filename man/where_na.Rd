@@ -19,7 +19,7 @@ Internal function that is short for `which(is.na(x))`. Creates integer
 }
 \examples{
 
-narnia:::where_na(airquality)
+naniar:::where_na(airquality)
 
 }
 \seealso{

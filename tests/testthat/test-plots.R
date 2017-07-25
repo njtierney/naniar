@@ -1,4 +1,4 @@
-context("narnia-plots")
+context("naniar-plots")
 
 library(ggplot2)
 geom_miss_point_plot <-

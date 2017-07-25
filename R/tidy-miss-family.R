@@ -11,7 +11,8 @@
 #'
 #' @examples
 #'
-#' miss_df_pct(airquality)
+#' miss_df_pct(breizh)
+#' breizh %>% replace_to_na("empty", "not_available") %>% miss_df_pct
 #'
 miss_df_pct <- function(data){
 
@@ -21,8 +22,8 @@ miss_df_pct <- function(data){
     # test for dataframe
   } else if(inherits(data, "data.frame")){
     temp <- mean(is.na(data))
-    } else stop("Input must inherit from data.frame", call. = FALSE)
-
+  } else stop("Input must inherit from data.frame", call. = FALSE)
+  return(temp)
 }
 
 #' Percentage of variables containing missings
@@ -38,6 +39,7 @@ miss_df_pct <- function(data){
 #' @examples
 #'
 #' miss_var_pct(airquality)
+#' breizh %>% replace_to_na("empty", "not_available") %>% miss_df_pct
 #'
 miss_var_pct <- function(data){
 
@@ -81,7 +83,7 @@ miss_case_pct <- function(data){
     # which rows are complete?
     stats::complete.cases() %>%
     mean()
-   
+
     # Return 100 if temp is 1
     # Prevent error when all the rows contain a NA and then mean is 1
     # so (1 -1)*100 = 0, whereas function should return 100.
@@ -112,7 +114,7 @@ miss_case_pct <- function(data){
 #'
 #' @examples
 #'
-#' miss_prop_summary(airquality)
+#' miss_prop_summary(breizh)
 #'
 miss_prop_summary <- function(data){
 
@@ -209,6 +211,7 @@ miss_var_table <- function(data){
 #' Provide a data_frame containing the variable names, the number of missing values, in each variable, and the percent of missing values in each variable.
 #'
 #' @param data a dataframe
+#' @param order_output wether or not the output should be ordered by n_missing
 #'
 #' @return a data_frame of the percent of missing data in each variable
 #' @export
@@ -217,22 +220,96 @@ miss_var_table <- function(data){
 #'
 #' miss_var_summary(airquality)
 #'
-miss_var_summary <- function(data){
+miss_var_summary <- function(data, order_output = TRUE){
 
     if(is.null(data)){
       stop("Input must not be NULL", call. = FALSE)
       # test for dataframe
     } else if(inherits(data, "data.frame")){
+      obj <- purrr::map_df(data,
+                           # how many are missing in each variable?
+                           function(x) sum(is.na(x))) %>%
+        tidyr::gather(key = "variable",
+                      value = "n_missing") %>%
+        dplyr::mutate(percent = (n_missing / nrow(data) * 100))
+      if(order_output) {
+        obj <- dplyr::arrange(obj, -n_missing)
+      }
+      return(obj)
+      } else stop("Input must inherit from data.frame", call. = FALSE)
+  }
+
+#' Cumsum the missingness in each variable
+#'
+#' Provide a data_frame containing the cumsum of number & percentage of missingness for each variable
+#'
+#' @param data a dataframe
+#'
+#' @return a data_frame of the cumsum of missing data in each variable
+#' @export
+#'
+#' @examples
+#'
+#' miss_var_cumsum(airquality)
+#' miss_var_cumsum(breizh)
+#'
+miss_var_cumsum <- function(data){
+
+
+  if(is.null(data)){
+    stop("Input must not be NULL", call. = FALSE)
+    # test for dataframe
+  } else if(inherits(data, "data.frame")){
     purrr::map_df(data,
-                # how many are missing in each variable?
-                function(x) sum(is.na(x))) %>%
+                  # how many are missing in each variable?
+                  function(x) sum(is.na(x))) %>%
       tidyr::gather(key = "variable",
                     value = "n_missing") %>%
-      dplyr::mutate(percent = (n_missing / nrow(data) * 100)) %>%
-      dplyr::arrange(-n_missing)
+      dplyr::mutate(n_missing_cumsum = cumsum(n_missing))
 
-    } else stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  } else stop("Input must inherit from data.frame", call. = FALSE)
+}
+
+
+#' Summarise the missingness in each case
+#'
+#' Provide a data_frame containing each case (row), the number of missing values in each case,  and the percent of missing values in each case.
+#'
+#' @param data a dataframe
+#' @param order_output wether or not the output should be ordered by n_missing
+#'
+#' @return a data_frame of the percent of missing data in each case
+#' @export
+#'
+#' @examples
+#'
+#' miss_case_summary(airquality)
+#'
+miss_case_summary <- function(data, order_output = TRUE){
+
+  if(is.null(data)){
+    stop("Input must not be NULL", call. = FALSE)
+    # test for dataframe
+  } else if(inherits(data, "data.frame")){
+
+    obj <- purrrlyr::by_row(.d = data,
+                            ..f = function(x) (mean(is.na(x)) * 100),
+                            .collate = "row",
+                            .to = "percent") %>%
+      purrrlyr::by_row(.d = .,
+                       ..f = function(x) (sum(is.na(x))),
+                       .collate = "row",
+                       .to = "n_missing") %>%
+      dplyr::mutate(case = 1:nrow(data)) %>%
+      dplyr::select(case,
+                    n_missing,
+                    percent)
+    if(order_output) {
+      obj <- dplyr::arrange(obj, -n_missing)
+    }
+    return(obj)
+  } else stop("Input must inherit from data.frame", call. = FALSE)
+}
 
 #' Summarise the missingness in each case
 #'
@@ -245,33 +322,24 @@ miss_var_summary <- function(data){
 #'
 #' @examples
 #'
-#' miss_case_summary(airquality)
+#' miss_case_cumsum(airquality)
+#' miss_case_cumsum(breizh)
 #'
-miss_case_summary <- function(data){
+miss_case_cumsum <- function(data){
 
   if(is.null(data)){
     stop("Input must not be NULL", call. = FALSE)
     # test for dataframe
   } else if(inherits(data, "data.frame")){
-
-  purrrlyr::by_row(.d = data,
-                ..f = function(x) (mean(is.na(x)) * 100),
-                .collate = "row",
-                .to = "percent") %>%
-  purrrlyr::by_row(.d = .,
-                ..f = function(x) (sum(is.na(x))),
-                .collate = "row",
-                .to = "n_missing") %>%
-    dplyr::mutate(case = 1:nrow(data)) %>%
-    dplyr::select(case,
-                  n_missing,
-                  percent)
+    miss_case_summary(data, order_output = FALSE) %>%
+      dplyr::select(case, n_missing) %>%
+      dplyr::mutate(n_missing_cumsum = cumsum(n_missing))
   } else stop("Input must inherit from data.frame", call. = FALSE)
 }
 
 #' Collate summary measures from narnia into one tibble
 #'
-#' \code{summarise_missingness} performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
+#' \code{miss_summary} performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
 #'
 #' @param data a dataframe
 #'
@@ -280,9 +348,9 @@ miss_case_summary <- function(data){
 #'
 #' @examples
 #'
-#' s_miss <- miss_summary(airquality)
-#' s_miss$percent_missing_df
-#' s_miss$table_missing_case
+#' s_miss <- miss_summary(breizh)
+#' s_miss$miss_df_pct
+#' s_miss$miss_case_table
 #' # etc, etc, etc.
 #'
 miss_summary <- function(data){

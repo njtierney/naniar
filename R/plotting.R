@@ -21,7 +21,7 @@ visdat::vis_miss
 #' gg_miss_case(airquality)
 #' library(ggplot2)
 #' gg_miss_case(airquality) + labs(x = "Number of Cases")
-#' gg_miss_case(airquality) + theme_linedraw()
+#' gg_miss_case(breizh) + theme_linedraw()
 #'
 gg_miss_case <- function(x){
 
@@ -52,7 +52,7 @@ gg_miss_case <- function(x){
 #'
 #' gg_miss_var(airquality)
 #' library(ggplot2)
-#' gg_miss_var(airquality) + theme_bw()
+#' gg_miss_var(breizh) + theme_bw()
 #' gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 #'
 gg_miss_var <- function(x){
@@ -90,7 +90,7 @@ gg_miss_var <- function(x){
 #'
 #' gg_miss_which(airquality)
 #' library(ggplot2)
-#' gg_miss_which(airquality) + theme(panel.background = element_rect(fill = "grey"))
+#' gg_miss_which(breizh) + theme(panel.background = element_rect(fill = "grey"))
 #'
 
 gg_miss_which <- function(x){
@@ -116,6 +116,7 @@ gg_miss_which <- function(x){
                      labels=c("")) +
     labs(y = " ",
          x = " ")
+  return(ggobject)
 }
 
 #' Plot the number of missings for each variable, broken down by a factor
@@ -135,23 +136,82 @@ gg_miss_which <- function(x){
 #'
 #' gg_miss_fct(x = riskfactors, fct = marital)
 #' library(ggplot2)
-#' gg_miss_fct(x = riskfactors, fct = marital) + theme_bw()
+#' gg_miss_fct(x = breizh, fct = MillesimeMandatement) + theme_bw()
 #' gg_miss_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
 #'
 
 gg_miss_fct <- function(x, fct){
 
-  enquo_fct <- rlang::enquo(fct)
+  fct <- rlang::enquo(fct)
 
   ggobject <- x %>%
-    dplyr::group_by(!!enquo_fct) %>%
+    dplyr::group_by(!!fct) %>%
     dplyr::do(miss_var_summary(.)) %>%
-    ggplot(aes_string(quo_name(enquo_fct),
+    ggplot(aes_string(quo_name(fct),
                "variable",
                fill = "percent")) +
     geom_tile() +
     viridis::scale_fill_viridis()
 
+  return(ggobject)
+}
+
+#' Lineplot of the cumulative sum of missing value for each variable
+#'
+#' A lineplot with the cumulative sum of missing values, reading columns from the left to
+#' the right of your dataframe.
+#' The plot is a ggplot object with a basic customisation.
+#' You can customise it the way you wish, just like classic ggplot.
+#'
+#' @param x a dataframe
+#'
+#' @return a ggplot object depicting the number of missings
+#' @export
+#'
+#' @examples
+#'
+#' breizh %>% replace_to_na("empty") %>% gg_miss_var_cumsum()
+
+gg_miss_var_cumsum <- function(x){
+
+  ggobject <- x %>%
+    miss_var_cumsum()%>%
+    ggplot(aes(stats::reorder(variable, n_missing_cumsum), n_missing_cumsum, group = 1)) +
+    geom_line(size = 2) +
+    labs(x = "Var", y = "Cumsum of missing values") +
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  return(ggobject)
+}
+
+#' Lineplot of the cumulative sum of missing for cases
+#'
+#' A lineplot with the cumulative sum of missing values, reading the rows from the top to bottom
+#' The plot is a ggplot object with a basic customisation.
+#' You can customise it the way you wish, just like classic ggplot.
+#'
+#' @param x a dataframe
+#' @param breaks the breaks for the x axis default is 20
+#'
+#' @return a ggplot object depicting the number of missings
+#' @export
+#'
+#' @examples
+#'
+#' gg_miss_case_cumsum(airquality)
+#' library(ggplot2)
+#' gg_miss_case_cumsum(x = breizh, breaks = 50) + theme_bw()
+
+gg_miss_case_cumsum <- function(x, breaks = 20){
+
+  ggobject <- x %>%
+    miss_case_cumsum()%>%
+    ggplot(aes(stats::reorder(case, n_missing_cumsum), n_missing_cumsum, group = 1)) +
+    geom_line(size = 2) +
+    labs(x = "Case", y = "Cumsum of missing values") +
+    scale_x_discrete(breaks = seq(0, nrow(x), by = breaks))
+  theme_bw() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
   return(ggobject)
 }
 

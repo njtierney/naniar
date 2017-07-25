@@ -1,3 +1,9 @@
+# naniar 0.0.9.95000 (2017/07/25)
+
+## breaking changes
+
+- I have flip flopped and changed back to `naniar`,
+
 # narnia 0.0.9.9400 (2017/07/24)
 
 ## new features

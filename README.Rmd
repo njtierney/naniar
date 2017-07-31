@@ -283,6 +283,26 @@ gg_miss_which(airquality)
 
 ```
 
+## gg_miss_case_cumsum
+
+This shows a lineplot of the cumulative sum of missing values for the cases, kindly contributed by Colin Fay.
+
+```{r gg-miss-case-cumsum}
+
+gg_miss_case_cumsum(airquality)
+
+```
+
+## gg_miss_var_cumsum
+
+This shows a lineplot of the cumulative sum of missing values for variables, kindly contributed by Colin Fay.
+
+```{r gg-miss-var-cumsum}
+
+gg_miss_var_cumsum(airquality)
+
+```
+
 
 # Future Work
 

@@ -248,29 +248,38 @@ miss_var_table <- function(data){
 #' @examples
 #'
 #' miss_var_summary(airquality)
+#' # works with group_by from dplyr
+#' library(dplyr)
+#' airquality %>%
+#' group_by(Month) %>%
+#' miss_var_summary()
 #'
 #' @export
-miss_var_summary <- function(data, ...){
-
-  # test for null
+miss_var_summary <- function(data, ...) {
   if (is.null(data)) {
     stop("Input must not be NULL", call. = FALSE)
+    # test for dataframe
   }
 
-  # test for dataframe
   if (!inherits(data, "data.frame")) {
     stop("Input must inherit from data.frame", call. = FALSE)
   }
-      purrr::map_df(data,
-                           # how many are missing in each variable?
-                           function(x) sum(is.na(x))) %>%
-        tidyr::gather(key = "variable",
-                      value = "n_missing") %>%
-        dplyr::mutate(percent = (n_missing / nrow(data) * 100)) %>%
-        dplyr::arrange(-n_missing)
-  }
 
-#' Cumsum the missingness in each variable
+  UseMethod("miss_var_summary")
+}
+
+miss_var_summary.default <- function(data, ...) {
+  purrr::map_df(data, n_miss) %>%
+    tidyr::gather(key = "variable", value = "n_missing") %>%
+    dplyr::mutate(percent = (n_missing / nrow(data) * 100)) %>%
+    dplyr::arrange(-n_missing)
+}
+
+miss_var_summary.grouped_df <- function(data, ...) {
+  tidyr::nest(data) %>%
+    dplyr::mutate(data = purrr::map(data, miss_var_summary)) %>%
+    tidyr::unnest(data)
+}#' Cumsum the missingness in each variable
 #'
 #' Provide a data_frame containing the cumsum of number & percentage of missingness for each variable
 #'

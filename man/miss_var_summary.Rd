@@ -20,5 +20,10 @@ Provide a data_frame containing the variable names, the number of missing values
 \examples{
 
 miss_var_summary(airquality)
+# works with group_by from dplyr
+library(dplyr)
+airquality \%>\%
+group_by(Month) \%>\%
+miss_var_summary()
 
 }

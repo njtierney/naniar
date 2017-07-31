@@ -20,5 +20,5 @@ You can customise it the way you wish, just like classic ggplot.
 }
 \examples{
 
-gg_miss_var_cumsum("airquality")
+gg_miss_var_cumsum(airquality)
 }

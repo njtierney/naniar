@@ -13,7 +13,8 @@ miss_case_summary(data)
 a data_frame of the percent of missing data in each case
 }
 \description{
-Provide a data_frame containing each case (row), the number of missing values in each case,  and the percent of missing values in each case.
+Provide a data_frame containing each case (row), the number of missing
+values in each case, and the percent of missing values in each case.
 }
 \examples{
 

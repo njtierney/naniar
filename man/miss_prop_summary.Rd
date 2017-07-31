@@ -2,7 +2,7 @@
 % Please edit documentation in R/tidy-miss-family.R
 \name{miss_prop_summary}
 \alias{miss_prop_summary}
-\title{Proporitons of missings in data, variables, and cases.}
+\title{Proportions of missings in data, variables, and cases.}
 \usage{
 miss_prop_summary(data)
 }
@@ -13,7 +13,10 @@ miss_prop_summary(data)
 a dataframe
 }
 \description{
-Return missing data info about the dataframe, the variables, and the cases. Specifically, returning how many elements in a dataframe contain a missing value, how many elements in a variable contain a missing value, and how many elements in a case contain a missing.
+Return missing data info about the dataframe, the variables, and the cases.
+  Specifically, returning how many elements in a dataframe contain a missing
+  value, how many elements in a variable contain a missing value, and how many
+  elements in a case contain a missing.
 }
 \examples{
 

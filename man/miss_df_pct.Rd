@@ -2,7 +2,7 @@
 % Please edit documentation in R/tidy-miss-family.R
 \name{miss_df_pct}
 \alias{miss_df_pct}
-\title{Percentage of missing data in a dataframe}
+\title{Proportion of missing data in a dataframe}
 \usage{
 miss_df_pct(data)
 }
@@ -10,13 +10,15 @@ miss_df_pct(data)
 \item{data}{a dataframe}
 }
 \value{
-numeric the percent of missing data in a dataframe
+numeric the proportion of missing data in a dataframe
 }
 \description{
 Calculate the percent of missing data in a dataframe.
 }
 \examples{
 
+miss_df_pct(oceanbuoys)
+miss_df_pct(riskfactors)
 miss_df_pct(airquality)
 
 }

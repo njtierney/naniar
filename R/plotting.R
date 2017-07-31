@@ -166,12 +166,12 @@ gg_miss_fct <- function(x, fct){
 #'
 #' @examples
 #'
-#' gg_miss_var_cumsum("airquality")
+#' gg_miss_var_cumsum(airquality)
 
 gg_miss_var_cumsum <- function(x){
 
   ggobject <- x %>%
-    miss_var_cumsum()%>%
+    miss_var_cumsum() %>%
     ggplot(aes(stats::reorder(variable, n_missing_cumsum), n_missing_cumsum, group = 1)) +
     geom_line(size = 2) +
     labs(x = "Var", y = "Cumsum of missing values") +

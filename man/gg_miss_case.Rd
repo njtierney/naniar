@@ -22,6 +22,5 @@ You can customise it the way you wish, just like classic ggplot.
 gg_miss_case(airquality)
 library(ggplot2)
 gg_miss_case(airquality) + labs(x = "Number of Cases")
-gg_miss_case(airquality) + theme_linedraw()
 
 }

@@ -21,6 +21,5 @@ You can customise it the way you wish, just like classic ggplot.
 
 gg_miss_which(airquality)
 library(ggplot2)
-gg_miss_which(airquality) + theme(panel.background = element_rect(fill = "grey"))
 
 }

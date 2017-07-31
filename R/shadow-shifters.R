@@ -45,9 +45,28 @@ shadow_shift.default <- function(x, ...){
 #' @export
 shadow_shift.numeric <- function(x, seed_shift = 2017-7-1-1850, ...){
 
+  # add an exception for cases with infinite values
 
-  # add an exception for when length x == 1
-  if(n_complete(x) == 1 | stats::var(x, na.rm = TRUE) == 0){
+  if (any(is.infinite(x))) {
+
+
+
+    xmin <- min(x, na.rm = TRUE)
+
+    x_shift <- xmin - xmin*0.1
+
+    # set the seed here
+    set.seed(seed_shift)
+    x_jitter <- (stats::runif(length(x))-0.50)*x_shift*0.10
+
+    ifelse(is.na(x),
+           yes = x_shift + x_jitter,
+           no = x)
+
+  }
+
+  # add an exception for when length x == 1 and variance is zero
+  if (n_complete(x) == 1 | stats::var(x, na.rm = TRUE) == 0) {
 
     xmin <- min(x, na.rm = TRUE)
 

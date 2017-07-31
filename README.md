@@ -224,6 +224,7 @@ miss_case_pct(airquality)
 #> [1] 27.45098
 # Proportion elements in dataset that contains missing values
 miss_df_pct(airquality)
+#> [1] 0.04793028
 ```
 
 We can also look at the number and percent of missings in each case and variable with `miss_var_summary()`, and `miss_case_summary()`.
@@ -244,16 +245,16 @@ miss_case_summary(airquality)
 #> # A tibble: 153 x 3
 #>     case n_missing  percent
 #>    <int>     <int>    <dbl>
-#>  1     1         0  0.00000
-#>  2     2         0  0.00000
-#>  3     3         0  0.00000
-#>  4     4         0  0.00000
-#>  5     5         2 33.33333
-#>  6     6         1 16.66667
-#>  7     7         0  0.00000
-#>  8     8         0  0.00000
-#>  9     9         0  0.00000
-#> 10    10         1 16.66667
+#>  1     5         2 33.33333
+#>  2    27         2 33.33333
+#>  3     6         1 16.66667
+#>  4    10         1 16.66667
+#>  5    11         1 16.66667
+#>  6    25         1 16.66667
+#>  7    26         1 16.66667
+#>  8    32         1 16.66667
+#>  9    33         1 16.66667
+#> 10    34         1 16.66667
 #> # ... with 143 more rows
 ```
 
@@ -357,6 +358,32 @@ This shows whether a given variable contains a missing variable. In this case gr
 
 gg_miss_which(airquality)
 ```
+
+![](README-figs/README-unnamed-chunk-6-1.png)
+
+gg\_miss\_case\_cumsum
+----------------------
+
+This shows a lineplot of the cumulative sum of missing values for the cases, kindly contributed by Colin Fay.
+
+``` r
+
+gg_miss_case_cumsum(airquality)
+```
+
+![](README-figs/README-gg-miss-case-cumsum-1.png)
+
+gg\_miss\_var\_cumsum
+---------------------
+
+This shows a lineplot of the cumulative sum of missing values for variables, kindly contributed by Colin Fay.
+
+``` r
+
+gg_miss_var_cumsum(airquality)
+```
+
+![](README-figs/README-gg-miss-var-cumsum-1.png)
 
 Future Work
 ===========

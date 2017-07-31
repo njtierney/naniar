@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotting.R
 \name{gg_miss_span}
 \alias{gg_miss_span}
-\title{Plot the proportion of missings in a given repeating span}
+\title{Plot the number of missings in a given repeating span}
 \usage{
 gg_miss_span(data, var, span_every)
 }

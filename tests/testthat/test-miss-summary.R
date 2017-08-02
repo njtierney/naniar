@@ -1,4 +1,4 @@
-context("summarise missingness")
+context("miss_summary")
 
 test_that("miss_summary returns a data.frame",{
   expect_s3_class(miss_summary(airquality),

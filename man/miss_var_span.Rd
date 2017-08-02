@@ -31,4 +31,11 @@ miss_var_span(data = pedestrian,
               var = hourly_counts,
               span_every = 168)
 
+# group_by from dplyr currently requires a quoted variable
+library(dplyr)
+pedestrian \%>\%
+  group_by(month) \%>\%
+  miss_var_span(var = "hourly_counts",
+  span_every = 168)
+
 }

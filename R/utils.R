@@ -2,6 +2,78 @@
 #' @export
 magrittr::`%>%`
 
+#' Group By Helper
+#'
+#' This function provides a little wrapper around the new tidyverse pattern to
+#'     allow grouping to occur in a dataset.
+#'
+#' @param data data.frame, which will be grouped
+#' @param .fun a function to apply
+#'
+#' @return a dataframe with the function applied to each group
+#'
+#' @examples
+#'
+#' \dontrun{
+#' miss_case_table.grouped_df <- function(data){
+#' group_by_fun(data,.fun = miss_case_table)
+#' }
+#' airquality %>%
+#' group_by(Month) %>%
+#' miss_case_table()
+#' }
+#'
+group_by_fun <- function(data,.fun){
+  tidyr::nest(data) %>%
+    dplyr::mutate(data = purrr::map(data, .fun)) %>%
+    tidyr::unnest()
+}
+
+
+#' Test if the input is NULL
+#'
+#' @param x object
+#'
+#' @return an error if input (x) is NULL
+#'
+#' @examples
+#' \dontrun{
+#' # success
+#' test_if_null(airquality)
+#' #fail
+#' my_test <- NULL
+#' test_if_null(my_test)
+#' }
+test_if_null <- function(x){
+
+  # test for null
+  if (is.null(x)) {
+    stop("Input must not be NULL", call. = FALSE)
+    }
+}
+
+#' Test if input is a data.frame
+#'
+#' @param x object
+#'
+#' @return an error if input (x) is a data.frame
+#'
+#' @examples
+#' \dontrun{
+#' # success
+#' test_if_dataframe(airquality)
+#' #fail
+#' my_test <- matrix(10)
+#' test_if_dataframe(my_test)
+#' }
+#'
+test_if_dataframe <- function(x){
+  # test for dataframe
+  if (!inherits(x, "data.frame")) {
+    stop("Input must inherit from data.frame", call. = FALSE)
+    }
+}
+
 #' Which rows and cols contain missings?
 #'
 #' Internal function that is short for `which(is.na(x))`. Creates integer

@@ -52,6 +52,28 @@ test_if_null <- function(x){
     }
 }
 
+#' Test if the input is Missing
+#'
+#' @param x object
+#'
+#' @return an error if input (x) is not specified
+#'
+#' @examples
+#' \dontrun{
+#' # success
+#' my_test <- x
+#' test_if_null(my_test)
+#' #fail
+#' test_if_missing()
+#' }
+test_if_missing <- function(x){
+
+  # test for null
+  if (missing(x)) {
+    stop("argument must be specified", call. = FALSE)
+    }
+}
+
 #' Test if input is a data.frame
 #'
 #' @param x object

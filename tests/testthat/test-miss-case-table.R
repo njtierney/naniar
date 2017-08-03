@@ -16,26 +16,29 @@ test_that("miss_case_table produces a data_frame", {
 
 aq_group <- dplyr::group_by(airquality, Month)
 
-# miss_var_summary(airquality)
-# miss_var_summary(aq_group)
 
-test_that("grouped_df returns a tibble miss_var_summary", {
-  expect_is(miss_var_summary(aq_group), "tbl_df")
+test_that("grouped_df returns a tibble miss_case_table", {
+  expect_is(miss_case_table(aq_group), "tbl_df")
 })
 
-test_that("grouped_df returns 1 more column than regular miss_var_summary", {
-  expect_equal(ncol(miss_var_summary(aq_group)),
-               ncol(miss_var_summary(airquality))+1)
+test_that("grouped_df returns 1 more column than regular miss_case_table", {
+  expect_equal(ncol(miss_case_table(aq_group)),
+               ncol(miss_case_table(airquality))+1)
 })
 
 test_that("grouped_df returns a column named 'Month'", {
-  expect_identical(names(miss_var_summary(aq_group)),
-                   c("Month", "case", "n_missing","percent"))
+  expect_identical(names(miss_case_table(aq_group)),
+                   c("Month", "n_missing_in_case", "n_cases","percent"))
 })
 
 test_that("grouped_df returns a dataframe with more rows than regular", {
-  expect_gt(nrow(miss_var_summary(airquality))
-    nrow(miss_var_summary(aq_group)),
+  expect_gt(nrow(miss_case_table(aq_group)),
+            nrow(miss_case_table(airquality))
             )
+})
+
+test_that("grouped_df returns a column named 'Month' with the right levels", {
+  expect_identical(unique(miss_case_table(aq_group)$Month),
+                   5:9)
 })
 

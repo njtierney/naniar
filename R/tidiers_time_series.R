@@ -18,22 +18,26 @@
 #'
 #' @examples
 #'
-#' miss_var_span(data = pedestrian,
-#'               var = hourly_counts,
-#'               span_every = 168)
+#'miss_var_span(data = pedestrian,
+#'              var = hourly_counts,
+#'              span_every = 168)
 #'
 #' # group_by from dplyr currently requires a quoted variable
-#' library(dplyr)
-#' pedestrian %>%
-#'   group_by(month) %>%
-#'   miss_var_span(var = "hourly_counts",
-#'   span_every = 168)
+#'  library(dplyr)
+#'  pedestrian %>%
+#'    group_by(month) %>%
+#'      miss_var_span(var = hourly_counts,
+#'                    span_every = 168)
 #'
 miss_var_span <- function(data, var, span_every){
 
   test_if_null(data)
 
   test_if_dataframe(data)
+
+  test_if_missing(var)
+
+  test_if_missing(span_every)
 
   UseMethod("miss_var_span")
 
@@ -46,13 +50,13 @@ miss_var_span.default <- function(data,
 
   var <- rlang::enquo(var)
 
-  dat_ts_summary <- dplyr::select(data,!!!var)
+  dat_ts_summary <- dplyr::select(data,!!var)
 
   dat_ts_summary %>%
     # need to make add_span_counter respect grouping structure, somehow
     add_span_counter(span_size = span_every) %>%
     dplyr::group_by(span_counter) %>%
-    dplyr::tally(is.na(!!!var)) %>%
+    dplyr::tally(is.na(!!var)) %>%
     # dplyr::tally(is.na(!!var_quo)) %>%
     dplyr::rename(n_miss = n) %>%
     dplyr::mutate(n_complete = span_every - n_miss,
@@ -67,10 +71,10 @@ miss_var_span.grouped_df <- function(data, var, span_every){
   var <- rlang::enquo(var)
 
   tidyr::nest(data) %>%
-  dplyr::mutate(data = purrr::pmap(.l = list(data = data,
-                                             var = !!!var,
-                                             span_every = span_every),
-                                   .f = miss_var_span)) %>%
+    dplyr::mutate(data = purrr::map(.x = data,
+                                    .f = miss_var_span,
+                                    var = !!var,
+                                    span_every = span_every)) %>%
     tidyr::unnest()
 
 }
@@ -121,13 +125,16 @@ miss_var_span.grouped_df <- function(data, var, span_every){
 #'       geom_boxplot()
 #'
 #'# using group_by
-#'       pedestrian %>% group_by(month) %>% do(miss_var_run(data = ., hourly_counts))
-#'       pedestrian %>% group_by(month) %>% miss_var_run("hourly_counts")
+#'  pedestrian %>%
+#'    group_by(month) %>%
+#'    miss_var_run(hourly_counts)
 #'
 #'
 miss_var_run <- function(data, var){
 
   test_if_null(data)
+
+  test_if_missing(var)
 
   test_if_dataframe(data)
 
@@ -159,18 +166,27 @@ miss_var_run.grouped_df <- function(data,var){
   var <- rlang::enquo(var)
 
   tidyr::nest(data) %>%
-    dplyr::mutate(data = purrr::map2(.x = data,
-                                     .y = !!var,
-                                     .f = miss_var_run)) %>%
+    dplyr::mutate(data = purrr::map(data,
+                                    var = !!var,
+                                    .f = miss_var_run)) %>%
     tidyr::unnest()
 
 }
 
+#
+# miss_var_run(airquality)
+# # # # #
+# airquality %>%
+  # dplyr::group_by(Month) %>%
+  # miss_var_run(Ozone)
 
-# miss_var_run(airquality, Ozone)
-# # airquality %>%
-# #   group_by(Month) %>%
-#   miss_var_run.default
+
+# airquality %>%
+#   dplyr::group_by(Month) %>%
+#   tidyr::nest() %>%
+#   dplyr::mutate(data = purrr::map(.x = data, var = Ozone,
+#                                   .f = miss_var_run)) %>%
+#   tidyr::unnest()
 
 # Need to make this work for:
 # multiple time series (mts), a facet for each variable.

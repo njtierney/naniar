@@ -1,4 +1,4 @@
-context("summarise missingness")
+context("miss_summary")
 
 test_that("miss_summary returns a data.frame",{
   expect_s3_class(miss_summary(airquality),
@@ -31,3 +31,6 @@ test_that("The columns are named correctly",{
                  "miss_var_summary",
                  "miss_case_summary"))
 })
+
+# need to add more of the missingness summaries here, along with tests for this
+# function

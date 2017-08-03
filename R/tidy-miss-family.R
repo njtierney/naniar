@@ -13,19 +13,12 @@
 #'
 #' miss_df_pct(oceanbuoys)
 #' miss_df_pct(riskfactors)
-#' miss_df_pct(airquality)
 #'
 miss_df_pct <- function(data){
 
-  # test for null
-  if (is.null(data)) {
-    stop("Input must not be NULL", call. = FALSE)
-  }
+  test_if_null(data)
 
-  # test for dataframe
-  if (!inherits(data, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  test_if_dataframe(data)
 
   mean(is.na(data))
 
@@ -43,19 +36,14 @@ miss_df_pct <- function(data){
 #'
 #' @examples
 #'
-#' miss_var_pct(airquality)
+#' miss_var_pct(riskfactors)
+#' miss_var_pct(oceanbuoys)
 #'
 miss_var_pct <- function(data){
 
-  # test for null
-  if (is.null(data)) {
-    stop("Input must not be NULL", call. = FALSE)
-  }
+  test_if_null(data)
 
-  # test for dataframe
-  if (!inherits(data, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  test_if_dataframe(data)
 
   # find the proportion of variables that contain (any) missing values
   temp <- mean(purrr::map_lgl(data, anyNA))
@@ -83,15 +71,9 @@ miss_var_pct <- function(data){
 #'
 miss_case_pct <- function(data){
 
-  # test for null
-  if (is.null(data)) {
-    stop("Input must not be NULL", call. = FALSE)
-  }
+  test_if_null(data)
 
-  # test for dataframe
-  if (!inherits(data, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  test_if_dataframe(data)
 
   temp <- data %>%
     # which rows are complete?
@@ -134,21 +116,30 @@ miss_case_pct <- function(data){
 #'
 miss_prop_summary <- function(data){
 
+  test_if_null(data)
 
-  # test for null
-  if (is.null(data)) {
-    stop("Input must not be NULL", call. = FALSE)
-  }
+  test_if_dataframe(data)
 
-  # test for dataframe
-  if (!inherits(data, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  UseMethod("miss_prop_summary")
+
+}
+
+
+#' @export
+miss_prop_summary.default <- function(data){
+
   tibble::tibble(df = miss_df_pct(data),
                  var = miss_var_pct(data),
                  case = miss_case_pct(data))
+
 }
 
+#' @export
+miss_prop_summary.grouped_df <- function(data){
+
+  group_by_fun(data, .fun = miss_prop_summary)
+
+}
 
 #' Tabulate missings in cases.
 #'
@@ -166,19 +157,20 @@ miss_prop_summary <- function(data){
 #'
 miss_case_table <- function(data){
 
-  # test for null
-  if (is.null(data)) {
-    stop("Input must not be NULL", call. = FALSE)
-  }
+  test_if_null(data)
 
-  # test for dataframe
-  if (!inherits(data, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  test_if_dataframe(data)
 
-  purrrlyr::by_row(data,
+  UseMethod("miss_case_table")
+
+}
+
+#' @export
+miss_case_table.default <- function(data){
+
+  purrrlyr::by_row(.d = data,
                 # how many are missing in each row?
-                function(x) sum(is.na(x)),
+                ..f = ~n_miss(.),
                 .collate = "row",
                 .to = "n_missing_in_case") %>%
     dplyr::group_by(n_missing_in_case) %>%
@@ -186,12 +178,20 @@ miss_case_table <- function(data){
     dplyr::mutate(percent = (n / nrow(data) * 100)) %>%
     dplyr::rename(n_cases = n)
 
+}
+
+
+#' @export
+miss_case_table.grouped_df <- function(data){
+
+  group_by_fun(data, .fun = miss_case_table)
+
+}
+
 # previous
 # No_of_Case_missing <- table(apply(dat,
 #                                   1,
 #                                   function(avec){sum(is.na(avec))}))
-
-}
 
 #' Tabulate the missings in the variables
 #'
@@ -209,15 +209,17 @@ miss_case_table <- function(data){
 #'
 miss_var_table <- function(data){
 
-  # test for null
-  if (is.null(data)) {
-    stop("Input must not be NULL", call. = FALSE)
-  }
+  test_if_null(data)
 
-  # test for dataframe
-  if (!inherits(data, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  test_if_dataframe(data)
+
+  UseMethod("miss_var_table")
+
+}
+
+#' @export
+
+miss_var_table.default <- function(data){
 
   purrr::map_df(data, ~sum(is.na(.))) %>%
   tidyr::gather(key = "variable",
@@ -226,14 +228,22 @@ miss_var_table <- function(data){
     dplyr::tally() %>%
     dplyr::rename(n_vars = n) %>%
     dplyr::mutate(percent = (n_vars / ncol(data) * 100))
+
+}
+
+#' @export
+
+miss_var_table.grouped_df <- function(data){
+
+  group_by_fun(data, .fun = miss_var_table)
+
+}
 # previous
 # No_of_Case_missing <- table(apply(dat,
 #                                   1,
 #                                   function(avec){sum(is.na(avec))}))
 # tidyverse
 # In each row, how many are missing?
-
-}
 
 #' Summarise the missingness in each variable
 #'
@@ -248,28 +258,40 @@ miss_var_table <- function(data){
 #' @examples
 #'
 #' miss_var_summary(airquality)
+#' # works with group_by from dplyr
+#' library(dplyr)
+#' airquality %>%
+#' group_by(Month) %>%
+#' miss_var_summary()
 #'
 #' @export
-miss_var_summary <- function(data, ...){
-
-  # test for null
+miss_var_summary <- function(data, ...) {
   if (is.null(data)) {
     stop("Input must not be NULL", call. = FALSE)
+    # test for dataframe
   }
 
-  # test for dataframe
   if (!inherits(data, "data.frame")) {
     stop("Input must inherit from data.frame", call. = FALSE)
   }
-      purrr::map_df(data,
-                           # how many are missing in each variable?
-                           function(x) sum(is.na(x))) %>%
-        tidyr::gather(key = "variable",
-                      value = "n_missing") %>%
-        dplyr::mutate(percent = (n_missing / nrow(data) * 100)) %>%
-        dplyr::arrange(-n_missing)
-  }
 
+  UseMethod("miss_var_summary")
+}
+
+#' @export
+miss_var_summary.default <- function(data, ...) {
+  purrr::map_df(data, n_miss) %>%
+    tidyr::gather(key = "variable", value = "n_missing") %>%
+    dplyr::mutate(percent = (n_missing / nrow(data) * 100)) %>%
+    dplyr::arrange(-n_missing)
+}
+
+#' @export
+miss_var_summary.grouped_df <- function(data, ...) {
+
+  group_by_fun(data, .fun = miss_var_summary)
+
+}
 #' Cumsum the missingness in each variable
 #'
 #' Provide a data_frame containing the cumsum of number & percentage of missingness for each variable
@@ -285,15 +307,18 @@ miss_var_summary <- function(data, ...){
 #'
 miss_var_cumsum <- function(data){
 
-  # test for null
-  if (is.null(data)) {
-    stop("Input must not be NULL", call. = FALSE)
-  }
+  test_if_null(data)
 
-  # test for dataframe
-  if (!inherits(data, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  test_if_dataframe(data)
+
+  UseMethod("miss_var_cumsum")
+
+}
+
+#' @export
+
+miss_var_cumsum.default <- function(data){
+
     purrr::map_df(data,
                   # how many are missing in each variable?
                   function(x) sum(is.na(x))) %>%
@@ -303,6 +328,13 @@ miss_var_cumsum <- function(data){
 
 }
 
+#' @export
+
+miss_var_cumsum.grouped_df <- function(data){
+
+  group_by_fun(data, .fun = miss_var_cumsum)
+
+}
 
 #' Summarise the missingness in each case
 #'
@@ -320,15 +352,16 @@ miss_var_cumsum <- function(data){
 #'
 miss_case_summary <- function(data){
 
-  # test for null
-  if (is.null(data)) {
-    stop("Input must not be NULL", call. = FALSE)
-  }
+  test_if_null(data)
 
-  # test for dataframe
-  if (!inherits(data, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  test_if_dataframe(data)
+
+  UseMethod("miss_case_summary")
+}
+
+#' @export
+
+miss_case_summary.default <- function(data){
 
     purrrlyr::by_row(.d = data,
                             ..f = function(x) (mean(is.na(x)) * 100),
@@ -343,6 +376,14 @@ miss_case_summary <- function(data){
                     n_missing,
                     percent) %>%
       dplyr::arrange(-n_missing)
+
+}
+
+#' @export
+
+miss_case_summary.grouped_df <- function(data){
+
+  group_by_fun(data, .fun = miss_case_summary)
 
 }
 
@@ -361,20 +402,28 @@ miss_case_summary <- function(data){
 #'
 miss_case_cumsum <- function(data){
 
-  # test for null
-  if (is.null(data)) {
-    stop("Input must not be NULL", call. = FALSE)
-  }
+  test_if_null(data)
 
-  # test for dataframe
-  if (!inherits(data, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  test_if_dataframe(data)
+
+  UseMethod("miss_case_cumsum")
+}
+
+#' @export
+miss_case_cumsum.default <- function(data){
+
     miss_case_summary(data) %>%
       dplyr::arrange(case) %>%
       dplyr::select(case,
                     n_missing) %>%
       dplyr::mutate(n_missing_cumsum = cumsum(n_missing))
+}
+
+#' @export
+miss_case_cumsum.grouped_df <- function(data){
+
+  group_by_fun(data, .fun = miss_case_cumsum)
+
 }
 
 #' Collate summary measures from naniar into one tibble
@@ -395,15 +444,9 @@ miss_case_cumsum <- function(data){
 #'
 miss_summary <- function(data){
 
-  # test for null
-  if (is.null(data)) {
-    stop("Input must not be NULL", call. = FALSE)
-  }
+  test_if_null(data)
 
-  # test for dataframe
-  if (!inherits(data, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  test_if_dataframe(data)
 
   return(
     tibble::data_frame(

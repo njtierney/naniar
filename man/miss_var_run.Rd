@@ -40,5 +40,10 @@ miss_var_run(pedestrian, hourly_counts) \%>\%
              y = run_length)) +
       geom_boxplot()
 
+# using group_by
+ pedestrian \%>\%
+   group_by(month) \%>\%
+   miss_var_run(hourly_counts)
+
 
 }

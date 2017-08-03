@@ -19,6 +19,5 @@ Calculate the percent of missing data in a dataframe.
 
 miss_df_pct(oceanbuoys)
 miss_df_pct(riskfactors)
-miss_df_pct(airquality)
 
 }

@@ -9,7 +9,7 @@
 #' @param data data.frame
 #' @param var variable of interest. Currently just one variable
 #' @param span_every integer describing the length of the span to be explored
-#'
+
 #' @return dataframe with variables `n_miss`, `n_complete`, `prop_miss`, and
 #'     `prop_complete`, which describe the number, or proportion of missing or
 #'     complete values within that given time span.
@@ -18,30 +18,64 @@
 #'
 #' @examples
 #'
-#' miss_var_span(data = pedestrian,
-#'               var = hourly_counts,
-#'               span_every = 168)
+#'miss_var_span(data = pedestrian,
+#'              var = hourly_counts,
+#'              span_every = 168)
 #'
-miss_var_span <- function(data,
-                          var,
-                          span_every){
+#' # group_by from dplyr currently requires a quoted variable
+#'  library(dplyr)
+#'  pedestrian %>%
+#'    group_by(month) %>%
+#'      miss_var_span(var = hourly_counts,
+#'                    span_every = 168)
+#'
+miss_var_span <- function(data, var, span_every){
+
+  test_if_null(data)
+
+  test_if_dataframe(data)
+
+  test_if_missing(var)
+
+  test_if_missing(span_every)
+
+  UseMethod("miss_var_span")
+
+}
+
+#' @export
+miss_var_span.default <- function(data,
+                                  var,
+                                  span_every){
 
   var <- rlang::enquo(var)
-  # var_quo <- rlang::quo(var)
 
-  dat_ts_summary <- dplyr::select(data,!!!var)
-  # dat_ts_summary <- dplyr::select(data,!!!var_quo)
+  dat_ts_summary <- dplyr::select(data,!!var)
 
   dat_ts_summary %>%
     # need to make add_span_counter respect grouping structure, somehow
     add_span_counter(span_size = span_every) %>%
     dplyr::group_by(span_counter) %>%
-    dplyr::tally(is.na(!!!var)) %>%
+    dplyr::tally(is.na(!!var)) %>%
     # dplyr::tally(is.na(!!var_quo)) %>%
     dplyr::rename(n_miss = n) %>%
     dplyr::mutate(n_complete = span_every - n_miss,
                   prop_miss = n_miss / span_every,
                   prop_complete = 1 - prop_miss)
+
+}
+
+#' @export
+miss_var_span.grouped_df <- function(data, var, span_every){
+
+  var <- rlang::enquo(var)
+
+  tidyr::nest(data) %>%
+    dplyr::mutate(data = purrr::map(.x = data,
+                                    .f = miss_var_span,
+                                    var = !!var,
+                                    span_every = span_every)) %>%
+    tidyr::unnest()
 
 }
 
@@ -90,16 +124,31 @@ miss_var_span <- function(data,
 #'              y = run_length)) +
 #'       geom_boxplot()
 #'
+#'# using group_by
+#'  pedestrian %>%
+#'    group_by(month) %>%
+#'    miss_var_run(hourly_counts)
+#'
 #'
 miss_var_run <- function(data, var){
 
+  test_if_null(data)
+
+  test_if_missing(var)
+
+  test_if_dataframe(data)
+
+  UseMethod("miss_var_run")
+
+}
+
+#' @export
+miss_var_run.default <- function(data, var){
+
   var <- rlang::enquo(var)
 
-  # grouping <- rlang::quos(...)
+  data_pull <-  data %>% dplyr::pull(!!var)
 
-  data_pull <-  data %>%
-    dplyr::pull(!!var)
-    # dplyr::group_by(!!!grouping) %>%
     tibble::as_tibble(c(rle(is.na(data_pull)))) %>%
     dplyr::rename(run_length = lengths,
                   is_na = values) %>%
@@ -110,6 +159,34 @@ miss_var_run <- function(data, var){
     # naniar::is_na(TRUE)
 
 }
+
+#' @export
+miss_var_run.grouped_df <- function(data,var){
+
+  var <- rlang::enquo(var)
+
+  tidyr::nest(data) %>%
+    dplyr::mutate(data = purrr::map(data,
+                                    var = !!var,
+                                    .f = miss_var_run)) %>%
+    tidyr::unnest()
+
+}
+
+#
+# miss_var_run(airquality)
+# # # # #
+# airquality %>%
+  # dplyr::group_by(Month) %>%
+  # miss_var_run(Ozone)
+
+
+# airquality %>%
+#   dplyr::group_by(Month) %>%
+#   tidyr::nest() %>%
+#   dplyr::mutate(data = purrr::map(.x = data, var = Ozone,
+#                                   .f = miss_var_run)) %>%
+#   tidyr::unnest()
 
 # Need to make this work for:
 # multiple time series (mts), a facet for each variable.

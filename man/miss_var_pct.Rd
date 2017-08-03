@@ -17,6 +17,7 @@ Calculate the percentage of variables that contain a single missing value.
 }
 \examples{
 
-miss_var_pct(airquality)
+miss_var_pct(riskfactors)
+miss_var_pct(oceanbuoys)
 
 }

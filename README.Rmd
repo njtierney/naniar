@@ -42,7 +42,7 @@ Currently it provides:
     + `miss_var_table()`
     + `miss_df_pct()`
 
-For details on how to use each of these functions, and their usage, you can read the vignette ["Getting Started with naniar"](http://www.njtierney.com/naniar/articles/getting-started-w-naniar.html).
+For details on how to use each of these functions, and their usage, you can read the vignette ["Getting Started with naniar"](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 
 **Why `naniar`?**
 

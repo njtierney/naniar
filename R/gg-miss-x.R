@@ -142,7 +142,7 @@ gg_miss_fct <- function(x, fct){
 
   ggobject <- x %>%
     dplyr::group_by(!!fct) %>%
-    dplyr::do(miss_var_summary(.)) %>%
+    miss_var_summary() %>%
     ggplot(aes_string(quo_name(fct),
                "variable",
                fill = "percent")) +

@@ -45,8 +45,8 @@ reference:
       - all_row_complete
       - all_row_miss
       - any_row_miss
-      - label_missing_1d
-      - label_missing_2d
+      - label_miss_1d
+      - label_miss_2d
       - label_missings
       - where_na
       - which_na

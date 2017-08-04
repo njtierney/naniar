@@ -104,7 +104,7 @@ GeomMissPoint <- ggproto("GeomMissPoint", GeomPoint,
                               #TODO: print warning if na.rm = T
                               data$x <- shadow_shift(data$x)
                               data$y <- shadow_shift(data$y)
-                              data$missing <- label_missing_2d(data$x, data$y)
+                              data$missing <- label_miss_2d(data$x, data$y)
                               data
                             } ,
                             handle_na = function(self, data, params) data,

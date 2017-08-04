@@ -1,8 +1,18 @@
+# naniar 0.0.9.9900 (2017/08/03)
+
+# Minor changes
+
+- changed `label_missing*` to `label_miss` to be more consistent with the rest 
+of naniar
+
+
 # naniar 0.0.9.9800 (2017/08/03)
 
-- Add `pct` and `prop` helpers. .
-- removed `miss_df_pct` - this was literally the same as `pct_miss` or `prop_miss`.
+## Minor changes
 
+- Add `pct` and `prop` helpers (#78)
+- removed `miss_df_pct` - this was literally the same as `pct_miss` or `prop_miss`.
+- break larger files into smaller, more manageable files (#83)
 
 # naniar 0.0.9.9700 (2017/08/03)
 

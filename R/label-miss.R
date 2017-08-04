@@ -25,23 +25,23 @@ label_na <- function(x) {
   }
 }
 
-#' label_missing_1d
+#' Label a missing from one column
 #'
-#' Label whether a value is missing in either row of two columns. At the moment this is a more appealing alternative to miss_cat, which is at this stage a bit complicated.
+#' Label whether a value is missing in a row of one columns.
 #'
 #' @param x1 a variable of a dataframe
 #'
 #' @return a vector indicating whether any of these rows had missing values
 #'
-#' @note can we generalise label_missing to work for any number of variables?
+#' @note can we generalise label_miss to work for any number of variables?
 #'
 #' @export
 #'
 #' @examples
 #'
-#' label_missing_1d(airquality$Ozone)
+#' label_miss_1d(airquality$Ozone)
 #'
-label_missing_1d <- function(x1){
+label_miss_1d <- function(x1){
 
   # Catch NULL entries
   if(is.null(x1)) stop("Input cannot be NULL", call. = FALSE)
@@ -53,9 +53,9 @@ label_missing_1d <- function(x1){
 
 }
 
-#' label_missing_2d
+#' label_miss_2d
 #'
-#' Label whether a value is missing in either row of two columns. This is a more appealing alternative to miss_cat, which seems a bit overcomplicated.
+#' Label whether a value is missing in either row of two columns.
 #'
 #' @param x1 a variable of a dataframe
 #' @param x2 another variable of a dataframe
@@ -65,9 +65,9 @@ label_missing_1d <- function(x1){
 #'
 #' @examples
 #'
-#' label_missing_2d(airquality$Ozone, airquality$Solar.R)
+#' label_miss_2d(airquality$Ozone, airquality$Solar.R)
 #'
-label_missing_2d <- function(x1, x2){
+label_miss_2d <- function(x1, x2){
 
   # Catch NULL entries
   if(is.null(x1) | is.null(x2)) stop("Input cannot be NULL", call. = FALSE)

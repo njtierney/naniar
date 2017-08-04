@@ -34,7 +34,7 @@ So when someone presents a really obvious plot like this, with a nice sensible e
 
 > They worked it out themselves so quickly, so easy!
 
-As if they somehow _accidentally_ solved the problem, it was so easy. They couldn't not solve it. However, I think that if you manage to get that on the first go, that is more like turning around and throwing a rock into a lake and it landing in a cup in a boat. Unlikely.
+As if they somehow _accidentally_ solved the problem, it was so easy. They couldn't not solve it. However, I think that if you manage to get that on the first go, that is more like turning around and throwing a rock into a lake and it landing in a cup in a boat. It is unlikely.
 
 With that thought in mind, this vignette aims to work with the following three questions, using the tools developed in naniar and another package, visdat. Namely, how do we:
 
@@ -129,7 +129,7 @@ ggplot(airquality,
 
 ```
 
-**Facets!**
+Being a proper ggplot geom, it supports all of the standard features of ggplot2, such as **facets**,
 
 ```{r ggmissing-facet, echo = TRUE, out.width = "70%"}
 
@@ -141,7 +141,7 @@ ggplot(airquality,
 
 ```
 
-**Themes!**
+And different **themes**
 
 ```{r ggmissing-theme, echo = TRUE, out.width = "70%"}
 
@@ -207,7 +207,7 @@ glimpse(aq_shadow)
 
 Doing this provides a consistent syntax for referring to variables with missing values.
 
-`bind_shadow()` also provides a useful pattern to explore missing values by grouping by the missing/complete of one variable and looking at the mean and other summary values. Below we show the mean, sd, variance, and min and max values of Solar.R for when Ozone is present, and when it is missing.
+`bind_shadow()` also provides a useful pattern to explore missing values, grouping by the missing/complete of one variable and looking at the mean and other summary values. Below we show the mean, sd, variance, and min and max values of Solar.R for when Ozone is present, and when it is missing.
 
 ```{r bind-shadow-pattern}
 
@@ -218,7 +218,6 @@ airquality %>%
                .funs = c("mean", "sd", "var", "min", "max"),
                na.rm = TRUE)
 ```
-
 
 
 Below, we can plot the distribution of Temperature, plotting for values of temperature when Ozone is missing, and when it is not missing.
@@ -283,13 +282,14 @@ n_complete(airquality$Ozone)
 
 ```
 
-The syntax for the other numerical sumamries in `naniar` are `miss_`, and then `case`, `var`, or `df`, and then `summary` or `table`. There are also some summary functions for `ts` objects that are being worked on, which currently have `miss_ts_run` and `miss_ts_summary` functions.
+The syntax for the other numerical sumamries in `naniar` are `miss_`, and then `case`, or `var` to refer to cases or variables. There are then `summary`, `table`, `run`, `span`, and `cumsum` options to explore missing data.
 
-To demonstrate, below are the `miss_case_*` family of functions.
+The
 
-`miss_case_pct` returns a numeric value describing the percent of missing values in the dataframe.
+`miss_case_prop` and `miss_case_pct` return numeric value describing the proportion or percent of missing values in the dataframe.
 
 ```{r}
+miss_case_prop(airquality)
 miss_case_pct(airquality)
 ```
 
@@ -313,12 +313,11 @@ miss_case_table(airquality)
 
 ```
 
-There are then the `miss_var_*` family of functions.
-
-Similar to `miss_case_pct`, `miss_var_pct` returns the percent of variables that contain a missing value.
+Similar to `miss_case_pct()` and `miss_case_prop()`, `miss_var_pct()` and `miss_var_prop()` returns the percent and proportion of variables that contain a missing value.
 
 ```{r}
 
+miss_var_prop(airquality)
 miss_var_pct(airquality)
 
 ```
@@ -357,7 +356,7 @@ miss_var_run(pedestrian,
              hourly_counts)
 ```
 
-`miss_var_span()` is used to determine the number of missings over a specified repeating span of rows in variable of a dataframe. Similar to `miss_var_run`, you specify the variable that you wish to explore, you then also specify the size of the span with the `span_every` argument.
+`miss_var_span()` is used to determine the number of missings over a specified repeating span of rows in variable of a dataframe. Similar to `miss_var_run()`, you specify the variable that you wish to explore, you then also specify the size of the span with the `span_every` argument.
 
 ```{r}
 
@@ -367,6 +366,29 @@ miss_var_span(pedestrian,
 
 ```
 
+# Using `group_by` with naniar
+
+Every `miss_*` summary function that returns a dataframe can be used with dplyr `group_by`. For example, if you would like to look at the number of missing values for all variables of pedestrian data.
+
+```{r}
+
+pedestrian %>% miss_var_summary()
+
+```
+
+We see that this is in `hourly_counts`. We can then explore this by month, and filder by the variable being `hourly_counts`, since it is the only one with missing values.
+
+```{r}
+
+pedestrian %>%
+ group_by(month) %>%
+ miss_var_summary() %>%
+ filter(variable == "hourly_counts")
+
+```
+
+
+# Modelling missingness
 
 The final question we proposed in this vignette was: 
 
@@ -408,18 +430,25 @@ The tools in `naniar` help us identify where missingness is, while maintaining a
 	  
 # Future development
 
-- Continue making `naniar` play well with `dplyr` and `tidyr`.
 - Make `naniar` work with big data tools like `sparklyr`, and `sparklingwater`.
-- Expand ggplot `geom_miss_*` family.
 - Further develop methods for handling and visualising imputations, and multiple imputation.
+Other plans to extend the `geom_miss_` family to include:
+- Categorical variables
+- Bivariate plots: scatterplots, density overlays
+- SQL translation for databases
+- Big Data tools (sparklyr, sparklingwater)
+- Work well with other imputation engines / processes
+- Provide tools for assessing goodness of fit for classical approaches of MCAR, MAR, and MNAR (graphical inference from `nullabor` package)
+- Expand ggplot `geom_miss_*` family
 
 # Thank you
 
-A huge thanks of course to Di Cook and Miles McBain for their assistance on this project, and its development. In particular, I thank Di for providing the large conceptual ideas of how to display missings, and the use of the shadow matrix. I also thank Miles for his instrumental work in getting `stat_missing_point` and `geom_miss_point()` working as they do now.
+Firstly, thanks to Di Cook for giving the initial inspiration for the package and laying down the rich theory and literature that the work in `naniar` is built upon.
+Naming credit (once again!) goes to Miles McBain. Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to Colin Fay for helping me understand tidy evaluation and for features such as `replace_to_na`, `miss_*_cumsum`, and more.
 
 # References
 
 - MANET: http://www.rosuda.org/MANET/
 - ggobi: http://www.ggobi.org/
-- visdat: https://www.github.com/njtierney/visdat
+- visdat: https://www.github.com/ropensci/visdat
 - Tierney NJ, Harden FA, Harden MJ, Mengersen, KA, Using decision trees to understand structure in missing data BMJ Open 2015;5:e007450. doi: 10.1136/bmjopen-2014-007450

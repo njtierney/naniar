@@ -1,0 +1,52 @@
+---
+title: "Gallery of missing data visualisations with naniar + visdat"
+author: "Nicholas Tierney"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Gallery of missing data visualisations with naniar}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+There are a variety of different plots becoming available in the naniar package. In this vignette, we aim to discuss why you would want to use the visualisations in naniar, and also how to interpret the visualisations created. If you would like to know more about the philosophy of the `naniar` package, you should read the vignette "Getting Started with naniar", parts of this visualisation vignette are be similar/identical to this vignette.
+
+# Getting started
+
+One of the first plots that I recommend you start with when you are first exploring your missing data, is the `vis_miss` plot, which is re-exported from [`visdat`](https://www.github.com/ropensci/visdat).
+
+This plot provides a specified visualiation of the amount of missingd data
+
+# Exploring Missingness Mechanisms
+
+You will then want to eplore different missing data mechanisms. To do this 
+
+# `geom_miss_point()`
+
+
+
+# `gg_miss_var()`
+
+
+
+# `gg_miss_case()`
+
+
+
+# `gg_miss_fct()`
+
+
+
+# `gg_miss_span()`
+
+
+
+# `gg_miss_case_cumsum()`
+
+
+
+# `gg_miss_var_cumsum()`
+
+
+
+# `gg_miss_which()`

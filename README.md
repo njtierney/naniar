@@ -9,28 +9,12 @@ naniar
 
 Currently it provides:
 
--   Data structures for missing data
-    -   `as_shadow()`
-    -   `bind_shadow()`
-    -   `gather_shadow()`
-    -   `is_na()`
--   Visualisation methods:
-    -   `geom_miss__point()`
-    -   `gg_miss_var()`
-    -   `gg_miss_case()`
-    -   `gg_miss_which()`
--   Numerical summaries:
-    -   `n_miss()`
-    -   `n_complete()`
-    -   `miss_case_pct()`
-    -   `miss_case_summary()`
-    -   `miss_case_table()`
-    -   `miss_var_pct()`
-    -   `miss_var_summary()`
-    -   `miss_var_table()`
-    -   `miss_df_pct()`
+-   Data structures for missing data, e.g., `bind_shadow()`
+-   Visualisation methods: e.g., `geom_miss_point()`, `gg_miss_var()`
+-   Handy shorthand summaries for missing data: e.g., `n_miss()`, `n_complete`, `prop_miss()`, `prop_complete`.
+-   Numerical summaries of missing data: e.g., `miss_case_summary()`, `miss_case_table()`, `miss_var_pct()`, `miss_var_summary()`
 
-For details on how to use each of these functions, and their usage, you can read the vignette ["Getting Started with naniar"](http://www.njtierney.com/naniar/articles/getting-started-w-naniar.html).
+For details on all of these functions and how to use each of them, you can read the vignette ["Getting Started with naniar"](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 
 **Why `naniar`?**
 
@@ -38,7 +22,7 @@ For details on how to use each of these functions, and their usage, you can read
 
 > ...But *why* `naniar`?
 
-Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like [C.S. Lewis's naniar](https://en.wikipedia.org/wiki/The_Chronicles_of_naniar) - a different world, hidden away. You go inside, and sometimes it seems like you've spent no time in there but time has passed very quickly, or the opposite. Also, `NA`rnia = na in r, and if you so desire, naniar may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name.
+Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like [C.S. Lewis's naniar](https://en.wikipedia.org/wiki/The_Chronicles_of_naniar) - a different world, hidden away. You go inside, and sometimes it seems like you've spent no time in there but time has passed very quickly, or the opposite. Also, `NA`niar = na in r, and if you so desire, naniar may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name, and @Hadley for the rearranged spelling.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
@@ -223,7 +207,7 @@ miss_var_pct(airquality)
 miss_case_pct(airquality)
 #> [1] 27.45098
 # Proportion elements in dataset that contains missing values
-miss_df_pct(airquality)
+prop_miss(airquality)
 #> [1] 0.04793028
 ```
 
@@ -286,11 +270,11 @@ s_miss <- miss_summary(airquality)
 
 s_miss
 #> # A tibble: 1 x 7
-#>   miss_df_pct miss_var_pct miss_case_pct  miss_case_table   miss_var_table
-#>         <dbl>        <dbl>         <dbl>           <list>           <list>
-#> 1  0.04793028     33.33333      27.45098 <tibble [3 x 3]> <tibble [3 x 3]>
-#> # ... with 2 more variables: miss_var_summary <list>,
-#> #   miss_case_summary <list>
+#>   miss_df_prop miss_var_prop miss_case_prop  miss_case_table
+#>          <dbl>         <dbl>          <dbl>           <list>
+#> 1   0.04793028     0.3333333      0.2745098 <tibble [3 x 3]>
+#> # ... with 3 more variables: miss_var_table <list>,
+#> #   miss_var_summary <list>, miss_case_summary <list>
 
 # overall % missing data
 s_miss$percent_missing_df

@@ -23,9 +23,9 @@ test_that("There are 7 columns",{
 
 test_that("The columns are named correctly",{
   expect_named(miss_summary(airquality),
-               c("miss_df_pct",
-                 "miss_var_pct",
-                 "miss_case_pct",
+               c("miss_df_prop",
+                 "miss_var_prop",
+                 "miss_case_prop",
                  "miss_case_table",
                  "miss_var_table",
                  "miss_var_summary",

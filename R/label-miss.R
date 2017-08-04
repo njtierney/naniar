@@ -1,3 +1,30 @@
+# NOTE - change these from `label_missing_` to `label_miss`
+#' Give NAs a more meaningful label
+#'
+#' Returns a binary factor of !NA and NA, where !NA indicates a datum that is not
+#'   missing, and NA indicats missingness.
+#'
+#' @param x a vector
+#'
+#' @return a vector
+#' @export
+#'
+#' @seealso as_shadow
+#'
+#' @examples
+#'
+#' label_na(airquality$Ozone)
+#'
+label_na <- function(x) {
+  if (length(x) == 0) {
+    stop("Input is of length 0, please check your inputs.", call. = FALSE)
+  } else{
+    factor(is.na(x),
+           levels = c(FALSE, TRUE),
+           labels = c("!NA", "NA"))
+  }
+}
+
 #' label_missing_1d
 #'
 #' Label whether a value is missing in either row of two columns. At the moment this is a more appealing alternative to miss_cat, which is at this stage a bit complicated.

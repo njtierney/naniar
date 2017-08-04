@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.0.9.9600
+Version: 0.0.9.9800
 Author: Nicholas Tierney, Miles McBain, Di Cook, Colin Fay
 Authors@R: c(
     person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
@@ -49,23 +49,28 @@ Imports:
     viridis
 RoxygenNote: 6.0.1.9000
 Collate: 
+    'add-cols.R'
     'data-oceanbuoys.R'
     'data-pedestrian.R'
     'data-riskfactors.R'
     'legend-draw.R'
-    'geom-missing-point.R'
+    'geom-miss-point.R'
+    'gg-miss-x.R'
+    'label-miss.R'
+    'miss-prop-pct-summary.R'
+    'miss-x-cumsum.R'
+    'miss-x-pct-prop.R'
+    'miss-x-run.R'
+    'miss-x-span.R'
+    'miss-x-summary.R'
+    'miss-x-table.R'
+    'n-prop-miss-complete.R'
     'naniar-ggproto.R'
     'naniar-package.R'
-    'plotting.R'
-    'replace_to_na.R'
+    'replace-to-na.R'
     'shadow-shifters.R'
     'shadows.R'
-    'stat-missing-point.R'
-    'tidiers_time_series.R'
-    'tidy-miss-add-cols.R'
-    'tidy-miss-family.R'
-    'tidy-miss-label.R'
-    'tidy-miss-scalars.R'
+    'stat-miss-point.R'
     'utils.R'
 URL: https://github.com/njtierney/naniar
 BugReports: https://github.com/njtierney/naniar/issues

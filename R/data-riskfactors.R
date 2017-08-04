@@ -140,7 +140,6 @@
 #'     "Refused".}
 #'     }
 #'
-#'
 #' @name riskfactors
 #' @docType data
 #' @usage data(riskfactors)

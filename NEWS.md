@@ -1,3 +1,24 @@
+# naniar 0.0.9.9800 (2017/08/03)
+
+- Add `pct` and `prop` helpers. .
+- removed `miss_df_pct` - this was literally the same as `pct_miss` or `prop_miss`.
+
+
+# naniar 0.0.9.9700 (2017/08/03)
+
+## New Feature
+
+- `group_by` is now respected by the following functions:
+  - `miss_case_cumsum()`
+  - `miss_case_summary()`
+  - `miss_case_table()`
+  - `miss_prop_summary()`
+  - `miss_var_cumsum()`
+  - `miss_var_run()`
+  - `miss_var_span()`
+  - `miss_var_summary()`
+  - `miss_var_table()`
+
 # naniar 0.0.9.9600 (2017/07/25)
 
 ## Major changes
@@ -18,23 +39,11 @@
 - add Colin to auth
 - `miss_summary` docs was not up to date
 
-## TO DO
-
-- Update Vignette 
-- Maybe write a "Visualisation with {narnia}" vignette
-- add more tests 
-- Make it possible to do `replace_to_na(x < 10)`
-- `replace_to_na_if`
-- `replace_to_na_at`
-- `replace_to_na_all`
-- check why some tests are failing, and add more tests
-
 # naniar 0.0.9.9500 (2017/07/25)
 
 ## breaking changes
 
 - I have flip flopped and changed back to `naniar`,
-
 
 # narnia 0.0.9.9400 (2017/07/24)
 

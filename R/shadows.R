@@ -1,29 +1,3 @@
-#' Give NAs a more meaningful label
-#'
-#' Returns a binary factor of !NA and NA, where !NA indicates a datum that is not
-#'   missing, and NA indicats missingness.
-#'
-#' @param x a vector
-#'
-#' @return a vector
-#' @export
-#'
-#' @seealso as_shadow
-#'
-#' @examples
-#'
-#' label_na(airquality$Ozone)
-#'
-label_na <- function(x) {
-  if (length(x) == 0) {
-    stop("Input is of length 0, please check your inputs.", call. = FALSE)
-    } else{
-  factor(is.na(x),
-         levels = c(FALSE, TRUE),
-         labels = c("!NA", "NA"))
-    }
-}
-
 #' S3 method for create shadows
 #'
 #' Shadows have _NA as a suffix

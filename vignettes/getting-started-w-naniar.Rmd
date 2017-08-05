@@ -86,9 +86,7 @@ To read more about the functions available in `visdat` see the vignette ["Using 
 
 # Exploring missingness relationships
 
-We can identify key variables that are missing
-
-For further exploration, we need to explore the relationship amongst the variables in this data:
+We can identify key variables that are missing using `vis_miss`, but for further exploration, we need to explore the relationship amongst the variables in this data:
 
 - Ozone,
 - Solar.R 
@@ -97,7 +95,6 @@ For further exploration, we need to explore the relationship amongst the variabl
 - Month
 - Day
 
-This process of visualising the data as a heatmap allows you identify what is missing and where. For here though, are interested in exploring these missingness relationships. 
 
 Typically, when exploring this data, you might want to explore the variables Solar.R and Ozone, and do something like this:
 
@@ -175,7 +172,7 @@ gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 
 ```
 
-An important thing to note is that for every visualisation of missing data, there is an accompanying function to get the base structure of the plot out. This is important as the plot should not return a dataframe - but we also need to make the data available for use by the user so that it isn't locked into a plot.
+It is important to note that for every visualisation of missing data, there is an accompanying function to get the base structure of the plot out. This is important as the plot should not return a dataframe - but we also need to make the data available for use by the user so that it isn't locked into a plot.
 
 # shadow matrix: A tidy way of representing missing values  
 

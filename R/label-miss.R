@@ -2,7 +2,7 @@
 #' Give NAs a more meaningful label
 #'
 #' Returns a binary factor of !NA and NA, where !NA indicates a datum that is not
-#'   missing, and NA indicats missingness.
+#'   missing, and NA indicates missingness.
 #'
 #' @param x a vector
 #'

@@ -22,7 +22,9 @@ add_span_counter <- function(data, span_size) {
 
 #' Add column containing number of missing data values
 #'
-#' It can be useful when doing data analysis to add the number of missing data points into your dataframe. add_n_miss adds a column named "n_miss", which contains the number of missing values in that row.
+#' It can be useful when doing data analysis to add the number of missing data
+#'   points into your dataframe. `add_n_miss` adds a column named "n_miss",
+#'   which contains the number of missing values in that row.
 #'
 #' @param data a dataframe
 #' @param ... Variable names to use instead of the whole dataset. By default this
@@ -68,13 +70,6 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 
     dplyr::bind_cols(data, prop_selected_data_cut) %>% dplyr::as_tibble()
 
-
-  # old approach
-  # # create a numeric vector of n_missing
-  # col_n_miss <- data.frame(n_miss = apply(data,1,n_miss))
-  #
-  # dplyr::bind_cols(df,col_n_miss)
-
   } # close else loop
 
 }
@@ -82,7 +77,7 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #' Add column containing proportion of missing data values
 #'
 #' It can be useful when doing data analysis to add the proportion of missing
-#'   data values into your dataframe. add_prop_miss adds a column named
+#'   data values into your dataframe. `add_prop_miss` adds a column named
 #'   "prop_miss", which contains the proportion of missing values in that row.
 #'   You can specify the variables that you would like to show the missingness
 #'   for.
@@ -91,7 +86,7 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #' @param ... Variable names to use instead of the whole dataset. By default this
 #'   looks at the whole dataset. Otherwise, this is one or more unquoted
 #'   expressions separated by commas. These also respect the dplyr verbs
-#'   "starts_with", "contains", "ends_with", etc. By default will add "_all" to
+#'   `starts_with`, `contains`, `ends_with`, etc. By default will add "_all" to
 #'   the label if left blank, otherwise will add "_vars" to distinguish that it
 #'   has not been used on all of the variables.
 #' @param label character string of what you need to name variable
@@ -121,7 +116,6 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #' prp(type = 4,
 #'     extra = 101,
 #'     prefix = "prop_miss = ")
-
 
 add_prop_miss <- function(data, ..., label = "prop_miss"){
 
@@ -157,7 +151,8 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
 
 #' Add a shadow shifted column to a dataset
 #'
-#' Shifting the values of a numeric
+#' Shadow shift only the selected variables in a dataset using dplyr `vars`
+#'   and dplyr verbs "starts_with", "contains", "ends_with", etc.
 #'
 #' @param data data.frame or .tbl
 #' @param ... One or more unquoted expressions separated by commas. These also
@@ -203,6 +198,8 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
   tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
   } # close the else brace
 }
+
+# UP TO HERE
 
 #' Add a shadow column to a dataset
 #'

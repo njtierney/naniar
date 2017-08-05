@@ -95,7 +95,6 @@ We can identify key variables that are missing using `vis_miss`, but for further
 - Month
 - Day
 
-
 Typically, when exploring this data, you might want to explore the variables Solar.R and Ozone, and do something like this:
 
 ```{r echo = TRUE, fig.width = 5, fig.height=3}

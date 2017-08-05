@@ -1,4 +1,4 @@
-#' Shift missing values to facilite missing data exploration/visualisation
+#' Shift missing values to facilitate missing data exploration/visualisation
 #'
 #' `shadow_shift` is a window function that transforms missing values to
 #'     facilitate visualisation. This has different behaviour for different

@@ -47,7 +47,7 @@ miss_case_table.grouped_df <- function(data){
 
 #' Tabulate the missings in the variables
 #'
-#' Provide a tidy table of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variablers those variables make up
+#' Provide a tidy table of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variables those variables make up
 #'
 #' @param data a dataframe
 #'

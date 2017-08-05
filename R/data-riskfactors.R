@@ -111,7 +111,7 @@
 #'   \item{\code{smoke_last}}{A factor
 #'     with levels \code{3} \code{4} \code{5} \code{6} \code{7} \code{8}
 #'     corresponding to the question: how long has it been since last
-#'     smokeing cigarettes regularly? The labels mean: 3: Within the past
+#'     smoking cigarettes regularly? The labels mean: 3: Within the past
 #'     6 months (3 months but less than 6 months ago); 4: Within the past
 #'     year (6 months but less than 1 year ago); 5: Within the past 5
 #'     years (1 year but less than 5 years ago); 6: Within the past 10

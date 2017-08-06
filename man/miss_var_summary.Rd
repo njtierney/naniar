@@ -7,23 +7,25 @@
 miss_var_summary(data, ...)
 }
 \arguments{
-\item{data}{a dataframe}
+\item{data}{a data.frame}
 
 \item{...}{extra arguments}
 }
 \value{
-a data_frame of the percent of missing data in each variable
+a tibble of the percent of missing data in each variable
 }
 \description{
-Provide a data_frame containing the variable names, the number of missing values, in each variable, and the percent of missing values in each variable.
+Provide a summary for each variable of the number and percent missings,
+  ordering by the most missings in each variable.
 }
 \examples{
 
 miss_var_summary(airquality)
+
 # works with group_by from dplyr
 library(dplyr)
 airquality \%>\%
-group_by(Month) \%>\%
-miss_var_summary()
+  group_by(Month) \%>\%
+  miss_var_summary()
 
 }

@@ -21,4 +21,10 @@ Provide a data.frame containing each case (row), the number and percent of
 
 miss_case_cumsum(airquality)
 
+library(dplyr)
+
+airquality \%>\%
+  group_by(Month) \%>\%
+  miss_case_cumsum()
+
 }

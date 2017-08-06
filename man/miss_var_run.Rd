@@ -2,7 +2,7 @@
 % Please edit documentation in R/miss-x-run.R
 \name{miss_var_run}
 \alias{miss_var_run}
-\title{Return the number of missing or complete values in a single run}
+\title{Find the number of missing and complete values in a single run}
 \usage{
 miss_var_run(data, var)
 }
@@ -16,15 +16,24 @@ dataframe with column names "run_length" and "is_na", which describe
     the length of the run, and whether that run describes a missing value.
 }
 \description{
-In time series it can be useful to determine the number of missing values
-    that occur in a single run. This function `miss_var_run` returns a
-    dataframe with the column names "run_length" and "is_na", which describe
-    the length of the run, and whether that run describes a missing value
+It us useful to find the number of missing values that occur in a single run.
+   The function, `miss_var_run()`, returns a dataframe with the column names
+   "run_length" and "is_na", which describe the length of the run, and
+   whether that run describes a missing value.
 }
 \examples{
 
-library(ggplot2)
+miss_var_run(pedestrian, hourly_counts)
+
 library(dplyr)
+
+# find the number of runs missing/complete for each month
+
+pedestrian \%>\%
+  group_by(month) \%>\%
+  miss_var_run(hourly_counts)
+
+library(ggplot2)
 
 # explore the number of missings in a given run
 miss_var_run(pedestrian, hourly_counts) \%>\%

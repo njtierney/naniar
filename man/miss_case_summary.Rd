@@ -7,16 +7,22 @@
 miss_case_summary(data)
 }
 \arguments{
-\item{data}{a dataframe}
+\item{data}{a data.frame}
 }
 \value{
-a data_frame of the percent of missing data in each case
+a tibble of the percent of missing data in each case.
 }
 \description{
-Provide a data_frame containing each case (row), the number of missing
-values in each case, and the percent of missing values in each case.
+Return for each case the number and percent of missing values, ordered by the
+most number of missings.
 }
 \examples{
+
+# works with group_by from dplyr
+library(dplyr)
+airquality \%>\%
+  group_by(Month) \%>\%
+  miss_case_summary()
 
 miss_case_summary(airquality)
 

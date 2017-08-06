@@ -1,6 +1,7 @@
 #' Tabulate missings in cases.
 #'
-#' Provide a tidy table of the number of cases with 0, 1, 2, up to n, missing values and the proportion of the number of cases those cases make up
+#' Provide a tidy table of the number of cases with 0, 1, 2, up to n, missing
+#' values and the proportion of the number of cases those cases make up.
 #'
 #' @param data a dataframe
 #'
@@ -11,6 +12,9 @@
 #'
 #' miss_case_table(airquality)
 #'
+#' airquality %>%
+#'   group_by(Month) %>%
+#'   miss_case_table()
 #'
 miss_case_table <- function(data){
 
@@ -47,7 +51,9 @@ miss_case_table.grouped_df <- function(data){
 
 #' Tabulate the missings in the variables
 #'
-#' Provide a tidy table of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variables those variables make up
+#' Provide a tidy table of the number of variables with 0, 1, 2, up to n,
+#'   missing values and the proportion of the number of variables those
+#'   variables make up.
 #'
 #' @param data a dataframe
 #'
@@ -58,6 +64,10 @@ miss_case_table.grouped_df <- function(data){
 #'
 #' miss_var_table(airquality)
 #'
+#' library(dplyr)
+#' airquality %>%
+#'   group_by(Month) %>%
+#'   miss_var_table()
 #'
 miss_var_table <- function(data){
 

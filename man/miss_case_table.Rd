@@ -13,11 +13,15 @@ miss_case_table(data)
 a dataframe
 }
 \description{
-Provide a tidy table of the number of cases with 0, 1, 2, up to n, missing values and the proportion of the number of cases those cases make up
+Provide a tidy table of the number of cases with 0, 1, 2, up to n, missing
+values and the proportion of the number of cases those cases make up.
 }
 \examples{
 
 miss_case_table(airquality)
 
+airquality \%>\%
+  group_by(Month) \%>\%
+  miss_case_table()
 
 }

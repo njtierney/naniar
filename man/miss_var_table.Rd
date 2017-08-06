@@ -13,11 +13,17 @@ miss_var_table(data)
 a dataframe
 }
 \description{
-Provide a tidy table of the number of variables with 0, 1, 2, up to n, missing values and the proportion of the number of variables those variables make up
+Provide a tidy table of the number of variables with 0, 1, 2, up to n,
+  missing values and the proportion of the number of variables those
+  variables make up.
 }
 \examples{
 
 miss_var_table(airquality)
 
+library(dplyr)
+airquality \%>\%
+  group_by(Month) \%>\%
+  miss_var_table()
 
 }

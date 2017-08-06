@@ -12,6 +12,12 @@
 #'
 #' miss_var_cumsum(airquality)
 #'
+#' library(dplyr)
+#'
+#' airquality %>%
+#'   group_by(Month) %>%
+#'   miss_var_cumsum()
+#'
 miss_var_cumsum <- function(data){
 
   test_if_null(data)
@@ -58,6 +64,12 @@ miss_var_cumsum.grouped_df <- function(data){
 #' @examples
 #'
 #' miss_case_cumsum(airquality)
+#'
+#' library(dplyr)
+#'
+#' airquality %>%
+#'   group_by(Month) %>%
+#'   miss_case_cumsum()
 #'
 miss_case_cumsum <- function(data){
 

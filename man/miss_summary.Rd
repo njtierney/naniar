@@ -10,10 +10,11 @@ miss_summary(data)
 \item{data}{a dataframe}
 }
 \value{
-a dataframe
+a tibble of missing data summaries
 }
 \description{
-\code{miss_summary} performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
+`miss_summary` performs all of the missing data helper summaries and puts
+  them into lists within a tibble
 }
 \examples{
 
@@ -21,5 +22,12 @@ s_miss <- miss_summary(airquality)
 s_miss$miss_df_prop
 s_miss$miss_case_table
 # etc, etc, etc.
+
+library(dplyr)
+s_miss_group <- group_by(airquality, Month) \%>\% miss_summary()
+s_miss_group$miss_df_prop
+s_miss_group$miss_case_table
+# etc, etc, etc.
+
 
 }

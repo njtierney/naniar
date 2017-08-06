@@ -1,11 +1,12 @@
-#' Return the number of missing or complete values in a single run
+#' Find the number of missing and complete values in a single run
 #'
-#' In time series it can be useful to determine the number of missing values
-#'     that occur in a single run. This function `miss_var_run` returns a
-#'     dataframe with the column names "run_length" and "is_na", which describe
-#'     the length of the run, and whether that run describes a missing value
+#' It us useful to find the number of missing values that occur in a single run.
+#'    The function, `miss_var_run()`, returns a dataframe with the column names
+#'    "run_length" and "is_na", which describe the length of the run, and
+#'    whether that run describes a missing value.
 #'
 #' @param data data.frame
+#'
 #' @param var a bare variable name
 #'
 #' @return dataframe with column names "run_length" and "is_na", which describe
@@ -15,8 +16,17 @@
 #'
 #' @examples
 #'
-#' library(ggplot2)
+#' miss_var_run(pedestrian, hourly_counts)
+#'
 #' library(dplyr)
+#'
+#' # find the number of runs missing/complete for each month
+#'
+#' pedestrian %>%
+#'   group_by(month) %>%
+#'   miss_var_run(hourly_counts)
+#'
+#' library(ggplot2)
 #'
 #' # explore the number of missings in a given run
 #' miss_var_run(pedestrian, hourly_counts) %>%
@@ -80,60 +90,6 @@ miss_var_run.grouped_df <- function(data,var){
     tidyr::unnest()
 
 }
-
-#
-# miss_var_run(airquality)
-# # # # #
-# airquality %>%
-  # dplyr::group_by(Month) %>%
-  # miss_var_run(Ozone)
-
-
-# airquality %>%
-#   dplyr::group_by(Month) %>%
-#   tidyr::nest() %>%
-#   dplyr::mutate(data = purrr::map(.x = data, var = Ozone,
-#                                   .f = miss_var_run)) %>%
-#   tidyr::unnest()
-
-# Need to make this work for:
-# multiple time series (mts), a facet for each variable.
-# regular data.frames that contain time series / time like data.
-# detect a date/time object, perform something special
-# user could also provide the date/time variable of interest
-# example mts objects - fpp2::arrivals
-
-
-# n_period # how many periods in your time series do you want?
-# size_period # how long are the periods in your time series.
-# this could also be a vector
-# size_period = c(3,10,100) OR
-# size_period = c(100) OR
-# size_period = c(100,50)
-
-
-# regarding the use of miss_var_run, it might also be useful to summarise the frequency of the size of the runs
-# so I want variables like:
-# || run_size | n_missing | n_complete | prop_missing | prop_complete ||
-
-# possible implementation for multiple spans
-
-# pedestrian %>%
-#   mutate(weekday = if_else(Day == "Saturday" | Day == "Sunday",
-#                            true = "weekend",
-#                            false = "weekday")) %>%
-#   group_by(Sensor_Name,
-#            weekday) %>%
-#   # miss_ts_summary(time_index = Date_Time,
-#   #                 variable = Hourly_Counts
-#   # naniar:::add_period_counter(period_length = ) %>%
-#   # dplyr::group_by(period_counter) %>%
-#   dplyr::tally(is.na(Hourly_Counts))
-# dplyr::rename(n_miss = n) %>%
-#   dplyr::mutate(n_complete = length(dat_ts) - n_miss,
-#                 prop_miss = n_miss / period,
-#                 prop_complete = 1 - prop_miss)
-#
 
 # library(imputeTS)
 

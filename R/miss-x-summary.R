@@ -1,32 +1,30 @@
 #' Summarise the missingness in each variable
 #'
-#' Provide a data_frame containing the variable names, the number of missing values, in each variable, and the percent of missing values in each variable.
+#' Provide a summary for each variable of the number and percent missings,
+#'   ordering by the most missings in each variable.
 #'
-#' @param data a dataframe
+#' @param data a data.frame
 #' @param ... extra arguments
 #'
-#' @return a data_frame of the percent of missing data in each variable
+#' @return a tibble of the percent of missing data in each variable
 #' @export
 #'
 #' @examples
 #'
 #' miss_var_summary(airquality)
+#'
 #' # works with group_by from dplyr
 #' library(dplyr)
 #' airquality %>%
-#' group_by(Month) %>%
-#' miss_var_summary()
+#'   group_by(Month) %>%
+#'   miss_var_summary()
 #'
 #' @export
 miss_var_summary <- function(data, ...) {
-  if (is.null(data)) {
-    stop("Input must not be NULL", call. = FALSE)
-    # test for dataframe
-  }
 
-  if (!inherits(data, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-  }
+  test_if_null(data)
+
+  test_if_dataframe(data)
 
   UseMethod("miss_var_summary")
 }
@@ -48,15 +46,21 @@ miss_var_summary.grouped_df <- function(data, ...) {
 
 #' Summarise the missingness in each case
 #'
-#' Provide a data_frame containing each case (row), the number of missing
-#' values in each case, and the percent of missing values in each case.
+#' Return for each case the number and percent of missing values, ordered by the
+#' most number of missings.
 #'
-#' @param data a dataframe
+#' @param data a data.frame
 #'
-#' @return a data_frame of the percent of missing data in each case
+#' @return a tibble of the percent of missing data in each case.
 #' @export
 #'
 #' @examples
+#'
+#' # works with group_by from dplyr
+#' library(dplyr)
+#' airquality %>%
+#'   group_by(Month) %>%
+#'   miss_case_summary()
 #'
 #' miss_case_summary(airquality)
 #'
@@ -70,7 +74,6 @@ miss_case_summary <- function(data){
 }
 
 #' @export
-
 miss_case_summary.default <- function(data){
 
     purrrlyr::by_row(.d = data,
@@ -90,21 +93,20 @@ miss_case_summary.default <- function(data){
 }
 
 #' @export
-
 miss_case_summary.grouped_df <- function(data){
 
   group_by_fun(data, .fun = miss_case_summary)
 
 }
 
-
 #' Collate summary measures from naniar into one tibble
 #'
-#' \code{miss_summary} performs all of the missing data helper summaries and puts them into a list. Perhaps in the future this can all be some sort of nested dataframe?
+#' `miss_summary` performs all of the missing data helper summaries and puts
+#'   them into lists within a tibble
 #'
 #' @param data a dataframe
 #'
-#' @return a dataframe
+#' @return a tibble of missing data summaries
 #' @export
 #'
 #' @examples
@@ -113,6 +115,13 @@ miss_case_summary.grouped_df <- function(data){
 #' s_miss$miss_df_prop
 #' s_miss$miss_case_table
 #' # etc, etc, etc.
+#'
+#' library(dplyr)
+#' s_miss_group <- group_by(airquality, Month) %>% miss_summary()
+#' s_miss_group$miss_df_prop
+#' s_miss_group$miss_case_table
+#' # etc, etc, etc.
+#'
 #'
 miss_summary <- function(data){
 
@@ -128,7 +137,9 @@ miss_summary <- function(data){
         miss_case_table = list(miss_case_table(data)),
         miss_var_table = list(miss_var_table(data)),
         miss_var_summary = list(miss_var_summary(data)),
-        miss_case_summary = list(miss_case_summary(data))
+        miss_case_summary = list(miss_case_summary(data)),
+        miss_var_cumsum = list(miss_var_cumsum(data)),
+        miss_case_cumsum = list(miss_case_cumsum(data))
       )
     )
   }

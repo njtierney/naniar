@@ -22,7 +22,6 @@
 #'              var = hourly_counts,
 #'              span_every = 168)
 #'
-#' # group_by from dplyr currently requires a quoted variable
 #'  library(dplyr)
 #'  pedestrian %>%
 #'    group_by(month) %>%
@@ -57,7 +56,6 @@ miss_var_span.default <- function(data,
     add_span_counter(span_size = span_every) %>%
     dplyr::group_by(span_counter) %>%
     dplyr::tally(is.na(!!var)) %>%
-    # dplyr::tally(is.na(!!var_quo)) %>%
     dplyr::rename(n_miss = n) %>%
     dplyr::mutate(n_complete = span_every - n_miss,
                   prop_miss = n_miss / span_every,

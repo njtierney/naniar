@@ -20,4 +20,10 @@ Provide a data.frame containing the cumulative sum of number & percentage of
 
 miss_var_cumsum(airquality)
 
+library(dplyr)
+
+airquality \%>\%
+  group_by(Month) \%>\%
+  miss_var_cumsum()
+
 }

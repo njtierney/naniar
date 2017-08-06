@@ -13,13 +13,12 @@ Data, 2009.}
 data(riskfactors)
 }
 \description{
-The data is a subset of the 2009 survey from BRFSS, an ongoing
-data collection program designed to measure behavioral risk
-factors for the adult population (18 years of age or older) living
-in households.
+The data is a subset of the 2009 survey from BRFSS, an ongoing data
+  collection program designed to measure behavioral risk factors for the
+  adult population (18 years of age or older) living in households.
 }
-\details{
-Also see the codebook:
+\seealso{
+the codebook:
 \url{http://ftp.cdc.gov/pub/data/brfss/codebook_09.rtf}
 
 Format: a data frame with 245 observations on the following 34
@@ -152,8 +151,7 @@ variables.
     every year. -7 is   for "Don't know/Not sure", and -9 is for
     "Refused".}
     }
-}
-\seealso{
+
 library(MissingDataGUI) (named brfss)
 }
 \keyword{datasets}

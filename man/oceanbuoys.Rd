@@ -12,13 +12,12 @@
 data(oceanbuoys)
 }
 \description{
-Real-time data from moored ocean buoys for improved detection,
-understanding and prediction of El Ni'o and La Ni'a.
+Real-time data from moored ocean buoys for improved detection, understanding
+  and prediction of El Ni'o and La Ni'a. The data is collected by the
+  Tropical Atmosphere Ocean project
+  (\url{http://www.pmel.noaa.gov/tao/index.shtml}).
 }
 \details{
-The data is collected by the Tropical Atmosphere Ocean project (
-\url{http://www.pmel.noaa.gov/tao/index.shtml}).
-
 Format: a data frame with 736 observations on the following 8
 variables.
 \describe{

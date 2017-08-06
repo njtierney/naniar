@@ -1,12 +1,11 @@
 #' The Behavioral Risk Factor Surveillance System (BRFSS) Survey
 #' Data, 2009.
 #'
-#' The data is a subset of the 2009 survey from BRFSS, an ongoing
-#' data collection program designed to measure behavioral risk
-#' factors for the adult population (18 years of age or older) living
-#' in households.
+#' The data is a subset of the 2009 survey from BRFSS, an ongoing data
+#'   collection program designed to measure behavioral risk factors for the
+#'   adult population (18 years of age or older) living in households.
 #'
-#' Also see the codebook:
+#' @seealso the codebook:
 #' \url{http://ftp.cdc.gov/pub/data/brfss/codebook_09.rtf}
 #'
 #' Format: a data frame with 245 observations on the following 34

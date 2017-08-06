@@ -1,12 +1,13 @@
 #' Give NAs a more meaningful label
 #'
-#' Returns a binary factor of !NA and NA, where !NA indicates a datum that is not
-#'   missing, and NA indicates missingness.
+#' Returns a binary factor of !NA and NA, where !NA indicates a datum that is
+#'   not missing, and NA indicates missingness. This function is what powers the
+#'   factor levels in `as_shadow()`.
 #'
 #' @param x a vector
 #'
-#' @return a vector
-#' @export
+#' @return a vector of factors containing the labels "!NA" for Not missing and
+#'   "NA" for missing.
 #'
 #' @seealso as_shadow
 #'
@@ -43,7 +44,7 @@ label_na <- function(x) {
 label_miss_1d <- function(x1){
 
   # Catch NULL entries
-  if(is.null(x1)) stop("Input cannot be NULL", call. = FALSE)
+  test_if_null(x1)
   # find which are missing and which are not.
   temp <- data.frame(x1) %>% is.na %>% rowSums()
   ifelse(temp == 0, # 0 means not missing
@@ -88,8 +89,6 @@ label_miss_2d <- function(x1, x2){
 #' @return character vector of "Missing" and "Not Missing".
 #'
 #' @export
-#'
-#' @note should be an add_missing_labels function so you can do `data %>% add_missing_labels()`
 #'
 #' @examples
 #'

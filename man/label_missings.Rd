@@ -16,9 +16,6 @@ character vector of "Missing" and "Not Missing".
 Creates a character vector describing whether there are missing or not missing
   values
 }
-\note{
-should be an add_missing_labels function so you can do `data %>% add_missing_labels()`
-}
 \examples{
 
 label_missings(airquality)

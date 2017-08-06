@@ -169,3 +169,25 @@ all_row_miss <- function(x){
 all_row_complete <- function(x){
   apply(data.frame(x), MARGIN = 1, FUN = function(x) all(!is.na(x)))
 }
+
+#' Add a counter variable for a span of dataframe
+#'
+#' Adds a variable, `span_counter` to a dataframe. Used internally to facilitate
+#' counting of missing values over a given span.
+#'
+#' @param data data.frame
+#' @param span_size integer
+#'
+#' @return data.frame with extra variable "span_counter".
+#'
+#' @examples
+#' \dontrun{
+#' add_span_counter(pedestrian, span_size = 100)
+#' }
+add_span_counter <- function(data, span_size) {
+
+  dplyr::mutate(data,
+                span_counter = rep(x = 1:ceiling(nrow(data)),
+                                   each = span_size,
+                                   length.out = nrow(data)))
+}

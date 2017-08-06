@@ -10,15 +10,19 @@ add_label_shadow(data)
 \item{data}{data.frame}
 }
 \value{
-data.frame with
+data.frame with a column, "any_missing", which describes whether or
+  not there are any rows that have a shadow value.
 }
 \description{
-Add a column describing whether there is a shadow
+Instead of focussing on labelling whether there are missings, we instead
+  focus on whether there have been any shadows created. This can be useful
+  when data has been imputed and you need to determine which rows contained
+  missing values when the shadow was bound to the dataset.
 }
 \examples{
 
 airquality \%>\%
-add_shadow(Ozone, Solar.R) \%>\%
-add_label_shadow()
+  add_shadow(Ozone, Solar.R) \%>\%
+  add_label_shadow()
 
 }

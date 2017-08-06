@@ -14,5 +14,5 @@ label_shadow(data)
 }
 \description{
 This is used to power add_label_shadow. It may be exported later, but for the
-  moment this is an internal function
+  moment this is an internal function.
 }

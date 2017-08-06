@@ -14,7 +14,7 @@ a vector
 }
 \description{
 Returns a binary factor of !NA and NA, where !NA indicates a datum that is not
-  missing, and NA indicats missingness.
+  missing, and NA indicates missingness.
 }
 \examples{
 

@@ -18,7 +18,9 @@ respect the dplyr verbs "starts_with", "contains", "ends_with", etc.}
 data with the added variable shifted named as `var_suffix`
 }
 \description{
-Shifting the values of a numeric
+Shadow shift only the selected variables in a dataset by specifying variable
+  names or use dplyr `vars` and dplyr verbs `starts_with`, `contains`,
+  `ends_with`, etc.
 }
 \examples{
 

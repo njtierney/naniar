@@ -50,6 +50,8 @@ Imports:
 RoxygenNote: 6.0.1.9000
 Collate: 
     'add-cols.R'
+    'add-n-prop-miss.R'
+    'cast-shadows.R'
     'data-oceanbuoys.R'
     'data-pedestrian.R'
     'data-riskfactors.R'

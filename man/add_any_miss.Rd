@@ -2,21 +2,18 @@
 % Please edit documentation in R/add-cols.R
 \name{add_any_miss}
 \alias{add_any_miss}
-\title{Add a column that tells you if there are any missing values}
+\title{Add a column describing presence of any missing values}
 \usage{
 add_any_miss(data, ..., label = "any_miss")
 }
 \arguments{
 \item{data}{data.frame}
 
-\item{...}{Variable names to use instead of the whole dataset. By default this
-looks at the whole dataset. Otherwise, this is one or more unquoted
-expressions separated by commas. These also respect the dplyr verbs
-"starts_with", "contains", "ends_with", etc. By default will add "_all" to
-the label if left blank, otherwise will add "_vars" to distinguish that it
-has not been used on all of the variables.}
+\item{...}{Variable names to use instead of the whole dataset.}
 
-\item{label}{label for the column, defaults to "any_miss"}
+\item{label}{label for the column, defaults to "any_miss". By default if no
+additional variables are listed the label col is "any_miss_all", otherwise
+it is "any_miss_vars", if variables are specified.}
 }
 \value{
 data.frame with data and the column labelling whether that row (for
@@ -24,10 +21,14 @@ data.frame with data and the column labelling whether that row (for
     "complete".
 }
 \description{
-Add a column that tells you if there are any missing values
-}
-\note{
-perhaps there should be a general function for this
+This adds a column named "any_miss" (by default) that describes whether any
+  there are any missings in all of the variables (default), or whether any of
+  the specified columns, specified using variables names or dplyr verbs,
+  `starts_with`, `contains`, `ends_with`, etc. By default the added column
+   will be called "any_miss_all", if no variables are specified, otherwise,
+   if variables are specified, the label will be "any_miss_vars" to indicate
+   that not all variables have been used to create the labels. By default the
+   `label` argument uses the prefix "any_miss", but this can be specified.
 }
 \examples{
 

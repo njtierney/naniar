@@ -2,7 +2,7 @@
 % Please edit documentation in R/add-cols.R
 \name{add_shadow}
 \alias{add_shadow}
-\title{Add a column of the shadows to the dataframe}
+\title{Add a shadow column to dataframe}
 \usage{
 add_shadow(data, ...)
 }
@@ -10,13 +10,15 @@ add_shadow(data, ...)
 \item{data}{data.frame}
 
 \item{...}{One or more unquoted expressions separated by commas. These also
-respect the dplyr verbs "starts_with", "contains", "ends_with", etc.}
+respect the dplyr verbs `starts_with`, `contains`, `ends_with`, etc.}
 }
 \value{
 data.frame
 }
 \description{
-Add a column of the shadows to the dataframe
+As an alternative to `bind_shadow()`, you can add specific individual shadow
+  columns to a dataset. These also respect the dplyr verbs
+  `starts_with`, `contains`, `ends_with`, etc.
 }
 \examples{
 

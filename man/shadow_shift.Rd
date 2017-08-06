@@ -2,7 +2,7 @@
 % Please edit documentation in R/shadow-shifters.R
 \name{shadow_shift}
 \alias{shadow_shift}
-\title{Shift missing values to facilite missing data exploration/visualisation}
+\title{Shift missing values to facilitate missing data exploration/visualisation}
 \usage{
 shadow_shift(x, ...)
 }

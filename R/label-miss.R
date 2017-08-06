@@ -1,4 +1,3 @@
-# NOTE - change these from `label_missing_` to `label_miss`
 #' Give NAs a more meaningful label
 #'
 #' Returns a binary factor of !NA and NA, where !NA indicates a datum that is not

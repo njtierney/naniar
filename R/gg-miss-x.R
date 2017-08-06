@@ -1,17 +1,14 @@
-# plotting functions for naniar
-
-
 #' @importFrom visdat vis_miss
 #' @export
 visdat::vis_miss
 
 #' Plot the number of missings per case (row)
 #'
-#' This function draws a ggplot of the number of missings in each row.
-#' The plot is a ggplot object with a basic customisation.
-#' You can customise it the way you wish, just like classic ggplot.
+#' This is a visual analogue to `miss_case_summary`. It draws a ggplot of the
+#'   number of missings in each case (row). A default minimal theme is used, which
+#'   can be customised as normal for ggplot.
 #'
-#' @param x a dataframe
+#' @param x data.frame
 #'
 #' @return a ggplot object depicting the number of missings in a given case.
 #' @export
@@ -27,20 +24,26 @@ gg_miss_case <- function(x){
   ggobject <- ggplot(data = miss_case_summary(x),
          aes(y = n_missing,
              x = case)) +
-    geom_bar(stat="identity", position="dodge", width = 0, colour="grey") +
+    geom_bar(stat = "identity",
+             position = "dodge",
+             width = 0,
+             colour = "grey") +
     geom_point() +
     coord_flip() +
     labs(y = "# Missing",
          x = "Cases") +
     theme_minimal()
+
   return(ggobject)
+
 }
 
 #' Plot the number of missings for each variable
 #'
-#' This function draws a ggplot plot of the number of missings in each column, rearranged to show which variables have the most missing data.
-#' The plot is a ggplot object with a basic customisation.
-#' You can customise it the way you wish, just like classic ggplot.
+#' This is a visual analogue to `miss_var_summary`. It draws a ggplot of the
+#'   number of missings in each variable, ordered to show which variables have
+#'   the most missing data. A default minimal rtheme is used, which can be
+#'   customised as normal for ggplot.
 #'
 #' @param x a dataframe
 #'
@@ -62,21 +65,25 @@ gg_miss_var <- function(x){
            aes(x = stats::reorder(variable, n_missing),
                y = n_missing,
                colour = variable)) +
-    geom_bar(stat="identity", position="dodge", width = 0) +
+    geom_bar(stat = "identity",
+             position = "dodge",
+             width = 0) +
     geom_point() +
     coord_flip() +
     scale_color_discrete(guide = FALSE) +
     labs(y = "# Missing",
          x = "Variables") +
     theme_minimal()
+
   return(ggobject)
+
 }
 
 #' Plot which variables contain a missing value
 #'
-#' `gg_miss_which` (need a better name!) produces a set of rectangles that indicate whether there is a missing element in a column or not
-#' The plot is a ggplot object with a basic customisation.
-#' You can customise it the way you wish, just like classic ggplot.
+#' This plot produces a set of rectangles indicating whether there is a missing
+#'   element in a column or not.  A default minimal theme is used, which can be
+#'   customised as normal for ggplot.
 #'
 #' @param x a dataframe
 #'
@@ -93,7 +100,6 @@ gg_miss_var <- function(x){
 gg_miss_which <- function(x){
 
   # tell us which columns have missing data
-  # airquality %>%
   ggobject <- x %>%
     purrr::map_df(anyNA) %>%
     purrr::map_df(function(x) ifelse(x == 0, "complete", "missing")) %>%
@@ -109,21 +115,22 @@ gg_miss_which <- function(x){
     scale_fill_grey(name = "") +
     scale_x_discrete(limits = names(x)) +
     theme(legend.position = "none") +
-    scale_y_discrete(breaks=c(""),
-                     labels=c("")) +
+    scale_y_discrete(breaks = c(""),
+                     labels = c("")) +
     labs(y = " ",
          x = " ")
+
   return(ggobject)
+
 }
 
 #' Plot the number of missings for each variable, broken down by a factor
 #'
 #' This function draws a ggplot plot of the number of missings in each column,
-#' broken down by a categorical variable from the dataset.
-#' The plot is a ggplot object with a basic customisation.
-#' You can customise it the way you wish, just like classic ggplot.
+#'   broken down by a categorical variable from the dataset. A default minimal
+#'   theme is used, which can be customised as normal for ggplot.
 #'
-#' @param x dataframe
+#' @param x data.frame
 #' @param fct column containing the factor variable
 #'
 #' @return ggplot object depicting the number of missings
@@ -152,16 +159,15 @@ gg_miss_fct <- function(x, fct){
   return(ggobject)
 }
 
-#' Lineplot of the cumulative sum of missing value for each variable
+#' Plot of cumulative sum of missing value for each variable
 #'
-#' A lineplot with the cumulative sum of missing values, reading columns from the left to
-#' the right of your dataframe.
-#' The plot is a ggplot object with a basic customisation.
-#' You can customise it the way you wish, just like classic ggplot.
+#' A plot showing the cumulative sum of missing values for each variable,
+#' reading columns from the left to the right of the initial dataframe. A
+#' default minimal theme is used, which can be customised as normal for ggplot.
 #'
-#' @param x a dataframe
+#' @param x a data.frame
 #'
-#' @return a ggplot object depicting the number of missings
+#' @return a ggplot object
 #' @export
 #'
 #' @examples
@@ -172,19 +178,22 @@ gg_miss_var_cumsum <- function(x){
 
   ggobject <- x %>%
     miss_var_cumsum() %>%
-    ggplot(aes(stats::reorder(variable, n_missing_cumsum), n_missing_cumsum, group = 1)) +
+    ggplot(aes(x = stats::reorder(variable, n_missing_cumsum),
+               y = n_missing_cumsum,
+               group = 1)) +
     geom_line(size = 2) +
-    labs(x = "Var", y = "Cumsum of missing values") +
+    labs(x = "Var",
+         y = "Cumsum of missing values") +
     theme_bw() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
   return(ggobject)
 }
 
-#' Lineplot of the cumulative sum of missing for cases
+#' Plot of cumulative sum of missing for cases
 #'
-#' A lineplot with the cumulative sum of missing values, reading the rows from the top to bottom
-#' The plot is a ggplot object with a basic customisation.
-#' You can customise it the way you wish, just like classic ggplot.
+#' A plot showing the cumulative sum of missing values for cases, reading the
+#' rows from the top to bottom. A default minimal theme is used, which can be
+#' customised as normal for ggplot.
 #'
 #' @param x a dataframe
 #' @param breaks the breaks for the x axis default is 20
@@ -201,27 +210,32 @@ gg_miss_var_cumsum <- function(x){
 gg_miss_case_cumsum <- function(x, breaks = 20){
 
   ggobject <- x %>%
-    miss_case_cumsum()%>%
-    ggplot(aes(stats::reorder(case, n_missing_cumsum), n_missing_cumsum, group = 1)) +
+    miss_case_cumsum() %>%
+    ggplot(aes(x = stats::reorder(case, n_missing_cumsum),
+               y = n_missing_cumsum,
+               group = 1)) +
     geom_line(size = 2) +
-    labs(x = "Case", y = "Cumsum of missing values") +
-    scale_x_discrete(breaks = seq(0, nrow(x), by = breaks))
-  theme_bw() +
+    labs(x = "Case",
+         y = "Cumsum of missing values") +
+    scale_x_discrete(breaks = seq(0,
+                                  nrow(x),
+                                  by = breaks)) +
+    theme_bw() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
   return(ggobject)
+
 }
 
 #' Plot the number of missings in a given repeating span
 #'
-#'
 #' `gg_miss_span` is a replacement function to
-#' `imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100)``, which shows the
-#' number of missings in a given span, or breaksize. The produced plot is a
-#' ggplot object which you can customise the way you  wish, just like classic
-#' ggplot.
+#'   `imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100)`, which shows the
+#'   number of missings in a given span, or breaksize. A default minimal theme
+#'   is used, which can be customised as normal for ggplot.
 #'
 #' @param data data.frame
-#' @param var a bare unquoted variable name from the data.frame
+#' @param var a bare unquoted variable name from `data`.
 #' @param span_every integer describing the length of the span to be explored
 #'
 #' @return ggplot2 object
@@ -263,6 +277,7 @@ gg_miss_span <- function(data,
                   subtitle = sprintf("Over a repeating span of %s", span_every),
                   x = "Span",
                   y = "Proportion Missing")
+
   return(ggobject)
 
 }

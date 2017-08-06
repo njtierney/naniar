@@ -7,7 +7,7 @@
 gg_miss_fct(x, fct)
 }
 \arguments{
-\item{x}{dataframe}
+\item{x}{data.frame}
 
 \item{fct}{column containing the factor variable}
 }
@@ -16,9 +16,8 @@ ggplot object depicting the number of missings
 }
 \description{
 This function draws a ggplot plot of the number of missings in each column,
-broken down by a categorical variable from the dataset.
-The plot is a ggplot object with a basic customisation.
-You can customise it the way you wish, just like classic ggplot.
+  broken down by a categorical variable from the dataset. A default minimal
+  theme is used, which can be customised as normal for ggplot.
 }
 \examples{
 

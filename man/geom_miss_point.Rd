@@ -49,7 +49,10 @@ are three types of arguments you can use here:
 Plot Missing Data Points
 }
 \details{
-`geom_miss_point` adds a missing data point geometry to ggplot2. This displays missing data points 10% below the minimum value.
+`geom_miss_point` provides a way to transform and plot missing values in
+  ggplot2. To do so it uses methods from ggobi to display missing data
+  points 10% below the minimum value, so that the values can be seen no the
+  same axis.
 }
 \note{
 Warning message if na.rm = T is supplied.

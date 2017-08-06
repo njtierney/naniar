@@ -13,9 +13,9 @@ gg_miss_which(x)
 a ggplot object
 }
 \description{
-`gg_miss_which` (need a better name!) produces a set of rectangles that indicate whether there is a missing element in a column or not
-The plot is a ggplot object with a basic customisation.
-You can customise it the way you wish, just like classic ggplot.
+This plot produces a set of rectangles indicating whether there is a missing
+  element in a column or not.  A default minimal theme is used, which can be
+  customised as normal for ggplot.
 }
 \examples{
 

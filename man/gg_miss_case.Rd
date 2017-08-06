@@ -7,15 +7,15 @@
 gg_miss_case(x)
 }
 \arguments{
-\item{x}{a dataframe}
+\item{x}{data.frame}
 }
 \value{
 a ggplot object depicting the number of missings in a given case.
 }
 \description{
-This function draws a ggplot of the number of missings in each row.
-The plot is a ggplot object with a basic customisation.
-You can customise it the way you wish, just like classic ggplot.
+This is a visual analogue to `miss_case_summary`. It draws a ggplot of the
+  number of missings in each case (row). A default minimal theme is used, which
+  can be customised as normal for ggplot.
 }
 \examples{
 

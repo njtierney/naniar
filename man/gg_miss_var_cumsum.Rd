@@ -2,21 +2,20 @@
 % Please edit documentation in R/gg-miss-x.R
 \name{gg_miss_var_cumsum}
 \alias{gg_miss_var_cumsum}
-\title{Lineplot of the cumulative sum of missing value for each variable}
+\title{Plot of cumulative sum of missing value for each variable}
 \usage{
 gg_miss_var_cumsum(x)
 }
 \arguments{
-\item{x}{a dataframe}
+\item{x}{a data.frame}
 }
 \value{
-a ggplot object depicting the number of missings
+a ggplot object
 }
 \description{
-A lineplot with the cumulative sum of missing values, reading columns from the left to
-the right of your dataframe.
-The plot is a ggplot object with a basic customisation.
-You can customise it the way you wish, just like classic ggplot.
+A plot showing the cumulative sum of missing values for each variable,
+reading columns from the left to the right of the initial dataframe. A
+default minimal theme is used, which can be customised as normal for ggplot.
 }
 \examples{
 

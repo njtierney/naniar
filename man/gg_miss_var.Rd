@@ -13,9 +13,10 @@ gg_miss_var(x)
 a ggplot object depicting the number of missings in a given column
 }
 \description{
-This function draws a ggplot plot of the number of missings in each column, rearranged to show which variables have the most missing data.
-The plot is a ggplot object with a basic customisation.
-You can customise it the way you wish, just like classic ggplot.
+This is a visual analogue to `miss_var_summary`. It draws a ggplot of the
+  number of missings in each variable, ordered to show which variables have
+  the most missing data. A default minimal rtheme is used, which can be
+  customised as normal for ggplot.
 }
 \examples{
 

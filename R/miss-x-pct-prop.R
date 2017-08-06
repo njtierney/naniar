@@ -25,6 +25,8 @@ miss_var_prop <- function(data){
 
 } # end function
 
+#' Percentage of variables containing missings
+#'
 #' Calculate the percentage of variables that contain a single missing value.
 #'
 #' @param data a dataframe
@@ -72,9 +74,9 @@ miss_case_prop <- function(data){
   # Return 1 if temp is 1
   # Prevent error when all the rows contain a NA and then mean is 1
   # so (1 -1)*100 = 0, whereas function should return 1
-  if(temp == 1){
+  if (temp == 1) {
     return(1)
-  } else if (temp == 0){
+  } else if (temp == 0) {
     # Return 0 if temp is 0
     # Prevent error when no row contains a NA and then mean is 0
     # so (1 -0)*1 = 1, whereas function should return 0.

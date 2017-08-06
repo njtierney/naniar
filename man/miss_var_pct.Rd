@@ -2,7 +2,7 @@
 % Please edit documentation in R/miss-x-pct-prop.R
 \name{miss_var_pct}
 \alias{miss_var_pct}
-\title{Calculate the percentage of variables that contain a single missing value.}
+\title{Percentage of variables containing missings}
 \usage{
 miss_var_pct(data)
 }

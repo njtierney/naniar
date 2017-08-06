@@ -1,10 +1,11 @@
-#' Cumsum the missingness in each variable
+#' Cumulative sum of the number of missings in each variable
 #'
-#' Provide a data_frame containing the cumsum of number & percentage of missingness for each variable
+#' Provide a data.frame containing the cumulative sum of number & percentage of
+#'   missingness for each variable.
 #'
-#' @param data a dataframe
+#' @param data a data.frame
 #'
-#' @return a data_frame of the cumsum of missing data in each variable
+#' @return a tibble of the cumulative sum of missing data in each variable
 #' @export
 #'
 #' @examples
@@ -45,11 +46,13 @@ miss_var_cumsum.grouped_df <- function(data){
 
 #' Summarise the missingness in each case
 #'
-#' Provide a data_frame containing each case (row), the number of missing values in each case,  and the percent of missing values in each case.
+#' Provide a data.frame containing each case (row), the number and percent of
+#'   missing values in each case.
 #'
 #' @param data a dataframe
 #'
-#' @return a data_frame of the percent of missing data in each case
+#' @return a tibble containing the number and percent of missing data in each
+#'   case
 #' @export
 #'
 #' @examples

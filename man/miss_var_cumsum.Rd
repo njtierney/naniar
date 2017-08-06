@@ -2,18 +2,19 @@
 % Please edit documentation in R/miss-x-cumsum.R
 \name{miss_var_cumsum}
 \alias{miss_var_cumsum}
-\title{Cumsum the missingness in each variable}
+\title{Cumulative sum of the number of missings in each variable}
 \usage{
 miss_var_cumsum(data)
 }
 \arguments{
-\item{data}{a dataframe}
+\item{data}{a data.frame}
 }
 \value{
-a data_frame of the cumsum of missing data in each variable
+a tibble of the cumulative sum of missing data in each variable
 }
 \description{
-Provide a data_frame containing the cumsum of number & percentage of missingness for each variable
+Provide a data.frame containing the cumulative sum of number & percentage of
+  missingness for each variable.
 }
 \examples{
 

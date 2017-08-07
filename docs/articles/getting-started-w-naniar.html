@@ -152,7 +152,7 @@
 <li>Month</li>
 <li>Day</li>
 </ul>
-<p>Typically, when exploring this data, you might want to explore the variables Solar.R and Ozone, and do something like this:</p>
+<p>Typically, when exploring this data, you might want to explore the variables Solar.R and Ozone, and so plot a scatterplot of solar radiation and ozone, doing something like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality, 
        <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R, 
@@ -160,8 +160,7 @@
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</code></pre></div>
 <pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
 <p><img src="getting-started-w-naniar_files/figure-html/unnamed-chunk-1-1.png" width="480" style="display: block; margin: auto;"></p>
-<p>The problem with this is that ggplot does not handle missings be default, and removes the missing values. This makes them hard to explore.</p>
-<p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace “NA” values with values 10% lower than the minimum value in that variable. This is provided with the <code><a href="../reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
+<p>The problem with this is that ggplot does not handle missings be default, and removes the missing values. This makes them hard to explore, it is a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace “NA” values with values 10% lower than the minimum value in that variable. This is provided with the <code><a href="../reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality, 
        <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R, 
            <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span>

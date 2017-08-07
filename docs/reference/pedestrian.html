@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -100,10 +103,10 @@
 
     
     <p>This dataset contains hourly counts of pedestrians from 4 sensors around
-  Melbourne: Birrarung Marr, Bourke Street Mall, Flagstaff station, and
-  Spencer St-Collins St (south), recorded from January 1st 2016 at 00:00:00
-  to December 31st 2016 at 23:00:00. The data is made free and publicly
-  available from <a href='https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp'>https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp</a></p>
+Melbourne: Birrarung Marr, Bourke Street Mall, Flagstaff station, and
+Spencer St-Collins St (south), recorded from January 1st 2016 at 00:00:00
+to December 31st 2016 at 23:00:00. The data is made free and publicly
+available from <a href='https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp'>https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp</a></p>
     
 
     <pre class="usage"><span class='no'>pedestrian</span></pre>
@@ -111,18 +114,18 @@
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>A tibble with 37,700 rows and 9 variables:</p><dl class='dl-horizontal'>
-  <dt>hourly_counts</dt><dd><p>(integer) the number of pedestrians counted at that sensor
-  at that time</p></dd>
-  <dt>date_time</dt><dd><p>(POSIXct, POSIXt) The time that the count was taken</p></dd>
-  <dt>year</dt><dd><p>(integer) Year of record</p></dd>
-  <dt>month</dt><dd><p>(factor) Month of record as an ordered factor (1 = January, 12 =
-    December)</p></dd>
-  <dt>month_day</dt><dd><p>(integer) Full day of the month</p></dd>
-  <dt>week_day</dt><dd><p>(factor) Full day of the week as an ordered factor (1 = Sunday,
-  7 = Saturday)</p></dd>
-  <dt>hour</dt><dd><p>(integer) The hour of the day in 24 hour format</p></dd>
-  <dt>sensor_id</dt><dd><p>(integer) the id of the sensor</p></dd>
-  <dt>sensor_name</dt><dd><p>(character) the full name of the sensor</p></dd>
+<dt>hourly_counts</dt><dd><p>(integer) the number of pedestrians counted at that sensor
+at that time</p></dd>
+<dt>date_time</dt><dd><p>(POSIXct, POSIXt) The time that the count was taken</p></dd>
+<dt>year</dt><dd><p>(integer) Year of record</p></dd>
+<dt>month</dt><dd><p>(factor) Month of record as an ordered factor (1 = January, 12 =
+December)</p></dd>
+<dt>month_day</dt><dd><p>(integer) Full day of the month</p></dd>
+<dt>week_day</dt><dd><p>(factor) Full day of the week as an ordered factor (1 = Sunday,
+7 = Saturday)</p></dd>
+<dt>hour</dt><dd><p>(integer) The hour of the day in 24 hour format</p></dd>
+<dt>sensor_id</dt><dd><p>(integer) the id of the sensor</p></dd>
+<dt>sensor_name</dt><dd><p>(character) the full name of the sensor</p></dd>
 </dl>
     
 
@@ -139,7 +142,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

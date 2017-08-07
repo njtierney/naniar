@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -100,6 +103,71 @@
     </div>
 
     <div class="contents">
+    <div id="naniar-0-0-9-9990-20170807" class="section level1">
+<h1 class="hasAnchor">
+<a href="#naniar-0-0-9-9990-20170807" class="anchor"></a>naniar 0.0.9.9990 (2017/08/07)</h1>
+</div>
+    <div id="naniar-0-0-9-9800-20170803" class="section level1">
+<h1 class="hasAnchor">
+<a href="#naniar-0-0-9-9800-20170803" class="anchor"></a>naniar 0.0.9.9800 (2017/08/03)</h1>
+<div id="minor-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
+<ul>
+<li>Add <code>pct</code> and <code>prop</code> helpers (#78)</li>
+<li>removed <code>miss_df_pct</code> - this was literally the same as <code>pct_miss</code> or <code>prop_miss</code>.</li>
+<li>break larger files into smaller, more manageable files (#83)</li>
+</ul>
+</div>
+</div>
+    <div id="naniar-0-0-9-9600-20170725" class="section level1">
+<h1 class="hasAnchor">
+<a href="#naniar-0-0-9-9600-20170725" class="anchor"></a>naniar 0.0.9.9600 (2017/07/25)</h1>
+<div id="major-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#major-changes-1" class="anchor"></a>Major changes</h2>
+<ul>
+<li>three new functions : <code>miss_case_cumsum</code> / <code>miss_var_cumsum</code> / <code>replace_to_na</code>
+</li>
+<li>two new visualisations : <code>gg_var_cumsum</code> &amp; <code>gg_case_cumsum</code>
+</li>
+</ul>
+</div>
+<div id="not-so-major-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#not-so-major-changes" class="anchor"></a>Not so major changes</h2>
+<ul>
+<li>
+<code>miss_var_summary</code> &amp; <code>miss_case_summary</code> now have consistent output (one was ordered by n_missing, not the other).</li>
+<li>Updated README</li>
+</ul>
+</div>
+<div id="minor-edits" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-edits" class="anchor"></a>Minor edits</h2>
+<ul>
+<li>prevent error <code>in miss_case_pct</code>
+</li>
+<li>
+<code>enquo_x</code> is now <code>x</code> (as adviced by <a href="https://twitter.com/hadleywickham/status/885993307968593920">Hadley</a>)</li>
+<li>Now has ByteCompile to TRUE</li>
+<li>add Colin to auth</li>
+<li>
+<code>miss_summary</code> docs was not up to date</li>
+</ul>
+</div>
+</div>
+    <div id="naniar-0-0-9-9500-20170725" class="section level1">
+<h1 class="hasAnchor">
+<a href="#naniar-0-0-9-9500-20170725" class="anchor"></a>naniar 0.0.9.9500 (2017/07/25)</h1>
+<div id="breaking-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaking-changes" class="anchor"></a>breaking changes</h2>
+<ul>
+<li>I have flip flopped and changed back to <code>naniar</code>,</li>
+</ul>
+</div>
+</div>
     <div id="narnia-0-0-9-9400-20170724" class="section level1">
 <h1 class="hasAnchor">
 <a href="#narnia-0-0-9-9400-20170724" class="anchor"></a>narnia 0.0.9.9400 (2017/07/24)</h1>
@@ -111,9 +179,9 @@
 <code>replace_to_na</code> is a complement to <code><a href="http://www.rdocumentation.org/packages/tidyr/topics/replace_na">tidyr::replace_na</a></code> and replaces a specified value from a variable to NA.</li>
 </ul>
 </div>
-<div id="breaking-changes" class="section level2">
+<div id="breaking-changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#breaking-changes" class="anchor"></a>breaking changes</h2>
+<a href="#breaking-changes-1" class="anchor"></a>breaking changes</h2>
 <ul>
 <li>changed <code>geom_missing_point()</code> to <code><a href="../reference/geom_miss_point.html">geom_miss_point()</a></code>, to keep consistent with the rest of the functions in <code>naniar</code>.</li>
 </ul>
@@ -290,7 +358,7 @@
 <ul>
 <li>As stated in 0.0.5.9000, to address <a href="https://github.com/njtierney/naniar/issues/38">Issue #38</a>, I am moving towards the format miss_type_value/fun, because it makes more sense to me when tabbing through functions.</li>
 </ul>
-<p>The left hand side functions have been made defunct in favour of the right hand side. - <code>percent_missing_case()</code> –&gt; <code><a href="../reference/miss_case_pct.html">miss_case_pct()</a></code> - <code>percent_missing_var()</code> –&gt; <code><a href="../reference/miss_var_pct.html">miss_var_pct()</a></code> - <code>percent_missing_df()</code> –&gt; <code><a href="../reference/miss_df_pct.html">miss_df_pct()</a></code> - <code>summary_missing_case()</code> –&gt; <code><a href="../reference/miss_case_summary.html">miss_case_summary()</a></code> - <code>summary_missing_var()</code> –&gt; <code><a href="../reference/miss_var_summary.html">miss_var_summary()</a></code> - <code>table_missing_case()</code> –&gt; <code><a href="../reference/miss_case_table.html">miss_case_table()</a></code> - <code>table_missing_var()</code> –&gt; <code><a href="../reference/miss_var_table.html">miss_var_table()</a></code></p>
+<p>The left hand side functions have been made defunct in favour of the right hand side. - <code>percent_missing_case()</code> –&gt; <code><a href="../reference/miss_case_pct.html">miss_case_pct()</a></code> - <code>percent_missing_var()</code> –&gt; <code><a href="../reference/miss_var_pct.html">miss_var_pct()</a></code> - <code>percent_missing_df()</code> –&gt; <code>miss_df_pct()</code> - <code>summary_missing_case()</code> –&gt; <code><a href="../reference/miss_case_summary.html">miss_case_summary()</a></code> - <code>summary_missing_var()</code> –&gt; <code><a href="../reference/miss_var_summary.html">miss_var_summary()</a></code> - <code>table_missing_case()</code> –&gt; <code><a href="../reference/miss_case_table.html">miss_case_table()</a></code> - <code>table_missing_var()</code> –&gt; <code><a href="../reference/miss_var_table.html">miss_var_table()</a></code></p>
 </div>
 </div>
     <div id="naniar-0-0-5-9000-20160108" class="section level1">
@@ -311,7 +379,7 @@
 <code>miss_case_summary</code> = I want to find the number / percentage of missings in each case <code>miss_case_table</code> = I want a tabulation of the number / percentage of cases missing</li>
 </ul>
 <p>This is more consistent and easier to reason with.</p>
-<p>Thus, I have renamed the following functions: - <code>percent_missing_case()</code> –&gt; <code><a href="../reference/miss_case_pct.html">miss_case_pct()</a></code> - <code>percent_missing_var()</code> –&gt; <code><a href="../reference/miss_var_pct.html">miss_var_pct()</a></code> - <code>percent_missing_df()</code> –&gt; <code><a href="../reference/miss_df_pct.html">miss_df_pct()</a></code> - <code>summary_missing_case()</code> –&gt; <code><a href="../reference/miss_case_summary.html">miss_case_summary()</a></code> - <code>summary_missing_var()</code> –&gt; <code><a href="../reference/miss_var_summary.html">miss_var_summary()</a></code> - <code>table_missing_case()</code> –&gt; <code><a href="../reference/miss_case_table.html">miss_case_table()</a></code> - <code>table_missing_var()</code> –&gt; <code><a href="../reference/miss_var_table.html">miss_var_table()</a></code></p>
+<p>Thus, I have renamed the following functions: - <code>percent_missing_case()</code> –&gt; <code><a href="../reference/miss_case_pct.html">miss_case_pct()</a></code> - <code>percent_missing_var()</code> –&gt; <code><a href="../reference/miss_var_pct.html">miss_var_pct()</a></code> - <code>percent_missing_df()</code> –&gt; <code>miss_df_pct()</code> - <code>summary_missing_case()</code> –&gt; <code><a href="../reference/miss_case_summary.html">miss_case_summary()</a></code> - <code>summary_missing_var()</code> –&gt; <code><a href="../reference/miss_var_summary.html">miss_var_summary()</a></code> - <code>table_missing_case()</code> –&gt; <code><a href="../reference/miss_case_table.html">miss_case_table()</a></code> - <code>table_missing_var()</code> –&gt; <code><a href="../reference/miss_var_table.html">miss_var_table()</a></code></p>
 <p>These will be made defunct in the next release, 0.0.6.9000 (“The Wood Between Worlds”).</p>
 </div>
 </div>
@@ -373,6 +441,8 @@
 </ul>
 </div>
 </div>
+    NA
+    NA
     </div>
   </div>
 
@@ -380,6 +450,10 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#naniar-0-0-9-9990-20170807">0.0.9.9990</a></li>
+        <li><a href="#naniar-0-0-9-9800-20170803">0.0.9.9800</a></li>
+        <li><a href="#naniar-0-0-9-9600-20170725">0.0.9.9600</a></li>
+        <li><a href="#naniar-0-0-9-9500-20170725">0.0.9.9500</a></li>
         <li><a href="#narnia-0-0-9-9400-20170724">0.0.9.9400</a></li>
         <li><a href="#narnia-0-0-9-9201-20170712">0.0.9.9201</a></li>
         <li><a href="#narnia-0-0-9-9101-20170711">0.0.9.9101</a></li>
@@ -395,6 +469,8 @@
         <li><a href="#naniar-0-0-5-9000-20160108">0.0.5.9000</a></li>
         <li><a href="#naniar-0-0-4-9000-20161231">0.0.4.9000</a></li>
         <li><a href="#naniar-0-0-3-9901-20161218">0.0.3.9901</a></li>
+        <li><a href="#NA">NA</a></li>
+        <li><a href="#NA">NA</a></li>
       </ul>
     </div>
   </div>
@@ -403,7 +479,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -99,7 +102,9 @@
     </div>
 
     
-    <p>gather exists as we want to include this extra metadata about the rows that have missing data, but I also wanted to include some extra information about the class of the data, in case we need to gather the data back into a wider, rather than long, format. Here it takes a function `visdat`, `visdat:::fingerprint`, which is currently not a particularly complex function.</p>
+    <p><code>gather_shadow</code> is a long-form representation of binding the shadow matrix to
+your data, producing variables named <code>rows</code>, <code>var</code>, and <code>miss</code>, where
+<code>miss</code> contains the missing value representation.</p>
     
 
     <pre class="usage"><span class='fu'>gather_shadow</span>(<span class='no'>data</span>)</pre>
@@ -115,7 +120,7 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a dataframe in long, or "molten" format, containing information about the missings</p>
+    <p>dataframe in long, format, containing information about the missings</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -151,7 +156,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

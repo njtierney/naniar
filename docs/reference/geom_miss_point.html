@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -111,8 +114,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>mapping</th>
-      <td><p>Set of aesthetic mappings created by <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></code>
-or <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes_'>aes_</a></code>. If specified and <code>inherit.aes = TRUE</code>
+      <td><p>Set of aesthetic mappings created by <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>ggplot2::aes()</a></code>
+or <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes_'>ggplot2::aes_()</a></code>. If specified and <code>inherit.aes = TRUE</code>
 (the default), is combined with the default mapping at the top level of the
 plot. You only need to supply mapping if there isn't a mapping defined for
 the plot.</p></td>
@@ -151,12 +154,12 @@ default plot specification, e.g. borders.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>other arguments passed on to <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/layer'>layer</a></code>. There
+      <td><p>other arguments passed on to <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/layer'>ggplot2::layer()</a></code>. There
 are three types of arguments you can use here:</p><ul>
 <li><p>Aesthetics: to set an aesthetic to a fixed value, like
- <code>color = "red"</code> or <code>size = 3.</code></p></li>
+<code>color = "red"</code> or <code>size = 3.</code></p></li>
 <li><p>Other arguments to the layer, for example you override the default
- <code>stat</code> associated with the layer.</p></li>
+<code>stat</code> associated with the layer.</p></li>
 <li><p>Other arguments passed on to the stat.</p></li>
 </ul></td>
     </tr>
@@ -164,7 +167,10 @@ are three types of arguments you can use here:</p><ul>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code> geom_miss_point</code> adds a missing data point geometry to ggplot2. This displays missing data points 10<!-- % below the minimum value. --></p>
+    <p><code>geom_miss_point</code> provides a way to transform and plot missing values in
+ggplot2. To do so it uses methods from ggobi to display missing data
+points 10<!-- % below the minimum value, so that the values can be seen no the -->
+same axis.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -204,7 +210,7 @@ are three types of arguments you can use here:</p><ul>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

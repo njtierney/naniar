@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -99,7 +102,10 @@
     </div>
 
     
-    <p>Add a column describing whether there is a shadow</p>
+    <p>Instead of focussing on labelling whether there are missings, we instead
+focus on whether there have been any shadows created. This can be useful
+when data has been imputed and you need to determine which rows contained
+missing values when the shadow was bound to the dataset.</p>
     
 
     <pre class="usage"><span class='fu'>add_label_shadow</span>(<span class='no'>data</span>)</pre>
@@ -115,14 +121,15 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame with</p>
+    <p>data.frame with a column, "any_missing", which describes whether or
+not there are any rows that have a shadow value.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
-<span class='fu'><a href='add_shadow.html'>add_shadow</a></span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>) <span class='kw'>%&gt;%</span>
-<span class='fu'>add_label_shadow</span>()</div><div class='output co'>#&gt; # A tibble: 153 x 9
+  <span class='fu'><a href='add_shadow.html'>add_shadow</a></span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_label_shadow</span>()</div><div class='output co'>#&gt; # A tibble: 153 x 9
 #&gt;    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA Solar.R_NA any_missing
 #&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;fctr&gt;     &lt;fctr&gt;       &lt;chr&gt;
 #&gt;  1    41     190   7.4    67     5     1      !NA        !NA Not Missing
@@ -153,7 +160,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

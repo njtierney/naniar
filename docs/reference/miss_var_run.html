@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return the number of missing or complete values in a single run — miss_var_run • naniar</title>
+<title>Find the number of missing and complete values in a single run — miss_var_run • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -95,14 +98,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return the number of missing or complete values in a single run</h1>
+    <h1>Find the number of missing and complete values in a single run</h1>
     </div>
 
     
-    <p>In time series it can be useful to determine the number of missing values
-    that occur in a single run. This function `miss_var_run` returns a
-    dataframe with the column names "run_length" and "is_na", which describe
-    the length of the run, and whether that run describes a missing value</p>
+    <p>It us useful to find the number of missing values that occur in a single run.
+The function, <code>miss_var_run()</code>, returns a dataframe with the column names
+"run_length" and "is_na", which describe the length of the run, and
+whether that run describes a missing value.</p>
     
 
     <pre class="usage"><span class='fu'>miss_var_run</span>(<span class='no'>data</span>, <span class='no'>var</span>)</pre>
@@ -123,13 +126,46 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>dataframe with column names "run_length" and "is_na", which describe
-    the length of the run, and whether that run describes a missing value.</p>
+the length of the run, and whether that run describes a missing value.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
+<span class='fu'>miss_var_run</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>)</div><div class='output co'>#&gt; # A tibble: 35 x 2
+#&gt;    run_length    is_na
+#&gt;         &lt;int&gt;    &lt;chr&gt;
+#&gt;  1       6628 complete
+#&gt;  2          1  missing
+#&gt;  3       5250 complete
+#&gt;  4        624  missing
+#&gt;  5       3652 complete
+#&gt;  6          1  missing
+#&gt;  7       1290 complete
+#&gt;  8        744  missing
+#&gt;  9       7420 complete
+#&gt; 10          1  missing
+#&gt; # ... with 25 more rows</div><div class='input'>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
+
+<span class='co'># find the number of runs missing/complete for each month</span>
+
+<span class='no'>pedestrian</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>month</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>miss_var_run</span>(<span class='no'>hourly_counts</span>)</div><div class='output co'>#&gt; # A tibble: 51 x 3
+#&gt;       month run_length    is_na
+#&gt;       &lt;ord&gt;      &lt;int&gt;    &lt;chr&gt;
+#&gt;  1  January       2976 complete
+#&gt;  2 February       2784 complete
+#&gt;  3    March       2976 complete
+#&gt;  4    April        888 complete
+#&gt;  5    April        552  missing
+#&gt;  6    April       1440 complete
+#&gt;  7      May        744 complete
+#&gt;  8      May         72  missing
+#&gt;  9      May       2160 complete
+#&gt; 10     June       2880 complete
+#&gt; # ... with 41 more rows</div><div class='input'>
+<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 
 <span class='co'># explore the number of missings in a given run</span>
 <span class='fu'>miss_var_run</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>) <span class='kw'>%&gt;%</span>
@@ -143,6 +179,23 @@
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>is_na</span>,
              <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>run_length</span>)) +
       <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot'>geom_boxplot</a></span>()</div><div class='img'><img src='miss_var_run-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='co'># using group_by</span>
+ <span class='no'>pedestrian</span> <span class='kw'>%&gt;%</span>
+   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>month</span>) <span class='kw'>%&gt;%</span>
+   <span class='fu'>miss_var_run</span>(<span class='no'>hourly_counts</span>)</div><div class='output co'>#&gt; # A tibble: 51 x 3
+#&gt;       month run_length    is_na
+#&gt;       &lt;ord&gt;      &lt;int&gt;    &lt;chr&gt;
+#&gt;  1  January       2976 complete
+#&gt;  2 February       2784 complete
+#&gt;  3    March       2976 complete
+#&gt;  4    April        888 complete
+#&gt;  5    April        552  missing
+#&gt;  6    April       1440 complete
+#&gt;  7      May        744 complete
+#&gt;  8      May         72  missing
+#&gt;  9      May       2160 complete
+#&gt; 10     June       2880 complete
+#&gt; # ... with 41 more rows</div><div class='input'>
 
 </div></pre>
   </div>
@@ -161,7 +214,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

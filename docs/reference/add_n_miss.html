@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -99,7 +102,9 @@
     </div>
 
     
-    <p>It can be useful when doing data analysis to add the number of missing data points into your dataframe. add_n_miss adds a column named "n_miss", which contains the number of missing values in that row.</p>
+    <p>It can be useful when doing data analysis to add the number of missing data
+points into your dataframe. <code>add_n_miss</code> adds a column named "n_miss",
+which contains the number of missing values in that row.</p>
     
 
     <pre class="usage"><span class='fu'>add_n_miss</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"n_miss"</span>)</pre>
@@ -116,7 +121,7 @@
       <td><p>Variable names to use instead of the whole dataset. By default this
 looks at the whole dataset. Otherwise, this is one or more unquoted
 expressions separated by commas. These also respect the dplyr verbs
-"starts_with", "contains", "ends_with", etc. By default will add "_all" to
+<code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, etc. By default will add "_all" to
 the label if left blank, otherwise will add "_vars" to distinguish that it
 has not been used on all of the variables.</p></td>
     </tr>
@@ -191,7 +196,7 @@ has not been used on all of the variables.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

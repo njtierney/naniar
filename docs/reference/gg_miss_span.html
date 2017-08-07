@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot the proportion of missings in a given repeating span — gg_miss_span • naniar</title>
+<title>Plot the number of missings in a given repeating span — gg_miss_span • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -95,15 +98,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot the proportion of missings in a given repeating span</h1>
+    <h1>Plot the number of missings in a given repeating span</h1>
     </div>
 
     
-    <p>`gg_miss_span` is a replacement function to
-`imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100)``, which shows the
-number of missings in a given span, or breaksize. The produced plot is a
-ggplot object which you can customise the way you  wish, just like classic
-ggplot.</p>
+    <p><code>gg_miss_span</code> is a replacement function to
+<code><a href='http://www.rdocumentation.org/packages/imputeTS/topics/plotNA.distributionBar'>imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100)</a></code>, which shows the
+number of missings in a given span, or breaksize. A default minimal theme
+is used, which can be customised as normal for ggplot.</p>
     
 
     <pre class="usage"><span class='fu'>gg_miss_span</span>(<span class='no'>data</span>, <span class='no'>var</span>, <span class='no'>span_every</span>)</pre>
@@ -117,7 +119,7 @@ ggplot.</p>
     </tr>
     <tr>
       <th>var</th>
-      <td><p>a bare unquoted variable name from the data.frame</p></td>
+      <td><p>a bare unquoted variable name from <code>data</code>.</p></td>
     </tr>
     <tr>
       <th>span_every</th>
@@ -166,7 +168,7 @@ ggplot.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

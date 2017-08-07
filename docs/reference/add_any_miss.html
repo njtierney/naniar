@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a column that tells you if there are any missing values — add_any_miss • naniar</title>
+<title>Add a column describing presence of any missing values — add_any_miss • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -95,11 +98,18 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a column that tells you if there are any missing values</h1>
+    <h1>Add a column describing presence of any missing values</h1>
     </div>
 
     
-    <p>Add a column that tells you if there are any missing values</p>
+    <p>This adds a column named "any_miss" (by default) that describes whether any
+there are any missings in all of the variables (default), or whether any of
+the specified columns, specified using variables names or dplyr verbs,
+<code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, etc. By default the added column
+will be called "any_miss_all", if no variables are specified, otherwise,
+if variables are specified, the label will be "any_miss_vars" to indicate
+that not all variables have been used to create the labels. By default the
+<code>label</code> argument uses the prefix "any_miss", but this can be specified.</p>
     
 
     <pre class="usage"><span class='fu'>add_any_miss</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"any_miss"</span>)</pre>
@@ -113,28 +123,21 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Variable names to use instead of the whole dataset. By default this
-looks at the whole dataset. Otherwise, this is one or more unquoted
-expressions separated by commas. These also respect the dplyr verbs
-"starts_with", "contains", "ends_with", etc. By default will add "_all" to
-the label if left blank, otherwise will add "_vars" to distinguish that it
-has not been used on all of the variables.</p></td>
+      <td><p>Variable names to use instead of the whole dataset.</p></td>
     </tr>
     <tr>
       <th>label</th>
-      <td><p>label for the column, defaults to "any_miss"</p></td>
+      <td><p>label for the column, defaults to "any_miss". By default if no
+additional variables are listed the label col is "any_miss_all", otherwise
+it is "any_miss_vars", if variables are specified.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>data.frame with data and the column labelling whether that row (for
-    those variables) has any missing values - indicated by "missing" and
-    "complete".</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>perhaps there should be a general function for this</p>
+those variables) has any missing values - indicated by "missing" and
+"complete".</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -174,8 +177,6 @@ has not been used on all of the variables.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#note">Note</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
@@ -185,7 +186,7 @@ has not been used on all of the variables.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

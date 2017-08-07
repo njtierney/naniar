@@ -9,29 +9,37 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-There are a variety of different plots becoming available in the naniar package. In this vignette, we aim to discuss why you would want to use the visualisations in naniar, and also how to interpret the visualisations created. If you would like to know more about the philosophy of the `naniar` package, you should read the vignette "Getting Started with naniar", parts of this visualisation vignette are be similar/identical to this vignette.
+There are a variety of different plots to explore missing data available in the naniar package. This vignette simply showcases all of the visualisations. If you would like to know more about the philosophy of the `naniar` package, you should read the vignette ["Getting Started with naniar"]().
+
+A key point to remember with the visualisation tools in `naniar` is that there is a way to get the data from the plot out from the visualisation.
 
 # Getting started
 
-One of the first plots that I recommend you start with when you are first exploring your missing data, is the `vis_miss` plot, which is re-exported from [`visdat`](https://www.github.com/ropensci/visdat).
+One of the first plots that I recommend you start with when you are first exploring your missing data, is the `vis_miss()` plot, which is re-exported from [`visdat`](https://www.github.com/ropensci/visdat).
 
-This plot provides a specified visualiation of the amount of missingd data
+```{r}
+library(naniar)
+
+vis_miss(airquality)
+```
+
+This plot provides a specific visualiation of the amount of missing data, showing in black the location of missing values, and also providing information on the overall percentage of missing values overall (in the legend), and in each variable.
 
 # Exploring Missingness Mechanisms
 
-You will then want to eplore different missing data mechanisms. To do this we provide many different plots to assist with this.
-
-The first incorporates the method of shifting missing values so that they can be visualised on the same axes as the regular values, and then colours the missing and not missing points.
+There are a few different ways to explore different missing data mechanisms and relationships. One way incorporates the method of shifting missing values so that they can be visualised on the same axes as the regular values, and then colours the missing and not missing points. This is implemented with `geom_miss_point()`.
 
 # `geom_miss_point()`
 
-```{r}
-
+```{r ggplot-geom-miss-point}
+library(ggplot2)
 # using regular geom_point()
 ggplot(airquality,
        aes(x = Ozone,
            y = Solar.R)) +
 geom_point()
+
+library(naniar)
 
 # using  geom_miss_point()
 ggplot(airquality,
@@ -56,11 +64,15 @@ ggplot(airquality,
 
 ```
 
-# `gg_miss_var()`
+# General visual summaries of missing data
 
-This plot shows the number of missing values in each variable.
+These
 
-```{r}
+## `gg_miss_var()`
+
+This plot shows the number of missing values in each variable in a dataset. It is powered by the `miss_var_summary()` function.
+
+```{r gg-miss-var}
 
 gg_miss_var(airquality)
 library(ggplot2)
@@ -69,37 +81,45 @@ gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 ```
 
 
-# `gg_miss_case()`
+## `gg_miss_case()`
 
-This plot shows the number of missing values in each case.
+This plot shows the number of missing values in each case. It is powered by the `miss_case_summary()` function.
 
-```{r}
+```{r gg-miss-case}
 gg_miss_case(airquality)
 library(ggplot2)
 gg_miss_case(airquality) + labs(x = "Number of Cases")
 ```
 
 
-# `gg_miss_fct()`
+## `gg_miss_fct()`
 
-This plot shows the number of missings in each column, broken down by a categorical variable from the dataset.
+This plot shows the number of missings in each column, broken down by a categorical variable from the dataset. It is powered by a `dplyr::group_by` statement followed by `miss_var_summary()`. 
 
-```{r}
+```{r gg-miss-fct}
 
 gg_miss_fct(x = riskfactors, fct = marital)
 library(ggplot2)
 gg_miss_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
 
+# using group_by
+library(dplyr)
+riskfactors %>%
+  group_by(marital) %>%
+  miss_var_summary()
+
 ```
 
-# `gg_miss_span()`
+## `gg_miss_span()`
 
-This plot shows the number of missings in a given span, or breaksize.
+This plot shows the number of missings in a given span, or breaksize, for a single selected variable. In this case we look at the span of `hourly_counts` from the pedestrian dataset.  It is powered by the `miss_var_span` function
 
-```{r}
+```{r gg-miss-span}
+
+# data method
 
 miss_var_span(pedestrian, hourly_counts, span_every = 3000)
-library(ggplot2)
+
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
 # works with the rest of ggplot
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
@@ -108,30 +128,32 @@ gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
 ```
 
 
-# `gg_miss_case_cumsum()`
+## `gg_miss_case_cumsum()`
 
-This plot shows the cumulative sum of missing values, reading the rows from the top to bottom.
+This plot shows the cumulative sum of missing values, reading the rows of the dataset from the top to bottom. It is powered by the `miss_case_cumsum()` function.
 
-```{r}
+```{r gg-miss-case-cumsum}
 gg_miss_case_cumsum(airquality)
 library(ggplot2)
 gg_miss_case_cumsum(riskfactors, breaks = 50) + theme_bw()
+
+miss_case_cumsum(riskfactors)
 ```
 
-# `gg_miss_var_cumsum()`
+## `gg_miss_var_cumsum()`
 
-This plot shows the cumulative sum of missing values, reading columns from the left to the right of your dataframe.
+This plot shows the cumulative sum of missing values, reading columns from the left to the right of your dataframe. It is powered by the `miss_var_cumsum()` function.
 
-```{r}
+```{r gg-miss-var-cumsum}
 gg_miss_var_cumsum(airquality)
 ```
 
 
-# `gg_miss_which()`
+## `gg_miss_which()`
 
-This plot shows a set of rectangles that indicate whether there is a missing element in a column or not. 
+This plot shows a set of rectangles that indicate whether there is a missing element in a column or not.
 
-```{r}
+```{r gg-miss-which}
 gg_miss_which(airquality)
 ```
 

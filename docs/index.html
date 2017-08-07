@@ -47,6 +47,9 @@
 <li>
       <a href="articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -84,43 +87,13 @@
 <p><code>naniar</code> aims to make it easy to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data.</p>
 <p>Currently it provides:</p>
 <ul>
-<li>Data structures for missing data
-<ul>
-<li><code><a href="reference/as_shadow.html">as_shadow()</a></code></li>
-<li><code><a href="reference/bind_shadow.html">bind_shadow()</a></code></li>
-<li><code><a href="reference/gather_shadow.html">gather_shadow()</a></code></li>
-<li><code>is_na()</code></li>
-</ul>
+<li>Data structures for missing data, e.g., <code><a href="reference/bind_shadow.html">bind_shadow()</a></code>
 </li>
-<li>Visualisation methods:
-<ul>
-<li><code>geom_miss__point()</code></li>
-<li><code><a href="reference/gg_miss_var.html">gg_miss_var()</a></code></li>
-<li><code><a href="reference/gg_miss_case.html">gg_miss_case()</a></code></li>
-<li><code><a href="reference/gg_miss_which.html">gg_miss_which()</a></code></li>
+<li>Handy shorthand summaries for missing data: e.g., <code><a href="reference/n_miss.html">n_miss()</a></code>, <code>n_complete</code>, <code><a href="reference/prop_miss.html">prop_miss()</a></code>, <code>prop_complete</code>.</li>
+<li>Numerical summaries of missing data: e.g., <code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code>, <code><a href="reference/miss_case_table.html">miss_case_table()</a></code>, <code><a href="reference/miss_var_pct.html">miss_var_pct()</a></code>, <code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code>, <code>miss_var_run</code>.</li>
+<li>Visualisation methods: e.g., <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code>, <code><a href="reference/gg_miss_var.html">gg_miss_var()</a></code>,</li>
 </ul>
-</li>
-<li>Numerical summaries:
-<ul>
-<li><code><a href="reference/n_miss.html">n_miss()</a></code></li>
-<li><code><a href="reference/n_complete.html">n_complete()</a></code></li>
-<li><code><a href="reference/miss_case_pct.html">miss_case_pct()</a></code></li>
-<li><code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code></li>
-<li><code><a href="reference/miss_case_table.html">miss_case_table()</a></code></li>
-<li><code><a href="reference/miss_var_pct.html">miss_var_pct()</a></code></li>
-<li><code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code></li>
-<li><code><a href="reference/miss_var_table.html">miss_var_table()</a></code></li>
-<li><code><a href="reference/miss_df_pct.html">miss_df_pct()</a></code></li>
-</ul>
-</li>
-</ul>
-<p>For details on how to use each of these functions, and their usage, you can read the vignette <a href="http://www.njtierney.com/naniar/articles/getting-started-w-naniar.html">“Getting Started with naniar”</a>.</p>
-<p><strong>Why <code>naniar</code>?</strong></p>
-<p><code>naniar</code> was previously named <code>ggmissing</code> and initially provided a ggplot geom and some visual summaries. It was changed to <code>naniar</code> to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.</p>
-<blockquote>
-<p>…But <em>why</em> <code>naniar</code>?</p>
-</blockquote>
-<p>Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like <a href="https://en.wikipedia.org/wiki/The_Chronicles_of_naniar">C.S. Lewis’s naniar</a> - a different world, hidden away. You go inside, and sometimes it seems like you’ve spent no time in there but time has passed very quickly, or the opposite. Also, <code>NA</code>rnia = na in r, and if you so desire, naniar may sound like “noneoya” in an nz/aussie accent. Full credit to <span class="citation">@MilesMcbain</span> for the name.</p>
+<p>For details on all of these functions and how to use each of them, you can read the vignette <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">“Getting Started with naniar”</a>.</p>
 <p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 <div id="data-structures-for-missing-data" class="section level1">
@@ -189,7 +162,7 @@ p1 <span class="op">+</span><span class="st"> </span><span class="kw"><a href="h
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/gg_miss_var.html">gg_miss_var</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">y =</span> <span class="st">"Look at all the missing ones"</span>)</code></pre></div>
 <p><img src="README-figs/README-unnamed-chunk-3-2.png" width="672"></p>
-<p>You can also explore the whole dataset of missings using the <code>vis_miss</code> function, which is exported from the <a href="github.com/njtierney/visdat"><code>visdat</code></a> package.</p>
+<p>You can also explore the whole dataset of missings using the <code>vis_miss</code> function, which is exported from the <a href="github.com/ropensci/visdat"><code>visdat</code></a> package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="http://www.rdocumentation.org/packages/visdat/topics/vis_miss">vis_miss</a></span>(airquality)</code></pre></div>
 <p><img src="README-figs/README-viss-miss-1.png" width="672"></p>
@@ -231,21 +204,26 @@ p2 &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumenta
 gridExtra<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/gridExtra/topics/arrangeGrob">grid.arrange</a></span>(p1, p2, <span class="dt">ncol =</span> <span class="dv">2</span>)
 <span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
 <p><img src="README-figs/README-bind-shadow-density-1.png" width="960"></p>
+<p>The other plotting functions can be seen in the vignette, “Gallery of missing data visualisations with naniar”.</p>
+</div>
+<div id="handy-helpers-for-missing-data" class="section level1">
+<h1 class="hasAnchor">
+<a href="#handy-helpers-for-missing-data" class="anchor"></a>Handy helpers for missing data</h1>
+<p>Users may be aware that you can find the number of missings in a structure using <code>sum(is.na(x))</code>, or find the proportion of missings with <code>mean(is.na(x))</code>. to make this is a bit easier to think about and reason with, we introduce more intuitive helpers:</p>
+<ul>
+<li>
+<code><a href="reference/n_miss.html">n_miss()</a></code> / <code><a href="reference/n_complete.html">n_complete()</a></code> return the number of missings or complete values</li>
+<li>
+<code><a href="reference/prop_miss.html">prop_miss()</a></code> / <code><a href="reference/prop_complete.html">prop_complete()</a></code> return the proportion of missing or complete values.</li>
+<li>
+<code><a href="reference/pct_miss.html">pct_miss()</a></code> / <code><a href="reference/pct_complete.html">pct_complete()</a></code> likewise return the percentage of missing or complete values.</li>
+</ul>
 </div>
 <div id="numerical-summaries-for-missing-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#numerical-summaries-for-missing-data" class="anchor"></a>Numerical summaries for missing data</h1>
-<p><code>naniar</code> provides numerical summaries of missing data. For variables, cases, and dataframes there are the function families <code>miss_var_*</code>, <code>miss_case_*</code>, and <code>miss_df_*</code>. To find the percent missng variables, cases, and dataframes:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="co"># Proportion of variables that contain any missing values</span>
-<span class="kw"><a href="reference/miss_var_pct.html">miss_var_pct</a></span>(airquality)
-<span class="co">#&gt; [1] 33.33333</span>
- <span class="co"># Proportion of cases that contain any missing values</span>
-<span class="kw"><a href="reference/miss_case_pct.html">miss_case_pct</a></span>(airquality)
-<span class="co">#&gt; [1] 27.45098</span>
-<span class="co"># Proportion elements in dataset that contains missing values</span>
-<span class="kw"><a href="reference/miss_df_pct.html">miss_df_pct</a></span>(airquality)</code></pre></div>
-<p>We can also look at the number and percent of missings in each case and variable with <code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code>, and <code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code>.</p>
+<p><code>naniar</code> provides numerical summaries of missing data starting with <code>miss_</code>. Summaries focussing on variables or a single selected variable, start with <code>miss_var_</code>, and summaries for cases (the initial collected row order of the data), they start with <code>miss_case_</code>. All of these functions also “just work” with dplyr’s <code><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>.</p>
+<p>For example, we can look at the number and percent of missings in each case and variable with <code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code>, and <code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code>, which both return output ordered by the number of missing values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)
 <span class="co">#&gt; # A tibble: 6 x 3</span>
@@ -261,17 +239,55 @@ gridExtra<span class="op">::</span><span class="kw"><a href="http://www.rdocumen
 <span class="co">#&gt; # A tibble: 153 x 3</span>
 <span class="co">#&gt;     case n_missing  percent</span>
 <span class="co">#&gt;    &lt;int&gt;     &lt;int&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     1         0  0.00000</span>
-<span class="co">#&gt;  2     2         0  0.00000</span>
-<span class="co">#&gt;  3     3         0  0.00000</span>
-<span class="co">#&gt;  4     4         0  0.00000</span>
-<span class="co">#&gt;  5     5         2 33.33333</span>
-<span class="co">#&gt;  6     6         1 16.66667</span>
-<span class="co">#&gt;  7     7         0  0.00000</span>
-<span class="co">#&gt;  8     8         0  0.00000</span>
-<span class="co">#&gt;  9     9         0  0.00000</span>
-<span class="co">#&gt; 10    10         1 16.66667</span>
+<span class="co">#&gt;  1     5         2 33.33333</span>
+<span class="co">#&gt;  2    27         2 33.33333</span>
+<span class="co">#&gt;  3     6         1 16.66667</span>
+<span class="co">#&gt;  4    10         1 16.66667</span>
+<span class="co">#&gt;  5    11         1 16.66667</span>
+<span class="co">#&gt;  6    25         1 16.66667</span>
+<span class="co">#&gt;  7    26         1 16.66667</span>
+<span class="co">#&gt;  8    32         1 16.66667</span>
+<span class="co">#&gt;  9    33         1 16.66667</span>
+<span class="co">#&gt; 10    34         1 16.66667</span>
 <span class="co">#&gt; # ... with 143 more rows</span></code></pre></div>
+<p>You could also <code><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to work out the number of missings in each variable across the levels within it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'dplyr'</span>
+<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
+airquality <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Month) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>()
+<span class="co">#&gt; # A tibble: 25 x 4</span>
+<span class="co">#&gt;    Month variable n_missing  percent</span>
+<span class="co">#&gt;    &lt;int&gt;    &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1     5    Ozone         5 16.12903</span>
+<span class="co">#&gt;  2     5  Solar.R         4 12.90323</span>
+<span class="co">#&gt;  3     5     Wind         0  0.00000</span>
+<span class="co">#&gt;  4     5     Temp         0  0.00000</span>
+<span class="co">#&gt;  5     5      Day         0  0.00000</span>
+<span class="co">#&gt;  6     6    Ozone        21 70.00000</span>
+<span class="co">#&gt;  7     6  Solar.R         0  0.00000</span>
+<span class="co">#&gt;  8     6     Wind         0  0.00000</span>
+<span class="co">#&gt;  9     6     Temp         0  0.00000</span>
+<span class="co">#&gt; 10     6      Day         0  0.00000</span>
+<span class="co">#&gt; # ... with 15 more rows</span></code></pre></div>
+<p>To find the percent missing variables and cases:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="co"># Proportion of variables that contain any missing values</span>
+<span class="kw"><a href="reference/miss_var_pct.html">miss_var_pct</a></span>(airquality)
+<span class="co">#&gt; [1] 33.33333</span>
+ <span class="co"># Proportion of cases that contain any missing values</span>
+<span class="kw"><a href="reference/miss_case_pct.html">miss_case_pct</a></span>(airquality)
+<span class="co">#&gt; [1] 27.45098</span>
+<span class="co"># Proportion elements in dataset that contains missing values</span>
+<span class="kw"><a href="reference/prop_miss.html">prop_miss</a></span>(airquality)
+<span class="co">#&gt; [1] 0.04793028</span></code></pre></div>
 <p>Tabulations of the number of missings in each case or variable can be calculated with <code><a href="reference/miss_var_table.html">miss_var_table()</a></code> and <code><a href="reference/miss_case_table.html">miss_case_table()</a></code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/miss_var_table.html">miss_var_table</a></span>(airquality)
@@ -288,17 +304,18 @@ gridExtra<span class="op">::</span><span class="kw"><a href="http://www.rdocumen
 <span class="co">#&gt; 1                 0     111 72.54902</span>
 <span class="co">#&gt; 2                 1      40 26.14379</span>
 <span class="co">#&gt; 3                 2       2  1.30719</span></code></pre></div>
-<p>All functions can be called at once using <code><a href="reference/miss_summary.html">miss_summary()</a></code>, which takes a data.frame and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases.</p>
+<p>Most of these functions can be called at once using <code><a href="reference/miss_summary.html">miss_summary()</a></code>, which takes a data.frame and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 s_miss &lt;-<span class="st"> </span><span class="kw"><a href="reference/miss_summary.html">miss_summary</a></span>(airquality)
 
 s_miss
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   miss_df_pct miss_var_pct miss_case_pct  miss_case_table   miss_var_table</span>
-<span class="co">#&gt;         &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt;           &lt;list&gt;           &lt;list&gt;</span>
-<span class="co">#&gt; 1  0.04793028     33.33333      27.45098 &lt;tibble [3 x 3]&gt; &lt;tibble [3 x 3]&gt;</span>
-<span class="co">#&gt; # ... with 2 more variables: miss_var_summary &lt;list&gt;,</span>
-<span class="co">#&gt; #   miss_case_summary &lt;list&gt;</span>
+<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt;   miss_df_prop miss_var_prop miss_case_prop  miss_case_table</span>
+<span class="co">#&gt;          &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;           &lt;list&gt;</span>
+<span class="co">#&gt; 1   0.04793028     0.3333333      0.2745098 &lt;tibble [3 x 3]&gt;</span>
+<span class="co">#&gt; # ... with 5 more variables: miss_var_table &lt;list&gt;,</span>
+<span class="co">#&gt; #   miss_var_summary &lt;list&gt;, miss_case_summary &lt;list&gt;,</span>
+<span class="co">#&gt; #   miss_var_cumsum &lt;list&gt;, miss_case_cumsum &lt;list&gt;</span>
 
 <span class="co"># overall % missing data</span>
 s_miss<span class="op">$</span>percent_missing_df
@@ -339,6 +356,7 @@ s_miss<span class="op">$</span>summary_missing_case
 <div id="gg_miss_var" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gg_miss_var" class="anchor"></a>gg_miss_var</h2>
+<p>Display the amount of missing data for each variable</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</code></pre></div>
 <p><img src="README-figs/README-unnamed-chunk-4-1.png" width="672"></p>
@@ -346,17 +364,45 @@ s_miss<span class="op">$</span>summary_missing_case
 <div id="gg_miss_case" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gg_miss_case" class="anchor"></a>gg_miss_case</h2>
+<p>Display the amount of missing data for each case</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/gg_miss_case.html">gg_miss_case</a></span>(airquality)</code></pre></div>
 <p><img src="README-figs/README-unnamed-chunk-5-1.png" width="672"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw"><a href="reference/gg_miss_which.html">gg_miss_which</a></span>(airquality)</code></pre></div>
+<p><img src="README-figs/README-unnamed-chunk-6-1.png" width="672"></p>
+</div>
+<div id="gg_miss_case_cumsum" class="section level2">
+<h2 class="hasAnchor">
+<a href="#gg_miss_case_cumsum" class="anchor"></a>gg_miss_case_cumsum</h2>
+<p>This shows a lineplot of the cumulative sum of missing values for the cases, kindly contributed by Colin Fay.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw"><a href="reference/gg_miss_case_cumsum.html">gg_miss_case_cumsum</a></span>(airquality)</code></pre></div>
+<p><img src="README-figs/README-gg-miss-case-cumsum-1.png" width="672"></p>
+</div>
+<div id="gg_miss_var_cumsum" class="section level2">
+<h2 class="hasAnchor">
+<a href="#gg_miss_var_cumsum" class="anchor"></a>gg_miss_var_cumsum</h2>
+<p>This shows a lineplot of the cumulative sum of missing values for variables, kindly contributed by Colin Fay.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw"><a href="reference/gg_miss_var_cumsum.html">gg_miss_var_cumsum</a></span>(airquality)</code></pre></div>
+<p><img src="README-figs/README-gg-miss-var-cumsum-1.png" width="672"></p>
 </div>
 <div id="gg_miss_which" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gg_miss_which" class="anchor"></a>gg_miss_which</h2>
 <p>This shows whether a given variable contains a missing variable. In this case grey = missing. Think of it as if you are shading the cell in, if it contains data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/gg_miss_which.html">gg_miss_which</a></span>(airquality)</code></pre></div>
 </div>
+</div>
+<div id="a-note-on-the-name" class="section level1">
+<h1 class="hasAnchor">
+<a href="#a-note-on-the-name" class="anchor"></a>A note on the name</h1>
+<p><strong>Why <code>naniar</code>?</strong></p>
+<p><code>naniar</code> was previously named <code>ggmissing</code> and initially provided a ggplot geom and some other visualisations. <code>ggmissing</code> was changed to <code>naniar</code> to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.</p>
+<blockquote>
+<p>…But <em>why</em> <code>naniar</code>?</p>
+</blockquote>
+<p>Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like <a href="https://en.wikipedia.org/wiki/The_Chronicles_of_naniar">C.S. Lewis’s Narnia</a> - a different world, hidden away. You go inside, and sometimes it seems like you’ve spent no time in there but time has passed very quickly, or the opposite. Also, <code>NA</code>niar = na in r, and if you so desire, naniar may sound like “noneoya” in an nz/aussie accent. Full credit to <span class="citation">@MilesMcbain</span> for the name, and <span class="citation">@Hadley</span> for the rearranged spelling.</p>
 </div>
 <div id="future-work" class="section level1">
 <h1 class="hasAnchor">
@@ -364,12 +410,17 @@ s_miss<span class="op">$</span>summary_missing_case
 <p>Other plans to extend the <code>geom_miss_</code> family to include:</p>
 <ul>
 <li>Categorical variables</li>
-<li>Bivariate plots: Scatterplots, Density overlays.</li>
+<li>Bivariate plots: scatterplots, density overlays</li>
+<li>SQL translation for databases</li>
+<li>Big Data tools (sparklyr, sparklingwater)</li>
+<li>Work well with other imputation engines / processes</li>
+<li>Provide tools for assessing goodness of fit for classical approaches of MCAR, MAR, and MNAR (graphical inference from <code>nullabor</code> package)</li>
+<li>Expand ggplot <code>geom_miss_*</code> family</li>
 </ul>
 <div id="acknowledgements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
-<p>Naming credit (once again!) goes to <span class="citation">@MilesMcBain</span>. Also thank you to <span class="citation">@dicook</span> and <span class="citation">@hadley</span> for putting up with my various questions and concerns, mainly around the name.</p>
+<p>Firstly, thanks to <span class="citation">@dicook</span> for giving the initial inspiration for the package and laying down the rich theory and literature that the work in <code>naniar</code> is built upon. Naming credit (once again!) goes to <span class="citation">@MilesMcBain</span>. Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to Colin Fay <span class="citation">@colinfay</span> for helping me understand tidy evaluation and for features such as <code>replace_to_na</code>, <code>miss_*_cumsum</code>, and more.</p>
 </div>
 </div>
 </div>
@@ -393,6 +444,7 @@ s_miss<span class="op">$</span>summary_missing_case
 <li>Nicholas Tierney <br><small class="roles"> Author, maintainer </small> </li>
 <li>Di Cook <br><small class="roles"> Author </small> </li>
 <li>Miles McBain <br><small class="roles"> Author </small> </li>
+<li>Colin Fay <br><small class="roles"> Author </small> </li>
 </ul>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
@@ -406,7 +458,7 @@ s_miss<span class="op">$</span>summary_missing_case
 
 
       <footer><div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

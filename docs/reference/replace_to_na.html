@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -100,10 +103,10 @@
 
     
     <p>Specify variables and their values that you want to convert to missing values.
-This is a complement to `tidyr::replace_na`.</p>
+This is a complement to <code><a href='http://www.rdocumentation.org/packages/tidyr/topics/replace_na'>tidyr::replace_na</a></code>.</p>
     
 
-    <pre class="usage"><span class='fu'>replace_to_na</span>(<span class='no'>data</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>replace_to_na</span>(<span class='no'>data</span>, <span class='kw'>to_na</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -113,12 +116,12 @@ This is a complement to `tidyr::replace_na`.</p>
       <td><p>A data.frame</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>additional arguments for methods.</p></td>
-    </tr>
-    <tr>
       <th>to_na</th>
       <td><p>A named list given the NA to replace values</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments for methods.</p></td>
     </tr>
     </table>
     
@@ -200,7 +203,7 @@ This is a complement to `tidyr::replace_na`.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

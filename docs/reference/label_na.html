@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -99,8 +102,9 @@
     </div>
 
     
-    <p>Returns a binary factor of !NA and NA, where !NA indicates a datum that is not
-  missing, and NA indicats missingness.</p>
+    <p>Returns a binary factor of !NA and NA, where !NA indicates a datum that is
+not missing, and NA indicates missingness. This function is what powers the
+factor levels in <code><a href='as_shadow.html'>as_shadow()</a></code>.</p>
     
 
     <pre class="usage"><span class='fu'>label_na</span>(<span class='no'>x</span>)</pre>
@@ -116,7 +120,8 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a vector</p>
+    <p>a vector of factors containing the labels "!NA" for Not missing and
+"NA" for missing.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -124,18 +129,9 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>label_na</span>(<span class='no'>airquality</span>$<span class='no'>Ozone</span>)</div><div class='output co'>#&gt;   [1] !NA !NA !NA !NA NA  !NA !NA !NA !NA NA  !NA !NA !NA !NA !NA !NA !NA !NA
-#&gt;  [19] !NA !NA !NA !NA !NA !NA NA  NA  NA  !NA !NA !NA !NA NA  NA  NA  NA  NA 
-#&gt;  [37] NA  !NA NA  !NA !NA NA  NA  !NA NA  NA  !NA !NA !NA !NA !NA NA  NA  NA 
-#&gt;  [55] NA  NA  NA  NA  NA  NA  NA  !NA !NA !NA NA  !NA !NA !NA !NA !NA !NA NA 
-#&gt;  [73] !NA !NA NA  !NA !NA !NA !NA !NA !NA !NA NA  NA  !NA !NA !NA !NA !NA !NA
-#&gt;  [91] !NA !NA !NA !NA !NA !NA !NA !NA !NA !NA !NA NA  NA  !NA !NA !NA NA  !NA
-#&gt; [109] !NA !NA !NA !NA !NA !NA NA  !NA !NA !NA NA  !NA !NA !NA !NA !NA !NA !NA
-#&gt; [127] !NA !NA !NA !NA !NA !NA !NA !NA !NA !NA !NA !NA !NA !NA !NA !NA !NA !NA
-#&gt; [145] !NA !NA !NA !NA !NA NA  !NA !NA !NA
-#&gt; Levels: !NA NA</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>label_na</span>(<span class='no'>airquality</span>$<span class='no'>Ozone</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -154,7 +150,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

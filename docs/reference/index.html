@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -97,7 +100,7 @@
     <div class="page-header">
       <h1>
         Reference
-        <small>version&nbsp;0.0.9.9400</small>
+        <small>version&nbsp;0.0.9.9990</small>
       </h1>
     </div>
 
@@ -125,6 +128,12 @@
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="gg_miss_case_cumsum.html">gg_miss_case_cumsum</a></code> </p>
+          </td>
+          <td><p>Plot of cumulative sum of missing for cases</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="gg_miss_case.html">gg_miss_case</a></code> </p>
           </td>
           <td><p>Plot the number of missings per case (row)</p></td>
@@ -139,7 +148,13 @@
           <td>
             <p><code><a href="gg_miss_span.html">gg_miss_span</a></code> </p>
           </td>
-          <td><p>Plot the proportion of missings in a given repeating span</p></td>
+          <td><p>Plot the number of missings in a given repeating span</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="gg_miss_var_cumsum.html">gg_miss_var_cumsum</a></code> </p>
+          </td>
+          <td><p>Plot of cumulative sum of missing value for each variable</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -187,9 +202,21 @@
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="miss_case_cumsum.html">miss_case_cumsum</a></code> </p>
+          </td>
+          <td><p>Summarise the missingness in each case</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="miss_case_pct.html">miss_case_pct</a></code> </p>
           </td>
           <td><p>Percentage of cases that contain a missing values.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="miss_case_prop.html">miss_case_prop</a></code> </p>
+          </td>
+          <td><p>Proportion of cases that contain a missing values.</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -205,15 +232,9 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="miss_df_pct.html">miss_df_pct</a></code> </p>
-          </td>
-          <td><p>Percentage of missing data in a dataframe</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="miss_prop_summary.html">miss_prop_summary</a></code> </p>
           </td>
-          <td><p>Proporitons of missings in data, variables, and cases.</p></td>
+          <td><p>Proportions of missings in data, variables, and cases.</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -223,15 +244,27 @@
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="miss_var_cumsum.html">miss_var_cumsum</a></code> </p>
+          </td>
+          <td><p>Cumulative sum of the number of missings in each variable</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="miss_var_pct.html">miss_var_pct</a></code> </p>
           </td>
           <td><p>Percentage of variables containing missings</p></td>
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="miss_var_prop.html">miss_var_prop</a></code> </p>
+          </td>
+          <td><p>Proportion of variables containing missings</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="miss_var_run.html">miss_var_run</a></code> </p>
           </td>
-          <td><p>Return the number of missing or complete values in a single run</p></td>
+          <td><p>Find the number of missing and complete values in a single run</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -263,7 +296,7 @@
           <td>
             <p><code><a href="add_any_miss.html">add_any_miss</a></code> </p>
           </td>
-          <td><p>Add a column that tells you if there are any missing values</p></td>
+          <td><p>Add a column describing presence of any missing values</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -299,7 +332,7 @@
           <td>
             <p><code><a href="add_shadow.html">add_shadow</a></code> </p>
           </td>
-          <td><p>Add a column of the shadows to the dataframe</p></td>
+          <td><p>Add a shadow column to dataframe</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -319,7 +352,7 @@
           <td>
             <p><code><a href="cast_shadow_shift_label.html">cast_shadow_shift_label</a></code> </p>
           </td>
-          <td><p>Add a shadow and a shadow_shift column to a dataset</p></td>
+          <td><p>Add a shadow column and a shadow shifted column to a dataset</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -351,13 +384,13 @@
           <td>
             <p><code><a href="as_shadow.html">as_shadow</a></code> </p>
           </td>
-          <td><p>S3 method for create shadows</p></td>
+          <td><p>Create shadows</p></td>
         </tr><tr>
           <!--  -->
           <td>
             <p><code><a href="bind_shadow.html">bind_shadow</a></code> </p>
           </td>
-          <td><p>Column bind a shadow dataframe to original data</p></td>
+          <td><p>Bind a shadow dataframe to original data</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -375,7 +408,7 @@
           <td>
             <p><code><a href="shadow_shift.html">shadow_shift</a></code> </p>
           </td>
-          <td><p>Shift missing values to facilite missing data exploration/visualisation</p></td>
+          <td><p>Shift missing values to facilitate missing data exploration/visualisation</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -405,15 +438,15 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="label_missing_1d.html">label_missing_1d</a></code> </p>
+            <p><code><a href="label_miss_1d.html">label_miss_1d</a></code> </p>
           </td>
-          <td><p>label_missing_1d</p></td>
+          <td><p>Label a missing from one column</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="label_missing_2d.html">label_missing_2d</a></code> </p>
+            <p><code><a href="label_miss_2d.html">label_miss_2d</a></code> </p>
           </td>
-          <td><p>label_missing_2d</p></td>
+          <td><p>label_miss_2d</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -453,7 +486,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

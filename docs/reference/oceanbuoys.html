@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -99,8 +102,10 @@
     </div>
 
     
-    <p>Real-time data from moored ocean buoys for improved detection,
-understanding and prediction of El Ni'o and La Ni'a.</p>
+    <p>Real-time data from moored ocean buoys for improved detection, understanding
+and prediction of El Ni'o and La Ni'a. The data is collected by the
+Tropical Atmosphere Ocean project
+(<a href='http://www.pmel.noaa.gov/tao/index.shtml'>http://www.pmel.noaa.gov/tao/index.shtml</a>).</p>
     
 
     <pre class="usage"><span class='fu'>data</span>(<span class='no'>oceanbuoys</span>)</pre>
@@ -115,28 +120,26 @@ understanding and prediction of El Ni'o and La Ni'a.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The data is collected by the Tropical Atmosphere Ocean project (
-<a href='http://www.pmel.noaa.gov/tao/index.shtml'>http://www.pmel.noaa.gov/tao/index.shtml</a>).</p>
-<p>Format: a data frame with 736 observations on the following 8
+    <p>Format: a data frame with 736 observations on the following 8
 variables.</p><dl class='dl-horizontal'>
-  <dt><code>year</code></dt><dd><p>A factor with levels <code>1993</code> <code>1997</code>.</p></dd>
-  <dt><code>latitude</code></dt><dd><p>A factor with levels <code>-5</code>  <code>-2</code> <code>0</code>.</p></dd>
-  <dt><code>longitude</code></dt><dd><p>A factor with levels <code>-110</code> <code>-95</code>.</p></dd>
-  <dt><code>sea_temp_c</code></dt><dd><p>Sea surface temperature(degree Celsius),  measured
-   by the TAO buoys at one meter below the surface.</p></dd>
-  <dt><code>air_temp_c</code></dt><dd><p>Air temperature(degree Celsius), measured by the
-    TAO buoys three meters above the sea surface.</p></dd>
-  <dt><code>humidity</code></dt><dd><p>Relative humidity(<!-- %), measured by the TAO buoys 3 -->
-    meters above the sea surface.</p></dd>
-  <dt><code>wind_ew</code></dt><dd><p>The East-West wind vector components(M/s).  TAO buoys
-    measure the wind speed and direction four meters above the sea surface.
-    If it is positive, the East-West component of the wind is blowing towards
-    the East. If it is negative, this component is blowing towards the West.</p></dd>
-  <dt><code>wind_ns</code></dt><dd><p>The North-South wind vector components(M/s). TAO
-    buoys measure the wind speed and direction four meters above the sea
-    surface. If it is positive, the North-South component of the wind is
-    blowing towards the North. If it is negative, this component is blowing
-    towards the South.</p></dd></dl>
+<dt><code>year</code></dt><dd><p>A factor with levels <code>1993</code> <code>1997</code>.</p></dd>
+<dt><code>latitude</code></dt><dd><p>A factor with levels <code>-5</code>  <code>-2</code> <code>0</code>.</p></dd>
+<dt><code>longitude</code></dt><dd><p>A factor with levels <code>-110</code> <code>-95</code>.</p></dd>
+<dt><code>sea_temp_c</code></dt><dd><p>Sea surface temperature(degree Celsius),  measured
+by the TAO buoys at one meter below the surface.</p></dd>
+<dt><code>air_temp_c</code></dt><dd><p>Air temperature(degree Celsius), measured by the
+TAO buoys three meters above the sea surface.</p></dd>
+<dt><code>humidity</code></dt><dd><p>Relative humidity(<!-- %), measured by the TAO buoys 3 -->
+meters above the sea surface.</p></dd>
+<dt><code>wind_ew</code></dt><dd><p>The East-West wind vector components(M/s).  TAO buoys
+measure the wind speed and direction four meters above the sea surface.
+If it is positive, the East-West component of the wind is blowing towards
+the East. If it is negative, this component is blowing towards the West.</p></dd>
+<dt><code>wind_ns</code></dt><dd><p>The North-South wind vector components(M/s). TAO
+buoys measure the wind speed and direction four meters above the sea
+surface. If it is positive, the North-South component of the wind is
+blowing towards the North. If it is negative, this component is blowing
+towards the South.</p></dd></dl>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -162,7 +165,7 @@ variables.</p><dl class='dl-horizontal'>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

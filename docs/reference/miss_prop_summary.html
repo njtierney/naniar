@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Proporitons of missings in data, variables, and cases. — miss_prop_summary • naniar</title>
+<title>Proportions of missings in data, variables, and cases. — miss_prop_summary • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -95,11 +98,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Proporitons of missings in data, variables, and cases.</h1>
+    <h1>Proportions of missings in data, variables, and cases.</h1>
     </div>
 
     
-    <p>Return missing data info about the dataframe, the variables, and the cases. Specifically, returning how many elements in a dataframe contain a missing value, how many elements in a variable contain a missing value, and how many elements in a case contain a missing.</p>
+    <p>Return missing data info about the dataframe, the variables, and the cases.
+Specifically, returning how many elements in a dataframe contain a missing
+value, how many elements in a variable contain a missing value, and how many
+elements in a case contain a missing.</p>
     
 
     <pre class="usage"><span class='fu'>miss_prop_summary</span>(<span class='no'>data</span>)</pre>
@@ -121,9 +127,9 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'>miss_prop_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 3
-#&gt;           df      var     case
-#&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-#&gt; 1 0.04793028 33.33333 27.45098</div><div class='input'>
+#&gt;           df       var      case
+#&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+#&gt; 1 0.04793028 0.3333333 0.2745098</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -141,7 +147,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

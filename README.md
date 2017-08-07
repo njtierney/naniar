@@ -10,19 +10,11 @@ naniar
 Currently it provides:
 
 -   Data structures for missing data, e.g., `bind_shadow()`
--   Visualisation methods: e.g., `geom_miss_point()`, `gg_miss_var()`
 -   Handy shorthand summaries for missing data: e.g., `n_miss()`, `n_complete`, `prop_miss()`, `prop_complete`.
--   Numerical summaries of missing data: e.g., `miss_case_summary()`, `miss_case_table()`, `miss_var_pct()`, `miss_var_summary()`
+-   Numerical summaries of missing data: e.g., `miss_case_summary()`, `miss_case_table()`, `miss_var_pct()`, `miss_var_summary()`, `miss_var_run`.
+-   Visualisation methods: e.g., `geom_miss_point()`, `gg_miss_var()`,
 
 For details on all of these functions and how to use each of them, you can read the vignette ["Getting Started with naniar"](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
-
-**Why `naniar`?**
-
-`naniar` was previously named `ggmissing` and initially provided a ggplot geom and some visual summaries. It was changed to `naniar` to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.
-
-> ...But *why* `naniar`?
-
-Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like [C.S. Lewis's naniar](https://en.wikipedia.org/wiki/The_Chronicles_of_naniar) - a different world, hidden away. You go inside, and sometimes it seems like you've spent no time in there but time has passed very quickly, or the opposite. Also, `NA`niar = na in r, and if you so desire, naniar may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name, and @Hadley for the rearranged spelling.
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
@@ -137,7 +129,7 @@ gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 
 ![](README-figs/README-unnamed-chunk-3-2.png)
 
-You can also explore the whole dataset of missings using the `vis_miss` function, which is exported from the [`visdat`](github.com/njtierney/visdat) package.
+You can also explore the whole dataset of missings using the `vis_miss` function, which is exported from the [`visdat`](github.com/ropensci/visdat) package.
 
 ``` r
 
@@ -193,25 +185,23 @@ gridExtra::grid.arrange(p1, p2, ncol = 2)
 
 ![](README-figs/README-bind-shadow-density-1.png)
 
+The other plotting functions can be seen in the vignette, "Gallery of missing data visualisations with naniar".
+
+Handy helpers for missing data
+==============================
+
+Users may be aware that you can find the number of missings in a structure using `sum(is.na(x))`, or find the proportion of missings with `mean(is.na(x))`. to make this is a bit easier to think about and reason with, we introduce more intuitive helpers:
+
+-   `n_miss()` / `n_complete()` return the number of missings or complete values
+-   `prop_miss()` / `prop_complete()` return the proportion of missing or complete values.
+-   `pct_miss()` / `pct_complete()` likewise return the percentage of missing or complete values.
+
 Numerical summaries for missing data
 ====================================
 
-`naniar` provides numerical summaries of missing data. For variables, cases, and dataframes there are the function families `miss_var_*`, `miss_case_*`, and `miss_df_*`. To find the percent missng variables, cases, and dataframes:
+`naniar` provides numerical summaries of missing data starting with `miss_`. Summaries focussing on variables or a single selected variable, start with `miss_var_`, and summaries for cases (the initial collected row order of the data), they start with `miss_case_`. All of these functions also "just work" with dplyr's `group_by()`.
 
-``` r
-
-# Proportion of variables that contain any missing values
-miss_var_pct(airquality)
-#> [1] 33.33333
- # Proportion of cases that contain any missing values
-miss_case_pct(airquality)
-#> [1] 27.45098
-# Proportion elements in dataset that contains missing values
-prop_miss(airquality)
-#> [1] 0.04793028
-```
-
-We can also look at the number and percent of missings in each case and variable with `miss_var_summary()`, and `miss_case_summary()`.
+For example, we can look at the number and percent of missings in each case and variable with `miss_var_summary()`, and `miss_case_summary()`, which both return output ordered by the number of missing values.
 
 ``` r
 
@@ -242,6 +232,52 @@ miss_case_summary(airquality)
 #> # ... with 143 more rows
 ```
 
+You could also `group_by()` to work out the number of missings in each variable across the levels within it.
+
+``` r
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+airquality %>%
+  group_by(Month) %>%
+  miss_var_summary()
+#> # A tibble: 25 x 4
+#>    Month variable n_missing  percent
+#>    <int>    <chr>     <int>    <dbl>
+#>  1     5    Ozone         5 16.12903
+#>  2     5  Solar.R         4 12.90323
+#>  3     5     Wind         0  0.00000
+#>  4     5     Temp         0  0.00000
+#>  5     5      Day         0  0.00000
+#>  6     6    Ozone        21 70.00000
+#>  7     6  Solar.R         0  0.00000
+#>  8     6     Wind         0  0.00000
+#>  9     6     Temp         0  0.00000
+#> 10     6      Day         0  0.00000
+#> # ... with 15 more rows
+```
+
+To find the percent missing variables and cases:
+
+``` r
+
+# Proportion of variables that contain any missing values
+miss_var_pct(airquality)
+#> [1] 33.33333
+ # Proportion of cases that contain any missing values
+miss_case_pct(airquality)
+#> [1] 27.45098
+# Proportion elements in dataset that contains missing values
+prop_miss(airquality)
+#> [1] 0.04793028
+```
+
 Tabulations of the number of missings in each case or variable can be calculated with `miss_var_table()` and `miss_case_table()`.
 
 ``` r
@@ -262,19 +298,20 @@ miss_case_table(airquality)
 #> 3                 2       2  1.30719
 ```
 
-All functions can be called at once using `miss_summary()`, which takes a data.frame and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases.
+Most of these functions can be called at once using `miss_summary()`, which takes a data.frame and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases.
 
 ``` r
 
 s_miss <- miss_summary(airquality)
 
 s_miss
-#> # A tibble: 1 x 7
+#> # A tibble: 1 x 9
 #>   miss_df_prop miss_var_prop miss_case_prop  miss_case_table
 #>          <dbl>         <dbl>          <dbl>           <list>
 #> 1   0.04793028     0.3333333      0.2745098 <tibble [3 x 3]>
-#> # ... with 3 more variables: miss_var_table <list>,
-#> #   miss_var_summary <list>, miss_case_summary <list>
+#> # ... with 5 more variables: miss_var_table <list>,
+#> #   miss_var_summary <list>, miss_case_summary <list>,
+#> #   miss_var_cumsum <list>, miss_case_cumsum <list>
 
 # overall % missing data
 s_miss$percent_missing_df
@@ -316,6 +353,8 @@ Other plotting functions
 gg\_miss\_var
 -------------
 
+Display the amount of missing data for each variable
+
 ``` r
 
 gg_miss_var(airquality)
@@ -326,17 +365,14 @@ gg_miss_var(airquality)
 gg\_miss\_case
 --------------
 
+Display the amount of missing data for each case
+
 ``` r
 
 gg_miss_case(airquality)
 ```
 
 ![](README-figs/README-unnamed-chunk-5-1.png)
-
-gg\_miss\_which
----------------
-
-This shows whether a given variable contains a missing variable. In this case grey = missing. Think of it as if you are shading the cell in, if it contains data.
 
 ``` r
 
@@ -369,15 +405,36 @@ gg_miss_var_cumsum(airquality)
 
 ![](README-figs/README-gg-miss-var-cumsum-1.png)
 
+gg\_miss\_which
+---------------
+
+This shows whether a given variable contains a missing variable. In this case grey = missing. Think of it as if you are shading the cell in, if it contains data.
+
+A note on the name
+==================
+
+**Why `naniar`?**
+
+`naniar` was previously named `ggmissing` and initially provided a ggplot geom and some other visualisations. `ggmissing` was changed to `naniar` to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.
+
+> ...But *why* `naniar`?
+
+Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like [C.S. Lewis's Narnia](https://en.wikipedia.org/wiki/The_Chronicles_of_naniar) - a different world, hidden away. You go inside, and sometimes it seems like you've spent no time in there but time has passed very quickly, or the opposite. Also, `NA`niar = na in r, and if you so desire, naniar may sound like "noneoya" in an nz/aussie accent. Full credit to @MilesMcbain for the name, and @Hadley for the rearranged spelling.
+
 Future Work
 ===========
 
 Other plans to extend the `geom_miss_` family to include:
 
 -   Categorical variables
--   Bivariate plots: Scatterplots, Density overlays.
+-   Bivariate plots: scatterplots, density overlays
+-   SQL translation for databases
+-   Big Data tools (sparklyr, sparklingwater)
+-   Work well with other imputation engines / processes
+-   Provide tools for assessing goodness of fit for classical approaches of MCAR, MAR, and MNAR (graphical inference from `nullabor` package)
+-   Expand ggplot `geom_miss_*` family
 
 Acknowledgements
 ----------------
 
-Naming credit (once again!) goes to @MilesMcBain. Also thank you to @dicook and @hadley for putting up with my various questions and concerns, mainly around the name.
+Firstly, thanks to @dicook for giving the initial inspiration for the package and laying down the rich theory and literature that the work in `naniar` is built upon. Naming credit (once again!) goes to @MilesMcBain. Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to Colin Fay @colinfay for helping me understand tidy evaluation and for features such as `replace_to_na`, `miss_*_cumsum`, and more.

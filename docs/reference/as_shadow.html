@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>S3 method for create shadows — as_shadow • naniar</title>
+<title>Create shadows — as_shadow • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -95,11 +98,17 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>S3 method for create shadows</h1>
+    <h1>Create shadows</h1>
     </div>
 
     
-    <p>Shadows have _NA as a suffix</p>
+    <p>Representing missing data structure is achieved using the shadow matrix,
+introduced in <a href='https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization'>Swayne and Buja</a>. The shadow
+matrix is the same dimension as the data, and consists of binary indicators
+of missingness of data values, where missing is represented as "NA", and not
+missing is represented as "!NA". Although these may be represented as 1 and
+0, respectively. This representation can be seen in the figure below, adding
+the suffix "_NA" to the variables.</p>
     
 
     <pre class="usage"><span class='fu'>as_shadow</span>(<span class='no'>data</span>, <span class='no'>...</span>)</pre>
@@ -136,7 +145,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

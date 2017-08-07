@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a column of the shadows to the dataframe — add_shadow • naniar</title>
+<title>Add a shadow column to dataframe — add_shadow • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -95,11 +98,13 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a column of the shadows to the dataframe</h1>
+    <h1>Add a shadow column to dataframe</h1>
     </div>
 
     
-    <p>Add a column of the shadows to the dataframe</p>
+    <p>As an alternative to <code><a href='bind_shadow.html'>bind_shadow()</a></code>, you can add specific individual shadow
+columns to a dataset. These also respect the dplyr verbs
+<code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, etc.</p>
     
 
     <pre class="usage"><span class='fu'>add_shadow</span>(<span class='no'>data</span>, <span class='no'>...</span>)</pre>
@@ -114,7 +119,7 @@
     <tr>
       <th>...</th>
       <td><p>One or more unquoted expressions separated by commas. These also
-respect the dplyr verbs "starts_with", "contains", "ends_with", etc.</p></td>
+respect the dplyr verbs <code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, etc.</p></td>
     </tr>
     </table>
     
@@ -169,7 +174,7 @@ respect the dplyr verbs "starts_with", "contains", "ends_with", etc.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

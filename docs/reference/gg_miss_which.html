@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -99,9 +102,9 @@
     </div>
 
     
-    <p>`gg_miss_which` (need a better name!) produces a set of rectangles that indicate whether there is a missing element in a column or not
-The plot is a ggplot object with a basic customisation.
-You can customise it the way you wish, just like classic ggplot.</p>
+    <p>This plot produces a set of rectangles indicating whether there is a missing
+element in a column or not.  A default minimal theme is used, which can be
+customised as normal for ggplot.</p>
     
 
     <pre class="usage"><span class='fu'>gg_miss_which</span>(<span class='no'>x</span>)</pre>
@@ -122,10 +125,7 @@ You can customise it the way you wish, just like classic ggplot.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>gg_miss_which</span>(<span class='no'>airquality</span>)
-<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-<span class='fu'>gg_miss_which</span>(<span class='no'>airquality</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/theme'>theme</a></span>(<span class='kw'>panel.background</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/element'>element_rect</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='st'>"grey"</span>))</div><div class='img'><img src='gg_miss_which-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
-</div></pre>
+<span class='fu'>gg_miss_which</span>(<span class='no'>airquality</span>)</div><div class='img'><img src='gg_miss_which-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -142,7 +142,7 @@ You can customise it the way you wish, just like classic ggplot.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

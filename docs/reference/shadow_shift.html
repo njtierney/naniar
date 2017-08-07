@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Shift missing values to facilite missing data exploration/visualisation — shadow_shift • naniar</title>
+<title>Shift missing values to facilitate missing data exploration/visualisation — shadow_shift • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -95,18 +98,15 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Shift missing values to facilite missing data exploration/visualisation</h1>
+    <h1>Shift missing values to facilitate missing data exploration/visualisation</h1>
     </div>
 
     
-    <p>`shadow_shift` is a window function that transforms missing values to
-    facilitate visualisation. This has different behaviour for different
-    types of variables. For numeric variables, the values are shifted to 10<!-- % -->
-    below the minimum value for a given variable plus some jittered noise,
-    to separate repeated values, so that missing values can be visualised
-    along with the rest of the data. There are different shifts that can
-    take place in different kinds of variables, which are currently under
-    development.</p>
+    <p><code>shadow_shift</code> transforms missing values to facilitate visualisation, and has
+different behaviour for different types of variables. For numeric
+variables, the values are shifted to 10<!-- % below the minimum value for a given -->
+variable plus some jittered noise, to separate repeated values, so that
+missing values can be visualised along with the rest of the data.</p>
     
 
     <pre class="usage"><span class='fu'>shadow_shift</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
@@ -316,7 +316,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -100,10 +103,10 @@
 
     
     <p>To summarise the missing values in a time series object it can be useful to
-    calculate the number of missing values in a given time period.
-    `miss_var_span` takes a data.frame object, a variable, and a `span_every`
-    argument and returns a dataframe containing the number of missing values
-    within each span.</p>
+calculate the number of missing values in a given time period.
+<code>miss_var_span</code> takes a data.frame object, a variable, and a <code>span_every</code>
+argument and returns a dataframe containing the number of missing values
+within each span.</p>
     
 
     <pre class="usage"><span class='fu'>miss_var_span</span>(<span class='no'>data</span>, <span class='no'>var</span>, <span class='no'>span_every</span>)</pre>
@@ -127,16 +130,16 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>dataframe with variables `n_miss`, `n_complete`, `prop_miss`, and
-    `prop_complete`, which describe the number, or proportion of missing or
-    complete values within that given time span.</p>
+    <p>dataframe with variables <code>n_miss</code>, <code>n_complete</code>, <code>prop_miss</code>, and
+<code>prop_complete</code>, which describe the number, or proportion of missing or
+complete values within that given time span.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'>miss_var_span</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>pedestrian</span>,
-              <span class='kw'>var</span> <span class='kw'>=</span> <span class='no'>hourly_counts</span>,
-              <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>168</span>)</div><div class='output co'>#&gt; # A tibble: 225 x 5
+             <span class='kw'>var</span> <span class='kw'>=</span> <span class='no'>hourly_counts</span>,
+             <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>168</span>)</div><div class='output co'>#&gt; # A tibble: 225 x 5
 #&gt;    span_counter n_miss n_complete prop_miss prop_complete
 #&gt;           &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
 #&gt;  1            1      0        168         0             1
@@ -150,6 +153,24 @@
 #&gt;  9            9      0        168         0             1
 #&gt; 10           10      0        168         0             1
 #&gt; # ... with 215 more rows</div><div class='input'>
+ <span class='fu'>library</span>(<span class='no'>dplyr</span>)
+ <span class='no'>pedestrian</span> <span class='kw'>%&gt;%</span>
+   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>month</span>) <span class='kw'>%&gt;%</span>
+     <span class='fu'>miss_var_span</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='no'>hourly_counts</span>,
+                   <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>168</span>)</div><div class='output co'>#&gt; # A tibble: 230 x 6
+#&gt;      month span_counter n_miss n_complete prop_miss prop_complete
+#&gt;      &lt;ord&gt;        &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
+#&gt;  1 January            1      0        168         0             1
+#&gt;  2 January            2      0        168         0             1
+#&gt;  3 January            3      0        168         0             1
+#&gt;  4 January            4      0        168         0             1
+#&gt;  5 January            5      0        168         0             1
+#&gt;  6 January            6      0        168         0             1
+#&gt;  7 January            7      0        168         0             1
+#&gt;  8 January            8      0        168         0             1
+#&gt;  9 January            9      0        168         0             1
+#&gt; 10 January           10      0        168         0             1
+#&gt; # ... with 220 more rows</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -167,7 +188,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

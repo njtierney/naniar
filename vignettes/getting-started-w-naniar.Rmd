@@ -95,7 +95,7 @@ We can identify key variables that are missing using `vis_miss`, but for further
 - Month
 - Day
 
-Typically, when exploring this data, you might want to explore the variables Solar.R and Ozone, and do something like this:
+Typically, when exploring this data, you might want to explore the variables Solar.R and Ozone, and so plot a scatterplot of solar radiation and ozone, doing something like this:
 
 ```{r echo = TRUE, fig.width = 5, fig.height=3}
 library(ggplot2)
@@ -105,9 +105,7 @@ ggplot(airquality,
   geom_point()
 ```
 
-The problem with this is that ggplot does not handle missings be default, and removes the missing values. This makes them hard to explore.
-
-Visualising missing data might sound a little strange - how do you visualise something that is not there?  One approach to visualising missing data comes from ggobi and manet, where we replace "NA" values with values 10% lower than the minimum value in that variable. This is provided with the `geom_miss_point()` ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
+The problem with this is that ggplot does not handle missings be default, and removes the missing values. This makes them hard to explore, it is a little strange - how do you visualise something that is not there?  One approach to visualising missing data comes from ggobi and manet, where we replace "NA" values with values 10% lower than the minimum value in that variable. This is provided with the `geom_miss_point()` ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
 
 ```{r echo = TRUE, out.width = "50%", fig.show='hold'}
 

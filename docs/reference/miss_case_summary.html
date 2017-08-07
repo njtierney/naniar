@@ -70,6 +70,9 @@
     <li>
       <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
+    <li>
+      <a href="../articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -99,7 +102,8 @@
     </div>
 
     
-    <p>Provide a data_frame containing each case (row), the number of missing values in each case,  and the percent of missing values in each case.</p>
+    <p>Return for each case the number and percent of missing values, ordered by the
+most number of missings.</p>
     
 
     <pre class="usage"><span class='fu'>miss_case_summary</span>(<span class='no'>data</span>)</pre>
@@ -109,30 +113,48 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dataframe</p></td>
+      <td><p>a data.frame</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data_frame of the percent of missing data in each case</p>
+    <p>a tibble of the percent of missing data in each case.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+<span class='co'># works with group_by from dplyr</span>
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Month</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>miss_case_summary</span>()</div><div class='output co'>#&gt; # A tibble: 153 x 4
+#&gt;    Month  case n_missing percent
+#&gt;    &lt;int&gt; &lt;int&gt;     &lt;int&gt;   &lt;dbl&gt;
+#&gt;  1     5     5         2      40
+#&gt;  2     5    27         2      40
+#&gt;  3     5     6         1      20
+#&gt;  4     5    10         1      20
+#&gt;  5     5    11         1      20
+#&gt;  6     5    25         1      20
+#&gt;  7     5    26         1      20
+#&gt;  8     5     1         0       0
+#&gt;  9     5     2         0       0
+#&gt; 10     5     3         0       0
+#&gt; # ... with 143 more rows</div><div class='input'>
 <span class='fu'>miss_case_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 3
 #&gt;     case n_missing  percent
 #&gt;    &lt;int&gt;     &lt;int&gt;    &lt;dbl&gt;
-#&gt;  1     1         0  0.00000
-#&gt;  2     2         0  0.00000
-#&gt;  3     3         0  0.00000
-#&gt;  4     4         0  0.00000
-#&gt;  5     5         2 33.33333
-#&gt;  6     6         1 16.66667
-#&gt;  7     7         0  0.00000
-#&gt;  8     8         0  0.00000
-#&gt;  9     9         0  0.00000
-#&gt; 10    10         1 16.66667
+#&gt;  1     5         2 33.33333
+#&gt;  2    27         2 33.33333
+#&gt;  3     6         1 16.66667
+#&gt;  4    10         1 16.66667
+#&gt;  5    11         1 16.66667
+#&gt;  6    25         1 16.66667
+#&gt;  7    26         1 16.66667
+#&gt;  8    32         1 16.66667
+#&gt;  9    33         1 16.66667
+#&gt; 10    34         1 16.66667
 #&gt; # ... with 143 more rows</div><div class='input'>
 </div></pre>
   </div>
@@ -151,7 +173,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain.</p>
+  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
 </div>
 
 <div class="pkgdown">

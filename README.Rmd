@@ -26,25 +26,21 @@ Currently it provides:
 - Numerical summaries of missing data: e.g., `miss_case_summary()`, `miss_case_table()`, `miss_var_pct()`, `miss_var_summary()`, `miss_var_run`.
 - Visualisation methods: e.g.,  `geom_miss_point()`, `gg_miss_var()`, 
 
-For details on all of these functions and how to use each of them, you can read the vignette ["Getting Started with naniar"](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
+For details on all of these functions and how to use each of them, you can read the vignette ["Getting Started with naniar"](http://naniar.njtierney.com/articles/getting-started-w-naniar.html). There is also a [Gallery of missing data visualisations using naniar](http://naniar.njtierney.com/articles/naniar-visualisation.html).
 
+# Installation
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+Currently naniar is only available on github
 
-# Data structures for missing data
+```{r install, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("njtierney/naniar")
 
-Representing missing data structure is achieved using the shadow matrix, introduced in [Swayne and Buja](https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization). The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as "NA", and not missing is represented as "!NA". Although these may be represented as 1 and 0, respectively. This representation can be seen in the figure below, adding the suffix "_NA" to the variables. This structure can also be extended to allow for additional factor levels to be created. For example 0 indicates data presence, 1 indicates missing values, 2 indicates imputed value, and 3 might indicate a particular type or class of missingness, where reasons for missingness might be known or inferred. The data matrix can also be augmented to include the shadow matrix, which facilitates visualisation of univariate and bivariate missing data visualisations. Another format is to display it in long form, which facilitates heatmap style visualisations. This approach can be very helpful for giving an overview of which variables contain the most missingness. Methods can also be applied to rearrange rows and columns to find clusters, and identify other interesting features of the data that may have previously been hidden or unclear. 
-
-```{r, out.width = "800px", echo = F}
-knitr::include_graphics("missingness-data-structures.png")
 ```
 
-__Illustration of data structures for facilitating visualisation of missings and not missings__
-
-# Visualising missing data
+# Visualisating missing data?
 
 Visualising missing data might sound a little strange - how do you visualise something that is not there?  One approach to visualising missing data comes from ggobi and manet, where we replace "NA" values with values 10% lower than the minimum value in that variable. This is provided with the `geom_miss_point()` ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
-
 
 ```{r regular-geom-point}
 
@@ -74,22 +70,7 @@ ggplot(data = airquality,
 
 `geom_miss_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive.
 
-This plays nicely with other parts of ggplot, like adding transparency
-
-```{r geom-missing-point-alpha}
-
-ggplot(data = airquality,
-       aes(x = Ozone,
-           y = Solar.R)) +
-  geom_miss_point(alpha = 0.5)
-
-```
-
-Thanks to Luke Smith for making this pull request.
-
 We can also add features such as faceting, just like any regular ggplot plot.
-
-For example, we can split the facet by month:
 
 ```{r facet-by-month}
 
@@ -105,13 +86,7 @@ p1
 
 ```
 
-And then change the theme, just like you do with any other ggplot graphic
-
-```{r facet-add-theme}
-
-p1 + theme_bw()  
-
-```
+# Other visualisation tools
 
 You can also look at the proportion of missings in each variable with gg_miss_var:
 
@@ -124,51 +99,12 @@ gg_miss_var(airquality)
 The plots created with the `gg_miss` family all have a basic theme, but you can customise them, just like usual ggplot objects. If you call any ggplot customisation functions with a `gg_miss` object, the default args will be overridden. 
 
 ```{r}
-gg_miss_var(airquality) + theme_bw() 
+
+gg_miss_var(airquality) + theme_dark()
 
 gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 
 ```
-
-You can also explore the whole dataset of missings using the `vis_miss` function, which is exported from the [`visdat`](github.com/ropensci/visdat) package.
-
-```{r viss-miss}
-
-vis_miss(airquality)
-
-```
-
-Another approach can be to use **Univariate plots split by missingness**. We can do this using the `bind_shadow()` argument to place the data and shadow side by side. This allows for us to examine univariate distributions according to the presence or absence of another variable. 
-
-```{r bind-shadow}
-
-aq_shadow <- bind_shadow(airquality)
-
-aq_shadow
-```
-
-The plot below shows the values of temperature when ozone is present and missing, on the left is a faceted histogram, and on the right is an overlaid density.
-
-```{r bind-shadow-density, fig.height = 4, fig.width = 10, results = "hold"}
-
-library(ggplot2)
-
-p1 <- ggplot(data = aq_shadow,
-       aes(x = Temp)) + 
-  geom_histogram() + 
-  facet_wrap(~Ozone_NA,
-             ncol = 1)
-
-p2 <- ggplot(data = aq_shadow,
-       aes(x = Temp,
-           colour = Ozone_NA)) + 
-  geom_density() 
-
-gridExtra::grid.arrange(p1, p2, ncol = 2)
-
-```
-
-The other plotting functions can be seen in the vignette, "Gallery of missing data visualisations with naniar".
 
 # Handy helpers for missing data
 
@@ -194,6 +130,7 @@ miss_case_summary(airquality)
 You could also `group_by()` to work out the number of missings in each variable across the levels within it.
 
 ```{r group-by-var}
+
 library(dplyr)
 airquality %>%
   group_by(Month) %>%
@@ -215,96 +152,9 @@ prop_miss(airquality)
 
 ```
 
-Tabulations of the number of missings in each case or variable can be calculated with `miss_var_table()` and `miss_case_table()`. 
+# Contributions
 
-```{r miss-case-var-table}
-
-miss_var_table(airquality)
-miss_case_table(airquality)
-
-```
-
-Most of these functions can be called at once using `miss_summary()`, which takes a data.frame and then returns a nested dataframe containing the percentages of missing data, and lists of dataframes containing tally and summary information for the variables and cases. 
-
-```{r miss-summary}
-
-s_miss <- miss_summary(airquality)
-
-s_miss
-
-# overall % missing data
-s_miss$percent_missing_df
-
-# % of variables that contain missing data
-s_miss$percent_missing_var
-
-# % of cases that contain missing data
-s_miss$percent_missing_case
-
-# tabulations of missing data across cases
-s_miss$table_missing_case
-
-# tabulations of missing data across variables
-s_miss$table_missing_var
-
-# summary information (counts, percentrages) of missing data for variables and cases
-s_miss$summary_missing_var
-s_miss$summary_missing_case
-
-```
-
-# Other plotting functions
-
-## gg_miss_var
-
-Display the amount of missing data for each variable
-
-```{r}
-
-gg_miss_var(airquality)
-
-```
-
-## gg_miss_case
-
-Display the amount of missing data for each case
-
-```{r}
-
-gg_miss_case(airquality)
-
-```
-
-
-```{r}
-
-gg_miss_which(airquality)
-
-```
-
-## gg_miss_case_cumsum
-
-This shows a lineplot of the cumulative sum of missing values for the cases, kindly contributed by Colin Fay.
-
-```{r gg-miss-case-cumsum}
-
-gg_miss_case_cumsum(airquality)
-
-```
-
-## gg_miss_var_cumsum
-
-This shows a lineplot of the cumulative sum of missing values for variables, kindly contributed by Colin Fay.
-
-```{r gg-miss-var-cumsum}
-
-gg_miss_var_cumsum(airquality)
-
-```
-
-## gg_miss_which
-
-This shows whether a given variable contains a missing variable. In this case grey = missing. Think of it as if you are shading the cell in, if it contains data.
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 
 # A note on the name

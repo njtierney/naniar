@@ -12,3 +12,4 @@
 ^README-figs$
 ^data-raw$
 ^\.github$
+^cran-comments\.md$

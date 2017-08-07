@@ -1,3 +1,13 @@
+# naniar 0.0.9.9990 (2017/08/07)
+
+# Major Changes
+
+- Reviewed documentation for all functions and improved wording, grammar, and 
+style.
+- Converted roxygen to roxygen markdown
+- updated vignettes and readme
+- added a new vignette "naniar-visualisation", to give a quick overview of the visualisations provided with naniar.
+
 # naniar 0.0.9.9900 (2017/08/03)
 
 # Minor changes

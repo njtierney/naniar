@@ -18,19 +18,20 @@ the plot.}
 \item{data}{A data frame. If specified, overrides the default data frame
 defined at the top level of the plot.}
 
-\item{geom, }{stat Override the default connection between \code{geom_point} and \code{stat_point}.}
+\item{geom, }{stat Override the default connection between `geom_point` and
+`stat_point`.}
 
 \item{position}{Position adjustment, either as a string, or the result of a
 call to a position adjustment function}
 
-\item{na.rm}{If \code{FALSE} (the default), removes missing values with a
-warning. If \code{TRUE} silently removes missing values.}
+\item{na.rm}{If `FALSE` (the default), removes missing values with a warning.
+If `TRUE` silently removes missing values.}
 
 \item{show.legend}{logical. Should this layer be included in the legends?
-\code{NA}, the default, includes if any aesthetics are mapped. \code{FALSE}
-never includes, and \code{TRUE} always includes.}
+`NA`, the default, includes if any aesthetics are mapped. `FALSE`
+never includes, and `TRUE` always includes.}
 
-\item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics, rather
+\item{inherit.aes}{If `FALSE`, overrides the default aesthetics, rather
 than combining with them. This is most useful for helper functions that
 define both data and aesthetics and shouldn't inherit behaviour from the
 default plot specification, e.g. borders.}
@@ -46,10 +47,9 @@ are three types of arguments you can use here:
 }}
 }
 \description{
-stat_miss_point adds a geometry for displaying missingness to geom_point
+stat_miss_point adds a geometry for displaying missingness to
+  geom_point
 }
 \note{
-Very first attempt at creating a geom that is compatible with ggplot2.
-Data plotting works. Still todo:
-Warning message if na.rm = T is supplied.
+todo: Warning message if na.rm = T is supplied.
 }

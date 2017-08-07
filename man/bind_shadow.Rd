@@ -2,7 +2,7 @@
 % Please edit documentation in R/shadows.R
 \name{bind_shadow}
 \alias{bind_shadow}
-\title{Column bind a shadow dataframe to original data}
+\title{Bind a shadow dataframe to original data}
 \usage{
 bind_shadow(data)
 }
@@ -13,7 +13,8 @@ bind_shadow(data)
 dataframe with an extra appended layer of data.
 }
 \description{
-Binding a shadow dataframe to a regular dataframe helps visualise and work with missing data
+Binding a shadow matrix to a regular dataframe helps visualise and work with
+missing data.
 }
 \examples{
 

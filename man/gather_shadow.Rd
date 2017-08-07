@@ -10,10 +10,12 @@ gather_shadow(data)
 \item{data}{a dataframe}
 }
 \value{
-a dataframe in long, or "molten" format, containing information about the missings
+dataframe in long, format, containing information about the missings
 }
 \description{
-gather exists as we want to include this extra metadata about the rows that have missing data, but I also wanted to include some extra information about the class of the data, in case we need to gather the data back into a wider, rather than long, format. Here it takes a function `visdat`, `visdat:::fingerprint`, which is currently not a particularly complex function.
+`gather_shadow` is a long-form representation of binding the shadow matrix to
+  your data, producing variables named `rows`, `var`, and `miss`, where
+  `miss` contains the missing value representation.
 }
 \examples{
 

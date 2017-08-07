@@ -1,36 +1,36 @@
 #' @name stat_miss_point
 #' @title stat_miss_point
-#' @description stat_miss_point adds a geometry for displaying missingness to geom_point
+#' @description stat_miss_point adds a geometry for displaying missingness to
+#'   geom_point
 #'
-#' @note Very first attempt at creating a geom that is compatible with ggplot2.
-#' Data plotting works. Still todo:
-#' Warning message if na.rm = T is supplied.
+#' @note todo: Warning message if na.rm = T is supplied.
 #'
 #' @param mapping Set of aesthetic mappings created by \code{\link[ggplot2]{aes}}
-#' or \code{\link[ggplot2]{aes_}}. If specified and \code{inherit.aes = TRUE}
-#' (the default), is combined with the default mapping at the top level of the
-#' plot. You only need to supply mapping if there isn't a mapping defined for
-#' the plot.
+#'   or \code{\link[ggplot2]{aes_}}. If specified and \code{inherit.aes = TRUE}
+#'   (the default), is combined with the default mapping at the top level of the
+#'   plot. You only need to supply mapping if there isn't a mapping defined for
+#'   the plot.
 #'
 #' @param data A data frame. If specified, overrides the default data frame
-#' defined at the top level of the plot.
+#'   defined at the top level of the plot.
 #'
-#' @param geom, stat Override the default connection between \code{geom_point} and \code{stat_point}.
+#' @param geom, stat Override the default connection between `geom_point` and
+#'   `stat_point`.
 #'
 #' @param position Position adjustment, either as a string, or the result of a
-#' call to a position adjustment function
+#'   call to a position adjustment function
 #'
-#' @param na.rm If \code{FALSE} (the default), removes missing values with a
-#' warning. If \code{TRUE} silently removes missing values.
+#' @param na.rm If `FALSE` (the default), removes missing values with a warning.
+#'   If `TRUE` silently removes missing values.
 #'
 #' @param show.legend logical. Should this layer be included in the legends?
-#' \code{NA}, the default, includes if any aesthetics are mapped. \code{FALSE}
-#' never includes, and \code{TRUE} always includes.
+#'   `NA`, the default, includes if any aesthetics are mapped. `FALSE`
+#'   never includes, and `TRUE` always includes.
 #'
-#' @param inherit.aes If \code{FALSE}, overrides the default aesthetics, rather
-#' than combining with them. This is most useful for helper functions that
-#' define both data and aesthetics and shouldn't inherit behaviour from the
-#' default plot specification, e.g. borders.
+#' @param inherit.aes If `FALSE`, overrides the default aesthetics, rather
+#'   than combining with them. This is most useful for helper functions that
+#'   define both data and aesthetics and shouldn't inherit behaviour from the
+#'   default plot specification, e.g. borders.
 #'
 #' @param ... other arguments passed on to \code{\link[ggplot2]{layer}}. There
 #' are three types of arguments you can use here:

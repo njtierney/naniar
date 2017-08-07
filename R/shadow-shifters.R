@@ -1,13 +1,10 @@
 #' Shift missing values to facilitate missing data exploration/visualisation
 #'
-#' `shadow_shift` is a window function that transforms missing values to
-#'     facilitate visualisation. This has different behaviour for different
-#'     types of variables. For numeric variables, the values are shifted to 10%
-#'     below the minimum value for a given variable plus some jittered noise,
-#'     to separate repeated values, so that missing values can be visualised
-#'     along with the rest of the data. There are different shifts that can
-#'     take place in different kinds of variables, which are currently under
-#'     development.
+#' `shadow_shift` transforms missing values to facilitate visualisation, and has
+#'   different behaviour for different types of variables. For numeric
+#'   variables, the values are shifted to 10% below the minimum value for a given
+#'   variable plus some jittered noise, to separate repeated values, so that
+#'   missing values can be visualised along with the rest of the data.
 #'
 #' @param x a variable of interest to shift
 #' @param ... extra arguments to pass
@@ -20,16 +17,10 @@
 #'     mutate(Ozone_shift = shadow_shift(Ozone))
 #'
 #' @export
-# Constructor function ---------------------------------------------------------
-# create the S3 method
 shadow_shift <- function(x, ...) UseMethod("shadow_shift")
-
-# NULL -------------------------------------------------------------------------
 
 #' @export
 shadow_shift.NULL <- function(x, ...) NULL
-
-# default ----------------------------------------------------------------------
 
 #' @export
 shadow_shift.default <- function(x, ...){
@@ -46,10 +37,7 @@ shadow_shift.default <- function(x, ...){
 shadow_shift.numeric <- function(x, seed_shift = 2017-7-1-1850, ...){
 
   # add an exception for cases with infinite values
-
   if (any(is.infinite(x))) {
-
-
 
     xmin <- min(x, na.rm = TRUE)
 
@@ -111,9 +99,3 @@ shadow_shift.character <- function(x, ...){
                  true = "missing",
                  false = x)
 }
-#
-# library(naniar)
-#
-# riskfactors %>%
-#   add_shadow_shift(vars = c("drink_average", "smoke_stop")) %>%
-#   select(drink_average, drink_average_shift, smoke_stop, smoke_stop_shift)

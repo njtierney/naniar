@@ -12,7 +12,8 @@
 \item{...}{selected variables to use}
 }
 \description{
-Return a tibble that in shadow matrix form, where the variables are the same but have a suffix _NA attached to indicate their difference.
+Return a tibble in shadow matrix form, where the variables are the same but
+have a suffix _NA attached to distinguish them.
 }
 \examples{
 

@@ -2,7 +2,6 @@ Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
 Version: 0.0.9.9990
-Author: Nicholas Tierney, Miles McBain, Di Cook, Colin Fay
 Authors@R: c(
     person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
     person("Di", "Cook", , "dicook@monash.edu", role = "aut"),
@@ -10,11 +9,10 @@ Authors@R: c(
     person("Colin", "Fay", , "contact@colinfay.me", role = "aut")
     )
 Description: Missing values are ubiquitous in data and need to be explored and
-    handled in the initial stages of analysis. 'naniar' provides helpers for
-    exploring missing data dependencies with minimal deviation from the common
-    workflow of 'ggplot2' and tidy data. 'naniar' builds data structures and
-    functions that facilitate plotting of missing values and examination of
-    imputations.
+    handled in the initial stages of analysis. 'naniar' provides data structures 
+    and functions that facilitate the plotting of missing values and examination 
+    of imputations. This allows missing data dependencies to be explored with 
+    minimal deviation from the common work patterns of 'ggplot2' and tidy data. 
 License: MIT + file LICENSE
 LazyData: TRUE
 ByteCompile: TRUE

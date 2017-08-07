@@ -1,6 +1,6 @@
-inst/doc
 .Rproj.user
 .Rhistory
 .RData
+*.DS_Store
+inst/doc
 inst/*.html
-.DS_Store

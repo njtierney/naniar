@@ -12,11 +12,11 @@ shadow_shift(x, ...)
 \item{...}{extra arguments to pass}
 }
 \description{
-`shadow_shift` transforms missing values to facilitate visualisation, and has
-  different behaviour for different types of variables. For numeric
-  variables, the values are shifted to 10% below the minimum value for a given
-  variable plus some jittered noise, to separate repeated values, so that
-  missing values can be visualised along with the rest of the data.
+\code{shadow_shift} transforms missing values to facilitate visualisation, and has
+different behaviour for different types of variables. For numeric
+variables, the values are shifted to 10% below the minimum value for a given
+variable plus some jittered noise, to separate repeated values, so that
+missing values can be visualised along with the rest of the data.
 }
 \examples{
 airquality$Ozone

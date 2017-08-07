@@ -13,9 +13,9 @@ gg_miss_case(x)
 a ggplot object depicting the number of missings in a given case.
 }
 \description{
-This is a visual analogue to `miss_case_summary`. It draws a ggplot of the
-  number of missings in each case (row). A default minimal theme is used, which
-  can be customised as normal for ggplot.
+This is a visual analogue to \code{miss_case_summary}. It draws a ggplot of the
+number of missings in each case (row). A default minimal theme is used, which
+can be customised as normal for ggplot.
 }
 \examples{
 

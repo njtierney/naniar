@@ -13,7 +13,7 @@ pct_complete(x)
 numeric percent of complete values
 }
 \description{
-The complement to `pct_miss`
+The complement to \code{pct_miss}
 }
 \examples{
 

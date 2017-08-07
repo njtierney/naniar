@@ -16,7 +16,7 @@ a tibble of the percent of missing data in each variable
 }
 \description{
 Provide a summary for each variable of the number and percent missings,
-  ordering by the most missings in each variable.
+ordering by the most missings in each variable.
 }
 \examples{
 

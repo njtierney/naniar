@@ -15,12 +15,12 @@ respect the dplyr verbs "starts_with", "contains", "ends_with", etc.}
 \item{suffix}{suffix to add to variable, defaults to "shift"}
 }
 \value{
-data with the added variable shifted named as `var_suffix`
+data with the added variable shifted named as \code{var_suffix}
 }
 \description{
 Shadow shift only the selected variables in a dataset by specifying variable
-  names or use dplyr `vars` and dplyr verbs `starts_with`, `contains`,
-  `ends_with`, etc.
+names or use dplyr \code{vars} and dplyr verbs \code{starts_with}, \code{contains},
+\code{ends_with}, etc.
 }
 \examples{
 

@@ -10,8 +10,8 @@
 #' @title  geom_miss_point
 #' @note Warning message if na.rm = T is supplied.
 #'
-#' @param mapping Set of aesthetic mappings created by \code{\link[ggplot2]{aes}}
-#' or \code{\link[ggplot2]{aes_}}. If specified and \code{inherit.aes = TRUE}
+#' @param mapping Set of aesthetic mappings created by [ggplot2::aes()]
+#' or [ggplot2::aes_()]. If specified and `inherit.aes = TRUE`
 #' (the default), is combined with the default mapping at the top level of the
 #' plot. You only need to supply mapping if there isn't a mapping defined for
 #' the plot.
@@ -24,25 +24,25 @@
 #' @param position Position adjustment, either as a string, or the result of a
 #' call to a position adjustment function.
 #'
-#' @param na.rm If \code{FALSE} (the default), removes missing values with a
-#' warning. If \code{TRUE} silently removes missing values.
+#' @param na.rm If `FALSE` (the default), removes missing values with a
+#' warning. If `TRUE` silently removes missing values.
 #'
 #' @param show.legend logical. Should this layer be included in the legends?
-#' \code{NA}, the default, includes if any aesthetics are mapped. \code{FALSE}
-#' never includes, and \code{TRUE} always includes.
+#' `NA`, the default, includes if any aesthetics are mapped. `FALSE`
+#' never includes, and `TRUE` always includes.
 #'
-#' @param inherit.aes If \code{FALSE}, overrides the default aesthetics, rather
+#' @param inherit.aes If `FALSE`, overrides the default aesthetics, rather
 #' than combining with them. This is most useful for helper functions that
 #' define both data and aesthetics and shouldn't inherit behaviour from the
 #' default plot specification, e.g. borders.
 #'
-#' @param ... other arguments passed on to \code{\link[ggplot2]{layer}}. There
+#' @param ... other arguments passed on to [ggplot2::layer()]. There
 #' are three types of arguments you can use here:
 #' \itemize{
 #'  \item{Aesthetics: to set an aesthetic to a fixed value, like
-#'  \code{color = "red"} or \code{size = 3.}}
+#'  `color = "red"` or `size = 3.`}
 #'  \item{Other arguments to the layer, for example you override the default
-#'  \code{stat} associated with the layer.}
+#'  `stat` associated with the layer.}
 #'  \item{Other arguments passed on to the stat.}
 #' }
 #'

@@ -13,10 +13,10 @@ gg_miss_var(x)
 a ggplot object depicting the number of missings in a given column
 }
 \description{
-This is a visual analogue to `miss_var_summary`. It draws a ggplot of the
-  number of missings in each variable, ordered to show which variables have
-  the most missing data. A default minimal rtheme is used, which can be
-  customised as normal for ggplot.
+This is a visual analogue to \code{miss_var_summary}. It draws a ggplot of the
+number of missings in each variable, ordered to show which variables have
+the most missing data. A default minimal rtheme is used, which can be
+customised as normal for ggplot.
 }
 \examples{
 

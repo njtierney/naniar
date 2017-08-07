@@ -76,3 +76,4 @@ Collate:
     'utils.R'
 URL: https://github.com/njtierney/naniar
 BugReports: https://github.com/njtierney/naniar/issues
+Roxygen: list(markdown = TRUE)

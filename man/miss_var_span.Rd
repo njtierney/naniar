@@ -14,16 +14,16 @@ miss_var_span(data, var, span_every)
 \item{span_every}{integer describing the length of the span to be explored}
 }
 \value{
-dataframe with variables `n_miss`, `n_complete`, `prop_miss`, and
-    `prop_complete`, which describe the number, or proportion of missing or
-    complete values within that given time span.
+dataframe with variables \code{n_miss}, \code{n_complete}, \code{prop_miss}, and
+\code{prop_complete}, which describe the number, or proportion of missing or
+complete values within that given time span.
 }
 \description{
 To summarise the missing values in a time series object it can be useful to
-    calculate the number of missing values in a given time period.
-    `miss_var_span` takes a data.frame object, a variable, and a `span_every`
-    argument and returns a dataframe containing the number of missing values
-    within each span.
+calculate the number of missing values in a given time period.
+\code{miss_var_span} takes a data.frame object, a variable, and a \code{span_every}
+argument and returns a dataframe containing the number of missing values
+within each span.
 }
 \examples{
 

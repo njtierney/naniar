@@ -5,8 +5,8 @@
 #'
 #' @note todo: Warning message if na.rm = T is supplied.
 #'
-#' @param mapping Set of aesthetic mappings created by \code{\link[ggplot2]{aes}}
-#'   or \code{\link[ggplot2]{aes_}}. If specified and \code{inherit.aes = TRUE}
+#' @param mapping Set of aesthetic mappings created by [ggplot2::aes()]
+#'   or [ggplot2::aes_()]. If specified and `inherit.aes = TRUE`
 #'   (the default), is combined with the default mapping at the top level of the
 #'   plot. You only need to supply mapping if there isn't a mapping defined for
 #'   the plot.
@@ -32,13 +32,13 @@
 #'   define both data and aesthetics and shouldn't inherit behaviour from the
 #'   default plot specification, e.g. borders.
 #'
-#' @param ... other arguments passed on to \code{\link[ggplot2]{layer}}. There
+#' @param ... other arguments passed on to [ggplot2::layer()]. There
 #' are three types of arguments you can use here:
 #' \itemize{
 #'  \item{Aesthetics: to set an aesthetic to a fixed value, like
-#'  \code{color = "red"} or \code{size = 3.}}
+#'  `color = "red"` or `size = 3.`}
 #'  \item{Other arguments to the layer, for example you override the default
-#'  \code{stat} associated with the layer.}
+#'  `stat` associated with the layer.}
 #'  \item{Other arguments passed on to the stat.}
 #' }
 #'

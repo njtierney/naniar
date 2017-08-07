@@ -13,7 +13,7 @@ prop_miss(x)
 numeric the proportion of missing values in x
 }
 \description{
-This is shorthand for `mean(is.na(x))`
+This is shorthand for \code{mean(is.na(x))}
 }
 \examples{
 

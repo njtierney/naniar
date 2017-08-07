@@ -10,18 +10,18 @@ cast_shadow(data, ...)
 \item{data}{data.frame}
 
 \item{...}{One or more unquoted expressions separated by commas. These
-respect the dplyr verbs `starts_with`, `contains`, `ends_with`, etc.}
+respect the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.}
 }
 \value{
-data with the added variable shifted and the suffix `_NA`
+data with the added variable shifted and the suffix \code{_NA}
 }
 \description{
 Casting a shadow shifted column performs the equivalent pattern to
-  `data %>% select(var) %>% shadow_shift()`. This is a convenience function
-  that makes it easy to perform certain visualisations, in line with the
-  principle that the user should have a way to flexibly return dataformats
-  containing information about the missing data. It also respects the dplyr
-  verbs `starts_with`, `contains`, `ends_with`, etc.
+"data %>% select(var) %>% shadow_shift()". This is a convenience function
+that makes it easy to perform certain visualisations, in line with the
+principle that the user should have a way to flexibly return dataformats
+containing information about the missing data. It also respects the dplyr
+verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.
 }
 \examples{
 

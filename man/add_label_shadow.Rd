@@ -11,13 +11,13 @@ add_label_shadow(data)
 }
 \value{
 data.frame with a column, "any_missing", which describes whether or
-  not there are any rows that have a shadow value.
+not there are any rows that have a shadow value.
 }
 \description{
 Instead of focussing on labelling whether there are missings, we instead
-  focus on whether there have been any shadows created. This can be useful
-  when data has been imputed and you need to determine which rows contained
-  missing values when the shadow was bound to the dataset.
+focus on whether there have been any shadows created. This can be useful
+when data has been imputed and you need to determine which rows contained
+missing values when the shadow was bound to the dataset.
 }
 \examples{
 

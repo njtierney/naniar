@@ -14,9 +14,9 @@ a dataframe
 }
 \description{
 Return missing data info about the dataframe, the variables, and the cases.
-  Specifically, returning how many elements in a dataframe contain a missing
-  value, how many elements in a variable contain a missing value, and how many
-  elements in a case contain a missing.
+Specifically, returning how many elements in a dataframe contain a missing
+value, how many elements in a variable contain a missing value, and how many
+elements in a case contain a missing.
 }
 \examples{
 

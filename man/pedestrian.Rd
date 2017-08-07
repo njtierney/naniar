@@ -6,27 +6,27 @@
 \title{Pedestrian count information around Melbourne for 2016}
 \format{A tibble with 37,700 rows and 9 variables:
 \describe{
-  \item{hourly_counts}{(integer) the number of pedestrians counted at that sensor
-  at that time}
-  \item{date_time}{(POSIXct, POSIXt) The time that the count was taken}
-  \item{year}{(integer) Year of record}
-  \item{month}{(factor) Month of record as an ordered factor (1 = January, 12 =
-    December)}
-  \item{month_day}{(integer) Full day of the month}
-  \item{week_day}{(factor) Full day of the week as an ordered factor (1 = Sunday,
-  7 = Saturday)}
-  \item{hour}{(integer) The hour of the day in 24 hour format}
-  \item{sensor_id}{(integer) the id of the sensor}
-  \item{sensor_name}{(character) the full name of the sensor}
+\item{hourly_counts}{(integer) the number of pedestrians counted at that sensor
+at that time}
+\item{date_time}{(POSIXct, POSIXt) The time that the count was taken}
+\item{year}{(integer) Year of record}
+\item{month}{(factor) Month of record as an ordered factor (1 = January, 12 =
+December)}
+\item{month_day}{(integer) Full day of the month}
+\item{week_day}{(factor) Full day of the week as an ordered factor (1 = Sunday,
+7 = Saturday)}
+\item{hour}{(integer) The hour of the day in 24 hour format}
+\item{sensor_id}{(integer) the id of the sensor}
+\item{sensor_name}{(character) the full name of the sensor}
 }}
 \usage{
 pedestrian
 }
 \description{
 This dataset contains hourly counts of pedestrians from 4 sensors around
-  Melbourne: Birrarung Marr, Bourke Street Mall, Flagstaff station, and
-  Spencer St-Collins St (south), recorded from January 1st 2016 at 00:00:00
-  to December 31st 2016 at 23:00:00. The data is made free and publicly
-  available from \url{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}
+Melbourne: Birrarung Marr, Bourke Street Mall, Flagstaff station, and
+Spencer St-Collins St (south), recorded from January 1st 2016 at 00:00:00
+to December 31st 2016 at 23:00:00. The data is made free and publicly
+available from \url{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}
 }
 \keyword{datasets}

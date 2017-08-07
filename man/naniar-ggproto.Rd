@@ -13,6 +13,6 @@ StatMissPoint
 }
 \description{
 These are the stat and geom overrides using ggproto from ggplot2
-  that make naniar work.
+that make naniar work.
 }
 \keyword{datasets}

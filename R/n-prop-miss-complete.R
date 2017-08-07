@@ -1,6 +1,6 @@
 #' Return the number of missing values
 #'
-#' Substitute for \code{sum(is.na(data))}
+#' Substitute for `sum(is.na(data))`
 #'
 #' @param x a vector
 #'

@@ -15,7 +15,7 @@ add_span_counter(data, span_size)
 data.frame with extra variable "span_counter".
 }
 \description{
-Adds a variable, `span_counter` to a dataframe. Used internally to facilitate
+Adds a variable, \code{span_counter} to a dataframe. Used internally to facilitate
 counting of missing values over a given span.
 }
 \examples{

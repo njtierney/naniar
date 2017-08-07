@@ -4,8 +4,7 @@ magrittr::`%>%`
 
 #' Group By Helper
 #'
-#' This function provides a little wrapper around the new tidyverse pattern to
-#'     allow grouping to occur in a dataset.
+#' This is a wrapper to facilitate the `grouped_df` S3 method.
 #'
 #' @param data data.frame, which will be grouped
 #' @param .fun a function to apply
@@ -135,12 +134,6 @@ where_na <- function(x){
 which_na <- function(x){
   which(is.na(x))
 }
-
-# note:
-# it would be cool for the missing data mechanisms if these were also treated as regular missing values in the other parts of naniar.
-# on that thought, they should just be regular missing values, but the addition of something like the `as_shadow` argument allows for them to be missing with specified structure.
-# so, I guess what I'm saying is that there should be a way for the proposed missing mechanisms to be treated differently, if desired, otherwise, treated as regular missings, so they are treated the same by the rest of the R universe.
-
 
 #' Helper function to determine whether there are any missings
 #'

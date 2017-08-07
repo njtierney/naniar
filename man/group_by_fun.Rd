@@ -15,8 +15,7 @@ group_by_fun(data, .fun)
 a dataframe with the function applied to each group
 }
 \description{
-This function provides a little wrapper around the new tidyverse pattern to
-    allow grouping to occur in a dataset.
+This is a wrapper to facilitate the \code{grouped_df} S3 method.
 }
 \examples{
 

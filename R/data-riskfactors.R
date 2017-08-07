@@ -12,7 +12,7 @@
 #' variables.
 #'
 #' \describe{
-#' \item{\code{state}}{A factor with 52 levels. The labels and states
+#' \item{`state`}{A factor with 52 levels. The labels and states
 #'   corresponding to the labels are as follows: 1:Alabama, 2:Alaska, 4:Arizona,
 #'   5:Arkansas, 6:California,8:Colorado, 9:Connecticut, 10:Delaware, 11:District
 #'   of Columbia,12:Florida, 13:Georgia, 15:Hawaii, 16:Idaho, 1
@@ -24,36 +24,36 @@
 #'   45:SouthCarolina, 46:South Dakota, 47:Tennessee, 48:Texas, 49:Utah,
 #'   50:Vermont, 51:Virginia, 53:Washington, 54:West  Virginia,55:Wisconsin,
 #'   56:Wyoming, 66:Guam, 72:Puerto Rico, 78:Virgin Islands}
-#' \item{\code{sex}}{A factor with levels \code{Male} \code{Female}.}
-#' \item{\code{age}}{A numeric vector from 7 to 97.}
-#' \item{\code{weight_lbs}}{The weight without shoes in pounds.}
-#' \item{\code{height_inch}}{The weight without shoes in inches.}
-#' \item{\code{bmi}}{Body Mass Index (BMI). Computed by weight in Kilogram
+#' \item{`sex`}{A factor with levels `Male` `Female`.}
+#' \item{`age`}{A numeric vector from 7 to 97.}
+#' \item{`weight_lbs`}{The weight without shoes in pounds.}
+#' \item{`height_inch`}{The weight without shoes in inches.}
+#' \item{`bmi`}{Body Mass Index (BMI). Computed by weight in Kilogram
 #'     /(height in Meters * height in Meters). Missing if any of weight or
 #'     height is missing.}
-#' \item{\code{marital}}{A factor with levels \code{Married} \code{Divorced}
-#'     \code{Widowed} \code{Separated} \code{NeverMarried} \code{UnmarriedCouple}.}
-#' \item{\code{pregnant}}{Whether pregnant now with two levels \code{Yes} and
-#'   \code{No}.}
-#' \item{\code{children}}{A numeric vector giving the number of children less
+#' \item{`marital`}{A factor with levels `Married` `Divorced`
+#'     `Widowed` `Separated` `NeverMarried` `UnmarriedCouple`.}
+#' \item{`pregnant`}{Whether pregnant now with two levels `Yes` and
+#'   `No`.}
+#' \item{`children`}{A numeric vector giving the number of children less
 #'   than 18 years of age in household.}
-#' \item{\code{education}}{A factor with the education levels \code{1}
-#'     \code{2} \code{3} \code{4} \code{5} \code{6} as 1: Never attended
+#' \item{`education`}{A factor with the education levels `1`
+#'     `2` `3` `4` `5` `6` as 1: Never attended
 #'     school or only kindergarten; 2: Grades 1 through 8 (Elementary);
 #'     3: Grades 9 through 11 (Some high school); 4: Grade 12 or GED
 #'     (High school graduate); 5: College 1 year to 3 years (Some college
 #'     or technical school); 6: College 4 years or more  (College
 #'     graduate).}
-#' \item{\code{employment}}{A factor showing the employment status with levels
-#'    \code{1} \code{2} \code{3} \code{4} \code{5} \code{7} \code{8}. The labels
+#' \item{`employment`}{A factor showing the employment status with levels
+#'    `1` `2` `3` `4` `5` `7` `8`. The labels
 #'    mean --  1: Employed for wages; 2: Self-employed; 3: Out of work for more
 #'    than 1 year; 4: Out of work for less that 1 year;  5: A homemaker; 6: A
 #'    student; 7:Retired; 8: Unable to work.}
-#' \item{\code{income}}{The annual household income from all sources with
-#'    levels \code{<10k} \code{10-15k} \code{15-20k} \code{20-25k} \code{25-35k}
-#'    \code{35-50k} \code{50-75k} \code{>75k} \code{Dontknow} \code{Refused}.}
-#' \item{\code{veteran}}{A factor with levels \code{1} \code{2} \code{3}
-#'     \code{4} \code{5}. The question for this variable is: Have you ever
+#' \item{`income`}{The annual household income from all sources with
+#'    levels `<10k` `10-15k` `15-20k` `20-25k` `25-35k`
+#'    `35-50k` `50-75k` `>75k` `Dontknow` `Refused`.}
+#' \item{`veteran`}{A factor with levels `1` `2` `3`
+#'     `4` `5`. The question for this variable is: Have you ever
 #'     served on active duty in the United States Armed Forces, either in the
 #'     regular military or in a National Guard or military reserve unit? Active
 #'     duty does not include training for the Reserves or National Guard, but
@@ -62,53 +62,53 @@
 #'     during the last 12 months, but not now; 3: Yes, on active duty in the
 #'     past, but not during the last 12 months; 4: No, training for Reserves or
 #'     National Guard only; 5: No, never served in the military.}
-#' \item{\code{hispanic}}{A factor with levels \code{Yes} \code{No}
+#' \item{`hispanic`}{A factor with levels `Yes` `No`
 #'     corresponding to the question: are you Hispanic or Latino?}
-#'   \item{\code{health_general}}{Answer to question "in general your health is"
-#'     with levels  \code{Excellent} \code{VeryGood} \code{Good} \code{Fair}
-#'     \code{Poor} \code{Refused}.}
-#'   \item{\code{health_physical}}{The number of days during the last 30 days
+#'   \item{`health_general`}{Answer to question "in general your health is"
+#'     with levels  `Excellent` `VeryGood` `Good` `Fair`
+#'     `Poor` `Refused`.}
+#'   \item{`health_physical`}{The number of days during the last 30 days
 #'     that the respondent's physical health was not good.  -7 is for "Don't
 #'     know/Not sure", and -9 is for "Refused".}
-#'   \item{\code{health_mental}}{The number of days during the last 30 days
+#'   \item{`health_mental`}{The number of days during the last 30 days
 #'   that the respondent's mental health was not good.  -7 is for
 #'   "Don't know/Not sure", and -9 is for "Refused".}
-#'   \item{\code{health_poor}}{The number of days during the last 30 days
+#'   \item{`health_poor`}{The number of days during the last 30 days
 #'      that poor physical or mental health keep the respondent from doing
 #'      usual activities, such as self-care, work, or recreation. -7 is
 #'      for "Don't know/Not sure", and -9 is for "Refused".}
-#'   \item{\code{health_cover}}{Whether having any kind of health care
+#'   \item{`health_cover`}{Whether having any kind of health care
 #'      coverage, including health insurance, prepaid plans such as HMOs,
 #'      or government plans such as Medicare. The answer has two levels:
-#'      \code{Yes} and \code{No}.}
-#'   \item{\code{provide_care}}{Whether providing any such care or assistance
-#'   to a friend or family member during the past month, with levels \code{Yes}
-#'   and \code{No}.}
-#'   \item{\code{activity_limited}}{ Whether being limited in any way in any
+#'      `Yes` and `No`.}
+#'   \item{`provide_care`}{Whether providing any such care or assistance
+#'   to a friend or family member during the past month, with levels `Yes`
+#'   and `No`.}
+#'   \item{`activity_limited`}{ Whether being limited in any way in any
 #'     activities because of physical, mental, or emotional problems,
-#'     with levels  \code{Yes} and \code{No}.}
-#'   \item{\code{drink_any}}{Whether having had at least one drink of
+#'     with levels  `Yes` and `No`.}
+#'   \item{`drink_any`}{Whether having had at least one drink of
 #'     any alcoholic beverage such as beer, wine, a malt beverage or
-#'     liquor during the past 30 days, with levels \code{Yes} and
-#'     \code{No}.}
-#'   \item{\code{drink_days}}{The number of days during the past 30 days that
+#'     liquor during the past 30 days, with levels `Yes` and
+#'     `No`.}
+#'   \item{`drink_days`}{The number of days during the past 30 days that
 #'     the respondent had at least one drink of any alcoholic beverage. -7 is
 #'     for "Don't know/Not sure", and -9 is for "Refused".}
-#'   \item{\code{drink_avg}}{The number of drinks on the average the respondent
+#'   \item{`drink_avg`}{The number of drinks on the average the respondent
 #'     had on the days when he/she drank, during the past 30 days. -7 is for
 #'      "Don't know/Not sure", and -9 is for "Refused".}
-#'   \item{\code{smoke_100}}{ Whether having smoked at least
-#'     100 cigarettes in the entire life, with levels \code{Yes} and
-#'     \code{No}.}
-#'   \item{\code{smoke_days}}{ The frequency of days now
-#'     smoking, with levels \code{Everyday} \code{Somedays} and
-#'     \code{NotAtAll}(not at all).}
-#'   \item{\code{smoke_stop}}{Whether
+#'   \item{`smoke_100`}{ Whether having smoked at least
+#'     100 cigarettes in the entire life, with levels `Yes` and
+#'     `No`.}
+#'   \item{`smoke_days`}{ The frequency of days now
+#'     smoking, with levels `Everyday` `Somedays` and
+#'     `NotAtAll`(not at all).}
+#'   \item{`smoke_stop`}{Whether
 #'     having stopped smoking for  one day or longer during the past 12
 #'     months because the respondent was trying to quit smoking, with
-#'     levels \code{Yes} and \code{No}.}
-#'   \item{\code{smoke_last}}{A factor
-#'     with levels \code{3} \code{4} \code{5} \code{6} \code{7} \code{8}
+#'     levels `Yes` and `No`.}
+#'   \item{`smoke_last`}{A factor
+#'     with levels `3` `4` `5` `6` `7` `8`
 #'     corresponding to the question: how long has it been since last
 #'     smoking cigarettes regularly? The labels mean: 3: Within the past
 #'     6 months (3 months but less than 6 months ago); 4: Within the past
@@ -116,24 +116,24 @@
 #'     years (1 year but less than 5 years ago); 6: Within the past 10
 #'     years (5 years but less than 10 years ago); 7: 10 years or more;
 #'     8: Never smoked regularly.}
-#'   \item{\code{diet_fruit}}{The number of
+#'   \item{`diet_fruit`}{The number of
 #'     fruit the respondent eat every year, not counting juice. -7 is for
 #'     "Don't know/Not sure", and -9 is for "Refused".}
-#'   \item{\code{diet_salad}}{The number of servings of green   salad the
+#'   \item{`diet_salad`}{The number of servings of green   salad the
 #'     respondent eat every year. -7 is for "Don't  know/Not sure",
 #'     and -9 is for "Refused".}
-#'   \item{\code{diet_potato}}{ The number of
+#'   \item{`diet_potato`}{ The number of
 #'     servings of potatoes, not including french fries, fried potatoes,
 #'     or potato chips, that the respondent eat every year. -7 is for
 #'     "Don't know/Not sure", and -9 is for "Refused".}
-#'   \item{\code{diet_carrot}}{The number of carrots the respondent eat
+#'   \item{`diet_carrot`}{The number of carrots the respondent eat
 #'     every year. -7 is for  "Don't know/Not sure", and -9 is for
 #'     "Refused".}
-#'    \item{\code{diet_vegetable}}{The number of servings of
+#'    \item{`diet_vegetable`}{The number of servings of
 #'     vegetables   the respondent eat every year, not counting carrots,
 #'     potatoes, or salad. -7 is for "Don't know/Not sure", and -9 is
 #'     for "Refused".}
-#'   \item{\code{diet_juice}}{The number of fruit juices
+#'   \item{`diet_juice`}{The number of fruit juices
 #'     such as orange, grapefruit, or tomato that the respondent drink
 #'     every year. -7 is   for "Don't know/Not sure", and -9 is for
 #'     "Refused".}

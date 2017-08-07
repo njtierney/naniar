@@ -13,8 +13,8 @@ miss_summary(data)
 a tibble of missing data summaries
 }
 \description{
-`miss_summary` performs all of the missing data helper summaries and puts
-  them into lists within a tibble
+\code{miss_summary} performs all of the missing data helper summaries and puts
+them into lists within a tibble
 }
 \examples{
 

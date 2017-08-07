@@ -9,8 +9,8 @@ geom_miss_point(mapping = NULL, data = NULL, position = "identity",
   inherit.aes = TRUE, ...)
 }
 \arguments{
-\item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2]{aes}}
-or \code{\link[ggplot2]{aes_}}. If specified and \code{inherit.aes = TRUE}
+\item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2:aes]{ggplot2::aes()}}
+or \code{\link[ggplot2:aes_]{ggplot2::aes_()}}. If specified and \code{inherit.aes = TRUE}
 (the default), is combined with the default mapping at the top level of the
 plot. You only need to supply mapping if there isn't a mapping defined for
 the plot.}
@@ -35,24 +35,24 @@ than combining with them. This is most useful for helper functions that
 define both data and aesthetics and shouldn't inherit behaviour from the
 default plot specification, e.g. borders.}
 
-\item{...}{other arguments passed on to \code{\link[ggplot2]{layer}}. There
+\item{...}{other arguments passed on to \code{\link[ggplot2:layer]{ggplot2::layer()}}. There
 are three types of arguments you can use here:
 \itemize{
- \item{Aesthetics: to set an aesthetic to a fixed value, like
- \code{color = "red"} or \code{size = 3.}}
- \item{Other arguments to the layer, for example you override the default
- \code{stat} associated with the layer.}
- \item{Other arguments passed on to the stat.}
+\item{Aesthetics: to set an aesthetic to a fixed value, like
+\code{color = "red"} or \code{size = 3.}}
+\item{Other arguments to the layer, for example you override the default
+\code{stat} associated with the layer.}
+\item{Other arguments passed on to the stat.}
 }}
 }
 \description{
 Plot Missing Data Points
 }
 \details{
-`geom_miss_point` provides a way to transform and plot missing values in
-  ggplot2. To do so it uses methods from ggobi to display missing data
-  points 10% below the minimum value, so that the values can be seen no the
-  same axis.
+\code{geom_miss_point} provides a way to transform and plot missing values in
+ggplot2. To do so it uses methods from ggobi to display missing data
+points 10% below the minimum value, so that the values can be seen no the
+same axis.
 }
 \note{
 Warning message if na.rm = T is supplied.

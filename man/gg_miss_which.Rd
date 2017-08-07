@@ -14,8 +14,8 @@ a ggplot object
 }
 \description{
 This plot produces a set of rectangles indicating whether there is a missing
-  element in a column or not.  A default minimal theme is used, which can be
-  customised as normal for ggplot.
+element in a column or not.  A default minimal theme is used, which can be
+customised as normal for ggplot.
 }
 \examples{
 

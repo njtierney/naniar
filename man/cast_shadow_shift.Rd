@@ -17,7 +17,7 @@ data.frame with the shadow and shadow_shift vars
 }
 \description{
 Shift the values and add a shadow column.  It also respects the dplyr
-  verbs `starts_with`, `contains`, `ends_with`, etc.
+verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.
 }
 \examples{
 

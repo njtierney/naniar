@@ -12,7 +12,7 @@ add_n_miss(data, ..., label = "n_miss")
 \item{...}{Variable names to use instead of the whole dataset. By default this
 looks at the whole dataset. Otherwise, this is one or more unquoted
 expressions separated by commas. These also respect the dplyr verbs
-`starts_with`, `contains`, `ends_with`, etc. By default will add "_all" to
+\code{starts_with}, \code{contains}, \code{ends_with}, etc. By default will add "_all" to
 the label if left blank, otherwise will add "_vars" to distinguish that it
 has not been used on all of the variables.}
 
@@ -23,8 +23,8 @@ a dataframe
 }
 \description{
 It can be useful when doing data analysis to add the number of missing data
-  points into your dataframe. `add_n_miss` adds a column named "n_miss",
-  which contains the number of missing values in that row.
+points into your dataframe. \code{add_n_miss} adds a column named "n_miss",
+which contains the number of missing values in that row.
 }
 \examples{
 

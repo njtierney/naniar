@@ -13,13 +13,13 @@ miss_var_run(data, var)
 }
 \value{
 dataframe with column names "run_length" and "is_na", which describe
-    the length of the run, and whether that run describes a missing value.
+the length of the run, and whether that run describes a missing value.
 }
 \description{
 It us useful to find the number of missing values that occur in a single run.
-   The function, `miss_var_run()`, returns a dataframe with the column names
-   "run_length" and "is_na", which describe the length of the run, and
-   whether that run describes a missing value.
+The function, \code{miss_var_run()}, returns a dataframe with the column names
+"run_length" and "is_na", which describe the length of the run, and
+whether that run describes a missing value.
 }
 \examples{
 

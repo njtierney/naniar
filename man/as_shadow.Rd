@@ -16,7 +16,7 @@ appended shadow with column names
 }
 \description{
 Representing missing data structure is achieved using the shadow matrix,
-introduced in [Swayne and Buja](https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization). The shadow
+introduced in \href{https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization}{Swayne and Buja}. The shadow
 matrix is the same dimension as the data, and consists of binary indicators
 of missingness of data values, where missing is represented as "NA", and not
 missing is represented as "!NA". Although these may be represented as 1 and

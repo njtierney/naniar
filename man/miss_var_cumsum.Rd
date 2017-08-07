@@ -14,7 +14,7 @@ a tibble of the cumulative sum of missing data in each variable
 }
 \description{
 Provide a data.frame containing the cumulative sum of number & percentage of
-  missingness for each variable.
+missingness for each variable.
 }
 \examples{
 

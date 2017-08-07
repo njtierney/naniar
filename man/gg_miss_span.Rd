@@ -9,7 +9,7 @@ gg_miss_span(data, var, span_every)
 \arguments{
 \item{data}{data.frame}
 
-\item{var}{a bare unquoted variable name from `data`.}
+\item{var}{a bare unquoted variable name from \code{data}.}
 
 \item{span_every}{integer describing the length of the span to be explored}
 }
@@ -17,10 +17,10 @@ gg_miss_span(data, var, span_every)
 ggplot2 object
 }
 \description{
-`gg_miss_span` is a replacement function to
-  `imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100)`, which shows the
-  number of missings in a given span, or breaksize. A default minimal theme
-  is used, which can be customised as normal for ggplot.
+\code{gg_miss_span} is a replacement function to
+\code{imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100)}, which shows the
+number of missings in a given span, or breaksize. A default minimal theme
+is used, which can be customised as normal for ggplot.
 }
 \examples{
 

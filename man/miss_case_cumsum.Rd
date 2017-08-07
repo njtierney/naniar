@@ -11,11 +11,11 @@ miss_case_cumsum(data)
 }
 \value{
 a tibble containing the number and percent of missing data in each
-  case
+case
 }
 \description{
 Provide a data.frame containing each case (row), the number and percent of
-  missing values in each case.
+missing values in each case.
 }
 \examples{
 

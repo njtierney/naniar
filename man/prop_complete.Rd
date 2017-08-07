@@ -13,7 +13,7 @@ prop_complete(x)
 numeric proportion of complete values
 }
 \description{
-The complement to `prop_miss`
+The complement to \code{prop_miss}
 }
 \examples{
 

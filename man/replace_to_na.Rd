@@ -18,7 +18,7 @@ values replaced by NA
 }
 \description{
 Specify variables and their values that you want to convert to missing values.
-  This is a complement to `tidyr::replace_na`.
+This is a complement to \code{tidyr::replace_na}.
 }
 \examples{
 

@@ -11,12 +11,12 @@ label_na(x)
 }
 \value{
 a vector of factors containing the labels "!NA" for Not missing and
-  "NA" for missing.
+"NA" for missing.
 }
 \description{
 Returns a binary factor of !NA and NA, where !NA indicates a datum that is
-  not missing, and NA indicates missingness. This function is what powers the
-  factor levels in `as_shadow()`.
+not missing, and NA indicates missingness. This function is what powers the
+factor levels in \code{as_shadow()}.
 }
 \examples{
 

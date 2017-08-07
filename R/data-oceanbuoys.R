@@ -8,20 +8,20 @@
 #' Format: a data frame with 736 observations on the following 8
 #' variables.
 #' \describe{
-#'   \item{\code{year}}{A factor with levels \code{1993} \code{1997}.}
-#'   \item{\code{latitude}}{A factor with levels \code{-5}  \code{-2} \code{0}.}
-#'   \item{\code{longitude}}{A factor with levels \code{-110} \code{-95}.}
-#'   \item{\code{sea_temp_c}}{Sea surface temperature(degree Celsius),  measured
+#'   \item{`year`}{A factor with levels `1993` `1997`.}
+#'   \item{`latitude`}{A factor with levels `-5`  `-2` `0`.}
+#'   \item{`longitude`}{A factor with levels `-110` `-95`.}
+#'   \item{`sea_temp_c`}{Sea surface temperature(degree Celsius),  measured
 #'    by the TAO buoys at one meter below the surface.}
-#'   \item{\code{air_temp_c}}{Air temperature(degree Celsius), measured by the
+#'   \item{`air_temp_c`}{Air temperature(degree Celsius), measured by the
 #'     TAO buoys three meters above the sea surface.}
-#'   \item{\code{humidity}}{Relative humidity(%), measured by the TAO buoys 3
+#'   \item{`humidity`}{Relative humidity(%), measured by the TAO buoys 3
 #'     meters above the sea surface.}
-#'   \item{\code{wind_ew}}{The East-West wind vector components(M/s).  TAO buoys
+#'   \item{`wind_ew`}{The East-West wind vector components(M/s).  TAO buoys
 #'     measure the wind speed and direction four meters above the sea surface.
 #'     If it is positive, the East-West component of the wind is blowing towards
 #'     the East. If it is negative, this component is blowing towards the West.}
-#'   \item{\code{wind_ns}}{The North-South wind vector components(M/s). TAO
+#'   \item{`wind_ns`}{The North-South wind vector components(M/s). TAO
 #'     buoys measure the wind speed and direction four meters above the sea
 #'     surface. If it is positive, the North-South component of the wind is
 #'     blowing towards the North. If it is negative, this component is blowing

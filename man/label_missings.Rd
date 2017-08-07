@@ -14,7 +14,7 @@ character vector of "Missing" and "Not Missing".
 }
 \description{
 Creates a character vector describing whether there are missing or not missing
-  values
+values
 }
 \examples{
 

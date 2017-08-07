@@ -17,18 +17,18 @@ it is "any_miss_vars", if variables are specified.}
 }
 \value{
 data.frame with data and the column labelling whether that row (for
-    those variables) has any missing values - indicated by "missing" and
-    "complete".
+those variables) has any missing values - indicated by "missing" and
+"complete".
 }
 \description{
 This adds a column named "any_miss" (by default) that describes whether any
-  there are any missings in all of the variables (default), or whether any of
-  the specified columns, specified using variables names or dplyr verbs,
-  `starts_with`, `contains`, `ends_with`, etc. By default the added column
-   will be called "any_miss_all", if no variables are specified, otherwise,
-   if variables are specified, the label will be "any_miss_vars" to indicate
-   that not all variables have been used to create the labels. By default the
-   `label` argument uses the prefix "any_miss", but this can be specified.
+there are any missings in all of the variables (default), or whether any of
+the specified columns, specified using variables names or dplyr verbs,
+\code{starts_with}, \code{contains}, \code{ends_with}, etc. By default the added column
+will be called "any_miss_all", if no variables are specified, otherwise,
+if variables are specified, the label will be "any_miss_vars" to indicate
+that not all variables have been used to create the labels. By default the
+\code{label} argument uses the prefix "any_miss", but this can be specified.
 }
 \examples{
 

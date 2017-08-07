@@ -11,11 +11,11 @@ which_na(x)
 }
 \value{
 a matrix with columns "row" and "col", which refer to the row and
-    column that identify the position of a missing value in a dataframe
+column that identify the position of a missing value in a dataframe
 }
 \description{
 Internal function that creates a matrix containing the location of missing
-  values in a dataframe. This may be used in the future `impl_df` class.
+values in a dataframe. This may be used in the future \code{impl_df} class.
 }
 \examples{
 

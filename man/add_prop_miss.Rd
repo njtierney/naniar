@@ -12,7 +12,7 @@ add_prop_miss(data, ..., label = "prop_miss")
 \item{...}{Variable names to use instead of the whole dataset. By default this
 looks at the whole dataset. Otherwise, this is one or more unquoted
 expressions separated by commas. These also respect the dplyr verbs
-`starts_with`, `contains`, `ends_with`, etc. By default will add "_all" to
+\code{starts_with}, \code{contains}, \code{ends_with}, etc. By default will add "_all" to
 the label if left blank, otherwise will add "_vars" to distinguish that it
 has not been used on all of the variables.}
 
@@ -23,10 +23,10 @@ a dataframe
 }
 \description{
 It can be useful when doing data analysis to add the proportion of missing
-  data values into your dataframe. `add_prop_miss` adds a column named
-  "prop_miss", which contains the proportion of missing values in that row.
-  You can specify the variables that you would like to show the missingness
-  for.
+data values into your dataframe. \code{add_prop_miss} adds a column named
+"prop_miss", which contains the proportion of missing values in that row.
+You can specify the variables that you would like to show the missingness
+for.
 }
 \examples{
 

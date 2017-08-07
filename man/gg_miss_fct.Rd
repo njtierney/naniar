@@ -16,8 +16,8 @@ ggplot object depicting the number of missings
 }
 \description{
 This function draws a ggplot plot of the number of missings in each column,
-  broken down by a categorical variable from the dataset. A default minimal
-  theme is used, which can be customised as normal for ggplot.
+broken down by a categorical variable from the dataset. A default minimal
+theme is used, which can be customised as normal for ggplot.
 }
 \examples{
 

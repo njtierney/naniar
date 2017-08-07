@@ -13,7 +13,7 @@ pct_miss(x)
 numeric the percent of missing values in x
 }
 \description{
-This is shorthand for `mean(is.na(x)) * 100`
+This is shorthand for \code{mean(is.na(x)) * 100}
 }
 \examples{
 

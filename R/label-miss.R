@@ -12,9 +12,9 @@
 #' @seealso as_shadow
 #'
 #' @examples
-#'
+#' \dontrun{
 #' label_na(airquality$Ozone)
-#'
+#'}
 label_na <- function(x) {
   if (length(x) == 0) {
     stop("Input is of length 0, please check your inputs.", call. = FALSE)

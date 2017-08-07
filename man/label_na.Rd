@@ -19,9 +19,9 @@ not missing, and NA indicates missingness. This function is what powers the
 factor levels in \code{as_shadow()}.
 }
 \examples{
-
+\dontrun{
 label_na(airquality$Ozone)
-
+}
 }
 \seealso{
 as_shadow

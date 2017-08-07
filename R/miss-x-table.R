@@ -11,7 +11,7 @@
 #' @examples
 #'
 #' miss_case_table(airquality)
-#'
+#' library(dplyr)
 #' airquality %>%
 #'   group_by(Month) %>%
 #'   miss_case_table()

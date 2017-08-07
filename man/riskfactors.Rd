@@ -7,7 +7,7 @@
 Data, 2009.}
 \format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 245 rows and 34 columns.}
 \source{
-\url{http://www.cdc.gov/BRFSS/technical_infodata/surveydata/2009.htm}
+\url{https://www.cdc.gov/brfss/annual_data/annual_2009.htm}
 }
 \usage{
 data(riskfactors)

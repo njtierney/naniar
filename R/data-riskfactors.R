@@ -142,7 +142,7 @@
 #' @name riskfactors
 #' @docType data
 #' @usage data(riskfactors)
-#' @source \url{http://www.cdc.gov/BRFSS/technical_infodata/surveydata/2009.htm}
+#' @source \url{https://www.cdc.gov/brfss/annual_data/annual_2009.htm}
 #' @keywords datasets
 #' @seealso library(MissingDataGUI) (named brfss)
 "riskfactors"

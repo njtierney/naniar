@@ -82,7 +82,7 @@ vis_miss(airquality)
 
 ```
 
-To read more about the functions available in `visdat` see the vignette ["Using visdat"](https://cran.r-project.org/web/packages/visdat/vignettes/using_visdat.html)
+To read more about the functions available in `visdat` see the vignette ["Using visdat"](https://CRAN.R-project.org/package=visdat/vignettes/using_visdat.html)
 
 # Exploring missingness relationships
 

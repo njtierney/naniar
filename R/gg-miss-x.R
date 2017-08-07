@@ -42,7 +42,7 @@ gg_miss_case <- function(x){
 #'
 #' This is a visual analogue to `miss_var_summary`. It draws a ggplot of the
 #'   number of missings in each variable, ordered to show which variables have
-#'   the most missing data. A default minimal rtheme is used, which can be
+#'   the most missing data. A default minimal theme is used, which can be
 #'   customised as normal for ggplot.
 #'
 #' @param x a dataframe

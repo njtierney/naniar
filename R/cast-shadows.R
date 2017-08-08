@@ -15,6 +15,8 @@
 #'
 #' @return data with the added variable shifted and the suffix `_NA`
 #'
+#' @seealso [cast_shadow_shift()], [cast_shadow_shift_label()]
+#'
 #' @export
 #'
 #' @examples

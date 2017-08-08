@@ -31,3 +31,6 @@ airquality \%>\% cast_shadow(Ozone)
 airquality \%>\% cast_shadow(Ozone, Solar.R)
 
 }
+\seealso{
+\code{\link[=cast_shadow_shift]{cast_shadow_shift()}}, \code{\link[=cast_shadow_shift_label]{cast_shadow_shift_label()}}
+}

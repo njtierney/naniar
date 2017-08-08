@@ -26,3 +26,6 @@ airquality \%>\% add_shadow(Ozone)
 airquality \%>\% add_shadow(Ozone, Solar.R)
 
 }
+\seealso{
+\code{\link[=as_shadow]{as_shadow()}} \code{\link[=add_shadow_shift]{add_shadow_shift()}}
+}

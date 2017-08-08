@@ -11,6 +11,8 @@
 #' @return data.frame
 #' @export
 #'
+#' @seealso [as_shadow()] [add_shadow_shift()]
+#'
 #' @examples
 #'
 #' airquality %>% add_shadow(Ozone)

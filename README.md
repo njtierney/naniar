@@ -7,7 +7,7 @@ naniar
 
 naniar provides principled, tidy ways to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data. It does this by providing:
 
--   Shadow matrices, a tidy data structure for missing data (`bind_shadow()`).
+-   Shadow matrices, a tidy data structure for missing data (`as_shadow()`).
 -   Shorthand summaries for missing data: `n_miss()`/`n_complete()`; `prop_miss()`/`prop_complete()`.
 -   Numerical summaries of missing data in variables (`miss_var_summary()`, `miss_var_run`), and cases (`miss_case_summary()`, `miss_case_table()`).
 -   Visualisation methods: e.g., `geom_miss_point()`, `gg_miss_var()`,

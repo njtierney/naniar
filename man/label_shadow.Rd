@@ -13,6 +13,5 @@ label_shadow(data)
 "Missing" or "Not Missing"
 }
 \description{
-This is used to power add_label_shadow. It may be exported later, but for the
-moment this is an internal function.
+Powers \code{add_label_shadow}. For the moment it is an internal function.
 }

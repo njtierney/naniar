@@ -5,7 +5,7 @@
 #'   `starts_with`, `contains`, `ends_with`, etc.
 #'
 #' @param data data.frame
-#' @param ... One or more unquoted expressions separated by commas. These also
+#' @param ... One or more unquoted variable names separated by commas. These also
 #'   respect the dplyr verbs `starts_with`, `contains`, `ends_with`, etc.
 #'
 #' @return data.frame
@@ -39,8 +39,8 @@ add_shadow <- function(data, ...){
 #'   `ends_with`, etc.
 #'
 #' @param data data.frame or .tbl
-#' @param ... One or more unquoted expressions separated by commas. These also
-#'   respect the dplyr verbs "starts_with", "contains", "ends_with", etc.
+#' @param ... One or more unquoted variable names separated by commas. These also
+#'   respect the dplyr verbs `starts_with`, `contains`, `ends_with`, etc.
 #' @param suffix suffix to add to variable, defaults to "shift"
 #'
 #' @return data with the added variable shifted named as `var_suffix`
@@ -56,12 +56,12 @@ add_shadow <- function(data, ...){
 add_shadow_shift <- function(data, ..., suffix = "shift"){
 
   # if no variables are selected use all of the variables
-  if(missing(...)){
+  if (missing(...)) {
 
     shadow_shifted_df <- purrr::map_df(data, shadow_shift)
 
     # change names
-    names(shadow_shifted_df) <- paste0(names(shadow_shifted_df),"_",suffix)
+    names(shadow_shifted_df) <- paste0(names(shadow_shifted_df), "_", suffix)
 
     tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
 
@@ -83,7 +83,6 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
   } # close the else brace
 }
 
-
 #' Add a column describing presence of any missing values
 #'
 #' This adds a column named "any_miss" (by default) that describes whether any
@@ -95,9 +94,10 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
 #'    that not all variables have been used to create the labels. By default the
 #'    `label` argument uses the prefix "any_miss", but this can be specified.
 #'
-#'
 #' @param data data.frame
-#' @param ... Variable names to use instead of the whole dataset.
+#' @param ... Variable names to use instead of the whole dataset. This can be
+#'   one or more unquoted variable names separated by commas. These also
+#'   respect the dplyr verbs `starts_with`, `contains`, `ends_with`, etc.
 #' @param label label for the column, defaults to "any_miss". By default if no
 #'   additional variables are listed the label col is "any_miss_all", otherwise
 #'   it is "any_miss_vars", if variables are specified.
@@ -116,7 +116,7 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
 add_any_miss <- function(data, ..., label = "any_miss"){
 
   # if no variables are specified, do for all, and add the label "all"
-  if(missing(...)){
+  if (missing(...)) {
 
     stub_data_label <- data %>%
       dplyr::mutate(.temp = any_row_miss(data),
@@ -152,6 +152,41 @@ add_any_miss <- function(data, ..., label = "any_miss"){
 
 }
 
+#' Is there a missing value in the row of a dataframe?
+#'
+#' Creates a character vector describing presence/absense of missing values
+#'
+#' @param data a dataframe or set of vectors of the same length
+#'
+#' @return character vector of "Missing" and "Not Missing".
+#'
+#' @export
+#'
+#' @examples
+#'
+#' label_missings(airquality)
+#'
+#' library(dplyr)
+#'
+#' airquality %>% mutate(is_missing = label_missings(airquality))
+#'
+label_missings <- function(data){
+
+  test_if_null(data)
+  # find which are missing and which are not.
+
+  any_row_na <- function(x){
+    apply(data.frame(x), MARGIN = 1, FUN = function(x) anyNA(x))
+  }
+
+  temp <- any_row_na(data)
+
+  dplyr::if_else(condition = temp == TRUE, # TRUE means missing
+                 true = "Missing",
+                 false = "Not Missing")
+
+}
+
 #' Add a column describing if there are any missings in the dataset
 #'
 #' @param data data.frame
@@ -171,11 +206,9 @@ add_label_missings <- function(data){
 
 }
 
-
 #' Label shadow values as missing or not missing
 #'
-#' This is used to power add_label_shadow. It may be exported later, but for the
-#'   moment this is an internal function.
+#' Powers `add_label_shadow`. For the moment it is an internal function.
 #'
 #' @param data data.frame
 #'

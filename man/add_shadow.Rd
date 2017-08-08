@@ -9,7 +9,7 @@ add_shadow(data, ...)
 \arguments{
 \item{data}{data.frame}
 
-\item{...}{One or more unquoted expressions separated by commas. These also
+\item{...}{One or more unquoted variable names separated by commas. These also
 respect the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.}
 }
 \value{

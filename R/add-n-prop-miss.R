@@ -119,10 +119,5 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
 
     dplyr::bind_cols(data, prop_selected_data_cut) %>% dplyr::as_tibble()
 
-    # old approach
-    # df %>%
-    #   add_n_miss() %>%
-    #   dplyr::mutate(pct_miss = n_miss/ncol(df)) %>%
-    #   dplyr::select(-n_miss)
   }
 }

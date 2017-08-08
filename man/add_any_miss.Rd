@@ -9,7 +9,9 @@ add_any_miss(data, ..., label = "any_miss")
 \arguments{
 \item{data}{data.frame}
 
-\item{...}{Variable names to use instead of the whole dataset.}
+\item{...}{Variable names to use instead of the whole dataset. This can be
+one or more unquoted variable names separated by commas. These also
+respect the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.}
 
 \item{label}{label for the column, defaults to "any_miss". By default if no
 additional variables are listed the label col is "any_miss_all", otherwise

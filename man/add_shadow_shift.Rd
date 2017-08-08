@@ -9,8 +9,8 @@ add_shadow_shift(data, ..., suffix = "shift")
 \arguments{
 \item{data}{data.frame or .tbl}
 
-\item{...}{One or more unquoted expressions separated by commas. These also
-respect the dplyr verbs "starts_with", "contains", "ends_with", etc.}
+\item{...}{One or more unquoted variable names separated by commas. These also
+respect the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.}
 
 \item{suffix}{suffix to add to variable, defaults to "shift"}
 }

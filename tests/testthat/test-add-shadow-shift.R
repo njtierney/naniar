@@ -5,11 +5,11 @@ test_df <- data.frame(x = c(NA,2,3),
                       z = c(1,2,3),
                       xi = factor(c(4,5,6)))
 
-df_prop_miss <- data.frame(prop_miss_all = c(1/3,
+df_prop_na <- data.frame(prop_na_all = c(1/3,
                                              1/3,
                                              0))
 
-test_df_answer <- dplyr::bind_cols(test_df,df_prop_miss)
+test_df_answer <- dplyr::bind_cols(test_df,df_prop_na)
 
 test_that("add_shadow_shift returns a tibble",{
           expect_is(add_shadow_shift(test_df), "tbl_df")

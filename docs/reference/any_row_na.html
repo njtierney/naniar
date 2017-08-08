@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Group By Helper — group_by_fun • naniar</title>
+<title>Helper function to determine whether there are any missings — any_row_na • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -98,44 +98,29 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Group By Helper</h1>
+    <h1>Helper function to determine whether there are any missings</h1>
     </div>
 
     
-    <p>This is a wrapper to facilitate the <code>grouped_df</code> S3 method.</p>
+    <p>Helper function to determine whether there are any missings</p>
     
 
-    <pre class="usage"><span class='fu'>group_by_fun</span>(<span class='no'>data</span>, <span class='no'>.fun</span>)</pre>
+    <pre class="usage"><span class='fu'>any_row_na</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>data.frame, which will be grouped</p></td>
-    </tr>
-    <tr>
-      <th>.fun</th>
-      <td><p>a function to apply</p></td>
+      <th>x</th>
+      <td><p>a vector</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a dataframe with the function applied to each group</p>
+    <p>logical vector TRUE = missing FALSE = complete</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-</div><span class='co'># NOT RUN {</span>
-<span class='no'>na_case_table.grouped_df</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>data</span>){
-<span class='fu'>group_by_fun</span>(<span class='no'>data</span>,<span class='kw'>.fun</span> <span class='kw'>=</span> <span class='no'>na_case_table</span>)
-}
-<span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
-<span class='fu'>group_by</span>(<span class='no'>Month</span>) <span class='kw'>%&gt;%</span>
-<span class='fu'><a href='na_case_table.html'>na_case_table</a></span>()
-<span class='co'># }</span><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -143,9 +128,7 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>

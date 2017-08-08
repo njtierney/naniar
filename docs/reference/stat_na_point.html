@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Group By Helper — group_by_fun • naniar</title>
+<title>stat_na_point — stat_na_point • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -98,54 +98,88 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Group By Helper</h1>
+    <h1>stat_na_point</h1>
     </div>
 
     
-    <p>This is a wrapper to facilitate the <code>grouped_df</code> S3 method.</p>
+    <p>stat_na_point adds a geometry for displaying missingness to
+geom_point</p>
     
 
-    <pre class="usage"><span class='fu'>group_by_fun</span>(<span class='no'>data</span>, <span class='no'>.fun</span>)</pre>
+    <pre class="usage"><span class='fu'>stat_na_point</span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>geom</span> <span class='kw'>=</span> <span class='st'>"point"</span>,
+  <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"identity"</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>show.legend</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>inherit.aes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>data.frame, which will be grouped</p></td>
+      <th>mapping</th>
+      <td><p>Set of aesthetic mappings created by <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>ggplot2::aes()</a></code>
+or <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes_'>ggplot2::aes_()</a></code>. If specified and <code>inherit.aes = TRUE</code>
+(the default), is combined with the default mapping at the top level of the
+plot. You only need to supply mapping if there isn't a mapping defined for
+the plot.</p></td>
     </tr>
     <tr>
-      <th>.fun</th>
-      <td><p>a function to apply</p></td>
+      <th>data</th>
+      <td><p>A data frame. If specified, overrides the default data frame
+defined at the top level of the plot.</p></td>
+    </tr>
+    <tr>
+      <th>geom, </th>
+      <td><p>stat Override the default connection between <code>geom_point</code> and
+<code>stat_point</code>.</p></td>
+    </tr>
+    <tr>
+      <th>position</th>
+      <td><p>Position adjustment, either as a string, or the result of a
+call to a position adjustment function</p></td>
+    </tr>
+    <tr>
+      <th>na.rm</th>
+      <td><p>If <code>FALSE</code> (the default), removes missing values with a warning.
+If <code>TRUE</code> silently removes missing values.</p></td>
+    </tr>
+    <tr>
+      <th>show.legend</th>
+      <td><p>logical. Should this layer be included in the legends?
+<code>NA</code>, the default, includes if any aesthetics are mapped. <code>FALSE</code>
+never includes, and <code>TRUE</code> always includes.</p></td>
+    </tr>
+    <tr>
+      <th>inherit.aes</th>
+      <td><p>If <code>FALSE</code>, overrides the default aesthetics, rather
+than combining with them. This is most useful for helper functions that
+define both data and aesthetics and shouldn't inherit behaviour from the
+default plot specification, e.g. borders.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>other arguments passed on to <code><a href='http://www.rdocumentation.org/packages/ggplot2/topics/layer'>ggplot2::layer()</a></code>. There
+are three types of arguments you can use here:</p><ul>
+<li><p>Aesthetics: to set an aesthetic to a fixed value, like
+<code>color = "red"</code> or <code>size = 3.</code></p></li>
+<li><p>Other arguments to the layer, for example you override the default
+<code>stat</code> associated with the layer.</p></li>
+<li><p>Other arguments passed on to the stat.</p></li>
+</ul></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>a dataframe with the function applied to each group</p>
+    <p>todo: Warning message if na.rm = T is supplied.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-</div><span class='co'># NOT RUN {</span>
-<span class='no'>na_case_table.grouped_df</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>data</span>){
-<span class='fu'>group_by_fun</span>(<span class='no'>data</span>,<span class='kw'>.fun</span> <span class='kw'>=</span> <span class='no'>na_case_table</span>)
-}
-<span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
-<span class='fu'>group_by</span>(<span class='no'>Month</span>) <span class='kw'>%&gt;%</span>
-<span class='fu'><a href='na_case_table.html'>na_case_table</a></span>()
-<span class='co'># }</span><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#note">Note</a></li>
+          </ul>
 
   </div>
 </div>

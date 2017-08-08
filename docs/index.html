@@ -87,9 +87,9 @@
 <p>naniar provides principled, tidy ways to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data. It does this by providing:</p>
 <ul>
 <li>Shadow matrices, a tidy data structure for missing data (<code><a href="reference/bind_shadow.html">bind_shadow()</a></code>).</li>
-<li>Shorthand summaries for missing data: <code><a href="reference/n_miss.html">n_miss()</a></code>/<code><a href="reference/n_complete.html">n_complete()</a></code>; <code><a href="reference/prop_miss.html">prop_miss()</a></code>/<code><a href="reference/prop_complete.html">prop_complete()</a></code>.</li>
-<li>Numerical summaries of missing data in variables (<code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code>, <code>miss_var_run</code>), and cases (<code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code>, <code><a href="reference/miss_case_table.html">miss_case_table()</a></code>).</li>
-<li>Visualisation methods: e.g., <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code>, <code><a href="reference/gg_miss_var.html">gg_miss_var()</a></code>,</li>
+<li>Shorthand summaries for missing data: <code><a href="reference/n_na.html">n_na()</a></code>/<code><a href="reference/n_complete.html">n_complete()</a></code>; <code><a href="reference/prop_na.html">prop_na()</a></code>/<code><a href="reference/prop_complete.html">prop_complete()</a></code>.</li>
+<li>Numerical summaries of missing data in variables (<code><a href="reference/na_var_summary.html">na_var_summary()</a></code>, <code>na_var_run</code>), and cases (<code><a href="reference/na_case_summary.html">na_case_summary()</a></code>, <code><a href="reference/na_case_table.html">na_case_table()</a></code>).</li>
+<li>Visualisation methods: e.g., <code><a href="reference/geom_na_point.html">geom_na_point()</a></code>, <code><a href="reference/gg_na_var.html">gg_na_var()</a></code>,</li>
 </ul>
 <p>For more details on the workflow and theory underpinning naniar, read the vignette <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">“Getting started with naniar”</a>.</p>
 <p>For a short primer on the data visualisation available in naniar, read the vignette <a href="http://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of missing data visualisations using naniar</a>.</p>
@@ -104,7 +104,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div id="a-short-overview-of-naniar" class="section level1">
 <h1 class="hasAnchor">
 <a href="#a-short-overview-of-naniar" class="anchor"></a>A short overview of naniar</h1>
-<p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace “NA” values with values 10% lower than the minimum value in that variable. This is provided with the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
+<p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace “NA” values with values 10% lower than the minimum value in that variable. This is provided with the <code><a href="reference/geom_na_point.html">geom_na_point()</a></code> ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">library</span>(ggplot2)
 
@@ -115,22 +115,22 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <span class="co">#&gt; Warning: Removed 42 rows containing missing values (geom_point).</span></code></pre></div>
 <p><img src="README-figs/README-regular-geom-point-1.png" width="672"></p>
 <p>ggplot2 does not handle these missing values, and we get a warning message about the missing values.</p>
-<p>We can instead use the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> to display the missing data</p>
+<p>We can instead use the <code><a href="reference/geom_na_point.html">geom_na_point()</a></code> to display the missing data</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">library</span>(naniar)
 
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> airquality,
        <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="reference/geom_miss_point.html">geom_miss_point</a></span>()</code></pre></div>
+<span class="st">  </span><span class="kw"><a href="reference/geom_na_point.html">geom_na_point</a></span>()</code></pre></div>
 <p><img src="README-figs/README-geom-missing-point-1.png" width="672"></p>
-<p><code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive. As it is a ggplot2 geom, it supports features like faceting and other ggplot features.</p>
+<p><code><a href="reference/geom_na_point.html">geom_na_point()</a></code> has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive. As it is a ggplot2 geom, it supports features like faceting and other ggplot features.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 p1 &lt;-
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> airquality,
        <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="reference/geom_na_point.html">geom_na_point</a></span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>Month, <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)
 
@@ -188,24 +188,24 @@ airquality <span class="op">%&gt;%</span>
 <p>naniar does this while following consistent principles that are easy to read, thanks to the tools of the tidyverse.</p>
 <p>naniar also provides handy visualations for each variable:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</code></pre></div>
+<span class="kw"><a href="reference/gg_na_var.html">gg_na_var</a></span>(airquality)</code></pre></div>
 <p><img src="README-figs/README-gg-missing-var-1.png" width="672"></p>
 <p>Or the number of missings in a given variable at a repeating span</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/gg_na_span.html">gg_na_span</a></span>(pedestrian,
              <span class="dt">var =</span> hourly_counts,
              <span class="dt">span_every =</span> <span class="dv">1500</span>)</code></pre></div>
 <p><img src="README-figs/README-unnamed-chunk-5-1.png" width="672"></p>
 <p>You can read about all of the visualisations in naniar in the vignette <a href="http://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of missing data visualisations using naniar</a>.</p>
 <p>naniar also provides handy helpers for calculating the number, proportion, and percentage of missing and complete observations:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/n_miss.html">n_miss</a></span>(airquality)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/n_na.html">n_na</a></span>(airquality)
 <span class="co">#&gt; [1] 44</span>
 <span class="kw"><a href="reference/n_complete.html">n_complete</a></span>(airquality)
 <span class="co">#&gt; [1] 874</span>
-<span class="kw"><a href="reference/prop_miss.html">prop_miss</a></span>(airquality)
+<span class="kw"><a href="reference/prop_na.html">prop_na</a></span>(airquality)
 <span class="co">#&gt; [1] 0.04793028</span>
 <span class="kw"><a href="reference/prop_complete.html">prop_complete</a></span>(airquality)
 <span class="co">#&gt; [1] 0.9520697</span>
-<span class="kw"><a href="reference/pct_miss.html">pct_miss</a></span>(airquality)
+<span class="kw"><a href="reference/pct_na.html">pct_na</a></span>(airquality)
 <span class="co">#&gt; [1] 4.793028</span>
 <span class="kw"><a href="reference/pct_complete.html">pct_complete</a></span>(airquality)
 <span class="co">#&gt; [1] 95.20697</span></code></pre></div>
@@ -213,10 +213,10 @@ airquality <span class="op">%&gt;%</span>
 <div id="numerical-summaries-for-missing-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#numerical-summaries-for-missing-data" class="anchor"></a>Numerical summaries for missing data</h1>
-<p>naniar provides numerical summaries of missing data, that follow a consistent rule that uses a syntax begining with <code>miss_</code>. Summaries focussing on variables or a single selected variable, start with <code>miss_var_</code>, and summaries for cases (the initial collected row order of the data), they start with <code>miss_case_</code>. All of these functions that return dataframes also work with dplyr’s <code><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>.</p>
-<p>For example, we can look at the number and percent of missings in each case and variable with <code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code>, and <code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code>, which both return output ordered by the number of missing values.</p>
+<p>naniar provides numerical summaries of missing data, that follow a consistent rule that uses a syntax begining with <code>na_</code>. Summaries focussing on variables or a single selected variable, start with <code>na_var_</code>, and summaries for cases (the initial collected row order of the data), they start with <code>na_case_</code>. All of these functions that return dataframes also work with dplyr’s <code><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>.</p>
+<p>For example, we can look at the number and percent of missings in each case and variable with <code><a href="reference/na_var_summary.html">na_var_summary()</a></code>, and <code><a href="reference/na_case_summary.html">na_case_summary()</a></code>, which both return output ordered by the number of missing values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)
+<span class="kw"><a href="reference/na_var_summary.html">na_var_summary</a></span>(airquality)
 <span class="co">#&gt; # A tibble: 6 x 3</span>
 <span class="co">#&gt;   variable n_missing   percent</span>
 <span class="co">#&gt;      &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;</span>
@@ -226,7 +226,7 @@ airquality <span class="op">%&gt;%</span>
 <span class="co">#&gt; 4     Temp         0  0.000000</span>
 <span class="co">#&gt; 5    Month         0  0.000000</span>
 <span class="co">#&gt; 6      Day         0  0.000000</span>
-<span class="kw"><a href="reference/miss_case_summary.html">miss_case_summary</a></span>(airquality)
+<span class="kw"><a href="reference/na_case_summary.html">na_case_summary</a></span>(airquality)
 <span class="co">#&gt; # A tibble: 153 x 3</span>
 <span class="co">#&gt;     case n_missing  percent</span>
 <span class="co">#&gt;    &lt;int&gt;     &lt;int&gt;    &lt;dbl&gt;</span>
@@ -254,7 +254,7 @@ airquality <span class="op">%&gt;%</span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 airquality <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Month) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>()
+<span class="st">  </span><span class="kw"><a href="reference/na_var_summary.html">na_var_summary</a></span>()
 <span class="co">#&gt; # A tibble: 25 x 4</span>
 <span class="co">#&gt;    Month variable n_missing  percent</span>
 <span class="co">#&gt;    &lt;int&gt;    &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;</span>
@@ -280,7 +280,7 @@ airquality <span class="op">%&gt;%</span>
 <h1 class="hasAnchor">
 <a href="#future-work" class="anchor"></a>Future Work</h1>
 <ul>
-<li>Extend the <code>geom_miss_*</code> family to include categorical variables, Bivariate plots: scatterplots, density overlays</li>
+<li>Extend the <code>geom_na_*</code> family to include categorical variables, Bivariate plots: scatterplots, density overlays</li>
 <li>SQL translation for databases</li>
 <li>Big Data tools (sparklyr, sparklingwater)</li>
 <li>Work well with other imputation engines / processes</li>
@@ -289,7 +289,7 @@ airquality <span class="op">%&gt;%</span>
 <div id="acknowledgements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
-<p>Firstly, thanks to <a href="https://github.com/dicook">Di Cook</a> for giving the initial inspiration for the package and laying down the rich theory and literature that the work in naniar is built upon. Naming credit (once again!) goes to <a href="https://github.com/milesmcbain">Miles McBain</a>. Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to <a href="https://github.com/ColinFay">Colin Fay</a> for helping me understand tidy evaluation and for features such as <code>replace_to_na</code>, <code>miss_*_cumsum</code>, and more.</p>
+<p>Firstly, thanks to <a href="https://github.com/dicook">Di Cook</a> for giving the initial inspiration for the package and laying down the rich theory and literature that the work in naniar is built upon. Naming credit (once again!) goes to <a href="https://github.com/milesmcbain">Miles McBain</a>. Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to <a href="https://github.com/ColinFay">Colin Fay</a> for helping me understand tidy evaluation and for features such as <code>replace_to_na</code>, <code>na_*_cumsum</code>, and more.</p>
 </div>
 <div id="a-note-on-the-name" class="section level2">
 <h2 class="hasAnchor">

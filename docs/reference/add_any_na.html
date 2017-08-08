@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a shadow column and a shadow shifted column to a dataset — cast_shadow_shift_label • naniar</title>
+<title>Add a column describing presence of any missing values — add_any_na • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -98,14 +98,21 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a shadow column and a shadow shifted column to a dataset</h1>
+    <h1>Add a column describing presence of any missing values</h1>
     </div>
 
     
-    <p>Shift the values, add shadow, add missing label</p>
+    <p>This adds a column named "any_miss" (by default) that describes whether any
+there are any missings in all of the variables (default), or whether any of
+the specified columns, specified using variables names or dplyr verbs,
+<code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, etc. By default the added column
+will be called "any_na_all", if no variables are specified, otherwise,
+if variables are specified, the label will be "any_na_vars" to indicate
+that not all variables have been used to create the labels. By default the
+<code>label</code> argument uses the prefix "any_na", but this can be specified.</p>
     
 
-    <pre class="usage"><span class='fu'>cast_shadow_shift_label</span>(<span class='no'>data</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>add_any_na</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"any_na"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -116,55 +123,54 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>One or more unquoted expressions separated by commas. These also
-respect the dplyr verbs "starts_with", "contains", "ends_with", etc.</p></td>
+      <td><p>Variable names to use instead of the whole dataset. This can be
+one or more unquoted variable names separated by commas. These also
+respect the dplyr verbs <code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, etc.</p></td>
+    </tr>
+    <tr>
+      <th>label</th>
+      <td><p>label for the column, defaults to "any_na". By default if no
+additional variables are listed the label col is "any_na_all", otherwise
+it is "any_na_vars", if variables are specified.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame with the shadow and shadow_shift vars, and missing labels</p>
+    <p>data.frame with data and the column labelling whether that row (for
+those variables) has any missing values - indicated by "missing" and
+"complete".</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow_shift_label</span>(<span class='no'>Ozone</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 4
-#&gt;    Ozone Ozone_NA Ozone_shift any_missing
-#&gt;    &lt;int&gt;   &lt;fctr&gt;       &lt;dbl&gt;       &lt;chr&gt;
-#&gt;  1    41      !NA    41.00000 Not Missing
-#&gt;  2    36      !NA    36.00000 Not Missing
-#&gt;  3    12      !NA    12.00000 Not Missing
-#&gt;  4    18      !NA    18.00000 Not Missing
-#&gt;  5    NA       NA   -19.72321     Missing
-#&gt;  6    28      !NA    28.00000 Not Missing
-#&gt;  7    23      !NA    23.00000 Not Missing
-#&gt;  8    19      !NA    19.00000 Not Missing
-#&gt;  9     8      !NA     8.00000 Not Missing
-#&gt; 10    NA       NA   -18.51277     Missing
-#&gt; # ... with 143 more rows</div><div class='input'><span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow_shift_label</span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 7
-#&gt;    Ozone Solar.R Ozone_NA Solar.R_NA Ozone_shift Solar.R_shift any_missing
-#&gt;    &lt;int&gt;   &lt;int&gt;   &lt;fctr&gt;     &lt;fctr&gt;       &lt;dbl&gt;         &lt;dbl&gt;       &lt;chr&gt;
-#&gt;  1    41     190      !NA        !NA    41.00000     190.00000 Not Missing
-#&gt;  2    36     118      !NA        !NA    36.00000     118.00000 Not Missing
-#&gt;  3    12     149      !NA        !NA    12.00000     149.00000 Not Missing
-#&gt;  4    18     313      !NA        !NA    18.00000     313.00000 Not Missing
-#&gt;  5    NA      NA       NA         NA   -19.72321     -33.57778     Missing
-#&gt;  6    28      NA      !NA         NA    28.00000     -33.07810     Missing
-#&gt;  7    23     299      !NA        !NA    23.00000     299.00000 Not Missing
-#&gt;  8    19      99      !NA        !NA    19.00000      99.00000 Not Missing
-#&gt;  9     8      19      !NA        !NA     8.00000      19.00000 Not Missing
-#&gt; 10    NA     194       NA        !NA   -18.51277     194.00000     Missing
+<span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>add_any_na</span>()</div><div class='output co'>#&gt; # A tibble: 153 x 7
+#&gt;    Ozone Solar.R  Wind  Temp Month   Day any_na_all
+#&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;      &lt;chr&gt;
+#&gt;  1    41     190   7.4    67     5     1   complete
+#&gt;  2    36     118   8.0    72     5     2   complete
+#&gt;  3    12     149  12.6    74     5     3   complete
+#&gt;  4    18     313  11.5    62     5     4   complete
+#&gt;  5    NA      NA  14.3    56     5     5    missing
+#&gt;  6    28      NA  14.9    66     5     6    missing
+#&gt;  7    23     299   8.6    65     5     7   complete
+#&gt;  8    19      99  13.8    59     5     8   complete
+#&gt;  9     8      19  20.1    61     5     9   complete
+#&gt; 10    NA     194   8.6    69     5    10    missing
+#&gt; # ... with 143 more rows</div><div class='input'><span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>add_any_na</span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 7
+#&gt;    Ozone Solar.R  Wind  Temp Month   Day any_na_vars
+#&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;       &lt;chr&gt;
+#&gt;  1    41     190   7.4    67     5     1    complete
+#&gt;  2    36     118   8.0    72     5     2    complete
+#&gt;  3    12     149  12.6    74     5     3    complete
+#&gt;  4    18     313  11.5    62     5     4    complete
+#&gt;  5    NA      NA  14.3    56     5     5     missing
+#&gt;  6    28      NA  14.9    66     5     6     missing
+#&gt;  7    23     299   8.6    65     5     7    complete
+#&gt;  8    19      99  13.8    59     5     8    complete
+#&gt;  9     8      19  20.1    61     5     9    complete
+#&gt; 10    NA     194   8.6    69     5    10     missing
 #&gt; # ... with 143 more rows</div><div class='input'>
-<span class='co'># replicate the plot generated by geom_na_point()</span>
-
-<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-
-<span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>cast_shadow_shift_label</span>(<span class='no'>Ozone</span>,<span class='no'>Solar.R</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone_shift</span>,
-             <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R_shift</span>,
-             <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>any_missing</span>)) +
-        <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>()</div><div class='img'><img src='cast_shadow_shift_label-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -36,7 +36,6 @@ reference:
       - starts_with("as_shadow")
       - bind_shadow
       - gather_shadow
-      - label_na
       - starts_with("shadow_shift")
   - title: "Misc helpers"
     desc: >

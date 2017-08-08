@@ -14,7 +14,7 @@ naniar provides principled, tidy ways to summarise, visualise, and manipulate mi
 
 For more details on the workflow and theory underpinning naniar, read the vignette ["Getting started with naniar"](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 
-For a short primer on the data visualisation techniques, read the vignette [Gallery of missing data visualisations using naniar](http://naniar.njtierney.com/articles/naniar-visualisation.html).
+For a short primer on the data visualisation available in naniar, read the vignette [Gallery of missing data visualisations using naniar](http://naniar.njtierney.com/articles/naniar-visualisation.html).
 
 Installation
 ============
@@ -26,8 +26,8 @@ Currently naniar is only available on github
 devtools::install_github("njtierney/naniar")
 ```
 
-Visualisating missing data?
-===========================
+A short overview of naniar
+==========================
 
 Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace "NA" values with values 10% lower than the minimum value in that variable. This is provided with the `geom_miss_point()` ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
 
@@ -118,8 +118,7 @@ airquality %>%
   bind_shadow() %>%
   ggplot(aes(x = Temp,
              fill = Ozone_NA)) + 
-  geom_histogram()
-#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+  geom_density()
 ```
 
 ![](README-figs/README-unnamed-chunk-3-1.png)
@@ -267,7 +266,7 @@ Future Work
 Acknowledgements
 ----------------
 
-Firstly, thanks to Di Cook for giving the initial inspiration for the package and laying down the rich theory and literature that the work in naniar is built upon. Naming credit (once again!) goes to Miles McBain. Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to Colin Fay for helping me understand tidy evaluation and for features such as `replace_to_na`, `miss_*_cumsum`, and more.
+Firstly, thanks to [Di Cook](https://github.com/dicook) for giving the initial inspiration for the package and laying down the rich theory and literature that the work in naniar is built upon. Naming credit (once again!) goes to [Miles McBain](https://github.com/milesmcbain). Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to [Colin Fay](https://github.com/ColinFay) for helping me understand tidy evaluation and for features such as `replace_to_na`, `miss_*_cumsum`, and more.
 
 A note on the name
 ------------------

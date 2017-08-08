@@ -92,7 +92,7 @@
 <li>Visualisation methods: e.g., <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code>, <code><a href="reference/gg_miss_var.html">gg_miss_var()</a></code>,</li>
 </ul>
 <p>For more details on the workflow and theory underpinning naniar, read the vignette <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">“Getting started with naniar”</a>.</p>
-<p>For a short primer on the data visualisation techniques, read the vignette <a href="http://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of missing data visualisations using naniar</a>.</p>
+<p>For a short primer on the data visualisation available in naniar, read the vignette <a href="http://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of missing data visualisations using naniar</a>.</p>
 </div>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
@@ -101,9 +101,9 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"njtierney/naniar"</span>)</code></pre></div>
 </div>
-<div id="visualisating-missing-data" class="section level1">
+<div id="a-short-overview-of-naniar" class="section level1">
 <h1 class="hasAnchor">
-<a href="#visualisating-missing-data" class="anchor"></a>Visualisating missing data?</h1>
+<a href="#a-short-overview-of-naniar" class="anchor"></a>A short overview of naniar</h1>
 <p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace “NA” values with values 10% lower than the minimum value in that variable. This is provided with the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">library</span>(ggplot2)
@@ -172,8 +172,7 @@ airquality <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Temp,
              <span class="dt">fill =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram">geom_histogram</a></span>()
-<span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
+<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_density">geom_density</a></span>()</code></pre></div>
 <p><img src="README-figs/README-unnamed-chunk-3-1.png" width="672"></p>
 <p>And even visualise imputations</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
@@ -290,7 +289,7 @@ airquality <span class="op">%&gt;%</span>
 <div id="acknowledgements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
-<p>Firstly, thanks to Di Cook for giving the initial inspiration for the package and laying down the rich theory and literature that the work in naniar is built upon. Naming credit (once again!) goes to Miles McBain. Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to Colin Fay for helping me understand tidy evaluation and for features such as <code>replace_to_na</code>, <code>miss_*_cumsum</code>, and more.</p>
+<p>Firstly, thanks to <a href="https://github.com/dicook">Di Cook</a> for giving the initial inspiration for the package and laying down the rich theory and literature that the work in naniar is built upon. Naming credit (once again!) goes to <a href="https://github.com/milesmcbain">Miles McBain</a>. Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to <a href="https://github.com/ColinFay">Colin Fay</a> for helping me understand tidy evaluation and for features such as <code>replace_to_na</code>, <code>miss_*_cumsum</code>, and more.</p>
 </div>
 <div id="a-note-on-the-name" class="section level2">
 <h2 class="hasAnchor">

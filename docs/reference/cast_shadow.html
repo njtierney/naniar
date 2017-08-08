@@ -106,8 +106,10 @@
 "data <!-- %&gt;% select(var) %&gt;% shadow_shift()". This is a convenience function -->
 that makes it easy to perform certain visualisations, in line with the
 principle that the user should have a way to flexibly return dataformats
-containing information about the missing data. It also respects the dplyr
-verbs <code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, etc.</p>
+containing information about the missing data. It forms the base building
+block for the functions <code>cast_shadow_shift</code>, and <code>cast_shadow_shift_label</code>.
+It also respects the dplyr verbs <code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, etc.
+to select variables.</p>
     
 
     <pre class="usage"><span class='fu'>cast_shadow</span>(<span class='no'>data</span>, <span class='no'>...</span>)</pre>
@@ -121,7 +123,7 @@ verbs <code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, e
     </tr>
     <tr>
       <th>...</th>
-      <td><p>One or more unquoted expressions separated by commas. These
+      <td><p>One or more unquoted variable names separated by commas. These
 respect the dplyr verbs <code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, etc.</p></td>
     </tr>
     </table>

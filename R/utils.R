@@ -14,12 +14,12 @@ magrittr::`%>%`
 #' @examples
 #'
 #' \dontrun{
-#' miss_case_table.grouped_df <- function(data){
-#' group_by_fun(data,.fun = miss_case_table)
+#' na_case_table.grouped_df <- function(data){
+#' group_by_fun(data,.fun = na_case_table)
 #' }
 #' airquality %>%
 #' group_by(Month) %>%
-#' miss_case_table()
+#' na_case_table()
 #' }
 #'
 group_by_fun <- function(data,.fun){
@@ -141,7 +141,7 @@ which_na <- function(x){
 #'
 #' @return logical vector TRUE = missing FALSE = complete
 #'
-any_row_miss <- function(x){
+any_row_na <- function(x){
   apply(data.frame(x), MARGIN = 1, FUN = function(x) anyNA(x))
 }
 
@@ -150,7 +150,7 @@ any_row_miss <- function(x){
 #' @param x a vector
 #'
 #' @return logical vector
-all_row_miss <- function(x){
+all_row_na <- function(x){
   apply(data.frame(x), MARGIN = 1, FUN = function(x) all(is.na(x)))
 }
 

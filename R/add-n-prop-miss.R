@@ -1,7 +1,7 @@
 #' Add column containing number of missing data values
 #'
 #' It can be useful when doing data analysis to add the number of missing data
-#'   points into your dataframe. `add_n_miss` adds a column named "n_miss",
+#'   points into your dataframe. `add_n_na` adds a column named "n_na",
 #'   which contains the number of missing values in that row.
 #'
 #' @param data a dataframe
@@ -11,7 +11,7 @@
 #'   `starts_with`, `contains`, `ends_with`, etc. By default will add "_all" to
 #'   the label if left blank, otherwise will add "_vars" to distinguish that it
 #'   has not been used on all of the variables.
-#' @param label character default is "n_miss".
+#' @param label character default is "n_na".
 #'
 #' @return a dataframe
 #'
@@ -19,16 +19,16 @@
 #'
 #' @examples
 #'
-#' airquality %>% add_n_miss()
-#' airquality %>% add_n_miss(Ozone, Solar.R)
-#' airquality %>% add_n_miss(dplyr::contains("o"))
+#' airquality %>% add_n_na()
+#' airquality %>% add_n_na(Ozone, Solar.R)
+#' airquality %>% add_n_na(dplyr::contains("o"))
 #'
 #'
-add_n_miss <- function(data, ..., label = "n_miss"){
+add_n_na <- function(data, ..., label = "n_na"){
 
   if (missing(...)) {
     purrrlyr::by_row(.d = data,
-                     ..f = function(x) n_miss(x),
+                     ..f = function(x) n_na(x),
                      .collate = "row",
                      .to = paste0(label,"_all"))
   } else {
@@ -38,11 +38,11 @@ add_n_miss <- function(data, ..., label = "n_miss"){
     selected_data <- dplyr::select(data, !!!quo_vars)
 
     prop_selected_data <- purrrlyr::by_row(.d = selected_data,
-                                           ..f = function(x) n_miss(x),
+                                           ..f = function(x) n_na(x),
                                            .collate = "row",
                                            .to =  paste0(label,"_vars"))
 
-    # add only the variables prop_miss function, not the whole data.frame...
+    # add only the variables prop_na function, not the whole data.frame...
     prop_selected_data_cut <- prop_selected_data %>%
       dplyr::select(!!as.name(paste0(label,"_vars")))
 
@@ -55,8 +55,8 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #' Add column containing proportion of missing data values
 #'
 #' It can be useful when doing data analysis to add the proportion of missing
-#'   data values into your dataframe. `add_prop_miss` adds a column named
-#'   "prop_miss", which contains the proportion of missing values in that row.
+#'   data values into your dataframe. `add_prop_na` adds a column named
+#'   "prop_na", which contains the proportion of missing values in that row.
 #'   You can specify the variables that you would like to show the missingness
 #'   for.
 #'
@@ -75,13 +75,13 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #'
 #' @examples
 #'
-#' airquality %>% add_prop_miss()
+#' airquality %>% add_prop_na()
 #'
-#' airquality %>% add_prop_miss(Solar.R)
+#' airquality %>% add_prop_na(Solar.R)
 #'
-#' airquality %>% add_prop_miss(Solar.R, Ozone)
+#' airquality %>% add_prop_na(Solar.R, Ozone)
 #'
-#' airquality %>% add_prop_miss(Solar.R, Ozone, label = "testing")
+#' airquality %>% add_prop_na(Solar.R, Ozone, label = "testing")
 #'
 #' # this can be applied to model the proportion of missing data
 #' # as in Tierney et al bmjopen.bmj.com/content/5/6/e007450.full
@@ -89,13 +89,13 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #' library(rpart.plot)
 #'
 #' airquality %>%
-#' add_prop_miss() %>%
-#' rpart(prop_miss_all ~ ., data = .) %>%
+#' add_prop_na() %>%
+#' rpart(prop_na_all ~ ., data = .) %>%
 #' prp(type = 4,
 #'     extra = 101,
-#'     prefix = "prop_miss = ")
+#'     prefix = "prop_na = ")
 
-add_prop_miss <- function(data, ..., label = "prop_miss"){
+add_prop_na <- function(data, ..., label = "prop_na"){
 
   if (missing(...)) {
     purrrlyr::by_row(.d = data,
@@ -109,11 +109,11 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
     selected_data <- dplyr::select(data, !!!quo_vars)
 
     prop_selected_data <- purrrlyr::by_row(.d = selected_data,
-                                           ..f = function(x) prop_miss(x),
+                                           ..f = function(x) prop_na(x),
                                            .collate = "row",
                                            .to =  paste0(label,"_vars"))
 
-    # add only the variables prop_miss function, not the whole data.frame...
+    # add only the variables prop_na function, not the whole data.frame...
     prop_selected_data_cut <- prop_selected_data %>%
       dplyr::select(!!as.name(paste0(label,"_vars")))
 

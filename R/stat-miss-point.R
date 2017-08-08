@@ -1,6 +1,6 @@
-#' @name stat_miss_point
-#' @title stat_miss_point
-#' @description stat_miss_point adds a geometry for displaying missingness to
+#' @name stat_na_point
+#' @title stat_na_point
+#' @description stat_na_point adds a geometry for displaying missingness to
 #'   geom_point
 #'
 #' @note todo: Warning message if na.rm = T is supplied.
@@ -43,7 +43,7 @@
 #' }
 #'
 #' @export
-stat_miss_point <- function(mapping = NULL,
+stat_na_point <- function(mapping = NULL,
                                data = NULL,
                                geom = "point",
                                position = "identity",
@@ -52,7 +52,7 @@ stat_miss_point <- function(mapping = NULL,
                                inherit.aes = TRUE,
                                ...) {
   ggplot2::layer(
-    stat = StatMissPoint,
+    stat = StatNaPoint,
     data = data,
     mapping = mapping,
     geom = geom,
@@ -66,7 +66,7 @@ stat_miss_point <- function(mapping = NULL,
 
 #' @rdname naniar-ggproto
 #' @export
-StatMissPoint <- ggproto("StatMissPoint", Stat,
+StatNaPoint <- ggproto("StatNaPoint", Stat,
     required_aes = c("x", "y"),
     default_aes = aes(colour = ..missing..),
     setup_data = function(data, params){
@@ -80,7 +80,7 @@ StatMissPoint <- ggproto("StatMissPoint", Stat,
 
     handle_na = function(self, data, params) data,
     compute_group = function(data, scales) {
-      missing_label <- label_miss_2d(data$x_miss, data$y_miss)
+      missing_label <- label_na_2d(data$x_miss, data$y_miss)
 
       data.frame(x = data$x,
                  y = data$y,

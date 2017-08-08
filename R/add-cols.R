@@ -85,22 +85,22 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
 
 #' Add a column describing presence of any missing values
 #'
-#' This adds a column named "any_miss" (by default) that describes whether any
+#' This adds a column named "any_na" (by default) that describes whether any
 #'   there are any missings in all of the variables (default), or whether any of
 #'   the specified columns, specified using variables names or dplyr verbs,
 #'   `starts_with`, `contains`, `ends_with`, etc. By default the added column
-#'    will be called "any_miss_all", if no variables are specified, otherwise,
-#'    if variables are specified, the label will be "any_miss_vars" to indicate
+#'    will be called "any_na_all", if no variables are specified, otherwise,
+#'    if variables are specified, the label will be "any_na_vars" to indicate
 #'    that not all variables have been used to create the labels. By default the
-#'    `label` argument uses the prefix "any_miss", but this can be specified.
+#'    `label` argument uses the prefix "any_na", but this can be specified.
 #'
 #' @param data data.frame
 #' @param ... Variable names to use instead of the whole dataset. This can be
 #'   one or more unquoted variable names separated by commas. These also
 #'   respect the dplyr verbs `starts_with`, `contains`, `ends_with`, etc.
-#' @param label label for the column, defaults to "any_miss". By default if no
-#'   additional variables are listed the label col is "any_miss_all", otherwise
-#'   it is "any_miss_vars", if variables are specified.
+#' @param label label for the column, defaults to "any_na". By default if no
+#'   additional variables are listed the label col is "any_na_all", otherwise
+#'   it is "any_na_vars", if variables are specified.
 #'
 #' @return data.frame with data and the column labelling whether that row (for
 #'     those variables) has any missing values - indicated by "missing" and
@@ -110,16 +110,16 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
 #'
 #' @examples
 #'
-#' airquality %>% add_any_miss()
-#' airquality %>% add_any_miss(Ozone, Solar.R)
+#' airquality %>% add_any_na()
+#' airquality %>% add_any_na(Ozone, Solar.R)
 #'
-add_any_miss <- function(data, ..., label = "any_miss"){
+add_any_na <- function(data, ..., label = "any_na"){
 
   # if no variables are specified, do for all, and add the label "all"
   if (missing(...)) {
 
     stub_data_label <- data %>%
-      dplyr::mutate(.temp = any_row_miss(data),
+      dplyr::mutate(.temp = any_row_na(data),
                     .temp_label = dplyr::if_else(condition = .temp == TRUE,
                                                  true = "missing",
                                                  false = "complete")) %>%
@@ -137,7 +137,7 @@ add_any_miss <- function(data, ..., label = "any_miss"){
   stub_data <- dplyr::select(data, !!!quo_vars)
 
   stub_data_label <- stub_data %>%
-    dplyr::mutate(.temp = any_row_miss(stub_data),
+    dplyr::mutate(.temp = any_row_na(stub_data),
                   .temp_label = dplyr::if_else(condition = .temp == TRUE,
                                                true = "missing",
                                                false = "complete")) %>%
@@ -259,3 +259,8 @@ add_label_shadow <- function(data){
     dplyr::mutate(any_missing = label_shadow(.))
 
 }
+
+airquality %>%
+  dplyr::mutate(any_missing = label_shadow(.))
+
+label_shadow(airquality)

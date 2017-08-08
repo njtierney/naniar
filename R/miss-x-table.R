@@ -10,28 +10,28 @@
 #'
 #' @examples
 #'
-#' miss_case_table(airquality)
+#' na_case_table(airquality)
 #' library(dplyr)
 #' airquality %>%
 #'   group_by(Month) %>%
-#'   miss_case_table()
+#'   na_case_table()
 #'
-miss_case_table <- function(data){
+na_case_table <- function(data){
 
   test_if_null(data)
 
   test_if_dataframe(data)
 
-  UseMethod("miss_case_table")
+  UseMethod("na_case_table")
 
 }
 
 #' @export
-miss_case_table.default <- function(data){
+na_case_table.default <- function(data){
 
   purrrlyr::by_row(.d = data,
                    # how many are missing in each row?
-                   ..f = ~n_miss(.),
+                   ..f = ~n_na(.),
                    .collate = "row",
                    .to = "n_missing_in_case") %>%
     dplyr::group_by(n_missing_in_case) %>%
@@ -43,9 +43,9 @@ miss_case_table.default <- function(data){
 
 
 #' @export
-miss_case_table.grouped_df <- function(data){
+na_case_table.grouped_df <- function(data){
 
-  group_by_fun(data, .fun = miss_case_table)
+  group_by_fun(data, .fun = na_case_table)
 
 }
 
@@ -62,26 +62,26 @@ miss_case_table.grouped_df <- function(data){
 #'
 #' @examples
 #'
-#' miss_var_table(airquality)
+#' na_var_table(airquality)
 #'
 #' library(dplyr)
 #' airquality %>%
 #'   group_by(Month) %>%
-#'   miss_var_table()
+#'   na_var_table()
 #'
-miss_var_table <- function(data){
+na_var_table <- function(data){
 
   test_if_null(data)
 
   test_if_dataframe(data)
 
-  UseMethod("miss_var_table")
+  UseMethod("na_var_table")
 
 }
 
 #' @export
 
-miss_var_table.default <- function(data){
+na_var_table.default <- function(data){
 
   purrr::map_df(data, ~sum(is.na(.))) %>%
     tidyr::gather(key = "variable",
@@ -95,8 +95,8 @@ miss_var_table.default <- function(data){
 
 #' @export
 
-miss_var_table.grouped_df <- function(data){
+na_var_table.grouped_df <- function(data){
 
-  group_by_fun(data, .fun = miss_var_table)
+  group_by_fun(data, .fun = na_var_table)
 
 }

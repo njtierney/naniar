@@ -1,3 +1,12 @@
+# naniar 0.3.0.9000 (2017/08/07)
+
+# Major Changes
+
+- change replace `miss` with `na`. so `miss_case_summary` turns to `na_case_summary`, and `prop_miss` becomes `prop_na`, `n_miss` becomes `n_na`, `geom_miss_point()` becomes `geom_na_point()` and so on.
+- Changed `label_na` to `label_shadow_matrix`
+- removed `label_miss_1d` and `label_miss_2d` as they aren't really practical for a user, and are used internally
+
+
 # naniar 0.0.9.9990 (2017/08/07)
 
 # Major Changes

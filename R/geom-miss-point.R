@@ -1,13 +1,13 @@
 #' Plot Missing Data Points
 #'
-#' `geom_miss_point` provides a way to transform and plot missing values in
+#' `geom_na_point` provides a way to transform and plot missing values in
 #'   ggplot2. To do so it uses methods from ggobi to display missing data
 #'   points 10% below the minimum value, so that the values can be seen no the
 #'   same axis.
 #'
 #' @include legend-draw.R
-#' @name  geom_miss_point
-#' @title  geom_miss_point
+#' @name  geom_na_point
+#' @title  geom_na_point
 #' @note Warning message if na.rm = T is supplied.
 #'
 #' @param mapping Set of aesthetic mappings created by [ggplot2::aes()]
@@ -58,14 +58,14 @@
 #'            y = Solar.R)) +
 #' geom_point()
 #'
-#' # using  geom_miss_point()
+#' # using  geom_na_point()
 #' ggplot(airquality,
 #'        aes(x = Ozone,
 #'            y = Solar.R)) +
-#'  geom_miss_point()
+#'  geom_na_point()
 #'
 #' @export
- geom_miss_point <- function(mapping = NULL,
+ geom_na_point <- function(mapping = NULL,
                                data = NULL,
                                # stat = "identity",
                                position = "identity",
@@ -77,8 +77,8 @@
   layer(
     data = data,
     mapping = mapping,
-    stat = StatMissPoint,
-    geom = GeomMissPoint,
+    stat = StatNaPoint,
+    geom = GeomNaPoint,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
@@ -94,7 +94,7 @@
 #' @format NULL
 #' @usage NULL
 #' @export
-GeomMissPoint <- ggproto("GeomMissPoint", GeomPoint,
+GeomNaPoint <- ggproto("GeomNaPoint", GeomPoint,
                             required_aes = c("x", "y"),
                             default_aes = aes(shape = 19,
                                               colour = ..missing..,
@@ -107,7 +107,7 @@ GeomMissPoint <- ggproto("GeomMissPoint", GeomPoint,
                               #TODO: print warning if na.rm = T
                               data$x <- shadow_shift(data$x)
                               data$y <- shadow_shift(data$y)
-                              data$missing <- label_miss_2d(data$x, data$y)
+                              data$missing <- label_na_2d(data$x, data$y)
                               data
                             } ,
                             handle_na = function(self, data, params) data,

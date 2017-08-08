@@ -2,7 +2,7 @@
 #'
 #' To summarise the missing values in a time series object it can be useful to
 #'     calculate the number of missing values in a given time period.
-#'     `miss_var_span` takes a data.frame object, a variable, and a `span_every`
+#'     `na_var_span` takes a data.frame object, a variable, and a `span_every`
 #'     argument and returns a dataframe containing the number of missing values
 #'     within each span.
 #'
@@ -18,17 +18,17 @@
 #'
 #' @examples
 #'
-#'miss_var_span(data = pedestrian,
+#'na_var_span(data = pedestrian,
 #'              var = hourly_counts,
 #'              span_every = 168)
 #'
 #'  library(dplyr)
 #'  pedestrian %>%
 #'    group_by(month) %>%
-#'      miss_var_span(var = hourly_counts,
+#'      na_var_span(var = hourly_counts,
 #'                    span_every = 168)
 #'
-miss_var_span <- function(data, var, span_every){
+na_var_span <- function(data, var, span_every){
 
   test_if_null(data)
 
@@ -38,12 +38,12 @@ miss_var_span <- function(data, var, span_every){
 
   test_if_missing(span_every)
 
-  UseMethod("miss_var_span")
+  UseMethod("na_var_span")
 
 }
 
 #' @export
-miss_var_span.default <- function(data,
+na_var_span.default <- function(data,
                                   var,
                                   span_every){
 
@@ -64,13 +64,13 @@ miss_var_span.default <- function(data,
 }
 
 #' @export
-miss_var_span.grouped_df <- function(data, var, span_every){
+na_var_span.grouped_df <- function(data, var, span_every){
 
   var <- rlang::enquo(var)
 
   tidyr::nest(data) %>%
     dplyr::mutate(data = purrr::map(.x = data,
-                                    .f = miss_var_span,
+                                    .f = na_var_span,
                                     var = !!var,
                                     span_every = span_every)) %>%
     tidyr::unnest()
@@ -78,12 +78,12 @@ miss_var_span.grouped_df <- function(data, var, span_every){
 }
 
 # some alternative names
-# miss_var_interval
-# miss_var_stretch
-# miss_var_term
-# miss_var_span
-# miss_var_phase
-# miss_var_run
-# miss_var_period
-# miss_var_cycle
-# miss_var_window
+# na_var_interval
+# na_var_stretch
+# na_var_term
+# na_var_span
+# na_var_phase
+# na_var_run
+# na_var_period
+# na_var_cycle
+# na_var_window

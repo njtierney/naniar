@@ -10,17 +10,17 @@
 #'
 #' @examples
 #'
-#' n_miss(airquality)
-#' n_miss(airquality$Ozone)
+#' n_na(airquality)
+#' n_na(airquality$Ozone)
 #'
-n_miss <- function(x){
+n_na <- function(x){
   test_if_null(x)
   sum(is.na(x))
 }
 
 #' Return the number of complete values
 #'
-#' A complement to `n_miss``
+#' A complement to `n_na``
 #'
 #' @param x a vector
 #'
@@ -36,7 +36,7 @@ n_miss <- function(x){
 n_complete <- function(x){
   test_if_null(x)
   # number of total elements - number of missings
-  length(is.na(x)) - n_miss(x)
+  length(is.na(x)) - n_na(x)
 
 }
 #' Return the proportion of missing values
@@ -51,10 +51,10 @@ n_complete <- function(x){
 #'
 #' @examples
 #'
-#' prop_miss(airquality)
-#' prop_miss(airquality$Ozone)
+#' prop_na(airquality)
+#' prop_na(airquality$Ozone)
 #'
-prop_miss <- function(x){
+prop_na <- function(x){
   test_if_null(x)
   mean(is.na(x))
 }
@@ -71,16 +71,16 @@ prop_miss <- function(x){
 #'
 #' @examples
 #'
-#' pct_miss(airquality)
-#' pct_miss(airquality$Ozone)
+#' pct_na(airquality)
+#' pct_na(airquality$Ozone)
 #'
-pct_miss <- function(x){
-  prop_miss(x) * 100
+pct_na <- function(x){
+  prop_na(x) * 100
 }
 
 #' Return the proportion of complete values
 #'
-#' The complement to `prop_miss`
+#' The complement to `prop_na`
 #'
 #' @param x vector or data.frame
 #'
@@ -102,7 +102,7 @@ prop_complete <- function(x){
 
 #' Return the percent of complete values
 #'
-#' The complement to `pct_miss`
+#' The complement to `pct_na`
 #'
 #' @param x vector or data.frame
 #'

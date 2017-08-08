@@ -10,10 +10,10 @@
 #'
 #' @examples
 #'
-#' miss_var_prop(riskfactors)
-#' miss_var_prop(oceanbuoys)
+#' na_var_prop(riskfactors)
+#' na_var_prop(oceanbuoys)
 #'
-miss_var_prop <- function(data){
+na_var_prop <- function(data){
 
   test_if_null(data)
 
@@ -37,13 +37,13 @@ miss_var_prop <- function(data){
 #'
 #' @examples
 #'
-#' miss_var_pct(riskfactors)
-#' miss_var_pct(oceanbuoys)
+#' na_var_pct(riskfactors)
+#' na_var_pct(oceanbuoys)
 #'
-miss_var_pct <- function(data){
+na_var_pct <- function(data){
 
   # turn proportion into a percent
-  miss_var_prop(data) * 100
+  na_var_prop(data) * 100
 
 } # end function
 
@@ -58,9 +58,9 @@ miss_var_pct <- function(data){
 #'
 #' @examples
 #'
-#' miss_case_prop(airquality)
+#' na_case_prop(airquality)
 #'
-miss_case_prop <- function(data){
+na_case_prop <- function(data){
 
   test_if_null(data)
 
@@ -98,10 +98,10 @@ miss_case_prop <- function(data){
 #'
 #' @examples
 #'
-#' miss_case_pct(airquality)
+#' na_case_pct(airquality)
 #'
-miss_case_pct <- function(data){
+na_case_pct <- function(data){
 
-  miss_case_prop(data) * 100
+  na_case_prop(data) * 100
 
 }

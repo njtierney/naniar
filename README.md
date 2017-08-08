@@ -8,9 +8,9 @@ naniar
 naniar provides principled, tidy ways to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data. It does this by providing:
 
 -   Shadow matrices, a tidy data structure for missing data (`bind_shadow()`).
--   Shorthand summaries for missing data: `n_miss()`/`n_complete()`; `prop_miss()`/`prop_complete()`.
--   Numerical summaries of missing data in variables (`miss_var_summary()`, `miss_var_run`), and cases (`miss_case_summary()`, `miss_case_table()`).
--   Visualisation methods: e.g., `geom_miss_point()`, `gg_miss_var()`,
+-   Shorthand summaries for missing data: `n_na()`/`n_complete()`; `prop_na()`/`prop_complete()`.
+-   Numerical summaries of missing data in variables (`na_var_summary()`, `na_var_run`), and cases (`na_case_summary()`, `na_case_table()`).
+-   Visualisation methods: e.g., `geom_na_point()`, `gg_na_var()`,
 
 For more details on the workflow and theory underpinning naniar, read the vignette ["Getting started with naniar"](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 
@@ -29,7 +29,7 @@ devtools::install_github("njtierney/naniar")
 A short overview of naniar
 ==========================
 
-Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace "NA" values with values 10% lower than the minimum value in that variable. This is provided with the `geom_miss_point()` ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
+Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace "NA" values with values 10% lower than the minimum value in that variable. This is provided with the `geom_na_point()` ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
 
 ``` r
 
@@ -46,7 +46,7 @@ ggplot(data = airquality,
 
 ggplot2 does not handle these missing values, and we get a warning message about the missing values.
 
-We can instead use the `geom_miss_point()` to display the missing data
+We can instead use the `geom_na_point()` to display the missing data
 
 ``` r
 
@@ -55,12 +55,12 @@ library(naniar)
 ggplot(data = airquality,
        aes(x = Ozone,
            y = Solar.R)) +
-  geom_miss_point()
+  geom_na_point()
 ```
 
 ![](README-figs/README-geom-missing-point-1.png)
 
-`geom_miss_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive. As it is a ggplot2 geom, it supports features like faceting and other ggplot features.
+`geom_na_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive. As it is a ggplot2 geom, it supports features like faceting and other ggplot features.
 
 ``` r
 
@@ -68,7 +68,7 @@ p1 <-
 ggplot(data = airquality,
        aes(x = Ozone,
            y = Solar.R)) + 
-  geom_miss_point() + 
+  geom_na_point() + 
   facet_wrap(~Month, ncol = 2) + 
   theme(legend.position = "bottom")
 
@@ -145,7 +145,7 @@ naniar also provides handy visualations for each variable:
 
 ``` r
 
-gg_miss_var(airquality)
+gg_na_var(airquality)
 ```
 
 ![](README-figs/README-gg-missing-var-1.png)
@@ -153,7 +153,7 @@ gg_miss_var(airquality)
 Or the number of missings in a given variable at a repeating span
 
 ``` r
-gg_miss_span(pedestrian,
+gg_na_span(pedestrian,
              var = hourly_counts,
              span_every = 1500)
 ```
@@ -165,15 +165,15 @@ You can read about all of the visualisations in naniar in the vignette [Gallery 
 naniar also provides handy helpers for calculating the number, proportion, and percentage of missing and complete observations:
 
 ``` r
-n_miss(airquality)
+n_na(airquality)
 #> [1] 44
 n_complete(airquality)
 #> [1] 874
-prop_miss(airquality)
+prop_na(airquality)
 #> [1] 0.04793028
 prop_complete(airquality)
 #> [1] 0.9520697
-pct_miss(airquality)
+pct_na(airquality)
 #> [1] 4.793028
 pct_complete(airquality)
 #> [1] 95.20697
@@ -182,13 +182,13 @@ pct_complete(airquality)
 Numerical summaries for missing data
 ====================================
 
-naniar provides numerical summaries of missing data, that follow a consistent rule that uses a syntax begining with `miss_`. Summaries focussing on variables or a single selected variable, start with `miss_var_`, and summaries for cases (the initial collected row order of the data), they start with `miss_case_`. All of these functions that return dataframes also work with dplyr's `group_by()`.
+naniar provides numerical summaries of missing data, that follow a consistent rule that uses a syntax begining with `na_`. Summaries focussing on variables or a single selected variable, start with `na_var_`, and summaries for cases (the initial collected row order of the data), they start with `na_case_`. All of these functions that return dataframes also work with dplyr's `group_by()`.
 
-For example, we can look at the number and percent of missings in each case and variable with `miss_var_summary()`, and `miss_case_summary()`, which both return output ordered by the number of missing values.
+For example, we can look at the number and percent of missings in each case and variable with `na_var_summary()`, and `na_case_summary()`, which both return output ordered by the number of missing values.
 
 ``` r
 
-miss_var_summary(airquality)
+na_var_summary(airquality)
 #> # A tibble: 6 x 3
 #>   variable n_missing   percent
 #>      <chr>     <int>     <dbl>
@@ -198,7 +198,7 @@ miss_var_summary(airquality)
 #> 4     Temp         0  0.000000
 #> 5    Month         0  0.000000
 #> 6      Day         0  0.000000
-miss_case_summary(airquality)
+na_case_summary(airquality)
 #> # A tibble: 153 x 3
 #>     case n_missing  percent
 #>    <int>     <int>    <dbl>
@@ -230,7 +230,7 @@ library(dplyr)
 #>     intersect, setdiff, setequal, union
 airquality %>%
   group_by(Month) %>%
-  miss_var_summary()
+  na_var_summary()
 #> # A tibble: 25 x 4
 #>    Month variable n_missing  percent
 #>    <int>    <chr>     <int>    <dbl>
@@ -257,7 +257,7 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 Future Work
 ===========
 
--   Extend the `geom_miss_*` family to include categorical variables, Bivariate plots: scatterplots, density overlays
+-   Extend the `geom_na_*` family to include categorical variables, Bivariate plots: scatterplots, density overlays
 -   SQL translation for databases
 -   Big Data tools (sparklyr, sparklingwater)
 -   Work well with other imputation engines / processes
@@ -266,7 +266,7 @@ Future Work
 Acknowledgements
 ----------------
 
-Firstly, thanks to [Di Cook](https://github.com/dicook) for giving the initial inspiration for the package and laying down the rich theory and literature that the work in naniar is built upon. Naming credit (once again!) goes to [Miles McBain](https://github.com/milesmcbain). Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to [Colin Fay](https://github.com/ColinFay) for helping me understand tidy evaluation and for features such as `replace_to_na`, `miss_*_cumsum`, and more.
+Firstly, thanks to [Di Cook](https://github.com/dicook) for giving the initial inspiration for the package and laying down the rich theory and literature that the work in naniar is built upon. Naming credit (once again!) goes to [Miles McBain](https://github.com/milesmcbain). Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to [Colin Fay](https://github.com/ColinFay) for helping me understand tidy evaluation and for features such as `replace_to_na`, `na_*_cumsum`, and more.
 
 A note on the name
 ------------------

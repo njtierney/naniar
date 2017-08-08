@@ -20,12 +20,12 @@ This is a wrapper to facilitate the \code{grouped_df} S3 method.
 \examples{
 
 \dontrun{
-miss_case_table.grouped_df <- function(data){
-group_by_fun(data,.fun = miss_case_table)
+na_case_table.grouped_df <- function(data){
+group_by_fun(data,.fun = na_case_table)
 }
 airquality \%>\%
 group_by(Month) \%>\%
-miss_case_table()
+na_case_table()
 }
 
 }

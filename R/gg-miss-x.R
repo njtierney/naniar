@@ -4,7 +4,7 @@ visdat::vis_miss
 
 #' Plot the number of missings per case (row)
 #'
-#' This is a visual analogue to `miss_case_summary`. It draws a ggplot of the
+#' This is a visual analogue to `na_case_summary`. It draws a ggplot of the
 #'   number of missings in each case (row). A default minimal theme is used, which
 #'   can be customised as normal for ggplot.
 #'
@@ -15,13 +15,13 @@ visdat::vis_miss
 #'
 #' @examples
 #'
-#' gg_miss_case(airquality)
+#' gg_na_case(airquality)
 #' library(ggplot2)
-#' gg_miss_case(airquality) + labs(x = "Number of Cases")
+#' gg_na_case(airquality) + labs(x = "Number of Cases")
 #'
-gg_miss_case <- function(x){
+gg_na_case <- function(x){
 
-  ggobject <- ggplot(data = miss_case_summary(x),
+  ggobject <- ggplot(data = na_case_summary(x),
          aes(y = n_missing,
              x = case)) +
     geom_bar(stat = "identity",
@@ -40,7 +40,7 @@ gg_miss_case <- function(x){
 
 #' Plot the number of missings for each variable
 #'
-#' This is a visual analogue to `miss_var_summary`. It draws a ggplot of the
+#' This is a visual analogue to `na_var_summary`. It draws a ggplot of the
 #'   number of missings in each variable, ordered to show which variables have
 #'   the most missing data. A default minimal theme is used, which can be
 #'   customised as normal for ggplot.
@@ -52,15 +52,15 @@ gg_miss_case <- function(x){
 #'
 #' @examples
 #'
-#' gg_miss_var(airquality)
+#' gg_na_var(airquality)
 #' library(ggplot2)
-#' gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
+#' gg_na_var(airquality) + labs(y = "Look at all the missing ones")
 #'
-gg_miss_var <- function(x){
+gg_na_var <- function(x){
 
   # get a tidy data frame of the number of missings in each column
   ggobject <- x %>%
-    miss_var_summary() %>%
+    na_var_summary() %>%
     ggplot(data = .,
            aes(x = stats::reorder(variable, n_missing),
                y = n_missing,
@@ -93,11 +93,11 @@ gg_miss_var <- function(x){
 #'
 #' @examples
 #'
-#' gg_miss_which(airquality)
+#' gg_na_which(airquality)
 #' library(ggplot2)
 #'
 
-gg_miss_which <- function(x){
+gg_na_which <- function(x){
 
   # tell us which columns have missing data
   ggobject <- x %>%
@@ -138,18 +138,18 @@ gg_miss_which <- function(x){
 #'
 #' @examples
 #'
-#' gg_miss_fct(x = riskfactors, fct = marital)
+#' gg_na_fct(x = riskfactors, fct = marital)
 #' library(ggplot2)
-#' gg_miss_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
+#' gg_na_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
 #'
 
-gg_miss_fct <- function(x, fct){
+gg_na_fct <- function(x, fct){
 
   fct <- rlang::enquo(fct)
 
   ggobject <- x %>%
     dplyr::group_by(!!fct) %>%
-    miss_var_summary() %>%
+    na_var_summary() %>%
     ggplot(aes_string(quo_name(fct),
                "variable",
                fill = "percent")) +
@@ -172,12 +172,12 @@ gg_miss_fct <- function(x, fct){
 #'
 #' @examples
 #'
-#' gg_miss_var_cumsum(airquality)
+#' gg_na_var_cumsum(airquality)
 
-gg_miss_var_cumsum <- function(x){
+gg_na_var_cumsum <- function(x){
 
   ggobject <- x %>%
-    miss_var_cumsum() %>%
+    na_var_cumsum() %>%
     ggplot(aes(x = stats::reorder(variable, n_missing_cumsum),
                y = n_missing_cumsum,
                group = 1)) +
@@ -203,14 +203,14 @@ gg_miss_var_cumsum <- function(x){
 #'
 #' @examples
 #'
-#' gg_miss_case_cumsum(airquality)
+#' gg_na_case_cumsum(airquality)
 #' library(ggplot2)
-#' gg_miss_case_cumsum(riskfactors, breaks = 50) + theme_bw()
+#' gg_na_case_cumsum(riskfactors, breaks = 50) + theme_bw()
 
-gg_miss_case_cumsum <- function(x, breaks = 20){
+gg_na_case_cumsum <- function(x, breaks = 20){
 
   ggobject <- x %>%
-    miss_case_cumsum() %>%
+    na_case_cumsum() %>%
     ggplot(aes(x = stats::reorder(case, n_missing_cumsum),
                y = n_missing_cumsum,
                group = 1)) +
@@ -229,7 +229,7 @@ gg_miss_case_cumsum <- function(x, breaks = 20){
 
 #' Plot the number of missings in a given repeating span
 #'
-#' `gg_miss_span` is a replacement function to
+#' `gg_na_span` is a replacement function to
 #'   `imputeTS::plotNA.distributionBar(tsNH4, breaksize = 100)`, which shows the
 #'   number of missings in a given span, or breaksize. A default minimal theme
 #'   is used, which can be customised as normal for ggplot.
@@ -243,23 +243,23 @@ gg_miss_case_cumsum <- function(x, breaks = 20){
 #'
 #' @examples
 #'
-#' miss_var_span(pedestrian, hourly_counts, span_every = 3000)
+#' na_var_span(pedestrian, hourly_counts, span_every = 3000)
 #' library(ggplot2)
-#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
+#' gg_na_span(pedestrian, hourly_counts, span_every = 3000)
 #' # works with the rest of ggplot
-#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
-#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
+#' gg_na_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
+#' gg_na_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
 
-gg_miss_span <- function(data,
+gg_na_span <- function(data,
                          var,
                          span_every){
 
   var_enquo <- rlang::enquo(var)
 
-  ggobject <-  miss_var_span(data = data,
+  ggobject <-  na_var_span(data = data,
                              var = !!var_enquo,
                              span_every = span_every) %>%
-    # miss_var_span(pedestrian, hourly_counts, span_every = 3000) %>%
+    # na_var_span(pedestrian, hourly_counts, span_every = 3000) %>%
     tidyr::gather(key = variable,
                   value = value,
                   prop_miss:prop_complete) %>%

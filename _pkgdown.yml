@@ -7,17 +7,17 @@ reference:
     desc: >
       Visualise missing data
     contents:
-      - geom_miss_point
-      - starts_with("gg_miss_")
+      - geom_na_point
+      - starts_with("gg_na")
   - title: "Numerical Summaries"
     desc: >
       Provide tidy data frame summaries of missingness
     contents:
-      - n_miss
+      - n_na
       - n_complete
-      - prop_miss
+      - prop_na
       - prop_complete
-      - starts_with("miss_")
+      - starts_with("na_")
   - title: "Add columns"
     desc: >
       Add missing data summaries/tool columns
@@ -36,17 +36,14 @@ reference:
       - starts_with("as_shadow")
       - bind_shadow
       - gather_shadow
-      - label_na
       - starts_with("shadow_shift")
   - title: "Misc helpers"
     desc: >
       Misc helpers
     contents:
       - all_row_complete
-      - all_row_miss
-      - any_row_miss
-      - label_miss_1d
-      - label_miss_2d
+      - all_row_na
+      - any_row_na
       - label_missings
       - where_na
       - which_na

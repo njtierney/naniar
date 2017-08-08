@@ -2,14 +2,14 @@
 % Please edit documentation in R/geom-miss-point.R, R/naniar-ggproto.R,
 %   R/stat-miss-point.R
 \docType{data}
-\name{GeomMissPoint}
-\alias{GeomMissPoint}
+\name{GeomNaPoint}
+\alias{GeomNaPoint}
 \alias{naniar-ggproto}
-\alias{StatMissPoint}
+\alias{StatNaPoint}
 \title{naniar-ggroto}
-\format{An object of class \code{StatMissPoint} (inherits from \code{Stat}, \code{ggproto}) of length 6.}
+\format{An object of class \code{StatNaPoint} (inherits from \code{Stat}, \code{ggproto}) of length 6.}
 \usage{
-StatMissPoint
+StatNaPoint
 }
 \description{
 These are the stat and geom overrides using ggproto from ggplot2

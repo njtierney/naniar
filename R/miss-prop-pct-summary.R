@@ -12,31 +12,31 @@
 #'
 #' @examples
 #'
-#' miss_prop_summary(airquality)
+#' na_prop_summary(airquality)
 #'
-miss_prop_summary <- function(data){
+na_prop_summary <- function(data){
 
   test_if_null(data)
 
   test_if_dataframe(data)
 
-  UseMethod("miss_prop_summary")
+  UseMethod("na_prop_summary")
 
 }
 
 
 #' @export
-miss_prop_summary.default <- function(data){
+na_prop_summary.default <- function(data){
 
-  tibble::tibble(df = prop_miss(data),
-                 var = miss_var_prop(data),
-                 case = miss_case_prop(data))
+  tibble::tibble(df = prop_na(data),
+                 var = na_var_prop(data),
+                 case = na_case_prop(data))
 
 }
 
 #' @export
-miss_prop_summary.grouped_df <- function(data){
+na_prop_summary.grouped_df <- function(data){
 
-  group_by_fun(data, .fun = miss_prop_summary)
+  group_by_fun(data, .fun = na_prop_summary)
 
 }

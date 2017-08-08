@@ -32,6 +32,8 @@ globalVariables(
     "n_missing_in_var",
     "n_vars",
     "span_every",
-    "n_missing_cumsum"
+    "n_missing_cumsum",
+    "prop_miss",
+    "n_miss"
     )
   )

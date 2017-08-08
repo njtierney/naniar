@@ -27,9 +27,9 @@ This plot provides a specific visualiation of the amount of missing data, showin
 
 # Exploring Missingness Mechanisms
 
-There are a few different ways to explore different missing data mechanisms and relationships. One way incorporates the method of shifting missing values so that they can be visualised on the same axes as the regular values, and then colours the missing and not missing points. This is implemented with `geom_miss_point()`.
+There are a few different ways to explore different missing data mechanisms and relationships. One way incorporates the method of shifting missing values so that they can be visualised on the same axes as the regular values, and then colours the missing and not missing points. This is implemented with `geom_na_point()`.
 
-# `geom_miss_point()`
+# `geom_na_point()`
 
 ```{r ggplot-geom-miss-point}
 library(ggplot2)
@@ -41,24 +41,24 @@ geom_point()
 
 library(naniar)
 
-# using  geom_miss_point()
+# using  geom_na_point()
 ggplot(airquality,
        aes(x = Ozone,
            y = Solar.R)) +
- geom_miss_point()
+ geom_na_point()
 
 # Facets!
 ggplot(airquality,
        aes(x = Ozone,
            y = Solar.R)) +
- geom_miss_point() + 
+ geom_na_point() + 
  facet_wrap(~Month)
 
 # Themes
 ggplot(airquality,
        aes(x = Ozone,
            y = Solar.R)) +
- geom_miss_point() + 
+ geom_na_point() + 
  theme_dark()
 
 
@@ -68,92 +68,92 @@ ggplot(airquality,
 
 These
 
-## `gg_miss_var()`
+## `gg_na_var()`
 
-This plot shows the number of missing values in each variable in a dataset. It is powered by the `miss_var_summary()` function.
+This plot shows the number of missing values in each variable in a dataset. It is powered by the `na_var_summary()` function.
 
 ```{r gg-miss-var}
 
-gg_miss_var(airquality)
+gg_na_var(airquality)
 library(ggplot2)
-gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
+gg_na_var(airquality) + labs(y = "Look at all the missing ones")
 
 ```
 
 
-## `gg_miss_case()`
+## `gg_na_case()`
 
-This plot shows the number of missing values in each case. It is powered by the `miss_case_summary()` function.
+This plot shows the number of missing values in each case. It is powered by the `na_case_summary()` function.
 
 ```{r gg-miss-case}
-gg_miss_case(airquality)
+gg_na_case(airquality)
 library(ggplot2)
-gg_miss_case(airquality) + labs(x = "Number of Cases")
+gg_na_case(airquality) + labs(x = "Number of Cases")
 ```
 
 
-## `gg_miss_fct()`
+## `gg_na_fct()`
 
-This plot shows the number of missings in each column, broken down by a categorical variable from the dataset. It is powered by a `dplyr::group_by` statement followed by `miss_var_summary()`. 
+This plot shows the number of missings in each column, broken down by a categorical variable from the dataset. It is powered by a `dplyr::group_by` statement followed by `na_var_summary()`. 
 
 ```{r gg-miss-fct}
 
-gg_miss_fct(x = riskfactors, fct = marital)
+gg_na_fct(x = riskfactors, fct = marital)
 library(ggplot2)
-gg_miss_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
+gg_na_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
 
 # using group_by
 library(dplyr)
 riskfactors %>%
   group_by(marital) %>%
-  miss_var_summary()
+  na_var_summary()
 
 ```
 
-## `gg_miss_span()`
+## `gg_na_span()`
 
-This plot shows the number of missings in a given span, or breaksize, for a single selected variable. In this case we look at the span of `hourly_counts` from the pedestrian dataset.  It is powered by the `miss_var_span` function
+This plot shows the number of missings in a given span, or breaksize, for a single selected variable. In this case we look at the span of `hourly_counts` from the pedestrian dataset.  It is powered by the `na_var_span` function
 
 ```{r gg-miss-span}
 
 # data method
 
-miss_var_span(pedestrian, hourly_counts, span_every = 3000)
+na_var_span(pedestrian, hourly_counts, span_every = 3000)
 
-gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
+gg_na_span(pedestrian, hourly_counts, span_every = 3000)
 # works with the rest of ggplot
-gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
-gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
+gg_na_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
+gg_na_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
 
 ```
 
 
-## `gg_miss_case_cumsum()`
+## `gg_na_case_cumsum()`
 
-This plot shows the cumulative sum of missing values, reading the rows of the dataset from the top to bottom. It is powered by the `miss_case_cumsum()` function.
+This plot shows the cumulative sum of missing values, reading the rows of the dataset from the top to bottom. It is powered by the `na_case_cumsum()` function.
 
 ```{r gg-miss-case-cumsum}
-gg_miss_case_cumsum(airquality)
+gg_na_case_cumsum(airquality)
 library(ggplot2)
-gg_miss_case_cumsum(riskfactors, breaks = 50) + theme_bw()
+gg_na_case_cumsum(riskfactors, breaks = 50) + theme_bw()
 
-miss_case_cumsum(riskfactors)
+na_case_cumsum(riskfactors)
 ```
 
-## `gg_miss_var_cumsum()`
+## `gg_na_var_cumsum()`
 
-This plot shows the cumulative sum of missing values, reading columns from the left to the right of your dataframe. It is powered by the `miss_var_cumsum()` function.
+This plot shows the cumulative sum of missing values, reading columns from the left to the right of your dataframe. It is powered by the `na_var_cumsum()` function.
 
 ```{r gg-miss-var-cumsum}
-gg_miss_var_cumsum(airquality)
+gg_na_var_cumsum(airquality)
 ```
 
 
-## `gg_miss_which()`
+## `gg_na_which()`
 
 This plot shows a set of rectangles that indicate whether there is a missing element in a column or not.
 
 ```{r gg-miss-which}
-gg_miss_which(airquality)
+gg_na_which(airquality)
 ```
 

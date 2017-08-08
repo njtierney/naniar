@@ -9,8 +9,8 @@ cast_shadow_shift(data, ...)
 \arguments{
 \item{data}{data.frame}
 
-\item{...}{One or more unquoted expressions separated by commas. These also
-respect the dplyr verbs "starts_with", "contains", "ends_with", etc.}
+\item{...}{One or more unquoted variable names separated by commas. These
+respect the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.}
 }
 \value{
 data.frame with the shadow and shadow_shift vars

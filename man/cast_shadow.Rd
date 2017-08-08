@@ -9,7 +9,7 @@ cast_shadow(data, ...)
 \arguments{
 \item{data}{data.frame}
 
-\item{...}{One or more unquoted expressions separated by commas. These
+\item{...}{One or more unquoted variable names separated by commas. These
 respect the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.}
 }
 \value{
@@ -20,8 +20,10 @@ Casting a shadow shifted column performs the equivalent pattern to
 "data %>% select(var) %>% shadow_shift()". This is a convenience function
 that makes it easy to perform certain visualisations, in line with the
 principle that the user should have a way to flexibly return dataformats
-containing information about the missing data. It also respects the dplyr
-verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.
+containing information about the missing data. It forms the base building
+block for the functions \code{cast_shadow_shift}, and \code{cast_shadow_shift_label}.
+It also respects the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.
+to select variables.
 }
 \examples{
 

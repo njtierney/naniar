@@ -12,9 +12,9 @@ naniar provides principled, tidy ways to summarise, visualise, and manipulate mi
 -   Numerical summaries of missing data in variables (`miss_var_summary()`, `miss_var_run`), and cases (`miss_case_summary()`, `miss_case_table()`).
 -   Visualisation methods: e.g., `geom_miss_point()`, `gg_miss_var()`,
 
-For more details on the workflow and theory underpinning naniar, read the vignette ["Getting started with naniar"](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
+For more details on the workflow and theory underpinning naniar, read the vignette [Getting started with naniar](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 
-For a short primer on the data visualisation available in naniar, read the vignette [Gallery of missing data visualisations using naniar](http://naniar.njtierney.com/articles/naniar-visualisation.html).
+For a short primer on the data visualisation available in naniar, read the vignette [Gallery of Missing Data Visualisations](http://naniar.njtierney.com/articles/naniar-visualisation.html).
 
 Installation
 ============
@@ -42,7 +42,7 @@ ggplot(data = airquality,
 #> Warning: Removed 42 rows containing missing values (geom_point).
 ```
 
-![](README-figs/README-regular-geom-point-1.png)
+![](man/figures/README-regular-geom-point-1.png)
 
 ggplot2 does not handle these missing values, and we get a warning message about the missing values.
 
@@ -58,7 +58,7 @@ ggplot(data = airquality,
   geom_miss_point()
 ```
 
-![](README-figs/README-geom-missing-point-1.png)
+![](man/figures/README-geom-miss-point-1.png)
 
 `geom_miss_point()` has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive. As it is a ggplot2 geom, it supports features like faceting and other ggplot features.
 
@@ -75,7 +75,7 @@ ggplot(data = airquality,
 p1
 ```
 
-![](README-figs/README-facet-by-month-1.png)
+![](man/figures/README-facet-by-month-1.png)
 
 Data Structures
 ===============
@@ -121,7 +121,7 @@ airquality %>%
   geom_density()
 ```
 
-![](README-figs/README-unnamed-chunk-3-1.png)
+![](man/figures/README-shadow-w-ggplot-1.png)
 
 And even visualise imputations
 
@@ -137,7 +137,7 @@ airquality %>%
 #> Warning: Removed 7 rows containing missing values (geom_point).
 ```
 
-![](README-figs/README-unnamed-chunk-4-1.png)
+![](man/figures/README-shadow-impute-1.png)
 
 naniar does this while following consistent principles that are easy to read, thanks to the tools of the tidyverse.
 
@@ -148,7 +148,7 @@ naniar also provides handy visualations for each variable:
 gg_miss_var(airquality)
 ```
 
-![](README-figs/README-gg-missing-var-1.png)
+![](man/figures/README-gg-miss-var-1.png)
 
 Or the number of missings in a given variable at a repeating span
 
@@ -158,7 +158,7 @@ gg_miss_span(pedestrian,
              span_every = 1500)
 ```
 
-![](README-figs/README-unnamed-chunk-5-1.png)
+![](man/figures/README-gg-miss-span-1.png)
 
 You can read about all of the visualisations in naniar in the vignette [Gallery of missing data visualisations using naniar](http://naniar.njtierney.com/articles/naniar-visualisation.html).
 

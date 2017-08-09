@@ -1,10 +1,17 @@
 ---
-title: "Gallery of missing data visualisations with naniar + visdat"
+title: "Gallery of Missing Data Visualisations"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+  html_document:
+    fig_caption: false
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    toc_depth: 3
 vignette: >
-  %\VignetteIndexEntry{Gallery of missing data visualisations with naniar}
+  %\VignetteIndexEntry{Gallery of Missing Data Visualisations}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

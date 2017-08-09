@@ -8,7 +8,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-figs/README-"
+  fig.path = "man/figures/README-"
 )
 ```
 
@@ -24,9 +24,9 @@ naniar provides principled, tidy ways to summarise, visualise, and manipulate mi
 - Numerical summaries of missing data in variables (`miss_var_summary()`, `miss_var_run`), and cases (`miss_case_summary()`, `miss_case_table()`).
 - Visualisation methods: e.g.,  `geom_miss_point()`, `gg_miss_var()`, 
 
-For more details on the workflow and theory underpinning naniar, read the vignette ["Getting started with naniar"](http://naniar.njtierney.com/articles/getting-started-w-naniar.html). 
+For more details on the workflow and theory underpinning naniar, read the vignette [Getting started with naniar](http://naniar.njtierney.com/articles/getting-started-w-naniar.html). 
 
-For a short primer on the data visualisation available in naniar, read the vignette [Gallery of missing data visualisations using naniar](http://naniar.njtierney.com/articles/naniar-visualisation.html).
+For a short primer on the data visualisation available in naniar, read the vignette [Gallery of Missing Data Visualisations](http://naniar.njtierney.com/articles/naniar-visualisation.html).
 
 # Installation
 
@@ -57,7 +57,7 @@ ggplot2 does not handle these missing values, and we get a warning message about
 
 We can instead use the `geom_miss_point()` to display the missing data
 
-```{r geom-missing-point}
+```{r geom-miss-point}
 
 library(naniar)
 
@@ -88,7 +88,7 @@ p1
 
 naniar provides a data structure for working with missing data, the shadow matrix [(Swayne and Buja, 1998)](https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization). The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as “NA”, and not missing is represented as “!NA”, and variable names are kep the same, with the added suffix “_NA" to the variables.
 
-```{r}
+```{r show-shadow}
 
 head(airquality)
 
@@ -99,7 +99,7 @@ as_shadow(airquality)
 
 Using the shadow matrix helps you manage where missing values are in your dataset and make it easy to do visualisations where you split by missingness:
 
-```{r}
+```{r shadow-w-ggplot}
 
 airquality %>%
   bind_shadow() %>%
@@ -112,7 +112,7 @@ airquality %>%
 
 And even visualise imputations 
 
-```{r}
+```{r shadow-impute}
 
 airquality %>%
   bind_shadow() %>%
@@ -129,7 +129,7 @@ naniar does this while following consistent principles that are easy to read, th
 
 naniar also provides handy visualations for each variable:
 
-```{r gg-missing-var}
+```{r gg-miss-var}
 
 gg_miss_var(airquality)
 
@@ -137,7 +137,7 @@ gg_miss_var(airquality)
 
 Or the number of missings in a given variable at a repeating span
 
-```{r}
+```{r gg-miss-span}
 gg_miss_span(pedestrian,
              var = hourly_counts,
              span_every = 1500)
@@ -148,7 +148,7 @@ You can read about all of the visualisations in naniar in the vignette [Gallery 
 
 naniar also provides handy helpers for calculating the number, proportion, and percentage of missing and complete observations:
 
-```{r}
+```{r show-miss-helpers}
 n_miss(airquality)
 n_complete(airquality)
 prop_miss(airquality)

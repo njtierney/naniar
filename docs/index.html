@@ -48,7 +48,7 @@
       <a href="articles/getting-started-w-naniar.html">Getting Started with naniar</a>
     </li>
     <li>
-      <a href="articles/naniar-visualisation.html">Gallery of missing data visualisations with naniar + visdat</a>
+      <a href="articles/naniar-visualisation.html">Gallery of Missing Data Visualisations</a>
     </li>
   </ul>
 </li>
@@ -91,8 +91,8 @@
 <li>Numerical summaries of missing data in variables (<code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code>, <code>miss_var_run</code>), and cases (<code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code>, <code><a href="reference/miss_case_table.html">miss_case_table()</a></code>).</li>
 <li>Visualisation methods: e.g., <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code>, <code><a href="reference/gg_miss_var.html">gg_miss_var()</a></code>,</li>
 </ul>
-<p>For more details on the workflow and theory underpinning naniar, read the vignette <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">“Getting started with naniar”</a>.</p>
-<p>For a short primer on the data visualisation available in naniar, read the vignette <a href="http://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of missing data visualisations using naniar</a>.</p>
+<p>For more details on the workflow and theory underpinning naniar, read the vignette <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">Getting started with naniar</a>.</p>
+<p>For a short primer on the data visualisation available in naniar, read the vignette <a href="http://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of Missing Data Visualisations</a>.</p>
 </div>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
@@ -113,7 +113,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()
 <span class="co">#&gt; Warning: Removed 42 rows containing missing values (geom_point).</span></code></pre></div>
-<p><img src="README-figs/README-regular-geom-point-1.png" width="672"></p>
+<p><img src="reference/figures/README-regular-geom-point-1.png" width="672"></p>
 <p>ggplot2 does not handle these missing values, and we get a warning message about the missing values.</p>
 <p>We can instead use the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> to display the missing data</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
@@ -123,7 +123,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
        <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="reference/geom_miss_point.html">geom_miss_point</a></span>()</code></pre></div>
-<p><img src="README-figs/README-geom-missing-point-1.png" width="672"></p>
+<p><img src="reference/figures/README-geom-miss-point-1.png" width="672"></p>
 <p><code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive. As it is a ggplot2 geom, it supports features like faceting and other ggplot features.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 p1 &lt;-
@@ -135,7 +135,7 @@ p1 &lt;-
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)
 
 p1</code></pre></div>
-<p><img src="README-figs/README-facet-by-month-1.png" width="672"></p>
+<p><img src="reference/figures/README-facet-by-month-1.png" width="672"></p>
 </div>
 <div id="data-structures" class="section level1">
 <h1 class="hasAnchor">
@@ -173,7 +173,7 @@ airquality <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Temp,
              <span class="dt">fill =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_density">geom_density</a></span>()</code></pre></div>
-<p><img src="README-figs/README-unnamed-chunk-3-1.png" width="672"></p>
+<p><img src="reference/figures/README-shadow-w-ggplot-1.png" width="672"></p>
 <p>And even visualise imputations</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 airquality <span class="op">%&gt;%</span>
@@ -184,17 +184,17 @@ airquality <span class="op">%&gt;%</span>
              <span class="dt">colour =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()
 <span class="co">#&gt; Warning: Removed 7 rows containing missing values (geom_point).</span></code></pre></div>
-<p><img src="README-figs/README-unnamed-chunk-4-1.png" width="672"></p>
+<p><img src="reference/figures/README-shadow-impute-1.png" width="672"></p>
 <p>naniar does this while following consistent principles that are easy to read, thanks to the tools of the tidyverse.</p>
 <p>naniar also provides handy visualations for each variable:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</code></pre></div>
-<p><img src="README-figs/README-gg-missing-var-1.png" width="672"></p>
+<p><img src="reference/figures/README-gg-miss-var-1.png" width="672"></p>
 <p>Or the number of missings in a given variable at a repeating span</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian,
              <span class="dt">var =</span> hourly_counts,
              <span class="dt">span_every =</span> <span class="dv">1500</span>)</code></pre></div>
-<p><img src="README-figs/README-unnamed-chunk-5-1.png" width="672"></p>
+<p><img src="reference/figures/README-gg-miss-span-1.png" width="672"></p>
 <p>You can read about all of the visualisations in naniar in the vignette <a href="http://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of missing data visualisations using naniar</a>.</p>
 <p>naniar also provides handy helpers for calculating the number, proportion, and percentage of missing and complete observations:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/n_miss.html">n_miss</a></span>(airquality)

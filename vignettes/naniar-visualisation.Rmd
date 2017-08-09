@@ -2,12 +2,26 @@
 title: "Gallery of Missing Data Visualisations"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+  html_document:
+    fig_caption: false
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    toc_depth: 3
 vignette: >
   %\VignetteIndexEntry{Gallery of Missing Data Visualisations}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+```{r knitr-setup, include = FALSE}
+knitr::opts_chunk$set(fig.align = "center",
+                      fig.width = 5,
+                      fig.height = 4)
+
+```
 
 There are a variety of different plots to explore missing data available in the naniar package. This vignette simply showcases all of the visualisations. If you would like to know more about the philosophy of the `naniar` package, you should read the vignette [Getting Started with naniar](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 

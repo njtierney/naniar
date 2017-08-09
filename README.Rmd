@@ -33,9 +33,7 @@ For a short primer on the data visualisation available in naniar, read the vigne
 You can install naniar from CRAN:
 
 ```{r install-cran, eval = FALSE}
-
 install.packages("naniar")
-
 ```
 
 Or you can install the development version on github using `devtools`:
@@ -43,7 +41,6 @@ Or you can install the development version on github using `devtools`:
 ```{r install-github, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("njtierney/naniar")
-
 ```
 
 # A short overview of naniar
@@ -113,7 +110,7 @@ airquality %>%
   bind_shadow() %>%
   ggplot(aes(x = Temp,
              fill = Ozone_NA)) + 
-  geom_density()
+  geom_density(alpha = 0.5)
 
 ```
 

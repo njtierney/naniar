@@ -1,7 +1,12 @@
+template:
+  params:
+    bootswatch: flatly
+
 home:
   links:
   - text: Learn more
     href: https://github.com/njtierney/naniar
+
 reference:
   - title: "Visualisation"
     desc: >
@@ -13,22 +18,22 @@ reference:
     desc: >
       Provide tidy data frame summaries of missingness
     contents:
+      - starts_with("miss_")
+  - title: "Handy helpers"
+    desc: >
+      Handy helpers
+    contents:
       - n_miss
       - n_complete
       - prop_miss
       - prop_complete
-      - starts_with("miss_")
+      - pct_miss
+      - pct_complete
   - title: "Add columns"
     desc: >
       Add missing data summaries/tool columns
     contents:
       - starts_with("add_")
-  - title: "Cast Shadows"
-    desc: >
-      Add shadow information to the dataframe while reducing it to the
-      variables of interest
-    contents:
-      - starts_with("cast_")
   - title: "Data structures for missing data"
     desc: >
       Creation and Manipulation of Shadow Matrices
@@ -37,6 +42,13 @@ reference:
       - bind_shadow
       - gather_shadow
       - starts_with("shadow_shift")
+      - starts_with("cast")
+  - title: "Cast Shadows"
+    desc: >
+      Add shadow information to the dataframe while reducing it to the
+      variables of interest
+    contents:
+      - starts_with("cast_")
   - title: "Misc helpers"
     desc: >
       Misc helpers
@@ -49,3 +61,14 @@ reference:
       - label_missings
       - where_na
       - which_na
+
+navbar:
+  left:
+  - text: Reference
+    href: reference/index.htm
+  - text: Getting Started
+    href: articles/getting-started-w-naniar.html
+  - text: Gallery
+    href: articles/naniar-visualisation.html
+  - text: News
+    href: news/index.html

@@ -2,7 +2,14 @@
 title: "Getting Started with naniar"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+  html_document:
+    fig_caption: false
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    toc_depth: 3
 vignette: >
   %\VignetteIndexEntry{Getting Started with naniar}
   %\VignetteEngine{knitr::rmarkdown}

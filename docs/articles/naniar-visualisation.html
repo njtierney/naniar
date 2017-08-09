@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery of Missing Data Visualisations • naniar</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -29,28 +29,13 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="..//index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
+  <a href="../reference/index.htm">Reference</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/getting-started-w-naniar.html">Getting Started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/getting-started-w-naniar.html">Getting Started with naniar</a>
-    </li>
-    <li>
-      <a href="../articles/naniar-visualisation.html">Gallery of Missing Data Visualisations</a>
-    </li>
-  </ul>
+  <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -93,7 +78,7 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(naniar)
 
 <span class="kw"><a href="http://www.rdocumentation.org/packages/visdat/topics/vis_miss">vis_miss</a></span>(airquality)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/unnamed-chunk-1-1.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/unnamed-chunk-1-1.png" width="480" style="display: block; margin: auto;"></p>
 <p>This plot provides a specific visualiation of the amount of missing data, showing in black the location of missing values, and also providing information on the overall percentage of missing values overall (in the legend), and in each variable.</p>
 </div>
 <div id="exploring-missingness-mechanisms" class="section level1">
@@ -112,7 +97,7 @@
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span>
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</code></pre></div>
 <pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
-<p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-1.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-1.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(naniar)
 
 <span class="co"># using  geom_miss_point()</span>
@@ -120,21 +105,21 @@
        <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span>
 <span class="st"> </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>()</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-2.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-2.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Facets!</span>
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality,
        <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span>
 <span class="st"> </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span>
 <span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>Month)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-3.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-3.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Themes</span>
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality,
        <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,
            <span class="dt">y =</span> Solar.R)) <span class="op">+</span>
 <span class="st"> </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span>
 <span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_dark</a></span>()</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-4.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-4.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 <div id="general-visual-summaries-of-missing-data" class="section level1">
 <h1 class="hasAnchor">
@@ -146,10 +131,10 @@
 </h2>
 <p>This plot shows the number of missing values in each variable in a dataset. It is powered by the <code><a href="../reference/miss_var_summary.html">miss_var_summary()</a></code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-var-1.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-var-1.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">y =</span> <span class="st">"Look at all the missing ones"</span>)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-var-2.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-var-2.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_case" class="section level2">
 <h2 class="hasAnchor">
@@ -157,10 +142,10 @@
 </h2>
 <p>This plot shows the number of missing values in each case. It is powered by the <code><a href="../reference/miss_case_summary.html">miss_case_summary()</a></code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-case-1.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-case-1.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">x =</span> <span class="st">"Number of Cases"</span>)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-case-2.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-case-2.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_fct" class="section level2">
 <h2 class="hasAnchor">
@@ -168,10 +153,10 @@
 </h2>
 <p>This plot shows the number of missings in each column, broken down by a categorical variable from the dataset. It is powered by a <code><a href="http://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by</a></code> statement followed by <code><a href="../reference/miss_var_summary.html">miss_var_summary()</a></code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_fct.html">gg_miss_fct</a></span>(<span class="dt">x =</span> riskfactors, <span class="dt">fct =</span> marital)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-fct-1.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-fct-1.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw"><a href="../reference/gg_miss_fct.html">gg_miss_fct</a></span>(<span class="dt">x =</span> riskfactors, <span class="dt">fct =</span> marital) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">title =</span> <span class="st">"NA in Risk Factors and Marital status"</span>)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-fct-2.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-fct-2.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># using group_by</span>
 <span class="kw">library</span>(dplyr)</code></pre></div>
 <pre><code>## 
@@ -225,12 +210,12 @@
 ## 12           12    745       2255 0.2483333333     0.7516667
 ## 13           13    432       2568 0.1440000000     0.8560000</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-span-1.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-span-1.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># works with the rest of ggplot</span>
 <span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">x =</span> <span class="st">"custom"</span>)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-span-2.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-span-2.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_dark</a></span>()</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-span-3.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-span-3.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_case_cumsum" class="section level2">
 <h2 class="hasAnchor">
@@ -238,10 +223,10 @@
 </h2>
 <p>This plot shows the cumulative sum of missing values, reading the rows of the dataset from the top to bottom. It is powered by the <code><a href="../reference/miss_case_cumsum.html">miss_case_cumsum()</a></code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_case_cumsum.html">gg_miss_case_cumsum</a></span>(airquality)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-case-cumsum-1.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-case-cumsum-1.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw"><a href="../reference/gg_miss_case_cumsum.html">gg_miss_case_cumsum</a></span>(riskfactors, <span class="dt">breaks =</span> <span class="dv">50</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>()</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-case-cumsum-2.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-case-cumsum-2.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_case_cumsum.html">miss_case_cumsum</a></span>(riskfactors)</code></pre></div>
 <pre><code>## # A tibble: 245 x 3
 ##     case n_missing n_missing_cumsum
@@ -264,7 +249,7 @@
 </h2>
 <p>This plot shows the cumulative sum of missing values, reading columns from the left to the right of your dataframe. It is powered by the <code><a href="../reference/miss_var_cumsum.html">miss_var_cumsum()</a></code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_var_cumsum.html">gg_miss_var_cumsum</a></span>(airquality)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-var-cumsum-1.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-var-cumsum-1.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_which" class="section level2">
 <h2 class="hasAnchor">
@@ -272,7 +257,7 @@
 </h2>
 <p>This plot shows a set of rectangles that indicate whether there is a missing element in a column or not.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_which.html">gg_miss_which</a></span>(airquality)</code></pre></div>
-<p><img src="naniar-visualisation_files/figure-html/gg-miss-which-1.png" width="672"></p>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-which-1.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 </div>
 </div>

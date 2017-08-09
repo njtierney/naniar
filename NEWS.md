@@ -1,3 +1,10 @@
+# naniar 0.1.0.9000 (2017/08/09)
+=========================
+
+# Minor Changes
+
+- Update vignettes to have floating menu and better figure size.
+
 # naniar 0.1.0 (2017/08/09) "The Founding of `naniar`"
 =========================
 

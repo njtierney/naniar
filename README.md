@@ -22,7 +22,6 @@ Installation
 You can install naniar from CRAN:
 
 ``` r
-
 install.packages("naniar")
 ```
 
@@ -125,7 +124,7 @@ airquality %>%
   bind_shadow() %>%
   ggplot(aes(x = Temp,
              fill = Ozone_NA)) + 
-  geom_density()
+  geom_density(alpha = 0.5)
 ```
 
 ![](man/figures/README-shadow-w-ggplot-1.png)

@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 # naniar
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar)
 [![Travis-CI Build Status](https://travis-ci.org/njtierney/naniar.svg?branch=master)](https://travis-ci.org/njtierney/naniar)
-[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://codecov.io/github/njtierney/naniar?branch=master)
+[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://codecov.io/github/njtierney/naniar?branch=master)[![CRAN Status Badge](http://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar)[![CRAN Downloads Each Month](http://cranlogs.r-pkg.org/badges/naniar)](http://cran.rstudio.com/web/packages/naniar/index.html)
 
 naniar provides principled, tidy ways to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data. It does this by providing:
 

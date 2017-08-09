@@ -2,10 +2,10 @@
 =========================
 
 # Name change
+- After careful consideration, I have changed back to `naniar`
 
 # Major Change
 
-- After careful consideration, I have changed back to `naniar`
 - three new functions : `miss_case_cumsum` / `miss_var_cumsum` / `replace_to_na`
 - two new visualisations : `gg_var_cumsum` & `gg_case_cumsum`
 
@@ -22,8 +22,6 @@
   - `miss_var_summary()`
   - `miss_var_table()`
 
-
-
 # Minor changes
 
 - Reviewed documentation for all functions and improved wording, grammar, and 
@@ -36,6 +34,7 @@ of naniar
 - Add `pct` and `prop` helpers (#78)
 - removed `miss_df_pct` - this was literally the same as `pct_miss` or `prop_miss`.
 - break larger files into smaller, more manageable files (#83)
+- `gg_miss_var` gets a `show_pct` argument to show the percentage of missing values (Thanks [Jennifer](https://github.com/jenniferthompson) for the helpful feedback! :))
 
 ## Minor changes
 

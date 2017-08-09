@@ -4,10 +4,13 @@
 \alias{gg_miss_var}
 \title{Plot the number of missings for each variable}
 \usage{
-gg_miss_var(x)
+gg_miss_var(x, show_pct = FALSE)
 }
 \arguments{
 \item{x}{a dataframe}
+
+\item{show_pct}{logical shows the number of missings (default), but if set to
+TRUE, it will display the proportion of missings.}
 }
 \value{
 a ggplot object depicting the number of missings in a given column

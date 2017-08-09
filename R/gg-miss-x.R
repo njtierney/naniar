@@ -46,6 +46,8 @@ gg_miss_case <- function(x){
 #'   customised as normal for ggplot.
 #'
 #' @param x a dataframe
+#' @param show_pct logical shows the number of missings (default), but if set to
+#'  TRUE, it will display the proportion of missings.
 #'
 #' @return a ggplot object depicting the number of missings in a given column
 #' @export
@@ -56,9 +58,14 @@ gg_miss_case <- function(x){
 #' library(ggplot2)
 #' gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 #'
-gg_miss_var <- function(x){
+gg_miss_var <- function(x, show_pct = FALSE){
 
   # get a tidy data frame of the number of missings in each column
+  test_if_dataframe(x)
+  test_if_null(x)
+
+  if (show_pct == FALSE) {
+
   ggobject <- x %>%
     miss_var_summary() %>%
     ggplot(data = .,
@@ -74,6 +81,26 @@ gg_miss_var <- function(x){
     labs(y = "# Missing",
          x = "Variables") +
     theme_minimal()
+
+  } else if (show_pct == TRUE) {
+
+    ggobject <- x %>%
+      miss_var_summary() %>%
+      ggplot(data = .,
+             aes(x = stats::reorder(variable, percent),
+                 y = percent,
+                 colour = variable)) +
+      geom_bar(stat = "identity",
+               position = "dodge",
+               width = 0) +
+      geom_point() +
+      coord_flip() +
+      scale_color_discrete(guide = FALSE) +
+      labs(y = "Proportion Missing",
+           x = "Variables") +
+      theme_minimal()
+
+  }
 
   return(ggobject)
 

@@ -19,7 +19,14 @@ For a short primer on the data visualisation available in naniar, read the vigne
 Installation
 ============
 
-Currently naniar is only available on github
+You can install naniar from CRAN:
+
+``` r
+
+install.packages("naniar")
+```
+
+Or you can install the development version on github using `devtools`:
 
 ``` r
 # install.packages("devtools")

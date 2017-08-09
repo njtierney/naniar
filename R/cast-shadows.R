@@ -3,7 +3,7 @@
 #' Casting a shadow shifted column performs the equivalent pattern to
 #'   "data %>% select(var) %>% shadow_shift()". This is a convenience function
 #'   that makes it easy to perform certain visualisations, in line with the
-#'   principle that the user should have a way to flexibly return dataformats
+#'   principle that the user should have a way to flexibly return data formats
 #'   containing information about the missing data. It forms the base building
 #'   block for the functions `cast_shadow_shift`, and `cast_shadow_shift_label`.
 #'   It also respects the dplyr verbs `starts_with`, `contains`, `ends_with`, etc.

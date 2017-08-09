@@ -13,7 +13,7 @@ label_missings(data)
 character vector of "Missing" and "Not Missing".
 }
 \description{
-Creates a character vector describing presence/absense of missing values
+Creates a character vector describing presence/absence of missing values
 }
 \examples{
 

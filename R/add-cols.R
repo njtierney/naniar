@@ -156,7 +156,7 @@ add_any_miss <- function(data, ..., label = "any_miss"){
 
 #' Is there a missing value in the row of a dataframe?
 #'
-#' Creates a character vector describing presence/absense of missing values
+#' Creates a character vector describing presence/absence of missing values
 #'
 #' @param data a dataframe or set of vectors of the same length
 #'

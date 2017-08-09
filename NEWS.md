@@ -1,3 +1,9 @@
+# naniar 0.1.0 (2017/08/09) "The Founding of `naniar`"
+=========================
+
+- This is the first release of `naniar` onto CRAN, updates to `naniar` will happen reasonably regularly after this approximately every 1-2 months
+
+
 # naniar 0.0.9.9995 (2017/08/07)
 =========================
 

@@ -8,7 +8,7 @@
 
 There were no ERRORs or WARNINGs
 
-There was 1 note
+There was 1 NOTE
 
 * Maintainer: 'Nicholas Tierney <nicholas.tierney@gmail.com>'
 * This is a new submission

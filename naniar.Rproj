@@ -1,9 +1,8 @@
 Version: 1.0
 
 RestoreWorkspace: Default
-SaveWorkspace: Default
-AlwaysSaveHistory: Default
-QuitChildProcessesOnExit: Default
+SaveWorkspace: No
+AlwaysSaveHistory: No
 
 EnableCodeIndexing: Yes
 UseSpacesForTab: Yes

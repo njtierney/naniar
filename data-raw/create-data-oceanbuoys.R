@@ -1,4 +1,4 @@
-# modify the tao data
+# modify the tao data from the MissingDataGUI dataset
 
 library(naniar)
 library(dplyr)
@@ -9,8 +9,6 @@ oceanbuoys <- tao %>%
          wind_ew = uwind,
          wind_ns = vwind) %>%
   as_tibble()
-
-# oceanbuoys <- tropics
 
 devtools::use_data(oceanbuoys, overwrite = TRUE)
 # then delete the tao dataset

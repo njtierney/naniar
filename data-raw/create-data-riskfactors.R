@@ -1,4 +1,4 @@
-# modify the brfss data
+# modify the brfss data from the MissingDataGUI dataset
 
 library(tidyverse)
 library(janitor)
@@ -52,8 +52,5 @@ riskfactors <- brfss %>%
                 hispanic,
                 dplyr::everything())
 
-#
-# riskfactors <- behaviour
-
 devtools::use_data(riskfactors, overwrite = TRUE)
-# then erase brfss
+# then delete the brfss dataset

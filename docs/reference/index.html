@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.htm">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../articles/getting-started-w-naniar.html">Getting Started</a>
@@ -152,6 +152,44 @@
             <p><code><a href="gg_miss_which.html">gg_miss_which</a></code> </p>
           </td>
           <td><p>Plot which variables contain a missing value</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-data-structures-for-missing-data" class="hasAnchor"><a href="#section-data-structures-for-missing-data" class="anchor"></a>Data structures for missing data</h2>
+            <p class="section-desc"><p>Creation and Manipulation of Shadow Matrices</p></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="as_shadow.data.frame.html">as_shadow</a></code> </p>
+          </td>
+          <td><p>Create shadow data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="as_shadow.html">as_shadow</a></code> </p>
+          </td>
+          <td><p>Create shadows</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="bind_shadow.html">bind_shadow</a></code> </p>
+          </td>
+          <td><p>Bind a shadow dataframe to original data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="gather_shadow.html">gather_shadow</a></code> </p>
+          </td>
+          <td><p>Long form representation of a shadow matrix</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="shadow_shift.html">shadow_shift</a></code> </p>
+          </td>
+          <td><p>Shift missing values to facilitate missing data exploration/visualisation</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -348,62 +386,6 @@
       </tbody><tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-data-structures-for-missing-data" class="hasAnchor"><a href="#section-data-structures-for-missing-data" class="anchor"></a>Data structures for missing data</h2>
-            <p class="section-desc"><p>Creation and Manipulation of Shadow Matrices</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="as_shadow.data.frame.html">as_shadow</a></code> </p>
-          </td>
-          <td><p>Create shadow data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="as_shadow.html">as_shadow</a></code> </p>
-          </td>
-          <td><p>Create shadows</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="bind_shadow.html">bind_shadow</a></code> </p>
-          </td>
-          <td><p>Bind a shadow dataframe to original data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="gather_shadow.html">gather_shadow</a></code> </p>
-          </td>
-          <td><p>Long form representation of a shadow matrix</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="shadow_shift.html">shadow_shift</a></code> </p>
-          </td>
-          <td><p>Shift missing values to facilitate missing data exploration/visualisation</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cast_shadow_shift_label.html">cast_shadow_shift_label</a></code> </p>
-          </td>
-          <td><p>Add a shadow column and a shadow shifted column to a dataset</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cast_shadow_shift.html">cast_shadow_shift</a></code> </p>
-          </td>
-          <td><p>Add a shadow and a shadow_shift column to a dataset</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cast_shadow.html">cast_shadow</a></code> </p>
-          </td>
-          <td><p>Add a shadow column to a dataset</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
             <h2 id="section-cast-shadows" class="hasAnchor"><a href="#section-cast-shadows" class="anchor"></a>Cast Shadows</h2>
             <p class="section-desc"><p>Add shadow information to the dataframe while reducing it to the variables of interest</p></p>
           </th>
@@ -492,10 +474,10 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-visualisation">Visualisation</a></li>
+      <li><a href="#section-data-structures-for-missing-data">Data structures for missing data</a></li>
       <li><a href="#section-numerical-summaries">Numerical Summaries</a></li>
       <li><a href="#section-handy-helpers">Handy helpers</a></li>
       <li><a href="#section-add-columns">Add columns</a></li>
-      <li><a href="#section-data-structures-for-missing-data">Data structures for missing data</a></li>
       <li><a href="#section-cast-shadows">Cast Shadows</a></li>
       <li><a href="#section-misc-helpers">Misc helpers</a></li>
     </ul>

@@ -14,6 +14,14 @@ reference:
     contents:
       - geom_miss_point
       - starts_with("gg_miss_")
+  - title: "Data structures for missing data"
+    desc: >
+      Creation and Manipulation of Shadow Matrices
+    contents:
+      - starts_with("as_shadow")
+      - bind_shadow
+      - gather_shadow
+      - starts_with("shadow_shift")
   - title: "Numerical Summaries"
     desc: >
       Provide tidy data frame summaries of missingness
@@ -34,15 +42,6 @@ reference:
       Add missing data summaries/tool columns
     contents:
       - starts_with("add_")
-  - title: "Data structures for missing data"
-    desc: >
-      Creation and Manipulation of Shadow Matrices
-    contents:
-      - starts_with("as_shadow")
-      - bind_shadow
-      - gather_shadow
-      - starts_with("shadow_shift")
-      - starts_with("cast")
   - title: "Cast Shadows"
     desc: >
       Add shadow information to the dataframe while reducing it to the
@@ -65,7 +64,7 @@ reference:
 navbar:
   left:
   - text: Reference
-    href: reference/index.htm
+    href: reference/index.html
   - text: Getting Started
     href: articles/getting-started-w-naniar.html
   - text: Gallery

@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.htm">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../articles/getting-started-w-naniar.html">Getting Started</a>
@@ -139,8 +139,14 @@
 #&gt; [141] "Not Missing" "Not Missing" "Not Missing" "Not Missing" "Not Missing"
 #&gt; [146] "Not Missing" "Not Missing" "Not Missing" "Not Missing" "Missing"    
 #&gt; [151] "Not Missing" "Not Missing" "Not Missing"</div><div class='input'>
-<span class='fu'>library</span>(<span class='no'>dplyr</span>)
-
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'>
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>is_missing</span> <span class='kw'>=</span> <span class='fu'>label_missings</span>(<span class='no'>airquality</span>))</div><div class='output co'>#&gt;     Ozone Solar.R Wind Temp Month Day  is_missing
 #&gt; 1      41     190  7.4   67     5   1 Not Missing
 #&gt; 2      36     118  8.0   72     5   2 Not Missing

@@ -1,5 +1,9 @@
-# naniar 0.1.0.9000 (2017/08/09)
+# naniar 0.1.1.9000 (2017/08/30)
 =========================
+
+# New Features
+
+- Now exported `where_na` - a function that returns the positions of NA values. For a dataframe it returns a matrix of row and col positions of NAs, and for a vector it returns a vector of positions of NAs. (#105)
 
 # Minor Changes
 

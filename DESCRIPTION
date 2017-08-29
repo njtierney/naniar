@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.1.0.9000
+Version: 0.1.1.9000
 Authors@R: c(
     person("Nicholas", "Tierney", , "nicholas.tierney@gmail.com", c("aut", "cre")),
     person("Di", "Cook", , "dicook@monash.edu", role = "aut"),
@@ -72,6 +72,7 @@ Collate:
     'shadows.R'
     'stat-miss-point.R'
     'utils.R'
+    'where-na.R'
 URL: https://github.com/njtierney/naniar
 BugReports: https://github.com/njtierney/naniar/issues
 Roxygen: list(markdown = TRUE)

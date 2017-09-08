@@ -32,9 +32,9 @@ miss_var_summary <- function(data, ...) {
 #' @export
 miss_var_summary.default <- function(data, ...) {
   purrr::map_df(data, n_miss) %>%
-    tidyr::gather(key = "variable", value = "n_missing") %>%
-    dplyr::mutate(percent = (n_missing / nrow(data) * 100)) %>%
-    dplyr::arrange(-n_missing)
+    tidyr::gather(key = "variable", value = "n_miss") %>%
+    dplyr::mutate(pct_miss = (n_miss / nrow(data) * 100)) %>%
+    dplyr::arrange(-n_miss)
 }
 
 #' @export
@@ -79,16 +79,16 @@ miss_case_summary.default <- function(data){
     purrrlyr::by_row(.d = data,
                             ..f = function(x) (mean(is.na(x)) * 100),
                             .collate = "row",
-                            .to = "percent") %>%
+                            .to = "pct_miss") %>%
       purrrlyr::by_row(.d = .,
                        ..f = function(x) (sum(is.na(x))),
                        .collate = "row",
-                       .to = "n_missing") %>%
+                       .to = "n_miss") %>%
       dplyr::mutate(case = 1:nrow(data)) %>%
       dplyr::select(case,
-                    n_missing,
-                    percent) %>%
-      dplyr::arrange(-n_missing)
+                    n_miss,
+                    pct_miss) %>%
+      dplyr::arrange(-n_miss)
 
 }
 

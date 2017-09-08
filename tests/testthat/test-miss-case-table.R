@@ -28,7 +28,7 @@ test_that("grouped_df returns 1 more column than regular miss_case_table", {
 
 test_that("grouped_df returns a column named 'Month'", {
   expect_identical(names(miss_case_table(aq_group)),
-                   c("Month", "n_missing_in_case", "n_cases","percent"))
+                   c("Month", "n_miss_in_case", "n_cases","pct_miss"))
 })
 
 test_that("grouped_df returns a dataframe with more rows than regular", {

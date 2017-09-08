@@ -36,8 +36,8 @@ miss_var_cumsum.default <- function(data){
                 # how many are missing in each variable?
                 function(x) sum(is.na(x))) %>%
     tidyr::gather(key = "variable",
-                  value = "n_missing") %>%
-    dplyr::mutate(n_missing_cumsum = cumsum(n_missing))
+                  value = "n_miss") %>%
+    dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
 
 }
 
@@ -86,8 +86,8 @@ miss_case_cumsum.default <- function(data){
   miss_case_summary(data) %>%
     dplyr::arrange(case) %>%
     dplyr::select(case,
-                  n_missing) %>%
-    dplyr::mutate(n_missing_cumsum = cumsum(n_missing))
+                  n_miss) %>%
+    dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
 }
 
 #' @export

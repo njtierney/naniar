@@ -45,7 +45,7 @@
 <li>
   <a href="https://github.com/njtierney/naniar">
     <span class="fa fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -56,18 +56,18 @@
 </div>
 <!--/.navbar -->
 
-      
+
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
       <h1>Gallery of Missing Data Visualisations</h1>
                         <h4 class="author">Nicholas Tierney</h4>
-            
+
             <h4 class="date">2017-08-24</h4>
           </div>
 
-    
-    
+
+
 <div class="contents">
 <p>There are a variety of different plots to explore missing data available in the naniar package. This vignette simply showcases all of the visualisations. If you would like to know more about the philosophy of the <code>naniar</code> package, you should read the vignette <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">Getting Started with naniar</a>.</p>
 <p>A key point to remember with the visualisation tools in <code>naniar</code> is that there is a way to get the data from the plot out from the visualisation.</p>
@@ -159,19 +159,19 @@
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-fct-2.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># using group_by</span>
 <span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>## 
+<pre><code>##
 ## Attaching package: 'dplyr'</code></pre>
 <pre><code>## The following objects are masked from 'package:stats':
-## 
+##
 ##     filter, lag</code></pre>
 <pre><code>## The following objects are masked from 'package:base':
-## 
+##
 ##     intersect, setdiff, setequal, union</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">riskfactors <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(marital) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 231 x 4
-##    marital      variable n_missing   percent
+##    marital      variable n_miss   pct_miss
 ##     &lt;fctr&gt;         &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;
 ##  1 Married    smoke_stop       120 91.603053
 ##  2 Married      pregnant       117 89.312977
@@ -229,7 +229,7 @@
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-case-cumsum-2.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_case_cumsum.html">miss_case_cumsum</a></span>(riskfactors)</code></pre></div>
 <pre><code>## # A tibble: 245 x 3
-##     case n_missing n_missing_cumsum
+##     case n_miss n_miss_cumsum
 ##    &lt;int&gt;     &lt;int&gt;            &lt;int&gt;
 ##  1     1         6                6
 ##  2     2         6               12

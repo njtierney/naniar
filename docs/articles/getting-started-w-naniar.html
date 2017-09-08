@@ -45,7 +45,7 @@
 <li>
   <a href="https://github.com/njtierney/naniar">
     <span class="fa fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -56,18 +56,18 @@
 </div>
 <!--/.navbar -->
 
-      
+
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
       <h1>Getting Started with naniar</h1>
                         <h4 class="author">Nicholas Tierney</h4>
-            
+
             <h4 class="date">2017-08-24</h4>
           </div>
 
-    
-    
+
+
 <div class="contents">
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
@@ -139,35 +139,35 @@
 </ul>
 <p>Typically, when exploring this data, you might want to explore the variables Solar.R and Ozone, and so plot a scatterplot of solar radiation and ozone, doing something like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality, 
-       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R, 
+<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality,
+       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R,
            <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</code></pre></div>
 <pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
 <p><img src="getting-started-w-naniar_files/figure-html/unnamed-chunk-1-1.png" width="480" style="display: block; margin: auto;"></p>
 <p>The problem with this is that ggplot does not handle missings be default, and removes the missing values. This makes them hard to explore, it is a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace “NA” values with values 10% lower than the minimum value in that variable. This is provided with the <code><a href="../reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality, 
-       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R, 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality,
+       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R,
            <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</code></pre></div>
 <pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(naniar)
 
-<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality, 
-       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R, 
+<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality,
+       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R,
            <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>()</code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/unnamed-chunk-2-1.png" width="50%" style="display: block; margin: auto;"><img src="getting-started-w-naniar_files/figure-html/unnamed-chunk-2-2.png" width="50%" style="display: block; margin: auto;"></p>
 <p>Being a proper ggplot geom, it supports all of the standard features of ggplot2, such as <strong>facets</strong>,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality, 
-       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R, 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality,
+       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R,
            <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>Month)</code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/ggmissing-facet-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>And different <strong>themes</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality, 
-       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R, 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality,
+       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R,
            <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>Month) <span class="op">+</span><span class="st"> </span>
@@ -214,13 +214,13 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aq_shadow &lt;-<span class="st"> </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>(airquality)
 
 <span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>## 
+<pre><code>##
 ## Attaching package: 'dplyr'</code></pre>
 <pre><code>## The following objects are masked from 'package:stats':
-## 
+##
 ##     filter, lag</code></pre>
 <pre><code>## The following objects are masked from 'package:base':
-## 
+##
 ##     intersect, setdiff, setequal, union</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(aq_shadow)</code></pre></div>
 <pre><code>## Observations: 153
@@ -306,7 +306,7 @@ airquality <span class="op">%&gt;%</span>
 <p><code>miss_case_summary</code> returns a numeric value that describes the number of missings in a given case (aka row), the percent of missings in that row.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_case_summary.html">miss_case_summary</a></span>(airquality)</code></pre></div>
 <pre><code>## # A tibble: 153 x 3
-##     case n_missing  percent
+##     case n_missing  pct_miss
 ##    &lt;int&gt;     &lt;int&gt;    &lt;dbl&gt;
 ##  1     5         2 33.33333
 ##  2    27         2 33.33333
@@ -327,7 +327,7 @@ airquality <span class="op">%&gt;%</span>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_case_table.html">miss_case_table</a></span>(airquality)</code></pre></div>
 <pre><code>## # A tibble: 3 x 3
-##   n_missing_in_case n_cases  percent
+##   n_missing_in_case n_cases  pct_miss
 ##               &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;
 ## 1                 0     111 72.54902
 ## 2                 1      40 26.14379
@@ -340,7 +340,7 @@ airquality <span class="op">%&gt;%</span>
 <p><code>miss_var_summary</code> then returns the number of missing values in a variable, and the percent missing in that variable.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)</code></pre></div>
 <pre><code>## # A tibble: 6 x 3
-##   variable n_missing   percent
+##   variable n_missing   pct_miss
 ##      &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;
 ## 1    Ozone        37 24.183007
 ## 2  Solar.R         7  4.575163
@@ -356,7 +356,7 @@ airquality <span class="op">%&gt;%</span>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_var_table.html">miss_var_table</a></span>(airquality)</code></pre></div>
 <pre><code>## # A tibble: 3 x 3
-##   n_missing_in_var n_vars  percent
+##   n_missing_in_var n_vars  pct_miss
 ##              &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
 ## 1                0      4 66.66667
 ## 2                7      1 16.66667
@@ -411,7 +411,7 @@ airquality <span class="op">%&gt;%</span>
 <p>Every <code>miss_*</code> summary function that returns a dataframe can be used with dplyr <code>group_by</code>. For example, if you would like to look at the number of missing values for all variables of pedestrian data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pedestrian <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 9 x 3
-##        variable n_missing  percent
+##        variable n_missing  pct_miss
 ##           &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;
 ## 1 hourly_counts      2548 6.758621
 ## 2     date_time         0 0.000000
@@ -428,7 +428,7 @@ airquality <span class="op">%&gt;%</span>
 <span class="st"> </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>() <span class="op">%&gt;%</span>
 <span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(variable <span class="op">==</span><span class="st"> "hourly_counts"</span>)</code></pre></div>
 <pre><code>## # A tibble: 12 x 4
-##        month      variable n_missing   percent
+##        month      variable n_missing   pct_miss
 ##        &lt;ord&gt;         &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;
 ##  1   January hourly_counts         0  0.000000
 ##  2  February hourly_counts         0  0.000000

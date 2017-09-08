@@ -58,3 +58,4 @@ test_that("gg_miss_span works",{
   vdiffr::expect_doppelganger("gg_miss_span",
                               gg_miss_span_plot)
 })
+

@@ -4,10 +4,12 @@
 \alias{miss_var_summary}
 \title{Summarise the missingness in each variable}
 \usage{
-miss_var_summary(data, ...)
+miss_var_summary(data, order = FALSE, ...)
 }
 \arguments{
 \item{data}{a data.frame}
+
+\item{order}{whether or not to order the result by n_miss}
 
 \item{...}{extra arguments}
 }
@@ -21,6 +23,7 @@ ordering by the most missings in each variable.
 \examples{
 
 miss_var_summary(airquality)
+miss_var_summary(oceanbuoys, order = TRUE)
 
 # works with group_by from dplyr
 library(dplyr)

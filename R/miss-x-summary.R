@@ -4,6 +4,7 @@
 #'   ordering by the most missings in each variable.
 #'
 #' @param data a data.frame
+#' @param order whether or not to order the result by n_miss
 #' @param ... extra arguments
 #'
 #' @return a tibble of the percent of missing data in each variable
@@ -12,6 +13,7 @@
 #' @examples
 #'
 #' miss_var_summary(airquality)
+#' miss_var_summary(oceanbuoys, order = TRUE)
 #'
 #' # works with group_by from dplyr
 #' library(dplyr)
@@ -20,7 +22,7 @@
 #'   miss_var_summary()
 #'
 #' @export
-miss_var_summary <- function(data, ...) {
+miss_var_summary <- function(data, order = FALSE, ...) {
 
   test_if_null(data)
 
@@ -30,17 +32,22 @@ miss_var_summary <- function(data, ...) {
 }
 
 #' @export
-miss_var_summary.default <- function(data, ...) {
-  purrr::map_df(data, n_miss) %>%
+miss_var_summary.default <- function(data, order = FALSE, ...) {
+  res <- purrr::map_df(data, n_miss) %>%
     tidyr::gather(key = "variable", value = "n_miss") %>%
-    dplyr::mutate(pct_miss = (n_miss / nrow(data) * 100)) %>%
-    dplyr::arrange(-n_miss)
+    dplyr::mutate(pct_miss = (n_miss / nrow(data) * 100),
+                  n_miss_cumsum = cumsum(n_miss))
+  if (order) {
+    return(dplyr::arrange(res, -n_miss))
+  } else {
+    return(res)
+  }
 }
 
 #' @export
-miss_var_summary.grouped_df <- function(data, ...) {
+miss_var_summary.grouped_df <- function(data, order = FALSE, ...) {
 
-  group_by_fun(data, .fun = miss_var_summary)
+  group_by_fun(data, .fun = miss_var_summary, order = order)
 
 }
 
@@ -50,6 +57,8 @@ miss_var_summary.grouped_df <- function(data, ...) {
 #' most number of missings.
 #'
 #' @param data a data.frame
+#' @param order whether or not to order the result by n_miss
+#' @param ... extra arguments
 #'
 #' @return a tibble of the percent of missing data in each case.
 #' @export
@@ -64,7 +73,7 @@ miss_var_summary.grouped_df <- function(data, ...) {
 #'
 #' miss_case_summary(airquality)
 #'
-miss_case_summary <- function(data){
+miss_case_summary <- function(data, order = FALSE, ...){
 
   test_if_null(data)
 
@@ -74,9 +83,9 @@ miss_case_summary <- function(data){
 }
 
 #' @export
-miss_case_summary.default <- function(data){
+miss_case_summary.default <- function(data, order = FALSE, ...){
 
-    purrrlyr::by_row(.d = data,
+    res <- purrrlyr::by_row(.d = data,
                             ..f = function(x) (mean(is.na(x)) * 100),
                             .collate = "row",
                             .to = "pct_miss") %>%
@@ -84,18 +93,23 @@ miss_case_summary.default <- function(data){
                        ..f = function(x) (sum(is.na(x))),
                        .collate = "row",
                        .to = "n_miss") %>%
-      dplyr::mutate(case = 1:nrow(data)) %>%
+      dplyr::mutate(case = 1:nrow(data),
+                    n_miss_cumsum = cumsum(n_miss)) %>%
       dplyr::select(case,
                     n_miss,
-                    pct_miss) %>%
-      dplyr::arrange(-n_miss)
-
+                    pct_miss,
+                    n_miss_cumsum)
+  if (order) {
+    return(dplyr::arrange(res, -n_miss))
+  } else {
+    return(res)
+  }
 }
 
 #' @export
-miss_case_summary.grouped_df <- function(data){
+miss_case_summary.grouped_df <- function(data, order = FALSE, ...){
 
-  group_by_fun(data, .fun = miss_case_summary)
+  group_by_fun(data, .fun = miss_case_summary, order = order)
 
 }
 
@@ -105,6 +119,8 @@ miss_case_summary.grouped_df <- function(data){
 #'   them into lists within a tibble
 #'
 #' @param data a dataframe
+#' @param order whether or not to order the result by n_miss
+#' @param ... extra arguments
 #'
 #' @return a tibble of missing data summaries
 #' @export
@@ -114,6 +130,7 @@ miss_case_summary.grouped_df <- function(data){
 #' s_miss <- miss_summary(airquality)
 #' s_miss$miss_df_prop
 #' s_miss$miss_case_table
+#' s_miss$miss_var_summary
 #' # etc, etc, etc.
 #'
 #' library(dplyr)
@@ -123,7 +140,7 @@ miss_case_summary.grouped_df <- function(data){
 #' # etc, etc, etc.
 #'
 #'
-miss_summary <- function(data){
+miss_summary <- function(data, order = FALSE){
 
   test_if_null(data)
 
@@ -136,10 +153,10 @@ miss_summary <- function(data){
         miss_case_prop = miss_case_prop(data),
         miss_case_table = list(miss_case_table(data)),
         miss_var_table = list(miss_var_table(data)),
-        miss_var_summary = list(miss_var_summary(data)),
-        miss_case_summary = list(miss_case_summary(data)),
-        miss_var_cumsum = list(miss_var_cumsum(data)),
-        miss_case_cumsum = list(miss_case_cumsum(data))
+        miss_var_summary = list(miss_var_summary(data, order)),
+        miss_case_summary = list(miss_case_summary(data, order))
+        #miss_var_cumsum = list(miss_var_cumsum(data)),
+        #miss_case_cumsum = list(miss_case_cumsum(data))
       )
     )
   }

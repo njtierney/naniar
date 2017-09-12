@@ -18,7 +18,7 @@ test_that("miss_summary errors when given non dataframe or 0 entry",{
 })
 
 test_that("There are 7 columns",{
-  expect_equal(ncol(miss_summary(airquality)),9)
+  expect_equal(ncol(miss_summary(airquality)),7)
 })
 
 test_that("The columns are named correctly",{
@@ -29,9 +29,7 @@ test_that("The columns are named correctly",{
                  "miss_case_table",
                  "miss_var_table",
                  "miss_var_summary",
-                 "miss_case_summary",
-                 "miss_var_cumsum",
-                 "miss_case_cumsum"))
+                 "miss_case_summary"))
 })
 
 # need to add more of the missingness summaries here, along with tests for this

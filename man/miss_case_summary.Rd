@@ -4,10 +4,14 @@
 \alias{miss_case_summary}
 \title{Summarise the missingness in each case}
 \usage{
-miss_case_summary(data)
+miss_case_summary(data, order = FALSE, ...)
 }
 \arguments{
 \item{data}{a data.frame}
+
+\item{order}{whether or not to order the result by n_miss}
+
+\item{...}{extra arguments}
 }
 \value{
 a tibble of the percent of missing data in each case.

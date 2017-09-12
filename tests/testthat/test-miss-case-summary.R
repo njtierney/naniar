@@ -30,10 +30,11 @@ test_that("grouped_df returns 1 more column than regular miss_case_summary", {
 
 test_that("grouped_df returns a column named 'Month'", {
   expect_identical(names(miss_case_summary(aq_group)),
-                   c("Month", "case", "n_miss","pct_miss"))
+                   c("Month", "case", "n_miss","pct_miss", "n_miss_cumsum"))
 })
 
 test_that("grouped_df returns a column named 'Month' with the right levels", {
   expect_identical(unique(miss_case_summary(aq_group)$Month),
                    5:9)
 })
+

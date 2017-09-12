@@ -4,12 +4,14 @@
 \alias{group_by_fun}
 \title{Group By Helper}
 \usage{
-group_by_fun(data, .fun)
+group_by_fun(data, .fun, ...)
 }
 \arguments{
 \item{data}{data.frame, which will be grouped}
 
 \item{.fun}{a function to apply}
+
+\item{...}{additionnal arguments to be passed to map}
 }
 \value{
 a dataframe with the function applied to each group

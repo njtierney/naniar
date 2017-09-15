@@ -196,7 +196,7 @@ For example, we can look at the number and percent of missings in each case and 
 
 miss_var_summary(airquality)
 #> # A tibble: 6 x 3
-#>   variable n_missing   percent
+#>   variable n_miss   pct_miss
 #>      <chr>     <int>     <dbl>
 #> 1    Ozone        37 24.183007
 #> 2  Solar.R         7  4.575163
@@ -206,7 +206,7 @@ miss_var_summary(airquality)
 #> 6      Day         0  0.000000
 miss_case_summary(airquality)
 #> # A tibble: 153 x 3
-#>     case n_missing  percent
+#>     case n_miss  pct_miss
 #>    <int>     <int>    <dbl>
 #>  1     5         2 33.33333
 #>  2    27         2 33.33333
@@ -238,7 +238,7 @@ airquality %>%
   group_by(Month) %>%
   miss_var_summary()
 #> # A tibble: 25 x 4
-#>    Month variable n_missing  percent
+#>    Month variable n_miss  pct_miss
 #>    <int>    <chr>     <int>    <dbl>
 #>  1     5    Ozone         5 16.12903
 #>  2     5  Solar.R         4 12.90323

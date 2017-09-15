@@ -22,7 +22,7 @@ visdat::vis_miss
 gg_miss_case <- function(x){
 
   ggobject <- ggplot(data = miss_case_summary(x),
-         aes(y = n_missing,
+         aes(y = n_miss,
              x = case)) +
     geom_bar(stat = "identity",
              position = "dodge",
@@ -69,8 +69,8 @@ gg_miss_var <- function(x, show_pct = FALSE){
   ggobject <- x %>%
     miss_var_summary() %>%
     ggplot(data = .,
-           aes(x = stats::reorder(variable, n_missing),
-               y = n_missing,
+           aes(x = stats::reorder(variable, n_miss),
+               y = n_miss,
                colour = variable)) +
     geom_bar(stat = "identity",
              position = "dodge",
@@ -87,8 +87,8 @@ gg_miss_var <- function(x, show_pct = FALSE){
     ggobject <- x %>%
       miss_var_summary() %>%
       ggplot(data = .,
-             aes(x = stats::reorder(variable, percent),
-                 y = percent,
+             aes(x = stats::reorder(variable, pct_miss),
+                 y = pct_miss,
                  colour = variable)) +
       geom_bar(stat = "identity",
                position = "dodge",
@@ -179,7 +179,7 @@ gg_miss_fct <- function(x, fct){
     miss_var_summary() %>%
     ggplot(aes_string(quo_name(fct),
                "variable",
-               fill = "percent")) +
+               fill = "pct_miss")) +
     geom_tile() +
     viridis::scale_fill_viridis()
 
@@ -205,8 +205,8 @@ gg_miss_var_cumsum <- function(x){
 
   ggobject <- x %>%
     miss_var_cumsum() %>%
-    ggplot(aes(x = stats::reorder(variable, n_missing_cumsum),
-               y = n_missing_cumsum,
+    ggplot(aes(x = stats::reorder(variable, n_miss_cumsum),
+               y = n_miss_cumsum,
                group = 1)) +
     geom_line(size = 2) +
     labs(x = "Var",
@@ -238,8 +238,8 @@ gg_miss_case_cumsum <- function(x, breaks = 20){
 
   ggobject <- x %>%
     miss_case_cumsum() %>%
-    ggplot(aes(x = stats::reorder(case, n_missing_cumsum),
-               y = n_missing_cumsum,
+    ggplot(aes(x = stats::reorder(case, n_miss_cumsum),
+               y = n_miss_cumsum,
                group = 1)) +
     geom_line(size = 2) +
     labs(x = "Case",

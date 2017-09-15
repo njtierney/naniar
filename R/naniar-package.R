@@ -17,21 +17,21 @@ globalVariables(
     ".temp_label",
     "rows",
     "..missing..",
-    "n_missing",
+    "n_miss",
     "case",
     "variable",
     "value",
     "span_counter",
     "n",
-    "n_missing",
+    "n_miss",
     "nheight",
-    "percent",
-    "n_missing_in_case",
+    "pct_miss",
+    "n_miss_in_case",
     "values",
-    "n_missing_in_case",
-    "n_missing_in_var",
+    "n_miss_in_case",
+    "n_miss_in_var",
     "n_vars",
     "span_every",
-    "n_missing_cumsum"
+    "n_miss_cumsum"
     )
   )

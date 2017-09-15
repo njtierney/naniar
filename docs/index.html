@@ -45,7 +45,7 @@
 <li>
   <a href="https://github.com/njtierney/naniar">
     <span class="fa fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -56,13 +56,13 @@
 </div>
 <!--/.navbar -->
 
-      
+
       </header><div class="row">
   <div class="col-md-9">
-    
 
-    
-    
+
+
+
 <div class="contents">
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="naniar" class="section level1">
@@ -205,7 +205,7 @@ airquality <span class="op">%&gt;%</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)
 <span class="co">#&gt; # A tibble: 6 x 3</span>
-<span class="co">#&gt;   variable n_missing   percent</span>
+<span class="co">#&gt;   variable n_miss   pct_miss</span>
 <span class="co">#&gt;      &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1    Ozone        37 24.183007</span>
 <span class="co">#&gt; 2  Solar.R         7  4.575163</span>
@@ -215,7 +215,7 @@ airquality <span class="op">%&gt;%</span>
 <span class="co">#&gt; 6      Day         0  0.000000</span>
 <span class="kw"><a href="reference/miss_case_summary.html">miss_case_summary</a></span>(airquality)
 <span class="co">#&gt; # A tibble: 153 x 3</span>
-<span class="co">#&gt;     case n_missing  percent</span>
+<span class="co">#&gt;     case n_miss  pct_miss</span>
 <span class="co">#&gt;    &lt;int&gt;     &lt;int&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt;  1     5         2 33.33333</span>
 <span class="co">#&gt;  2    27         2 33.33333</span>
@@ -243,7 +243,7 @@ airquality <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Month) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>()
 <span class="co">#&gt; # A tibble: 25 x 4</span>
-<span class="co">#&gt;    Month variable n_missing  percent</span>
+<span class="co">#&gt;    Month variable n_miss  pct_miss</span>
 <span class="co">#&gt;    &lt;int&gt;    &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt;  1     5    Ozone         5 16.12903</span>
 <span class="co">#&gt;  2     5  Solar.R         4 12.90323</span>

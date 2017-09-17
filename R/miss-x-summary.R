@@ -4,7 +4,7 @@
 #'   ordering by the most missings in each variable.
 #'
 #' @param data a data.frame
-#' @param order whether or not to order the result by n_miss
+#' @param order a logical indicating whether or not to order the result by n_miss. TRUE orders from largest to smallest n_miss, and FALSE orders by order provided by the data.
 #' @param ... extra arguments
 #'
 #' @return a tibble of the percent of missing data in each variable
@@ -57,7 +57,7 @@ miss_var_summary.grouped_df <- function(data, order = FALSE, ...) {
 #' most number of missings.
 #'
 #' @param data a data.frame
-#' @param order whether or not to order the result by n_miss
+#' @param order a logical indicating whether or not to order the result by n_miss. TRUE orders from largest to smallest n_miss, and FALSE orders by order provided by the data.
 #' @param ... extra arguments
 #'
 #' @return a tibble of the percent of missing data in each case.

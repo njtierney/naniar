@@ -6,7 +6,7 @@
 #' @param data a data.frame
 #'
 #' @return a tibble of the cumulative sum of missing data in each variable
-#' @export
+#' @noRd
 #'
 #' @examples
 #'
@@ -28,8 +28,6 @@ miss_var_cumsum <- function(data){
 
 }
 
-#' @export
-
 miss_var_cumsum.default <- function(data){
 
   purrr::map_df(data,
@@ -40,8 +38,6 @@ miss_var_cumsum.default <- function(data){
     dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
 
 }
-
-#' @export
 
 miss_var_cumsum.grouped_df <- function(data){
 
@@ -59,7 +55,7 @@ miss_var_cumsum.grouped_df <- function(data){
 #'
 #' @return a tibble containing the number and percent of missing data in each
 #'   case
-#' @export
+#' @noRd
 #'
 #' @examples
 #'
@@ -80,7 +76,6 @@ miss_case_cumsum <- function(data){
   UseMethod("miss_case_cumsum")
 }
 
-#' @export
 miss_case_cumsum.default <- function(data){
 
   miss_case_summary(data) %>%
@@ -90,7 +85,6 @@ miss_case_cumsum.default <- function(data){
     dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
 }
 
-#' @export
 miss_case_cumsum.grouped_df <- function(data){
 
   group_by_fun(data, .fun = miss_case_cumsum)

@@ -8,6 +8,7 @@ magrittr::`%>%`
 #'
 #' @param data data.frame, which will be grouped
 #' @param .fun a function to apply
+#' @param ... additionnal arguments to be passed to map
 #'
 #' @return a dataframe with the function applied to each group
 #'
@@ -22,9 +23,9 @@ magrittr::`%>%`
 #' miss_case_table()
 #' }
 #'
-group_by_fun <- function(data,.fun){
+group_by_fun <- function(data,.fun, ...){
   tidyr::nest(data) %>%
-    dplyr::mutate(data = purrr::map(data, .fun)) %>%
+    dplyr::mutate(data = purrr::map(data, .fun, ...)) %>%
     tidyr::unnest()
 }
 

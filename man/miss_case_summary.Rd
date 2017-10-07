@@ -9,7 +9,7 @@ miss_case_summary(data, order = FALSE, ...)
 \arguments{
 \item{data}{a data.frame}
 
-\item{order}{whether or not to order the result by n_miss}
+\item{order}{a logical indicating whether or not to order the result by n_miss. TRUE orders from largest to smallest n_miss, and FALSE orders by order provided by the data.}
 
 \item{...}{extra arguments}
 }

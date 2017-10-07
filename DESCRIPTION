@@ -46,7 +46,8 @@ Imports:
     rlang,
     forcats,
     viridis,
-    Rcpp
+    Rcpp, 
+    RcppParallel
 RoxygenNote: 6.0.1.9000
 Collate: 
     'RcppExports.R'
@@ -80,4 +81,4 @@ Collate:
 URL: https://github.com/njtierney/naniar
 BugReports: https://github.com/njtierney/naniar/issues
 Roxygen: list(markdown = TRUE)
-LinkingTo: Rcpp
+LinkingTo: Rcpp, RcppParallel

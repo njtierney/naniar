@@ -1,3 +1,24 @@
+#' @importFrom rlang quos
+#' @importFrom dplyr select_vars
+select_vars_idx <- function(data, ...){
+  all_vars <- names(data)
+  q <- quos(...)
+  vars <- if( !length(q) ) {
+    seq_along(all_vars)
+  } else {
+    match(select_vars(all_vars, !!!q), all_vars)
+  }
+}
+
+count_na <- function(data, ...){
+  par_count_na_cpp__impl( data, select_vars_idx(data, ...))
+}
+
+add_n_miss_label <- function(q, label){
+  suffix <- if(length(q)) "_vars" else "_all"
+  paste0(label, suffix )
+}
+
 #' Add column containing number of missing data values
 #'
 #' It can be useful when doing data analysis to add the number of missing data
@@ -25,31 +46,9 @@
 #'
 #'
 add_n_miss <- function(data, ..., label = "n_miss"){
-
-  if (missing(...)) {
-    purrrlyr::by_row(.d = data,
-                     ..f = function(x) n_miss(x),
-                     .collate = "row",
-                     .to = paste0(label,"_all"))
-  } else {
-
-    quo_vars <- rlang::quos(...)
-
-    selected_data <- dplyr::select(data, !!!quo_vars)
-
-    prop_selected_data <- purrrlyr::by_row(.d = selected_data,
-                                           ..f = function(x) n_miss(x),
-                                           .collate = "row",
-                                           .to =  paste0(label,"_vars"))
-
-    # add only the variables prop_miss function, not the whole data.frame...
-    prop_selected_data_cut <- prop_selected_data %>%
-      dplyr::select(!!as.name(paste0(label,"_vars")))
-
-    dplyr::bind_cols(data, prop_selected_data_cut) %>% dplyr::as_tibble()
-
-  } # close else loop
-
+  q <- quos(...)
+  label <- add_n_miss_label(q,label)
+  mutate( data, !!label := count_na( data, !!!q ) )
 }
 
 #' Add column containing proportion of missing data values

@@ -65,6 +65,7 @@ Imports:
     Rcpp
 RoxygenNote: 6.0.1.9000
 Collate: 
+    'RcppExports.R'
     'add-cols.R'
     'add-n-prop-miss.R'
     'cast-shadows.R'

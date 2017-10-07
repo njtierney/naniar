@@ -30,6 +30,7 @@ Suggests:
     simputation,
     imputeTS
 VignetteBuilder: knitr
+Encoding: UTF-8
 Depends:
     R (>= 3.1.2)
 Imports:
@@ -44,7 +45,8 @@ Imports:
     purrrlyr,
     rlang,
     forcats,
-    viridis
+    viridis,
+    Rcpp
 RoxygenNote: 6.0.1.9000
 Collate: 
     'add-cols.R'
@@ -73,6 +75,8 @@ Collate:
     'stat-miss-point.R'
     'utils.R'
     'where-na.R'
+    'zzz.R'
 URL: https://github.com/njtierney/naniar
 BugReports: https://github.com/njtierney/naniar/issues
 Roxygen: list(markdown = TRUE)
+LinkingTo: Rcpp

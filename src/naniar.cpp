@@ -9,9 +9,9 @@ using namespace Rcpp;
 class NaCounter{
 public:
   NaCounter( DataFrame df, IntegerVector indices ) :
-  columns(indices.size()),
-  n(df.nrow()),
-  n_miss( no_init(n) )
+    columns(indices.size()),
+    n(df.nrow()),
+    n_miss( no_init(n) )
   {
     for( int i=0; i<indices.size(); i++){
       columns[i] = df[ indices[i] - 1];
@@ -19,22 +19,38 @@ public:
   }
 
   IntegerVector get(){
-    process_parallel() ;
+    // not worth doing it in parallel if too small
+    // the number is arbitrary, may not be the best
+    if( n > 10000 ){
+      process_parallel() ;
+    } else {
+      process_serial() ;
+    }
+
     return n_miss ;
   }
 
 private:
 
+  std::vector<SEXP> columns ;
+  int n ;
+  IntegerVector n_miss ;
+
+  // not using parallelization when not worth it
+  // (i.e. the overhead of parallelisation > performance gain)
   void process_serial(){
     process_chunk( 0, n ) ;
   }
 
+  // parallel algorithm
   void process_parallel(){
     tbb::parallel_for( tbb::blocked_range<int>(0, n), [this]( const tbb::blocked_range<int>& r){
       this->process_chunk(r.begin(), r.end()) ;
     });
   }
 
+  // process the chunk between indices begin and end
+  // this is used by both parallel and serial versions
   void process_chunk( int begin, int end ){
     std::fill( n_miss.begin() + begin, n_miss.begin() + end, 0 ) ;
     std::for_each( columns.begin(), columns.end(), [&]( SEXP x ){
@@ -69,9 +85,6 @@ private:
     return true ;
   }
 
-  std::vector<SEXP> columns ;
-  int n ;
-  IntegerVector n_miss ;
 };
 
 

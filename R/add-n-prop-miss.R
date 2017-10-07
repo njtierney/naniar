@@ -45,6 +45,7 @@ add_n_miss_label <- function(q, label){
 #' airquality %>% add_n_miss(dplyr::contains("o"))
 #'
 #'
+#' @importFrom dplyr mutate
 add_n_miss <- function(data, ..., label = "n_miss"){
   q <- quos(...)
   label <- add_n_miss_label(q,label)

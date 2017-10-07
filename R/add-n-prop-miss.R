@@ -1,3 +1,24 @@
+#' @importFrom rlang quos
+#' @importFrom dplyr select_vars
+select_vars_idx <- function(data, ...){
+  all_vars <- names(data)
+  q <- quos(...)
+  vars <- if( !length(q) ) {
+    seq_along(all_vars)
+  } else {
+    match(select_vars(all_vars, !!!q), all_vars)
+  }
+}
+
+count_na <- function(data, ...){
+  par_count_na_cpp__impl( data, select_vars_idx(data, ...))
+}
+
+add_n_miss_label <- function(q, label){
+  suffix <- if(length(q)) "_vars" else "_all"
+  paste0(label, suffix )
+}
+
 #' Add column containing number of missing data values
 #'
 #' It can be useful when doing data analysis to add the number of missing data
@@ -27,7 +48,6 @@
 #'
 #'
 add_n_miss <- function(data, ..., label = "n_miss"){
-
   if (missing(...)) {
     data[[paste0(label, "_all")]] <- n_miss_row(data)
   } else {

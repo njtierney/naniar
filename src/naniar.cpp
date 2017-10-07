@@ -1,46 +1,81 @@
 #include <Rcpp.h>
+#include <RcppParallel.h>
+
 using namespace Rcpp;
 
 // [[Rcpp::plugins(cpp11)]]
+// [[Rcpp::depends(RcppParallel)]]
 
-template <int RTYPE>
-bool count_na_template( IntegerVector& n_miss, Vector<RTYPE> x){
-  using STORAGE = typename Vector<RTYPE>::stored_type ;
-  int n = x.size() ;
-
-  // incrementing the n_miss when the value in x is NA
-  std::transform( x.begin(), x.end(), n_miss.begin(), n_miss.begin(), [](STORAGE y, int n){
-    return n + Vector<RTYPE>::is_na(y) ;
-  } ) ;
-  return true ;
-}
-
-// dispatches on the type of x to call the appropriate template
-bool count_na_dispatch( IntegerVector& n_miss, SEXP x ){
-  switch( TYPEOF(x) ){
-  // only dealing with the types of vectors where NA makes sense
-  // i.e. there's no concept of missing data for RAWSXP or VECSXP
-  case INTSXP: return count_na_template<INTSXP>(n_miss, x) ;
-  case REALSXP: return count_na_template<REALSXP>(n_miss, x) ;
-  case STRSXP: return count_na_template<STRSXP>(n_miss, x) ;
-  case CPLXSXP: return count_na_template<CPLXSXP>(n_miss, x) ;
+class NaCounter{
+public:
+  NaCounter( DataFrame df, IntegerVector indices ) :
+  columns(indices.size()),
+  n(df.nrow()),
+  n_miss( no_init(n) )
+  {
+    for( int i=0; i<indices.size(); i++){
+      columns[i] = df[ indices[i] - 1];
+    }
   }
-  return false ;
-}
+
+  IntegerVector get(){
+    process_parallel() ;
+    return n_miss ;
+  }
+
+private:
+
+  void process_serial(){
+    process_chunk( 0, n ) ;
+  }
+
+  void process_parallel(){
+    tbb::parallel_for( tbb::blocked_range<int>(0, n), [this]( const tbb::blocked_range<int>& r){
+      this->process_chunk(r.begin(), r.end()) ;
+    });
+  }
+
+  void process_chunk( int begin, int end ){
+    std::fill( n_miss.begin() + begin, n_miss.begin() + end, 0 ) ;
+    std::for_each( columns.begin(), columns.end(), [&]( SEXP x ){
+      par_count_na_dispatch( n_miss, x, begin, end ) ;
+    }) ;
+  }
+
+  // dispatches on the type of x to call the appropriate template
+  bool par_count_na_dispatch( IntegerVector& n_miss, SEXP x, int begin, int end ){
+    switch( TYPEOF(x) ){
+    // only dealing with the types of vectors where NA makes sense
+    // i.e. there's no concept of missing data for RAWSXP or VECSXP
+    case INTSXP: return par_count_na_template<INTSXP>(x, begin, end) ;
+    case LGLSXP: return par_count_na_template<LGLSXP>(x, begin, end) ;
+    case REALSXP: return par_count_na_template<REALSXP>(x, begin, end) ;
+    case STRSXP: return par_count_na_template<STRSXP>(x, begin, end) ;
+    case CPLXSXP: return par_count_na_template<CPLXSXP>(x, begin, end) ;
+    }
+    return false ;
+  }
+
+  template <int RTYPE>
+  bool par_count_na_template( SEXP x, int begin, int end){
+    auto p_x = Rcpp::internal::r_vector_start<RTYPE>(x) + begin ;
+    auto p_miss = n_miss.begin() + begin  ;
+
+    // incrementing the n_miss when the value in x is NA
+    for( int i=begin; i<end; i++, p_miss++, p_x++){
+      *p_miss += Vector<RTYPE>::is_na(*p_x) ;
+    }
+
+    return true ;
+  }
+
+  std::vector<SEXP> columns ;
+  int n ;
+  IntegerVector n_miss ;
+};
+
 
 // [[Rcpp::export]]
-IntegerVector count_na_cpp__impl(DataFrame df, IntegerVector indices) {
-  int n = df.nrow() ;
-  // allocating and initializing values to 0
-  // this will be passed as reference to the `participate` function below
-  IntegerVector n_miss(n) ;
-
-  int nc = indices.size() ;
-  for(int i=0; i<nc; i++){
-    // we assume that the `indices` has been passed correctly
-    // and as 1-based (R-style) indexing, so -1
-    count_na_dispatch( n_miss, df[indices[i]-1] ) ;
-  }
-  return n_miss ;
-
+IntegerVector par_count_na_cpp__impl(DataFrame df, IntegerVector indices) {
+  return NaCounter(df, indices).get() ;
 }

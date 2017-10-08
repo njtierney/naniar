@@ -11,7 +11,11 @@ select_vars_idx <- function(data, ...){
 }
 
 count_na <- function(data, ...){
-  par_count_na_cpp__impl( data, select_vars_idx(data, ...))
+  count_na_cpp( data, select_vars_idx(data, ...))
+}
+
+prop_na <- function(data, ...){
+  prop_na_cpp( data, select_vars_idx(data, ...))
 }
 
 add_n_miss_label <- function(q, label){
@@ -107,9 +111,7 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #' prp(type = 4,
 #'     extra = 101,
 #'     prefix = "prop_miss = ")
-
 add_prop_miss <- function(data, ..., label = "prop_miss"){
-
   if (missing(...)) {
     data[[paste0(label, "_all")]] <- prop_miss_row(data)
   } else {

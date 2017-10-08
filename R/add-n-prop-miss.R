@@ -11,7 +11,11 @@ select_vars_idx <- function(data, ...){
 }
 
 count_na <- function(data, ...){
-  par_count_na_cpp__impl( data, select_vars_idx(data, ...))
+  count_na_cpp( data, select_vars_idx(data, ...))
+}
+
+prop_na <- function(data, ...){
+  prop_na_cpp( data, select_vars_idx(data, ...))
 }
 
 add_n_miss_label <- function(q, label){
@@ -94,30 +98,8 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #' prp(type = 4,
 #'     extra = 101,
 #'     prefix = "prop_miss = ")
-
 add_prop_miss <- function(data, ..., label = "prop_miss"){
-
-  if (missing(...)) {
-    purrrlyr::by_row(.d = data,
-                     ..f = function(x) (mean(is.na(x))),
-                     .collate = "row",
-                     .to = paste0(label,"_all"))
-  } else {
-
-    quo_vars <- rlang::quos(...)
-
-    selected_data <- dplyr::select(data, !!!quo_vars)
-
-    prop_selected_data <- purrrlyr::by_row(.d = selected_data,
-                                           ..f = function(x) prop_miss(x),
-                                           .collate = "row",
-                                           .to =  paste0(label,"_vars"))
-
-    # add only the variables prop_miss function, not the whole data.frame...
-    prop_selected_data_cut <- prop_selected_data %>%
-      dplyr::select(!!as.name(paste0(label,"_vars")))
-
-    dplyr::bind_cols(data, prop_selected_data_cut) %>% dplyr::as_tibble()
-
-  }
+  q <- quos(...)
+  label <- add_n_miss_label(q,label)
+  mutate( data, !!label := prop_na( data, !!!q ) )
 }

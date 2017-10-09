@@ -75,7 +75,7 @@ namespace naniar {
     inline void process_chunk( int begin, int end ){
       std::fill( n_miss.begin() + begin, n_miss.begin() + end, 0 ) ;
       std::for_each( columns.begin(), columns.end(), [&]( SEXP x ){
-        par_count_na_dispatch( n_miss, x, begin, end ) ;
+        par_count_na_dispatch( x, begin, end ) ;
       }) ;
       finish_process_chunk( begin, end) ;
     }
@@ -83,7 +83,7 @@ namespace naniar {
     inline void finish_process_chunk( int begin, int end ){} ;
 
     // dispatches on the type of x to call the appropriate template
-    bool par_count_na_dispatch( ResultVector& n_miss, SEXP x, int begin, int end ){
+    bool par_count_na_dispatch( SEXP x, int begin, int end ){
       switch( TYPEOF(x) ){
       // only dealing with the types of vectors where NA makes sense
       // i.e. there's no concept of missing data for RAWSXP or VECSXP

@@ -1,27 +1,3 @@
-#' @importFrom rlang quos
-#' @importFrom dplyr select_vars
-select_vars_idx <- function(data, ...){
-  all_vars <- names(data)
-  q <- quos(...)
-  vars <- if( !length(q) ) {
-    seq_along(all_vars)
-  } else {
-    match(select_vars(all_vars, !!!q), all_vars)
-  }
-}
-
-count_na <- function(data, ...){
-  count_na_cpp( data, select_vars_idx(data, ...))
-}
-
-prop_na <- function(data, ...){
-  prop_na_cpp( data, select_vars_idx(data, ...))
-}
-
-add_n_miss_label <- function(q, label){
-  suffix <- if(length(q)) "_vars" else "_all"
-  paste0(label, suffix )
-}
 
 #' Add column containing number of missing data values
 #'
@@ -49,12 +25,36 @@ add_n_miss_label <- function(q, label){
 #' airquality %>% add_n_miss(dplyr::contains("o"))
 #'
 #'
-#' @importFrom dplyr mutate
+#' @importFrom dplyr select
+#' @importFrom rlang quos
 add_n_miss <- function(data, ..., label = "n_miss"){
-  q <- quos(...)
-  label <- add_n_miss_label(q,label)
-  mutate( data, !!label := count_na( data, !!!q ) )
+  if( missing(...) ){
+    data[[paste0(label, "_all")]] <- count_na_cpp(data)
+  } else {
+    quo_vars <- quos(...)
+    selected_data <- select(data, !!!quo_vars)
+    data[[paste0(label, "_vars")]] <- count_na_cpp(selected_data)
+  }
+  data
 }
+
+#' @export
+add_n_miss_rowSums <- function(data, ..., label = "n_miss"){
+
+  if (missing(...)) {
+    data[[paste0(label, "_all")]] <- rowSums(is.na(data))
+  } else {
+
+    quo_vars <- quos(...)
+
+    selected_data <- select(data, !!!quo_vars)
+
+    data[[paste0(label, "_vars")]] <- rowSums(is.na(selected_data))
+  } # close else loop
+
+  data
+}
+
 
 #' Add column containing proportion of missing data values
 #'
@@ -99,7 +99,12 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #'     extra = 101,
 #'     prefix = "prop_miss = ")
 add_prop_miss <- function(data, ..., label = "prop_miss"){
-  q <- quos(...)
-  label <- add_n_miss_label(q,label)
-  mutate( data, !!label := prop_na( data, !!!q ) )
+  if( missing(...) ){
+    data[[paste0(label, "_all")]] <- prop_na_cpp(data)
+  } else {
+    quo_vars <- quos(...)
+    selected_data <- select(data, !!!quo_vars)
+    data[[paste0(label, "_vars")]] <- prop_na_cpp(selected_data)
+  }
+  data
 }

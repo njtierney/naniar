@@ -6,33 +6,31 @@
 using namespace Rcpp;
 
 // count_na_cpp
-IntegerVector count_na_cpp(DataFrame df, IntegerVector indices);
-RcppExport SEXP _naniar_count_na_cpp(SEXP dfSEXP, SEXP indicesSEXP) {
+IntegerVector count_na_cpp(DataFrame df);
+RcppExport SEXP _naniar_count_na_cpp(SEXP dfSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< DataFrame >::type df(dfSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type indices(indicesSEXP);
-    rcpp_result_gen = Rcpp::wrap(count_na_cpp(df, indices));
+    rcpp_result_gen = Rcpp::wrap(count_na_cpp(df));
     return rcpp_result_gen;
 END_RCPP
 }
 // prop_na_cpp
-NumericVector prop_na_cpp(DataFrame df, IntegerVector indices);
-RcppExport SEXP _naniar_prop_na_cpp(SEXP dfSEXP, SEXP indicesSEXP) {
+NumericVector prop_na_cpp(DataFrame df);
+RcppExport SEXP _naniar_prop_na_cpp(SEXP dfSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< DataFrame >::type df(dfSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type indices(indicesSEXP);
-    rcpp_result_gen = Rcpp::wrap(prop_na_cpp(df, indices));
+    rcpp_result_gen = Rcpp::wrap(prop_na_cpp(df));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_naniar_count_na_cpp", (DL_FUNC) &_naniar_count_na_cpp, 2},
-    {"_naniar_prop_na_cpp", (DL_FUNC) &_naniar_prop_na_cpp, 2},
+    {"_naniar_count_na_cpp", (DL_FUNC) &_naniar_count_na_cpp, 1},
+    {"_naniar_prop_na_cpp", (DL_FUNC) &_naniar_prop_na_cpp, 1},
     {NULL, NULL, 0}
 };
 

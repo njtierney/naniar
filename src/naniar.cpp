@@ -27,14 +27,14 @@ namespace naniar {
   public:
     using ResultVector = typename result<res>::type ;
 
-    NaCounter( DataFrame df, IntegerVector indices ) :
-      columns(indices.size()),
+    NaCounter( DataFrame df ) :
+      nc(df.size()),
+      columns(nc),
       n(df.nrow()),
-      n_miss( no_init(n) ),
-      nc(columns.size())
+      n_miss( no_init(n) )
     {
-      for( int i=0; i<indices.size(); i++){
-        columns[i] = df[ indices[i] - 1];
+      for( int i=0; i<nc; i++){
+        columns[i] = df[i];
       }
     }
 
@@ -51,11 +51,10 @@ namespace naniar {
     }
 
   private:
-
+    int nc ;
     std::vector<SEXP> columns ;
     int n ;
     ResultVector n_miss ;
-    int nc ;
 
     // not using parallelization when not worth it
     // (i.e. the overhead of parallelisation > performance gain)
@@ -125,12 +124,12 @@ namespace naniar {
 }
 
 // [[Rcpp::export]]
-IntegerVector count_na_cpp(DataFrame df, IntegerVector indices) {
-  return naniar::NaCounter<naniar::COUNT>(df, indices).get() ;
+IntegerVector count_na_cpp(DataFrame df) {
+  return naniar::NaCounter<naniar::COUNT>(df).get() ;
 }
 
 // [[Rcpp::export]]
-NumericVector prop_na_cpp(DataFrame df, IntegerVector indices) {
-  return naniar::NaCounter<naniar::PROP>(df, indices).get() ;
+NumericVector prop_na_cpp(DataFrame df) {
+  return naniar::NaCounter<naniar::PROP>(df).get() ;
 }
 

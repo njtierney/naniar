@@ -20,3 +20,57 @@
 where_na <- function(x){
   which(is.na(x), arr.ind = TRUE)
 }
+
+#' Which variables contain missing values?
+#'
+#' It can be helpful when writing other functions to just return the names
+#'   of the variables that contain missing values.
+#'
+#' @param data a data.frame
+#'
+#' @return character vector of variable names
+#'
+#' @export
+#'
+#' @examples
+#'
+#' which_var_na(airquality)
+#'
+#' which_var_na(iris)
+#'
+which_var_na <- function(data){
+
+  # basic type tests
+  test_if_dataframe(data)
+
+  test_if_missing(data)
+
+  test_if_null(data)
+
+  # if there are no missing values, return NULL
+  if (!anyNA(data)) {
+
+    return(NULL)
+
+  } else {
+
+  # else return variables that contain ANY missing values
+  na_vars <- names(which(purrr::map_lgl(data,anyNA) == TRUE))
+
+  return(na_vars)
+
+  } # close else
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

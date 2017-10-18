@@ -27,7 +27,15 @@
 cast_shadow <- function(data, ...){
 
   if (missing(...)) {
-    stop("please include variables to be selected after the data")
+    # stop("please include variables to be selected after the data")
+
+    # I want to only select columns that contain a missing value.
+    miss_vars <- rlang::syms(which_var_na(data))
+
+    shadow_vars <- dplyr::select(data, !!!miss_vars) %>% as_shadow()
+
+    tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
+
   } else {
 
     quo_vars <- rlang::quos(...)

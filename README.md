@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-naniar
-======
+naniar <img src="man/figures/naniar-logo.png" align="right" />
+==============================================================
 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar) [![Travis-CI Build Status](https://travis-ci.org/njtierney/naniar.svg?branch=master)](https://travis-ci.org/njtierney/naniar) [![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://codecov.io/github/njtierney/naniar?branch=master)[![CRAN Status Badge](http://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar)[![CRAN Downloads Each Month](http://cranlogs.r-pkg.org/badges/naniar)](http://cran.rstudio.com/web/packages/naniar/index.html)
 
@@ -196,7 +196,7 @@ For example, we can look at the number and percent of missings in each case and 
 
 miss_var_summary(airquality)
 #> # A tibble: 6 x 3
-#>   variable n_miss   pct_miss
+#>   variable n_missing   percent
 #>      <chr>     <int>     <dbl>
 #> 1    Ozone        37 24.183007
 #> 2  Solar.R         7  4.575163
@@ -206,7 +206,7 @@ miss_var_summary(airquality)
 #> 6      Day         0  0.000000
 miss_case_summary(airquality)
 #> # A tibble: 153 x 3
-#>     case n_miss  pct_miss
+#>     case n_missing  percent
 #>    <int>     <int>    <dbl>
 #>  1     5         2 33.33333
 #>  2    27         2 33.33333
@@ -226,6 +226,7 @@ You could also `group_by()` to work out the number of missings in each variable 
 ``` r
 
 library(dplyr)
+#> Warning: package 'dplyr' was built under R version 3.4.2
 #> 
 #> Attaching package: 'dplyr'
 #> The following objects are masked from 'package:stats':
@@ -238,7 +239,7 @@ airquality %>%
   group_by(Month) %>%
   miss_var_summary()
 #> # A tibble: 25 x 4
-#>    Month variable n_miss  pct_miss
+#>    Month variable n_missing  percent
 #>    <int>    <chr>     <int>    <dbl>
 #>  1     5    Ozone         5 16.12903
 #>  2     5  Solar.R         4 12.90323

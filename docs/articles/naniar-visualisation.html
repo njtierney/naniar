@@ -45,7 +45,7 @@
 <li>
   <a href="https://github.com/njtierney/naniar">
     <span class="fa fa-github fa-lg"></span>
-
+     
   </a>
 </li>
       </ul>
@@ -56,18 +56,18 @@
 </div>
 <!--/.navbar -->
 
-
+      
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
       <h1>Gallery of Missing Data Visualisations</h1>
                         <h4 class="author">Nicholas Tierney</h4>
-
-            <h4 class="date">2017-08-24</h4>
+            
+            <h4 class="date">2017-10-16</h4>
           </div>
 
-
-
+    
+    
 <div class="contents">
 <p>There are a variety of different plots to explore missing data available in the naniar package. This vignette simply showcases all of the visualisations. If you would like to know more about the philosophy of the <code>naniar</code> package, you should read the vignette <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">Getting Started with naniar</a>.</p>
 <p>A key point to remember with the visualisation tools in <code>naniar</code> is that there is a way to get the data from the plot out from the visualisation.</p>
@@ -159,19 +159,20 @@
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-fct-2.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># using group_by</span>
 <span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>##
+<pre><code>## Warning: package 'dplyr' was built under R version 3.4.2</code></pre>
+<pre><code>## 
 ## Attaching package: 'dplyr'</code></pre>
 <pre><code>## The following objects are masked from 'package:stats':
-##
+## 
 ##     filter, lag</code></pre>
 <pre><code>## The following objects are masked from 'package:base':
-##
+## 
 ##     intersect, setdiff, setequal, union</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">riskfactors <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(marital) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 231 x 4
-##    marital      variable n_miss   pct_miss
+##    marital      variable n_missing   percent
 ##     &lt;fctr&gt;         &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;
 ##  1 Married    smoke_stop       120 91.603053
 ##  2 Married      pregnant       117 89.312977
@@ -221,33 +222,18 @@
 <h2 class="hasAnchor">
 <a href="#gg_miss_case_cumsum" class="anchor"></a><code><a href="../reference/gg_miss_case_cumsum.html">gg_miss_case_cumsum()</a></code>
 </h2>
-<p>This plot shows the cumulative sum of missing values, reading the rows of the dataset from the top to bottom. It is powered by the <code><a href="../reference/miss_case_cumsum.html">miss_case_cumsum()</a></code> function.</p>
+<p>This plot shows the cumulative sum of missing values, reading the rows of the dataset from the top to bottom. It is powered by the <code>miss_case_cumsum()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_case_cumsum.html">gg_miss_case_cumsum</a></span>(airquality)</code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-case-cumsum-1.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw"><a href="../reference/gg_miss_case_cumsum.html">gg_miss_case_cumsum</a></span>(riskfactors, <span class="dt">breaks =</span> <span class="dv">50</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>()</code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-case-cumsum-2.png" width="480" style="display: block; margin: auto;"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_case_cumsum.html">miss_case_cumsum</a></span>(riskfactors)</code></pre></div>
-<pre><code>## # A tibble: 245 x 3
-##     case n_miss n_miss_cumsum
-##    &lt;int&gt;     &lt;int&gt;            &lt;int&gt;
-##  1     1         6                6
-##  2     2         6               12
-##  3     3         7               19
-##  4     4        12               31
-##  5     5         5               36
-##  6     6         7               43
-##  7     7         5               48
-##  8     8         4               52
-##  9     9         4               56
-## 10    10        11               67
-## # ... with 235 more rows</code></pre>
 </div>
 <div id="gg_miss_var_cumsum" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gg_miss_var_cumsum" class="anchor"></a><code><a href="../reference/gg_miss_var_cumsum.html">gg_miss_var_cumsum()</a></code>
 </h2>
-<p>This plot shows the cumulative sum of missing values, reading columns from the left to the right of your dataframe. It is powered by the <code><a href="../reference/miss_var_cumsum.html">miss_var_cumsum()</a></code> function.</p>
+<p>This plot shows the cumulative sum of missing values, reading columns from the left to the right of your dataframe. It is powered by the <code>miss_var_cumsum()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_var_cumsum.html">gg_miss_var_cumsum</a></span>(airquality)</code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-var-cumsum-1.png" width="480" style="display: block; margin: auto;"></p>
 </div>

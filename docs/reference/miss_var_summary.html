@@ -23,8 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -64,12 +64,12 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
-
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/njtierney/naniar">
     <span class="fa fa-github fa-lg"></span>
-
+     
   </a>
 </li>
       </ul>
@@ -77,7 +77,7 @@
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-
+      
       </header>
 
       <div class="row">
@@ -86,13 +86,13 @@
     <h1>Summarise the missingness in each variable</h1>
     </div>
 
-
+    
     <p>Provide a summary for each variable of the number and percent missings,
 ordering by the most missings in each variable.</p>
+    
 
-
-    <pre class="usage"><span class='fu'>miss_var_summary</span>(<span class='no'>data</span>, <span class='no'>...</span>)</pre>
-
+    <pre class="usage"><span class='fu'>miss_var_summary</span>(<span class='no'>data</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -101,44 +101,58 @@ ordering by the most missings in each variable.</p>
       <td><p>a data.frame</p></td>
     </tr>
     <tr>
+      <th>order</th>
+      <td><p>whether or not to order the result by n_miss</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>extra arguments</p></td>
     </tr>
     </table>
-
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a tibble of the percent of missing data in each variable</p>
-
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>miss_var_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 3
-#&gt;   variable n_miss   pct_miss
-#&gt;      &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;
-#&gt; 1    Ozone        37 24.183007
-#&gt; 2  Solar.R         7  4.575163
-#&gt; 3     Wind         0  0.000000
-#&gt; 4     Temp         0  0.000000
-#&gt; 5    Month         0  0.000000
-#&gt; 6      Day         0  0.000000</div><div class='input'>
+<span class='fu'>miss_var_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 4
+#&gt;   variable n_miss  pct_miss n_miss_cumsum
+#&gt;      &lt;chr&gt;  &lt;int&gt;     &lt;dbl&gt;         &lt;int&gt;
+#&gt; 1    Ozone     37 24.183007            37
+#&gt; 2  Solar.R      7  4.575163            44
+#&gt; 3     Wind      0  0.000000            44
+#&gt; 4     Temp      0  0.000000            44
+#&gt; 5    Month      0  0.000000            44
+#&gt; 6      Day      0  0.000000            44</div><div class='input'><span class='fu'>miss_var_summary</span>(<span class='no'>oceanbuoys</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
+#&gt;     variable n_miss   pct_miss n_miss_cumsum
+#&gt;        &lt;chr&gt;  &lt;int&gt;      &lt;dbl&gt;         &lt;int&gt;
+#&gt; 1   humidity     93 12.6358696           177
+#&gt; 2 air_temp_c     81 11.0054348            84
+#&gt; 3 sea_temp_c      3  0.4076087             3
+#&gt; 4       year      0  0.0000000             0
+#&gt; 5   latitude      0  0.0000000             0
+#&gt; 6  longitude      0  0.0000000             0
+#&gt; 7    wind_ew      0  0.0000000           177
+#&gt; 8    wind_ns      0  0.0000000           177</div><div class='input'>
 <span class='co'># works with group_by from dplyr</span>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Month</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>miss_var_summary</span>()</div><div class='output co'>#&gt; # A tibble: 25 x 4
-#&gt;    Month variable n_miss  pct_miss
-#&gt;    &lt;int&gt;    &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;
-#&gt;  1     5    Ozone         5 16.12903
-#&gt;  2     5  Solar.R         4 12.90323
-#&gt;  3     5     Wind         0  0.00000
-#&gt;  4     5     Temp         0  0.00000
-#&gt;  5     5      Day         0  0.00000
-#&gt;  6     6    Ozone        21 70.00000
-#&gt;  7     6  Solar.R         0  0.00000
-#&gt;  8     6     Wind         0  0.00000
-#&gt;  9     6     Temp         0  0.00000
-#&gt; 10     6      Day         0  0.00000
+  <span class='fu'>miss_var_summary</span>()</div><div class='output co'>#&gt; # A tibble: 25 x 5
+#&gt;    Month variable n_miss pct_miss n_miss_cumsum
+#&gt;    &lt;int&gt;    &lt;chr&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
+#&gt;  1     5    Ozone      5 16.12903             5
+#&gt;  2     5  Solar.R      4 12.90323             9
+#&gt;  3     5     Wind      0  0.00000             9
+#&gt;  4     5     Temp      0  0.00000             9
+#&gt;  5     5      Day      0  0.00000             9
+#&gt;  6     6    Ozone     21 70.00000            21
+#&gt;  7     6  Solar.R      0  0.00000            21
+#&gt;  8     6     Wind      0  0.00000            21
+#&gt;  9     6     Temp      0  0.00000            21
+#&gt; 10     6      Day      0  0.00000            21
 #&gt; # ... with 15 more rows</div><div class='input'>
 </div></pre>
   </div>
@@ -146,9 +160,9 @@ ordering by the most missings in each variable.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-
+      
       <li><a href="#value">Value</a></li>
-
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

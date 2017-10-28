@@ -4,7 +4,8 @@
 \alias{add_prop_miss}
 \title{Add column containing proportion of missing data values}
 \usage{
-add_prop_miss(data, ..., label = "prop_miss")
+add_prop_miss(data, ..., label = "prop_miss", .parallel = nrow(data) >
+  10000)
 }
 \arguments{
 \item{data}{a dataframe}

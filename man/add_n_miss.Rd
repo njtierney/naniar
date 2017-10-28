@@ -4,7 +4,7 @@
 \alias{add_n_miss}
 \title{Add column containing number of missing data values}
 \usage{
-add_n_miss(data, ..., label = "n_miss")
+add_n_miss(data, ..., label = "n_miss", .parallel = nrow(data) > 10000)
 }
 \arguments{
 \item{data}{a dataframe}

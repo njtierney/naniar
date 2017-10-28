@@ -22,5 +22,4 @@ which_var_na(airquality)
 
 which_var_na(iris)
 }
-
 }

@@ -28,13 +28,15 @@ private:
 public:
 
   CountNaRow( DataFrame df ) :
-  nc(df.size()),
-  columns(nc),
-  n(df.nrow()),
-  n_miss( no_init(n) )
+  nc(df.size()), // nc = number of columns of the df (nc = 6 if columns)
+  columns(nc),   // columns = multiple vector, one for each column of the dataframe
+                 // so, columns[0] is the first column of the dataframe.
+  n(df.nrow()),  // n is the number of rows
+  n_miss( no_init(n) ) // create n values, either int of dbl, initialise them with
+                       // nonsense numbers
   {
     // grab the vectors from the data frame
-    for( int i=0; i<nc; i++){
+    for( int i=0; i<nc; i++){ // identify pointers to the columns of the dataframe
       columns[i] = df[i];
     }
   }
@@ -82,10 +84,18 @@ private:
     // this was not done when we construct n_miss because this way we can do it in parallel
     std::fill( n_miss.begin() + begin, n_miss.begin() + end, 0 ) ;
 
+
     // for each column (i.e. each elements of `columns`)
     // increment n_miss[begin:end]
+    // [&]( SEXP x) is a lambda function, stating it takes an R object x.
+    // This is saying, process each of the columns of the dataframe
+    // "for each column, do this".
+
     std::for_each( columns.begin(), columns.end(), [&]( SEXP x ){
       process_one_dispatch( x, begin, end ) ;
+      // loop on the columns
+      // for each column, call the par_count_na_dispatch function
+      // effectively, add 1 to n_miss based on whether there is an NA.
     }) ;
 
   }
@@ -104,13 +114,19 @@ private:
     return false ;
   }
 
+  // efficient way of calculating number of rowwise missings
   // this is where the actual work is done, conceptually this does
   // n_miss[begin:end] <- n_miss[begin:end] + is.na( x[begin:end] )
   template <int RTYPE>
   bool process_one_template( SEXP x, int begin, int end){
+    // start of the slice of the vector that we want to scan
+    // the begin and end are helpers for if this is processed in parallel.
     // pointer to the start of the part of `x` we deal with
     auto p_x = Rcpp::internal::r_vector_start<RTYPE>(x) + begin ;
 
+    // p_miss is a pointer to the start of the thing you use to count.
+    // incrementing the n_miss when the value in x is NA
+    // this is where the magic happens.
     // pointer to the start of the part of `n_miss` we make
     auto p_miss = n_miss.begin() + begin  ;
 
@@ -120,6 +136,9 @@ private:
     // for( i in begin:end){  n_miss[i] <- n_miss[i] + is.na(x[i])  }
     //
     for( int i=begin; i<end; i++, p_miss++, p_x++){
+      // call is_NA for the right R vector type (that is what Vector<RTYPE> does)
+      // *p_x refers to value of p_x
+      // p_miss is , the result of is_NA is 0 if !NA and 1 if NA
       *p_miss += Vector<RTYPE>::is_na(*p_x) ;
     }
 

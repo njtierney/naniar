@@ -17,6 +17,8 @@ the label if left blank, otherwise will add "_vars" to distinguish that it
 has not been used on all of the variables.}
 
 \item{label}{character default is "n_miss".}
+
+\item{.parallel}{logical (or condition) for making parallisation}
 }
 \value{
 a dataframe

@@ -1,5 +1,6 @@
 #include <Rcpp.h>
 #include <RcppParallel.h>
+#include "naniar.h"
 
 #ifndef NANIAR_PARALLEL_THRESHOLD
 #define NANIAR_PARALLEL_THRESHOLD 10000
@@ -143,7 +144,7 @@ private:
       // call is_NA for the right R vector type (that is what Vector<RTYPE> does)
       // *p_x refers to value of p_x
       // p_miss is , the result of is_NA is 0 if !NA and 1 if NA
-      *p_miss += Vector<RTYPE>::is_na(*p_x) ;
+      *p_miss += isna<RTYPE>(*p_x) ;
     }
 
     return true ;

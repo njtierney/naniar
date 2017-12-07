@@ -4,7 +4,7 @@
 \alias{add_n_miss}
 \title{Add column containing number of missing data values}
 \usage{
-add_n_miss(data, ..., label = "n_miss", .parallel = nrow(data) > 10000)
+add_n_miss(data, ..., label = "n_miss")
 }
 \arguments{
 \item{data}{a dataframe}
@@ -17,8 +17,6 @@ the label if left blank, otherwise will add "_vars" to distinguish that it
 has not been used on all of the variables.}
 
 \item{label}{character default is "n_miss".}
-
-\item{.parallel}{logical (or condition) for making parallisation}
 }
 \value{
 a dataframe

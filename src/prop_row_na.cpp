@@ -1,5 +1,6 @@
 #include <Rcpp.h>
 #include <RcppParallel.h>
+#include "naniar.h"
 
 #ifndef NANIAR_PARALLEL_THRESHOLD
 #define NANIAR_PARALLEL_THRESHOLD 10000
@@ -32,10 +33,10 @@ private:
 public:
 
   PropNaRow( DataFrame df ) :
-  nc(df.size()),
-  columns(nc),
-  n(df.nrow()),
-  prop_miss( no_init(n) )
+    nc(df.size()),
+    columns(nc),
+    n(df.nrow()),
+    prop_miss( no_init(n) )
   {
     // grab the vectors from the data frame
     for( int i=0; i<nc; i++){
@@ -131,7 +132,7 @@ private:
     // for( i in begin:end ){  prop_miss[i] <- prop_miss[i] + is.na(x[i])  }
     //
     for( int i=begin; i<end; i++, p_miss++, p_x++){
-      *p_miss += Vector<RTYPE>::is_na(*p_x) ;
+      *p_miss += isna<RTYPE>(*p_x) ;
     }
 
     return true ;

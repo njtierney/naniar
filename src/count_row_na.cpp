@@ -1,6 +1,10 @@
 #include <Rcpp.h>
 #include <RcppParallel.h>
 
+#ifndef NANIAR_PARALLEL_THRESHOLD
+#define NANIAR_PARALLEL_THRESHOLD 10000
+#endif
+
 using namespace Rcpp;
 
 // [[Rcpp::plugins(cpp11)]]
@@ -28,11 +32,11 @@ private:
 public:
 
   CountNaRow( DataFrame df ) :
-  nc(df.size()), // nc = number of columns of the df (nc = 6 if columns)
-  columns(nc),   // columns = multiple vector, one for each column of the dataframe
-                 // so, columns[0] is the first column of the dataframe.
-  n(df.nrow()),  // n is the number of rows
-  n_miss( no_init(n) ) // create n values, either int of dbl, initialise them with
+    nc(df.size()), // nc = number of columns of the df (nc = 6 if columns)
+    columns(nc),   // columns = multiple vector, one for each column of the dataframe
+                   // so, columns[0] is the first column of the dataframe.
+    n(df.nrow()),  // n is the number of rows
+    n_miss( no_init(n) ) // create n values, either int of dbl, initialise them with
                        // nonsense numbers
   {
     // grab the vectors from the data frame
@@ -41,9 +45,9 @@ public:
     }
   }
 
-  // make n_miss using parallelisation if parallel is `true`
-  IntegerVector get( bool parallel ){
-    if( parallel ){
+  // make n_miss using parallelisation
+  IntegerVector get( ){
+    if( n > NANIAR_PARALLEL_THRESHOLD ){
       process_parallel() ;
     } else {
       process_serial() ;
@@ -150,6 +154,6 @@ private:
 }
 
 // [[Rcpp::export]]
-IntegerVector count_row_na_cpp(DataFrame df, bool parallel) {
-  return naniar::CountNaRow(df).get(parallel) ;
+IntegerVector count_row_na_cpp(DataFrame df) {
+  return naniar::CountNaRow(df).get() ;
 }

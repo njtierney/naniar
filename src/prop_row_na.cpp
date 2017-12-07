@@ -1,6 +1,10 @@
 #include <Rcpp.h>
 #include <RcppParallel.h>
 
+#ifndef NANIAR_PARALLEL_THRESHOLD
+#define NANIAR_PARALLEL_THRESHOLD 10000
+#endif
+
 using namespace Rcpp;
 
 // [[Rcpp::plugins(cpp11)]]
@@ -40,8 +44,8 @@ public:
   }
 
   // make prop_miss using parallelisation if parallel is `true`
-  NumericVector get( bool parallel ){
-    if( parallel ){
+  NumericVector get( ){
+    if( n > NANIAR_PARALLEL_THRESHOLD ){
       process_parallel() ;
     } else {
       process_serial() ;
@@ -138,6 +142,6 @@ private:
 }
 
 // [[Rcpp::export]]
-NumericVector prop_row_na_cpp(DataFrame df, bool parallel) {
-  return naniar::PropNaRow(df).get(parallel) ;
+NumericVector prop_row_na_cpp(DataFrame df) {
+  return naniar::PropNaRow(df).get() ;
 }

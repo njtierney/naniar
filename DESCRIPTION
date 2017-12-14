@@ -8,8 +8,8 @@ Authors@R: c(
          comment = c(ORCID = "https://orcid.org/0000-0003-1460-8722")),
   person("Di", "Cook", , "dicook@monash.edu", role = "aut"),
   person("Miles", "McBain", , "miles.mcbain@gmail.com", role = "aut"), 
-  person("Colin", "Fay", , "contact@colinfay.me", role = "aut"), 
-)
+  person("Colin", "Fay", , "contact@colinfay.me", role = "aut") 
+  )
 Description: Missing values are ubiquitous in data and need to be explored and
     handled in the initial stages of analysis. 'naniar' provides data structures 
     and functions that facilitate the plotting of missing values and examination 

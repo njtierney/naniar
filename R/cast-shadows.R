@@ -27,8 +27,6 @@
 cast_shadow <- function(data, ...){
 
   if (missing(...)) {
-    # stop("please include variables to be selected after the data")
-
     # I want to only select columns that contain a missing value.
     miss_vars <- rlang::syms(which_var_na(data))
 

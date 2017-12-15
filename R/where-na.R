@@ -30,8 +30,6 @@ where_na <- function(x){
 #'
 #' @return character vector of variable names
 #'
-#' @export
-#'
 #' @examples
 #'
 #' which_var_na(airquality)

@@ -66,6 +66,7 @@ Collate:
     'miss-x-span.R'
     'miss-x-summary.R'
     'miss-x-table.R'
+    'n-prop-miss-complete-rows.R'
     'n-prop-miss-complete.R'
     'naniar-ggproto.R'
     'naniar-package.R'

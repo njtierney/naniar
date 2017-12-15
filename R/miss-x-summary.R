@@ -156,8 +156,6 @@ miss_summary <- function(data, order = FALSE){
         miss_var_table = list(miss_var_table(data)),
         miss_var_summary = list(miss_var_summary(data, order)),
         miss_case_summary = list(miss_case_summary(data, order))
-        #miss_var_cumsum = list(miss_var_cumsum(data)),
-        #miss_case_cumsum = list(miss_case_cumsum(data))
       )
     )
   }

@@ -261,3 +261,47 @@ add_label_shadow <- function(data){
     dplyr::mutate(any_missing = label_shadow(.))
 
 }
+
+
+#' Add a column that tells us which "missingness cluster" a row belongs to
+#'
+#' Make a way to extract the cluster of missingness that a group belongs to.
+#'     For example, if you use `vis_miss(airquality, cluster = TRUE)`, you can
+#'     see some clustering in the data, but you do not have a way to identify
+#'     the cluster. Future work will incorporate the `seriation` package to
+#'     allow for better control over the clustering from the user.
+#'
+#' @param data a dataframe
+#' @param cluster_method character vector of the agglomeration method to use,
+#'    the default is "mcquitty". Options are taken from `stats::hclust`
+#'    helpfile, and options include: "ward.D", "ward.D2", "single", "complete",
+#'    "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or
+#'    "centroid" (= UPGMC).
+#' @param n_clusters numeric the number of clusters you expect. Defaults to 2.
+#'
+#' @export
+#'
+#' @examples
+#'
+#' add_miss_cluster(airquality)
+#' add_miss_cluster(airquality, cluster_method = "ward.D")
+#' add_miss_cluster(airquality, cluster_method = "ward.D", n_clusters = 3)
+#' add_miss_cluster(airquality, n_clusters = 3)
+
+add_miss_cluster <- function(data,
+                             cluster_method = "mcquitty",
+                             n_clusters = 2) {
+
+  test_if_null(data)
+
+  test_if_dataframe(data)
+
+  data_na <- is.na(data)
+
+  miss_cluster <- stats::dist(data_na*1) %>%
+    stats::hclust(method = cluster_method) %>%
+    stats::cutree(k = n_clusters)
+
+  data$miss_cluster <- miss_cluster
+  tibble::as_tibble(data)
+}

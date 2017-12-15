@@ -27,14 +27,14 @@
 add_n_miss <- function(data, ..., label = "n_miss"){
 
   if (missing(...)) {
-    data[[paste0(label, "_all")]] <- rowSums(is.na(data))
+    data[[paste0(label, "_all")]] <- n_miss_row(data)
   } else {
 
     quo_vars <- rlang::quos(...)
 
     selected_data <- dplyr::select(data, !!!quo_vars)
 
-    data[[paste0(label, "_vars")]] <- rowSums(is.na(selected_data))
+    data[[paste0(label, "_vars")]] <- n_miss_row(selected_data)
   } # close else loop
 
   data
@@ -86,14 +86,14 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 add_prop_miss <- function(data, ..., label = "prop_miss"){
 
   if (missing(...)) {
-    data[[paste0(label, "_all")]] <- rowMeans(is.na(data))
+    data[[paste0(label, "_all")]] <- prop_miss_row(data)
   } else {
 
     quo_vars <- rlang::quos(...)
 
     selected_data <- dplyr::select(data, !!!quo_vars)
 
-    data[[paste0(label, "_vars")]] <- rowMeans(is.na(selected_data))
+    data[[paste0(label, "_vars")]] <- prop_miss_row(selected_data)
 
   } # close else loop
 

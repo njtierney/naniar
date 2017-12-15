@@ -29,7 +29,7 @@ miss_case_table <- function(data){
 #' @export
 miss_case_table.default <- function(data){
 
-  data[["n_miss_in_case"]] <- as.integer(rowSums(is.na(data)))
+  data[["n_miss_in_case"]] <- n_miss_row(data)
 
   data %>%
     dplyr::group_by(n_miss_in_case) %>%
@@ -81,7 +81,7 @@ miss_var_table <- function(data){
 
 miss_var_table.default <- function(data){
 
-  purrr::map_df(data, ~sum(is.na(.))) %>%
+  purrr::map_df(data, ~n_miss(.)) %>%
     tidyr::gather(key = "variable",
                   value = "n_miss_in_var") %>%
     dplyr::group_by(n_miss_in_var) %>%

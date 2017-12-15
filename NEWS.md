@@ -23,9 +23,7 @@ of complete obserations in a row
 
 # New Features
 
-- Change behaviour of `cast_shadow` so that the default option is to return only the variables that contain missings. This is different to `bind_shadow`, which binds a complete shadow matrix to the dataframe. A way to think about this is that the shadow is only cast on variables that contain missing values, whereas a bind is binding a complete shadow to the data.
-
-Thinking about this further it seems kinda like perhaps it would be better if this were the default option
+- Change behaviour of `cast_shadow` so that the default option is to return only the variables that contain missings. This is different to `bind_shadow`, which binds a complete shadow matrix to the dataframe. A way to think about this is that the shadow is only cast on variables that contain missing values, whereas a bind is binding a complete shadow to the data. This may change in the future to be the default option for `bind_shadow`.
 
 # naniar 0.1.1.9000 (2017/08/30)
 =========================

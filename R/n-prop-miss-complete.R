@@ -36,7 +36,7 @@ n_miss <- function(x){
 n_complete <- function(x){
   test_if_null(x)
   # number of total elements - number of missings
-  length(is.na(x)) - n_miss(x)
+  sum(!is.na(x))
 
 }
 #' Return the proportion of missing values

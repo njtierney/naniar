@@ -85,20 +85,21 @@ miss_case_summary <- function(data, order = FALSE, ...){
 #' @export
 miss_case_summary.default <- function(data, order = FALSE, ...){
 
-    res <- purrrlyr::by_row(.d = data,
-                            ..f = function(x) (mean(is.na(x)) * 100),
-                            .collate = "row",
-                            .to = "pct_miss") %>%
-      purrrlyr::by_row(.d = .,
-                       ..f = function(x) (sum(is.na(x))),
-                       .collate = "row",
-                       .to = "n_miss") %>%
-      dplyr::mutate(case = 1:nrow(data),
-                    n_miss_cumsum = cumsum(n_miss)) %>%
-      dplyr::select(case,
-                    n_miss,
-                    pct_miss,
-                    n_miss_cumsum)
+  res <- data
+
+  res[["pct_miss"]] <- rowMeans(is.na(res))*100
+  res[["n_miss"]] <- as.integer(rowSums(is.na(res)))
+  res[["case"]] <- 1:nrow(res)
+  res[["n_miss_cumsum"]] <- cumsum(res[["n_miss"]])
+
+  res <- dplyr::as_tibble(res)
+
+  res <- dplyr::select(res,
+                       case,
+                       n_miss,
+                       pct_miss,
+                       n_miss_cumsum)
+
   if (order) {
     return(dplyr::arrange(res, -n_miss))
   } else {
@@ -155,8 +156,6 @@ miss_summary <- function(data, order = FALSE){
         miss_var_table = list(miss_var_table(data)),
         miss_var_summary = list(miss_var_summary(data, order)),
         miss_case_summary = list(miss_case_summary(data, order))
-        #miss_var_cumsum = list(miss_var_cumsum(data)),
-        #miss_case_cumsum = list(miss_case_cumsum(data))
       )
     )
   }

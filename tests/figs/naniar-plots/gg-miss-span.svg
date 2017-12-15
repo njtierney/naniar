@@ -70,10 +70,10 @@
 <g clip-path='url(#cpMHw3MjB8NTc2fDA=)'><text x='580.74' y='554.99' style='font-size: 8.80px; fill: #4D4D4D; font-family: Liberation Sans;' textLength='17.52px' lengthAdjust='spacingAndGlyphs'>10.0</text></g>
 <g clip-path='url(#cpMHw3MjB8NTc2fDA=)'><text x='329.58' y='568.04' style='font-size: 11.00px; font-family: Liberation Sans;' textLength='25.69px' lengthAdjust='spacingAndGlyphs'>Span</text></g>
 <g clip-path='url(#cpMHw3MjB8NTc2fDA=)'><text transform='translate(13.04,336.37) rotate(-90)' style='font-size: 11.00px; font-family: Liberation Sans;' textLength='91.09px' lengthAdjust='spacingAndGlyphs'>Proportion Missing</text></g>
-<rect x='659.10' y='280.19' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linejoin: miter; fill: #CCCCCC;' clip-path='url(#cpMHw3MjB8NTc2fDA=)' />
-<rect x='659.10' y='297.47' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linejoin: miter; fill: #333333;' clip-path='url(#cpMHw3MjB8NTc2fDA=)' />
-<g clip-path='url(#cpMHw3MjB8NTc2fDA=)'><text x='677.83' y='291.22' style='font-size: 8.80px; font-family: Liberation Sans;' textLength='31.02px' lengthAdjust='spacingAndGlyphs'>Present</text></g>
-<g clip-path='url(#cpMHw3MjB8NTc2fDA=)'><text x='677.83' y='308.50' style='font-size: 8.80px; font-family: Liberation Sans;' textLength='30.51px' lengthAdjust='spacingAndGlyphs'>Missing</text></g>
+<rect x='659.10' y='279.92' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linejoin: miter; fill: #CCCCCC;' clip-path='url(#cpMHw3MjB8NTc2fDA=)' />
+<rect x='659.10' y='297.20' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linejoin: miter; fill: #333333;' clip-path='url(#cpMHw3MjB8NTc2fDA=)' />
+<g clip-path='url(#cpMHw3MjB8NTc2fDA=)'><text x='677.83' y='290.95' style='font-size: 8.80px; font-family: Liberation Sans;' textLength='31.02px' lengthAdjust='spacingAndGlyphs'>Present</text></g>
+<g clip-path='url(#cpMHw3MjB8NTc2fDA=)'><text x='677.83' y='308.23' style='font-size: 8.80px; font-family: Liberation Sans;' textLength='30.51px' lengthAdjust='spacingAndGlyphs'>Missing</text></g>
 <g clip-path='url(#cpMHw3MjB8NTc2fDA=)'><text x='43.45' y='30.35' style='font-size: 9.90px; font-family: Liberation Sans;' textLength='135.09px' lengthAdjust='spacingAndGlyphs'>Over a repeating span of 4000</text></g>
 <g clip-path='url(#cpMHw3MjB8NTc2fDA=)'><text x='43.45' y='14.42' style='font-size: 13.20px; font-family: Liberation Sans;' textLength='163.30px' lengthAdjust='spacingAndGlyphs'>Proportion of missing values</text></g>
 </svg>

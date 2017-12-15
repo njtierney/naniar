@@ -1,11 +1,34 @@
+# naniar 0.1.3.9100 (2017/12/15)
+=========================
+
+# New Features
+
+- Speed improvements. Some discussion with Romain François and Jim Hester have 
+  led to some really nice speedups of rowwise counting of missing values. At 
+  the moment we have merged Jim's branch of that uses rowMeans, and in the very
+  near future will merge in the c++ changes to make naniar as fast as possible.
+
+# New functions
+
+- `n_miss_row` calculates the number of missing values in each row, returning a vector. There are also 3 other functions which are similar in spirit: `n_complete_row`, `prop_miss_row`, and `prop_complete_row`, which return a vector of the number of
+complete obserations, the proportion of missings in a row, and the proportion
+of complete obserations in a row
+
+- `add_miss_cluster` is a new function that calculates a cluster of missingness 
+  for each row, using `hclust`. This can be useful in exploratory modelling
+  of missingness, similar to [Tierney et al 2015](http://bmjopen.bmj.com/content/5/6/e007450). and [Barnett et al. 2017](http://bmjopen.bmj.com/content/7/10/e017284)
+
+# Minor Changes
+
+- minor changes to graphics in gg_miss_fct - change legend title from
+"Percent Missing" to "% Miss".
+
 # naniar 0.1.2.9000 (2017/09/01)
 =========================
 
 # New Features
 
-- Change behaviour of `cast_shadow` so that the default option is to return only the variables that contain missings. This is different to `bind_shadow`, which binds a complete shadow matrix to the dataframe. A way to think about this is that the shadow is only cast on variables that contain missing values, whereas a bind is binding a complete shadow to the data.
-
-Thinking about this further it seems kinda like perhaps it would be better if this were the default option
+- Change behaviour of `cast_shadow` so that the default option is to return only the variables that contain missings. This is different to `bind_shadow`, which binds a complete shadow matrix to the dataframe. A way to think about this is that the shadow is only cast on variables that contain missing values, whereas a bind is binding a complete shadow to the data. This may change in the future to be the default option for `bind_shadow`.
 
 # naniar 0.1.1.9000 (2017/08/30)
 =========================

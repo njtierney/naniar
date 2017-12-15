@@ -1,14 +1,14 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.1.1.9000
+Version: 0.1.3.9100
 Authors@R: c(
   person("Nicholas", "Tierney", role = c("aut", "cre"),
          email = "nicholas.tierney@gmail.com", 
          comment = c(ORCID = "https://orcid.org/0000-0003-1460-8722")),
   person("Di", "Cook", , "dicook@monash.edu", role = "aut"),
   person("Miles", "McBain", , "miles.mcbain@gmail.com", role = "aut"), 
-  person("Colin", "Fay", , "contact@colinfay.me", role = "aut") 
+  person("Colin", "Fay", , "contact@colinfay.me", role = "aut")
   )
 Description: Missing values are ubiquitous in data and need to be explored and
     handled in the initial stages of analysis. 'naniar' provides data structures 
@@ -66,6 +66,7 @@ Collate:
     'miss-x-span.R'
     'miss-x-summary.R'
     'miss-x-table.R'
+    'n-prop-miss-complete-rows.R'
     'n-prop-miss-complete.R'
     'naniar-ggproto.R'
     'naniar-package.R'

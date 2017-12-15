@@ -29,11 +29,9 @@ miss_case_table <- function(data){
 #' @export
 miss_case_table.default <- function(data){
 
-  purrrlyr::by_row(.d = data,
-                   # how many are missing in each row?
-                   ..f = ~n_miss(.),
-                   .collate = "row",
-                   .to = "n_miss_in_case") %>%
+  data[["n_miss_in_case"]] <- n_miss_row(data)
+
+  data %>%
     dplyr::group_by(n_miss_in_case) %>%
     dplyr::tally() %>%
     dplyr::mutate(pct_miss = (n / nrow(data) * 100)) %>%
@@ -83,7 +81,7 @@ miss_var_table <- function(data){
 
 miss_var_table.default <- function(data){
 
-  purrr::map_df(data, ~sum(is.na(.))) %>%
+  purrr::map_df(data, ~n_miss(.)) %>%
     tidyr::gather(key = "variable",
                   value = "n_miss_in_var") %>%
     dplyr::group_by(n_miss_in_var) %>%

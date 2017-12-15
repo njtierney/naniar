@@ -18,7 +18,3 @@ test_that("cast_shadow adds a column with suffix '_NA'",{
   expect_equal(names(cast_shadow(airquality, Ozone, Solar.R, Temp)),
                c("Ozone","Solar.R","Temp", "Ozone_NA", "Solar.R_NA", "Temp_NA"))
 })
-
-test_that("cast_shadow returns a nice error when you don't include variables",{
-  expect_error(cast_shadow(airquality))
-})

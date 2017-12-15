@@ -4,7 +4,9 @@
 # New Features
 
 - Speed improvements. Some discussion with Romain François and Jim Hester have 
-  led to some really nice speedups of the functions ...
+  led to some really nice speedups of rowwise counting of missing values. At 
+  the moment we have merged Jim's branch of that uses rowMeans, and in the very
+  near future will merge in the c++ changes to make naniar as fast as possible.
 
 # New functions
 
@@ -14,7 +16,7 @@ of complete obserations in a row
 
 - `add_miss_cluster` is a new function that calculates a cluster of missingness 
   for each row, using `hclust`. This can be useful in exploratory modelling
-  of missingness, similar to Tierney et al 2015. and Barnett et al. 2017
+  of missingness, similar to [Tierney et al 2015](http://bmjopen.bmj.com/content/5/6/e007450). and [Barnett et al. 2017](http://bmjopen.bmj.com/content/7/10/e017284)
 
 # naniar 0.1.2.9000 (2017/09/01)
 =========================

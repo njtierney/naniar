@@ -31,10 +31,11 @@ where_na <- function(x){
 #' @return character vector of variable names
 #'
 #' @examples
-#'
+#' \dontrun{
 #' which_var_na(airquality)
 #'
 #' which_var_na(iris)
+#' }
 #'
 which_var_na <- function(data){
 

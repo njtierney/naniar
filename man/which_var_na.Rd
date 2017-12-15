@@ -17,9 +17,10 @@ It can be helpful when writing other functions to just return the names
 of the variables that contain missing values.
 }
 \examples{
-
+\dontrun{
 which_var_na(airquality)
 
 which_var_na(iris)
+}
 
 }

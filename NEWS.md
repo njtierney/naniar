@@ -1,4 +1,4 @@
-# naniar 0.1.3.9000 (2017/12/15)
+# naniar 0.1.3.9100 (2017/12/15)
 =========================
 
 # New Features
@@ -17,6 +17,11 @@ of complete obserations in a row
 - `add_miss_cluster` is a new function that calculates a cluster of missingness 
   for each row, using `hclust`. This can be useful in exploratory modelling
   of missingness, similar to [Tierney et al 2015](http://bmjopen.bmj.com/content/5/6/e007450). and [Barnett et al. 2017](http://bmjopen.bmj.com/content/7/10/e017284)
+
+# Minor Changes
+
+- minor changes to graphics in gg_miss_fct - change legend title from
+"Percent Missing" to "% Miss".
 
 # naniar 0.1.2.9000 (2017/09/01)
 =========================

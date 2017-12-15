@@ -181,7 +181,7 @@ gg_miss_fct <- function(x, fct){
                "variable",
                fill = "pct_miss")) +
     geom_tile() +
-    viridis::scale_fill_viridis(name = "Percent /nMissing")
+    viridis::scale_fill_viridis(name = "% Miss")
 
   return(ggobject)
 }

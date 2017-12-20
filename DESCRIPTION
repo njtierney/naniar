@@ -6,9 +6,13 @@ Authors@R: c(
   person("Nicholas", "Tierney", role = c("aut", "cre"),
          email = "nicholas.tierney@gmail.com", 
          comment = c(ORCID = "https://orcid.org/0000-0003-1460-8722")),
-  person("Di", "Cook", , "dicook@monash.edu", role = "aut"),
+  person("Di", "Cook", , role = "aut",
+         email = "dicook@monash.edu", 
+         comment = c(ORCID = "https://orcid.org/0000-0002-3813-7155")),
   person("Miles", "McBain", , "miles.mcbain@gmail.com", role = "aut"), 
-  person("Colin", "Fay", , "contact@colinfay.me", role = "aut")
+  person("Colin", "Fay", role = "aut", 
+         email = "contact@colinfay.me",
+         comment = c(ORCID = "https://orcid.org/0000-0001-7343-1846"))
   )
 Description: Missing values are ubiquitous in data and need to be explored and
     handled in the initial stages of analysis. 'naniar' provides data structures 

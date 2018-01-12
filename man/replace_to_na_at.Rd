@@ -4,14 +4,14 @@
 \alias{replace_to_na_at}
 \title{Replace specified variables with NA where a certain condition is met}
 \usage{
-replace_to_na_at(data, .vars, .p)
+replace_to_na_at(data, .vars, .funs)
 }
 \arguments{
 \item{data}{dataframe}
 
 \item{.vars}{The variables to refer to}
 
-\item{.p}{the condition required to be TRUE to set NA - the conditions are
+\item{.funs}{the condition required to be TRUE to set NA - the conditions are
 referred to as ~.x {condition} - e.g., "~.x < 20" means "where the
 value is less than 20."}
 }
@@ -22,5 +22,23 @@ a dataframe
 Replace specified variables with NA where a certain condition is met
 }
 \examples{
-replace_to_na_at(airquality, .vars = c("Wind", "Ozone"), .p = ~ .x < 20)
+
+dat_ms <- tibble::tribble(~x,  ~y,    ~z,
+                          1,   "A",   -100,
+                          3,   "N/A", -99,
+                          NA,  NA,    -98,
+                          -99, "E",   -101,
+                          -98, "F",   -1)
+
+dat_ms
+
+replace_to_na_at(data = dat_ms,
+                 .vars = "x",
+                 .funs = ~.x == -99)
+
+replace_to_na_at(data = dat_ms,
+                 .vars = c("x","z"),
+                 .funs = ~.x == -99)
+
+
 }

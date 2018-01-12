@@ -1,3 +1,14 @@
+# naniar 0.1.4.9000 (2017/01/12)
+=========================
+
+# New Features
+
+- New "scoped variants" of `replace_to_na` thanks to the work of Colin Fay:
+  - `replace_to_na_where` replaces all NAs across the dataframe that meet a specified condition (using the syntax `~.x == -99`)
+  - `replace_to_na_at` replaces all NAs across for specified variables
+  - `replace_to_na_if` replaces all NAs for those variables that satisfy some predicate function (e.g., is.character)
+
+
 # naniar 0.1.3.9100 (2017/12/15)
 =========================
 

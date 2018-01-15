@@ -2,15 +2,30 @@
 % Please edit documentation in R/scoped-replace-to-na.R
 \name{replace_to_na_where}
 \alias{replace_to_na_where}
-\title{Replace a value in a variable to NA according to some rule}
+\title{Replace values in dataframe columns to NA}
 \usage{
 replace_to_na_where(data, ...)
 }
 \arguments{
-\item{data}{data.frame}
+\item{data}{a dataframe}
 
-\item{...}{}
+\item{...}{predicate functions that return true whenever a value should be
+replaced with NAs. The functions should be named, so that the argument
+\code{var1 = is.finite} would replace all the values in the column \code{var1} where
+\code{is.finite()} returns \code{TRUE} with `NA`` values. These predicate functions
+can be defined using the \link[rlang:as_function]{formula syntax for anonymous
+functions}.}
+}
+\value{
+a modified copy of the dataframe
 }
 \description{
-Replace a value in a variable to NA according to some rule
+This code is currently in development, and is taken directly from TJ Mahr's
+package fillgaze:
+https://github.com/tjmahr/fillgaze/blob/master/R/fillgaze-package.R#L11
+for the purposes of testing and experimentation.
+}
+\examples{
+is_zero <- function(x) x == 0
+replace_to_na_where(mtcars, cyl = ~ .x == 6, vs = is_zero)
 }

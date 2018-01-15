@@ -18,16 +18,27 @@
 #' is_zero <- function(x) x == 0
 #' replace_to_na_where(mtcars, cyl = ~ .x == 6, vs = is_zero)
 replace_to_na_where <- function(data, ...) {
-  dots <- quos(...)
+  dots <- rlang::quos(...)
   stopifnot(names(dots) %in% names(data), !anyDuplicated(names(dots)))
 
-  for (i in seq_along(dots)) {
-    name <- rlang::sym(names(dots)[i])
-    f <- rlang::as_function(rlang::eval_tidy(dots[[i]]))
-    data <- dplyr::mutate(data, !! name := ifelse(f(!! name), NA, !! name))
+  set_to_na <- lapply(dots, rlang::eval_tidy, data = data)
+
+  for (col in names(set_to_na)) {
+    data[set_to_na[[col]], col] <- NA
   }
 
   data
+
+  # dots <- quos(...)
+  # stopifnot(names(dots) %in% names(data), !anyDuplicated(names(dots)))
+  #
+  # for (i in seq_along(dots)) {
+  #   name <- rlang::sym(names(dots)[i])
+  #   f <- rlang::as_function(rlang::eval_tidy(dots[[i]]))
+  #   data <- dplyr::mutate(data, !! name := ifelse(f(!! name), NA, !! name))
+  # }
+  #
+  # data
 }
 
 

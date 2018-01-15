@@ -2,47 +2,15 @@
 % Please edit documentation in R/scoped-replace-to-na.R
 \name{replace_to_na_where}
 \alias{replace_to_na_where}
-\title{Replace all values with NA where a certain condition is met}
+\title{Replace a value in a variable to NA according to some rule}
 \usage{
-replace_to_na_where(data, .funs)
+replace_to_na_where(data, ...)
 }
 \arguments{
-\item{data}{A dataframe}
+\item{data}{data.frame}
 
-\item{.funs}{the condition required to be TRUE to set NA - the conditions are
-referred to as ~.x {condition} - e.g., "~.x < 20" means "where the
-value is less than 20."}
+\item{...}{}
 }
 \description{
-This function takes a dataframe and replaces all values that meet the
-condition specified as an NA value, following a special syntax.
-}
-\examples{
-dat_ms <- tibble::tribble(~x,  ~y,    ~z,
-                          1,   "A",   -100,
-                          3,   "N/A", -99,
-                          NA,  NA,    -98,
-                          -99, "E",   -101,
-                          -98, "F",   -1)
-
-dat_ms
-#replace all instances of -99 with NA
-replace_to_na_where(data = dat_ms,
-                    .funs = ~.x == -99)
-
-# replace all instances of -98 with NA
-replace_to_na_where(data = dat_ms,
-                    .funs = ~.x == -98)
-
-# replace all instances of -99 or -98 with NA
-replace_to_na_where(dat_ms,
-                    .funs = ~.x \%in\% c(-99, -98))
-
-# replace all instances of -99 or -98, or "N/A" with NA
-replace_to_na_where(dat_ms,
-                    .funs = ~.x \%in\% c(-99, -98, "N/A"))
-
-# where works with functions
-replace_to_na_where(airquality, ~ sqrt(.x) < 5)
-
+Replace a value in a variable to NA according to some rule
 }

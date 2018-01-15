@@ -1,19 +1,35 @@
-# utility functions for replace_to_na_* family. -------------------------------
+#' Replace values in dataframe columns to NA
+#'
+#' This code is currently in development, and is taken directly from TJ Mahr's
+#'   package fillgaze:
+#'   https://github.com/tjmahr/fillgaze/blob/master/R/fillgaze-package.R#L11
+#'   for the purposes of testing and experimentation.
+#'
+#' @param data a dataframe
+#' @param ... predicate functions that return true whenever a value should be
+#'   replaced with NAs. The functions should be named, so that the argument
+#'   `var1 = is.finite` would replace all the values in the column `var1` where
+#'   `is.finite()` returns `TRUE` with `NA`` values. These predicate functions
+#'   can be defined using the [formula syntax for anonymous
+#'   functions][rlang::as_function].
+#' @return a modified copy of the dataframe
+#' @export
+#' @examples
+#' is_zero <- function(x) x == 0
+#' replace_to_na_where(mtcars, cyl = ~ .x == 6, vs = is_zero)
+replace_to_na_where <- function(data, ...) {
+  dots <- quos(...)
+  stopifnot(names(dots) %in% names(data), !anyDuplicated(names(dots)))
 
-create_mapper_na <- function(.funs){
-  glue::glue("~ {rlang::f_text(.funs)} & !is.na(.x)") %>%
-    as.formula() %>%
-    purrr::as_mapper()
+  for (i in seq_along(dots)) {
+    name <- rlang::sym(names(dots)[i])
+    f <- rlang::as_function(rlang::eval_tidy(dots[[i]]))
+    data <- dplyr::mutate(data, !! name := ifelse(f(!! name), NA, !! name))
+  }
+
+  data
 }
 
-na_set <- function(vec, .funs) {
-  # modify this vector with this function, return NA
-  purrr::modify_if(vec, create_mapper_na(.funs) , ~ NA) %>%
-    # flatten this out into a regular vector
-    purrr::reduce(c)
-
-  # na_set(aq_small$Ozone, ~ .x < 20)
-}
 
 # ------------------------------------------------------------------------------
 
@@ -39,33 +55,33 @@ na_set <- function(vec, .funs) {
 #' dat_ms
 
 #' #replace all instances of -99 with NA
-#' replace_to_na_where(data = dat_ms,
+#' replace_to_na_all(data = dat_ms,
 #'                     .funs = ~.x == -99)
 #'
 #' # replace all instances of -98 with NA
-#' replace_to_na_where(data = dat_ms,
+#' replace_to_na_all(data = dat_ms,
 #'                     .funs = ~.x == -98)
 #'
 #' # replace all instances of -99 or -98 with NA
-#' replace_to_na_where(dat_ms,
+#' replace_to_na_all(dat_ms,
 #'                     .funs = ~.x %in% c(-99, -98))
 #'
 #' # replace all instances of -99 or -98, or "N/A" with NA
-#' replace_to_na_where(dat_ms,
+#' replace_to_na_all(dat_ms,
 #'                     .funs = ~.x %in% c(-99, -98, "N/A"))
 #'
 #' # where works with functions
-#' replace_to_na_where(airquality, ~ sqrt(.x) < 5)
+#' replace_to_na_all(airquality, ~ sqrt(.x) < 5)
 #'
 #' @export
-replace_to_na_where <- function(data, .funs) {
+replace_to_na_all <- function(data, .funs) {
   purrr::map_df(data, ~ na_set(.x, .funs) )
 }
 
 # Future work
-  # replace_to_na_where(airquality, . < 20)
-  # replace_to_na_where(airquality, x < 20)
-  # replace_to_na_where(airquality, function(x) mean(x) < 20)
+  # replace_to_na_all(airquality, . < 20)
+  # replace_to_na_all(airquality, x < 20)
+  # replace_to_na_all(airquality, function(x) mean(x) < 20)
 
 
 #' Replace specified variables with NA where a certain condition is met
@@ -152,3 +168,19 @@ replace_to_na_if <- function(data, .predicate, .funs) {
 }
 
 
+# utility functions for replace_to_na_* family. -------------------------------
+
+create_mapper_na <- function(.funs){
+  glue::glue("~ {rlang::f_text(.funs)} & !is.na(.x)") %>%
+    as.formula() %>%
+    purrr::as_mapper()
+}
+
+na_set <- function(vec, .funs) {
+  # modify this vector with this function, return NA
+  purrr::modify_if(vec, create_mapper_na(.funs) , ~ NA) %>%
+    # flatten this out into a regular vector
+    purrr::reduce(c)
+
+  # na_set(aq_small$Ozone, ~ .x < 20)
+}

@@ -153,7 +153,7 @@ replace_with_na_if <- function(data, .predicate, .funs) {
 #' @export
 #' @examples
 #' is_zero <- function(x) x == 0
-#' replace_with_na_where(mtcars, cyl = ~ .x == 6, vs = is_zero)
+#' replace_with_na_where(mtcars, cyl = cyl == 6, vs = is_zero)
 replace_with_na_where <- function(data, ...) {
   dots <- rlang::quos(...)
   stopifnot(names(dots) %in% names(data), !anyDuplicated(names(dots)))
@@ -165,17 +165,6 @@ replace_with_na_where <- function(data, ...) {
   }
 
   data
-
-  # dots <- quos(...)
-  # stopifnot(names(dots) %in% names(data), !anyDuplicated(names(dots)))
-  #
-  # for (i in seq_along(dots)) {
-  #   name <- rlang::sym(names(dots)[i])
-  #   f <- rlang::as_function(rlang::eval_tidy(dots[[i]]))
-  #   data <- dplyr::mutate(data, !! name := ifelse(f(!! name), NA, !! name))
-  # }
-  #
-  # data
 }
 
 # utility funs for replace_with_na_*  ------------------------------------------

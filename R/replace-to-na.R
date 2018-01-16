@@ -37,6 +37,7 @@
 #'                           y = c("N/A"),
 #'                           z = c(-101)))
 replace_to_na <- function(data, to_na = list(), ...){
+  .Deprecated("replace_with_na")
   UseMethod("replace_to_na")
 }
 

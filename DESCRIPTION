@@ -84,6 +84,7 @@ Collate:
     'naniar-ggproto.R'
     'naniar-package.R'
     'replace-to-na.R'
+    'replace_with_na.R'
     'scoped-replace-to-na.R'
     'shadow-shifters.R'
     'shadows.R'

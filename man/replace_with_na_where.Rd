@@ -28,4 +28,9 @@ for the purposes of testing and experimentation.
 \examples{
 is_zero <- function(x) x == 0
 replace_with_na_where(mtcars, cyl = cyl == 6, vs = is_zero)
+
+airquality \%>\% replace_with_na_where(Ozone = Solar.R > 150)
+
+
+
 }

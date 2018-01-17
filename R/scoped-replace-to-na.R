@@ -154,14 +154,38 @@ replace_with_na_if <- function(data, .predicate, .funs) {
 #' @examples
 #' is_zero <- function(x) x == 0
 #' replace_with_na_where(mtcars, cyl = cyl == 6, vs = is_zero)
+#'
+#' airquality %>% replace_with_na_where(Ozone = Solar.R > 150)
+#'
+#'
+#'
 replace_with_na_where <- function(data, ...) {
   dots <- rlang::quos(...)
   stopifnot(names(dots) %in% names(data), !anyDuplicated(names(dots)))
 
-  set_to_na <- lapply(dots, rlang::eval_tidy, data = data)
+  # this applies the conditions specified in ... to the dataframe
+  # this then provides logical vectors, which indicate whether that condition
+  # is TRUE. These are the values that we want to replace with NA.
+  what_to_replace_with_na <- lapply(dots, rlang::eval_tidy, data = data)
 
-  for (col in names(set_to_na)) {
-    data[set_to_na[[col]], col] <- NA
+  # Handling the NA values inside set_to_na ------------------------------------
+    # If there are missing values in set_to_na these will break the indexing
+    # to avoid this, we need to set all the NA values to TRUE.
+    # since all TRUE values will be set to NA, this shouldn't create problems.
+  set_na_to_true <- function(x){
+    x[which(is.na(x))] <- TRUE
+    x
+  }
+
+  # only do this if there are missing values anywhere
+  if (anyNA(what_to_replace_with_na, recursive = TRUE)) {
+    # overwrite the NA values with TRUE, as discussed above, to not wreck
+    # the indexing.
+    what_to_replace_with_na <- lapply(what_to_replace_with_na, set_na_to_true)
+  }
+
+  for (col in names(what_to_replace_with_na)) {
+    data[what_to_replace_with_na[[col]], col] <- NA
   }
 
   data

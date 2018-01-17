@@ -27,5 +27,5 @@ for the purposes of testing and experimentation.
 }
 \examples{
 is_zero <- function(x) x == 0
-replace_with_na_where(mtcars, cyl = ~ .x == 6, vs = is_zero)
+replace_with_na_where(mtcars, cyl = cyl == 6, vs = is_zero)
 }

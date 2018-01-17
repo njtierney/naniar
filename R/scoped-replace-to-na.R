@@ -176,13 +176,9 @@ replace_with_na_where <- function(data, ...) {
     x[which(is.na(x))] <- TRUE
     x
   }
-
-  # only do this if there are missing values anywhere
-  if (anyNA(what_to_replace_with_na, recursive = TRUE)) {
     # overwrite the NA values with TRUE, as discussed above, to not wreck
-    # the indexing.
     what_to_replace_with_na <- lapply(what_to_replace_with_na, set_na_to_true)
-  }
+    # the indexing.
 
   for (col in names(what_to_replace_with_na)) {
     data[what_to_replace_with_na[[col]], col] <- NA

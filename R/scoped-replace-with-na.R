@@ -81,7 +81,6 @@ replace_with_na_all <- function(data, .funs) {
 #'                  .vars = c("x","z"),
 #'                  .funs = ~.x == -99)
 #'
-
 #'
 replace_with_na_at <- function(data, .vars, .funs) {
   test_if_dataframe(data)
@@ -90,9 +89,6 @@ replace_with_na_at <- function(data, .vars, .funs) {
   purrr::modify_at(data, .vars, ~ na_set(.x, .funs))
 }
 
-# Future work
-   # use of `vars` - `vars(var1, var2)`
-   # replace_with_na_at(tbl = airquality, .at = vars(Wind, Ozone), ~ .x < 20)
 
 #' Replace values with NA based on some condition, for variables that meet some predicate
 #'
@@ -152,8 +148,6 @@ replace_with_na_if <- function(data, .predicate, .funs) {
 #' @return a modified copy of the dataframe
 #' @export
 #' @examples
-#' is_zero <- function(x) x == 0
-#' replace_with_na_where(mtcars, cyl = cyl == 6, vs = is_zero)
 #'
 #' airquality %>% replace_with_na_where(Ozone = Solar.R > 150)
 #'
@@ -173,11 +167,11 @@ replace_with_na_where <- function(data, ...) {
     # to avoid this, we need to set all the NA values to TRUE.
     # since all TRUE values will be set to NA, this shouldn't create problems.
   set_na_to_true <- function(x){
-    x[which(is.na(x))] <- TRUE
+    x[is.na(x)] <- TRUE
     x
   }
     # overwrite the NA values with TRUE, as discussed above, to not wreck
-    what_to_replace_with_na <- lapply(what_to_replace_with_na, set_na_to_true)
+    what_to_replace_with_na <- purrr::map(what_to_replace_with_na, set_na_to_true)
     # the indexing.
 
   for (col in names(what_to_replace_with_na)) {
@@ -189,6 +183,7 @@ replace_with_na_where <- function(data, ...) {
 
 # utility funs for replace_with_na_*  ------------------------------------------
 
+#' @importFrom stats as.formula
 create_mapper_na <- function(.funs){
   glue::glue("~ {rlang::f_text(.funs)} & !is.na(.x)") %>%
     as.formula() %>%

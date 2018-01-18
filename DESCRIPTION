@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.1.3.9100
+Version: 0.1.4.9100
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -18,7 +18,10 @@ Authors@R: c(
   person("Colin", "Fay", 
          role = "aut", 
          email = "contact@colinfay.me",
-         comment = c(ORCID = "https://orcid.org/0000-0001-7343-1846"))
+         comment = c(ORCID = "https://orcid.org/0000-0001-7343-1846")),
+  person("Tristan", "Mahr", 
+         role = "ctb", 
+         email = "tjmahr@cgmail.com")
   )
 Description: Missing values are ubiquitous in data and need to be explored and
     handled in the initial stages of analysis. 'naniar' provides data structures 
@@ -56,9 +59,10 @@ Imports:
     purrrlyr,
     rlang,
     forcats,
-    viridis
+    viridis,
+    glue
 RoxygenNote: 6.0.1.9000
-Collate: 
+Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
     'cast-shadows.R'
@@ -81,6 +85,8 @@ Collate:
     'naniar-ggproto.R'
     'naniar-package.R'
     'replace-to-na.R'
+    'replace-with-na.R'
+    'scoped-replace-to-na.R'
     'shadow-shifters.R'
     'shadows.R'
     'stat-miss-point.R'

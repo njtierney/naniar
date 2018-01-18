@@ -32,6 +32,7 @@ globalVariables(
     "n_miss_in_var",
     "n_vars",
     "span_every",
-    "n_miss_cumsum"
+    "n_miss_cumsum",
+    "as.formula"
     )
   )

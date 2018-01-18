@@ -112,13 +112,6 @@ This now expands the family to:
 - `replace_with_na_at`
 - `replace_with_na_if`
 
-We have also added one more function, `_where`. 
-
-- `replace_with_na_where`
-
-This allows for complex replacements across variables to be made. This is for
-cases like "Make a value missing when some other variable meets this condition."
-
 Below we will now consider some very simple examples of the use of these functions, so that you can better understand how to use them.
 
 ## Using `replace_with_na_all`
@@ -215,36 +208,3 @@ This means that you are able to apply a rule to many variables that meet a
 pre-specified condition. This can be of particular use if you have many 
 variables and don't want to list them all, and also if you know that there is a
 particular problem for variables of a particular class
-
-### `replace_with_na_where`
-
-Finally, use `replace_with_na_where` for those cases where you want to specify
-a more complex rule. For example, say that we want to replace all Ozone 
-measurements with NA when Temperature is less than 65.
-
-```{r replace-with-na-where}
-
-airquality %>% replace_with_na_where(Ozone = Temp < 65)
-
-```
-
-Or if you want to replace Ozone with missing values when Solar Radiation is higher than 150
-
-```{r replace-with-na-where-ex2}
-airquality %>% replace_with_na_where(Ozone = Solar.R > 150)
-```
-
-You can also specify complex rules, like, "replace Ozone with NA where Solar Radiation is greather than 150, or Day is 1, or Temperature is less than 56".
-
-```{r replace-with-na-where-ex3}
-airquality %>% replace_with_na_where(Ozone = Solar.R > 150 | Day == 1 | Temp < 56)
-```
-
-You can also specify many variables to replace values for, say if you have a rule
-for Ozone, Day, and Month.
-
-```{r replace-with-na-where-ex4}
-airquality %>% replace_with_na_where(Ozone = Solar.R > 150,
-                                     Month = Ozone < 10,
-                                     Day = Wind > 20)
-```

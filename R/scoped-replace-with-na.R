@@ -131,56 +131,6 @@ replace_with_na_if <- function(data, .predicate, .funs) {
   purrr::modify_if(data, .predicate, ~ na_set(.x, .funs))
 }
 
-#' Replace values in dataframe columns with NA where some condition is met
-#'
-#' This code is currently in development, and is taken directly from TJ Mahr's
-#'   package fillgaze:
-#'   https://github.com/tjmahr/fillgaze/blob/master/R/fillgaze-package.R#L11
-#'   for the purposes of testing and experimentation.
-#'
-#' @param data a dataframe
-#' @param ... predicate functions that return true whenever a value should be
-#'   replaced with NAs. The functions should be named, so that the argument
-#'   `var1 = is.finite` would replace all the values in the column `var1` where
-#'   `is.finite()` returns `TRUE` with `NA`` values. These predicate functions
-#'   can be defined using the [formula syntax for anonymous
-#'   functions][rlang::as_function].
-#' @return a modified copy of the dataframe
-#' @export
-#' @examples
-#'
-#' airquality %>% replace_with_na_where(Ozone = Solar.R > 150)
-#'
-#'
-#'
-replace_with_na_where <- function(data, ...) {
-  dots <- rlang::quos(...)
-  stopifnot(names(dots) %in% names(data), !anyDuplicated(names(dots)))
-
-  # this applies the conditions specified in ... to the dataframe
-  # this then provides logical vectors, which indicate whether that condition
-  # is TRUE. These are the values that we want to replace with NA.
-  what_to_replace_with_na <- lapply(dots, rlang::eval_tidy, data = data)
-
-  # Handling the NA values inside set_to_na ------------------------------------
-    # If there are missing values in set_to_na these will break the indexing
-    # to avoid this, we need to set all the NA values to TRUE.
-    # since all TRUE values will be set to NA, this shouldn't create problems.
-  set_na_to_true <- function(x){
-    x[is.na(x)] <- TRUE
-    x
-  }
-    # overwrite the NA values with TRUE, as discussed above, to not wreck
-    what_to_replace_with_na <- purrr::map(what_to_replace_with_na, set_na_to_true)
-    # the indexing.
-
-  for (col in names(what_to_replace_with_na)) {
-    data[what_to_replace_with_na[[col]], col] <- NA
-  }
-
-  data
-}
-
 # utility funs for replace_with_na_*  ------------------------------------------
 
 #' @importFrom stats as.formula

@@ -11,8 +11,6 @@
   - `replace_with_na_all` replaces all NAs across the dataframe that meet a specified condition (using the syntax `~.x == -99`)
   - `replace_with_na_at` replaces all NAs across for specified variables
   - `replace_with_na_if` replaces all NAs for those variables that satisfy some predicate function (e.g., is.character)
-- Also added `replace_with_na_where` (thank you to TJ Mahr and [his blog post](https://tjmahr.github.io/set-na-where-nonstandard-evaluation-use-case/)), which allows the user to specify more complex rules for replacing values with NA such as "if Wind speed is below 100, replace values in Solar Radiation with NA.".
-
 
 # naniar 0.1.3.9100 (2017/12/15)
 =========================

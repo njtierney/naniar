@@ -24,7 +24,7 @@ dat_ms <- tibble::tribble(~x,  ~y,    ~z,
                           -99, "E",   -101,
                           -98, "F",   -1)
 
-test_that("all columns are affected by _where",{
+test_that("all columns are affected by _all",{
   df <- dat_ms
   out <- replace_with_na_all(df, ~.x == -99)
   expect_equal(out$x, c(1,3,NA,NA,-98))

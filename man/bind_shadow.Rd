@@ -4,13 +4,18 @@
 \alias{bind_shadow}
 \title{Bind a shadow dataframe to original data}
 \usage{
-bind_shadow(data)
+bind_shadow(data, only_miss = FALSE)
 }
 \arguments{
 \item{data}{a dataframe}
+
+\item{only_miss}{logical - if FALSE (default) it will bind a dataframe with
+all of the variables duplicated with their shadow. Setting this to TRUE
+will bind variables only those variables that contain missing values.
+See the examples for more details.}
 }
 \value{
-dataframe with an extra appended layer of data.
+data with the added variable shifted and the suffix \code{_NA}
 }
 \description{
 Binding a shadow matrix to a regular dataframe helps visualise and work with
@@ -18,12 +23,18 @@ missing data.
 }
 \examples{
 
+bind_shadow(airquality)
+
+# bind only the variables that contain missing values
+bind_shadow(airquality, only_miss = TRUE)
+
 aq_shadow <- bind_shadow(airquality)
 
 # explore missing data visually
 library(ggplot2)
 
-# using the bounded shadow
+# using the bounded shadow to visualise Ozone according to whether Solar
+# Radiation is missing or not.
 
 ggplot(data = aq_shadow,
        aes(x = Ozone)) +

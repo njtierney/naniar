@@ -1,3 +1,18 @@
+# naniar 0.1.5.9000 (2017/01/19)
+=========================
+
+# Breaking change
+
+- `cast_shadow` no longer works when called as `cast_shadow(data)`. This action used to return all variables, and then shadow variables for the variables that only contained missing values. This was inconsistent with the use of `cast_shadow(data, var1, var2)`. A new option has been added to `bind_shadow` that controls this - discussed below. See more details at
+[issue 65](https://github.com/njtierney/naniar/issues/106).
+
+# New Feature
+
+- `bind_shadow` gains a `only_miss` argument. When set to FALSE (the default) it
+will bind a dataframe with all of the variables duplicated with their shadow.
+Setting this to TRUE will bind variables only those variables that contain
+missing values.
+
 # naniar 0.1.4.9000 (2017/01/12)
 =========================
 

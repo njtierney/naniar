@@ -31,3 +31,22 @@ test_that("bind_shadow returns columns with additional suffix _NA",{
                  paste0(names(airquality),"_NA")))
 })
 
+test_that("bind_shadow with only_miss = TRUE returns smaller dataframe",{
+  expect_gt(
+    ncol(bind_shadow(airquality)),
+    ncol(bind_shadow(airquality, only_miss = TRUE))
+  )
+})
+
+test_that("bind_shadow with only_miss = TRUE returns the right number of cols",{
+  expect_equal(
+    ncol(bind_shadow(airquality, only_miss = TRUE)),
+    ncol(airquality) + 2
+    )
+})
+
+test_that("bind_shadow with only_miss = TRUE returns columns with additional suffix _NA",{
+  expect_equal(names(bind_shadow(airquality, only_miss = TRUE)),
+               c(names(airquality),
+                 paste0(which_var_na(airquality),"_NA")))
+})

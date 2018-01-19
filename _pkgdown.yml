@@ -70,6 +70,6 @@ navbar:
   - text: Gallery
     href: articles/naniar-visualisation.html
   - text: Replace with NA
-    href: articles/erplace-with-na.html
+    href: articles/replace-with-na.html
   - text: News
     href: news/index.html

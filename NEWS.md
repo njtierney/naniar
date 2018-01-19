@@ -13,6 +13,10 @@ will bind a dataframe with all of the variables duplicated with their shadow.
 Setting this to TRUE will bind variables only those variables that contain
 missing values.
 
+# Bug fix
+
+- `oceanbuoys` now is numeric type for year, latitude, and longitude, previously it was factor. [See related issue](https://github.com/njtierney/naniar/issues/110)
+
 # naniar 0.1.4.9000 (2017/01/12)
 =========================
 

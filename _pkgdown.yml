@@ -69,5 +69,7 @@ navbar:
     href: articles/getting-started-w-naniar.html
   - text: Gallery
     href: articles/naniar-visualisation.html
+  - text: Replace with NA
+    href: articles/erplace-with-na.html
   - text: News
     href: news/index.html

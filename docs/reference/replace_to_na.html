@@ -61,6 +61,9 @@
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
 <li>
+  <a href="../articles/erplace-with-na.html">Replace with NA</a>
+</li>
+<li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
@@ -87,8 +90,7 @@
     </div>
 
     
-    <p>Specify variables and their values that you want to convert to missing values.
-This is a complement to <code><a href='http://www.rdocumentation.org/packages/tidyr/topics/replace_na'>tidyr::replace_na</a></code>.</p>
+    <p>This function is currently deprecated, please see <code><a href='replace_with_na.html'>replace_with_na()</a></code></p>
     
 
     <pre class="usage"><span class='fu'>replace_to_na</span>(<span class='no'>data</span>, <span class='kw'>to_na</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='no'>...</span>)</pre>
@@ -115,63 +117,6 @@ This is a complement to <code><a href='http://www.rdocumentation.org/packages/ti
     <p>values replaced by NA</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='no'>dat_ms</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(~<span class='no'>x</span>,  ~<span class='no'>y</span>,    ~<span class='no'>z</span>,
-                         <span class='fl'>1</span>,   <span class='st'>"A"</span>,   -<span class='fl'>100</span>,
-                         <span class='fl'>3</span>,   <span class='st'>"N/A"</span>, -<span class='fl'>99</span>,
-                         <span class='fl'>NA</span>,  <span class='fl'>NA</span>,    -<span class='fl'>98</span>,
-                         -<span class='fl'>99</span>, <span class='st'>"E"</span>,   -<span class='fl'>101</span>,
-                         -<span class='fl'>98</span>, <span class='st'>"F"</span>,   -<span class='fl'>1</span>)
-
-<span class='fu'>replace_to_na</span>(<span class='no'>dat_ms</span>,
-             <span class='kw'>to_na</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> -<span class='fl'>99</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;       x     y     z
-#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1     1     A  -100
-#&gt; 2     3   N/A   -99
-#&gt; 3    NA  &lt;NA&gt;   -98
-#&gt; 4    NA     E  -101
-#&gt; 5   -98     F    -1</div><div class='input'>
-<span class='fu'>replace_to_na</span>(<span class='no'>dat_ms</span>,
-             <span class='kw'>to_na</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> -<span class='fl'>98</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;       x     y     z
-#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1     1     A  -100
-#&gt; 2     3   N/A   -99
-#&gt; 3    NA  &lt;NA&gt;   -98
-#&gt; 4   -99     E  -101
-#&gt; 5    NA     F    -1</div><div class='input'>
-<span class='fu'>replace_to_na</span>(<span class='no'>dat_ms</span>,
-             <span class='kw'>to_na</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>99</span>, -<span class='fl'>98</span>)))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;       x     y     z
-#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1     1     A  -100
-#&gt; 2     3   N/A   -99
-#&gt; 3    NA  &lt;NA&gt;   -98
-#&gt; 4    NA     E  -101
-#&gt; 5    NA     F    -1</div><div class='input'>
-<span class='fu'>replace_to_na</span>(<span class='no'>dat_ms</span>,
-             <span class='kw'>to_na</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>99</span>, -<span class='fl'>98</span>),
-                          <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"N/A"</span>)))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;       x     y     z
-#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1     1     A  -100
-#&gt; 2     3  &lt;NA&gt;   -99
-#&gt; 3    NA  &lt;NA&gt;   -98
-#&gt; 4    NA     E  -101
-#&gt; 5    NA     F    -1</div><div class='input'>
-<span class='fu'>replace_to_na</span>(<span class='no'>dat_ms</span>,
-             <span class='kw'>to_na</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>99</span>, -<span class='fl'>98</span>),
-                          <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"N/A"</span>),
-                          <span class='kw'>z</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>101</span>)))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;       x     y     z
-#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1     1     A  -100
-#&gt; 2     3  &lt;NA&gt;   -99
-#&gt; 3    NA  &lt;NA&gt;   -98
-#&gt; 4    NA     E    NA
-#&gt; 5    NA     F    -1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -179,9 +124,7 @@ This is a complement to <code><a href='http://www.rdocumentation.org/packages/ti
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>

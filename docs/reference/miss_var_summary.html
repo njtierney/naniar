@@ -61,6 +61,9 @@
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
 <li>
+  <a href="../articles/erplace-with-na.html">Replace with NA</a>
+</li>
+<li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
@@ -102,7 +105,7 @@ ordering by the most missings in each variable.</p>
     </tr>
     <tr>
       <th>order</th>
-      <td><p>whether or not to order the result by n_miss</p></td>
+      <td><p>a logical indicating whether or not to order the result by n_miss. TRUE orders from largest to smallest n_miss, and FALSE orders by order provided by the data.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -118,41 +121,41 @@ ordering by the most missings in each variable.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'>miss_var_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 4
-#&gt;   variable n_miss  pct_miss n_miss_cumsum
-#&gt;      &lt;chr&gt;  &lt;int&gt;     &lt;dbl&gt;         &lt;int&gt;
-#&gt; 1    Ozone     37 24.183007            37
-#&gt; 2  Solar.R      7  4.575163            44
-#&gt; 3     Wind      0  0.000000            44
-#&gt; 4     Temp      0  0.000000            44
-#&gt; 5    Month      0  0.000000            44
-#&gt; 6      Day      0  0.000000            44</div><div class='input'><span class='fu'>miss_var_summary</span>(<span class='no'>oceanbuoys</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
-#&gt;     variable n_miss   pct_miss n_miss_cumsum
-#&gt;        &lt;chr&gt;  &lt;int&gt;      &lt;dbl&gt;         &lt;int&gt;
-#&gt; 1   humidity     93 12.6358696           177
-#&gt; 2 air_temp_c     81 11.0054348            84
-#&gt; 3 sea_temp_c      3  0.4076087             3
-#&gt; 4       year      0  0.0000000             0
-#&gt; 5   latitude      0  0.0000000             0
-#&gt; 6  longitude      0  0.0000000             0
-#&gt; 7    wind_ew      0  0.0000000           177
-#&gt; 8    wind_ns      0  0.0000000           177</div><div class='input'>
+#&gt;   variable n_miss pct_miss n_miss_cumsum
+#&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
+#&gt; 1 Ozone        37    24.2             37
+#&gt; 2 Solar.R       7     4.58            44
+#&gt; 3 Wind          0     0               44
+#&gt; 4 Temp          0     0               44
+#&gt; 5 Month         0     0               44
+#&gt; 6 Day           0     0               44</div><div class='input'><span class='fu'>miss_var_summary</span>(<span class='no'>oceanbuoys</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
+#&gt;   variable   n_miss pct_miss n_miss_cumsum
+#&gt;   &lt;chr&gt;       &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
+#&gt; 1 humidity       93   12.6             177
+#&gt; 2 air_temp_c     81   11.0              84
+#&gt; 3 sea_temp_c      3    0.408             3
+#&gt; 4 year            0    0                 0
+#&gt; 5 latitude        0    0                 0
+#&gt; 6 longitude       0    0                 0
+#&gt; 7 wind_ew         0    0               177
+#&gt; 8 wind_ns         0    0               177</div><div class='input'>
 <span class='co'># works with group_by from dplyr</span>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Month</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>miss_var_summary</span>()</div><div class='output co'>#&gt; # A tibble: 25 x 5
 #&gt;    Month variable n_miss pct_miss n_miss_cumsum
-#&gt;    &lt;int&gt;    &lt;chr&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-#&gt;  1     5    Ozone      5 16.12903             5
-#&gt;  2     5  Solar.R      4 12.90323             9
-#&gt;  3     5     Wind      0  0.00000             9
-#&gt;  4     5     Temp      0  0.00000             9
-#&gt;  5     5      Day      0  0.00000             9
-#&gt;  6     6    Ozone     21 70.00000            21
-#&gt;  7     6  Solar.R      0  0.00000            21
-#&gt;  8     6     Wind      0  0.00000            21
-#&gt;  9     6     Temp      0  0.00000            21
-#&gt; 10     6      Day      0  0.00000            21
+#&gt;    &lt;int&gt; &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
+#&gt;  1     5 Ozone         5     16.1             5
+#&gt;  2     5 Solar.R       4     12.9             9
+#&gt;  3     5 Wind          0      0               9
+#&gt;  4     5 Temp          0      0               9
+#&gt;  5     5 Day           0      0               9
+#&gt;  6     6 Ozone        21     70.0            21
+#&gt;  7     6 Solar.R       0      0              21
+#&gt;  8     6 Wind          0      0              21
+#&gt;  9     6 Temp          0      0              21
+#&gt; 10     6 Day           0      0              21
 #&gt; # ... with 15 more rows</div><div class='input'>
 </div></pre>
   </div>

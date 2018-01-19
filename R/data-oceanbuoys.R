@@ -8,9 +8,9 @@
 #' Format: a data frame with 736 observations on the following 8
 #' variables.
 #' \describe{
-#'   \item{`year`}{A factor with levels `1993` `1997`.}
-#'   \item{`latitude`}{A factor with levels `-5`  `-2` `0`.}
-#'   \item{`longitude`}{A factor with levels `-110` `-95`.}
+#'   \item{`year`}{A numeric with levels `1993` `1997`.}
+#'   \item{`latitude`}{A numeric with levels `-5`  `-2` `0`.}
+#'   \item{`longitude`}{A numeric with levels `-110` `-95`.}
 #'   \item{`sea_temp_c`}{Sea surface temperature(degree Celsius),  measured
 #'    by the TAO buoys at one meter below the surface.}
 #'   \item{`air_temp_c`}{Air temperature(degree Celsius), measured by the

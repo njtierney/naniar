@@ -38,6 +38,9 @@
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
 <li>
+  <a href="../articles/erplace-with-na.html">Replace with NA</a>
+</li>
+<li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
@@ -63,7 +66,7 @@
       <h1>Getting Started with naniar</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2017-10-16</h4>
+            <h4 class="date">2018-01-19</h4>
           </div>
 
     
@@ -198,23 +201,22 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/as_shadow.html">as_shadow</a></span>(airquality)</code></pre></div>
 <pre><code>## # A tibble: 153 x 6
 ##    Ozone_NA Solar.R_NA Wind_NA Temp_NA Month_NA Day_NA
-##      &lt;fctr&gt;     &lt;fctr&gt;  &lt;fctr&gt;  &lt;fctr&gt;   &lt;fctr&gt; &lt;fctr&gt;
-##  1      !NA        !NA     !NA     !NA      !NA    !NA
-##  2      !NA        !NA     !NA     !NA      !NA    !NA
-##  3      !NA        !NA     !NA     !NA      !NA    !NA
-##  4      !NA        !NA     !NA     !NA      !NA    !NA
-##  5       NA         NA     !NA     !NA      !NA    !NA
-##  6      !NA         NA     !NA     !NA      !NA    !NA
-##  7      !NA        !NA     !NA     !NA      !NA    !NA
-##  8      !NA        !NA     !NA     !NA      !NA    !NA
-##  9      !NA        !NA     !NA     !NA      !NA    !NA
-## 10       NA        !NA     !NA     !NA      !NA    !NA
+##    &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;   &lt;fct&gt;    &lt;fct&gt; 
+##  1 !NA      !NA        !NA     !NA     !NA      !NA   
+##  2 !NA      !NA        !NA     !NA     !NA      !NA   
+##  3 !NA      !NA        !NA     !NA     !NA      !NA   
+##  4 !NA      !NA        !NA     !NA     !NA      !NA   
+##  5 NA       NA         !NA     !NA     !NA      !NA   
+##  6 !NA      NA         !NA     !NA     !NA      !NA   
+##  7 !NA      !NA        !NA     !NA     !NA      !NA   
+##  8 !NA      !NA        !NA     !NA     !NA      !NA   
+##  9 !NA      !NA        !NA     !NA     !NA      !NA   
+## 10 NA       !NA        !NA     !NA     !NA      !NA   
 ## # ... with 143 more rows</code></pre>
 <p>The <code>bind_shadow</code> argument attaches a shadow to the current dataframe</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aq_shadow &lt;-<span class="st"> </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>(airquality)
 
 <span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>## Warning: package 'dplyr' was built under R version 3.4.2</code></pre>
 <pre><code>## 
 ## Attaching package: 'dplyr'</code></pre>
 <pre><code>## The following objects are masked from 'package:stats':
@@ -232,12 +234,12 @@
 ## $ Temp       &lt;int&gt; 67, 72, 74, 62, 56, 66, 65, 59, 61, 69, 74, 69, 66,...
 ## $ Month      &lt;int&gt; 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, ...
 ## $ Day        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ...
-## $ Ozone_NA   &lt;fctr&gt; !NA, !NA, !NA, !NA, NA, !NA, !NA, !NA, !NA, NA, !N...
-## $ Solar.R_NA &lt;fctr&gt; !NA, !NA, !NA, !NA, NA, NA, !NA, !NA, !NA, !NA, NA...
-## $ Wind_NA    &lt;fctr&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, ...
-## $ Temp_NA    &lt;fctr&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, ...
-## $ Month_NA   &lt;fctr&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, ...
-## $ Day_NA     &lt;fctr&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, ...</code></pre>
+## $ Ozone_NA   &lt;fct&gt; !NA, !NA, !NA, !NA, NA, !NA, !NA, !NA, !NA, NA, !NA...
+## $ Solar.R_NA &lt;fct&gt; !NA, !NA, !NA, !NA, NA, NA, !NA, !NA, !NA, !NA, NA,...
+## $ Wind_NA    &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !...
+## $ Temp_NA    &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !...
+## $ Month_NA   &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !...
+## $ Day_NA     &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !...</code></pre>
 <p>Doing this provides a consistent syntax for referring to variables with missing values.</p>
 <p><code><a href="../reference/bind_shadow.html">bind_shadow()</a></code> also provides a useful pattern to explore missing values, grouping by the missing/complete of one variable and looking at the mean and other summary values. Below we show the mean, sd, variance, and min and max values of Solar.R for when Ozone is present, and when it is missing.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality <span class="op">%&gt;%</span>
@@ -247,10 +249,10 @@
                <span class="dt">.funs =</span> <span class="kw">c</span>(<span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"var"</span>, <span class="st">"min"</span>, <span class="st">"max"</span>),
                <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <pre><code>## # A tibble: 2 x 6
-##   Ozone_NA     mean       sd      var   min   max
-##     &lt;fctr&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1      !NA 184.8018 91.15230 8308.742     7   334
-## 2       NA 189.5143 87.69478 7690.375    31   332</code></pre>
+##   Ozone_NA  mean    sd   var   min   max
+##   &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 !NA        185  91.2  8309  7.00   334
+## 2 NA         190  87.7  7690 31.0    332</code></pre>
 <p>Below, we can plot the distribution of Temperature, plotting for values of temperature when Ozone is missing, and when it is not missing.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(aq_shadow,
        <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Temp,
@@ -306,19 +308,19 @@ airquality <span class="op">%&gt;%</span>
 <pre><code>## [1] 27.45098</code></pre>
 <p><code>miss_case_summary</code> returns a numeric value that describes the number of missings in a given case (aka row), the percent of missings in that row.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_case_summary.html">miss_case_summary</a></span>(airquality)</code></pre></div>
-<pre><code>## # A tibble: 153 x 3
-##     case n_missing  percent
-##    &lt;int&gt;     &lt;int&gt;    &lt;dbl&gt;
-##  1     5         2 33.33333
-##  2    27         2 33.33333
-##  3     6         1 16.66667
-##  4    10         1 16.66667
-##  5    11         1 16.66667
-##  6    25         1 16.66667
-##  7    26         1 16.66667
-##  8    32         1 16.66667
-##  9    33         1 16.66667
-## 10    34         1 16.66667
+<pre><code>## # A tibble: 153 x 4
+##     case n_miss pct_miss n_miss_cumsum
+##    &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
+##  1     1      0      0               0
+##  2     2      0      0               0
+##  3     3      0      0               0
+##  4     4      0      0               0
+##  5     5      2     33.3             2
+##  6     6      1     16.7             3
+##  7     7      0      0               3
+##  8     8      0      0               3
+##  9     9      0      0               3
+## 10    10      1     16.7             4
 ## # ... with 143 more rows</code></pre>
 <p><code>miss_case_table</code> tabulates the number of missing values in a case / row. Below, this shows the number of missings in a case:</p>
 <ul>
@@ -328,11 +330,11 @@ airquality <span class="op">%&gt;%</span>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_case_table.html">miss_case_table</a></span>(airquality)</code></pre></div>
 <pre><code>## # A tibble: 3 x 3
-##   n_missing_in_case n_cases  percent
-##               &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;
-## 1                 0     111 72.54902
-## 2                 1      40 26.14379
-## 3                 2       2  1.30719</code></pre>
+##   n_miss_in_case n_cases pct_miss
+##            &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;
+## 1              0     111    72.5 
+## 2              1      40    26.1 
+## 3              2       2     1.31</code></pre>
 <p>Similar to <code><a href="../reference/miss_case_pct.html">miss_case_pct()</a></code> and <code><a href="../reference/miss_case_prop.html">miss_case_prop()</a></code>, <code><a href="../reference/miss_var_pct.html">miss_var_pct()</a></code> and <code><a href="../reference/miss_var_prop.html">miss_var_prop()</a></code> returns the percent and proportion of variables that contain a missing value.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_var_prop.html">miss_var_prop</a></span>(airquality)</code></pre></div>
 <pre><code>## [1] 0.3333333</code></pre>
@@ -340,15 +342,15 @@ airquality <span class="op">%&gt;%</span>
 <pre><code>## [1] 33.33333</code></pre>
 <p><code>miss_var_summary</code> then returns the number of missing values in a variable, and the percent missing in that variable.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)</code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##   variable n_missing   percent
-##      &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;
-## 1    Ozone        37 24.183007
-## 2  Solar.R         7  4.575163
-## 3     Wind         0  0.000000
-## 4     Temp         0  0.000000
-## 5    Month         0  0.000000
-## 6      Day         0  0.000000</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   variable n_miss pct_miss n_miss_cumsum
+##   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
+## 1 Ozone        37    24.2             37
+## 2 Solar.R       7     4.58            44
+## 3 Wind          0     0               44
+## 4 Temp          0     0               44
+## 5 Month         0     0               44
+## 6 Day           0     0               44</code></pre>
 <p>Finally, <code>miss_var_table</code>. This describes the number of missings in a variable.</p>
 <ul>
 <li>There are 4 variables with 0 missings, comprising 66.67% of variables in the dataset.</li>
@@ -357,11 +359,11 @@ airquality <span class="op">%&gt;%</span>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_var_table.html">miss_var_table</a></span>(airquality)</code></pre></div>
 <pre><code>## # A tibble: 3 x 3
-##   n_missing_in_var n_vars  percent
-##              &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
-## 1                0      4 66.66667
-## 2                7      1 16.66667
-## 3               37      1 16.66667</code></pre>
+##   n_miss_in_var n_vars pct_miss
+##           &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
+## 1             0      4     66.7
+## 2             7      1     16.7
+## 3            37      1     16.7</code></pre>
 <p>There are also summary functions for exploring missings that occur over a particular span or period of the dataset, or the number of missings in a single run:</p>
 <ul>
 <li>
@@ -373,18 +375,18 @@ airquality <span class="op">%&gt;%</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_var_run.html">miss_var_run</a></span>(pedestrian,
              hourly_counts)</code></pre></div>
 <pre><code>## # A tibble: 35 x 2
-##    run_length    is_na
-##         &lt;int&gt;    &lt;chr&gt;
+##    run_length is_na   
+##         &lt;int&gt; &lt;chr&gt;   
 ##  1       6628 complete
-##  2          1  missing
+##  2          1 missing 
 ##  3       5250 complete
-##  4        624  missing
+##  4        624 missing 
 ##  5       3652 complete
-##  6          1  missing
+##  6          1 missing 
 ##  7       1290 complete
-##  8        744  missing
+##  8        744 missing 
 ##  9       7420 complete
-## 10          1  missing
+## 10          1 missing 
 ## # ... with 25 more rows</code></pre>
 <p><code><a href="../reference/miss_var_span.html">miss_var_span()</a></code> is used to determine the number of missings over a specified repeating span of rows in variable of a dataframe. Similar to <code><a href="../reference/miss_var_run.html">miss_var_run()</a></code>, you specify the variable that you wish to explore, you then also specify the size of the span with the <code>span_every</code> argument.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/miss_var_span.html">miss_var_span</a></span>(pedestrian,
@@ -393,16 +395,16 @@ airquality <span class="op">%&gt;%</span>
 <pre><code>## # A tibble: 377 x 5
 ##    span_counter n_miss n_complete prop_miss prop_complete
 ##           &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
-##  1            1      0        100         0             1
-##  2            2      0        100         0             1
-##  3            3      0        100         0             1
-##  4            4      0        100         0             1
-##  5            5      0        100         0             1
-##  6            6      0        100         0             1
-##  7            7      0        100         0             1
-##  8            8      0        100         0             1
-##  9            9      0        100         0             1
-## 10           10      0        100         0             1
+##  1            1      0        100         0          1.00
+##  2            2      0        100         0          1.00
+##  3            3      0        100         0          1.00
+##  4            4      0        100         0          1.00
+##  5            5      0        100         0          1.00
+##  6            6      0        100         0          1.00
+##  7            7      0        100         0          1.00
+##  8            8      0        100         0          1.00
+##  9            9      0        100         0          1.00
+## 10           10      0        100         0          1.00
 ## # ... with 367 more rows</code></pre>
 </div>
 </div>
@@ -411,38 +413,38 @@ airquality <span class="op">%&gt;%</span>
 <a href="#using-group_by-with-naniar" class="anchor"></a>Using <code>group_by</code> with naniar</h1>
 <p>Every <code>miss_*</code> summary function that returns a dataframe can be used with dplyr <code>group_by</code>. For example, if you would like to look at the number of missing values for all variables of pedestrian data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pedestrian <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>()</code></pre></div>
-<pre><code>## # A tibble: 9 x 3
-##        variable n_missing  percent
-##           &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;
-## 1 hourly_counts      2548 6.758621
-## 2     date_time         0 0.000000
-## 3          year         0 0.000000
-## 4         month         0 0.000000
-## 5     month_day         0 0.000000
-## 6      week_day         0 0.000000
-## 7          hour         0 0.000000
-## 8     sensor_id         0 0.000000
-## 9   sensor_name         0 0.000000</code></pre>
+<pre><code>## # A tibble: 9 x 4
+##   variable      n_miss pct_miss n_miss_cumsum
+##   &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
+## 1 hourly_counts   2548     6.76          2548
+## 2 date_time          0     0             2548
+## 3 year               0     0             2548
+## 4 month              0     0             2548
+## 5 month_day          0     0             2548
+## 6 week_day           0     0             2548
+## 7 hour               0     0             2548
+## 8 sensor_id          0     0             2548
+## 9 sensor_name        0     0             2548</code></pre>
 <p>We see that this is in <code>hourly_counts</code>. We can then explore this by month, and filder by the variable being <code>hourly_counts</code>, since it is the only one with missing values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pedestrian <span class="op">%&gt;%</span>
 <span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(month) <span class="op">%&gt;%</span>
 <span class="st"> </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>() <span class="op">%&gt;%</span>
 <span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(variable <span class="op">==</span><span class="st"> "hourly_counts"</span>)</code></pre></div>
-<pre><code>## # A tibble: 12 x 4
-##        month      variable n_missing   percent
-##        &lt;ord&gt;         &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;
-##  1   January hourly_counts         0  0.000000
-##  2  February hourly_counts         0  0.000000
-##  3     March hourly_counts         0  0.000000
-##  4     April hourly_counts       552 19.166667
-##  5       May hourly_counts        72  2.419355
-##  6      June hourly_counts         0  0.000000
-##  7      July hourly_counts         0  0.000000
-##  8    August hourly_counts       408 13.709677
-##  9 September hourly_counts         0  0.000000
-## 10   October hourly_counts       412  7.436823
-## 11  November hourly_counts       888 30.833333
-## 12  December hourly_counts       216  7.258065</code></pre>
+<pre><code>## # A tibble: 12 x 5
+##    month     variable      n_miss pct_miss n_miss_cumsum
+##    &lt;ord&gt;     &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
+##  1 January   hourly_counts      0     0                0
+##  2 February  hourly_counts      0     0                0
+##  3 March     hourly_counts      0     0                0
+##  4 April     hourly_counts    552    19.2            552
+##  5 May       hourly_counts     72     2.42            72
+##  6 June      hourly_counts      0     0                0
+##  7 July      hourly_counts      0     0                0
+##  8 August    hourly_counts    408    13.7            408
+##  9 September hourly_counts      0     0                0
+## 10 October   hourly_counts    412     7.44           412
+## 11 November  hourly_counts    888    30.8            888
+## 12 December  hourly_counts    216     7.26           216</code></pre>
 </div>
 <div id="modelling-missingness" class="section level1">
 <h1 class="hasAnchor">
@@ -456,15 +458,13 @@ airquality <span class="op">%&gt;%</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_prop_miss.html">add_prop_miss</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">head</span>()</code></pre></div>
-<pre><code>## # A tibble: 6 x 7
-##   Ozone Solar.R  Wind  Temp Month   Day prop_miss_all
-##   &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;         &lt;dbl&gt;
-## 1    41     190   7.4    67     5     1     0.0000000
-## 2    36     118   8.0    72     5     2     0.0000000
-## 3    12     149  12.6    74     5     3     0.0000000
-## 4    18     313  11.5    62     5     4     0.0000000
-## 5    NA      NA  14.3    56     5     5     0.3333333
-## 6    28      NA  14.9    66     5     6     0.1666667</code></pre>
+<pre><code>##   Ozone Solar.R Wind Temp Month Day prop_miss_all
+## 1    41     190  7.4   67     5   1     0.0000000
+## 2    36     118  8.0   72     5   2     0.0000000
+## 3    12     149 12.6   74     5   3     0.0000000
+## 4    18     313 11.5   62     5   4     0.0000000
+## 5    NA      NA 14.3   56     5   5     0.3333333
+## 6    28      NA 14.9   66     5   6     0.1666667</code></pre>
 <p>We can then use a model like decision trees to predict which variables and their values are important for predicting the proportion of missingness:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rpart)
 <span class="kw">library</span>(rpart.plot)

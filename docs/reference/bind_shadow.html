@@ -61,6 +61,9 @@
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
 <li>
+  <a href="../articles/erplace-with-na.html">Replace with NA</a>
+</li>
+<li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
@@ -91,7 +94,7 @@
 missing data.</p>
     
 
-    <pre class="usage"><span class='fu'>bind_shadow</span>(<span class='no'>data</span>)</pre>
+    <pre class="usage"><span class='fu'>bind_shadow</span>(<span class='no'>data</span>, <span class='kw'>only_miss</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -100,27 +103,64 @@ missing data.</p>
       <th>data</th>
       <td><p>a dataframe</p></td>
     </tr>
+    <tr>
+      <th>only_miss</th>
+      <td><p>logical - if FALSE (default) it will bind a dataframe with
+all of the variables duplicated with their shadow. Setting this to TRUE
+will bind variables only those variables that contain missing values.
+See the examples for more details.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>dataframe with an extra appended layer of data.</p>
+    <p>data with the added variable shifted and the suffix <code>_NA</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+<span class='fu'>bind_shadow</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 12
+#&gt;    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA Solar.R_NA Wind_NA Temp_NA
+#&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;  
+#&gt;  1    41     190  7.40    67     5     1 !NA      !NA        !NA     !NA    
+#&gt;  2    36     118  8.00    72     5     2 !NA      !NA        !NA     !NA    
+#&gt;  3    12     149 12.6     74     5     3 !NA      !NA        !NA     !NA    
+#&gt;  4    18     313 11.5     62     5     4 !NA      !NA        !NA     !NA    
+#&gt;  5    NA      NA 14.3     56     5     5 NA       NA         !NA     !NA    
+#&gt;  6    28      NA 14.9     66     5     6 !NA      NA         !NA     !NA    
+#&gt;  7    23     299  8.60    65     5     7 !NA      !NA        !NA     !NA    
+#&gt;  8    19      99 13.8     59     5     8 !NA      !NA        !NA     !NA    
+#&gt;  9     8      19 20.1     61     5     9 !NA      !NA        !NA     !NA    
+#&gt; 10    NA     194  8.60    69     5    10 NA       !NA        !NA     !NA    
+#&gt; # ... with 143 more rows, and 2 more variables: Month_NA &lt;fct&gt;, Day_NA &lt;fct&gt;</div><div class='input'>
+<span class='co'># bind only the variables that contain missing values</span>
+<span class='fu'>bind_shadow</span>(<span class='no'>airquality</span>, <span class='kw'>only_miss</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 8
+#&gt;    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA Solar.R_NA
+#&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;     
+#&gt;  1    41     190  7.40    67     5     1 !NA      !NA       
+#&gt;  2    36     118  8.00    72     5     2 !NA      !NA       
+#&gt;  3    12     149 12.6     74     5     3 !NA      !NA       
+#&gt;  4    18     313 11.5     62     5     4 !NA      !NA       
+#&gt;  5    NA      NA 14.3     56     5     5 NA       NA        
+#&gt;  6    28      NA 14.9     66     5     6 !NA      NA        
+#&gt;  7    23     299  8.60    65     5     7 !NA      !NA       
+#&gt;  8    19      99 13.8     59     5     8 !NA      !NA       
+#&gt;  9     8      19 20.1     61     5     9 !NA      !NA       
+#&gt; 10    NA     194  8.60    69     5    10 NA       !NA       
+#&gt; # ... with 143 more rows</div><div class='input'>
 <span class='no'>aq_shadow</span> <span class='kw'>&lt;-</span> <span class='fu'>bind_shadow</span>(<span class='no'>airquality</span>)
 
 <span class='co'># explore missing data visually</span>
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 
-<span class='co'># using the bounded shadow</span>
+<span class='co'># using the bounded shadow to visualise Ozone according to whether Solar</span>
+<span class='co'># Radiation is missing or not.</span>
 
 <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>aq_shadow</span>,
        <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>)) +
        <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>() +
        <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>Solar.R_NA</span>,
-       <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='message'>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 37 rows containing non-finite values (stat_bin).</span></div><div class='img'><img src='bind_shadow-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+       <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='message'>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 37 rows containing non-finite values (stat_bin).</span></div><div class='img'><img src='bind_shadow-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

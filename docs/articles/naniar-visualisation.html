@@ -38,6 +38,9 @@
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
 <li>
+  <a href="../articles/erplace-with-na.html">Replace with NA</a>
+</li>
+<li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
@@ -63,7 +66,7 @@
       <h1>Gallery of Missing Data Visualisations</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2017-10-16</h4>
+            <h4 class="date">2018-01-19</h4>
           </div>
 
     
@@ -159,7 +162,6 @@
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-fct-2.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># using group_by</span>
 <span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>## Warning: package 'dplyr' was built under R version 3.4.2</code></pre>
 <pre><code>## 
 ## Attaching package: 'dplyr'</code></pre>
 <pre><code>## The following objects are masked from 'package:stats':
@@ -171,19 +173,19 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">riskfactors <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(marital) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>()</code></pre></div>
-<pre><code>## # A tibble: 231 x 4
-##    marital      variable n_missing   percent
-##     &lt;fctr&gt;         &lt;chr&gt;     &lt;int&gt;     &lt;dbl&gt;
-##  1 Married    smoke_stop       120 91.603053
-##  2 Married      pregnant       117 89.312977
-##  3 Married    smoke_last        84 64.122137
-##  4 Married    smoke_days        73 55.725191
-##  5 Married drink_average        68 51.908397
-##  6 Married   health_poor        67 51.145038
-##  7 Married    drink_days        67 51.145038
-##  8 Married    weight_lbs         6  4.580153
-##  9 Married           bmi         6  4.580153
-## 10 Married    diet_fruit         4  3.053435
+<pre><code>## # A tibble: 231 x 5
+##    marital variable    n_miss pct_miss n_miss_cumsum
+##    &lt;fct&gt;   &lt;chr&gt;        &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
+##  1 Married state            0    0                 0
+##  2 Married sex              0    0                 0
+##  3 Married age              0    0                 0
+##  4 Married weight_lbs       6    4.58              6
+##  5 Married height_inch      0    0                 6
+##  6 Married bmi              6    4.58             12
+##  7 Married pregnant       117   89.3             129
+##  8 Married children         0    0               129
+##  9 Married education        1    0.763           130
+## 10 Married employment       0    0               130
 ## # ... with 221 more rows</code></pre>
 </div>
 <div id="gg_miss_span" class="section level2">
@@ -195,21 +197,21 @@
 
 <span class="kw"><a href="../reference/miss_var_span.html">miss_var_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>)</code></pre></div>
 <pre><code>## # A tibble: 13 x 5
-##    span_counter n_miss n_complete    prop_miss prop_complete
-##           &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt;
-##  1            1      0       3000 0.0000000000     1.0000000
-##  2            2      0       3000 0.0000000000     1.0000000
-##  3            3      1       2999 0.0003333333     0.9996667
-##  4            4    121       2879 0.0403333333     0.9596667
-##  5            5    503       2497 0.1676666667     0.8323333
-##  6            6    555       2445 0.1850000000     0.8150000
-##  7            7    190       2810 0.0633333333     0.9366667
-##  8            8      0       3000 0.0000000000     1.0000000
-##  9            9      1       2999 0.0003333333     0.9996667
-## 10           10      0       3000 0.0000000000     1.0000000
-## 11           11      0       3000 0.0000000000     1.0000000
-## 12           12    745       2255 0.2483333333     0.7516667
-## 13           13    432       2568 0.1440000000     0.8560000</code></pre>
+##    span_counter n_miss n_complete prop_miss prop_complete
+##           &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
+##  1            1      0       3000  0                1.00 
+##  2            2      0       3000  0                1.00 
+##  3            3      1       2999  0.000333         1.000
+##  4            4    121       2879  0.0403           0.960
+##  5            5    503       2497  0.168            0.832
+##  6            6    555       2445  0.185            0.815
+##  7            7    190       2810  0.0633           0.937
+##  8            8      0       3000  0                1.00 
+##  9            9      1       2999  0.000333         1.000
+## 10           10      0       3000  0                1.00 
+## 11           11      0       3000  0                1.00 
+## 12           12    745       2255  0.248            0.752
+## 13           13    432       2568  0.144            0.856</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>)</code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-span-1.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># works with the rest of ggplot</span>

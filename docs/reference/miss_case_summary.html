@@ -61,6 +61,9 @@
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
 <li>
+  <a href="../articles/erplace-with-na.html">Replace with NA</a>
+</li>
+<li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
@@ -102,7 +105,7 @@ most number of missings.</p>
     </tr>
     <tr>
       <th>order</th>
-      <td><p>whether or not to order the result by n_miss</p></td>
+      <td><p>a logical indicating whether or not to order the result by n_miss. TRUE orders from largest to smallest n_miss, and FALSE orders by order provided by the data.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -124,30 +127,30 @@ most number of missings.</p>
   <span class='fu'>miss_case_summary</span>()</div><div class='output co'>#&gt; # A tibble: 153 x 5
 #&gt;    Month  case n_miss pct_miss n_miss_cumsum
 #&gt;    &lt;int&gt; &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-#&gt;  1     5     1      0        0             0
-#&gt;  2     5     2      0        0             0
-#&gt;  3     5     3      0        0             0
-#&gt;  4     5     4      0        0             0
-#&gt;  5     5     5      2       40             2
-#&gt;  6     5     6      1       20             3
-#&gt;  7     5     7      0        0             3
-#&gt;  8     5     8      0        0             3
-#&gt;  9     5     9      0        0             3
-#&gt; 10     5    10      1       20             4
+#&gt;  1     5     1      0      0               0
+#&gt;  2     5     2      0      0               0
+#&gt;  3     5     3      0      0               0
+#&gt;  4     5     4      0      0               0
+#&gt;  5     5     5      2     40.0             2
+#&gt;  6     5     6      1     20.0             3
+#&gt;  7     5     7      0      0               3
+#&gt;  8     5     8      0      0               3
+#&gt;  9     5     9      0      0               3
+#&gt; 10     5    10      1     20.0             4
 #&gt; # ... with 143 more rows</div><div class='input'>
 <span class='fu'>miss_case_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 4
 #&gt;     case n_miss pct_miss n_miss_cumsum
 #&gt;    &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-#&gt;  1     1      0  0.00000             0
-#&gt;  2     2      0  0.00000             0
-#&gt;  3     3      0  0.00000             0
-#&gt;  4     4      0  0.00000             0
-#&gt;  5     5      2 33.33333             2
-#&gt;  6     6      1 16.66667             3
-#&gt;  7     7      0  0.00000             3
-#&gt;  8     8      0  0.00000             3
-#&gt;  9     9      0  0.00000             3
-#&gt; 10    10      1 16.66667             4
+#&gt;  1     1      0      0               0
+#&gt;  2     2      0      0               0
+#&gt;  3     3      0      0               0
+#&gt;  4     4      0      0               0
+#&gt;  5     5      2     33.3             2
+#&gt;  6     6      1     16.7             3
+#&gt;  7     7      0      0               3
+#&gt;  8     8      0      0               3
+#&gt;  9     9      0      0               3
+#&gt; 10    10      1     16.7             4
 #&gt; # ... with 143 more rows</div><div class='input'>
 </div></pre>
   </div>

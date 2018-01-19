@@ -102,17 +102,17 @@ head(airquality)
 as_shadow(airquality)
 #> # A tibble: 153 x 6
 #>    Ozone_NA Solar.R_NA Wind_NA Temp_NA Month_NA Day_NA
-#>      <fctr>     <fctr>  <fctr>  <fctr>   <fctr> <fctr>
-#>  1      !NA        !NA     !NA     !NA      !NA    !NA
-#>  2      !NA        !NA     !NA     !NA      !NA    !NA
-#>  3      !NA        !NA     !NA     !NA      !NA    !NA
-#>  4      !NA        !NA     !NA     !NA      !NA    !NA
-#>  5       NA         NA     !NA     !NA      !NA    !NA
-#>  6      !NA         NA     !NA     !NA      !NA    !NA
-#>  7      !NA        !NA     !NA     !NA      !NA    !NA
-#>  8      !NA        !NA     !NA     !NA      !NA    !NA
-#>  9      !NA        !NA     !NA     !NA      !NA    !NA
-#> 10       NA        !NA     !NA     !NA      !NA    !NA
+#>    <fct>    <fct>      <fct>   <fct>   <fct>    <fct> 
+#>  1 !NA      !NA        !NA     !NA     !NA      !NA   
+#>  2 !NA      !NA        !NA     !NA     !NA      !NA   
+#>  3 !NA      !NA        !NA     !NA     !NA      !NA   
+#>  4 !NA      !NA        !NA     !NA     !NA      !NA   
+#>  5 NA       NA         !NA     !NA     !NA      !NA   
+#>  6 !NA      NA         !NA     !NA     !NA      !NA   
+#>  7 !NA      !NA        !NA     !NA     !NA      !NA   
+#>  8 !NA      !NA        !NA     !NA     !NA      !NA   
+#>  9 !NA      !NA        !NA     !NA     !NA      !NA   
+#> 10 NA       !NA        !NA     !NA     !NA      !NA   
 #> # ... with 143 more rows
 ```
 
@@ -195,29 +195,29 @@ For example, we can look at the number and percent of missings in each case and 
 ``` r
 
 miss_var_summary(airquality)
-#> # A tibble: 6 x 3
-#>   variable n_missing   percent
-#>      <chr>     <int>     <dbl>
-#> 1    Ozone        37 24.183007
-#> 2  Solar.R         7  4.575163
-#> 3     Wind         0  0.000000
-#> 4     Temp         0  0.000000
-#> 5    Month         0  0.000000
-#> 6      Day         0  0.000000
+#> # A tibble: 6 x 4
+#>   variable n_miss pct_miss n_miss_cumsum
+#>   <chr>     <int>    <dbl>         <int>
+#> 1 Ozone        37    24.2             37
+#> 2 Solar.R       7     4.58            44
+#> 3 Wind          0     0               44
+#> 4 Temp          0     0               44
+#> 5 Month         0     0               44
+#> 6 Day           0     0               44
 miss_case_summary(airquality)
-#> # A tibble: 153 x 3
-#>     case n_missing  percent
-#>    <int>     <int>    <dbl>
-#>  1     5         2 33.33333
-#>  2    27         2 33.33333
-#>  3     6         1 16.66667
-#>  4    10         1 16.66667
-#>  5    11         1 16.66667
-#>  6    25         1 16.66667
-#>  7    26         1 16.66667
-#>  8    32         1 16.66667
-#>  9    33         1 16.66667
-#> 10    34         1 16.66667
+#> # A tibble: 153 x 4
+#>     case n_miss pct_miss n_miss_cumsum
+#>    <int>  <int>    <dbl>         <int>
+#>  1     1      0      0               0
+#>  2     2      0      0               0
+#>  3     3      0      0               0
+#>  4     4      0      0               0
+#>  5     5      2     33.3             2
+#>  6     6      1     16.7             3
+#>  7     7      0      0               3
+#>  8     8      0      0               3
+#>  9     9      0      0               3
+#> 10    10      1     16.7             4
 #> # ... with 143 more rows
 ```
 
@@ -226,7 +226,6 @@ You could also `group_by()` to work out the number of missings in each variable 
 ``` r
 
 library(dplyr)
-#> Warning: package 'dplyr' was built under R version 3.4.2
 #> 
 #> Attaching package: 'dplyr'
 #> The following objects are masked from 'package:stats':
@@ -238,19 +237,19 @@ library(dplyr)
 airquality %>%
   group_by(Month) %>%
   miss_var_summary()
-#> # A tibble: 25 x 4
-#>    Month variable n_missing  percent
-#>    <int>    <chr>     <int>    <dbl>
-#>  1     5    Ozone         5 16.12903
-#>  2     5  Solar.R         4 12.90323
-#>  3     5     Wind         0  0.00000
-#>  4     5     Temp         0  0.00000
-#>  5     5      Day         0  0.00000
-#>  6     6    Ozone        21 70.00000
-#>  7     6  Solar.R         0  0.00000
-#>  8     6     Wind         0  0.00000
-#>  9     6     Temp         0  0.00000
-#> 10     6      Day         0  0.00000
+#> # A tibble: 25 x 5
+#>    Month variable n_miss pct_miss n_miss_cumsum
+#>    <int> <chr>     <int>    <dbl>         <int>
+#>  1     5 Ozone         5     16.1             5
+#>  2     5 Solar.R       4     12.9             9
+#>  3     5 Wind          0      0               9
+#>  4     5 Temp          0      0               9
+#>  5     5 Day           0      0               9
+#>  6     6 Ozone        21     70.0            21
+#>  7     6 Solar.R       0      0              21
+#>  8     6 Wind          0      0              21
+#>  9     6 Temp          0      0              21
+#> 10     6 Day           0      0              21
 #> # ... with 15 more rows
 ```
 

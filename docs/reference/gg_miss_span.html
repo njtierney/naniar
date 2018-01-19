@@ -61,6 +61,9 @@
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
 <li>
+  <a href="../articles/erplace-with-na.html">Replace with NA</a>
+</li>
+<li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
@@ -120,23 +123,23 @@ is used, which can be customised as normal for ggplot.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'><a href='miss_var_span.html'>miss_var_span</a></span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>)</div><div class='output co'>#&gt; # A tibble: 13 x 5
-#&gt;    span_counter n_miss n_complete    prop_miss prop_complete
-#&gt;           &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;        &lt;dbl&gt;         &lt;dbl&gt;
-#&gt;  1            1      0       3000 0.0000000000     1.0000000
-#&gt;  2            2      0       3000 0.0000000000     1.0000000
-#&gt;  3            3      1       2999 0.0003333333     0.9996667
-#&gt;  4            4    121       2879 0.0403333333     0.9596667
-#&gt;  5            5    503       2497 0.1676666667     0.8323333
-#&gt;  6            6    555       2445 0.1850000000     0.8150000
-#&gt;  7            7    190       2810 0.0633333333     0.9366667
-#&gt;  8            8      0       3000 0.0000000000     1.0000000
-#&gt;  9            9      1       2999 0.0003333333     0.9996667
-#&gt; 10           10      0       3000 0.0000000000     1.0000000
-#&gt; 11           11      0       3000 0.0000000000     1.0000000
-#&gt; 12           12    745       2255 0.2483333333     0.7516667
-#&gt; 13           13    432       2568 0.1440000000     0.8560000</div><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>)</div><div class='img'><img src='gg_miss_span-7.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='co'># works with the rest of ggplot</span>
-<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"custom"</span>)</div><div class='img'><img src='gg_miss_span-8.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>theme_dark</a></span>()</div><div class='img'><img src='gg_miss_span-9.png' alt='' width='700' height='432.632880098887' /></div></pre>
+#&gt;    span_counter n_miss n_complete prop_miss prop_complete
+#&gt;           &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
+#&gt;  1            1      0       3000  0                1.00 
+#&gt;  2            2      0       3000  0                1.00 
+#&gt;  3            3      1       2999  0.000333         1.000
+#&gt;  4            4    121       2879  0.0403           0.960
+#&gt;  5            5    503       2497  0.168            0.832
+#&gt;  6            6    555       2445  0.185            0.815
+#&gt;  7            7    190       2810  0.0633           0.937
+#&gt;  8            8      0       3000  0                1.00 
+#&gt;  9            9      1       2999  0.000333         1.000
+#&gt; 10           10      0       3000  0                1.00 
+#&gt; 11           11      0       3000  0                1.00 
+#&gt; 12           12    745       2255  0.248            0.752
+#&gt; 13           13    432       2568  0.144            0.856</div><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)
+<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>)</div><div class='img'><img src='gg_miss_span-4.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='co'># works with the rest of ggplot</span>
+<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"custom"</span>)</div><div class='img'><img src='gg_miss_span-5.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>theme_dark</a></span>()</div><div class='img'><img src='gg_miss_span-6.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

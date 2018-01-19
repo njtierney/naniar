@@ -61,6 +61,9 @@
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
 <li>
+  <a href="../articles/erplace-with-na.html">Replace with NA</a>
+</li>
+<li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
@@ -126,30 +129,30 @@ respect the dplyr verbs <code>starts_with</code>, <code>contains</code>, <code>e
     <pre class="examples"><div class='input'>
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow</span>(<span class='no'>Ozone</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 2
 #&gt;    Ozone Ozone_NA
-#&gt;    &lt;int&gt;   &lt;fctr&gt;
-#&gt;  1    41      !NA
-#&gt;  2    36      !NA
-#&gt;  3    12      !NA
-#&gt;  4    18      !NA
-#&gt;  5    NA       NA
-#&gt;  6    28      !NA
-#&gt;  7    23      !NA
-#&gt;  8    19      !NA
-#&gt;  9     8      !NA
-#&gt; 10    NA       NA
+#&gt;    &lt;int&gt; &lt;fct&gt;   
+#&gt;  1    41 !NA     
+#&gt;  2    36 !NA     
+#&gt;  3    12 !NA     
+#&gt;  4    18 !NA     
+#&gt;  5    NA NA      
+#&gt;  6    28 !NA     
+#&gt;  7    23 !NA     
+#&gt;  8    19 !NA     
+#&gt;  9     8 !NA     
+#&gt; 10    NA NA      
 #&gt; # ... with 143 more rows</div><div class='input'><span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow</span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 4
 #&gt;    Ozone Solar.R Ozone_NA Solar.R_NA
-#&gt;    &lt;int&gt;   &lt;int&gt;   &lt;fctr&gt;     &lt;fctr&gt;
-#&gt;  1    41     190      !NA        !NA
-#&gt;  2    36     118      !NA        !NA
-#&gt;  3    12     149      !NA        !NA
-#&gt;  4    18     313      !NA        !NA
-#&gt;  5    NA      NA       NA         NA
-#&gt;  6    28      NA      !NA         NA
-#&gt;  7    23     299      !NA        !NA
-#&gt;  8    19      99      !NA        !NA
-#&gt;  9     8      19      !NA        !NA
-#&gt; 10    NA     194       NA        !NA
+#&gt;    &lt;int&gt;   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;     
+#&gt;  1    41     190 !NA      !NA       
+#&gt;  2    36     118 !NA      !NA       
+#&gt;  3    12     149 !NA      !NA       
+#&gt;  4    18     313 !NA      !NA       
+#&gt;  5    NA      NA NA       NA        
+#&gt;  6    28      NA !NA      NA        
+#&gt;  7    23     299 !NA      !NA       
+#&gt;  8    19      99 !NA      !NA       
+#&gt;  9     8      19 !NA      !NA       
+#&gt; 10    NA     194 NA       !NA       
 #&gt; # ... with 143 more rows</div><div class='input'>
 </div></pre>
   </div>

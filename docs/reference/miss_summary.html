@@ -61,6 +61,9 @@
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
 <li>
+  <a href="../articles/erplace-with-na.html">Replace with NA</a>
+</li>
+<li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
@@ -122,38 +125,38 @@ them into lists within a tibble</p>
 #&gt; # A tibble: 3 x 3
 #&gt;   n_miss_in_case n_cases pct_miss
 #&gt;            &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;
-#&gt; 1              0     111 72.54902
-#&gt; 2              1      40 26.14379
-#&gt; 3              2       2  1.30719
+#&gt; 1              0     111    72.5 
+#&gt; 2              1      40    26.1 
+#&gt; 3              2       2     1.31
 #&gt; </div><div class='input'><span class='no'>s_miss</span>$<span class='no'>miss_var_summary</span></div><div class='output co'>#&gt; [[1]]
 #&gt; # A tibble: 6 x 4
-#&gt;   variable n_miss  pct_miss n_miss_cumsum
-#&gt;      &lt;chr&gt;  &lt;int&gt;     &lt;dbl&gt;         &lt;int&gt;
-#&gt; 1    Ozone     37 24.183007            37
-#&gt; 2  Solar.R      7  4.575163            44
-#&gt; 3     Wind      0  0.000000            44
-#&gt; 4     Temp      0  0.000000            44
-#&gt; 5    Month      0  0.000000            44
-#&gt; 6      Day      0  0.000000            44
+#&gt;   variable n_miss pct_miss n_miss_cumsum
+#&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
+#&gt; 1 Ozone        37    24.2             37
+#&gt; 2 Solar.R       7     4.58            44
+#&gt; 3 Wind          0     0               44
+#&gt; 4 Temp          0     0               44
+#&gt; 5 Month         0     0               44
+#&gt; 6 Day           0     0               44
 #&gt; </div><div class='input'><span class='co'># etc, etc, etc.</span>
 
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>s_miss_group</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>airquality</span>, <span class='no'>Month</span>) <span class='kw'>%&gt;%</span> <span class='fu'>miss_summary</span>()
 <span class='no'>s_miss_group</span>$<span class='no'>miss_df_prop</span></div><div class='output co'>#&gt; [1] 0.04793028</div><div class='input'><span class='no'>s_miss_group</span>$<span class='no'>miss_case_table</span></div><div class='output co'>#&gt; [[1]]
 #&gt; # A tibble: 11 x 4
-#&gt;    Month n_miss_in_case n_cases  pct_miss
-#&gt;    &lt;int&gt;          &lt;int&gt;   &lt;int&gt;     &lt;dbl&gt;
-#&gt;  1     5              0      24 77.419355
-#&gt;  2     5              1       5 16.129032
-#&gt;  3     5              2       2  6.451613
-#&gt;  4     6              0       9 30.000000
-#&gt;  5     6              1      21 70.000000
-#&gt;  6     7              0      26 83.870968
-#&gt;  7     7              1       5 16.129032
-#&gt;  8     8              0      23 74.193548
-#&gt;  9     8              1       8 25.806452
-#&gt; 10     9              0      29 96.666667
-#&gt; 11     9              1       1  3.333333
+#&gt;    Month n_miss_in_case n_cases pct_miss
+#&gt;    &lt;int&gt;          &lt;int&gt;   &lt;int&gt;    &lt;dbl&gt;
+#&gt;  1     5              0      24    77.4 
+#&gt;  2     5              1       5    16.1 
+#&gt;  3     5              2       2     6.45
+#&gt;  4     6              0       9    30.0 
+#&gt;  5     6              1      21    70.0 
+#&gt;  6     7              0      26    83.9 
+#&gt;  7     7              1       5    16.1 
+#&gt;  8     8              0      23    74.2 
+#&gt;  9     8              1       8    25.8 
+#&gt; 10     9              0      29    96.7 
+#&gt; 11     9              1       1     3.33
 #&gt; </div><div class='input'># etc, etc, etc.
 
 

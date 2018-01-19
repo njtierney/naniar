@@ -61,6 +61,9 @@
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
 <li>
+  <a href="../articles/erplace-with-na.html">Replace with NA</a>
+</li>
+<li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
@@ -112,17 +115,17 @@ have a suffix _NA attached to distinguish them.</p>
     <pre class="examples"><div class='input'>
 <span class='fu'><a href='as_shadow.html'>as_shadow</a></span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 6
 #&gt;    Ozone_NA Solar.R_NA Wind_NA Temp_NA Month_NA Day_NA
-#&gt;      &lt;fctr&gt;     &lt;fctr&gt;  &lt;fctr&gt;  &lt;fctr&gt;   &lt;fctr&gt; &lt;fctr&gt;
-#&gt;  1      !NA        !NA     !NA     !NA      !NA    !NA
-#&gt;  2      !NA        !NA     !NA     !NA      !NA    !NA
-#&gt;  3      !NA        !NA     !NA     !NA      !NA    !NA
-#&gt;  4      !NA        !NA     !NA     !NA      !NA    !NA
-#&gt;  5       NA         NA     !NA     !NA      !NA    !NA
-#&gt;  6      !NA         NA     !NA     !NA      !NA    !NA
-#&gt;  7      !NA        !NA     !NA     !NA      !NA    !NA
-#&gt;  8      !NA        !NA     !NA     !NA      !NA    !NA
-#&gt;  9      !NA        !NA     !NA     !NA      !NA    !NA
-#&gt; 10       NA        !NA     !NA     !NA      !NA    !NA
+#&gt;    &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;   &lt;fct&gt;    &lt;fct&gt; 
+#&gt;  1 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  2 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  3 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  4 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  5 NA       NA         !NA     !NA     !NA      !NA   
+#&gt;  6 !NA      NA         !NA     !NA     !NA      !NA   
+#&gt;  7 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  8 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  9 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt; 10 NA       !NA        !NA     !NA     !NA      !NA   
 #&gt; # ... with 143 more rows</div><div class='input'>
 </div></pre>
   </div>

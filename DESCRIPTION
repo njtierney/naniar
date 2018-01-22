@@ -74,6 +74,7 @@ Collate:
     'gg-miss-x.R'
     'label-miss.R'
     'miss-prop-pct-summary.R'
+    'miss-scan-count.R'
     'miss-x-cumsum.R'
     'miss-x-pct-prop.R'
     'miss-x-run.R'

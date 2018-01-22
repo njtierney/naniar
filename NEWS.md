@@ -1,4 +1,12 @@
-# naniar 0.1.5.9000 (2017/01/19)
+# naniar 0.1.6.9500 (2017/01/19)
+=========================
+
+# New Feature
+
+- `miss_scan_count`. This makes it easier for users to search for particular
+occurences of these values across their variables.
+
+# naniar 0.1.5.9500 (2017/01/19)
 =========================
 
 # Breaking change

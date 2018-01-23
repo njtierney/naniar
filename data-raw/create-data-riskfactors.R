@@ -4,6 +4,10 @@ library(tidyverse)
 library(janitor)
 library(naniar)
 
+# downloaded from https://github.com/chxy/MissingDataGUI/blob/master/data/brfss.rda
+# as I could not install MissingDataGUI
+# load("~/Downloads/brfss.rda")
+
 riskfactors <- brfss %>%
   tibble::as_tibble() %>%
   janitor::clean_names() %>%
@@ -50,7 +54,9 @@ riskfactors <- brfss %>%
                 income,
                 veteran,
                 hispanic,
-                dplyr::everything())
+                dplyr::everything()) %>%
+  # recode BMI to be decimal, as it should be
+  dplyr::mutate(bmi = bmi / 100)
 
 devtools::use_data(riskfactors, overwrite = TRUE)
 # then delete the brfss dataset

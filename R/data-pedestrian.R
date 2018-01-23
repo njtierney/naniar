@@ -21,5 +21,25 @@
 #'   \item{sensor_id}{(integer) the id of the sensor}
 #'   \item{sensor_name}{(character) the full name of the sensor}
 #' }
+#' @name pedestrian
+#' @docType data
+#' @usage data(pedestrian)
+#' @source \url{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}
+#' @keywords datasets
+#'
+#' @examples
+#'
+#' # explore the missingness with vis_miss
+#' library(naniar)
+#'
+#' vis_miss(pedestrian)
+#'
+#' # Look at the missingness in the variables
+#' miss_var_summary(pedestrian)
+#'
+#' # There is only missingness in hourly_counts
+#' # Look at the missingness over a rolling window
+#' library(ggplot2)
+#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
 #'
 "pedestrian"

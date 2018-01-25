@@ -62,7 +62,7 @@ Imports:
     viridis,
     glue
 RoxygenNote: 6.0.1.9000
-Collate:
+Collate: 
     'add-cols.R'
     'add-n-prop-miss.R'
     'cast-shadows.R'
@@ -86,7 +86,7 @@ Collate:
     'naniar-package.R'
     'replace-to-na.R'
     'replace-with-na.R'
-    'scoped-replace-to-na.R'
+    'scoped-replace-with-na.R'
     'shadow-shifters.R'
     'shadows.R'
     'stat-miss-point.R'

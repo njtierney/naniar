@@ -35,37 +35,13 @@ gg_miss_var <- function(x, group, show_pct = FALSE){
 
     ggobject <- x %>%
       miss_var_summary() %>%
-      ggplot(data = .,
-             aes(x = stats::reorder(variable, n_miss),
-                 y = n_miss,
-                 colour = variable)) +
-      geom_bar(stat = "identity",
-               position = "dodge",
-               width = 0) +
-      geom_point() +
-      coord_flip() +
-      scale_color_discrete(guide = FALSE) +
-      labs(y = "# Missing",
-           x = "Variables") +
-      theme_minimal()
+      gg_miss_var_create_n_miss()
 
   } else if (show_pct == TRUE & missing(group)) {
 
     ggobject <- x %>%
       miss_var_summary() %>%
-      ggplot(data = .,
-             aes(x = stats::reorder(variable, pct_miss),
-                 y = pct_miss,
-                 colour = variable)) +
-      geom_bar(stat = "identity",
-               position = "dodge",
-               width = 0) +
-      geom_point() +
-      coord_flip() +
-      scale_color_discrete(guide = FALSE) +
-      labs(y = "% Missing Missing",
-           x = "Variables") +
-      theme_minimal()
+      gg_miss_var_create_pct_miss()
 
     # show the groupings -------------------------------------------------------
 
@@ -74,43 +50,56 @@ gg_miss_var <- function(x, group, show_pct = FALSE){
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
       miss_var_summary() %>%
-      ggplot(data = .,
-             aes(x = stats::reorder(variable, n_miss),
-                 y = n_miss,
-                 colour = variable)) +
-      geom_bar(stat = "identity",
-               position = "dodge",
-               width = 0) +
-      geom_point() +
-      facet_wrap(as.formula(paste("~", group_string))) +
-      coord_flip() +
-      scale_color_discrete(guide = FALSE) +
-      labs(y = "# Missing",
-           x = "Variables") +
-      theme_minimal()
+      gg_miss_var_create_n_miss() +
+      facet_wrap(as.formula(paste("~", group_string)))
 
   } else if (show_pct == TRUE & !missing(group)){
 
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
       miss_var_summary() %>%
-      ggplot(data = .,
-             aes(x = stats::reorder(variable, n_miss),
-                 y = pct_miss,
-                 colour = variable)) +
-      geom_bar(stat = "identity",
-               position = "dodge",
-               width = 0) +
-      geom_point() +
-      facet_wrap(as.formula(paste("~", group_string))) +
-      coord_flip() +
-      scale_color_discrete(guide = FALSE) +
-      labs(y = "% Missing",
-           x = "Variables") +
-      theme_minimal()
+      gg_miss_var_create_pct_miss() +
+      facet_wrap(as.formula(paste("~", group_string)))
 
   }
 
   return(ggobject)
+
+}
+
+# utility function to create the starting block for gg_miss_var ---------------
+
+gg_miss_var_create_n_miss <- function(data){
+  ggplot(data = data,
+       aes(x = stats::reorder(variable, n_miss),
+           y = n_miss,
+           colour = variable)) +
+  geom_bar(stat = "identity",
+           position = "dodge",
+           width = 0) +
+  geom_point() +
+  coord_flip() +
+  scale_color_discrete(guide = FALSE) +
+  labs(y = "# Missing",
+       x = "Variables") +
+  theme_minimal()
+
+}
+
+gg_miss_var_create_pct_miss <- function(data){
+
+  ggplot(data = data,
+         aes(x = stats::reorder(variable, pct_miss),
+             y = pct_miss,
+             colour = variable)) +
+  geom_bar(stat = "identity",
+           position = "dodge",
+           width = 0) +
+  geom_point() +
+  coord_flip() +
+  scale_color_discrete(guide = FALSE) +
+  labs(y = "% Missing Missing",
+       x = "Variables") +
+  theme_minimal()
 
 }

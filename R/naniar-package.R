@@ -10,6 +10,11 @@
 #' @import rlang
 NULL
 
+#' @importFrom visdat vis_miss
+#' @export
+visdat::vis_miss
+
+
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
 globalVariables(
   c(

@@ -97,7 +97,7 @@ to December 31st 2016 at 23:00:00. The data is made free and publicly
 available from <a href='https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp'>https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp</a></p>
     
 
-    <pre class="usage"><span class='no'>pedestrian</span></pre>
+    <pre class="usage"><span class='fu'>data</span>(<span class='no'>pedestrian</span>)</pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
@@ -116,14 +116,46 @@ December)</p></dd>
 <dt>sensor_name</dt><dd><p>(character) the full name of the sensor</p></dd>
 </dl>
     
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
+    <p><a href='https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp'>https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp</a></p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'># explore the missingness with vis_miss</span>
+<span class='fu'>library</span>(<span class='no'>naniar</span>)
+
+<span class='fu'><a href='http://www.rdocumentation.org/packages/visdat/topics/vis_miss'>vis_miss</a></span>(<span class='no'>pedestrian</span>)</div><div class='img'><img src='pedestrian-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='co'># Look at the missingness in the variables</span>
+<span class='fu'><a href='miss_var_summary.html'>miss_var_summary</a></span>(<span class='no'>pedestrian</span>)</div><div class='output co'>#&gt; # A tibble: 9 x 4
+#&gt;   variable      n_miss pct_miss n_miss_cumsum
+#&gt;   &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
+#&gt; 1 hourly_counts   2548     6.76          2548
+#&gt; 2 date_time          0     0             2548
+#&gt; 3 year               0     0             2548
+#&gt; 4 month              0     0             2548
+#&gt; 5 month_day          0     0             2548
+#&gt; 6 week_day           0     0             2548
+#&gt; 7 hour               0     0             2548
+#&gt; 8 sensor_id          0     0             2548
+#&gt; 9 sensor_name        0     0             2548</div><div class='input'>
+<span class='co'># There is only missingness in hourly_counts</span>
+<span class='co'># Look at the missingness over a rolling window</span>
+<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
+<span class='fu'><a href='gg_miss_span.html'>gg_miss_span</a></span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>)</div><div class='img'><img src='pedestrian-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
       <li><a href="#format">Format</a></li>
-          </ul>
+
+      <li><a href="#source">Source</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

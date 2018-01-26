@@ -66,7 +66,7 @@
       <h1>Gallery of Missing Data Visualisations</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-01-19</h4>
+            <h4 class="date">2018-01-26</h4>
           </div>
 
     
@@ -138,6 +138,13 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">y =</span> <span class="st">"Look at all the missing ones"</span>)</code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-var-2.png" width="480" style="display: block; margin: auto;"></p>
+<p>If you wish, you can also change whether to show the % of missing instead with <code>show_pct = TRUE</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality, <span class="dt">show_pct =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-var-show-pct-1.png" width="480" style="display: block; margin: auto;"></p>
+<p>You can also plot the number of missings in a variable grouped by another variable using the <code>group</code> argument.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality,
+            <span class="dt">group =</span> Month)</code></pre></div>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-var-group-1.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_case" class="section level2">
 <h2 class="hasAnchor">
@@ -146,9 +153,14 @@
 <p>This plot shows the number of missing values in each case. It is powered by the <code><a href="../reference/miss_case_summary.html">miss_case_summary()</a></code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality)</code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-case-1.png" width="480" style="display: block; margin: auto;"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">x =</span> <span class="st">"Number of Cases"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">x =</span> <span class="st">"Number of Cases"</span>)</code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-case-2.png" width="480" style="display: block; margin: auto;"></p>
+<p>You can also order by the number of cases using <code>order_cases = TRUE</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality, <span class="dt">order_cases =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-case-order-by-case-1.png" width="480" style="display: block; margin: auto;"></p>
+<p>You can also explore the misisngness in cases over some variable using <code>group = Month</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality, <span class="dt">group =</span> Month)</code></pre></div>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-case-group-1.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_fct" class="section level2">
 <h2 class="hasAnchor">
@@ -219,6 +231,12 @@
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-span-2.png" width="480" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_dark</a></span>()</code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-span-3.png" width="480" style="display: block; margin: auto;"></p>
+<p>You can also explore <code>miss_var_span</code> by group with the <code>group</code> argument.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, 
+             hourly_counts, 
+             <span class="dt">span_every =</span> <span class="dv">3000</span>, 
+             <span class="dt">group =</span> sensor_name)</code></pre></div>
+<p><img src="naniar-visualisation_files/figure-html/gg-miss-span-group-1.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_case_cumsum" class="section level2">
 <h2 class="hasAnchor">

@@ -96,7 +96,7 @@ number of missings in a given span, or breaksize. A default minimal theme
 is used, which can be customised as normal for ggplot.</p>
     
 
-    <pre class="usage"><span class='fu'>gg_miss_span</span>(<span class='no'>data</span>, <span class='no'>var</span>, <span class='no'>span_every</span>)</pre>
+    <pre class="usage"><span class='fu'>gg_miss_span</span>(<span class='no'>data</span>, <span class='no'>var</span>, <span class='no'>span_every</span>, <span class='no'>group</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -112,6 +112,10 @@ is used, which can be customised as normal for ggplot.</p>
     <tr>
       <th>span_every</th>
       <td><p>integer describing the length of the span to be explored</p></td>
+    </tr>
+    <tr>
+      <th>group</th>
+      <td><p>bare variable name, if you want to create a faceted plot.</p></td>
     </tr>
     </table>
     
@@ -139,7 +143,8 @@ is used, which can be customised as normal for ggplot.</p>
 #&gt; 12           12    745       2255  0.248            0.752
 #&gt; 13           13    432       2568  0.144            0.856</div><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 <span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>)</div><div class='img'><img src='gg_miss_span-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='co'># works with the rest of ggplot</span>
-<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"custom"</span>)</div><div class='img'><img src='gg_miss_span-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>theme_dark</a></span>()</div><div class='img'><img src='gg_miss_span-3.png' alt='' width='700' height='432.632880098887' /></div></pre>
+<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"custom"</span>)</div><div class='img'><img src='gg_miss_span-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>theme_dark</a></span>()</div><div class='img'><img src='gg_miss_span-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>sensor_name</span>)</div><div class='img'><img src='gg_miss_span-4.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

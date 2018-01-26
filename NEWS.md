@@ -1,10 +1,27 @@
+# naniar 0.1.7.9500 (2017/01/26)
+=========================
+
+# New Feature
+
+- Cleaned up the visualisation of `gg_miss_case` to be clearer and less cluttered ( [#117](https://github.com/njtierney/naniar/issues/117)), also added n `order_cases` option to order by cases.
+
+- Added a `group` argument to `gg_miss_var`, `gg_miss_case`, and `gg_miss_span`. This makes it easier for users to visualise these plots across the values of another variable. In the future I will consider adding `group` to the other shorthand plotting function, but at the moment these seemed to be the ones that would benefit the most from this feature.
+
+# Minor changes
+
+- Updated the "Gallery of Missing Data Visualisations" to include the `group` features and `order_cases`.
+
+# Misc
+
+- Tidied up internal documentation and files for `gg_miss_*` family - each visualisation now has it's own file.
+
 # naniar 0.1.6.9500 (2017/01/19)
 =========================
 
 # New Feature
 
 - `miss_scan_count`. This makes it easier for users to search for particular
-occurences of these values across their variables.
+occurences of these values across their variables. [#119](https://github.com/njtierney/naniar/issues/119)
 
 # naniar 0.1.5.9500 (2017/01/19)
 =========================

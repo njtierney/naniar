@@ -94,6 +94,22 @@ gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 
 ```
 
+If you wish, you can also change whether to show the % of missing instead with `show_pct = TRUE`.
+
+```{r gg-miss-var-show-pct}
+gg_miss_var(airquality, show_pct = TRUE)
+```
+
+
+You can also plot the number of missings in a variable grouped by another variable using the `group` argument.
+
+```{r gg-miss-var-group}
+
+gg_miss_var(airquality,
+            group = Month)
+
+```
+
 
 ## `gg_miss_case()`
 
@@ -101,10 +117,24 @@ This plot shows the number of missing values in each case. It is powered by the 
 
 ```{r gg-miss-case}
 gg_miss_case(airquality)
-library(ggplot2)
 gg_miss_case(airquality) + labs(x = "Number of Cases")
 ```
 
+You can also order by the number of cases using `order_cases = TRUE`
+
+```{r gg-miss-case-order-by-case}
+
+gg_miss_case(airquality, order_cases = TRUE)
+
+```
+
+You can also explore the misisngness in cases over some variable using `group = Month`
+
+```{r gg-miss-case-group}
+
+gg_miss_case(airquality, group = Month)
+
+```
 
 ## `gg_miss_fct()`
 
@@ -138,6 +168,17 @@ gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
 # works with the rest of ggplot
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
+
+```
+
+You can also explore `miss_var_span` by group with the `group` argument.
+
+```{r gg-miss-span-group}
+
+gg_miss_span(pedestrian, 
+             hourly_counts, 
+             span_every = 3000, 
+             group = sensor_name)
 
 ```
 

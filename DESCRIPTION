@@ -66,6 +66,7 @@ Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
     'cast-shadows.R'
+    'data-breizh.R'
     'data-oceanbuoys.R'
     'data-pedestrian.R'
     'data-riskfactors.R'

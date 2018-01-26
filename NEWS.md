@@ -1,10 +1,24 @@
+# naniar 0.1.7.9500 (2017/01/26)
+=========================
+
+# New Feature
+
+- Cleaned up the visualisation of `gg_miss_case` to be clearer and less cluttered ( [#117](https://github.com/njtierney/naniar/issues/117) ).
+
+- Added a `group` argument to `gg_miss_var` and `gg_miss_count. This makes it easier for users to search for particular
+occurences of these values across their variables.
+
+# Misc
+
+- Tidied up internal documentation and files for `gg_miss_*` family - each visualisation now has it's own file.
+
 # naniar 0.1.6.9500 (2017/01/19)
 =========================
 
 # New Feature
 
 - `miss_scan_count`. This makes it easier for users to search for particular
-occurences of these values across their variables.
+occurences of these values across their variables. [#119](https://github.com/njtierney/naniar/issues/119)
 
 # naniar 0.1.5.9500 (2017/01/19)
 =========================

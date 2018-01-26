@@ -4,7 +4,10 @@
 \name{breizh}
 \alias{breizh}
 \title{Public order from Brittany (France), 2013-2015.}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 5749 rows and 36 columns.}
+\format{An object of class \code{data.frame} with 5749 rows and 36 columns.}
+\source{
+\url{https://breizh-sba.opendatasoft.com/explore/dataset/marches-publics-collectivites-bretonnes/information/}
+}
 \usage{
 data(breizh)
 }

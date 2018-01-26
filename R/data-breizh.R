@@ -11,7 +11,7 @@
 #' @name breizh
 #' @docType data
 #' @usage data(breizh)
-#' @source \url{{https://breizh-sba.opendatasoft.com/explore/dataset/marches-publics-collectivites-bretonnes/information/}
+#' @source \url{https://breizh-sba.opendatasoft.com/explore/dataset/marches-publics-collectivites-bretonnes/information/}
 #' @keywords datasets
 #' @examples
 #'

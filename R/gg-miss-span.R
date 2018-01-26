@@ -9,6 +9,7 @@
 #' @param data data.frame
 #' @param var a bare unquoted variable name from `data`.
 #' @param span_every integer describing the length of the span to be explored
+#' @param group bare variable name, if you want to create a faceted plot.
 #'
 #' @return ggplot2 object
 #' @export
@@ -21,17 +22,21 @@
 #' # works with the rest of ggplot
 #' gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
 #' gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
+#'
+#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000, group = sensor_name)
 
 gg_miss_span <- function(data,
                          var,
-                         span_every){
+                         span_every,
+                         group){
 
   var_enquo <- rlang::enquo(var)
+
+  if (missing(group)) {
 
   ggobject <-  miss_var_span(data = data,
                              var = !!var_enquo,
                              span_every = span_every) %>%
-    # miss_var_span(pedestrian, hourly_counts, span_every = 3000) %>%
     tidyr::gather(key = variable,
                   value = value,
                   prop_miss:prop_complete) %>%
@@ -49,6 +54,38 @@ gg_miss_span <- function(data,
                   subtitle = sprintf("Over a repeating span of %s", span_every),
                   x = "Span",
                   y = "Proportion Missing")
+
+  } else if (!missing(group)){
+
+    quo_group_by <- rlang::enquo(group)
+
+    group_string <- deparse(substitute(group))
+
+    ggobject <-
+    data %>%
+      dplyr::group_by(!!quo_group_by) %>%
+      miss_var_span(var = !!var_enquo,
+                    span_every = span_every) %>%
+      tidyr::gather(key = variable,
+                    value = value,
+                    prop_miss:prop_complete) %>%
+      ggplot2::ggplot(ggplot2::aes(x = span_counter,
+                                   y = value,
+                                   fill = variable)) +
+      ggplot2::geom_col(colour = "white") +
+      ggplot2::scale_fill_manual(name = "",
+                                 values = c("grey80",
+                                            "grey20"),
+                                 label = c("Present",
+                                           "Missing")) +
+      ggplot2::theme_minimal() +
+      ggplot2::labs(title = "Proportion of missing values",
+                    subtitle = sprintf("Over a repeating span of %s", span_every),
+                    x = "Span",
+                    y = "Proportion Missing") +
+      facet_wrap(as.formula(paste("~", group_string)))
+
+  }
 
   return(ggobject)
 

@@ -45,7 +45,7 @@ gg_miss_var <- function(x, group, show_pct = FALSE){
 
     # show the groupings -------------------------------------------------------
 
-  } else if (show_pct == FALSE & !missing(group)){
+  } else if (show_pct == FALSE & !missing(group)) {
 
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
@@ -53,7 +53,7 @@ gg_miss_var <- function(x, group, show_pct = FALSE){
       gg_miss_var_create_n_miss() +
       facet_wrap(as.formula(paste("~", group_string)))
 
-  } else if (show_pct == TRUE & !missing(group)){
+  } else if (show_pct == TRUE & !missing(group)) {
 
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%

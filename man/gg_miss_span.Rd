@@ -4,7 +4,7 @@
 \alias{gg_miss_span}
 \title{Plot the number of missings in a given repeating span}
 \usage{
-gg_miss_span(data, var, span_every)
+gg_miss_span(data, var, span_every, group)
 }
 \arguments{
 \item{data}{data.frame}
@@ -12,6 +12,8 @@ gg_miss_span(data, var, span_every)
 \item{var}{a bare unquoted variable name from \code{data}.}
 
 \item{span_every}{integer describing the length of the span to be explored}
+
+\item{group}{bare variable name, if you want to create a faceted plot.}
 }
 \value{
 ggplot2 object
@@ -30,4 +32,6 @@ gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
 # works with the rest of ggplot
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
+
+gg_miss_span(pedestrian, hourly_counts, span_every = 3000, group = sensor_name)
 }

@@ -5,8 +5,7 @@
 
 - Cleaned up the visualisation of `gg_miss_case` to be clearer and less cluttered ( [#117](https://github.com/njtierney/naniar/issues/117) ).
 
-- Added a `group` argument to `gg_miss_var` and `gg_miss_count. This makes it easier for users to search for particular
-occurences of these values across their variables.
+- Added a `group` argument to `gg_miss_var`, `gg_miss_case`, and `gg_miss_span`. This makes it easier for users to visualise these plots across the values of another variable.
 
 # Misc
 

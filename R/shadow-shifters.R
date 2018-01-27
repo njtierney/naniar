@@ -40,7 +40,7 @@ shadow_shift.numeric <- function(x, seed_shift = 2017-7-1-1850, ...){
   if (any(is.infinite(x))) {
 
     # use the minimum for the non infinite values
-    xmin <- min(df_inf$x[!is.infinite(df_inf$x)], na.rm = TRUE)
+    xmin <- min(x[!is.infinite(x)], na.rm = TRUE)
 
     x_shift <- xmin - xmin*0.1
 

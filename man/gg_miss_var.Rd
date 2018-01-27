@@ -4,12 +4,12 @@
 \alias{gg_miss_var}
 \title{Plot the number of missings for each variable}
 \usage{
-gg_miss_var(x, group, show_pct = FALSE)
+gg_miss_var(x, facet, show_pct = FALSE)
 }
 \arguments{
 \item{x}{a dataframe}
 
-\item{group}{bare variable name, if you want to create a faceted plot.}
+\item{facet}{bare variable name, if you want to create a faceted plot.}
 
 \item{show_pct}{logical shows the number of missings (default), but if set to
 TRUE, it will display the proportion of missings.}

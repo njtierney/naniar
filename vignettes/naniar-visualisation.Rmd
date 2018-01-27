@@ -101,12 +101,12 @@ gg_miss_var(airquality, show_pct = TRUE)
 ```
 
 
-You can also plot the number of missings in a variable grouped by another variable using the `group` argument.
+You can also plot the number of missings in a variable grouped by another variable using the `facet` argument.
 
 ```{r gg-miss-var-group}
 
 gg_miss_var(airquality,
-            group = Month)
+            facet = Month)
 
 ```
 
@@ -128,11 +128,11 @@ gg_miss_case(airquality, order_cases = TRUE)
 
 ```
 
-You can also explore the misisngness in cases over some variable using `group = Month`
+You can also explore the misisngness in cases over some variable using `facet = Month`
 
 ```{r gg-miss-case-group}
 
-gg_miss_case(airquality, group = Month)
+gg_miss_case(airquality, facet = Month)
 
 ```
 
@@ -171,14 +171,14 @@ gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
 
 ```
 
-You can also explore `miss_var_span` by group with the `group` argument.
+You can also explore `miss_var_span` by group with the `facet` argument.
 
 ```{r gg-miss-span-group}
 
 gg_miss_span(pedestrian, 
              hourly_counts, 
              span_every = 3000, 
-             group = sensor_name)
+             facet = sensor_name)
 
 ```
 

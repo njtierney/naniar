@@ -11,7 +11,7 @@ test_that("gg_miss_case_works",{
                               gg_miss_case_plot)
 })
 
-gg_miss_case_plot_group <- gg_miss_case(airquality, group = Month)
+gg_miss_case_plot_group <- gg_miss_case(airquality, facet = Month)
 
 test_that("gg_miss_case_group_works",{
   skip_on_cran()
@@ -30,7 +30,7 @@ test_that("gg_miss_case_sort_works",{
 })
 
 gg_miss_case_plot_order_group_sort <- gg_miss_case(airquality,
-                                                   group = Month,
+                                                   facet = Month,
                                                    order_cases = TRUE)
 
 test_that("gg_miss_case_group_and_sort_works",{

@@ -9,7 +9,7 @@
 #' @param data data.frame
 #' @param var a bare unquoted variable name from `data`.
 #' @param span_every integer describing the length of the span to be explored
-#' @param group bare variable name, if you want to create a faceted plot.
+#' @param facet a single bare variable name, if you want to create a faceted plot.
 #'
 #' @return ggplot2 object
 #' @export
@@ -19,20 +19,21 @@
 #' miss_var_span(pedestrian, hourly_counts, span_every = 3000)
 #' library(ggplot2)
 #' gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
+#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000, facet = sensor_name)
 #' # works with the rest of ggplot
 #' gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
 #' gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
 #'
-#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000, group = sensor_name)
+#' gg_miss_span(pedestrian, hourly_counts, span_every = 3000, facet = sensor_name)
 
 gg_miss_span <- function(data,
                          var,
                          span_every,
-                         group){
+                         facet){
 
   var_enquo <- rlang::enquo(var)
 
-  if (missing(group)) {
+  if (missing(facet)) {
 
   ggobject <-  miss_var_span(data = data,
                              var = !!var_enquo,
@@ -55,11 +56,11 @@ gg_miss_span <- function(data,
                   x = "Span",
                   y = "Proportion Missing")
 
-  } else if (!missing(group)){
+  } else if (!missing(facet)){
 
-    quo_group_by <- rlang::enquo(group)
+    quo_group_by <- rlang::enquo(facet)
 
-    group_string <- deparse(substitute(group))
+    group_string <- deparse(substitute(facet))
 
     ggobject <-
     data %>%

@@ -13,7 +13,7 @@ test_that("gg_miss_span works",{
 gg_miss_span_plot_group <- gg_miss_span(pedestrian,
                                         hourly_counts,
                                         4000,
-                                        group = sensor_name)
+                                        facet = sensor_name)
 
 test_that("gg_miss_span_group works",{
   skip_on_cran()

@@ -4,12 +4,12 @@
 \alias{gg_miss_case}
 \title{Plot the number of missings per case (row)}
 \usage{
-gg_miss_case(x, group, order_cases = FALSE)
+gg_miss_case(x, facet, order_cases = FALSE)
 }
 \arguments{
 \item{x}{data.frame}
 
-\item{group}{bare variable name, if you want to create a faceted plot.}
+\item{facet}{a single bare variable name, if you want to create a faceted plot.}
 
 \item{order_cases}{logical Order the rows by missingness (default is no - FALSE)}
 }
@@ -27,7 +27,7 @@ gg_miss_case(airquality)
 library(ggplot2)
 gg_miss_case(airquality) + labs(x = "Number of Cases")
 gg_miss_case(airquality, order_cases = TRUE)
-gg_miss_case(airquality, group = Month)
-gg_miss_case(airquality, group = Month, order_cases = TRUE)
+gg_miss_case(airquality, facet = Month)
+gg_miss_case(airquality, facet = Month, order_cases = TRUE)
 
 }

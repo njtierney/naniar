@@ -6,7 +6,7 @@
 #'   customised as normal for ggplot.
 #'
 #' @param x a dataframe
-#' @param group bare variable name, if you want to create a faceted plot.
+#' @param facet bare variable name, if you want to create a faceted plot.
 #' @param show_pct logical shows the number of missings (default), but if set to
 #'  TRUE, it will display the proportion of missings.
 #'
@@ -21,23 +21,23 @@
 #' gg_miss_var(airquality, Month)
 #' gg_miss_var(airquality, Month, TRUE)
 #'
-gg_miss_var <- function(x, group, show_pct = FALSE){
+gg_miss_var <- function(x, facet, show_pct = FALSE){
 
   # get a tidy data frame of the number of missings in each column
   test_if_dataframe(x)
   test_if_null(x)
 
   # collect group into
-  quo_group_by <- rlang::enquo(group)
-  group_string <- deparse(substitute(group))
+  quo_group_by <- rlang::enquo(facet)
+  group_string <- deparse(substitute(facet))
 
-  if (show_pct == FALSE & missing(group)) {
+  if (show_pct == FALSE & missing(facet)) {
 
     ggobject <- x %>%
       miss_var_summary() %>%
       gg_miss_var_create_n_miss()
 
-  } else if (show_pct == TRUE & missing(group)) {
+  } else if (show_pct == TRUE & missing(facet)) {
 
     ggobject <- x %>%
       miss_var_summary() %>%
@@ -45,7 +45,7 @@ gg_miss_var <- function(x, group, show_pct = FALSE){
 
     # show the groupings -------------------------------------------------------
 
-  } else if (show_pct == FALSE & !missing(group)) {
+  } else if (show_pct == FALSE & !missing(facet)) {
 
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
@@ -53,7 +53,7 @@ gg_miss_var <- function(x, group, show_pct = FALSE){
       gg_miss_var_create_n_miss() +
       facet_wrap(as.formula(paste("~", group_string)))
 
-  } else if (show_pct == TRUE & !missing(group)) {
+  } else if (show_pct == TRUE & !missing(facet)) {
 
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%

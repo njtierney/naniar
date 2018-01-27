@@ -5,7 +5,7 @@
 #'   can be customised as normal for ggplot.
 #'
 #' @param x data.frame
-#' @param group bare variable name, if you want to create a faceted plot.
+#' @param facet a single bare variable name, if you want to create a faceted plot.
 #' @param order_cases logical Order the rows by missingness (default is no - FALSE)
 #'
 #' @return a ggplot object depicting the number of missings in a given case.
@@ -17,18 +17,18 @@
 #' library(ggplot2)
 #' gg_miss_case(airquality) + labs(x = "Number of Cases")
 #' gg_miss_case(airquality, order_cases = TRUE)
-#' gg_miss_case(airquality, group = Month)
-#' gg_miss_case(airquality, group = Month, order_cases = TRUE)
+#' gg_miss_case(airquality, facet = Month)
+#' gg_miss_case(airquality, facet = Month, order_cases = TRUE)
 #'
-gg_miss_case <- function(x, group, order_cases = FALSE){
+gg_miss_case <- function(x, facet, order_cases = FALSE){
 
-  if (!missing(group)){
-    quo_group_by <- rlang::enquo(group)
+  if (!missing(facet)){
+    quo_group_by <- rlang::enquo(facet)
 
-    group_string <- deparse(substitute(group))
+    group_string <- deparse(substitute(facet))
   }
 
-  if (order_cases & missing(group)) {
+  if (order_cases & missing(facet)) {
 
     ggobject <-
       x %>%
@@ -37,13 +37,13 @@ gg_miss_case <- function(x, group, order_cases = FALSE){
       dplyr::mutate(case = 1:n()) %>%
       gg_miss_case_create()
 
-  } else if (!order_cases & missing(group)) {
+  } else if (!order_cases & missing(facet)) {
 
     ggobject <- x %>%
       miss_case_summary() %>%
       gg_miss_case_create()
 
-  } else if (order_cases & !missing(group)) {
+  } else if (order_cases & !missing(facet)) {
 
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
@@ -53,7 +53,7 @@ gg_miss_case <- function(x, group, order_cases = FALSE){
       gg_miss_case_create() +
       facet_wrap(as.formula(paste("~", group_string)))
 
-  } else if (!order_cases & !missing(group)) {
+  } else if (!order_cases & !missing(facet)) {
 
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%

@@ -11,7 +11,7 @@ test_that("gg_miss_var_works",{
                               gg_miss_var_plot)
 })
 
-gg_miss_var_plot_group <- gg_miss_var(airquality, group = Month)
+gg_miss_var_plot_group <- gg_miss_var(airquality, facet = Month)
 
 test_that("gg_miss_var_group_works",{
   skip_on_cran()
@@ -32,7 +32,7 @@ test_that("gg_miss_var_pct_works",{
 })
 
 gg_miss_var_plot_group_pct <- gg_miss_var(airquality,
-                                          group = Month,
+                                          facet = Month,
                                           show_pct = TRUE)
 
 test_that("gg_miss_var_works",{

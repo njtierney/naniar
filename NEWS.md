@@ -1,4 +1,4 @@
-# naniar 0.1.7.9500 (2017/01/26)
+# naniar 0.1.7.9600 (2017/01/26)
 =========================
 
 # New Feature
@@ -10,6 +10,7 @@
 # Minor changes
 
 - Updated the "Gallery of Missing Data Visualisations" to include the `facet` features and `order_cases`.
+- Improved handling of `shadow_shift` when there are Inf or -Inf values (see  [#117](https://github.com/njtierney/naniar/issues/90))
 
 # Misc
 

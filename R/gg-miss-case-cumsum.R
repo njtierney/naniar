@@ -25,7 +25,7 @@ gg_miss_case_cumsum <- function(x, breaks = 20){
                group = 1)) +
     geom_line(size = 2) +
     labs(x = "Case",
-         y = "Cumsum of missing values") +
+         y = "Cumulative sum of missing values") +
     scale_x_discrete(breaks = seq(0,
                                   nrow(x),
                                   by = breaks)) +

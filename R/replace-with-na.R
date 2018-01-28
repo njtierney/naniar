@@ -6,6 +6,7 @@
 #' @param data A data.frame
 #' @param replace A named list given the NA to replace values for each column
 #' @param ... additional arguments for methods. Currently unused
+#' @seealso [replace_with_na]() [replace_with_na_all]() [replace_with_na_at]() [replace_with_na_if]()
 #'
 #' @return Dataframe with values replaced by NA.
 #' @export
@@ -37,6 +38,10 @@
 #'                           y = c("N/A"),
 #'                           z = c(-101)))
 replace_with_na <- function(data, replace = list(), ...){
+  test_if_null(data)
+
+  test_if_dataframe(data)
+
   UseMethod("replace_with_na")
 }
 

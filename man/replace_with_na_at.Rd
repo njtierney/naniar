@@ -4,14 +4,14 @@
 \alias{replace_with_na_at}
 \title{Replace specified variables with NA where a certain condition is met}
 \usage{
-replace_with_na_at(data, .vars, .funs)
+replace_with_na_at(data, .vars, condition)
 }
 \arguments{
 \item{data}{dataframe}
 
 \item{.vars}{The variables to refer to}
 
-\item{.funs}{A condition required to be TRUE to set NA. Here, the condition
+\item{condition}{A condition required to be TRUE to set NA. Here, the condition
 is specified with a formula, following the syntax: \code{~.x {condition}}.
 For example, writing \code{~.x < 20} would mean "where a variable value is less
 than 20, replace with NA".}
@@ -35,11 +35,11 @@ dat_ms
 
 replace_with_na_at(data = dat_ms,
                  .vars = "x",
-                 .funs = ~.x == -99)
+                 condition = ~.x == -99)
 
 replace_with_na_at(data = dat_ms,
                  .vars = c("x","z"),
-                 .funs = ~.x == -99)
+                 condition = ~.x == -99)
 
 
 }

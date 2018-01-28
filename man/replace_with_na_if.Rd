@@ -4,7 +4,7 @@
 \alias{replace_with_na_if}
 \title{Replace values with NA based on some condition, for variables that meet some predicate}
 \usage{
-replace_with_na_if(data, .predicate, .funs)
+replace_with_na_if(data, .predicate, condition)
 }
 \arguments{
 \item{data}{Dataframe}
@@ -12,7 +12,7 @@ replace_with_na_if(data, .predicate, .funs)
 \item{.predicate}{A predicate function to be applied to the columns or a
 logical vector.}
 
-\item{.funs}{A condition required to be TRUE to set NA. Here, the condition
+\item{condition}{A condition required to be TRUE to set NA. Here, the condition
 is specified with a formula, following the syntax: \code{~.x {condition}}.
 For example, writing \code{~.x < 20} would mean "where a variable value is less
 than 20, replace with NA".}
@@ -36,7 +36,7 @@ dat_ms
 
 replace_with_na_if(data = dat_ms,
                  .predicate = is.character,
-                 .funs = ~.x == "N/A")
+                 condition = ~.x == "N/A")
 
 replace_with_na(dat_ms,
               to_na = list(x = c(-99, -98),

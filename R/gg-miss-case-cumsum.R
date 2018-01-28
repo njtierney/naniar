@@ -8,6 +8,8 @@
 #' @param breaks the breaks for the x axis default is 20
 #'
 #' @return a ggplot object depicting the number of missings
+#'
+#' @seealso [geom_miss_point()] [gg_miss_case()] [gg_miss_fct()] [gg_miss_span()] [gg_miss_var()] [gg_miss_var_cumsum()] [gg_miss_which()]
 #' @export
 #'
 #' @examples

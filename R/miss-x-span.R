@@ -7,7 +7,7 @@
 #'     within each span.
 #'
 #' @param data data.frame
-#' @param var variable of interest. Currently just one variable
+#' @param var bare unqouted variable name of interest.
 #' @param span_every integer describing the length of the span to be explored
 
 #' @return dataframe with variables `n_miss`, `n_complete`, `prop_miss`, and
@@ -15,6 +15,8 @@
 #'     complete values within that given time span.
 #'
 #' @export
+#'
+#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_summary]() [miss_var_table]()
 #'
 #' @examples
 #'

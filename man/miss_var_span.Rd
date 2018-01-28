@@ -9,7 +9,7 @@ miss_var_span(data, var, span_every)
 \arguments{
 \item{data}{data.frame}
 
-\item{var}{variable of interest. Currently just one variable}
+\item{var}{bare unqouted variable name of interest.}
 
 \item{span_every}{integer describing the length of the span to be explored}
 }
@@ -37,4 +37,7 @@ miss_var_span(data = pedestrian,
      miss_var_span(var = hourly_counts,
                    span_every = 168)
 
+}
+\seealso{
+\url{miss_case_pct} \url{miss_case_prop} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_summary} \url{miss_case_table} \url{miss_summary} \url{miss_var_pct} \url{miss_var_prop} \url{miss_var_run} \url{miss_var_summary} \url{miss_var_table}
 }

@@ -9,6 +9,8 @@
 #' @param x a variable of interest to shift
 #' @param ... extra arguments to pass
 #'
+#' @seealso [add_shadow_shift()] [cast_shadow_shift()] [cast_shadow_shift_label()]
+#'
 #' @examples
 #' airquality$Ozone
 #' shadow_shift(airquality$Ozone)

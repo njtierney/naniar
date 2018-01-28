@@ -27,5 +27,5 @@ test_that("There are three columns in gather_shadow",{
 
 test_that("gather_shadow returns columns with right names",{
   expect_equal(names(gather_shadow(airquality)),
-               c("rows","var","miss"))
+               c("case","variable","missing"))
 })

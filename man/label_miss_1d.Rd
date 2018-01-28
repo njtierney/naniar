@@ -23,3 +23,6 @@ can we generalise label_miss to work for any number of variables?
 label_miss_1d(airquality$Ozone)
 
 }
+\seealso{
+\code{\link[=add_any_miss]{add_any_miss()}} \code{\link[=add_label_missings]{add_label_missings()}} \code{\link[=add_label_shadow]{add_label_shadow()}}
+}

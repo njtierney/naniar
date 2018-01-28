@@ -37,6 +37,8 @@ label_shadow_matrix <- function(x) {
 #'
 #' @export
 #'
+#' @seealso [add_any_miss()] [add_label_missings()] [add_label_shadow()]
+#'
 #' @examples
 #'
 #' label_miss_1d(airquality$Ozone)

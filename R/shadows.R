@@ -5,8 +5,7 @@
 #' matrix is the same dimension as the data, and consists of binary indicators
 #' of missingness of data values, where missing is represented as "NA", and not
 #' missing is represented as "!NA". Although these may be represented as 1 and
-#' 0, respectively. This representation can be seen in the figure below, adding
-#' the suffix "_NA" to the variables.
+#' 0, respectively.
 #'
 #' @param data dataframe
 #' @param ... selected variables to use
@@ -108,8 +107,8 @@ bind_shadow <- function(data, only_miss = FALSE){
 #' Long form representation of a shadow matrix
 #'
 #' `gather_shadow` is a long-form representation of binding the shadow matrix to
-#'     your data, producing variables named `rows`, `var`, and `miss`, where
-#'     `miss` contains the missing value representation.
+#'     your data, producing variables named `case`, `variable`, and `missing`, where
+#'     `missing` contains the missing value representation.
 #'
 #' @param data a dataframe
 #'
@@ -125,7 +124,8 @@ gather_shadow <- function(data){
 
   as_shadow(data) %>%
     dplyr::mutate(rows = 1:nrow(.)) %>%
-    tidyr::gather(key = "var",
-                  value = "miss",
-                  -rows)
+    tidyr::gather(key = "variable",
+                  value = "missing",
+                  -rows) %>%
+    dplyr::rename(case = rows)
 }

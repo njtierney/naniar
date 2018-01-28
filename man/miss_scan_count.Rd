@@ -9,10 +9,10 @@ miss_scan_count(data, search)
 \arguments{
 \item{data}{data}
 
-\item{search}{pattern to search for}
+\item{search}{values to search for}
 }
 \value{
-a dataframe of the ocurences of the pattern you searched for
+a dataframe of the occurences of the values you searched for
 }
 \description{
 Searching for different kinds of missing values is really annoying. If
@@ -20,8 +20,7 @@ you have values like -99 in your data, when they shouldn't be there,
 or they should be encoded as missing, it can be difficult to ascertain
 if they are there, and if so, where they are. \code{miss_scan_count} makes it
 easier for users to search for particular occurences of these values
-across their variables. This would allow the user to specify their own
-patterns.
+across their variables.
 }
 \examples{
 
@@ -32,7 +31,11 @@ dat_ms <- tibble::tribble(~x,  ~y,    ~z,
                          -99, "E",   -101,
                          -98, "F",   -1)
 
-miss_scan_count(dat_ms,"-99")
-miss_scan_count(dat_ms,c("-99","-98"))
+miss_scan_count(dat_ms,-99)
+miss_scan_count(dat_ms,c(-99,-98))
 miss_scan_count(dat_ms,c("-99","-98","N/A"))
+
+}
+\seealso{
+\url{miss_case_pct} \url{miss_case_prop} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_summary} \url{miss_case_table} \url{miss_summary} \url{miss_var_pct} \url{miss_var_prop} \url{miss_var_run} \url{miss_var_span} \url{miss_var_summary} \url{miss_var_table}
 }

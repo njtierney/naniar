@@ -35,7 +35,7 @@ test_that("1 column selection affected by _at",{
   df <- dat_ms
   out <- replace_with_na_at(data = df,
                           .vars = "x",
-                          .funs = ~.x == -99)
+                          condition = ~.x == -99)
   expect_equal(out$x, c(1,3,NA,NA,-98))
   expect_equal(out$z, c(-100, -99, -98, -101, -1))
 })
@@ -44,7 +44,7 @@ test_that("2 column selection affected by _at",{
   df <- dat_ms
   out <- replace_with_na_at(data = df,
                           .vars = c("x","z"),
-                          .funs = ~.x == -99)
+                          condition = ~.x == -99)
   expect_equal(out$x, c(1,3,NA,NA,-98))
   expect_equal(out$z, c(-100, NA, -98, -101, -1))
 })
@@ -61,7 +61,7 @@ test_that("columns are affected by _if",{
   df <- dat_ms
   out <- replace_with_na_if(data = df,
                           .predicate = is.integer,
-                          .funs = ~.x == -99)
+                          condition = ~.x == -99)
   expect_equal(out$x, c(1,3,NA,NA,-98))
   expect_equal(out$z, c(-100, -99, -98, -101, -1))
 })

@@ -8,6 +8,9 @@
 #' @param ... extra arguments
 #'
 #' @return a tibble of the percent of missing data in each variable
+#'
+#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_table]()
+#'
 #' @export
 #'
 #' @examples
@@ -61,6 +64,9 @@ miss_var_summary.grouped_df <- function(data, order = FALSE, ...) {
 #' @param ... extra arguments
 #'
 #' @return a tibble of the percent of missing data in each case.
+#'
+#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#'
 #' @export
 #'
 #' @examples
@@ -124,6 +130,9 @@ miss_case_summary.grouped_df <- function(data, order = FALSE, ...){
 #' @param ... extra arguments
 #'
 #' @return a tibble of missing data summaries
+#'
+#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#'
 #' @export
 #'
 #' @examples

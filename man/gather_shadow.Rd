@@ -14,8 +14,8 @@ dataframe in long, format, containing information about the missings
 }
 \description{
 \code{gather_shadow} is a long-form representation of binding the shadow matrix to
-your data, producing variables named \code{rows}, \code{var}, and \code{miss}, where
-\code{miss} contains the missing value representation.
+your data, producing variables named \code{case}, \code{variable}, and \code{missing}, where
+\code{missing} contains the missing value representation.
 }
 \examples{
 

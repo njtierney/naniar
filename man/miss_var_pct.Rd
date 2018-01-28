@@ -21,3 +21,6 @@ miss_var_pct(riskfactors)
 miss_var_pct(oceanbuoys)
 
 }
+\seealso{
+\url{miss_case_pct} \url{miss_case_prop} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_summary} \url{miss_case_table} \url{miss_summary} \url{miss_var_prop} \url{miss_var_run} \url{miss_var_span} \url{miss_var_summary} \url{miss_var_table}
+}

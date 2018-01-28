@@ -8,11 +8,16 @@
 #' @param data a dataframe
 #'
 #' @return a dataframe
+#'
+#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_case_summary]() [miss_case_table]() [miss_scan_count]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#'
 #' @export
 #'
 #' @examples
 #'
 #' miss_prop_summary(airquality)
+#' library(dplyr)
+#' airquality %>% group_by(Month) %>% miss_prop_summary()
 #'
 miss_prop_summary <- function(data){
 

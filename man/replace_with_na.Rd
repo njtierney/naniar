@@ -47,3 +47,6 @@ replace_with_na(dat_ms,
                           y = c("N/A"),
                           z = c(-101)))
 }
+\seealso{
+\url{replace_with_na} \url{replace_with_na_all} \url{replace_with_na_at} \url{replace_with_na_if}
+}

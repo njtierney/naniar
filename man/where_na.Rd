@@ -10,12 +10,12 @@ where_na(x)
 \item{x}{a dataframe}
 }
 \value{
-integers that describe the location of missing values
+a matrix with columns "row" and "col", which refer to the row and
+column that identify the position of a missing value in a dataframe
 }
 \description{
-Internal function that is short for \code{which(is.na(x))}. Creates integer
-locations of missing values in a dataframe. May be used in future \code{impl_df}
-class.
+Internal function that is short for \code{which(is.na(x), arr.ind = TRUE)}.
+Creates array index locations of missing values in a dataframe.
 }
 \examples{
 
@@ -24,5 +24,5 @@ where_na(oceanbuoys$sea_temp_c)
 
 }
 \seealso{
-which_na
+\code{\link[=which_na]{which_na()}}
 }

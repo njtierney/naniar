@@ -1,11 +1,15 @@
 #' Cumulative sum of the number of missings in each variable
 #'
-#' Provide a data.frame containing the cumulative sum of number & percentage of
+#' Calculate the cumulative sum of number & percentage of
 #'   missingness for each variable.
 #'
 #' @param data a data.frame
 #'
 #' @return a tibble of the cumulative sum of missing data in each variable
+#'
+#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_scan_count()] [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#'
+#'
 #' @noRd
 #'
 #' @examples
@@ -13,6 +17,8 @@
 #' miss_var_cumsum(airquality)
 #'
 #' library(dplyr)
+#'
+#' # respects dplyr::group_by
 #'
 #' airquality %>%
 #'   group_by(Month) %>%
@@ -32,7 +38,7 @@ miss_var_cumsum.default <- function(data){
 
   purrr::map_df(data,
                 # how many are missing in each variable?
-                function(x) sum(is.na(x))) %>%
+                function(x) n_miss(x)) %>%
     tidyr::gather(key = "variable",
                   value = "n_miss") %>%
     dplyr::mutate(n_miss_cumsum = cumsum(n_miss))

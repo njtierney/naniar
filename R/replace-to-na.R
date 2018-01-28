@@ -1,6 +1,6 @@
 #' Replace values with missings
 #'
-#' This function is currently deprecated, please see [replace_with_na()]
+#' This function is deprecated, please see [replace_with_na()].
 #'
 #' @param data A data.frame
 #' @param to_na A named list given the NA to replace values

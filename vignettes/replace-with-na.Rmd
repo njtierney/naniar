@@ -125,7 +125,7 @@ For example, if we want to replace all cases of -99 in our dataset, we write:
 
 ```{r replace-with-na-all-ex1}
 
-df %>% replace_with_na_all(.funs = ~.x == -99)
+df %>% replace_with_na_all(condition = ~.x == -99)
 
 ```
 
@@ -144,7 +144,7 @@ in the list of NA strings".
 ```{r replace-with-na-all-ex3}
 
 df %>%
-  replace_with_na_all(.funs = ~.x %in% na_strings)
+  replace_with_na_all(condition = ~.x %in% na_strings)
 
 ```
 
@@ -161,7 +161,7 @@ variables.
 # as vanilla `replace_with_na` above
 df %>% 
   replace_with_na_at(.vars = c("x","z"),
-                     .funs = ~.x == -99)
+                     condition = ~.x == -99)
 
 ```
 
@@ -173,7 +173,7 @@ for example, make a value NA if the exponent of that number is less than 1:
 
 df %>% 
   replace_with_na_at(.vars = c("x","z"),
-                     .funs = ~ exp(.x) < 1)
+                     condition = ~ exp(.x) < 1)
 ```
 
 Future work will work towards `replace_with_na_at` to use `dplyr`'s `vars` helper function, so that users can write code like:
@@ -182,11 +182,11 @@ Future work will work towards `replace_with_na_at` to use `dplyr`'s `vars` helpe
 
 df %>% 
   replace_with_na_at(.vars = vars(x,y),
-                     .funs = ~ exp(.x) < 1)
+                     condition = ~ exp(.x) < 1)
 
 df %>% 
   replace_with_na_at(.vars = ends_with("count"),
-                     .funs = ~ exp(.x) < 1)
+                     condition = ~ exp(.x) < 1)
 
 ```
 
@@ -200,7 +200,7 @@ and a given value inside that type of data. For example,
 
 df %>%
   replace_with_na_if(.predicate = is.character,
-                     .funs = ~.x %in% ("N/A"))
+                     condition = ~.x %in% ("N/A"))
 
 ```
 

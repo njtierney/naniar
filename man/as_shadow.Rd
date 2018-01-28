@@ -20,6 +20,5 @@ introduced in \href{https://www.researchgate.net/publication/2758672_Missing_Dat
 matrix is the same dimension as the data, and consists of binary indicators
 of missingness of data values, where missing is represented as "NA", and not
 missing is represented as "!NA". Although these may be represented as 1 and
-0, respectively. This representation can be seen in the figure below, adding
-the suffix "_NA" to the variables.
+0, respectively.
 }

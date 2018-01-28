@@ -12,6 +12,8 @@
 #' @return dataframe with column names "run_length" and "is_na", which describe
 #'     the length of the run, and whether that run describes a missing value.
 #'
+#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#'
 #' @export
 #'
 #' @examples

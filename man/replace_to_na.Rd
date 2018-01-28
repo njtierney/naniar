@@ -17,5 +17,5 @@ replace_to_na(data, to_na = list(), ...)
 values replaced by NA
 }
 \description{
-This function is currently deprecated, please see \code{\link[=replace_with_na]{replace_with_na()}}
+This function is deprecated, please see \code{\link[=replace_with_na]{replace_with_na()}}.
 }

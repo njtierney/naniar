@@ -26,3 +26,6 @@ airquality \%>\%
     mutate(Ozone_shift = shadow_shift(Ozone))
 
 }
+\seealso{
+\code{\link[=add_shadow_shift]{add_shadow_shift()}} \code{\link[=cast_shadow_shift]{cast_shadow_shift()}} \code{\link[=cast_shadow_shift_label]{cast_shadow_shift_label()}}
+}

@@ -11,9 +11,12 @@ n_complete_row(data)
 }
 \value{
 numeric vector of the number of complete values in each row
+
+#' @seealso \url{miss_case_pct} \url{miss_case_prop} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_summary} \url{miss_case_table} \url{miss_summary} \url{miss_var_pct} \url{miss_var_prop} \url{miss_var_run} \url{miss_var_span} \url{miss_var_summary} \url{miss_var_table} \url{n_complete} \url{n_complete_row} \url{n_miss} \url{n_miss_row} \url{pct_complete} \url{pct_miss} \url{prop_complete} \url{prop_complete_row} \url{prop_miss}
 }
 \description{
-Substitute for \code{rowSums(!is.na(data))}
+Substitute for \code{rowSums(!is.na(data))} but it also checks if input is NULL or
+is a dataframe
 }
 \examples{
 

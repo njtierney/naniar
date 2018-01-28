@@ -6,6 +6,8 @@
 #'
 #' @return numeric the proportion of variables that contain missing data
 #'
+#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#'
 #' @export
 #'
 #' @examples
@@ -35,6 +37,9 @@ miss_var_prop <- function(data){
 #'
 #' @export
 #'
+#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#'
+#'
 #' @examples
 #'
 #' miss_var_pct(riskfactors)
@@ -54,6 +59,9 @@ miss_var_pct <- function(data){
 #' @param data a dataframe
 #'
 #' @return numeric the proportion of cases that contain a missing value
+#'
+#' @seealso [miss_case_pct]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#'
 #' @export
 #'
 #' @examples
@@ -94,6 +102,9 @@ miss_case_prop <- function(data){
 #' @param data a dataframe
 #'
 #' @return numeric the percentage of cases that contain a missing value
+#'
+#' @seealso [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#'
 #' @export
 #'
 #' @examples

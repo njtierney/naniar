@@ -1,14 +1,14 @@
 #' Which rows and cols contain missings?
 #'
-#' Internal function that is short for `which(is.na(x))`. Creates integer
-#'   locations of missing values in a dataframe. May be used in future `impl_df`
-#'   class.
+#' Internal function that is short for `which(is.na(x), arr.ind = TRUE)`.
+#'   Creates array index locations of missing values in a dataframe.
 #'
 #' @param x a dataframe
 #'
-#' @return integers that describe the location of missing values
+#' @return a matrix with columns "row" and "col", which refer to the row and
+#'     column that identify the position of a missing value in a dataframe
 #'
-#' @seealso which_na
+#' @seealso [which_na()]
 #'
 #' @examples
 #'
@@ -20,6 +20,27 @@
 where_na <- function(x){
   which(is.na(x), arr.ind = TRUE)
 }
+
+#' Which elements contain missings?
+#'
+#' Equivalent to `which(is.na())` - returns integer locations of missing values.
+#'
+#' @param x a dataframe
+#'
+#' @return integer locations of missing values.
+#'
+#' @seealso [where_na()]
+#'
+#' @examples
+#'
+#' which_na(airquality)
+#'
+#' @export
+#'
+which_na <- function(x){
+  which(is.na(x))
+}
+
 
 #' Which variables contain missing values?
 #'

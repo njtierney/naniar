@@ -9,9 +9,12 @@ add_any_miss(data, ..., label = "any_miss")
 \arguments{
 \item{data}{data.frame}
 
-\item{...}{Variable names to use instead of the whole dataset. This can be
-one or more unquoted variable names separated by commas. These also
-respect the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.}
+\item{...}{Variable names to use instead of the whole dataset. By default this
+looks at the whole dataset. Otherwise, this is one or more unquoted
+expressions separated by commas. These also respect the dplyr verbs
+\code{starts_with}, \code{contains}, \code{ends_with}, etc. By default will add "_all" to
+the label if left blank, otherwise will add "_vars" to distinguish that it
+has not been used on all of the variables.}
 
 \item{label}{label for the column, defaults to "any_miss". By default if no
 additional variables are listed the label col is "any_miss_all", otherwise
@@ -23,18 +26,25 @@ those variables) has any missing values - indicated by "missing" and
 "complete".
 }
 \description{
-This adds a column named "any_miss" (by default) that describes whether any
-there are any missings in all of the variables (default), or whether any of
-the specified columns, specified using variables names or dplyr verbs,
+This adds a column named "any_miss" (by default) that describes whether
+there are any missings in all of the variables (default), or whether any
+of the specified columns, specified using variables names or dplyr verbs,
 \code{starts_with}, \code{contains}, \code{ends_with}, etc. By default the added column
 will be called "any_miss_all", if no variables are specified, otherwise,
 if variables are specified, the label will be "any_miss_vars" to indicate
-that not all variables have been used to create the labels. By default the
-\code{label} argument uses the prefix "any_miss", but this can be specified.
+that not all variables have been used to create the labels.
+}
+\details{
+By default the
+prefix "any_miss" is used, but this can be changed in the \code{label} argument.
 }
 \examples{
 
 airquality \%>\% add_any_miss()
+airquality \%>\% add_any_miss(Ozone)
 airquality \%>\% add_any_miss(Ozone, Solar.R)
 
+}
+\seealso{
+\code{\link[=bind_shadow]{bind_shadow()}} \code{\link[=add_any_miss]{add_any_miss()}} \code{\link[=add_label_missings]{add_label_missings()}} \code{\link[=add_label_shadow]{add_label_shadow()}} \code{\link[=add_miss_cluster]{add_miss_cluster()}} \code{\link[=add_n_miss]{add_n_miss()}} \code{\link[=add_prop_miss]{add_prop_miss()}} \code{\link[=add_shadow_shift]{add_shadow_shift()}} \code{\link[=cast_shadow]{cast_shadow()}}
 }

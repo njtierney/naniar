@@ -17,7 +17,7 @@ data with the added variable shifted and the suffix \code{_NA}
 }
 \description{
 Casting a shadow shifted column performs the equivalent pattern to
-"data %>% select(var) %>% shadow_shift()". This is a convenience function
+data %>% select(var) %>% shadow_shift(). This is a convenience function
 that makes it easy to perform certain visualisations, in line with the
 principle that the user should have a way to flexibly return data formats
 containing information about the missing data. It forms the base building
@@ -30,7 +30,13 @@ to select variables.
 airquality \%>\% cast_shadow(Ozone)
 airquality \%>\% cast_shadow(Ozone, Solar.R)
 
+airquality \%>\%
+  cast_shadow(Ozone,Solar.R) \%>\%
+  ggplot(aes(x = Ozone,
+             colour = Solar.R_NA)) +
+        geom_density()
+
 }
 \seealso{
-\code{\link[=cast_shadow_shift]{cast_shadow_shift()}}, \code{\link[=cast_shadow_shift_label]{cast_shadow_shift_label()}}
+\code{\link[=cast_shadow_shift]{cast_shadow_shift()}}, \code{\link[=cast_shadow_shift_label]{cast_shadow_shift_label()}} \code{\link[=bind_shadow]{bind_shadow()}} \code{\link[=add_any_miss]{add_any_miss()}} \code{\link[=add_label_missings]{add_label_missings()}} \code{\link[=add_label_shadow]{add_label_shadow()}} \code{\link[=add_miss_cluster]{add_miss_cluster()}} \code{\link[=add_prop_miss]{add_prop_miss()}} \code{\link[=add_shadow_shift]{add_shadow_shift()}}
 }

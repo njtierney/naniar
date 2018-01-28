@@ -1,14 +1,16 @@
 #' Plot Missing Data Points
 #'
-#' `geom_miss_point` provides a way to transform and plot missing values in
-#'   ggplot2. To do so it uses methods from ggobi to display missing data
-#'   points 10% below the minimum value, so that the values can be seen no the
-#'   same axis.
+#' @description `geom_miss_point` provides a way to transform and plot missing
+#'   values in ggplot2. To do so it uses methods from ggobi to display missing
+#'   data points 10\% below the minimum value, so that the values can be seen on
+#'   the same axis.
 #'
 #' @include legend-draw.R
 #' @name  geom_miss_point
 #' @title  geom_miss_point
 #' @note Warning message if na.rm = T is supplied.
+#'
+#' @seealso [gg_miss_case()][gg_miss_case_cumsum()][gg_miss_fct()][gg_miss_span()][gg_miss_var()][gg_miss_var_cumsum()][gg_miss_which()]
 #'
 #' @param mapping Set of aesthetic mappings created by [ggplot2::aes()]
 #' or [ggplot2::aes_()]. If specified and `inherit.aes = TRUE`
@@ -63,6 +65,14 @@
 #'        aes(x = Ozone,
 #'            y = Solar.R)) +
 #'  geom_miss_point()
+#'
+#'  # using facets
+#'
+#' ggplot(airquality,
+#'        aes(x = Ozone,
+#'            y = Solar.R)) +
+#'  geom_miss_point() +
+#'  facet_wrap(~Month)
 #'
 #' @export
  geom_miss_point <- function(mapping = NULL,

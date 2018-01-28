@@ -1,7 +1,7 @@
 #' Add a shadow column to a dataset
 #'
 #' Casting a shadow shifted column performs the equivalent pattern to
-#'   "data %>% select(var) %>% shadow_shift()". This is a convenience function
+#'   data %>% select(var) %>% shadow_shift(). This is a convenience function
 #'   that makes it easy to perform certain visualisations, in line with the
 #'   principle that the user should have a way to flexibly return data formats
 #'   containing information about the missing data. It forms the base building
@@ -15,7 +15,8 @@
 #'
 #' @return data with the added variable shifted and the suffix `_NA`
 #'
-#' @seealso [cast_shadow_shift()], [cast_shadow_shift_label()]
+#' @seealso [cast_shadow_shift()], [cast_shadow_shift_label()] [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_prop_miss()] [add_shadow_shift()]
+
 #'
 #' @export
 #'
@@ -23,6 +24,12 @@
 #'
 #' airquality %>% cast_shadow(Ozone)
 #' airquality %>% cast_shadow(Ozone, Solar.R)
+#'
+#' airquality %>%
+#'   cast_shadow(Ozone,Solar.R) %>%
+#'   ggplot(aes(x = Ozone,
+#'              colour = Solar.R_NA)) +
+#'         geom_density()
 #'
 cast_shadow <- function(data, ...){
 
@@ -55,6 +62,8 @@ cast_shadow <- function(data, ...){
 #'
 #' @export
 #'
+#' @seealso [cast_shadow_shift()], [cast_shadow_shift_label()] [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_prop_miss()] [add_shadow_shift()]
+#'
 #' @examples
 #'
 #' airquality %>% cast_shadow_shift(Ozone)
@@ -83,6 +92,8 @@ cast_shadow_shift <- function(data, ...){
 #'
 #' @return data.frame with the shadow and shadow_shift vars, and missing labels
 #' @export
+#'
+#' @seealso [cast_shadow_shift()], [cast_shadow_shift_label()] [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_prop_miss()] [add_shadow_shift()]
 #'
 #' @examples
 #'

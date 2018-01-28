@@ -18,7 +18,7 @@ helpfile, and options include: "ward.D", "ward.D2", "single", "complete",
 \item{n_clusters}{numeric the number of clusters you expect. Defaults to 2.}
 }
 \description{
-Make a way to extract the cluster of missingness that a group belongs to.
+A way to extract the cluster of missingness that a group belongs to.
 For example, if you use \code{vis_miss(airquality, cluster = TRUE)}, you can
 see some clustering in the data, but you do not have a way to identify
 the cluster. Future work will incorporate the \code{seriation} package to
@@ -30,4 +30,7 @@ add_miss_cluster(airquality)
 add_miss_cluster(airquality, cluster_method = "ward.D")
 add_miss_cluster(airquality, cluster_method = "ward.D", n_clusters = 3)
 add_miss_cluster(airquality, n_clusters = 3)
+}
+\seealso{
+\code{\link[=bind_shadow]{bind_shadow()}} \code{\link[=add_any_miss]{add_any_miss()}} \code{\link[=add_label_missings]{add_label_missings()}} \code{\link[=add_label_shadow]{add_label_shadow()}} \code{\link[=add_miss_cluster]{add_miss_cluster()}} \code{\link[=add_n_miss]{add_n_miss()}} \code{\link[=add_prop_miss]{add_prop_miss()}} \code{\link[=add_shadow_shift]{add_shadow_shift()}} \code{\link[=cast_shadow]{cast_shadow()}}
 }

@@ -5,13 +5,13 @@
 #'   `starts_with`, `contains`, `ends_with`, etc.
 #'
 #' @param data data.frame
-#' @param ... One or more unquoted variable names separated by commas. These also
+#' @param ... One or more unquoted variable names, separated by commas. These also
 #'   respect the dplyr verbs `starts_with`, `contains`, `ends_with`, etc.
 #'
 #' @return data.frame
 #' @export
 #'
-#' @seealso [as_shadow()] [add_shadow_shift()]
+#' @seealso [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_n_miss()] [add_prop_miss()] [add_shadow_shift()] [cast_shadow()]
 #'
 #' @examples
 #'
@@ -21,7 +21,7 @@
 add_shadow <- function(data, ...){
 
   if (missing(...)) {
-    stop("please include variables to be selected after the data")
+    stop("No variables specified - please include variables to be selected")
   } else {
 
     quo_vars <- rlang::quos(...)
@@ -36,11 +36,11 @@ add_shadow <- function(data, ...){
 
 #' Add a shadow shifted column to a dataset
 #'
-#' Shadow shift only the selected variables in a dataset by specifying variable
-#'   names or use dplyr `vars` and dplyr verbs `starts_with`, `contains`,
-#'   `ends_with`, etc.
+#' Shadow shift missing values using only the selected variables in a dataset,
+#'   by specifying variable names or use dplyr `vars` and dplyr verbs
+#'   `starts_with`, `contains`, `ends_with`, etc.
 #'
-#' @param data data.frame or .tbl
+#' @param data data.frame
 #' @param ... One or more unquoted variable names separated by commas. These also
 #'   respect the dplyr verbs `starts_with`, `contains`, `ends_with`, etc.
 #' @param suffix suffix to add to variable, defaults to "shift"
@@ -48,6 +48,8 @@ add_shadow <- function(data, ...){
 #' @return data with the added variable shifted named as `var_suffix`
 #'
 #' @export
+#'
+#' @seealso [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_n_miss()] [add_prop_miss()] [add_shadow_shift()] [cast_shadow()]
 #'
 #' @examples
 #'
@@ -87,19 +89,27 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
 
 #' Add a column describing presence of any missing values
 #'
-#' This adds a column named "any_miss" (by default) that describes whether any
-#'   there are any missings in all of the variables (default), or whether any of
-#'   the specified columns, specified using variables names or dplyr verbs,
+#' This adds a column named "any_miss" (by default) that describes whether
+#'   there are any missings in all of the variables (default), or whether any
+#'   of the specified columns, specified using variables names or dplyr verbs,
 #'   `starts_with`, `contains`, `ends_with`, etc. By default the added column
-#'    will be called "any_miss_all", if no variables are specified, otherwise,
-#'    if variables are specified, the label will be "any_miss_vars" to indicate
-#'    that not all variables have been used to create the labels. By default the
-#'    `label` argument uses the prefix "any_miss", but this can be specified.
+#'   will be called "any_miss_all", if no variables are specified, otherwise,
+#'   if variables are specified, the label will be "any_miss_vars" to indicate
+#'   that not all variables have been used to create the labels.
+#'
+#'
+#'   By default the
+#'   prefix "any_miss" is used, but this can be changed in the `label` argument.
 #'
 #' @param data data.frame
-#' @param ... Variable names to use instead of the whole dataset. This can be
-#'   one or more unquoted variable names separated by commas. These also
-#'   respect the dplyr verbs `starts_with`, `contains`, `ends_with`, etc.
+#' @param ...
+#'
+#' Variable names to use instead of the whole dataset. By default this
+#'   looks at the whole dataset. Otherwise, this is one or more unquoted
+#'   expressions separated by commas. These also respect the dplyr verbs
+#'   `starts_with`, `contains`, `ends_with`, etc. By default will add "_all" to
+#'   the label if left blank, otherwise will add "_vars" to distinguish that it
+#'   has not been used on all of the variables.
 #' @param label label for the column, defaults to "any_miss". By default if no
 #'   additional variables are listed the label col is "any_miss_all", otherwise
 #'   it is "any_miss_vars", if variables are specified.
@@ -110,9 +120,12 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
 #'
 #' @export
 #'
+#' @seealso [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_n_miss()] [add_prop_miss()] [add_shadow_shift()] [cast_shadow()]
+#'
 #' @examples
 #'
 #' airquality %>% add_any_miss()
+#' airquality %>% add_any_miss(Ozone)
 #' airquality %>% add_any_miss(Ozone, Solar.R)
 #'
 add_any_miss <- function(data, ..., label = "any_miss"){
@@ -164,6 +177,8 @@ add_any_miss <- function(data, ..., label = "any_miss"){
 #'
 #' @export
 #'
+#' @seealso [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_n_miss()] [add_prop_miss()] [add_shadow_shift()] [cast_shadow()]
+#'
 #' @examples
 #'
 #' label_missings(airquality)
@@ -193,8 +208,11 @@ label_missings <- function(data){
 #'
 #' @param data data.frame
 #'
-#' @return data.frame with a column "any_missing" that is either "Not Missing" or "Missing" for the purposes of plotting / exploration / nice print methods
+#' @return data.frame with a column "any_missing" that is either "Not Missing"
+#'   or "Missing" for the purposes of plotting / exploration / nice print methods
 #' @export
+#'
+#' @seealso [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_n_miss()] [add_prop_miss()] [add_shadow_shift()] [cast_shadow()]
 #'
 #' @examples
 #'
@@ -249,6 +267,8 @@ label_shadow <- function(data){
 #'
 #' @export
 #'
+#' @seealso [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_n_miss()] [add_prop_miss()] [add_shadow_shift()] [cast_shadow()]
+#'
 #' @examples
 #'
 #' airquality %>%
@@ -265,7 +285,7 @@ add_label_shadow <- function(data){
 
 #' Add a column that tells us which "missingness cluster" a row belongs to
 #'
-#' Make a way to extract the cluster of missingness that a group belongs to.
+#' A way to extract the cluster of missingness that a group belongs to.
 #'     For example, if you use `vis_miss(airquality, cluster = TRUE)`, you can
 #'     see some clustering in the data, but you do not have a way to identify
 #'     the cluster. Future work will incorporate the `seriation` package to
@@ -278,6 +298,8 @@ add_label_shadow <- function(data){
 #'    "average" (= UPGMA), "mcquitty" (= WPGMA), "median" (= WPGMC) or
 #'    "centroid" (= UPGMC).
 #' @param n_clusters numeric the number of clusters you expect. Defaults to 2.
+#'
+#' @seealso [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_n_miss()] [add_prop_miss()] [add_shadow_shift()] [cast_shadow()]
 #'
 #' @export
 #'

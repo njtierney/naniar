@@ -50,3 +50,6 @@ prp(type = 4,
     extra = 101,
     prefix = "prop_miss = ")
 }
+\seealso{
+\code{\link[=bind_shadow]{bind_shadow()}} \code{\link[=add_any_miss]{add_any_miss()}} \code{\link[=add_label_missings]{add_label_missings()}} \code{\link[=add_label_shadow]{add_label_shadow()}} \code{\link[=add_miss_cluster]{add_miss_cluster()}} \code{\link[=add_prop_miss]{add_prop_miss()}} \code{\link[=add_shadow_shift]{add_shadow_shift()}} \code{\link[=cast_shadow]{cast_shadow()}}
+}

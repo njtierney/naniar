@@ -35,3 +35,6 @@ airquality \%>\%
         geom_point()
 
 }
+\seealso{
+\code{\link[=cast_shadow_shift]{cast_shadow_shift()}}, \code{\link[=cast_shadow_shift_label]{cast_shadow_shift_label()}} \code{\link[=bind_shadow]{bind_shadow()}} \code{\link[=add_any_miss]{add_any_miss()}} \code{\link[=add_label_missings]{add_label_missings()}} \code{\link[=add_label_shadow]{add_label_shadow()}} \code{\link[=add_miss_cluster]{add_miss_cluster()}} \code{\link[=add_prop_miss]{add_prop_miss()}} \code{\link[=add_shadow_shift]{add_shadow_shift()}}
+}

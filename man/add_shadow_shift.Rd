@@ -7,7 +7,7 @@
 add_shadow_shift(data, ..., suffix = "shift")
 }
 \arguments{
-\item{data}{data.frame or .tbl}
+\item{data}{data.frame}
 
 \item{...}{One or more unquoted variable names separated by commas. These also
 respect the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.}
@@ -18,9 +18,9 @@ respect the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, e
 data with the added variable shifted named as \code{var_suffix}
 }
 \description{
-Shadow shift only the selected variables in a dataset by specifying variable
-names or use dplyr \code{vars} and dplyr verbs \code{starts_with}, \code{contains},
-\code{ends_with}, etc.
+Shadow shift missing values using only the selected variables in a dataset,
+by specifying variable names or use dplyr \code{vars} and dplyr verbs
+\code{starts_with}, \code{contains}, \code{ends_with}, etc.
 }
 \examples{
 
@@ -28,4 +28,7 @@ pedestrian \%>\% add_shadow_shift(hourly_counts)
 
 airquality \%>\% add_shadow_shift(Ozone, Solar.R)
 
+}
+\seealso{
+\code{\link[=bind_shadow]{bind_shadow()}} \code{\link[=add_any_miss]{add_any_miss()}} \code{\link[=add_label_missings]{add_label_missings()}} \code{\link[=add_label_shadow]{add_label_shadow()}} \code{\link[=add_miss_cluster]{add_miss_cluster()}} \code{\link[=add_n_miss]{add_n_miss()}} \code{\link[=add_prop_miss]{add_prop_miss()}} \code{\link[=add_shadow_shift]{add_shadow_shift()}} \code{\link[=cast_shadow]{cast_shadow()}}
 }

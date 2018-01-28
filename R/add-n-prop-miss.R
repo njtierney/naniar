@@ -17,6 +17,8 @@
 #'
 #' @export
 #'
+#' @seealso [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_prop_miss()] [add_shadow_shift()] [cast_shadow()]
+#'
 #' @examples
 #'
 #' airquality %>% add_n_miss()
@@ -60,6 +62,8 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #' @return a dataframe
 #'
 #' @export
+#'
+#' @seealso [bind_shadow()] [add_any_miss()] [add_label_missings()] [add_label_shadow()] [add_miss_cluster()] [add_prop_miss()] [add_shadow_shift()] [cast_shadow()]
 #'
 #' @examples
 #'

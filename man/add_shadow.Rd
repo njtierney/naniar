@@ -9,7 +9,7 @@ add_shadow(data, ...)
 \arguments{
 \item{data}{data.frame}
 
-\item{...}{One or more unquoted variable names separated by commas. These also
+\item{...}{One or more unquoted variable names, separated by commas. These also
 respect the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.}
 }
 \value{
@@ -27,5 +27,5 @@ airquality \%>\% add_shadow(Ozone, Solar.R)
 
 }
 \seealso{
-\code{\link[=as_shadow]{as_shadow()}} \code{\link[=add_shadow_shift]{add_shadow_shift()}}
+\code{\link[=bind_shadow]{bind_shadow()}} \code{\link[=add_any_miss]{add_any_miss()}} \code{\link[=add_label_missings]{add_label_missings()}} \code{\link[=add_label_shadow]{add_label_shadow()}} \code{\link[=add_miss_cluster]{add_miss_cluster()}} \code{\link[=add_n_miss]{add_n_miss()}} \code{\link[=add_prop_miss]{add_prop_miss()}} \code{\link[=add_shadow_shift]{add_shadow_shift()}} \code{\link[=cast_shadow]{cast_shadow()}}
 }

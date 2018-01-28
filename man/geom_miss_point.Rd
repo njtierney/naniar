@@ -46,13 +46,13 @@ are three types of arguments you can use here:
 }}
 }
 \description{
-Plot Missing Data Points
+\code{geom_miss_point} provides a way to transform and plot missing
+values in ggplot2. To do so it uses methods from ggobi to display missing
+data points 10\% below the minimum value, so that the values can be seen on
+the same axis.
 }
 \details{
-\code{geom_miss_point} provides a way to transform and plot missing values in
-ggplot2. To do so it uses methods from ggobi to display missing data
-points 10% below the minimum value, so that the values can be seen no the
-same axis.
+Plot Missing Data Points
 }
 \note{
 Warning message if na.rm = T is supplied.
@@ -73,4 +73,15 @@ ggplot(airquality,
            y = Solar.R)) +
  geom_miss_point()
 
+ # using facets
+
+ggplot(airquality,
+       aes(x = Ozone,
+           y = Solar.R)) +
+ geom_miss_point() +
+ facet_wrap(~Month)
+
+}
+\seealso{
+[gg_miss_case()][gg_miss_case_cumsum()][gg_miss_fct()][gg_miss_span()][gg_miss_var()][gg_miss_var_cumsum()][gg_miss_which()]
 }

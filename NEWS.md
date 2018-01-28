@@ -7,6 +7,8 @@
 
 - Added a `facet` argument to `gg_miss_var`, `gg_miss_case`, and `gg_miss_span`. This makes it easier for users to visualise these plots across the values of another variable. In the future I will consider adding `facet` to the other shorthand plotting function, but at the moment these seemed to be the ones that would benefit the most from this feature.
 
+- added `which_na` - replacement for `which(is.na(x))`
+
 # Minor changes
 
 - Updated the "Gallery of Missing Data Visualisations" to include the `facet` features and `order_cases`.

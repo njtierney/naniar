@@ -13,10 +13,10 @@ gg_miss_span(data, var, span_every, facet)
 
 \item{span_every}{integer describing the length of the span to be explored}
 
-\item{facet}{a single bare variable name, if you want to create a faceted plot.}
+\item{facet}{(optional) a single bare variable name, if you want to create a faceted plot.}
 }
 \value{
-ggplot2 object
+ggplot2 showing the number of missings in a span (window, or breaksize)
 }
 \description{
 \code{gg_miss_span} is a replacement function to
@@ -35,4 +35,7 @@ gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
 
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000, facet = sensor_name)
+}
+\seealso{
+\code{\link[=geom_miss_point]{geom_miss_point()}} \code{\link[=gg_miss_case]{gg_miss_case()}} \link{gg_miss_case_cumsum} \code{\link[=gg_miss_fct]{gg_miss_fct()}} \code{\link[=gg_miss_var]{gg_miss_var()}} \code{\link[=gg_miss_var_cumsum]{gg_miss_var_cumsum()}} \code{\link[=gg_miss_which]{gg_miss_which()}}
 }

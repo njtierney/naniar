@@ -1,4 +1,3 @@
-
 #' Plot the number of missings in a given repeating span
 #'
 #' `gg_miss_span` is a replacement function to
@@ -9,9 +8,11 @@
 #' @param data data.frame
 #' @param var a bare unquoted variable name from `data`.
 #' @param span_every integer describing the length of the span to be explored
-#' @param facet a single bare variable name, if you want to create a faceted plot.
+#' @param facet (optional) a single bare variable name, if you want to create a faceted plot.
 #'
-#' @return ggplot2 object
+#' @seealso [geom_miss_point()] [gg_miss_case()] [gg_miss_case_cumsum] [gg_miss_fct()] [gg_miss_var()] [gg_miss_var_cumsum()] [gg_miss_which()]
+
+#' @return ggplot2 showing the number of missings in a span (window, or breaksize)
 #' @export
 #'
 #' @examples

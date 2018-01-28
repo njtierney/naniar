@@ -10,7 +10,7 @@ gg_miss_var_cumsum(x)
 \item{x}{a data.frame}
 }
 \value{
-a ggplot object
+a ggplot object showing the cumulative sum of missings over the variables
 }
 \description{
 A plot showing the cumulative sum of missing values for each variable,
@@ -20,4 +20,7 @@ default minimal theme is used, which can be customised as normal for ggplot.
 \examples{
 
 gg_miss_var_cumsum(airquality)
+}
+\seealso{
+\code{\link[=geom_miss_point]{geom_miss_point()}} \code{\link[=gg_miss_case]{gg_miss_case()}} \link{gg_miss_case_cumsum} \code{\link[=gg_miss_fct]{gg_miss_fct()}} \code{\link[=gg_miss_span]{gg_miss_span()}} \code{\link[=gg_miss_var]{gg_miss_var()}} \code{\link[=gg_miss_which]{gg_miss_which()}}
 }

@@ -5,10 +5,14 @@
 #'   can be customised as normal for ggplot.
 #'
 #' @param x data.frame
-#' @param facet a single bare variable name, if you want to create a faceted plot.
-#' @param order_cases logical Order the rows by missingness (default is no - FALSE)
+#' @param facet (optional) a single bare variable name, if you want to create a faceted plot.
+#' @param order_cases logical Order the rows by missingness (default is FALSE -
+#'    no order).
 #'
 #' @return a ggplot object depicting the number of missings in a given case.
+#'
+#' @seealso [geom_miss_point()] [gg_miss_case_cumsum] [gg_miss_fct()] [gg_miss_span()] [gg_miss_var()] [gg_miss_var_cumsum()] [gg_miss_which()]
+#'
 #' @export
 #'
 #' @examples
@@ -22,7 +26,7 @@
 #'
 gg_miss_case <- function(x, facet, order_cases = FALSE){
 
-  if (!missing(facet)){
+  if (!missing(facet)) {
     quo_group_by <- rlang::enquo(facet)
 
     group_string <- deparse(substitute(facet))

@@ -9,7 +9,7 @@ gg_miss_var(x, facet, show_pct = FALSE)
 \arguments{
 \item{x}{a dataframe}
 
-\item{facet}{bare variable name, if you want to create a faceted plot.}
+\item{facet}{(optional) bare variable name, if you want to create a faceted plot.}
 
 \item{show_pct}{logical shows the number of missings (default), but if set to
 TRUE, it will display the proportion of missings.}
@@ -31,4 +31,7 @@ gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 gg_miss_var(airquality, Month)
 gg_miss_var(airquality, Month, TRUE)
 
+}
+\seealso{
+\code{\link[=geom_miss_point]{geom_miss_point()}} \code{\link[=gg_miss_case]{gg_miss_case()}} \link{gg_miss_case_cumsum} \code{\link[=gg_miss_fct]{gg_miss_fct()}} \code{\link[=gg_miss_span]{gg_miss_span()}} \code{\link[=gg_miss_var]{gg_miss_var()}} \code{\link[=gg_miss_var_cumsum]{gg_miss_var_cumsum()}} \code{\link[=gg_miss_which]{gg_miss_which()}}
 }

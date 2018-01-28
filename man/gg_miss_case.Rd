@@ -9,9 +9,10 @@ gg_miss_case(x, facet, order_cases = FALSE)
 \arguments{
 \item{x}{data.frame}
 
-\item{facet}{a single bare variable name, if you want to create a faceted plot.}
+\item{facet}{(optional) a single bare variable name, if you want to create a faceted plot.}
 
-\item{order_cases}{logical Order the rows by missingness (default is no - FALSE)}
+\item{order_cases}{logical Order the rows by missingness (default is FALSE -
+no order).}
 }
 \value{
 a ggplot object depicting the number of missings in a given case.
@@ -30,4 +31,7 @@ gg_miss_case(airquality, order_cases = TRUE)
 gg_miss_case(airquality, facet = Month)
 gg_miss_case(airquality, facet = Month, order_cases = TRUE)
 
+}
+\seealso{
+\code{\link[=geom_miss_point]{geom_miss_point()}} \link{gg_miss_case_cumsum} \code{\link[=gg_miss_fct]{gg_miss_fct()}} \code{\link[=gg_miss_span]{gg_miss_span()}} \code{\link[=gg_miss_var]{gg_miss_var()}} \code{\link[=gg_miss_var_cumsum]{gg_miss_var_cumsum()}} \code{\link[=gg_miss_which]{gg_miss_which()}}
 }

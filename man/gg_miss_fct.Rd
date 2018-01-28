@@ -9,10 +9,11 @@ gg_miss_fct(x, fct)
 \arguments{
 \item{x}{data.frame}
 
-\item{fct}{column containing the factor variable}
+\item{fct}{column containing the factor variable to visualise}
 }
 \value{
-ggplot object depicting the number of missings
+ggplot object depicting the % missing of each factor level for
+each variable.
 }
 \description{
 This function draws a ggplot plot of the number of missings in each column,
@@ -26,4 +27,7 @@ library(ggplot2)
 gg_miss_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
 
 
+}
+\seealso{
+\code{\link[=geom_miss_point]{geom_miss_point()}} \code{\link[=gg_miss_case]{gg_miss_case()}} \link{gg_miss_case_cumsum} \code{\link[=gg_miss_span]{gg_miss_span()}} \code{\link[=gg_miss_var]{gg_miss_var()}} \code{\link[=gg_miss_var_cumsum]{gg_miss_var_cumsum()}} \code{\link[=gg_miss_which]{gg_miss_which()}}
 }

@@ -6,7 +6,10 @@
 #'
 #' @param x a data.frame
 #'
-#' @return a ggplot object
+#' @return a ggplot object showing the cumulative sum of missings over the variables
+#'
+#' @seealso [geom_miss_point()] [gg_miss_case()] [gg_miss_case_cumsum] [gg_miss_fct()] [gg_miss_span()] [gg_miss_var()] [gg_miss_which()]
+
 #' @export
 #'
 #' @examples

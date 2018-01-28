@@ -6,11 +6,14 @@
 #'   customised as normal for ggplot.
 #'
 #' @param x a dataframe
-#' @param facet bare variable name, if you want to create a faceted plot.
+#' @param facet (optional) bare variable name, if you want to create a faceted plot.
 #' @param show_pct logical shows the number of missings (default), but if set to
 #'  TRUE, it will display the proportion of missings.
 #'
 #' @return a ggplot object depicting the number of missings in a given column
+#'
+#' @seealso [geom_miss_point()] [gg_miss_case()] [gg_miss_case_cumsum] [gg_miss_fct()] [gg_miss_span()] [gg_miss_var()] [gg_miss_var_cumsum()] [gg_miss_which()]
+#'
 #' @export
 #'
 #' @examples

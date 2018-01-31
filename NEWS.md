@@ -1,106 +1,62 @@
-# naniar 0.1.7.9600 (2017/01/26)
+# naniar 0.2.0.9000 (2017/01/29) ("The First Joke and Other Matters")
 =========================
-
-# New Feature
-
-- Cleaned up the visualisation of `gg_miss_case` to be clearer and less cluttered ( [#117](https://github.com/njtierney/naniar/issues/117)), also added n `order_cases` option to order by cases.
-
-- Added a `facet` argument to `gg_miss_var`, `gg_miss_case`, and `gg_miss_span`. This makes it easier for users to visualise these plots across the values of another variable. In the future I will consider adding `facet` to the other shorthand plotting function, but at the moment these seemed to be the ones that would benefit the most from this feature.
-
-- added `which_na` - replacement for `which(is.na(x))`
-
-# Minor changes
-
-- Updated the "Gallery of Missing Data Visualisations" to include the `facet` features and `order_cases`.
-- Improved handling of `shadow_shift` when there are Inf or -Inf values (see  [#117](https://github.com/njtierney/naniar/issues/90))
-
-# Misc
-
-- Tidied up internal documentation and files for `gg_miss_*` family - each visualisation now has it's own file.
-
-# naniar 0.1.6.9500 (2017/01/19)
-=========================
-
-# New Feature
-
-- `miss_scan_count`. This makes it easier for users to search for particular
-occurences of these values across their variables. [#119](https://github.com/njtierney/naniar/issues/119)
-
-# naniar 0.1.5.9500 (2017/01/19)
-=========================
-
-# Breaking change
-
-- `cast_shadow` no longer works when called as `cast_shadow(data)`. This action used to return all variables, and then shadow variables for the variables that only contained missing values. This was inconsistent with the use of `cast_shadow(data, var1, var2)`. A new option has been added to `bind_shadow` that controls this - discussed below. See more details at
-[issue 65](https://github.com/njtierney/naniar/issues/106).
-
-# New Feature
-
-- `bind_shadow` gains a `only_miss` argument. When set to FALSE (the default) it
-will bind a dataframe with all of the variables duplicated with their shadow.
-Setting this to TRUE will bind variables only those variables that contain
-missing values.
-
-# Bug fix
-
-- `oceanbuoys` now is numeric type for year, latitude, and longitude, previously it was factor. [See related issue](https://github.com/njtierney/naniar/issues/110)
-
-# naniar 0.1.4.9000 (2017/01/12)
-=========================
-
-# Breaking change
-
-- Deprecated `replace_to_na`, with `replace_with_na`, as it is a more natural phrase ("replace coffee to tea" vs "replace coffee with tea"). This will be made defunct in the next version.
 
 # New Features
+
+- Speed improvements. Thanks to the help, contributions, and discussion with Romain François and Jim Hester, naniar now has greatly improved speed for calculating the missingness in each row. These speedups should continue to improve in future releases.
 
 - New "scoped variants" of `replace_with_na`, thankyou to Colin Fay for his work on this:
   - `replace_with_na_all` replaces all NAs across the dataframe that meet a specified condition (using the syntax `~.x == -99`)
   - `replace_with_na_at` replaces all NAs across for specified variables
   - `replace_with_na_if` replaces all NAs for those variables that satisfy some predicate function (e.g., is.character)
+- added `which_na` - replacement for `which(is.na(x))`
 
-# naniar 0.1.3.9100 (2017/12/15)
-=========================
+- `miss_scan_count`. This makes it easier for users to search for particular
+occurences of these values across their variables. [#119](https://github.com/njtierney/naniar/issues/119)
 
-# New Features
-
-- Speed improvements. Some discussion with Romain François and Jim Hester have 
-  led to some really nice speedups of rowwise counting of missing values. At 
-  the moment we have merged Jim's branch of that uses rowMeans, and in the very
-  near future will merge in the c++ changes to make naniar as fast as possible.
-
-# New functions
-
-- `n_miss_row` calculates the number of missing values in each row, returning a vector. There are also 3 other functions which are similar in spirit: `n_complete_row`, `prop_miss_row`, and `prop_complete_row`, which return a vector of the number of
-complete obserations, the proportion of missings in a row, and the proportion
-of complete obserations in a row
+- `n_miss_row` calculates the number of missing values in each row, returning a
+vector. There are also 3 other functions which are similar in spirit:
+`n_complete_row`, `prop_miss_row`, and `prop_complete_row`, which return a
+vector of the number of complete obserations, the proportion of missings in a
+row, and the proportion of complete obserations in a row
 
 - `add_miss_cluster` is a new function that calculates a cluster of missingness 
   for each row, using `hclust`. This can be useful in exploratory modelling
   of missingness, similar to [Tierney et al 2015](http://bmjopen.bmj.com/content/5/6/e007450). and [Barnett et al. 2017](http://bmjopen.bmj.com/content/7/10/e017284)
 
-# Minor Changes
+- Now exported `where_na` - a function that returns the positions of NA values. For a dataframe it returns a matrix of row and col positions of NAs, and for a vector it returns a vector of positions of NAs. (#105)
 
-- minor changes to graphics in gg_miss_fct - change legend title from
-"Percent Missing" to "% Miss".
+# Minor changes
 
-# naniar 0.1.2.9000 (2017/09/01)
-=========================
+- Updated the vignette "Gallery of Missing Data Visualisations" to include the `facet` features and `order_cases`.
+- `bind_shadow` gains a `only_miss` argument. When set to FALSE (the default) it
+will bind a dataframe with all of the variables duplicated with their shadow.
+Setting this to TRUE will bind variables only those variables that contain
+missing values.
+- Cleaned up the visualisation of `gg_miss_case` to be clearer and less cluttered ( [#117](https://github.com/njtierney/naniar/issues/117)), also added n `order_cases` option to order by cases.
+- Added a `facet` argument to `gg_miss_var`, `gg_miss_case`, and `gg_miss_span`. This makes it easier for users to visualise these plots across the values of another variable. In the future I will consider adding `facet` to the other shorthand plotting function, but at the moment these seemed to be the ones that would benefit the most from this feature.
 
-# New Features
+# Bug fix
+
+- `oceanbuoys` now is numeric type for year, latitude, and longitude, previously it was factor. [See related issue](https://github.com/njtierney/naniar/issues/110)
+- Improved handling of `shadow_shift` when there are Inf or -Inf values (see  [#117](https://github.com/njtierney/naniar/issues/90))
+
+# Breaking change
+
+- Deprecated `replace_to_na`, with `replace_with_na`, as it is a more natural phrase ("replace coffee to tea" vs "replace coffee with tea"). This will be made defunct in the next version.
+
+- `cast_shadow` no longer works when called as `cast_shadow(data)`. This action used to return all variables, and then shadow variables for the variables that only contained missing values. This was inconsistent with the use of `cast_shadow(data, var1, var2)`. A new option has been added to `bind_shadow` that controls this - discussed below. See more details at
+[issue 65](https://github.com/njtierney/naniar/issues/106).
+
 
 - Change behaviour of `cast_shadow` so that the default option is to return only the variables that contain missings. This is different to `bind_shadow`, which binds a complete shadow matrix to the dataframe. A way to think about this is that the shadow is only cast on variables that contain missing values, whereas a bind is binding a complete shadow to the data. This may change in the future to be the default option for `bind_shadow`.
-
-# naniar 0.1.1.9000 (2017/08/30)
-=========================
-
-# New Features
-
-- Now exported `where_na` - a function that returns the positions of NA values. For a dataframe it returns a matrix of row and col positions of NAs, and for a vector it returns a vector of positions of NAs. (#105)
 
 # Minor Changes
 
 - Update vignettes to have floating menu and better figure size.
+- minor changes to graphics in gg_miss_fct - change legend title from
+"Percent Missing" to "% Miss".
+
 
 # naniar 0.1.0 (2017/08/09) "The Founding of `naniar`"
 =========================

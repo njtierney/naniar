@@ -3,8 +3,6 @@
 #' @description stat_miss_point adds a geometry for displaying missingness to
 #'   geom_point
 #'
-#' @note todo: Warning message if na.rm = T is supplied.
-#'
 #' @param mapping Set of aesthetic mappings created by [ggplot2::aes()]
 #'   or [ggplot2::aes_()]. If specified and `inherit.aes = TRUE`
 #'   (the default), is combined with the default mapping at the top level of the

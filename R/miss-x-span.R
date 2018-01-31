@@ -7,7 +7,7 @@
 #'     within each span.
 #'
 #' @param data data.frame
-#' @param var bare unqouted variable name of interest.
+#' @param var bare unquoted variable name of interest.
 #' @param span_every integer describing the length of the span to be explored
 
 #' @return dataframe with variables `n_miss`, `n_complete`, `prop_miss`, and

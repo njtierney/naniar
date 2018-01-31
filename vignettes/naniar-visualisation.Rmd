@@ -31,7 +31,7 @@ A key point to remember with the visualisation tools in `naniar` is that there i
 
 One of the first plots that I recommend you start with when you are first exploring your missing data, is the `vis_miss()` plot, which is re-exported from [`visdat`](https://www.github.com/ropensci/visdat).
 
-```{r}
+```{r vis-miss}
 library(naniar)
 
 vis_miss(airquality)
@@ -80,7 +80,7 @@ ggplot(airquality,
 
 # General visual summaries of missing data
 
-These
+Here are some function that provide quick summaries of missingness in your data, they all start with `gg_miss_` - so that they are easy to remember and tab-complete.
 
 ## `gg_miss_var()`
 
@@ -99,7 +99,6 @@ If you wish, you can also change whether to show the % of missing instead with `
 ```{r gg-miss-var-show-pct}
 gg_miss_var(airquality, show_pct = TRUE)
 ```
-
 
 You can also plot the number of missings in a variable grouped by another variable using the `facet` argument.
 

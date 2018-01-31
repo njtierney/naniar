@@ -30,6 +30,8 @@ the function `replace_with_na`. This function is the compliment to
 - `tidyr::replace_na`: Missing values turns into a value (NA --> -99)
 - `naniar::replace_with_na`: Value becomes a missing value (-99 --> NA)
 
+In this vignette, we describe some simple use cases for these functions and describe how they work.
+
 # Example data
 
 First, we introduce a small fictional dataset, `df`, which contains some common
@@ -60,14 +62,14 @@ library(naniar)
 ```
 
 Now, we specify the fact that we want to replace -99 with a missing value. To do
-so we use the `replace` argument, and specify a names list, which contains the 
-name of the variable and the value it would take to turn into NA. 
+so we use the `replace` argument, and specify a named list, which contains the 
+names of the variable and the value it would take to replace with NA. 
 
 ```{r replace-with-na-ex1}
 df %>% replace_with_na(replace = list(x = -99))
 ```
 
-OK then, and what if we want to replace -98 as well?
+And say we want to replace -98 as well?
 
 ```{r replace-with-na-ex2}
 df %>%
@@ -85,16 +87,14 @@ df %>%
 
 Using `replace_with_na` works well when we know the exact value to be replaced, 
 and for which variables we want to replace, providing there are not many 
-variables. We can see that in future cases we might
+variables. But what do you do when you've got many variables you want to observe?
 
 ## Extending `replace_with_na`
 
 Sometimes you have many of the same value that you want to replace. For example,
 -99 and -98 above, and also the variants of "NA", such as "N/A", and "N / A",
 and "Not Available". You might also have certain variables that you want to be
-affected by these rules, or you might have more complex rules, like, "When
-windspeed is more than 90, Solar Radiation levels are unreliable and should be
-marked as missing".
+affected by these rules, or you might have more complex rules, like, "only affect variables that are numeric, or character, with this rule".
 
 To account for these cases we have borrowed from [`dplyr`'s scoped variants](http://dplyr.tidyverse.org/reference/scoped.html) and created the 
 functions:
@@ -103,14 +103,7 @@ functions:
 - `replace_with_na_at()` Replaces NA on a subset of variables specified with
 character quotes (e.g., c("var1", "var2")). 
 - `replace_with_na_if()` Replaces NA based on applying an operation on the 
-subset of variables for which a predicate function returns TRUE.
-
-This now expands the family to:
-
-- `replace_with_na`
-- `replace_with_na_all`
-- `replace_with_na_at`
-- `replace_with_na_if`
+subset of variables for which a predicate function (is.numeric, is.character, etc) returns TRUE.
 
 Below we will now consider some very simple examples of the use of these functions, so that you can better understand how to use them.
 
@@ -135,7 +128,7 @@ spellings of "NA", then I suggest you first lay out all the offending cases:
 ```{r replace-with-na-all-ex2}
 
 # write out all the offending strings
-na_strings <- c("NA", "N / A", "N/A", "N/ A", "Not Available", "NOt available")
+na_strings <- c("NA", "N A", "N / A", "N/A", "N/ A", "Not Available", "NOt available")
 ```
 
 Then you write `~.x %in% na_strings` - which reads as "does this value occur
@@ -157,8 +150,6 @@ variables.
 
 ```{r replace-with-na-at-ex1}
 
-# This only replaces values in Ozone, which are -99. This gives the same result
-# as vanilla `replace_with_na` above
 df %>% 
   replace_with_na_at(.vars = c("x","z"),
                      condition = ~.x == -99)
@@ -176,25 +167,10 @@ df %>%
                      condition = ~ exp(.x) < 1)
 ```
 
-Future work will work towards `replace_with_na_at` to use `dplyr`'s `vars` helper function, so that users can write code like:
-
-```{r replace-with-na-at-example, eval = FALSE}
-
-df %>% 
-  replace_with_na_at(.vars = vars(x,y),
-                     condition = ~ exp(.x) < 1)
-
-df %>% 
-  replace_with_na_at(.vars = ends_with("count"),
-                     condition = ~ exp(.x) < 1)
-
-```
-
 ### `replace_with_na_if`
 
 There may be some cases where you can identify variables based on some test 
-- `is.character` - are they character variables? `is.Date` - Are they date type?
-and a given value inside that type of data. For example, 
+- `is.character` - are they character variables? `is.numeric` - Are they numeric or double? and a given value inside that type of data. For example, 
 
 ```{r replace-with-na-if-ex1}
 
@@ -202,9 +178,14 @@ df %>%
   replace_with_na_if(.predicate = is.character,
                      condition = ~.x %in% ("N/A"))
 
+# or
+df %>%
+  replace_with_na_if(.predicate = is.character,
+                     condition = ~.x %in% (na_strings))
+
 ```
 
 This means that you are able to apply a rule to many variables that meet a 
 pre-specified condition. This can be of particular use if you have many 
 variables and don't want to list them all, and also if you know that there is a
-particular problem for variables of a particular class
+particular problem for variables of a particular class.

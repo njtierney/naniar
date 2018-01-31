@@ -8,7 +8,7 @@ magrittr::`%>%`
 #'
 #' @param data data.frame, which will be grouped
 #' @param .fun a function to apply
-#' @param ... additionnal arguments to be passed to map
+#' @param ... additional arguments to be passed to map
 #'
 #' @return a dataframe with the function applied to each group
 #'

@@ -11,7 +11,7 @@ group_by_fun(data, .fun, ...)
 
 \item{.fun}{a function to apply}
 
-\item{...}{additionnal arguments to be passed to map}
+\item{...}{additional arguments to be passed to map}
 }
 \value{
 a dataframe with the function applied to each group

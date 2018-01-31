@@ -9,7 +9,7 @@ miss_var_span(data, var, span_every)
 \arguments{
 \item{data}{data.frame}
 
-\item{var}{bare unqouted variable name of interest.}
+\item{var}{bare unquoted variable name of interest.}
 
 \item{span_every}{integer describing the length of the span to be explored}
 }

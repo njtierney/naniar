@@ -50,6 +50,3 @@ are three types of arguments you can use here:
 stat_miss_point adds a geometry for displaying missingness to
 geom_point
 }
-\note{
-todo: Warning message if na.rm = T is supplied.
-}

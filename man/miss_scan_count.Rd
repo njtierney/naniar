@@ -19,7 +19,7 @@ Searching for different kinds of missing values is really annoying. If
 you have values like -99 in your data, when they shouldn't be there,
 or they should be encoded as missing, it can be difficult to ascertain
 if they are there, and if so, where they are. \code{miss_scan_count} makes it
-easier for users to search for particular occurences of these values
+easier for users to search for particular occurrences of these values
 across their variables.
 }
 \examples{

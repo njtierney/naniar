@@ -29,8 +29,9 @@ to select variables.
 
 airquality \%>\% cast_shadow(Ozone)
 airquality \%>\% cast_shadow(Ozone, Solar.R)
-
-airquality \%>\%
+library(ggplot2)
+library(magrittr)
+airquality  \%>\%
   cast_shadow(Ozone,Solar.R) \%>\%
   ggplot(aes(x = Ozone,
              colour = Solar.R_NA)) +

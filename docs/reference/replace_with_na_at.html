@@ -93,7 +93,7 @@
     <p>Replace specified variables with NA where a certain condition is met</p>
     
 
-    <pre class="usage"><span class='fu'>replace_with_na_at</span>(<span class='no'>data</span>, <span class='no'>.vars</span>, <span class='no'>.funs</span>)</pre>
+    <pre class="usage"><span class='fu'>replace_with_na_at</span>(<span class='no'>data</span>, <span class='no'>.vars</span>, <span class='no'>condition</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -107,7 +107,7 @@
       <td><p>The variables to refer to</p></td>
     </tr>
     <tr>
-      <th>.funs</th>
+      <th>condition</th>
       <td><p>A condition required to be TRUE to set NA. Here, the condition
 is specified with a formula, following the syntax: <code>~.x {condition}</code>.
 For example, writing <code>~.x &lt; 20</code> would mean "where a variable value is less
@@ -139,7 +139,7 @@ than 20, replace with NA".</p></td>
 #&gt; 5 -98.0  F     -  1.00</div><div class='input'>
 <span class='fu'>replace_with_na_at</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>dat_ms</span>,
                  <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='st'>"x"</span>,
-                 <span class='kw'>.funs</span> <span class='kw'>=</span> ~<span class='no'>.x</span> <span class='kw'>==</span> -<span class='fl'>99</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 3
+                 <span class='kw'>condition</span> <span class='kw'>=</span> ~<span class='no'>.x</span> <span class='kw'>==</span> -<span class='fl'>99</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;        x y           z
 #&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
 #&gt; 1   1.00 A     -100   
@@ -149,7 +149,7 @@ than 20, replace with NA".</p></td>
 #&gt; 5 -98.0  F     -  1.00</div><div class='input'>
 <span class='fu'>replace_with_na_at</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>dat_ms</span>,
                  <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"x"</span>,<span class='st'>"z"</span>),
-                 <span class='kw'>.funs</span> <span class='kw'>=</span> ~<span class='no'>.x</span> <span class='kw'>==</span> -<span class='fl'>99</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 3
+                 <span class='kw'>condition</span> <span class='kw'>=</span> ~<span class='no'>.x</span> <span class='kw'>==</span> -<span class='fl'>99</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;        x y           z
 #&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
 #&gt; 1   1.00 A     -100   

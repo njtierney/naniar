@@ -96,7 +96,7 @@ number of missings in a given span, or breaksize. A default minimal theme
 is used, which can be customised as normal for ggplot.</p>
     
 
-    <pre class="usage"><span class='fu'>gg_miss_span</span>(<span class='no'>data</span>, <span class='no'>var</span>, <span class='no'>span_every</span>, <span class='no'>group</span>)</pre>
+    <pre class="usage"><span class='fu'>gg_miss_span</span>(<span class='no'>data</span>, <span class='no'>var</span>, <span class='no'>span_every</span>, <span class='no'>facet</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -114,14 +114,18 @@ is used, which can be customised as normal for ggplot.</p>
       <td><p>integer describing the length of the span to be explored</p></td>
     </tr>
     <tr>
-      <th>group</th>
-      <td><p>bare variable name, if you want to create a faceted plot.</p></td>
+      <th>facet</th>
+      <td><p>(optional) a single bare variable name, if you want to create a faceted plot.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>ggplot2 object</p>
+    <p>ggplot2 showing the number of missings in a span (window, or breaksize)</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='geom_miss_point.html'>geom_miss_point()</a></code> <code><a href='gg_miss_case.html'>gg_miss_case()</a></code> <a href='gg_miss_case_cumsum.html'>gg_miss_case_cumsum</a> <code><a href='gg_miss_fct.html'>gg_miss_fct()</a></code> <code><a href='gg_miss_var.html'>gg_miss_var()</a></code> <code><a href='gg_miss_var_cumsum.html'>gg_miss_var_cumsum()</a></code> <code><a href='gg_miss_which.html'>gg_miss_which()</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -142,9 +146,9 @@ is used, which can be customised as normal for ggplot.</p>
 #&gt; 11           11      0       3000  0                1.00 
 #&gt; 12           12    745       2255  0.248            0.752
 #&gt; 13           13    432       2568  0.144            0.856</div><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>)</div><div class='img'><img src='gg_miss_span-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='co'># works with the rest of ggplot</span>
-<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"custom"</span>)</div><div class='img'><img src='gg_miss_span-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>theme_dark</a></span>()</div><div class='img'><img src='gg_miss_span-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
-<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>sensor_name</span>)</div><div class='img'><img src='gg_miss_span-4.png' alt='' width='700' height='432.632880098887' /></div></pre>
+<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>)</div><div class='img'><img src='gg_miss_span-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='no'>sensor_name</span>)</div><div class='img'><img src='gg_miss_span-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='co'># works with the rest of ggplot</span>
+<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"custom"</span>)</div><div class='img'><img src='gg_miss_span-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>theme_dark</a></span>()</div><div class='img'><img src='gg_miss_span-4.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='no'>sensor_name</span>)</div><div class='img'><img src='gg_miss_span-5.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -152,6 +156,8 @@ is used, which can be customised as normal for ggplot.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -90,9 +90,8 @@
     </div>
 
     
-    <p>Internal function that is short for <code>which(is.na(x))</code>. Creates integer
-locations of missing values in a dataframe. May be used in future <code>impl_df</code>
-class.</p>
+    <p>Internal function that is short for <code>which(is.na(x), arr.ind = TRUE)</code>.
+Creates array index locations of missing values in a dataframe.</p>
     
 
     <pre class="usage"><span class='fu'>where_na</span>(<span class='no'>x</span>)</pre>
@@ -108,11 +107,12 @@ class.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>integers that describe the location of missing values</p>
+    <p>a matrix with columns "row" and "col", which refer to the row and
+column that identify the position of a missing value in a dataframe</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>which_na</p>
+    <p><code><a href='which_na.html'>which_na()</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

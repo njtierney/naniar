@@ -25,17 +25,17 @@ You can install naniar from CRAN:
 install.packages("naniar")
 ```
 
-Or you can install the development version on github using `devtools`:
+Or you can install the development version on github using `remotes`:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("njtierney/naniar")
+remotes::install_github("njtierney/naniar")
 ```
 
 A short overview of naniar
 ==========================
 
-Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace "NA" values with values 10% lower than the minimum value in that variable. This is provided with the `geom_miss_point()` ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
+Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from [ggobi]() and [manet](), where we replace "NA" values with values 10% lower than the minimum value in that variable. This visualisation is provided with the `geom_miss_point()` ggplot2 geom - which we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
 
 ``` r
 
@@ -277,7 +277,7 @@ Firstly, thanks to [Di Cook](https://github.com/dicook) for giving the initial i
 A note on the name
 ------------------
 
-naniar was previously named `ggmissing` and initially provided a ggplot geom and some other visualisations. `ggmissing` was changed to naniar to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.
+naniar was previously named `ggmissing` and initially provided a ggplot geom and some other visualisations. `ggmissing` was changed to `naniar` to reflect the fact that this package is going to be bigger in scope, and is not just related to `ggplot2`. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.
 
 > ...But *why* naniar?
 

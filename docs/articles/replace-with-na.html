@@ -66,7 +66,7 @@
       <h1>Replacing values with NA</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-01-26</h4>
+            <h4 class="date">2018-01-31</h4>
           </div>
 
     
@@ -80,6 +80,7 @@
 <li>
 <code><a href="http://www.rdocumentation.org/packages/naniar/topics/replace_with_na">naniar::replace_with_na</a></code>: Value becomes a missing value (-99 –&gt; NA)</li>
 </ul>
+<p>In this vignette, we describe some simple use cases for these functions and describe how they work.</p>
 <div id="example-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#example-data" class="anchor"></a>Example data</h1>
@@ -99,7 +100,7 @@ df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw
 <p>What if we want to replace the value -99 in the x column with a missing value?</p>
 <p>First, let’s load <code>naniar</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(naniar)</code></pre></div>
-<p>Now, we specify the fact that we want to replace -99 with a missing value. To do so we use the <code>replace</code> argument, and specify a names list, which contains the name of the variable and the value it would take to turn into NA.</p>
+<p>Now, we specify the fact that we want to replace -99 with a missing value. To do so we use the <code>replace</code> argument, and specify a named list, which contains the names of the variable and the value it would take to replace with NA.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/replace_with_na.html">replace_with_na</a></span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="op">-</span><span class="dv">99</span>))
 <span class="co">#&gt; # A tibble: 5 x 4</span>
 <span class="co">#&gt;   name               x y                   z</span>
@@ -109,7 +110,7 @@ df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw
 <span class="co">#&gt; 3 N / A          NA    29            - 98.0 </span>
 <span class="co">#&gt; 4 Not Available  NA    25            -101   </span>
 <span class="co">#&gt; 5 John Smith    -98.0  28            -  1.00</span></code></pre></div>
-<p>OK then, and what if we want to replace -98 as well?</p>
+<p>And say we want to replace -98 as well?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/replace_with_na.html">replace_with_na</a></span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">99</span>, <span class="op">-</span><span class="dv">98</span>)))
 <span class="co">#&gt; # A tibble: 5 x 4</span>
@@ -132,13 +133,13 @@ df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw
 <span class="co">#&gt; 3 N / A         NA    29              NA   </span>
 <span class="co">#&gt; 4 Not Available NA    25            -101   </span>
 <span class="co">#&gt; 5 John Smith    NA    28            -  1.00</span></code></pre></div>
-<p>Using <code>replace_with_na</code> works well when we know the exact value to be replaced, and for which variables we want to replace, providing there are not many variables. We can see that in future cases we might</p>
+<p>Using <code>replace_with_na</code> works well when we know the exact value to be replaced, and for which variables we want to replace, providing there are not many variables. But what do you do when you’ve got many variables you want to observe?</p>
 </div>
 <div id="extending-replace_with_na" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extending-replace_with_na" class="anchor"></a>Extending <code>replace_with_na</code>
 </h2>
-<p>Sometimes you have many of the same value that you want to replace. For example, -99 and -98 above, and also the variants of “NA”, such as “N/A”, and “N / A”, and “Not Available”. You might also have certain variables that you want to be affected by these rules, or you might have more complex rules, like, “When windspeed is more than 90, Solar Radiation levels are unreliable and should be marked as missing”.</p>
+<p>Sometimes you have many of the same value that you want to replace. For example, -99 and -98 above, and also the variants of “NA”, such as “N/A”, and “N / A”, and “Not Available”. You might also have certain variables that you want to be affected by these rules, or you might have more complex rules, like, “only affect variables that are numeric, or character, with this rule”.</p>
 <p>To account for these cases we have borrowed from <a href="http://dplyr.tidyverse.org/reference/scoped.html"><code>dplyr</code>’s scoped variants</a> and created the functions:</p>
 <ul>
 <li>
@@ -146,14 +147,7 @@ df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw
 <li>
 <code><a href="../reference/replace_with_na_at.html">replace_with_na_at()</a></code> Replaces NA on a subset of variables specified with character quotes (e.g., c(“var1”, “var2”)).</li>
 <li>
-<code><a href="../reference/replace_with_na_if.html">replace_with_na_if()</a></code> Replaces NA based on applying an operation on the subset of variables for which a predicate function returns TRUE.</li>
-</ul>
-<p>This now expands the family to:</p>
-<ul>
-<li><code>replace_with_na</code></li>
-<li><code>replace_with_na_all</code></li>
-<li><code>replace_with_na_at</code></li>
-<li><code>replace_with_na_if</code></li>
+<code><a href="../reference/replace_with_na_if.html">replace_with_na_if()</a></code> Replaces NA based on applying an operation on the subset of variables for which a predicate function (is.numeric, is.character, etc) returns TRUE.</li>
 </ul>
 <p>Below we will now consider some very simple examples of the use of these functions, so that you can better understand how to use them.</p>
 </div>
@@ -164,7 +158,7 @@ df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw
 <p>Use <code>replace_with_na_all</code> when you want to replace ALL values that meet a condition across an entire dataset. The syntax here is a little different, and follows the rules for rlang’s expression of simple functions. This means that the function starts with <code>~</code>, and when referencing a variable, you use <code>.x</code>.</p>
 <p>For example, if we want to replace all cases of -99 in our dataset, we write:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/replace_with_na_all.html">replace_with_na_all</a></span>(<span class="dt">.funs =</span> <span class="op">~</span>.x <span class="op">==</span><span class="st"> </span><span class="op">-</span><span class="dv">99</span>)
+df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/replace_with_na_all.html">replace_with_na_all</a></span>(<span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">==</span><span class="st"> </span><span class="op">-</span><span class="dv">99</span>)
 <span class="co">#&gt; # A tibble: 5 x 4</span>
 <span class="co">#&gt;   name               x y                   z</span>
 <span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;</span>
@@ -176,16 +170,16 @@ df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a hr
 <p>Likewise, if you have a set of (annoying) repeating strings like various spellings of “NA”, then I suggest you first lay out all the offending cases:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="co"># write out all the offending strings</span>
-na_strings &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"NA"</span>, <span class="st">"N / A"</span>, <span class="st">"N/A"</span>, <span class="st">"N/ A"</span>, <span class="st">"Not Available"</span>, <span class="st">"NOt available"</span>)</code></pre></div>
+na_strings &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"NA"</span>, <span class="st">"N A"</span>, <span class="st">"N / A"</span>, <span class="st">"N/A"</span>, <span class="st">"N/ A"</span>, <span class="st">"Not Available"</span>, <span class="st">"NOt available"</span>)</code></pre></div>
 <p>Then you write <code>~.x %in% na_strings</code> - which reads as “does this value occur in the list of NA strings”.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 df <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/replace_with_na_all.html">replace_with_na_all</a></span>(<span class="dt">.funs =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>na_strings)
+<span class="st">  </span><span class="kw"><a href="../reference/replace_with_na_all.html">replace_with_na_all</a></span>(<span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>na_strings)
 <span class="co">#&gt; # A tibble: 5 x 4</span>
 <span class="co">#&gt;   name            x y           z</span>
 <span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 &lt;NA&gt;         1.00 &lt;NA&gt;  -100   </span>
-<span class="co">#&gt; 2 N A          3.00 &lt;NA&gt;  - 99.0 </span>
+<span class="co">#&gt; 2 &lt;NA&gt;         3.00 &lt;NA&gt;  - 99.0 </span>
 <span class="co">#&gt; 3 &lt;NA&gt;        NA    29    - 98.0 </span>
 <span class="co">#&gt; 4 &lt;NA&gt;       -99.0  25    -101   </span>
 <span class="co">#&gt; 5 John Smith -98.0  28    -  1.00</span></code></pre></div>
@@ -195,11 +189,9 @@ df <span class="op">%&gt;%</span>
 </h3>
 <p>This is similar to <code>_all</code>, but instead in this case you can specify the variables that you want affected by the rule that you state. This is useful in cases where you want to specify a rule that only affects a selected number of variables.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="co"># This only replaces values in Ozone, which are -99. This gives the same result</span>
-<span class="co"># as vanilla `replace_with_na` above</span>
 df <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/replace_with_na_at.html">replace_with_na_at</a></span>(<span class="dt">.vars =</span> <span class="kw">c</span>(<span class="st">"x"</span>,<span class="st">"z"</span>),
-                     <span class="dt">.funs =</span> <span class="op">~</span>.x <span class="op">==</span><span class="st"> </span><span class="op">-</span><span class="dv">99</span>)
+                     <span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">==</span><span class="st"> </span><span class="op">-</span><span class="dv">99</span>)
 <span class="co">#&gt; # A tibble: 5 x 4</span>
 <span class="co">#&gt;   name               x y                   z</span>
 <span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;</span>
@@ -212,7 +204,7 @@ df <span class="op">%&gt;%</span><span class="st"> </span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 df <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/replace_with_na_at.html">replace_with_na_at</a></span>(<span class="dt">.vars =</span> <span class="kw">c</span>(<span class="st">"x"</span>,<span class="st">"z"</span>),
-                     <span class="dt">.funs =</span> <span class="op">~</span><span class="st"> </span><span class="kw">exp</span>(.x) <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)
+                     <span class="dt">condition =</span> <span class="op">~</span><span class="st"> </span><span class="kw">exp</span>(.x) <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)
 <span class="co">#&gt; # A tibble: 5 x 4</span>
 <span class="co">#&gt;   name              x y             z    </span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;lgl&gt;</span>
@@ -221,25 +213,16 @@ df <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="co">#&gt; 3 N / A         NA    29            NA   </span>
 <span class="co">#&gt; 4 Not Available NA    25            NA   </span>
 <span class="co">#&gt; 5 John Smith    NA    28            NA</span></code></pre></div>
-<p>Future work will work towards <code>replace_with_na_at</code> to use <code>dplyr</code>’s <code>vars</code> helper function, so that users can write code like:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-df <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/replace_with_na_at.html">replace_with_na_at</a></span>(<span class="dt">.vars =</span> <span class="kw">vars</span>(x,y),
-                     <span class="dt">.funs =</span> <span class="op">~</span><span class="st"> </span><span class="kw">exp</span>(.x) <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)
-
-df <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/replace_with_na_at.html">replace_with_na_at</a></span>(<span class="dt">.vars =</span> <span class="kw">ends_with</span>(<span class="st">"count"</span>),
-                     <span class="dt">.funs =</span> <span class="op">~</span><span class="st"> </span><span class="kw">exp</span>(.x) <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
 </div>
 <div id="replace_with_na_if" class="section level3">
 <h3 class="hasAnchor">
 <a href="#replace_with_na_if" class="anchor"></a><code>replace_with_na_if</code>
 </h3>
-<p>There may be some cases where you can identify variables based on some test - <code>is.character</code> - are they character variables? <code>is.Date</code> - Are they date type? and a given value inside that type of data. For example,</p>
+<p>There may be some cases where you can identify variables based on some test - <code>is.character</code> - are they character variables? <code>is.numeric</code> - Are they numeric or double? and a given value inside that type of data. For example,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 df <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/replace_with_na_if.html">replace_with_na_if</a></span>(<span class="dt">.predicate =</span> is.character,
-                     <span class="dt">.funs =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>(<span class="st">"N/A"</span>))
+                     <span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>(<span class="st">"N/A"</span>))
 <span class="co">#&gt; # A tibble: 5 x 4</span>
 <span class="co">#&gt;   name               x y                   z</span>
 <span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;</span>
@@ -247,8 +230,21 @@ df <span class="op">%&gt;%</span>
 <span class="co">#&gt; 2 N A             3.00 NOt available - 99.0 </span>
 <span class="co">#&gt; 3 N / A          NA    29            - 98.0 </span>
 <span class="co">#&gt; 4 Not Available -99.0  25            -101   </span>
-<span class="co">#&gt; 5 John Smith    -98.0  28            -  1.00</span></code></pre></div>
-<p>This means that you are able to apply a rule to many variables that meet a pre-specified condition. This can be of particular use if you have many variables and don’t want to list them all, and also if you know that there is a particular problem for variables of a particular class</p>
+<span class="co">#&gt; 5 John Smith    -98.0  28            -  1.00</span>
+
+<span class="co"># or</span>
+df <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/replace_with_na_if.html">replace_with_na_if</a></span>(<span class="dt">.predicate =</span> is.character,
+                     <span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>(na_strings))
+<span class="co">#&gt; # A tibble: 5 x 4</span>
+<span class="co">#&gt;   name            x y           z</span>
+<span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 &lt;NA&gt;         1.00 &lt;NA&gt;  -100   </span>
+<span class="co">#&gt; 2 &lt;NA&gt;         3.00 &lt;NA&gt;  - 99.0 </span>
+<span class="co">#&gt; 3 &lt;NA&gt;        NA    29    - 98.0 </span>
+<span class="co">#&gt; 4 &lt;NA&gt;       -99.0  25    -101   </span>
+<span class="co">#&gt; 5 John Smith -98.0  28    -  1.00</span></code></pre></div>
+<p>This means that you are able to apply a rule to many variables that meet a pre-specified condition. This can be of particular use if you have many variables and don’t want to list them all, and also if you know that there is a particular problem for variables of a particular class.</p>
 </div>
 </div>
 </div>

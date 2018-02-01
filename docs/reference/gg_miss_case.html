@@ -95,7 +95,7 @@ number of missings in each case (row). A default minimal theme is used, which
 can be customised as normal for ggplot.</p>
     
 
-    <pre class="usage"><span class='fu'>gg_miss_case</span>(<span class='no'>x</span>, <span class='no'>group</span>, <span class='kw'>order_cases</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>gg_miss_case</span>(<span class='no'>x</span>, <span class='no'>facet</span>, <span class='kw'>order_cases</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -105,12 +105,13 @@ can be customised as normal for ggplot.</p>
       <td><p>data.frame</p></td>
     </tr>
     <tr>
-      <th>group</th>
-      <td><p>bare variable name, if you want to create a faceted plot.</p></td>
+      <th>facet</th>
+      <td><p>(optional) a single bare variable name, if you want to create a faceted plot.</p></td>
     </tr>
     <tr>
       <th>order_cases</th>
-      <td><p>logical Order the rows by missingness (default is no - FALSE)</p></td>
+      <td><p>logical Order the rows by missingness (default is FALSE -
+no order).</p></td>
     </tr>
     </table>
     
@@ -118,11 +119,15 @@ can be customised as normal for ggplot.</p>
 
     <p>a ggplot object depicting the number of missings in a given case.</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='geom_miss_point.html'>geom_miss_point()</a></code> <a href='gg_miss_case_cumsum.html'>gg_miss_case_cumsum</a> <code><a href='gg_miss_fct.html'>gg_miss_fct()</a></code> <code><a href='gg_miss_span.html'>gg_miss_span()</a></code> <code><a href='gg_miss_var.html'>gg_miss_var()</a></code> <code><a href='gg_miss_var_cumsum.html'>gg_miss_var_cumsum()</a></code> <code><a href='gg_miss_which.html'>gg_miss_which()</a></code></p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'>gg_miss_case</span>(<span class='no'>airquality</span>)</div><div class='img'><img src='gg_miss_case-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-<span class='fu'>gg_miss_case</span>(<span class='no'>airquality</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Number of Cases"</span>)</div><div class='img'><img src='gg_miss_case-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_case</span>(<span class='no'>airquality</span>, <span class='kw'>order_cases</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='gg_miss_case-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_case</span>(<span class='no'>airquality</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>Month</span>)</div><div class='img'><img src='gg_miss_case-4.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_case</span>(<span class='no'>airquality</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>Month</span>, <span class='kw'>order_cases</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='gg_miss_case-5.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>gg_miss_case</span>(<span class='no'>airquality</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Number of Cases"</span>)</div><div class='img'><img src='gg_miss_case-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_case</span>(<span class='no'>airquality</span>, <span class='kw'>order_cases</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='gg_miss_case-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_case</span>(<span class='no'>airquality</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='no'>Month</span>)</div><div class='img'><img src='gg_miss_case-4.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_case</span>(<span class='no'>airquality</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='no'>Month</span>, <span class='kw'>order_cases</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='gg_miss_case-5.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -131,6 +136,8 @@ can be customised as normal for ggplot.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

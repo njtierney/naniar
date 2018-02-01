@@ -94,9 +94,8 @@
 you have values like -99 in your data, when they shouldn't be there,
 or they should be encoded as missing, it can be difficult to ascertain
 if they are there, and if so, where they are. <code>miss_scan_count</code> makes it
-easier for users to search for particular occurences of these values
-across their variables. This would allow the user to specify their own
-patterns.</p>
+easier for users to search for particular occurrences of these values
+across their variables.</p>
     
 
     <pre class="usage"><span class='fu'>miss_scan_count</span>(<span class='no'>data</span>, <span class='no'>search</span>)</pre>
@@ -110,13 +109,17 @@ patterns.</p>
     </tr>
     <tr>
       <th>search</th>
-      <td><p>pattern to search for</p></td>
+      <td><p>values to search for</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a dataframe of the ocurences of the pattern you searched for</p>
+    <p>a dataframe of the occurences of the values you searched for</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -128,12 +131,12 @@ patterns.</p>
                          -<span class='fl'>99</span>, <span class='st'>"E"</span>,   -<span class='fl'>101</span>,
                          -<span class='fl'>98</span>, <span class='st'>"F"</span>,   -<span class='fl'>1</span>)
 
-<span class='fu'>miss_scan_count</span>(<span class='no'>dat_ms</span>,<span class='st'>"-99"</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 2
+<span class='fu'>miss_scan_count</span>(<span class='no'>dat_ms</span>,-<span class='fl'>99</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 2
 #&gt;   Variable     n
 #&gt;   &lt;chr&gt;    &lt;int&gt;
 #&gt; 1 x            1
 #&gt; 2 y            0
-#&gt; 3 z            1</div><div class='input'><span class='fu'>miss_scan_count</span>(<span class='no'>dat_ms</span>,<span class='fu'>c</span>(<span class='st'>"-99"</span>,<span class='st'>"-98"</span>))</div><div class='output co'>#&gt; # A tibble: 3 x 2
+#&gt; 3 z            1</div><div class='input'><span class='fu'>miss_scan_count</span>(<span class='no'>dat_ms</span>,<span class='fu'>c</span>(-<span class='fl'>99</span>,-<span class='fl'>98</span>))</div><div class='output co'>#&gt; # A tibble: 3 x 2
 #&gt;   Variable     n
 #&gt;   &lt;chr&gt;    &lt;int&gt;
 #&gt; 1 x            2
@@ -143,7 +146,8 @@ patterns.</p>
 #&gt;   &lt;chr&gt;    &lt;int&gt;
 #&gt; 1 x            2
 #&gt; 2 y            1
-#&gt; 3 z            2</div></pre>
+#&gt; 3 z            2</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -151,6 +155,8 @@ patterns.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

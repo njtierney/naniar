@@ -90,7 +90,10 @@
     </div>
 
     
-    <p>Plot Missing Data Points</p>
+    <p><code>geom_miss_point</code> provides a way to transform and plot missing
+values in ggplot2. To do so it uses methods from ggobi to display missing
+data points 10% below the minimum value, so that the values can be seen on
+the same axis.</p>
     
 
     <pre class="usage"><span class='fu'>geom_miss_point</span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
@@ -155,14 +158,15 @@ are three types of arguments you can use here:</p><ul>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>geom_miss_point</code> provides a way to transform and plot missing values in
-ggplot2. To do so it uses methods from ggobi to display missing data
-points 10<!-- % below the minimum value, so that the values can be seen no the -->
-same axis.</p>
+    <p>Plot Missing Data Points</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Warning message if na.rm = T is supplied.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>[gg_miss_case()][gg_miss_case_cumsum()][gg_miss_fct()][gg_miss_span()][gg_miss_var()][gg_miss_var_cumsum()][gg_miss_which()]</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -179,6 +183,13 @@ same axis.</p>
        <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>,
            <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R</span>)) +
  <span class='fu'>geom_miss_point</span>()</div><div class='img'><img src='geom_miss_point-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+ <span class='co'># using facets</span>
+
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>airquality</span>,
+       <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>,
+           <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R</span>)) +
+ <span class='fu'>geom_miss_point</span>() +
+ <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>Month</span>)</div><div class='img'><img src='geom_miss_point-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -189,6 +200,8 @@ same axis.</p>
       <li><a href="#details">Details</a></li>
 
       <li><a href="#note">Note</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

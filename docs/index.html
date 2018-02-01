@@ -88,14 +88,14 @@
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>You can install naniar from CRAN:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"naniar"</span>)</code></pre></div>
-<p>Or you can install the development version on github using <code>devtools</code>:</p>
+<p>Or you can install the development version on github using <code>remotes</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"njtierney/naniar"</span>)</code></pre></div>
+remotes<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"njtierney/naniar"</span>)</code></pre></div>
 </div>
 <div id="a-short-overview-of-naniar" class="section level1">
 <h1 class="hasAnchor">
 <a href="#a-short-overview-of-naniar" class="anchor"></a>A short overview of naniar</h1>
-<p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from ggobi and manet, where we replace “NA” values with values 10% lower than the minimum value in that variable. This is provided with the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom, which we can illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
+<p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from <a href="">ggobi</a> and <a href="">manet</a>, where we replace “NA” values with values 10% lower than the minimum value in that variable. This visualisation is provided with the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom - which we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">library</span>(ggplot2)
 
@@ -285,7 +285,7 @@ airquality <span class="op">%&gt;%</span>
 <div id="a-note-on-the-name" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-note-on-the-name" class="anchor"></a>A note on the name</h2>
-<p>naniar was previously named <code>ggmissing</code> and initially provided a ggplot geom and some other visualisations. <code>ggmissing</code> was changed to naniar to reflect the fact that this package is going to be bigger in scope, and is not just related to ggplot2. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.</p>
+<p>naniar was previously named <code>ggmissing</code> and initially provided a ggplot geom and some other visualisations. <code>ggmissing</code> was changed to <code>naniar</code> to reflect the fact that this package is going to be bigger in scope, and is not just related to <code>ggplot2</code>. Specifically, the package is designed to provide a suite of tools for generating visualisations of missing values and imputations, manipulate, and summarise missing data.</p>
 <blockquote>
 <p>…But <em>why</em> naniar?</p>
 </blockquote>

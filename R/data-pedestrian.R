@@ -28,7 +28,7 @@
 #' @keywords datasets
 #'
 #' @examples
-#'
+#' \dontrun{
 #' # explore the missingness with vis_miss
 #' library(naniar)
 #'
@@ -41,5 +41,5 @@
 #' # Look at the missingness over a rolling window
 #' library(ggplot2)
 #' gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
-#'
+#' }
 "pedestrian"

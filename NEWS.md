@@ -1,4 +1,4 @@
-# naniar 0.2.0.9000 (2017/01/29) ("The First Joke and Other Matters")
+# naniar 0.2.0 (2018/02/08) ("The First Joke and Other Matters")
 =========================
 
 # New Features

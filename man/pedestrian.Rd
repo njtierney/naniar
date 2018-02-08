@@ -33,7 +33,7 @@ to December 31st 2016 at 23:00:00. The data is made free and publicly
 available from \url{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}
 }
 \examples{
-
+\dontrun{
 # explore the missingness with vis_miss
 library(naniar)
 
@@ -46,6 +46,6 @@ miss_var_summary(pedestrian)
 # Look at the missingness over a rolling window
 library(ggplot2)
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
-
+}
 }
 \keyword{datasets}

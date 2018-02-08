@@ -180,7 +180,8 @@ To add facets in these plots, you can use the `facet` argument:
 gg_miss_var(airquality, facet = Month)
 ```
 
-There are more visualisations available in `naniar` (each starting with `gg_miss_`) - you can see these in the ["Gallery of Missing Data Visualisations" vignette.](https://cran.r-project.org/web/packages/naniar/vignettes/naniar-visualisation.html).
+There are more visualisations available in `naniar` (each starting with `gg_miss_`) - you can see these in the ["Gallery of Missing Data Visualisations" vignette.](https://cran.r-project.org/package=naniar/vignettes/naniar-visualisation.html).
+
 
 It is important to note that for every visualisation of missing data in `naniar`, there is an accompanying function to get the dataframe of the plot out. This is important as the plot should not return a dataframe - but we also need to make the data available for use by the user so that it isn't locked into a plot. You can find these summary plots below, with `miss_var_summary` providing the dataframe that `gg_miss_var()` is based on.
 
@@ -261,8 +262,8 @@ ggplot(aq_shadow,
 Binding the shadow here also has great benefits when combined with imputation.
 
 # Visualising imputed values
-
-Using the easy-to-use [`simputation`](https://cran.r-project.org/web/packages/simputation/index.html) package, we impute values for Ozone, then visualise the data:
+https://cran.r-project.org/package=naniar
+Using the easy-to-use [`simputation`](https://cran.r-project.org/package=simputation) package, we impute values for Ozone, then visualise the data:
 
 ```{r simpute-invisible, echo = TRUE, fig.height = 3}
 

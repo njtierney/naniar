@@ -66,7 +66,7 @@
       <h1>Getting Started with naniar</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-01-31</h4>
+            <h4 class="date">2018-02-08</h4>
           </div>
 
     
@@ -116,7 +116,7 @@
 </h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(visdat)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/visdat/topics/vis_dat">vis_dat</a></span>(airquality)</code></pre></div>
-<p><img src="getting-started-w-naniar_files/figure-html/vis-dat-1.png" width="480" style="display: block; margin: auto;"></p>
+<p><img src="getting-started-w-naniar_files/figure-html/vis-dat-1.png" width="500" style="display: block; margin: auto;"></p>
 <p><code>vis_dat</code> visualises the whole dataframe at once, and provides information about the class of the data input into R, as well as whether the data is missing or not.</p>
 <div id="vis_miss" class="section level3">
 <h3 class="hasAnchor">
@@ -124,7 +124,7 @@
 </h3>
 <p>The function <code>vis_miss</code> provides a summary of whether the data is missing or not. It also provides the amount of missings in each columns.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/visdat/topics/vis_miss">vis_miss</a></span>(airquality)</code></pre></div>
-<p><img src="getting-started-w-naniar_files/figure-html/vis-miss-cluster-vanilla-1.png" width="480" style="display: block; margin: auto;"></p>
+<p><img src="getting-started-w-naniar_files/figure-html/vis-miss-cluster-vanilla-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>So here, Ozone and Solar.R have the most missing data, with Ozone having 24.2% missing data and Solar.R have 4.6%. The other variables do not have any missing data.</p>
 <p>To read more about the functions available in <code>visdat</code> see the vignette <a href="https://CRAN.R-project.org/package=visdat/vignettes/using_visdat.html">“Using visdat”</a></p>
 </div>
@@ -149,7 +149,7 @@
            <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</code></pre></div>
 <pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
-<p><img src="getting-started-w-naniar_files/figure-html/unnamed-chunk-1-1.png" width="480" style="display: block; margin: auto;"></p>
+<p><img src="getting-started-w-naniar_files/figure-html/unnamed-chunk-1-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>The problem with this is that ggplot does not handle missings be default, and removes the missing values. This makes them hard to explore. It also presents the strange question of “how do you visualise something that is not there?”. One approach to visualising missing data comes from <a href="http://www.ggobi.org/"><code>ggobi</code></a> and <a href="http://www.rosuda.org/MANET/"><code>manet</code></a>, where we replace “NA” values with values 10% lower than the minimum value in that variable.</p>
 <p>This process is performed and visualised for you with the <code><a href="../reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom. Here, we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(airquality, 
@@ -184,16 +184,16 @@
 <a href="#visualising-missings-in-variables" class="anchor"></a>Visualising missings in variables</h2>
 <p>Another approach to visualising the missings in a dataset is to use the <code>gg_miss_var</code> plot:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</code></pre></div>
-<p><img src="getting-started-w-naniar_files/figure-html/unnamed-chunk-2-1.png" width="480" style="display: block; margin: auto;"></p>
+<p><img src="getting-started-w-naniar_files/figure-html/unnamed-chunk-2-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>The plots created with the <code>gg_miss</code> family all have a basic theme, but you can customise them, and add arguments like so:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>() </code></pre></div>
-<p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-1.png" width="480" style="display: block; margin: auto;"></p>
+<p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-1.png" width="500" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">y =</span> <span class="st">"Look at all the missing ones"</span>)</code></pre></div>
-<p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-2.png" width="480" style="display: block; margin: auto;"></p>
+<p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-2.png" width="500" style="display: block; margin: auto;"></p>
 <p>To add facets in these plots, you can use the <code>facet</code> argument:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality, <span class="dt">facet =</span> Month)</code></pre></div>
-<p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-facet-1.png" width="480" style="display: block; margin: auto;"></p>
-<p>There are more visualisations available in <code>naniar</code> (each starting with <code>gg_miss_</code>) - you can see these in the <a href="https://cran.r-project.org/web/packages/naniar/vignettes/naniar-visualisation.html">“Gallery of Missing Data Visualisations” vignette.</a>.</p>
+<p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-facet-1.png" width="500" style="display: block; margin: auto;"></p>
+<p>There are more visualisations available in <code>naniar</code> (each starting with <code>gg_miss_</code>) - you can see these in the <a href="https://cran.r-project.org/package=naniar/vignettes/naniar-visualisation.html">“Gallery of Missing Data Visualisations” vignette.</a>.</p>
 <p>It is important to note that for every visualisation of missing data in <code>naniar</code>, there is an accompanying function to get the dataframe of the plot out. This is important as the plot should not return a dataframe - but we also need to make the data available for use by the user so that it isn’t locked into a plot. You can find these summary plots below, with <code>miss_var_summary</code> providing the dataframe that <code><a href="../reference/gg_miss_var.html">gg_miss_var()</a></code> is based on.</p>
 </div>
 </div>
@@ -283,7 +283,7 @@
 <div id="visualising-imputed-values" class="section level1">
 <h1 class="hasAnchor">
 <a href="#visualising-imputed-values" class="anchor"></a>Visualising imputed values</h1>
-<p>Using the easy-to-use <a href="https://cran.r-project.org/web/packages/simputation/index.html"><code>simputation</code></a> package, we impute values for Ozone, then visualise the data:</p>
+<p><a href="https://cran.r-project.org/package=naniar" class="uri">https://cran.r-project.org/package=naniar</a> Using the easy-to-use <a href="https://cran.r-project.org/package=simputation"><code>simputation</code></a> package, we impute values for Ozone, then visualise the data:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(simputation)
 <span class="kw">library</span>(dplyr)
 
@@ -292,7 +292,7 @@ airquality <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Temp,
              <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</code></pre></div>
-<p><img src="getting-started-w-naniar_files/figure-html/simpute-invisible-1.png" width="480" style="display: block; margin: auto;"></p>
+<p><img src="getting-started-w-naniar_files/figure-html/simpute-invisible-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>Note that we no longer get any errors regarding missing observations - because they are all imputed! But this comes at a cost: we also no longer have information about where the imputations are - they are now sort of invisible.</p>
 <p>Using the shadow matrix to keep track of where the missings are, you can actually keep track of the imputations, by colouring by what was previously missing in Ozone.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aq_shadow <span class="op">%&gt;%</span>
@@ -301,7 +301,7 @@ airquality <span class="op">%&gt;%</span>
              <span class="dt">y =</span> Ozone,
              <span class="dt">colour =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</code></pre></div>
-<p><img src="getting-started-w-naniar_files/figure-html/simpute-visible-1.png" width="480" style="display: block; margin: auto;"></p>
+<p><img src="getting-started-w-naniar_files/figure-html/simpute-visible-1.png" width="500" style="display: block; margin: auto;"></p>
 <div id="numerical-summaries-of-missing-values" class="section level2">
 <h2 class="hasAnchor">
 <a href="#numerical-summaries-of-missing-values" class="anchor"></a>Numerical summaries of missing values</h2>
@@ -492,7 +492,7 @@ airquality <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/add_prop_miss.html">add_prop_miss</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rpart/topics/rpart">rpart</a></span>(prop_miss_all <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> .) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rpart.plot/topics/prp">prp</a></span>(<span class="dt">type =</span> <span class="dv">4</span>, <span class="dt">extra =</span> <span class="dv">101</span>, <span class="dt">prefix =</span> <span class="st">"Prop. Miss = "</span>)</code></pre></div>
-<p><img src="getting-started-w-naniar_files/figure-html/rpart-miss-1.png" width="480" style="display: block; margin: auto;"></p>
+<p><img src="getting-started-w-naniar_files/figure-html/rpart-miss-1.png" width="500" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># library(visdat)</span>
 <span class="co"># vis_miss(messy_airquality)</span></code></pre></div>
 <p>Here we can see that this produces quite a complex tree - this can be pruned back and the depth of the decision tree controlled.</p>

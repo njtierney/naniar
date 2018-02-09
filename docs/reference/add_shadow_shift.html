@@ -139,8 +139,8 @@ respect the dplyr verbs <code>starts_with</code>, <code>contains</code>, <code>e
 #&gt;  8            52 2016-01-01 07:00:00  2016 January         1 Friday       7
 #&gt;  9           120 2016-01-01 08:00:00  2016 January         1 Friday       8
 #&gt; 10           333 2016-01-01 09:00:00  2016 January         1 Friday       9
-#&gt; # ... with 37,690 more rows, and 3 more variables: sensor_id &lt;int&gt;, sensor_name
-#&gt; #   &lt;chr&gt;, hourly_counts_shift &lt;dbl&gt;</div><div class='input'>
+#&gt; # ... with 37,690 more rows, and 3 more variables: sensor_id &lt;int&gt;,
+#&gt; #   sensor_name &lt;chr&gt;, hourly_counts_shift &lt;dbl&gt;</div><div class='input'>
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>add_shadow_shift</span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 8
 #&gt;    Ozone Solar.R  Wind  Temp Month   Day Ozone_shift Solar.R_shift
 #&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;       &lt;dbl&gt;         &lt;dbl&gt;

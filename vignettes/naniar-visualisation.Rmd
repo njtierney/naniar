@@ -2,14 +2,7 @@
 title: "Gallery of Missing Data Visualisations"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
-output:
-  html_document:
-    fig_caption: false
-    toc: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: false
-    toc_depth: 3
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Gallery of Missing Data Visualisations}
   %\VignetteEngine{knitr::rmarkdown}
@@ -22,8 +15,7 @@ knitr::knit_hooks$set(optipng = knitr::hook_optipng)
 knitr::opts_chunk$set(fig.align = "center",
                       fig.width = 5,
                       fig.height = 4,
-                      dpi = 100,
-                      optipng = '-o7')
+                      dpi = 50)
 
 ```
 

@@ -2,14 +2,7 @@
 title: "Getting Started with naniar"
 author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
-output:
-  html_document:
-    fig_caption: false
-    toc: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: false
-    toc_depth: 3
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Getting Started with naniar}
   %\VignetteEngine{knitr::rmarkdown}
@@ -17,13 +10,10 @@ vignette: >
 ---
 
 ```{r knitr-setup, include = FALSE}
-knitr::knit_hooks$set(optipng = knitr::hook_optipng)
-
 knitr::opts_chunk$set(fig.align = "center",
                       fig.width = 5,
                       fig.height = 4,
-                      dpi = 100,
-                      optipng = '-o7')
+                      dpi = 50)
 
 ```
 

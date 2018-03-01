@@ -32,7 +32,10 @@ gg_miss_fct <- function(x, fct){
                       "variable",
                       fill = "pct_miss")) +
     geom_tile() +
-    viridis::scale_fill_viridis(name = "% Miss")
+    viridis::scale_fill_viridis(name = "% Miss") +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45,
+                                     hjust = 1))
 
   return(ggobject)
 }

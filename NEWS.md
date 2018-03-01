@@ -1,3 +1,9 @@
+# naniar 0.2.0.9001 (2018/03/01) 
+
+# Minor Changes
+
+- `gg_miss_fct` uses a minimal theme and tilts the axis labels ([#118](https://github.com/njtierney/naniar/issues/118)).
+
 # naniar 0.2.0 (2018/02/08) ("The First Joke and Other Matters")
 =========================
 

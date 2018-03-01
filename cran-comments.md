@@ -4,14 +4,9 @@
 * win-builder (devel and release)
 
 ## R CMD check results
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 note
 
-There were no ERRORs or WARNINGs
-
-There was 1 NOTE
-
-* Maintainer: 'Nicholas Tierney <nicholas.tierney@gmail.com>'
-* This is a new submission
+There were no ERRORs or WARNINGs or NOTEs
 
 ## Reverse dependencies
 

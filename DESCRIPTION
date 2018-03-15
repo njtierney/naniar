@@ -95,6 +95,7 @@ Collate:
     'replace-with-na.R'
     'scoped-replace-with-na.R'
     'shadow-shifters.R'
+    'shadow-verifiers.R'
     'shadows.R'
     'stat-miss-point.R'
     'utils.R'

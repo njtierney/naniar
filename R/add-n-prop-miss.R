@@ -39,7 +39,8 @@ add_n_miss <- function(data, ..., label = "n_miss"){
     data[[paste0(label, "_vars")]] <- n_miss_row(selected_data)
   } # close else loop
 
-  data
+  # return a tibble
+  tibble::as_tibble(data)
 }
 
 #' Add column containing proportion of missing data values
@@ -101,5 +102,5 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
 
   } # close else loop
 
-  data
+  tibble::as_tibble(data)
 }

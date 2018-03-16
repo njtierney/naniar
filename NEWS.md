@@ -1,4 +1,4 @@
-# naniar 0.2.0.9005 (2018/03/16) 
+# naniar 0.2.0.9010 (2018/03/16) 
 
 # Major change
 
@@ -6,7 +6,9 @@
 
 # New functions
 
-- and `is_shadow` and `are_shadow`. These were created to help with downstream upcoming code for `recode_shadow`.
+- and `is_shadow` and `are_shadow`. These were created to help with downstream code for `recode_shadow`.
+- created `recode_shadow` and helper function `.where` to make it easier and simple to create new special missing values in the shadow matrix. Currently only works for one variable at a time, working on expanding this. 
+- `.where` is has `.` preceding it to protect against NAMESPACE conflicts and also indicate that the function name is a little special; you shouldn't use it outside the function `recode_shadow`.
 
 # Minor change
 

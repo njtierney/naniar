@@ -1,6 +1,6 @@
 # recode_shadow(.data,
-#               x = where(x == -99 ~ "too_loud"),
-#               y = where(x == -99 ~ "not_loud"))
+#               x = .where(x == -99 ~ "too_loud"),
+#               y = .where(x == -99 ~ "not_loud"))
 
 # I see three steps to this process, kindly lifted from here:
 # https://stackoverflow.com/questions/49214287/replace-nas-in-a-dataframe-with-factor-variables-with-r/49214861#49214861
@@ -95,35 +95,105 @@ update_shadow <- function(data, suffix){
                    suffix = suffix)
 }
 
-# # recode_shadow(.data,
-# #               x = where(x == -99 ~ "too_loud"),
-# #               y = where(x == -99 ~ "not_loud"))
-#
-#
-# recode_shadow <- function(data, ...){
-#
-#   expr <- rlang::quos(...)
-#
-#   print(expr)
-#
-#   print(names(expr))
-#
-#   print(quo_name(expr))
-#
-#   var_name_NA <- paste0(names(expr),"_NA")
-#   var_name <- paste0(names(expr))
-#
-#   print(var_name_NA)
-#   print(var_name)
-#
-#   data %>%
-#     dplyr::mutate(
-#       !!var_name_NA := forcats::fct_expand(!!var_name_NA, "NA_suffix"),
-#       !!var_name_NA := dplyr::case_when(
-#         !!var_name == -99 ~ factor("NA_suffix",
-#                                    levels = c("!NA", "NA", "NA_suffix")),
-#         TRUE ~ !!var_name
-#       ))
-#
-# }
-#
+#' split a call into two components with a useful verb name
+#'
+#' This function is used inside `recode_shadow` to help evaluate the formula
+#'   call effectively. `.where` is a little special - you shouldn't use it outside the function `recode_shadow`.
+#'
+#' @param ... case_when formula
+#'
+#' @return a list of "condition" and "suffix" arguments
+#' @name where
+#' @export
+#'
+#' @examples
+#'
+#' \dontrun{
+#' df <- tibble::tribble(
+#' ~wind, ~temp,
+#' -99,    45,
+#' 68,    NA,
+#' 72,    25
+#' )
+#'
+#' dfs <- bind_shadow(df)
+#'
+#' recode_shadow(dfs,
+#'               temp = .where(wind == -99 ~ "bananas"))
+#'
+#' }
+#'
+.where <- function(...){
+  formulas <- rlang::dots_list(...)
+
+  fun_rhs <- rlang::f_rhs(formulas[[1]])
+  fun_lhs <- rlang::f_lhs(formulas[[1]])
+
+  return(list(condition = fun_lhs,
+              suffix = fun_rhs))
+
+}
+
+#' Add special missing values to the shadow matrix
+#'
+#' It can be useful to add special missing values, naniar supports this with
+#'   the `recode_shadow` function.
+#'
+#' @note This only works for one special missing at a time at the moment.
+#'
+#' @param data data.frame
+#' @param ... A sequence of two-sided formulas as in dplyr::case_when, but when a wrapper function `.where` written around it.
+#'
+#' @return a dataframe with altered shadows
+#' @export
+#'
+#' @examples
+#'
+#' \dontrun{
+#' df <- tibble::tribble(
+#' ~wind, ~temp,
+#' -99,    45,
+#' 68,    NA,
+#' 72,    25
+#' )
+#'
+#' dfs <- bind_shadow(df)
+#'
+#' recode_shadow(dfs,
+#'               temp = .where(wind == -99 ~ "bananas"))
+#'
+#' # need to debug this
+#'
+#' recode_shadow(dfs,
+#'               temp = .where(wind == -99 ~ "bananas")) %>%
+#' recode_shadow(wind = .where(wind == -99 ~ "my_shhh_is"))
+
+#' }
+#'
+recode_shadow <- function(data, ...){
+
+  quo_var <- rlang::quos(...)
+
+  formulas <- rlang::dots_list(...)
+
+  formulas_pluck <- purrr::pluck(formulas, 1)
+
+  condition <- purrr::pluck(formulas_pluck, "condition")
+
+  suffix <- purrr::pluck(formulas_pluck, "suffix")
+
+  na_suffix <- paste0("NA_", suffix)
+
+
+  shadow_var <- rlang::sym(paste0(names(quo_var),"_NA"))
+
+  data %>%
+    update_shadow(suffix) %>%
+    dplyr::mutate(
+      !!shadow_var := dplyr::case_when(
+        !!condition ~ factor(na_suffix,
+                           levels = levels(.[[shadow_var]])),
+        TRUE ~ !!shadow_var
+      ))
+}
+

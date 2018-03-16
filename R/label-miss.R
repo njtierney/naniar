@@ -24,6 +24,7 @@ label_shadow_matrix <- function(x) {
                      labels = c("!NA", "NA"))
   }
 
+  # update and add the new class 'shadow'.
   class(result) <- c("shadow" , class(result))
   result
 }

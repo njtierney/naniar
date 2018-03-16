@@ -96,6 +96,29 @@ test_if_dataframe <- function(x){
     }
 }
 
+#' Test if input is a shadow
+#'
+#' @param x object
+#'
+#' @return an error if input (x) is a shadow
+#'
+#' @examples
+#' \dontrun{
+#' # success
+#' aq_shadow <- bind_shadow(airqaulity)
+#' test_if_shadow(aq_shadow)
+#' #fail
+#' test_if_shadow(airquality)
+#' }
+#'
+test_if_shadow <- function(x){
+  # test for dataframe
+  if (!is_shadow(x)) {
+    stop("variable must be shadow variable, use as_shadow or bind_shadow",
+         call. = FALSE)
+    }
+}
+
 #' Helper function to determine whether there are any missings
 #'
 #' @param x a vector
@@ -145,3 +168,12 @@ add_span_counter <- function(data, span_size) {
                                    each = span_size,
                                    length.out = nrow(data)))
 }
+
+#' check the levels of many things
+#'
+#' this function is used internally to check what the levels are of the dataframe.
+#'
+#' @param x
+#'
+#' @return a list containing the levels of everything
+what_levels <- function(x) purrr::map(x, levels)

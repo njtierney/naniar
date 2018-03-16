@@ -1,12 +1,17 @@
-# naniar 0.2.0.9003 (2018/03/16) 
+# naniar 0.2.0.9005 (2018/03/16) 
 
-# Major changes
+# Major change
 
-- introduced "shadow" class for the shadow factor variables and `is_shadow` and `are_shadow`. These were created to help with downstream upcoming code for `recode_shadow`.
+- introduced "shadow" class for the shadow factor variables.
+
+# New functions
+
+- and `is_shadow` and `are_shadow`. These were created to help with downstream upcoming code for `recode_shadow`.
 
 # Minor change
 
 - updated tests for `as_shadow` to account for the new shadow class
+- added internal functions to help with `recode_shadow`
 
 # naniar 0.2.0.9001 (2018/03/01) 
 

@@ -18,7 +18,7 @@ data.frame with adjusted levels
 Internal function to appropriately expand and relevel all shadow variables to include a new suffix
 }
 \examples{
-
+ \dontrun{
 df <- tibble::tribble(
 ~wind, ~temp,
 -99,    45,
@@ -31,5 +31,6 @@ dfs <- bind_shadow(df)
 
 update_shadow(dfs, "weee")
 update_shadow(dfs, "weee") \%>\% what_levels()
+}
 
 }

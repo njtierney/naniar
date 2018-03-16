@@ -27,7 +27,7 @@
 #' @return a factor with expanded levels
 #'
 #' @examples
-#'
+#' \dontrun{
 #' df <- tibble::tribble(
 #'   ~wind, ~temp,
 #'   -99,    45,
@@ -44,7 +44,7 @@
 #' dfs %>%
 #'   mutate(temp_NA = shadow_expand_relevel(temp_NA, "weee"))
 #'
-#' \dontrun{
+#'
 #' # test that this breaks
 #' shadow_expand_relevel(airquality, "weee")
 #'}
@@ -73,7 +73,7 @@ shadow_expand_relevel <- function(.var, suffix){
 #' @return data.frame with adjusted levels
 #'
 #' @examples
-#'
+#'  \dontrun{
 #' df <- tibble::tribble(
 #' ~wind, ~temp,
 #' -99,    45,
@@ -86,6 +86,7 @@ shadow_expand_relevel <- function(.var, suffix){
 #'
 #' update_shadow(dfs, "weee")
 #' update_shadow(dfs, "weee") %>% what_levels()
+#' }
 #'
 update_shadow <- function(data, suffix){
   dplyr::mutate_if(.tbl = data,

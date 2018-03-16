@@ -18,12 +18,15 @@
 #' are_shadow(aq_bind)
 #'
 #' @export
+#' @name is_shadow
+
 is_shadow <- function(x){
   inherits(x, "shadow")
 }
 
 
 #' @export
+#' @rdname is_shadow
 are_shadow <- function(x){
   purrr::map(x, class) %>%
     tibble::as_tibble() %>%

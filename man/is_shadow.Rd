@@ -2,9 +2,12 @@
 % Please edit documentation in R/shadow-verifiers.R
 \name{is_shadow}
 \alias{is_shadow}
+\alias{are_shadow}
 \title{Test if input is or are shadow variables}
 \usage{
 is_shadow(x)
+
+are_shadow(x)
 }
 \arguments{
 \item{x}{a vector or data.frame}

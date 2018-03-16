@@ -7,7 +7,7 @@
 what_levels(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{data.frame, usually}
 }
 \value{
 a list containing the levels of everything

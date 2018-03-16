@@ -173,7 +173,7 @@ add_span_counter <- function(data, span_size) {
 #'
 #' this function is used internally to check what the levels are of the dataframe.
 #'
-#' @param x
+#' @param x data.frame, usually
 #'
 #' @return a list containing the levels of everything
 what_levels <- function(x) purrr::map(x, levels)

@@ -21,7 +21,9 @@ label_missings(airquality)
 
 library(dplyr)
 
-airquality \%>\% mutate(is_missing = label_missings(airquality))
+airquality \%>\%
+  mutate(is_missing = label_missings(airquality)) \%>\%
+  head()
 
 }
 \seealso{

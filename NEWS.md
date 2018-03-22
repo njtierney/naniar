@@ -1,3 +1,10 @@
+# naniar 0.2.0.9400 (2018/03/22) 
+
+# New features
+
+- added `unbind_shadow` and `unbind_data` as helpers to remove shadow columns from
+data, and data from shadows, respectively.
+
 # naniar 0.2.0.9002 (2018/03/01) 
 
 # New feature

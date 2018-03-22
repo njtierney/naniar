@@ -104,6 +104,51 @@ bind_shadow <- function(data, only_miss = FALSE){
 
 }
 
+#' Unbind (remove) shadow from data, and vice versa
+#'
+#' Remove the shadow variables (which end in _NA) from the data, or vice versa
+#'
+#' @param data a data.frame containing shadow columns (created by bind_shadow)
+#'
+#' @return dataframe without shadow columns if using unbind_shadow, or without
+#'  the original data, if using unbind_data
+#' @name unbinders
+#'
+#' @export
+#'
+#' @examples
+#'
+#' # bind shadow columns
+#' aq_sh <- bind_shadow(airquality)
+#'
+#' # print data
+#' aq_sh
+#'
+#' # remove shadow columns
+#' unbind_shadow(aq_sh)
+#'
+#' # remove data
+#' unbind_data(aq_sh)
+#'
+#' # errors when you don't use data with shadows
+#' \dontrun{
+#'  unbind_data(airquality)
+#'  unbind_shadow(airquality)
+#' }
+#'
+unbind_shadow <- function(data){
+  test_if_any_shadow(data)
+  dplyr::select(data, -dplyr::ends_with("_NA"))
+}
+
+#' @rdname unbinders
+#' @export
+unbind_data <- function(data){
+  test_if_any_shadow(data)
+  dplyr::select(data, dplyr::ends_with("_NA"))
+}
+
+
 #' Long form representation of a shadow matrix
 #'
 #' `gather_shadow` is a long-form representation of binding the shadow matrix to

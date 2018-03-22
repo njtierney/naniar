@@ -1,6 +1,10 @@
 #ifndef NANIAR_NANIAR_H
 #define NANIAR_NANIAR_H
 
+#ifndef NANIAR_PARALLEL_THRESHOLD
+#define NANIAR_PARALLEL_THRESHOLD 10000
+#endif
+
 namespace naniar{
 
   template <int RTYPE>

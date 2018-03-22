@@ -2,10 +2,6 @@
 #include <RcppParallel.h>
 #include "naniar.h"
 
-#ifndef NANIAR_PARALLEL_THRESHOLD
-#define NANIAR_PARALLEL_THRESHOLD 10000
-#endif
-
 using namespace Rcpp;
 
 // [[Rcpp::plugins(cpp11)]]

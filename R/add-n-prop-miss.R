@@ -31,7 +31,7 @@
 #' @importFrom rlang quos
 add_n_miss <- function(data, ..., label = "n_miss"){
   if (missing(...)) {
-    data[[paste0(label, "_all")]] <- n_miss_row(data)
+    data[[paste0(label, "_all")]] <- count_row_na_cpp(data)
   } else {
 
     quo_vars <- rlang::quos(...)
@@ -90,7 +90,7 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #'     prefix = "prop_miss = ")
 add_prop_miss <- function(data, ..., label = "prop_miss"){
   if (missing(...)) {
-    data[[paste0(label, "_all")]] <- prop_miss_row(data)
+    data[[paste0(label, "_all")]] <- prop_row_na_cpp(data)
   } else {
 
     quo_vars <- rlang::quos(...)

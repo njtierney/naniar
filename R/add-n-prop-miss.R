@@ -38,7 +38,7 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 
     selected_data <- dplyr::select(data, !!!quo_vars)
 
-    data[[paste0(label, "_vars")]] <- n_miss_row(selected_data)
+    data[[paste0(label, "_vars")]] <- count_row_na_cpp(selected_data)
   } # close else loop
 
   data
@@ -97,7 +97,7 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
 
     selected_data <- dplyr::select(data, !!!quo_vars)
 
-    data[[paste0(label, "_vars")]] <- prop_miss_row(selected_data)
+    data[[paste0(label, "_vars")]] <- prop_row_na_cpp(selected_data)
 
   } # close else loop
 

@@ -27,7 +27,7 @@
 #' airquality %>% add_n_miss(dplyr::contains("o"))
 #'
 #'
-#' @importFrom dplyr select
+#' @importFrom dplyr select n
 #' @importFrom rlang quos
 add_n_miss <- function(data, ..., label = "n_miss"){
   if (missing(...)) {

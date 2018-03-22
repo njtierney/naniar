@@ -4,7 +4,6 @@
 \name{reexports}
 \alias{reexports}
 \alias{vis_miss}
-\alias{reexports}
 \alias{\%>\%}
 \title{Objects exported from other packages}
 \keyword{internal}

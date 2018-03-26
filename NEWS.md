@@ -1,3 +1,11 @@
+# naniar 0.2.0.9400 (2018/03/22) 
+
+# New features
+
+- added `unbind_shadow` and `unbind_data` as helpers to remove shadow columns from
+data, and data from shadows, respectively.
+
+
 # naniar 0.2.0.9010 (2018/03/16) 
 
 # Major change
@@ -15,7 +23,11 @@
 - updated tests for `as_shadow` to account for the new shadow class
 - added internal functions to help with `recode_shadow`
 
-# naniar 0.2.0.9001 (2018/03/01) 
+# naniar 0.2.0.9002 (2018/03/01) 
+
+# New feature
+
+- `is_shadow` and `are_shadow` to determine if something contains a shadow column. simimlar to `rlang::is_na` and `rland::are_na`, `is_shadow` returns a logical vector of length 1, and `are_shadow` returns a logical vector of length of the number of names of a data.frame. Might need to revisit this at a later point and rejig some code (see `any_shade` in `add_label_shadow`).
 
 # Minor Changes
 

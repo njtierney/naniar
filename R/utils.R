@@ -116,6 +116,20 @@ test_if_shadow <- function(x){
   if (!is_shadow(x)) {
     stop("variable must be shadow variable, use as_shadow or bind_shadow",
          call. = FALSE)
+  }
+}
+
+# are there any columns that contain a shadow column?
+any_shadow <- function(x){
+  any(grepl("_NA$",colnames(x)))
+}
+
+# # test if there are shadow columns?
+test_if_any_shadow <- function(x){
+  # test for dataframe
+  test_if_dataframe(x)
+  if (!any_shadow(x)) {
+    stop("Input must contain a shadow column ending in _NA", call. = FALSE)
     }
 }
 

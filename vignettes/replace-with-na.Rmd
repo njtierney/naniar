@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-When you are dealing with missing values, you might want to replace values with
+  When you are dealing with missing values, you might want to replace values with
 a missing values (NA). This is useful in cases when you know the origin of the
 data and can be certain which values should be missing. For example, you might
 know that all values of "N/A", "N A", and "Not Available", or -99, or -1 are

@@ -175,40 +175,45 @@ gather_shadow <- function(data){
     dplyr::rename(case = rows)
 }
 
-#' Is this thing a shadow?
-#'
-#' Does this thing contain a shadow variable?
-#'
-#' @param x vector or data.frame
-#'
-#' @return logical - single value. TRUE if contains a variable with a column ending in "_NA"
-#' @export
-#'
-#' @examples
-#'
-#' df_shadow <- bind_shadow(airquality)
-#'
-#' is_shadow(df_shadow)
-#'
-#' @export
-is_shadow <- function(x){
-  any(grepl("_NA",names(x)))
-}
-
-#' Are these things shadows?
-#'
-#' Does this thing contain a shadow variable?
-#'
-#' @param x vector or data.frame
-#'
-#' @return logical vector - TRUE if contains a variable with a column ending in "_NA"
-#' @export
-#'
-#' @examples
-#'
-#' df_shadow <- bind_shadow(airquality)
-#'
-#' are_shadow(df_shadow)
-#'
-#' @export
-are_shadow <- function(x) grepl("_NA",names(x))
+# #' Is this thing a shadow?
+# #'
+# #' Does this thing contain a shadow variable?
+# #'
+# #' @param x vector or data.frame
+# #'
+# #' @return logical - single value. TRUE if contains a variable with a column ending in "_NA"
+# #' @export
+# #'
+# #' @examples
+# #'
+# #' df_shadow <- bind_shadow(airquality)
+# #'
+# #' is_shadow(df_shadow)
+# #'
+# #' @export
+# is_shadow <- function(x){
+#   # any(grepl("_NA",names(x)))
+#   inherits(x, "shadow")
+# }
+#
+# #' Are these things shadows?
+# #'
+# #' Does this thing contain a shadow variable?
+# #'
+# #' @param x vector or data.frame
+# #'
+# #' @return logical vector - TRUE if contains a variable with a column ending in "_NA"
+# #' @export
+# #'
+# #' @examples
+# #'
+# #' df_shadow <- bind_shadow(airquality)
+# #'
+# #' are_shadow(df_shadow)
+# #'
+# #' @export
+# are_shadow <- function(x){
+#   grepl("_NA",names(x))
+#   purrr::map(x, class) %>%
+#     tibble::as_tibble() %>%
+# }

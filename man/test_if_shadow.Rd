@@ -18,7 +18,7 @@ Test if input is a shadow
 \examples{
 \dontrun{
 # success
-aq_shadow <- bind_shadow(airqaulity)
+aq_shadow <- bind_shadow(airquality)
 test_if_shadow(aq_shadow)
 #fail
 test_if_shadow(airquality)

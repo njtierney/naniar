@@ -9,7 +9,8 @@ recode_shadow(data, ...)
 \arguments{
 \item{data}{data.frame}
 
-\item{...}{A sequence of two-sided formulas as in dplyr::case_when, but when a wrapper function \code{.where} written around it.}
+\item{...}{A sequence of two-sided formulas as in dplyr::case_when,
+but when a wrapper function \code{.where} written around it.}
 }
 \value{
 a dataframe with altered shadows
@@ -32,6 +33,8 @@ df <- tibble::tribble(
 )
 
 dfs <- bind_shadow(df)
+
+dfs
 
 recode_shadow(dfs,
               temp = .where(wind == -99 ~ "bananas"))

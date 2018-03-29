@@ -51,7 +51,9 @@
 shadow_expand_relevel <- function(.var, suffix){
 
   # is it a shadow?
-  test_if_shadow(.var)
+  # test_if_shadow(.var)
+  # - no longer needed, as mutate_if tests the predicate
+  #  -asking "is this a shadow" with is_shadow
 
   # create level
   new_level <- paste0("NA_",suffix)
@@ -129,8 +131,8 @@ update_shadow <- function(data, suffix){
   fun_rhs <- rlang::f_rhs(formulas[[1]])
   fun_lhs <- rlang::f_lhs(formulas[[1]])
 
-  return(list(condition = fun_lhs,
-              suffix = fun_rhs))
+  list(condition = fun_lhs,
+       suffix = fun_rhs)
 
 }
 
@@ -142,7 +144,8 @@ update_shadow <- function(data, suffix){
 #' @note This only works for one special missing at a time at the moment.
 #'
 #' @param data data.frame
-#' @param ... A sequence of two-sided formulas as in dplyr::case_when, but when a wrapper function `.where` written around it.
+#' @param ... A sequence of two-sided formulas as in dplyr::case_when,
+#'   but when a wrapper function `.where` written around it.
 #'
 #' @return a dataframe with altered shadows
 #' @export
@@ -159,6 +162,8 @@ update_shadow <- function(data, suffix){
 #'
 #' dfs <- bind_shadow(df)
 #'
+#' dfs
+#'
 #' recode_shadow(dfs,
 #'               temp = .where(wind == -99 ~ "bananas"))
 #'
@@ -167,11 +172,9 @@ update_shadow <- function(data, suffix){
 #' recode_shadow(dfs,
 #'               temp = .where(wind == -99 ~ "bananas")) %>%
 #' recode_shadow(wind = .where(wind == -99 ~ "my_shhh_is"))
-
 #' }
 #'
 recode_shadow <- function(data, ...){
-
   quo_var <- rlang::quos(...)
 
   formulas <- rlang::dots_list(...)
@@ -183,7 +186,6 @@ recode_shadow <- function(data, ...){
   suffix <- purrr::pluck(formulas_pluck, "suffix")
 
   na_suffix <- paste0("NA_", suffix)
-
 
   shadow_var <- rlang::sym(paste0(names(quo_var),"_NA"))
 

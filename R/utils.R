@@ -105,7 +105,7 @@ test_if_dataframe <- function(x){
 #' @examples
 #' \dontrun{
 #' # success
-#' aq_shadow <- bind_shadow(airqaulity)
+#' aq_shadow <- bind_shadow(airquality)
 #' test_if_shadow(aq_shadow)
 #' #fail
 #' test_if_shadow(airquality)
@@ -121,7 +121,8 @@ test_if_shadow <- function(x){
 
 # are there any columns that contain a shadow column?
 any_shadow <- function(x){
-  any(grepl("_NA$",colnames(x)))
+  # any(grepl("_NA$",colnames(x)))
+  any(are_shadow(x))
 }
 
 # # test if there are shadow columns?
@@ -129,7 +130,7 @@ test_if_any_shadow <- function(x){
   # test for dataframe
   test_if_dataframe(x)
   if (!any_shadow(x)) {
-    stop("Input must contain a shadow column ending in _NA", call. = FALSE)
+    stop("Input must contain shadow column. See ?as_shadow or ?bind_shadow", call. = FALSE)
     }
 }
 

@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.2.0.9400
+Version: 0.2.0.9401
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -56,7 +56,6 @@ Imports:
     magrittr,
     stats,
     visdat,
-    purrrlyr,
     rlang,
     forcats,
     viridis,

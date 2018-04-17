@@ -1,3 +1,9 @@
+# naniar 0.2.1.9000 (2018/04/17) 
+
+# New Features
+
+- Aesthetics now map as expected in geom_miss_point(). This means you can write things like `geom_miss_point(aes(colour = Month))` and it works appropriately. Fixed by Luke Seasmith in Pull request [#144](https://github.com/njtierney/naniar/pull/144), fixing [#137](https://github.com/njtierney/naniar/issues/137).
+
 # naniar 0.2.0.9400 (2018/03/22) 
 
 # New features

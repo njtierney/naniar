@@ -21,7 +21,9 @@ Authors@R: c(
          comment = c(ORCID = "https://orcid.org/0000-0001-7343-1846")),
   person("Jim", "Hester", 
          role = "ctb", 
-         email = "james.f.hester@gmail.com")
+         email = "james.f.hester@gmail.com"),
+  person("Luke", "Smith", 
+         role = "ctb")
   )
 Description: Missing values are ubiquitous in data and need to be explored and
     handled in the initial stages of analysis. 'naniar' provides data structures 

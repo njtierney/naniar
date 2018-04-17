@@ -80,8 +80,7 @@ StatMissPoint <- ggproto("StatMissPoint", Stat,
     compute_group = function(data, scales) {
       missing_label <- label_miss_2d(data$x_miss, data$y_miss)
 
-      data.frame(x = data$x,
-                 y = data$y,
+      data.frame(data,
                  missing = missing_label)
 
       }

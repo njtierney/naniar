@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.2.1.9000
+Version: 0.2.1.9100
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -61,9 +61,10 @@ Imports:
     rlang,
     forcats,
     viridis,
-    glue
+    glue,
+    tidyselect
 RoxygenNote: 6.0.1.9000
-Collate: 
+Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
     'cast-shadows.R'
@@ -79,6 +80,7 @@ Collate:
     'gg-miss-var-cumsum.R'
     'gg-miss-var.R'
     'gg-miss-which.R'
+    'impute_shift.R'
     'label-miss.R'
     'miss-prop-pct-summary.R'
     'miss-scan-count.R'

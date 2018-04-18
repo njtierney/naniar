@@ -71,8 +71,6 @@ impute_shift <- function(.tbl, ...){
 #' impute_shift_at(airquality,
 #'                 .vars = everything())
 #'
-#' # using the "_if" scoped variant
-#'
 #'
 impute_shift_at <- function(.tbl, .vars, ...){
   test_if_dataframe(.tbl)

@@ -33,7 +33,5 @@ impute_shift_at(airquality,
 impute_shift_at(airquality,
                 .vars = everything())
 
-# using the "_if" scoped variant
-
 
 }

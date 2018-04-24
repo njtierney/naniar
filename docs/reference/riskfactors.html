@@ -19,13 +19,25 @@ Data, 2009. — riskfactors • naniar</title>
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="The Behavioral Risk Factor Surveillance System (BRFSS) Survey
+Data, 2009. — riskfactors" />
+
+<meta property="og:description" content="The data is a subset of the 2009 survey from BRFSS, an ongoing data
+collection program designed to measure behavioral risk factors for the
+adult population (18 years of age or older) living in households." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -48,8 +60,12 @@ Data, 2009. — riskfactors • naniar</title>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">naniar</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9100</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -77,6 +93,7 @@ Data, 2009. — riskfactors • naniar</title>
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -84,18 +101,22 @@ Data, 2009. — riskfactors • naniar</title>
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>The Behavioral Risk Factor Surveillance System (BRFSS) Survey
 Data, 2009.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/data-riskfactors.R'><code>R/data-riskfactors.R</code></a></small>
+    <div class="hidden name"><code>riskfactors.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>The data is a subset of the 2009 survey from BRFSS, an ongoing data
 collection program designed to measure behavioral risk factors for the
 adult population (18 years of age or older) living in households.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>data</span>(<span class='no'>riskfactors</span>)</pre>
         
@@ -109,10 +130,11 @@ adult population (18 years of age or older) living in households.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>the codebook:
+    <div class='dont-index'><p>the codebook:
 <a href='http://ftp.cdc.gov/pub/data/brfss/codebook_09.rtf'>http://ftp.cdc.gov/pub/data/brfss/codebook_09.rtf</a></p>
 <p>Format: a data frame with 245 observations on the following 34
-variables.</p><dl class='dl-horizontal'>
+variables.</p>
+<dl class='dl-horizontal'>
 <dt><code>state</code></dt><dd><p>A factor with 52 levels. The labels and states
 corresponding to the labels are as follows: 1:Alabama, 2:Alaska, 4:Arizona,
 5:Arkansas, 6:California,8:Colorado, 9:Connecticut, 10:Delaware, 11:District
@@ -238,8 +260,8 @@ for "Refused".</p></dd>
 such as orange, grapefruit, or tomato that the respondent drink
 every year. -7 is   for "Don't know/Not sure", and -9 is for
 "Refused".</p></dd>
-</dl>
-    <p>library(MissingDataGUI) (named brfss)</p>
+</dl></div>
+    <div class='dont-index'><p>library(MissingDataGUI) (named brfss)</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -247,24 +269,24 @@ every year. -7 is   for "Don't know/Not sure", and -9 is for
 <span class='co'># explore the missingness with vis_miss</span>
 <span class='fu'>library</span>(<span class='no'>naniar</span>)
 
-<span class='fu'><a href='http://www.rdocumentation.org/packages/visdat/topics/vis_miss'>vis_miss</a></span>(<span class='no'>riskfactors</span>)</div><div class='img'><img src='riskfactors-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/visdat/topics/vis_miss'>vis_miss</a></span>(<span class='no'>riskfactors</span>)</div><div class='img'><img src='riskfactors-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Look at the missingness in the variables</span>
 <span class='fu'><a href='miss_var_summary.html'>miss_var_summary</a></span>(<span class='no'>riskfactors</span>)</div><div class='output co'>#&gt; # A tibble: 34 x 4
 #&gt;    variable    n_miss pct_miss n_miss_cumsum
 #&gt;    &lt;chr&gt;        &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-#&gt;  1 state            0    0                 0
-#&gt;  2 sex              0    0                 0
-#&gt;  3 age              0    0                 0
+#&gt;  1 state            0    0.                0
+#&gt;  2 sex              0    0.                0
+#&gt;  3 age              0    0.                0
 #&gt;  4 weight_lbs      10    4.08             10
 #&gt;  5 height_inch      2    0.816            12
 #&gt;  6 bmi             11    4.49             23
 #&gt;  7 marital          1    0.408            24
 #&gt;  8 pregnant       215   87.8             239
-#&gt;  9 children         0    0               239
+#&gt;  9 children         0    0.              239
 #&gt; 10 education        1    0.408           240
 #&gt; # ... with 24 more rows</div><div class='input'>
 <span class='co'># and now as a plot</span>
-<span class='fu'><a href='gg_miss_var.html'>gg_miss_var</a></span>(<span class='no'>riskfactors</span>)</div><div class='img'><img src='riskfactors-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'><a href='gg_miss_var.html'>gg_miss_var</a></span>(<span class='no'>riskfactors</span>)</div><div class='img'><img src='riskfactors-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Look at the missingness in bmi and poor health</span>
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 <span class='no'>p</span> <span class='kw'>&lt;-</span>
@@ -273,10 +295,10 @@ every year. -7 is   for "Don't know/Not sure", and -9 is for
            <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>bmi</span>)) +
      <span class='fu'><a href='geom_miss_point.html'>geom_miss_point</a></span>()
 
- <span class='no'>p</span></div><div class='img'><img src='riskfactors-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+ <span class='no'>p</span></div><div class='img'><img src='riskfactors-3.png' alt='' width='700' height='433' /></div><div class='input'>
  <span class='co'># for each sex?</span>
- <span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>sex</span>)</div><div class='img'><img src='riskfactors-4.png' alt='' width='700' height='432.632880098887' /></div><div class='input'> <span class='co'># for each education bracket?</span>
- <span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>education</span>)</div><div class='img'><img src='riskfactors-5.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+ <span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>sex</span>)</div><div class='img'><img src='riskfactors-4.png' alt='' width='700' height='433' /></div><div class='input'> <span class='co'># for each education bracket?</span>
+ <span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>education</span>)</div><div class='img'><img src='riskfactors-5.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -301,11 +323,14 @@ every year. -7 is   for "Don't know/Not sure", and -9 is for
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

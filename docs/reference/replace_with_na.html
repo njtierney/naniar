@@ -18,13 +18,23 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Replace values with missings — replace_with_na" />
+
+<meta property="og:description" content="Specify variables and their values that you want to convert to missing values.
+This is a complement to tidyr::replace_na." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +57,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">naniar</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9100</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,6 +90,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -83,20 +98,24 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Replace values with missings</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/replace-with-na.R'><code>R/replace-with-na.R</code></a></small>
+    <div class="hidden name"><code>replace_with_na.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Specify variables and their values that you want to convert to missing values.
 This is a complement to <code><a href='http://www.rdocumentation.org/packages/tidyr/topics/replace_na'>tidyr::replace_na</a></code>.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>replace_with_na</span>(<span class='no'>data</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -119,7 +138,7 @@ This is a complement to <code><a href='http://www.rdocumentation.org/packages/ti
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='replace_with_na'>replace_with_na</a> <a href='replace_with_na_all'>replace_with_na_all</a> <a href='replace_with_na_at'>replace_with_na_at</a> <a href='replace_with_na_if'>replace_with_na_if</a></p>
+    <div class='dont-index'><p><a href='replace_with_na'>replace_with_na</a> <a href='replace_with_na_all'>replace_with_na_all</a> <a href='replace_with_na_at'>replace_with_na_at</a> <a href='replace_with_na_if'>replace_with_na_if</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -133,52 +152,52 @@ This is a complement to <code><a href='http://www.rdocumentation.org/packages/ti
 
 <span class='fu'>replace_with_na</span>(<span class='no'>dat_ms</span>,
                <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> -<span class='fl'>99</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;        x y           z
-#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
-#&gt; 1   1.00 A     -100   
-#&gt; 2   3.00 N/A   - 99.0 
-#&gt; 3  NA    &lt;NA&gt;  - 98.0 
-#&gt; 4  NA    E     -101   
-#&gt; 5 -98.0  F     -  1.00</div><div class='input'>
+#&gt;       x y         z
+#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+#&gt; 1    1. A     -100.
+#&gt; 2    3. N/A    -99.
+#&gt; 3   NA  &lt;NA&gt;   -98.
+#&gt; 4   NA  E     -101.
+#&gt; 5  -98. F       -1.</div><div class='input'>
 <span class='fu'>replace_with_na</span>(<span class='no'>dat_ms</span>,
              <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> -<span class='fl'>98</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;        x y           z
-#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
-#&gt; 1   1.00 A     -100   
-#&gt; 2   3.00 N/A   - 99.0 
-#&gt; 3  NA    &lt;NA&gt;  - 98.0 
-#&gt; 4 -99.0  E     -101   
-#&gt; 5  NA    F     -  1.00</div><div class='input'>
+#&gt;       x y         z
+#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+#&gt; 1    1. A     -100.
+#&gt; 2    3. N/A    -99.
+#&gt; 3   NA  &lt;NA&gt;   -98.
+#&gt; 4  -99. E     -101.
+#&gt; 5   NA  F       -1.</div><div class='input'>
 <span class='fu'>replace_with_na</span>(<span class='no'>dat_ms</span>,
              <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>99</span>, -<span class='fl'>98</span>)))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;       x y           z
-#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
-#&gt; 1  1.00 A     -100   
-#&gt; 2  3.00 N/A   - 99.0 
-#&gt; 3 NA    &lt;NA&gt;  - 98.0 
-#&gt; 4 NA    E     -101   
-#&gt; 5 NA    F     -  1.00</div><div class='input'>
+#&gt;       x y         z
+#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+#&gt; 1    1. A     -100.
+#&gt; 2    3. N/A    -99.
+#&gt; 3   NA  &lt;NA&gt;   -98.
+#&gt; 4   NA  E     -101.
+#&gt; 5   NA  F       -1.</div><div class='input'>
 <span class='fu'>replace_with_na</span>(<span class='no'>dat_ms</span>,
              <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>99</span>, -<span class='fl'>98</span>),
                           <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"N/A"</span>)))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;       x y           z
-#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
-#&gt; 1  1.00 A     -100   
-#&gt; 2  3.00 &lt;NA&gt;  - 99.0 
-#&gt; 3 NA    &lt;NA&gt;  - 98.0 
-#&gt; 4 NA    E     -101   
-#&gt; 5 NA    F     -  1.00</div><div class='input'>
+#&gt;       x y         z
+#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+#&gt; 1    1. A     -100.
+#&gt; 2    3. &lt;NA&gt;   -99.
+#&gt; 3   NA  &lt;NA&gt;   -98.
+#&gt; 4   NA  E     -101.
+#&gt; 5   NA  F       -1.</div><div class='input'>
 <span class='fu'>replace_with_na</span>(<span class='no'>dat_ms</span>,
              <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>99</span>, -<span class='fl'>98</span>),
                           <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"N/A"</span>),
                           <span class='kw'>z</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>101</span>)))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;       x y           z
-#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
-#&gt; 1  1.00 A     -100   
-#&gt; 2  3.00 &lt;NA&gt;  - 99.0 
-#&gt; 3 NA    &lt;NA&gt;  - 98.0 
-#&gt; 4 NA    E       NA   
-#&gt; 5 NA    F     -  1.00</div></pre>
+#&gt;       x y         z
+#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+#&gt; 1    1. A     -100.
+#&gt; 2    3. &lt;NA&gt;   -99.
+#&gt; 3   NA  &lt;NA&gt;   -98.
+#&gt; 4   NA  E       NA 
+#&gt; 5   NA  F       -1.</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -201,11 +220,14 @@ This is a complement to <code><a href='http://www.rdocumentation.org/packages/ti
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

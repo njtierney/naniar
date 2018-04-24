@@ -1,0 +1,8 @@
+pandoc: 2.1.3
+pkgdown: 0.1.0.9000
+pkgdown_sha: b567665ba39e9d1603f48e3106ffa513f252f69d
+articles:
+  getting-started-w-naniar: getting-started-w-naniar.html
+  naniar-visualisation: naniar-visualisation.html
+  replace-with-na: replace-with-na.html
+

@@ -18,13 +18,26 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Add a column that tells us which "missingness cluster" a row belongs to — add_miss_cluster" />
+
+<meta property="og:description" content="A way to extract the cluster of missingness that a group belongs to.
+For example, if you use vis_miss(airquality, cluster = TRUE), you can
+see some clustering in the data, but you do not have a way to identify
+the cluster. Future work will incorporate the seriation package to
+allow for better control over the clustering from the user." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +60,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">naniar</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9100</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,6 +93,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -83,12 +101,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Add a column that tells us which "missingness cluster" a row belongs to</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/add-cols.R'><code>R/add-cols.R</code></a></small>
+    <div class="hidden name"><code>add_miss_cluster.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>A way to extract the cluster of missingness that a group belongs to.
 For example, if you use <code><a href='http://www.rdocumentation.org/packages/visdat/topics/vis_miss'>vis_miss(airquality, cluster = TRUE)</a></code>, you can
@@ -96,10 +117,11 @@ see some clustering in the data, but you do not have a way to identify
 the cluster. Future work will incorporate the <code>seriation</code> package to
 allow for better control over the clustering from the user.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>add_miss_cluster</span>(<span class='no'>data</span>, <span class='kw'>cluster_method</span> <span class='kw'>=</span> <span class='st'>"mcquitty"</span>, <span class='kw'>n_clusters</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -122,7 +144,7 @@ helpfile, and options include: "ward.D", "ward.D2", "single", "complete",
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='bind_shadow.html'>bind_shadow()</a></code> <code><a href='add_any_miss.html'>add_any_miss()</a></code> <code><a href='add_label_missings.html'>add_label_missings()</a></code> <code><a href='add_label_shadow.html'>add_label_shadow()</a></code> <code>add_miss_cluster()</code> <code><a href='add_n_miss.html'>add_n_miss()</a></code> <code><a href='add_prop_miss.html'>add_prop_miss()</a></code> <code><a href='add_shadow_shift.html'>add_shadow_shift()</a></code> <code><a href='cast_shadow.html'>cast_shadow()</a></code></p>
+    <div class='dont-index'><p><code><a href='bind_shadow.html'>bind_shadow()</a></code> <code><a href='add_any_miss.html'>add_any_miss()</a></code> <code><a href='add_label_missings.html'>add_label_missings()</a></code> <code><a href='add_label_shadow.html'>add_label_shadow()</a></code> <code>add_miss_cluster()</code> <code><a href='add_n_miss.html'>add_n_miss()</a></code> <code><a href='add_prop_miss.html'>add_prop_miss()</a></code> <code><a href='add_shadow_shift.html'>add_shadow_shift()</a></code> <code><a href='cast_shadow.html'>cast_shadow()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -200,11 +222,14 @@ helpfile, and options include: "ward.D", "ward.D2", "single", "complete",
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

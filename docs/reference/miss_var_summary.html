@@ -18,13 +18,23 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Summarise the missingness in each variable — miss_var_summary" />
+
+<meta property="og:description" content="Provide a summary for each variable of the number and percent missings,
+ordering by the most missings in each variable." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +57,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">naniar</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9100</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,6 +90,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -83,20 +98,24 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Summarise the missingness in each variable</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/miss-x-summary.R'><code>R/miss-x-summary.R</code></a></small>
+    <div class="hidden name"><code>miss_var_summary.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Provide a summary for each variable of the number and percent missings,
 ordering by the most missings in each variable.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>miss_var_summary</span>(<span class='no'>data</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -119,7 +138,7 @@ ordering by the most missings in each variable.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_table'>miss_var_table</a></p>
+    <div class='dont-index'><p><a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_table'>miss_var_table</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -129,20 +148,20 @@ ordering by the most missings in each variable.</p>
 #&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
 #&gt; 1 Ozone        37    24.2             37
 #&gt; 2 Solar.R       7     4.58            44
-#&gt; 3 Wind          0     0               44
-#&gt; 4 Temp          0     0               44
-#&gt; 5 Month         0     0               44
-#&gt; 6 Day           0     0               44</div><div class='input'><span class='fu'>miss_var_summary</span>(<span class='no'>oceanbuoys</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
+#&gt; 3 Wind          0     0.              44
+#&gt; 4 Temp          0     0.              44
+#&gt; 5 Month         0     0.              44
+#&gt; 6 Day           0     0.              44</div><div class='input'><span class='fu'>miss_var_summary</span>(<span class='no'>oceanbuoys</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
 #&gt;   variable   n_miss pct_miss n_miss_cumsum
 #&gt;   &lt;chr&gt;       &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
 #&gt; 1 humidity       93   12.6             177
 #&gt; 2 air_temp_c     81   11.0              84
 #&gt; 3 sea_temp_c      3    0.408             3
-#&gt; 4 year            0    0                 0
-#&gt; 5 latitude        0    0                 0
-#&gt; 6 longitude       0    0                 0
-#&gt; 7 wind_ew         0    0               177
-#&gt; 8 wind_ns         0    0               177</div><div class='input'>
+#&gt; 4 year            0    0.                0
+#&gt; 5 latitude        0    0.                0
+#&gt; 6 longitude       0    0.                0
+#&gt; 7 wind_ew         0    0.              177
+#&gt; 8 wind_ns         0    0.              177</div><div class='input'>
 <span class='co'># works with group_by from dplyr</span>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
@@ -152,14 +171,14 @@ ordering by the most missings in each variable.</p>
 #&gt;    &lt;int&gt; &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
 #&gt;  1     5 Ozone         5     16.1             5
 #&gt;  2     5 Solar.R       4     12.9             9
-#&gt;  3     5 Wind          0      0               9
-#&gt;  4     5 Temp          0      0               9
-#&gt;  5     5 Day           0      0               9
+#&gt;  3     5 Wind          0      0.              9
+#&gt;  4     5 Temp          0      0.              9
+#&gt;  5     5 Day           0      0.              9
 #&gt;  6     6 Ozone        21     70.0            21
-#&gt;  7     6 Solar.R       0      0              21
-#&gt;  8     6 Wind          0      0              21
-#&gt;  9     6 Temp          0      0              21
-#&gt; 10     6 Day           0      0              21
+#&gt;  7     6 Solar.R       0      0.             21
+#&gt;  8     6 Wind          0      0.             21
+#&gt;  9     6 Temp          0      0.             21
+#&gt; 10     6 Day           0      0.             21
 #&gt; # ... with 15 more rows</div><div class='input'>
 </div></pre>
   </div>
@@ -184,11 +203,14 @@ ordering by the most missings in each variable.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

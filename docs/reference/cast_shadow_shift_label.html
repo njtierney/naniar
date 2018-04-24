@@ -18,13 +18,22 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Add a shadow column and a shadow shifted column to a dataset — cast_shadow_shift_label" />
+
+<meta property="og:description" content="Shift the values, add shadow, add missing label" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +56,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">naniar</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9100</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,6 +89,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -83,19 +97,23 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Add a shadow column and a shadow shifted column to a dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/cast-shadows.R'><code>R/cast-shadows.R</code></a></small>
+    <div class="hidden name"><code>cast_shadow_shift_label.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Shift the values, add shadow, add missing label</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>cast_shadow_shift_label</span>(<span class='no'>data</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -115,7 +133,7 @@ respect the dplyr verbs "starts_with", "contains", "ends_with", etc.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='cast_shadow_shift.html'>cast_shadow_shift()</a></code>, <code>cast_shadow_shift_label()</code> <code><a href='bind_shadow.html'>bind_shadow()</a></code> <code><a href='add_any_miss.html'>add_any_miss()</a></code> <code><a href='add_label_missings.html'>add_label_missings()</a></code> <code><a href='add_label_shadow.html'>add_label_shadow()</a></code> <code><a href='add_miss_cluster.html'>add_miss_cluster()</a></code> <code><a href='add_prop_miss.html'>add_prop_miss()</a></code> <code><a href='add_shadow_shift.html'>add_shadow_shift()</a></code></p>
+    <div class='dont-index'><p><code><a href='cast_shadow_shift.html'>cast_shadow_shift()</a></code>, <code>cast_shadow_shift_label()</code> <code><a href='bind_shadow.html'>bind_shadow()</a></code> <code><a href='add_any_miss.html'>add_any_miss()</a></code> <code><a href='add_label_missings.html'>add_label_missings()</a></code> <code><a href='add_label_shadow.html'>add_label_shadow()</a></code> <code><a href='add_miss_cluster.html'>add_miss_cluster()</a></code> <code><a href='add_prop_miss.html'>add_prop_miss()</a></code> <code><a href='add_shadow_shift.html'>add_shadow_shift()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -136,16 +154,16 @@ respect the dplyr verbs "starts_with", "contains", "ends_with", etc.</p></td>
 #&gt; # ... with 143 more rows</div><div class='input'><span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow_shift_label</span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 7
 #&gt;    Ozone Solar.R Ozone_NA Solar.R_NA Ozone_shift Solar.R_shift any_missing
 #&gt;    &lt;int&gt;   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;      
-#&gt;  1    41     190 !NA      !NA              41.0          190   Not Missing
-#&gt;  2    36     118 !NA      !NA              36.0          118   Not Missing
-#&gt;  3    12     149 !NA      !NA              12.0          149   Not Missing
-#&gt;  4    18     313 !NA      !NA              18.0          313   Not Missing
-#&gt;  5    NA      NA NA       NA              -19.7         - 33.6 Missing    
-#&gt;  6    28      NA !NA      NA               28.0         - 33.1 Missing    
-#&gt;  7    23     299 !NA      !NA              23.0          299   Not Missing
+#&gt;  1    41     190 !NA      !NA              41.0          190.  Not Missing
+#&gt;  2    36     118 !NA      !NA              36.0          118.  Not Missing
+#&gt;  3    12     149 !NA      !NA              12.0          149.  Not Missing
+#&gt;  4    18     313 !NA      !NA              18.0          313.  Not Missing
+#&gt;  5    NA      NA NA       NA              -19.7          -33.6 Missing    
+#&gt;  6    28      NA !NA      NA               28.0          -33.1 Missing    
+#&gt;  7    23     299 !NA      !NA              23.0          299.  Not Missing
 #&gt;  8    19      99 !NA      !NA              19.0           99.0 Not Missing
 #&gt;  9     8      19 !NA      !NA               8.00          19.0 Not Missing
-#&gt; 10    NA     194 NA       !NA             -18.5          194   Missing    
+#&gt; 10    NA     194 NA       !NA             -18.5          194.  Missing    
 #&gt; # ... with 143 more rows</div><div class='input'>
 <span class='co'># replicate the plot generated by geom_miss_point()</span>
 
@@ -156,7 +174,7 @@ respect the dplyr verbs "starts_with", "contains", "ends_with", etc.</p></td>
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone_shift</span>,
              <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R_shift</span>,
              <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>any_missing</span>)) +
-        <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>()</div><div class='img'><img src='cast_shadow_shift_label-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+        <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>()</div><div class='img'><img src='cast_shadow_shift_label-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -180,11 +198,14 @@ respect the dplyr verbs "starts_with", "contains", "ends_with", etc.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

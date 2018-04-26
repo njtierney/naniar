@@ -45,7 +45,8 @@ test_that("bind_shadow with only_miss = TRUE returns the right number of cols",{
     )
 })
 
-test_that("bind_shadow with only_miss = TRUE returns columns with additional suffix _NA",{
+test_that(
+  "bind_shadow with only_miss = TRUE returns columns with extra suffix _NA",{
   expect_equal(names(bind_shadow(airquality, only_miss = TRUE)),
                c(names(airquality),
                  paste0(which_var_na(airquality),"_NA")))

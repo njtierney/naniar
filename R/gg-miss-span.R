@@ -82,7 +82,8 @@ gg_miss_span <- function(data,
                                            "Missing")) +
       ggplot2::theme_minimal() +
       ggplot2::labs(title = "Proportion of missing values",
-                    subtitle = sprintf("Over a repeating span of %s", span_every),
+                    subtitle = sprintf("Over a repeating span of %s",
+                                       span_every),
                     x = "Span",
                     y = "Proportion Missing") +
       facet_wrap(as.formula(paste("~", group_string)))

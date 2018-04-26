@@ -95,7 +95,7 @@ miss_case_summary.default <- function(data, order = FALSE, ...){
 
   res[["pct_miss"]] <- rowMeans(is.na(res))*100
   res[["n_miss"]] <- as.integer(rowSums(is.na(res)))
-  res[["case"]] <- 1:nrow(res)
+  res[["case"]] <- seq_len(nrow(res))
   res[["n_miss_cumsum"]] <- cumsum(res[["n_miss"]])
 
   res <- dplyr::as_tibble(res)

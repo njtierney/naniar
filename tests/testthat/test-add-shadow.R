@@ -6,7 +6,8 @@ test_that("add_shadow returns a tibble",{
   expect_is(add_shadow(airquality, Ozone), "tbl_df")
 })
 
-test_that("add_shadow returns a nice error message when no variables are provided",{
+test_that(
+  "add_shadow returns a nice error message when no variables are provided",{
   expect_error(add_shadow(airquality))
 })
 

@@ -28,7 +28,8 @@ miss_vec_2 <- data.frame(x = c(4,NA))
 miss_vec_3 <- data.frame(x = c(4,NA,NA))
 miss_vec_4 <- data.frame(x = c(4,NA,NA,NA))
 
-test_that("impute_shift returns NA values less than minimum when there is only one missing value",{
+test_that(
+  "impute_shift returns NA values less than min when only one missing value",{
   expect_lt(impute_shift(miss_vec_2)[which_miss(miss_vec_2), ],
             min(miss_vec_2, na.rm = TRUE))
   expect_lt(min(impute_shift(miss_vec_3)[which_miss(miss_vec_3), ]),

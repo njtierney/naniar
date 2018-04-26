@@ -168,7 +168,7 @@ unbind_data <- function(data){
 gather_shadow <- function(data){
 
   as_shadow(data) %>%
-    dplyr::mutate(rows = 1:nrow(.)) %>%
+    dplyr::mutate(rows = seq_len(nrow(.))) %>%
     tidyr::gather(key = "variable",
                   value = "missing",
                   -rows) %>%

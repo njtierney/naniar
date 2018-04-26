@@ -40,10 +40,14 @@
 #' # This is a long version of `geom_miss_point()`.
 #'
 impute_shift <- function(.tbl, ...){
+
   test_if_dataframe(.tbl)
+
   test_if_null(.tbl)
-  .tbl %>%
-    dplyr::mutate_all(shadow_shift)
+
+  dplyr::mutate_all(.tbl = .tbl,
+                    .funs = shadow_shift)
+
 }
 
 #' Scoped variants of `impute_shift`
@@ -73,12 +77,16 @@ impute_shift <- function(.tbl, ...){
 #'
 #'
 impute_shift_at <- function(.tbl, .vars, ...){
+
   test_if_dataframe(.tbl)
+
   test_if_null(.tbl)
+
   .vars <- tidyselect::vars_select(names(.tbl), .vars)
-  .tbl %>%
-    dplyr::mutate_at(.vars = .vars,
-                     .funs = shadow_shift)
+
+  dplyr::mutate_at(.tbl = .tbl,
+                   .vars = .vars,
+                   .funs = shadow_shift)
 }
 
 #' Scoped variants of `impute_shift`
@@ -99,9 +107,12 @@ impute_shift_at <- function(.tbl, .vars, ...){
 #'   impute_shift_if(.predicate = is.numeric)
 #'
 impute_shift_if <- function(.tbl, .predicate, ...){
+
   test_if_dataframe(.tbl)
+
   test_if_null(.tbl)
-  .tbl %>%
-    dplyr::mutate_if(.predicate = .predicate,
-                     .funs = shadow_shift)
+
+  dplyr::mutate_if(.tbl = .tbl,
+                   .predicate = .predicate,
+                   .funs = shadow_shift)
 }

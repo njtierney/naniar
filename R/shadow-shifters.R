@@ -78,7 +78,7 @@ shadow_shift.numeric <- function(x, seed_shift = 2017-7-1-1850, ...){
     # else, when there is more than 1 complete value
   } else {
 
-  xrange <- max(x, na.rm = TRUE) - min(x, na.rm = T)
+  xrange <- max(x, na.rm = TRUE) - min(x, na.rm = TRUE)
 
   xmin <- min(x, na.rm = TRUE)
 

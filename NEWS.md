@@ -1,8 +1,10 @@
-# naniar 0.2.1.9200 (2018/04/28) 
+# naniar 0.2.1.9300 (2018/04/28) 
 
 # New Features
 
 - Added complements to `miss_var/case_pct/prop` - `complete_case/var_pct/prop` #150
+- Added `any_na()` - a version of `anyNA` with recursive = TRUE, to properly explore lists.
+- Added `any_na()` - a version of `anyNA` with recursive = TRUE, to properly explore lists.
 
 # naniar 0.2.1.9100 (2018/04/17) 
 

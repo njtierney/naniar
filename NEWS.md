@@ -4,6 +4,7 @@
 
 - renamed `impute_shift` to `impute_below`, as this more clearly describes what it does.
 - minor change to y axis label for gg_miss_case
+- Changed the default colours used in gg_miss_case and gg_miss_var to lorikeet purple (from ochRe package: https://github.com/ropenscilabs/ochRe)
 
 # naniar 0.2.1.9300 (2018/04/28) 
 

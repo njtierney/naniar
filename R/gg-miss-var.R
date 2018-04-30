@@ -75,12 +75,14 @@ gg_miss_var <- function(x, facet, show_pct = FALSE){
 gg_miss_var_create_n_miss <- function(data){
   ggplot(data = data,
        aes(x = stats::reorder(variable, n_miss),
-           y = n_miss,
-           colour = variable)) +
+           y = n_miss)) +
   geom_bar(stat = "identity",
            position = "dodge",
-           width = 0) +
-  geom_point() +
+           width = 0,
+           colour = "#484878",
+           fill = "#484878") +
+  geom_point(colour = "#484878",
+             fill = "#484878") +
   coord_flip() +
   scale_color_discrete(guide = FALSE) +
   labs(y = "# Missing",
@@ -89,16 +91,21 @@ gg_miss_var_create_n_miss <- function(data){
 
 }
 
+# to save me writing two functions, I should include an if() statement to
+# change `n_miss` to `pct_miss` when given the appropriate indicator
+
 gg_miss_var_create_pct_miss <- function(data){
 
   ggplot(data = data,
          aes(x = stats::reorder(variable, pct_miss),
-             y = pct_miss,
-             colour = variable)) +
+             y = pct_miss)) +
   geom_bar(stat = "identity",
            position = "dodge",
-           width = 0) +
-  geom_point() +
+           width = 0,
+           colour = "#484878",
+           fill = "#484878") +
+  geom_point(colour = "#484878",
+             fill = "#484878") +
   coord_flip() +
   scale_color_discrete(guide = FALSE) +
   labs(y = "% Missing Missing",

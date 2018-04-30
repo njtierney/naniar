@@ -76,10 +76,12 @@ gg_miss_case <- function(x, facet, order_cases = FALSE){
 gg_miss_case_create <- function(data){
   ggplot(data = data,
          aes(x = case,
+             # possibly include an if() statement here to change `n_miss` to
+             # `pct_miss` when the appropriate indicator is passed through
              y = n_miss)) +
     geom_col(width = 1,
-             colour = "grey",
-             fill = "grey") +
+             colour = "#484878", # lorikeet purple
+             fill = "#484878") + # lorikeet purple
     coord_flip() +
     labs(y = "# Missing",
          x = "Cases") +

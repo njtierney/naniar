@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.2.1.9300
+Version: 0.2.1.9400
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -81,7 +81,7 @@ Collate:
     'gg-miss-var.R'
     'gg-miss-which.R'
     'helpers.R'
-    'impute_shift.R'
+    'impute_below.R'
     'label-miss.R'
     'miss-complete-x-pct-prop.R'
     'miss-prop-pct-summary.R'

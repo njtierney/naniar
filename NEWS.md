@@ -1,3 +1,10 @@
+# naniar 0.2.1.9400 (2018/04/30) 
+
+# New Features
+
+- renamed `impute_shift` to `impute_below`, as this more clearly describes what it does.
+- minor change to y axis label for gg_miss_case
+
 # naniar 0.2.1.9300 (2018/04/28) 
 
 # New Features

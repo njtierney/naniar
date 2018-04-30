@@ -1,7 +1,7 @@
 #' Impute data with values shifted 10\% below range.
 #'
 #' It can be useful in exploratory graphics to impute data outside the range of
-#'   the data. `impute_shift` imputes values 10% below the range for numeric
+#'   the data. `impute_below` imputes values 10% below the range for numeric
 #'   values, and for character or factor values adds a new string or label.
 #'
 #' @param .tbl a data.frame
@@ -14,14 +14,14 @@
 #'
 #' # you can impute data like so:
 #' airquality %>%
-#'   impute_shift()
+#'   impute_below()
 #'
 #' # However, this does not show you WHERE the missing values are.
 #' # to keep track of them, you want to use `bind_shadow()` first.
 #'
 #' airquality %>%
 #'   bind_shadow() %>%
-#'   impute_shift()
+#'   impute_below()
 #'
 #' # This identifies where the missing values are located, which means you
 #' # can do things like this:
@@ -29,7 +29,7 @@
 #' library(ggplot2)
 #' airquality %>%
 #'   bind_shadow() %>%
-#'   impute_shift() %>%
+#'   impute_below() %>%
 #'   # identify where there are missings across rows.
 #'   add_label_shadow() %>%
 #'   ggplot(aes(x = Ozone,
@@ -39,7 +39,7 @@
 #'
 #' # This is a long version of `geom_miss_point()`.
 #'
-impute_shift <- function(.tbl, ...){
+impute_below <- function(.tbl, ...){
 
   test_if_dataframe(.tbl)
 
@@ -50,11 +50,11 @@ impute_shift <- function(.tbl, ...){
 
 }
 
-#' Scoped variants of `impute_shift`
+#' Scoped variants of `impute_below`
 #'
-#' `impute_shift` operates on all variables. To only impute variables
+#' `impute_below` operates on all variables. To only impute variables
 #'   that satisfy a specific condition, use the scoped variants,
-#'   `impute_shift_at`, and `impute_shift_if`.
+#'   `impute_below_at`, and `impute_below_if`.
 #'
 #' @param .tbl a data.frame
 #' @param .vars variables to impute
@@ -66,17 +66,17 @@ impute_shift <- function(.tbl, ...){
 #' @examples
 #' # select variables starting with a particular string.
 #' library(dplyr)
-#' impute_shift_at(airquality,
+#' impute_below_at(airquality,
 #'                 .vars = starts_with("Oz"))
 #'
-#' impute_shift_at(airquality,
+#' impute_below_at(airquality,
 #'                 .vars = 1:2)
 #'
-#' impute_shift_at(airquality,
+#' impute_below_at(airquality,
 #'                 .vars = everything())
 #'
 #'
-impute_shift_at <- function(.tbl, .vars, ...){
+impute_below_at <- function(.tbl, .vars, ...){
 
   test_if_dataframe(.tbl)
 
@@ -89,11 +89,11 @@ impute_shift_at <- function(.tbl, .vars, ...){
                    .funs = shadow_shift)
 }
 
-#' Scoped variants of `impute_shift`
+#' Scoped variants of `impute_below`
 #'
-#' `impute_shift` operates on all variables. To only impute variables
+#' `impute_below` operates on all variables. To only impute variables
 #'   that satisfy a specific condition, use the scoped variants,
-#'   `impute_shift_at`, and `impute_shift_if`.
+#'   `impute_below_at`, and `impute_below_if`.
 #'
 #' @param .tbl data.frame
 #' @param .predicate A predicate function (such as is.numeric)
@@ -104,9 +104,9 @@ impute_shift_at <- function(.tbl, .vars, ...){
 #' @examples
 #'
 #' airquality %>%
-#'   impute_shift_if(.predicate = is.numeric)
+#'   impute_below_if(.predicate = is.numeric)
 #'
-impute_shift_if <- function(.tbl, .predicate, ...){
+impute_below_if <- function(.tbl, .predicate, ...){
 
   test_if_dataframe(.tbl)
 

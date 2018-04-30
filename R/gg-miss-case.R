@@ -82,7 +82,7 @@ gg_miss_case_create <- function(data){
              fill = "grey") +
     coord_flip() +
     labs(y = "# Missing",
-         x = "# Cases") +
+         x = "Cases") +
     theme_minimal() +
     scale_x_reverse()
 

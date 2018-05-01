@@ -1,4 +1,4 @@
-context("impute shifted values")
+context("impute values below range")
 
 toy_data <- data.frame(
   x = c(1,2,3,NA,NA,NA,7,8,9),
@@ -57,7 +57,49 @@ test_that("impute_below returns same input when there are no missing values",{
   expect_equal(impute_below(test_vec),test_vec)
 })
 
-# need to add tests for test-success for new classes supported by shadow_below
 
-# expect_error(shadow_below("c"))
-# expect_error(shadow_below(iris$Species))
+miss_vec <- rnorm(100)
+
+# add 20 missing values
+miss_vec[sample(1:100,20)] <- NA
+
+miss_df <- data.frame(miss_vec)
+
+test_that("impute_below leaves no NA values",{
+  expect_false(
+    anyNA(impute_below(miss_df)[which_miss(miss_df$miss_vec), ])
+  )
+})
+
+test_that("impute_below prop_below makes shifts bigger",{
+  expect_gt(
+    min(impute_below(miss_df)[which_miss(miss_df$miss_vec), ]),
+    min(impute_below(miss_df,
+                     prop_below = 0.3)[which_miss(miss_df$miss_vec), ])
+  )
+})
+
+test_that("impute_below prop_below makes shifts bigger",{
+  expect_gt(min(impute_below(miss_df,
+                             prop_below = 0.2)[which_miss(miss_df$miss_vec), ]),
+            min(impute_below(miss_df,
+                             prop_below = 0.4)[which_miss(miss_df$miss_vec), ])
+
+  )
+})
+
+test_that("impute_below jitter makes shifts bigger",{
+  expect_lt(var(impute_below(miss_df)[which_miss(miss_df$miss_vec), ]),
+            var(impute_below(miss_df,
+                             jitter = 0.2)[which_miss(miss_df$miss_vec), ])
+  )
+})
+
+test_that("impute_below jitter makes shifts bigger",{
+  expect_lt(var(impute_below(miss_df,
+                             jitter = 0.2)[which_miss(miss_df$miss_vec), ]),
+            var(impute_below(miss_df,
+                             jitter = 0.4)[which_miss(miss_df$miss_vec), ])
+
+  )
+})

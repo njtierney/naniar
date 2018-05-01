@@ -55,3 +55,29 @@ test_that("shadow_shift returns same input when there are no missing values",{
 
 # expect_error(shadow_shift("c"))
 # expect_error(shadow_shift(iris$Species))
+
+test_that("shadow_shift prop_below makes shifts bigger",{
+  expect_gt(min(shadow_shift(miss_vec)[which_miss(miss_vec)]),
+            min(shadow_shift(miss_vec, prop_below = 0.2)[which_miss(miss_vec)])
+  )
+})
+
+test_that("shadow_shift prop_below makes shifts bigger",{
+  expect_gt(min(shadow_shift(miss_vec, prop_below = 0.2)[which_miss(miss_vec)]),
+            min(shadow_shift(miss_vec, prop_below = 0.4)[which_miss(miss_vec)])
+
+  )
+})
+
+test_that("shadow_shift jitter makes shifts bigger",{
+  expect_lt(var(shadow_shift(miss_vec)[which_miss(miss_vec)]),
+            var(shadow_shift(miss_vec, jitter = 0.2)[which_miss(miss_vec)])
+  )
+})
+
+test_that("shadow_shift jitter makes shifts bigger",{
+  expect_lt(var(shadow_shift(miss_vec, jitter = 0.2)[which_miss(miss_vec)]),
+            var(shadow_shift(miss_vec, jitter = 0.4)[which_miss(miss_vec)])
+
+  )
+})

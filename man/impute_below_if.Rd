@@ -4,12 +4,16 @@
 \alias{impute_below_if}
 \title{Scoped variants of \code{impute_below}}
 \usage{
-impute_below_if(.tbl, .predicate, ...)
+impute_below_if(.tbl, .predicate, prop_below = 0.1, jitter = 0.05, ...)
 }
 \arguments{
 \item{.tbl}{data.frame}
 
 \item{.predicate}{A predicate function (such as is.numeric)}
+
+\item{prop_below}{the degree to shift the values. default is}
+
+\item{jitter}{the amount of jitter to add. deafult is 0.05}
 
 \item{...}{extra arguments}
 }

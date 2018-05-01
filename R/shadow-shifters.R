@@ -35,8 +35,37 @@ shadow_shift.default <- function(x, ...){
 
 }
 
+#' Shift (impute) numeric values for graphical exploration
+#'
+#' @param shift_prop the degree to shift the values. default is
+#' @param jitter the amount of jitter to add. deafult is 0.05
 #' @export
-shadow_shift.numeric <- function(x, seed_shift = 2017-7-1-1850, ...){
+shadow_shift.numeric <- function(x,
+                                 seed_shift = 2017-7-1-1850,
+                                 shift_prop = 0.1,
+                                 jitter = 0.05,
+                                 ...){
+
+  shift_values <- function(xmin,
+                           shift_prop,
+                           seed_shift,
+                           jitter) {
+
+    # provide the amount of shift - default is 0.1
+    x_shift <- xmin - xmin * shift_prop
+
+    # set the seed here
+    set.seed(seed_shift)
+    x_jitter <- (stats::runif(length(x)) - 0.50) * x_shift * jitter
+
+    # overwrite x
+    x <- ifelse(is.na(x),
+                yes = x_shift + x_jitter,
+                no = x)
+
+    return(x)
+
+  }
 
   # add an exception for cases with infinite values
   if (any(is.infinite(x))) {
@@ -44,19 +73,10 @@ shadow_shift.numeric <- function(x, seed_shift = 2017-7-1-1850, ...){
     # use the minimum for the non infinite values
     xmin <- min(x[!is.infinite(x)], na.rm = TRUE)
 
-    x_shift <- xmin - xmin*0.1
-
-    # set the seed here
-    set.seed(seed_shift)
-    x_jitter <- (stats::runif(length(x))-0.50)*x_shift*0.10
-
-    # overwrite x
-    x <- ifelse(is.na(x),
-           yes = x_shift + x_jitter,
-           no = x)
-
-    # exit early, no need to move through the rest
-    return(x)
+    shift_values(xmin,
+                 shift_prop,
+                 seed_shift,
+                 jitter)
 
   }
 
@@ -65,30 +85,29 @@ shadow_shift.numeric <- function(x, seed_shift = 2017-7-1-1850, ...){
 
     xmin <- min(x, na.rm = TRUE)
 
-    x_shift <- xmin - xmin*0.1
-
-    # set the seed here
-    set.seed(seed_shift)
-    x_jitter <- (stats::runif(length(x))-0.50)*x_shift*0.10
-
-    ifelse(is.na(x),
-           yes = x_shift + x_jitter,
-           no = x)
+    shift_values(xmin,
+                 shift_prop,
+                 seed_shift,
+                 jitter)
 
     # else, when there is more than 1 complete value
   } else {
 
-  xrange <- max(x, na.rm = TRUE) - min(x, na.rm = TRUE)
+  range_dist <- function(x) diff(range(x, na.rm = TRUE))
+
+  xrange <- range_dist(x)
 
   xmin <- min(x, na.rm = TRUE)
 
   # create the "jitter" to be added around the points.
   set.seed(seed_shift)
-  xrunif <- (stats::runif(length(x))-0.5)*xrange*0.05
+  x_jitter <- (stats::runif(length(x)) - 0.5) * xrange * jitter
+
+  x_shift <- xmin - xrange * shift_prop
 
   ifelse(is.na(x),
          # add the jitter around the those values that are missing
-         yes = xmin-xrange*0.1 + xrunif,
+         yes = x_shift + x_jitter,
          no = x)
 
   } # close else statement

@@ -1,3 +1,10 @@
+# naniar 0.2.1.9500 (2018/05/01) 
+
+# New features
+
+- `impute_below` and `shadow_shift` gain arguments `prop_below` and `jitter` 
+to control the degree of shift, and also the extent of jitter.
+
 # naniar 0.2.1.9400 (2018/04/30) 
 
 # New Features

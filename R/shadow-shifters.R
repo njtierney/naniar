@@ -73,10 +73,12 @@ shadow_shift.numeric <- function(x,
     # use the minimum for the non infinite values
     xmin <- min(x[!is.infinite(x)], na.rm = TRUE)
 
-    shift_values(xmin,
-                 shift_prop,
-                 seed_shift,
-                 jitter)
+    shifted_values <- shift_values(xmin,
+                                  shift_prop,
+                                  seed_shift,
+                                  jitter)
+
+    return(shifted_values)
 
   }
 
@@ -85,10 +87,12 @@ shadow_shift.numeric <- function(x,
 
     xmin <- min(x, na.rm = TRUE)
 
-    shift_values(xmin,
-                 shift_prop,
-                 seed_shift,
-                 jitter)
+    shifted_values <- shift_values(xmin,
+                                   shift_prop,
+                                   seed_shift,
+                                   jitter)
+
+    return(shifted_values)
 
     # else, when there is more than 1 complete value
   } else {

@@ -46,6 +46,7 @@ shadow_shift.numeric <- function(x,
                                  jitter = 0.05,
                                  ...){
 
+  # function to perform the shifting/imputing, which is used by later function
   shift_values <- function(xmin,
                            shift_prop,
                            seed_shift,

@@ -4,13 +4,19 @@
 \alias{shadow_shift.numeric}
 \title{Shift (impute) numeric values for graphical exploration}
 \usage{
-\method{shadow_shift}{numeric}(x, seed_shift = 2017 - 7 - 1 - 1850,
-  shift_prop = 0.1, jitter = 0.05, ...)
+\method{shadow_shift}{numeric}(x, prop_below = 0.1, jitter = 0.05,
+  seed_shift = 2017 - 7 - 1 - 1850, ...)
 }
 \arguments{
-\item{shift_prop}{the degree to shift the values. default is}
+\item{x}{a variable of interest to shift}
+
+\item{prop_below}{the degree to shift the values. default is}
 
 \item{jitter}{the amount of jitter to add. deafult is 0.05}
+
+\item{seed_shift}{a random seed to set, if you like}
+
+\item{...}{extra arguments to pass}
 }
 \description{
 Shift (impute) numeric values for graphical exploration

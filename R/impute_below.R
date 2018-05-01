@@ -5,6 +5,8 @@
 #'   values, and for character or factor values adds a new string or label.
 #'
 #' @param .tbl a data.frame
+#' @param prop_below the degree to shift the values. default is
+#' @param jitter the amount of jitter to add. deafult is 0.05
 #' @param ... additional arguments
 #'
 #' @return an dataset with values imputed
@@ -39,14 +41,19 @@
 #'
 #' # This is a long version of `geom_miss_point()`.
 #'
-impute_below <- function(.tbl, ...){
+impute_below <- function(.tbl,
+                         prop_below = 0.1,
+                         jitter = 0.05,
+                         ...){
 
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
 
   dplyr::mutate_all(.tbl = .tbl,
-                    .funs = shadow_shift)
+                    .funs = shadow_shift,
+                    prop_below = prop_below,
+                    jitter = jitter)
 
 }
 
@@ -54,10 +61,14 @@ impute_below <- function(.tbl, ...){
 #'
 #' `impute_below` operates on all variables. To only impute variables
 #'   that satisfy a specific condition, use the scoped variants,
-#'   `impute_below_at`, and `impute_below_if`.
+#'   `impute_below_at`, and `impute_below_if`. To use `_at` effectively,
+#'   you must know that `_at`` affects variables selected with a character
+#'   vector, or with `vars()`.
 #'
 #' @param .tbl a data.frame
 #' @param .vars variables to impute
+#' @param prop_below the degree to shift the values. default is
+#' @param jitter the amount of jitter to add. deafult is 0.05
 #' @param ... extra arguments
 #'
 #' @return an dataset with values imputed
@@ -67,26 +78,33 @@ impute_below <- function(.tbl, ...){
 #' # select variables starting with a particular string.
 #' library(dplyr)
 #' impute_below_at(airquality,
-#'                 .vars = starts_with("Oz"))
+#'                 .vars = c("Ozone", "Solar.R"))
 #'
 #' impute_below_at(airquality,
 #'                 .vars = 1:2)
-#'
+#'#'
 #' impute_below_at(airquality,
-#'                 .vars = everything())
+#'                 .vars = vars(Ozone))
 #'
-#'
-impute_below_at <- function(.tbl, .vars, ...){
+impute_below_at <- function(.tbl,
+                            .vars,
+                            prop_below = 0.1,
+                            jitter = 0.05,
+                            ...){
+
+  # .vars <- rlang::enquo(.vars)
 
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
 
-  .vars <- tidyselect::vars_select(names(.tbl), .vars)
+  # .vars <- tidyselect::vars_select(names(.tbl), .vars)
 
   dplyr::mutate_at(.tbl = .tbl,
                    .vars = .vars,
-                   .funs = shadow_shift)
+                   .funs = shadow_shift,
+                   prop_below = prop_below,
+                   jitter = jitter)
 }
 
 #' Scoped variants of `impute_below`
@@ -97,6 +115,8 @@ impute_below_at <- function(.tbl, .vars, ...){
 #'
 #' @param .tbl data.frame
 #' @param .predicate A predicate function (such as is.numeric)
+#' @param prop_below the degree to shift the values. default is
+#' @param jitter the amount of jitter to add. deafult is 0.05
 #' @param ... extra arguments
 #'
 #' @return an dataset with values imputed
@@ -106,7 +126,11 @@ impute_below_at <- function(.tbl, .vars, ...){
 #' airquality %>%
 #'   impute_below_if(.predicate = is.numeric)
 #'
-impute_below_if <- function(.tbl, .predicate, ...){
+impute_below_if <- function(.tbl,
+                            .predicate,
+                            prop_below = 0.1,
+                            jitter = 0.05,
+                            ...){
 
   test_if_dataframe(.tbl)
 
@@ -114,5 +138,7 @@ impute_below_if <- function(.tbl, .predicate, ...){
 
   dplyr::mutate_if(.tbl = .tbl,
                    .predicate = .predicate,
-                   .funs = shadow_shift)
+                   .funs = shadow_shift,
+                   prop_below = prop_below,
+                   jitter = jitter)
 }

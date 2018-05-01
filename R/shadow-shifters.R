@@ -37,23 +37,26 @@ shadow_shift.default <- function(x, ...){
 
 #' Shift (impute) numeric values for graphical exploration
 #'
-#' @param shift_prop the degree to shift the values. default is
+#' @param x a variable of interest to shift
+#' @param prop_below the degree to shift the values. default is
 #' @param jitter the amount of jitter to add. deafult is 0.05
+#' @param seed_shift a random seed to set, if you like
+#' @param ... extra arguments to pass
 #' @export
 shadow_shift.numeric <- function(x,
-                                 seed_shift = 2017-7-1-1850,
-                                 shift_prop = 0.1,
+                                 prop_below = 0.1,
                                  jitter = 0.05,
+                                 seed_shift = 2017-7-1-1850,
                                  ...){
 
   # function to perform the shifting/imputing, which is used by later function
   shift_values <- function(xmin,
-                           shift_prop,
+                           prop_below,
                            seed_shift,
                            jitter) {
 
     # provide the amount of shift - default is 0.1
-    x_shift <- xmin - xmin * shift_prop
+    x_shift <- xmin - xmin * prop_below
 
     # set the seed here
     set.seed(seed_shift)
@@ -75,7 +78,7 @@ shadow_shift.numeric <- function(x,
     xmin <- min(x[!is.infinite(x)], na.rm = TRUE)
 
     shifted_values <- shift_values(xmin,
-                                  shift_prop,
+                                  prop_below,
                                   seed_shift,
                                   jitter)
 
@@ -89,7 +92,7 @@ shadow_shift.numeric <- function(x,
     xmin <- min(x, na.rm = TRUE)
 
     shifted_values <- shift_values(xmin,
-                                   shift_prop,
+                                   prop_below,
                                    seed_shift,
                                    jitter)
 
@@ -108,7 +111,7 @@ shadow_shift.numeric <- function(x,
   set.seed(seed_shift)
   x_jitter <- (stats::runif(length(x)) - 0.5) * xrange * jitter
 
-  x_shift <- xmin - xrange * shift_prop
+  x_shift <- xmin - xrange * prop_below
 
   ifelse(is.na(x),
          # add the jitter around the those values that are missing

@@ -40,7 +40,8 @@ gg_miss_which <- function(x){
     scale_y_discrete(breaks = c(""),
                      labels = c("")) +
     labs(y = " ",
-         x = " ")
+         x = " ") +
+    coord_flip()
 
   return(ggobject)
 

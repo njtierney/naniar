@@ -4,6 +4,7 @@
 
 - `impute_below` and `shadow_shift` gain arguments `prop_below` and `jitter` 
 to control the degree of shift, and also the extent of jitter.
+- `gg_miss_which` is rotated 90 degrees to make it easier to read the variables
 
 # naniar 0.2.1.9400 (2018/04/30) 
 

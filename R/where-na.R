@@ -45,20 +45,24 @@ which_na <- function(x){
 #' Which variables contain missing values?
 #'
 #' It can be helpful when writing other functions to just return the names
-#'   of the variables that contain missing values.
+#'   of the variables that contain missing values. `miss_var_which` returns a
+#'   vector of variable names that contain missings. It will return NULL when
+#'   there are no missings.
 #'
 #' @param data a data.frame
 #'
 #' @return character vector of variable names
 #'
+#' @export
+#'
 #' @examples
-#' \dontrun{
-#' which_var_na(airquality)
+
+#' miss_var_which(airquality)
 #'
-#' which_var_na(iris)
-#' }
+#' miss_var_which(iris)
+
 #'
-which_var_na <- function(data){
+miss_var_which <- function(data){
 
   # basic type tests
   test_if_dataframe(data)

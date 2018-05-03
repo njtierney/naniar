@@ -133,3 +133,21 @@ shadow_shift.character <- function(x, ...){
                  true = "missing",
                  false = x)
 }
+
+#' @export
+shadow_shift.POSIXct <- function(x,
+                                 this_origin = "1970-01-01",
+                                 ...){
+
+  # dat_date <- data.frame(date = as.POSIXct(c(111,
+  #                                            112,
+  #                                            150,
+  #                                            NA,
+  #                                            160),
+  #                                          origin = "1970-01-01"))
+
+  shifted <- as.integer(shadow_shift(as.numeric(x)))
+
+  as.POSIXct(shifted,
+             origin = this_origin)
+}

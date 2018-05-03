@@ -96,6 +96,13 @@ test_if_dataframe <- function(x){
     }
 }
 
+test_if_two_cols <- function(x){
+  # test if there are at least two columns
+  if (ncol(x) < 2) {
+    stop("There must be at least two columns", call. = FALSE)
+    }
+}
+
 # are there any columns that contain a shadow column?
 any_shadow <- function(x){
   any(grepl("_NA$",colnames(x)))

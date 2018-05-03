@@ -87,6 +87,7 @@ Collate:
     'miss-prop-pct-summary.R'
     'miss-scan-count.R'
     'miss-x-cumsum.R'
+    'miss-x-pattern.R'
     'miss-x-run.R'
     'miss-x-span.R'
     'miss-x-summary.R'

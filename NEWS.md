@@ -1,3 +1,8 @@
+# naniar 0.2.1.9700 (2018/05/03)
+
+- `miss_pattern` is a tidy summary version of mice::md.pattern
+- `n_miss_col` is the partner to `n_miss_row`
+
 # naniar 0.2.1.9600 (2018/05/02) 
 
 - `gg_miss_which` is rotated 90 degrees to make it easier to read the variables

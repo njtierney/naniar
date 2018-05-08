@@ -35,47 +35,41 @@ dat_pat %>%
   head( -1)
 }
 
-# need to reimplement the mice::md.pattern code
-#
-# convert data.frame to a numeric matrix ---------------------------------------
-# x = airquality
+# # need to reimplement the mice::md.pattern code
 # #
+# # convert data.frame to a numeric matrix ---------------------------------------
+# # x = airquality
+# x = data.frame(x = c(NA, 1, 2, 3),
+#                y = c(1, NA, 2, 3),
+#                z = c(NA, NA, 1, NA))
+# # #
 # x <- data.matrix(x)
 # n_rows <- nrow(x)
 # p_cols <- ncol(x)
-
-# ---- mode? what?
-# mode(x) <- "single"
-
-# create the numeric missingness matrix
-# r <- 1 * is.na(x)
-
-# get the number of missings for each variable ---------------------------------
-
-# nmis
+#
+# # ---- mode? what?
+# # mode(x) <- "single"
+#
+# # create the numeric missingness matrix
+# r_mat <- 1 * is.na(x)
+#
+# # get the number of missings for each variable ---------------------------------
+#
+# # nmis
 # n_miss_cols <- colSums(r)
 # names(n_miss_cols) <- dimnames(x)[[2]]
-#
-# # this section reorders the initial matrix such that the patterns are laid out
-# # so for airquality, the first 1111 rows all have no missing values, and so on.
-#
-# data = data.frame(x = c(NA, 1, 2, 3),
-#                   y = c(1, 2, 3, NA),
-#                   z = c(NA, NA, NA, NA))
-#
-# x = data.matrix(data)
-#
-# col_sequence <- seq_len(ncol(data)) - 1
-#
+# #
+# # # this section reorders the initial matrix such that the patterns are laid out
+# # # so for airquality, the first 1111 rows all have no missing values, and so on.
+# #
+# col_sequence <- seq_len(p_cols) - 1
+# #
 # bit_id <- 2 ^ col_sequence
 #
-# r_mat <- is.na(x) * 1
+# mdp <- (r_mat %*% bit_id) + 1
 #
-# n_rows <- nrow(x)
-# p_cols <- ncol(x)
-#
-# mdp <- (r_mat %*% (2^(seq_len(p_cols) - 1))) + 1
 # ro <- order(mdp)
+#
 # x <- matrix(data = x[ro, ],
 #             nrow = n_rows,
 #             ncol = p_cols)
@@ -83,57 +77,104 @@ dat_pat %>%
 # # This then creates a vector containing, I think, the pattern of missings in each row sorted
 # mdp <- mdp[ro]
 #
-# r_mat
-# ro
 #
 # r <- matrix(r_mat[ro, ], n_rows, p_cols)
+#
 # ro <- order(ro)
+#
 # mdpst <- as.integer(seq(along = mdp)[!duplicated(mdp)])
+#
 # mdp <- unique(mdp)
-# npatt <- length(mdpst)
+#
+# n_patterns <- length(mdpst)
+#
 # r <- 1 - r
-# r <- matrix(r[mdpst, ], npatt, p)
+#
+# r <- matrix(r[mdpst, ], n_patterns, p_cols)
+#
 # if (npatt == 1)
-#   tmp <- format(n)
+#   tmp <- format(n_cols)
 # if (npatt > 1)
-#   tmp <- format(c(mdpst[2:npatt], n + 1) - mdpst)
+#   tmp <- format(c(mdpst[2:n_patterns], n_rows + 1) - mdpst)
 # dimnames(r) <- list(tmp, dimnames(x)[[2]])
+#
+# # as.integer is the same?
 # storage.mode(r) <- "integer"
+#
 # if (npatt > 1)
-#   nmdp <- as.integer(c(mdpst[-1], n + 1) - mdpst)
-# if (npatt == 1)
+#
+#   nmdp <- as.integer(c(mdpst[-1], n_rows + 1) - mdpst)
+#
+# if (npatt == 1){
 #   nmdp <- n
-# co <- order(nmis)
-# ro2 <- order(nmis.row <- p - as.integer(apply(r, 1, sum)))
-
-# final formatting changes -----------------------------------------------------
-# r <- rbind(r[ro2, co], nmis[co])
-# r <- cbind(r, c(nmis.row[ro2], sum(nmis)))
-# r
+#   }
 #
-# miss_dat <- data.frame(x = c(NA, 1, 1),
-#                        y = c(1, NA, 1),
-#                        z = c(1, 1, NA))
+# co <- order(n_miss_cols)
+# ro2 <- order(nmis.row <- p_cols - as.integer(apply(r, 1, sum)))
 #
-# mice::md.pattern(miss_dat)
-# miss_pattern(miss_dat)
+# # final formatting changes -----------------------------------------------------
+# # r <- rbind(r[ro2, co], nmis[co])
+# # r <- cbind(r, c(nmis.row[ro2], sum(nmis)))
+# # r
 # #
-# # miss_dat <- data.frame(x = rep(NA, 3),
-# #                        y = rep(NA, 3),
-# #                        z = rep(NA, 3))
+# # miss_dat <- data.frame(x = c(NA, 1, 1),
+# #                        y = c(1, NA, 1),
+# #                        z = c(1, 1, NA))
 # #
 # # mice::md.pattern(miss_dat)
+# # miss_pattern(miss_dat)
+# # #
+# # # miss_dat <- data.frame(x = rep(NA, 3),
+# # #                        y = rep(NA, 3),
+# # #                        z = rep(NA, 3))
+# # #
+# # # mice::md.pattern(miss_dat)
+# #
+# # miss_dat <- data.frame(x = c(NA, 1, 1),
+# #                        y = c(1, NA, 1),
+# #                        z = c(1, 1, NA))
+# #
+# # miss_pattern(airquality)
+# #
+# # miss_case_table(airquality)
+# # miss_var_table(airquality)
+# #
+# # # unique_pattern
+# # is.na(airquality)*1
 #
-# miss_dat <- data.frame(x = c(NA, 1, 1),
-#                        y = c(1, NA, 1),
-#                        z = c(1, 1, NA))
+# # ?unique
 #
-# miss_pattern(airquality)
 #
-# miss_case_table(airquality)
-# miss_var_table(airquality)
+# # ---- missing pattern pairs
 #
-# # unique_pattern
-# is.na(airquality)*1
-
-# ?unique
+# # things to change
+# # return a non-list structure as output
+# # output should describe what rr, rm, mr, and mm actually are
+# # consider breaking this into separate functions
+# #
+# # so the question then is, is there some way to get each of these to perform
+# # separate functions that can be composed in a useful way?
+# # Is there a visualisation that makes this make more sense?
+# #
+#
+# miss_pattern_pairs <- function(data){
+#
+#   test_if_dataframe(data)
+#
+#   test_if_two_cols(data)
+#
+#   r_mat <- !is.na(data)
+#
+#   rr <- t(r_mat) %*% r_mat
+#
+#   mm <- t(!r_mat) %*% (!r_mat)
+#
+#   mr <- t(!r_mat) %*% r_mat
+#
+#   rm <- t(r_mat) %*% (!r_mat)
+#
+#   return(list(rr = rr, rm = rm, mr = mr, mm = mm))
+#
+# }
+#
+# miss_pattern_pairs(airquality)

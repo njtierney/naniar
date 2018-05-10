@@ -39,6 +39,7 @@ airquality \%>\%
 # This identifies where the missing values are located, which means you
 # can do things like this:
 
+\dontrun{
 library(ggplot2)
 airquality \%>\%
   bind_shadow() \%>\%
@@ -49,7 +50,7 @@ airquality \%>\%
              y = Solar.R,
              colour = any_missing)) +
   geom_point()
-
-# This is a long version of `geom_miss_point()`.
+# Note that this ^^^ is a long version of `geom_miss_point()`.
+}
 
 }

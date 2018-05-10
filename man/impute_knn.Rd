@@ -32,4 +32,15 @@ airquality \%>\%
   bind_shadow() \%>\%
   impute_knn("mean")
 
+\dontrun{
+library(ggplot2)
+airquality \%>\%
+  bind_shadow() \%>\%
+  impute_knn() \%>\%
+  add_label_shadow() \%>\%
+  ggplot(aes(x = Ozone,
+             y = Solar.R,
+             colour = any_missing)) +
+         geom_point()
+}
 }

@@ -38,4 +38,16 @@ impute_below_at(airquality,
 impute_below_at(airquality,
                 .vars = vars(Ozone))
 
+\dontrun{
+library(ggplot2)
+airquality \%>\%
+  bind_shadow() \%>\%
+  impute_below_at(vars(Ozone, Solar.R)) \%>\%
+  add_label_shadow() \%>\%
+  ggplot(aes(x = Ozone,
+             y = Solar.R,
+             colour = any_missing)) +
+         geom_point()
+}
+
 }

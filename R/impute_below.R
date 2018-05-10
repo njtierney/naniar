@@ -28,6 +28,7 @@
 #' # This identifies where the missing values are located, which means you
 #' # can do things like this:
 #'
+#' \dontrun{
 #' library(ggplot2)
 #' airquality %>%
 #'   bind_shadow() %>%
@@ -38,8 +39,8 @@
 #'              y = Solar.R,
 #'              colour = any_missing)) +
 #'   geom_point()
-#'
-#' # This is a long version of `geom_miss_point()`.
+#' # Note that this ^^ is a long version of `geom_miss_point()`.
+#' }
 #'
 impute_below <- function(.tbl,
                          prop_below = 0.1,
@@ -85,6 +86,18 @@ impute_below <- function(.tbl,
 #'#'
 #' impute_below_at(airquality,
 #'                 .vars = vars(Ozone))
+#'
+#' \dontrun{
+#' library(ggplot2)
+#' airquality %>%
+#'   bind_shadow() %>%
+#'   impute_below_at(vars(Ozone, Solar.R)) %>%
+#'   add_label_shadow() %>%
+#'   ggplot(aes(x = Ozone,
+#'              y = Solar.R,
+#'              colour = any_missing)) +
+#'          geom_point()
+#' }
 #'
 impute_below_at <- function(.tbl,
                             .vars,

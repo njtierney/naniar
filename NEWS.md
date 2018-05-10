@@ -1,3 +1,7 @@
+# naniar 0.2.1.9700 (2018/05/10)
+
+- First pass at `impute_knn`, an imputation method that implements the k-nearest neighbours approach used in Missing Data GUI. This is still a draft function.
+
 # naniar 0.2.1.9600 (2018/05/02) 
 
 - `gg_miss_which` is rotated 90 degrees to make it easier to read the variables

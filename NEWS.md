@@ -2,6 +2,7 @@
 
 - First pass at `impute_knn`, an imputation method that implements the k-nearest neighbours approach used in Missing Data GUI. This is still a draft function.
 - first pass at `impute_mean`, a simple method for imputation, which may need some tweaking in the future.
+- `gg_miss_case` now presents the visualisation with `order_cases = TRUE`.
 
 # naniar 0.2.1.9600 (2018/05/02) 
 

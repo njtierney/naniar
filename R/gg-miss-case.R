@@ -20,11 +20,11 @@
 #' gg_miss_case(airquality)
 #' library(ggplot2)
 #' gg_miss_case(airquality) + labs(x = "Number of Cases")
-#' gg_miss_case(airquality, order_cases = TRUE)
+#' gg_miss_case(airquality, order_cases = FALSE)
 #' gg_miss_case(airquality, facet = Month)
-#' gg_miss_case(airquality, facet = Month, order_cases = TRUE)
+#' gg_miss_case(airquality, facet = Month, order_cases = FALSE)
 #'
-gg_miss_case <- function(x, facet, order_cases = FALSE){
+gg_miss_case <- function(x, facet, order_cases = TRUE){
 
   if (!missing(facet)) {
     quo_group_by <- rlang::enquo(facet)

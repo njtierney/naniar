@@ -4,7 +4,7 @@
 \alias{gg_miss_case}
 \title{Plot the number of missings per case (row)}
 \usage{
-gg_miss_case(x, facet, order_cases = FALSE)
+gg_miss_case(x, facet, order_cases = TRUE)
 }
 \arguments{
 \item{x}{data.frame}
@@ -27,9 +27,9 @@ can be customised as normal for ggplot.
 gg_miss_case(airquality)
 library(ggplot2)
 gg_miss_case(airquality) + labs(x = "Number of Cases")
-gg_miss_case(airquality, order_cases = TRUE)
+gg_miss_case(airquality, order_cases = FALSE)
 gg_miss_case(airquality, facet = Month)
-gg_miss_case(airquality, facet = Month, order_cases = TRUE)
+gg_miss_case(airquality, facet = Month, order_cases = FALSE)
 
 }
 \seealso{

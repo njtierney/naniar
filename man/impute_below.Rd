@@ -50,7 +50,7 @@ airquality \%>\%
              y = Solar.R,
              colour = any_missing)) +
   geom_point()
-# Note that this ^^^ is a long version of `geom_miss_point()`.
+# Note that this ^^ is a long version of `geom_miss_point()`.
 }
 
 }

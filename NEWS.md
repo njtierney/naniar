@@ -1,6 +1,7 @@
-# naniar 0.2.1.9700 (2018/05/10)
+# naniar 0.2.1.9800 (2018/05/10)
 
 - First pass at `impute_knn`, an imputation method that implements the k-nearest neighbours approach used in Missing Data GUI. This is still a draft function.
+- first pass at `impute_mean`, a simple method for imputation, which may need some tweaking in the future.
 
 # naniar 0.2.1.9600 (2018/05/02) 
 

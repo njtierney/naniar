@@ -96,6 +96,7 @@ Collate:
     'miss-x-table.R'
     'n-prop-miss-complete-rows.R'
     'n-prop-miss-complete.R'
+    'n-var-miss.R'
     'naniar-ggproto.R'
     'naniar-package.R'
     'replace-to-na.R'

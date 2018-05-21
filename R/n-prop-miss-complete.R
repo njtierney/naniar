@@ -20,7 +20,7 @@ n_miss <- function(x){
 
 #' Return the number of complete values
 #'
-#' A complement to `n_miss``
+#' A complement to `n_miss`
 #'
 #' @param x a vector
 #'

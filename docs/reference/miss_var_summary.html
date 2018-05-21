@@ -59,7 +59,7 @@ ordering by the most missings in each variable." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9900</span>
       </span>
     </div>
 
@@ -148,20 +148,20 @@ ordering by the most missings in each variable.</p>
 #&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
 #&gt; 1 Ozone        37    24.2             37
 #&gt; 2 Solar.R       7     4.58            44
-#&gt; 3 Wind          0     0.              44
-#&gt; 4 Temp          0     0.              44
-#&gt; 5 Month         0     0.              44
-#&gt; 6 Day           0     0.              44</div><div class='input'><span class='fu'>miss_var_summary</span>(<span class='no'>oceanbuoys</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
+#&gt; 3 Wind          0     0               44
+#&gt; 4 Temp          0     0               44
+#&gt; 5 Month         0     0               44
+#&gt; 6 Day           0     0               44</div><div class='input'><span class='fu'>miss_var_summary</span>(<span class='no'>oceanbuoys</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
 #&gt;   variable   n_miss pct_miss n_miss_cumsum
 #&gt;   &lt;chr&gt;       &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
 #&gt; 1 humidity       93   12.6             177
 #&gt; 2 air_temp_c     81   11.0              84
 #&gt; 3 sea_temp_c      3    0.408             3
-#&gt; 4 year            0    0.                0
-#&gt; 5 latitude        0    0.                0
-#&gt; 6 longitude       0    0.                0
-#&gt; 7 wind_ew         0    0.              177
-#&gt; 8 wind_ns         0    0.              177</div><div class='input'>
+#&gt; 4 year            0    0                 0
+#&gt; 5 latitude        0    0                 0
+#&gt; 6 longitude       0    0                 0
+#&gt; 7 wind_ew         0    0               177
+#&gt; 8 wind_ns         0    0               177</div><div class='input'>
 <span class='co'># works with group_by from dplyr</span>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
@@ -171,14 +171,14 @@ ordering by the most missings in each variable.</p>
 #&gt;    &lt;int&gt; &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
 #&gt;  1     5 Ozone         5     16.1             5
 #&gt;  2     5 Solar.R       4     12.9             9
-#&gt;  3     5 Wind          0      0.              9
-#&gt;  4     5 Temp          0      0.              9
-#&gt;  5     5 Day           0      0.              9
-#&gt;  6     6 Ozone        21     70.0            21
-#&gt;  7     6 Solar.R       0      0.             21
-#&gt;  8     6 Wind          0      0.             21
-#&gt;  9     6 Temp          0      0.             21
-#&gt; 10     6 Day           0      0.             21
+#&gt;  3     5 Wind          0      0               9
+#&gt;  4     5 Temp          0      0               9
+#&gt;  5     5 Day           0      0               9
+#&gt;  6     6 Ozone        21     70              21
+#&gt;  7     6 Solar.R       0      0              21
+#&gt;  8     6 Wind          0      0              21
+#&gt;  9     6 Temp          0      0              21
+#&gt; 10     6 Day           0      0              21
 #&gt; # ... with 15 more rows</div><div class='input'>
 </div></pre>
   </div>

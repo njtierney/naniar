@@ -59,7 +59,7 @@ This is a complement to tidyr::replace_na." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9900</span>
       </span>
     </div>
 
@@ -154,50 +154,50 @@ This is a complement to <code><a href='http://www.rdocumentation.org/packages/ti
                <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> -<span class='fl'>99</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;       x y         z
 #&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1    1. A     -100.
-#&gt; 2    3. N/A    -99.
-#&gt; 3   NA  &lt;NA&gt;   -98.
-#&gt; 4   NA  E     -101.
-#&gt; 5  -98. F       -1.</div><div class='input'>
+#&gt; 1     1 A      -100
+#&gt; 2     3 N/A     -99
+#&gt; 3    NA &lt;NA&gt;    -98
+#&gt; 4    NA E      -101
+#&gt; 5   -98 F        -1</div><div class='input'>
 <span class='fu'>replace_with_na</span>(<span class='no'>dat_ms</span>,
              <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> -<span class='fl'>98</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;       x y         z
 #&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1    1. A     -100.
-#&gt; 2    3. N/A    -99.
-#&gt; 3   NA  &lt;NA&gt;   -98.
-#&gt; 4  -99. E     -101.
-#&gt; 5   NA  F       -1.</div><div class='input'>
+#&gt; 1     1 A      -100
+#&gt; 2     3 N/A     -99
+#&gt; 3    NA &lt;NA&gt;    -98
+#&gt; 4   -99 E      -101
+#&gt; 5    NA F        -1</div><div class='input'>
 <span class='fu'>replace_with_na</span>(<span class='no'>dat_ms</span>,
              <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>99</span>, -<span class='fl'>98</span>)))</div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;       x y         z
 #&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1    1. A     -100.
-#&gt; 2    3. N/A    -99.
-#&gt; 3   NA  &lt;NA&gt;   -98.
-#&gt; 4   NA  E     -101.
-#&gt; 5   NA  F       -1.</div><div class='input'>
+#&gt; 1     1 A      -100
+#&gt; 2     3 N/A     -99
+#&gt; 3    NA &lt;NA&gt;    -98
+#&gt; 4    NA E      -101
+#&gt; 5    NA F        -1</div><div class='input'>
 <span class='fu'>replace_with_na</span>(<span class='no'>dat_ms</span>,
              <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>99</span>, -<span class='fl'>98</span>),
                           <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"N/A"</span>)))</div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;       x y         z
 #&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1    1. A     -100.
-#&gt; 2    3. &lt;NA&gt;   -99.
-#&gt; 3   NA  &lt;NA&gt;   -98.
-#&gt; 4   NA  E     -101.
-#&gt; 5   NA  F       -1.</div><div class='input'>
+#&gt; 1     1 A      -100
+#&gt; 2     3 &lt;NA&gt;    -99
+#&gt; 3    NA &lt;NA&gt;    -98
+#&gt; 4    NA E      -101
+#&gt; 5    NA F        -1</div><div class='input'>
 <span class='fu'>replace_with_na</span>(<span class='no'>dat_ms</span>,
              <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>99</span>, -<span class='fl'>98</span>),
                           <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"N/A"</span>),
                           <span class='kw'>z</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>101</span>)))</div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;       x y         z
 #&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1    1. A     -100.
-#&gt; 2    3. &lt;NA&gt;   -99.
-#&gt; 3   NA  &lt;NA&gt;   -98.
-#&gt; 4   NA  E       NA 
-#&gt; 5   NA  F       -1.</div></pre>
+#&gt; 1     1 A      -100
+#&gt; 2     3 &lt;NA&gt;    -99
+#&gt; 3    NA &lt;NA&gt;    -98
+#&gt; 4    NA E        NA
+#&gt; 5    NA F        -1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

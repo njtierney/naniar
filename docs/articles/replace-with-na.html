@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9900</span>
       </span>
     </div>
 
@@ -73,7 +73,7 @@
       <h1>Replacing values with NA</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-04-24</h4>
+            <h4 class="date">2018-05-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/replace-with-na.Rmd"><code>vignettes/replace-with-na.Rmd</code></a></small>
       <div class="hidden name"><code>replace-with-na.Rmd</code></div>
@@ -115,22 +115,22 @@
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;   name              x y                 z</span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 1 N/A              1. N/A           -100.</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 2 N A              3. NOt available  -99.</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 3 N / A           NA  29             -98.</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 4 Not Available   NA  25            -101.</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 5 John Smith     -98. 28              -1.</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 2 N A               3 NOt available   -99</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a></code></pre></div>
 <p>And say we want to replace -98 as well?</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">df <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/replace_with_na.html">replace_with_na</a></span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">99</span>, <span class="dv">-98</span>)))</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   name              x y                 z</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 1 N/A              1. N/A           -100.</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 2 N A              3. NOt available  -99.</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 3 N / A           NA  29             -98.</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 4 Not Available   NA  25            -101.</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 5 John Smith      NA  28              -1.</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 2 N A               3 NOt available   -99</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 5 John Smith       NA 28               -1</span></a></code></pre></div>
 <p>And then what if we want to replace -99 and -98 in all the numeric columns, x and z?</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">df <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/replace_with_na.html">replace_with_na</a></span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">99</span>,<span class="op">-</span><span class="dv">98</span>),</a>
@@ -138,11 +138,11 @@
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   name              x y                 z</span></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 1 N/A              1. N/A           -100.</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 2 N A              3. NOt available   NA </span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 3 N / A           NA  29              NA </span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 4 Not Available   NA  25            -101.</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 5 John Smith      NA  28              -1.</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 2 N A               3 NOt available    NA</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 3 N / A            NA 29               NA</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 5 John Smith       NA 28               -1</span></a></code></pre></div>
 <p>Using <code>replace_with_na</code> works well when we know the exact value to be replaced, and for which variables we want to replace, providing there are not many variables. But what do you do when you’ve got many variables you want to observe?</p>
 </div>
 <div id="extending-replace_with_na" class="section level2">
@@ -172,11 +172,11 @@
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;   name              x y                 z</span></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 1 N/A              1. N/A           -100.</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 2 N A              3. NOt available   NA </span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 3 N / A           NA  29             -98.</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 4 Not Available   NA  25            -101.</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 5 John Smith     -98. 28              -1.</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 2 N A               3 NOt available    NA</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a></code></pre></div>
 <p>Likewise, if you have a set of (annoying) repeating strings like various spellings of “NA”, then I suggest you first lay out all the offending cases:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co"># write out all the offending strings</span></a>
@@ -188,11 +188,11 @@
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
 <a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt;   name           x y         z</span></a>
 <a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 1 &lt;NA&gt;          1. &lt;NA&gt;  -100.</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 2 &lt;NA&gt;          3. &lt;NA&gt;   -99.</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 3 &lt;NA&gt;         NA  29     -98.</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 4 &lt;NA&gt;        -99. 25    -101.</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 5 John Smith  -98. 28      -1.</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 1 &lt;NA&gt;           1 &lt;NA&gt;   -100</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 2 &lt;NA&gt;           3 &lt;NA&gt;    -99</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 3 &lt;NA&gt;          NA 29      -98</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 4 &lt;NA&gt;         -99 25     -101</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 5 John Smith   -98 28       -1</span></a></code></pre></div>
 <div id="replace_with_na_at" class="section level3">
 <h3 class="hasAnchor">
 <a href="#replace_with_na_at" class="anchor"></a><code>replace_with_na_at</code>
@@ -205,11 +205,11 @@
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
 <a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt;   name              x y                 z</span></a>
 <a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; 1 N/A              1. N/A           -100.</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; 2 N A              3. NOt available   NA </span></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; 3 N / A           NA  29             -98.</span></a>
-<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; 4 Not Available   NA  25            -101.</span></a>
-<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt; 5 John Smith     -98. 28              -1.</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; 2 N A               3 NOt available    NA</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a></code></pre></div>
 <p>Although you can achieve this with regular <code>replace_with_na</code>, it is more concise to use, <code>replace_with_na_at</code>. Additionally, you can specify rules as function, for example, make a value NA if the exponent of that number is less than 1:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">df <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -218,11 +218,11 @@
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
 <a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;   name              x y             z    </span></a>
 <a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;lgl&gt;</span></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt; 1 N/A              1. N/A           NA   </span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; 2 N A              3. NOt available NA   </span></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; 3 N / A           NA  29            NA   </span></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; 4 Not Available   NA  25            NA   </span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; 5 John Smith      NA  28            NA</span></a></code></pre></div>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt; 1 N/A               1 N/A           NA   </span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; 2 N A               3 NOt available NA   </span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; 3 N / A            NA 29            NA   </span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; 4 Not Available    NA 25            NA   </span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; 5 John Smith       NA 28            NA</span></a></code></pre></div>
 </div>
 <div id="replace_with_na_if" class="section level3">
 <h3 class="hasAnchor">
@@ -236,11 +236,11 @@
 <a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
 <a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt;   name              x y                 z</span></a>
 <a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; 1 &lt;NA&gt;             1. &lt;NA&gt;          -100.</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; 2 N A              3. NOt available  -99.</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; 3 N / A           NA  29             -98.</span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 4 Not Available  -99. 25            -101.</span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; 5 John Smith     -98. 28              -1.</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; 1 &lt;NA&gt;              1 &lt;NA&gt;           -100</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; 2 N A               3 NOt available   -99</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 4 Not Available   -99 25             -101</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a>
 <a class="sourceLine" id="cb11-13" data-line-number="13"></a>
 <a class="sourceLine" id="cb11-14" data-line-number="14"><span class="co"># or</span></a>
 <a class="sourceLine" id="cb11-15" data-line-number="15">df <span class="op">%&gt;%</span></a>
@@ -249,11 +249,11 @@
 <a class="sourceLine" id="cb11-18" data-line-number="18"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
 <a class="sourceLine" id="cb11-19" data-line-number="19"><span class="co">#&gt;   name           x y         z</span></a>
 <a class="sourceLine" id="cb11-20" data-line-number="20"><span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb11-21" data-line-number="21"><span class="co">#&gt; 1 &lt;NA&gt;          1. &lt;NA&gt;  -100.</span></a>
-<a class="sourceLine" id="cb11-22" data-line-number="22"><span class="co">#&gt; 2 &lt;NA&gt;          3. &lt;NA&gt;   -99.</span></a>
-<a class="sourceLine" id="cb11-23" data-line-number="23"><span class="co">#&gt; 3 &lt;NA&gt;         NA  29     -98.</span></a>
-<a class="sourceLine" id="cb11-24" data-line-number="24"><span class="co">#&gt; 4 &lt;NA&gt;        -99. 25    -101.</span></a>
-<a class="sourceLine" id="cb11-25" data-line-number="25"><span class="co">#&gt; 5 John Smith  -98. 28      -1.</span></a></code></pre></div>
+<a class="sourceLine" id="cb11-21" data-line-number="21"><span class="co">#&gt; 1 &lt;NA&gt;           1 &lt;NA&gt;   -100</span></a>
+<a class="sourceLine" id="cb11-22" data-line-number="22"><span class="co">#&gt; 2 &lt;NA&gt;           3 &lt;NA&gt;    -99</span></a>
+<a class="sourceLine" id="cb11-23" data-line-number="23"><span class="co">#&gt; 3 &lt;NA&gt;          NA 29      -98</span></a>
+<a class="sourceLine" id="cb11-24" data-line-number="24"><span class="co">#&gt; 4 &lt;NA&gt;         -99 25     -101</span></a>
+<a class="sourceLine" id="cb11-25" data-line-number="25"><span class="co">#&gt; 5 John Smith   -98 28       -1</span></a></code></pre></div>
 <p>This means that you are able to apply a rule to many variables that meet a pre-specified condition. This can be of particular use if you have many variables and don’t want to list them all, and also if you know that there is a particular problem for variables of a particular class.</p>
 </div>
 </div>

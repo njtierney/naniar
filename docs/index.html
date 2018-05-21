@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9900</span>
       </span>
     </div>
 
@@ -83,12 +83,43 @@
 <a href="#naniar" class="anchor"></a>naniar <img src="reference/figures/naniar-logo.png" align="right">
 </h1></div>
 
-<p>naniar provides principled, tidy ways to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data. It does this by providing:</p>
+<p><code>naniar</code> provides principled, tidy ways to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data. It does this by providing:</p>
 <ul>
-<li>Shadow matrices, a tidy data structure for missing data (<code><a href="reference/as_shadow.html">as_shadow()</a></code>).</li>
-<li>Shorthand summaries for missing data: <code><a href="reference/n_miss.html">n_miss()</a></code>/<code><a href="reference/n_complete.html">n_complete()</a></code>; <code><a href="reference/prop_miss.html">prop_miss()</a></code>/<code><a href="reference/prop_complete.html">prop_complete()</a></code>.</li>
-<li>Numerical summaries of missing data in variables (<code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code>, <code>miss_var_run</code>), and cases (<code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code>, <code><a href="reference/miss_case_table.html">miss_case_table()</a></code>).</li>
-<li>Visualisation methods: e.g., <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code>, <code><a href="reference/gg_miss_var.html">gg_miss_var()</a></code>,</li>
+<li>Shadow matrices, a tidy data structure for missing data:
+<ul>
+<li>
+<code><a href="reference/as_shadow.html">as_shadow()</a></code> and <code><a href="reference/bind_shadow.html">bind_shadow()</a></code>
+</li>
+</ul>
+</li>
+<li>Shorthand summaries for missing data:
+<ul>
+<li>
+<code><a href="reference/n_miss.html">n_miss()</a></code> and <code><a href="reference/n_complete.html">n_complete()</a></code>
+</li>
+<li>
+<code><a href="reference/pct_miss.html">pct_miss()</a></code>and <code><a href="reference/pct_complete.html">pct_complete()</a></code>
+</li>
+</ul>
+</li>
+<li>Numerical summaries of missing data in variables and cases:
+<ul>
+<li>
+<code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code> and <code><a href="reference/miss_var_table.html">miss_var_table()</a></code>
+</li>
+<li>
+<code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code>, <code><a href="reference/miss_case_table.html">miss_case_table()</a></code>
+</li>
+</ul>
+</li>
+<li>Visualisation methods:
+<ul>
+<li><code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code></li>
+<li><code><a href="reference/gg_miss_var.html">gg_miss_var()</a></code></li>
+<li><code><a href="reference/gg_miss_case.html">gg_miss_case()</a></code></li>
+<li><code><a href="reference/gg_miss_fct.html">gg_miss_fct()</a></code></li>
+</ul>
+</li>
 </ul>
 <p>For more details on the workflow and theory underpinning naniar, read the vignette <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">Getting started with naniar</a>.</p>
 <p>For a short primer on the data visualisation available in naniar, read the vignette <a href="http://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of Missing Data Visualisations</a>.</p>
@@ -99,7 +130,7 @@
 <p>You can install naniar from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"naniar"</span>)</a></code></pre></div>
 <p>Or you can install the development version on github using <code>remotes</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"njtierney/naniar"</span>)</a></code></pre></div>
 </div>
 <div id="a-short-overview-of-naniar" class="section level1">
@@ -186,90 +217,98 @@
 <a class="sourceLine" id="cb8-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</a>
 <a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; Warning: Removed 7 rows containing missing values (geom_point).</span></a></code></pre></div>
 <p><img src="reference/figures/README-shadow-impute-1.png" width="700"></p>
+<p>Or perform an upset plot - to plot of the combinations of missingness across cases, using the <code>as_shadow_upset</code> function</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">library</span>(UpSetR)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">airquality <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="reference/as_shadow_upset.html">as_shadow_upset</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/UpSetR/topics/upset">upset</a></span>()</a></code></pre></div>
+<p><img src="reference/figures/README-upset-plot-1.png" width="700"></p>
 <p>naniar does this while following consistent principles that are easy to read, thanks to the tools of the tidyverse.</p>
 <p>naniar also provides handy visualations for each variable:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</a></code></pre></div>
 <p><img src="reference/figures/README-gg-miss-var-1.png" width="700"></p>
 <p>Or the number of missings in a given variable at a repeating span</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian,</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">             <span class="dt">var =</span> hourly_counts,</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">             <span class="dt">span_every =</span> <span class="dv">1500</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian,</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">             <span class="dt">var =</span> hourly_counts,</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">             <span class="dt">span_every =</span> <span class="dv">1500</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-gg-miss-span-1.png" width="700"></p>
 <p>You can read about all of the visualisations in naniar in the vignette <a href="http://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of missing data visualisations using naniar</a>.</p>
 <p>naniar also provides handy helpers for calculating the number, proportion, and percentage of missing and complete observations:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="reference/n_miss.html">n_miss</a></span>(airquality)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt; [1] 44</span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw"><a href="reference/n_complete.html">n_complete</a></span>(airquality)</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; [1] 874</span></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="kw"><a href="reference/prop_miss.html">prop_miss</a></span>(airquality)</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt; [1] 0.04793028</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="kw"><a href="reference/prop_complete.html">prop_complete</a></span>(airquality)</a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; [1] 0.9520697</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="kw"><a href="reference/pct_miss.html">pct_miss</a></span>(airquality)</a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; [1] 4.793028</span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="kw"><a href="reference/pct_complete.html">pct_complete</a></span>(airquality)</a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; [1] 95.20697</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="reference/n_miss.html">n_miss</a></span>(airquality)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt; [1] 44</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="kw"><a href="reference/n_complete.html">n_complete</a></span>(airquality)</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt; [1] 874</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="kw"><a href="reference/prop_miss.html">prop_miss</a></span>(airquality)</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; [1] 0.04793028</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="kw"><a href="reference/prop_complete.html">prop_complete</a></span>(airquality)</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; [1] 0.9520697</span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="kw"><a href="reference/pct_miss.html">pct_miss</a></span>(airquality)</a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; [1] 4.793028</span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="kw"><a href="reference/pct_complete.html">pct_complete</a></span>(airquality)</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#&gt; [1] 95.20697</span></a></code></pre></div>
 </div>
 <div id="numerical-summaries-for-missing-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#numerical-summaries-for-missing-data" class="anchor"></a>Numerical summaries for missing data</h1>
 <p>naniar provides numerical summaries of missing data, that follow a consistent rule that uses a syntax begining with <code>miss_</code>. Summaries focussing on variables or a single selected variable, start with <code>miss_var_</code>, and summaries for cases (the initial collected row order of the data), they start with <code>miss_case_</code>. All of these functions that return dataframes also work with dplyr’s <code><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>.</p>
 <p>For example, we can look at the number and percent of missings in each case and variable with <code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code>, and <code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code>, which both return output ordered by the number of missing values.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)</a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#&gt; # A tibble: 6 x 4</span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt;   variable n_miss pct_miss n_miss_cumsum</span></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; 1 Ozone        37    24.2             37</span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; 2 Solar.R       7     4.58            44</span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; 3 Wind          0     0.              44</span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; 4 Temp          0     0.              44</span></a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; 5 Month         0     0.              44</span></a>
-<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; 6 Day           0     0.              44</span></a>
-<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="kw"><a href="reference/miss_case_summary.html">miss_case_summary</a></span>(airquality)</a>
-<a class="sourceLine" id="cb12-13" data-line-number="13"><span class="co">#&gt; # A tibble: 153 x 4</span></a>
-<a class="sourceLine" id="cb12-14" data-line-number="14"><span class="co">#&gt;     case n_miss pct_miss n_miss_cumsum</span></a>
-<a class="sourceLine" id="cb12-15" data-line-number="15"><span class="co">#&gt;    &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb12-16" data-line-number="16"><span class="co">#&gt;  1     1      0      0.              0</span></a>
-<a class="sourceLine" id="cb12-17" data-line-number="17"><span class="co">#&gt;  2     2      0      0.              0</span></a>
-<a class="sourceLine" id="cb12-18" data-line-number="18"><span class="co">#&gt;  3     3      0      0.              0</span></a>
-<a class="sourceLine" id="cb12-19" data-line-number="19"><span class="co">#&gt;  4     4      0      0.              0</span></a>
-<a class="sourceLine" id="cb12-20" data-line-number="20"><span class="co">#&gt;  5     5      2     33.3             2</span></a>
-<a class="sourceLine" id="cb12-21" data-line-number="21"><span class="co">#&gt;  6     6      1     16.7             3</span></a>
-<a class="sourceLine" id="cb12-22" data-line-number="22"><span class="co">#&gt;  7     7      0      0.              3</span></a>
-<a class="sourceLine" id="cb12-23" data-line-number="23"><span class="co">#&gt;  8     8      0      0.              3</span></a>
-<a class="sourceLine" id="cb12-24" data-line-number="24"><span class="co">#&gt;  9     9      0      0.              3</span></a>
-<a class="sourceLine" id="cb12-25" data-line-number="25"><span class="co">#&gt; 10    10      1     16.7             4</span></a>
-<a class="sourceLine" id="cb12-26" data-line-number="26"><span class="co">#&gt; # ... with 143 more rows</span></a></code></pre></div>
-<p>You could also <code><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to work out the number of missings in each variable across the levels within it.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt;     filter, lag</span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11">airquality <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Month) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>()</a>
-<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="co">#&gt; # A tibble: 25 x 5</span></a>
-<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="co">#&gt;    Month variable n_miss pct_miss n_miss_cumsum</span></a>
-<a class="sourceLine" id="cb13-16" data-line-number="16"><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb13-17" data-line-number="17"><span class="co">#&gt;  1     5 Ozone         5     16.1             5</span></a>
-<a class="sourceLine" id="cb13-18" data-line-number="18"><span class="co">#&gt;  2     5 Solar.R       4     12.9             9</span></a>
-<a class="sourceLine" id="cb13-19" data-line-number="19"><span class="co">#&gt;  3     5 Wind          0      0.              9</span></a>
-<a class="sourceLine" id="cb13-20" data-line-number="20"><span class="co">#&gt;  4     5 Temp          0      0.              9</span></a>
-<a class="sourceLine" id="cb13-21" data-line-number="21"><span class="co">#&gt;  5     5 Day           0      0.              9</span></a>
-<a class="sourceLine" id="cb13-22" data-line-number="22"><span class="co">#&gt;  6     6 Ozone        21     70.0            21</span></a>
-<a class="sourceLine" id="cb13-23" data-line-number="23"><span class="co">#&gt;  7     6 Solar.R       0      0.             21</span></a>
-<a class="sourceLine" id="cb13-24" data-line-number="24"><span class="co">#&gt;  8     6 Wind          0      0.             21</span></a>
-<a class="sourceLine" id="cb13-25" data-line-number="25"><span class="co">#&gt;  9     6 Temp          0      0.             21</span></a>
-<a class="sourceLine" id="cb13-26" data-line-number="26"><span class="co">#&gt; 10     6 Day           0      0.             21</span></a>
-<a class="sourceLine" id="cb13-27" data-line-number="27"><span class="co">#&gt; # ... with 15 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt; # A tibble: 6 x 4</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt;   variable n_miss pct_miss n_miss_cumsum</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; 1 Ozone        37    24.2             37</span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt; 2 Solar.R       7     4.58            44</span></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; 3 Wind          0     0               44</span></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt; 4 Temp          0     0               44</span></a>
+<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt; 5 Month         0     0               44</span></a>
+<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt; 6 Day           0     0               44</span></a>
+<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="kw"><a href="reference/miss_case_summary.html">miss_case_summary</a></span>(airquality)</a>
+<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="co">#&gt; # A tibble: 153 x 4</span></a>
+<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="co">#&gt;     case n_miss pct_miss n_miss_cumsum</span></a>
+<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="co">#&gt;    &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb13-16" data-line-number="16"><span class="co">#&gt;  1     1      0      0               0</span></a>
+<a class="sourceLine" id="cb13-17" data-line-number="17"><span class="co">#&gt;  2     2      0      0               0</span></a>
+<a class="sourceLine" id="cb13-18" data-line-number="18"><span class="co">#&gt;  3     3      0      0               0</span></a>
+<a class="sourceLine" id="cb13-19" data-line-number="19"><span class="co">#&gt;  4     4      0      0               0</span></a>
+<a class="sourceLine" id="cb13-20" data-line-number="20"><span class="co">#&gt;  5     5      2     33.3             2</span></a>
+<a class="sourceLine" id="cb13-21" data-line-number="21"><span class="co">#&gt;  6     6      1     16.7             3</span></a>
+<a class="sourceLine" id="cb13-22" data-line-number="22"><span class="co">#&gt;  7     7      0      0               3</span></a>
+<a class="sourceLine" id="cb13-23" data-line-number="23"><span class="co">#&gt;  8     8      0      0               3</span></a>
+<a class="sourceLine" id="cb13-24" data-line-number="24"><span class="co">#&gt;  9     9      0      0               3</span></a>
+<a class="sourceLine" id="cb13-25" data-line-number="25"><span class="co">#&gt; 10    10      1     16.7             4</span></a>
+<a class="sourceLine" id="cb13-26" data-line-number="26"><span class="co">#&gt; # ... with 143 more rows</span></a></code></pre></div>
+<p>You could also <code><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to work out the number of missings in each variable across the levels within it.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#&gt;     filter, lag</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">airquality <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Month) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>()</a>
+<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co">#&gt; # A tibble: 25 x 5</span></a>
+<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="co">#&gt;    Month variable n_miss pct_miss n_miss_cumsum</span></a>
+<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="co">#&gt;  1     5 Ozone         5     16.1             5</span></a>
+<a class="sourceLine" id="cb14-18" data-line-number="18"><span class="co">#&gt;  2     5 Solar.R       4     12.9             9</span></a>
+<a class="sourceLine" id="cb14-19" data-line-number="19"><span class="co">#&gt;  3     5 Wind          0      0               9</span></a>
+<a class="sourceLine" id="cb14-20" data-line-number="20"><span class="co">#&gt;  4     5 Temp          0      0               9</span></a>
+<a class="sourceLine" id="cb14-21" data-line-number="21"><span class="co">#&gt;  5     5 Day           0      0               9</span></a>
+<a class="sourceLine" id="cb14-22" data-line-number="22"><span class="co">#&gt;  6     6 Ozone        21     70              21</span></a>
+<a class="sourceLine" id="cb14-23" data-line-number="23"><span class="co">#&gt;  7     6 Solar.R       0      0              21</span></a>
+<a class="sourceLine" id="cb14-24" data-line-number="24"><span class="co">#&gt;  8     6 Wind          0      0              21</span></a>
+<a class="sourceLine" id="cb14-25" data-line-number="25"><span class="co">#&gt;  9     6 Temp          0      0              21</span></a>
+<a class="sourceLine" id="cb14-26" data-line-number="26"><span class="co">#&gt; 10     6 Day           0      0              21</span></a>
+<a class="sourceLine" id="cb14-27" data-line-number="27"><span class="co">#&gt; # ... with 15 more rows</span></a></code></pre></div>
 <p>You can read more about all of these functions in the vignette <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">“Getting Started with naniar”</a>.</p>
 </div>
 <div id="contributions" class="section level1">

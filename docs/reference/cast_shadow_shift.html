@@ -59,7 +59,7 @@ verbs starts_with, contains, ends_with, etc." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9900</span>
       </span>
     </div>
 
@@ -143,43 +143,43 @@ respect the dplyr verbs <code>starts_with</code>, <code>contains</code>, <code>e
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow_shift</span>(<span class='no'>Ozone</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 3
 #&gt;    Ozone Ozone_NA Ozone_shift
 #&gt;    &lt;int&gt; &lt;fct&gt;          &lt;dbl&gt;
-#&gt;  1    41 !NA            41.0 
-#&gt;  2    36 !NA            36.0 
-#&gt;  3    12 !NA            12.0 
-#&gt;  4    18 !NA            18.0 
-#&gt;  5    NA NA            -19.7 
-#&gt;  6    28 !NA            28.0 
-#&gt;  7    23 !NA            23.0 
-#&gt;  8    19 !NA            19.0 
-#&gt;  9     8 !NA             8.00
-#&gt; 10    NA NA            -18.5 
+#&gt;  1    41 !NA             41  
+#&gt;  2    36 !NA             36  
+#&gt;  3    12 !NA             12  
+#&gt;  4    18 !NA             18  
+#&gt;  5    NA NA             -19.7
+#&gt;  6    28 !NA             28  
+#&gt;  7    23 !NA             23  
+#&gt;  8    19 !NA             19  
+#&gt;  9     8 !NA              8  
+#&gt; 10    NA NA             -18.5
 #&gt; # ... with 143 more rows</div><div class='input'><span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow_shift</span>(<span class='no'>Ozone</span>,<span class='no'>Temp</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 6
 #&gt;    Ozone  Temp Ozone_NA Temp_NA Ozone_shift Temp_shift
 #&gt;    &lt;int&gt; &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;         &lt;dbl&gt;      &lt;int&gt;
-#&gt;  1    41    67 !NA      !NA           41.0          67
-#&gt;  2    36    72 !NA      !NA           36.0          72
-#&gt;  3    12    74 !NA      !NA           12.0          74
-#&gt;  4    18    62 !NA      !NA           18.0          62
-#&gt;  5    NA    56 NA       !NA          -19.7          56
-#&gt;  6    28    66 !NA      !NA           28.0          66
-#&gt;  7    23    65 !NA      !NA           23.0          65
-#&gt;  8    19    59 !NA      !NA           19.0          59
-#&gt;  9     8    61 !NA      !NA            8.00         61
-#&gt; 10    NA    69 NA       !NA          -18.5          69
+#&gt;  1    41    67 !NA      !NA            41           67
+#&gt;  2    36    72 !NA      !NA            36           72
+#&gt;  3    12    74 !NA      !NA            12           74
+#&gt;  4    18    62 !NA      !NA            18           62
+#&gt;  5    NA    56 NA       !NA           -19.7         56
+#&gt;  6    28    66 !NA      !NA            28           66
+#&gt;  7    23    65 !NA      !NA            23           65
+#&gt;  8    19    59 !NA      !NA            19           59
+#&gt;  9     8    61 !NA      !NA             8           61
+#&gt; 10    NA    69 NA       !NA           -18.5         69
 #&gt; # ... with 143 more rows</div><div class='input'>
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow_shift</span>(<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select_helpers.html'>contains</a></span>(<span class='st'>"o"</span>))</div><div class='output co'>#&gt; # A tibble: 153 x 12
 #&gt;    Ozone Solar.R Month Ozone_NA Solar.R_NA Month_NA Ozone_shift Solar.R_shift
 #&gt;    &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;          &lt;dbl&gt;         &lt;dbl&gt;
-#&gt;  1    41     190     5 !NA      !NA        !NA            41.0          190. 
-#&gt;  2    36     118     5 !NA      !NA        !NA            36.0          118. 
-#&gt;  3    12     149     5 !NA      !NA        !NA            12.0          149. 
-#&gt;  4    18     313     5 !NA      !NA        !NA            18.0          313. 
-#&gt;  5    NA      NA     5 NA       NA         !NA           -19.7          -33.6
-#&gt;  6    28      NA     5 !NA      NA         !NA            28.0          -33.1
-#&gt;  7    23     299     5 !NA      !NA        !NA            23.0          299. 
-#&gt;  8    19      99     5 !NA      !NA        !NA            19.0           99.0
-#&gt;  9     8      19     5 !NA      !NA        !NA             8.00          19.0
-#&gt; 10    NA     194     5 NA       !NA        !NA           -18.5          194. 
+#&gt;  1    41     190     5 !NA      !NA        !NA             41           190  
+#&gt;  2    36     118     5 !NA      !NA        !NA             36           118  
+#&gt;  3    12     149     5 !NA      !NA        !NA             12           149  
+#&gt;  4    18     313     5 !NA      !NA        !NA             18           313  
+#&gt;  5    NA      NA     5 NA       NA         !NA            -19.7         -33.6
+#&gt;  6    28      NA     5 !NA      NA         !NA             28           -33.1
+#&gt;  7    23     299     5 !NA      !NA        !NA             23           299  
+#&gt;  8    19      99     5 !NA      !NA        !NA             19            99  
+#&gt;  9     8      19     5 !NA      !NA        !NA              8            19  
+#&gt; 10    NA     194     5 NA       !NA        !NA            -18.5         194  
 #&gt; # ... with 143 more rows, and 4 more variables: Month_shift &lt;int&gt;,
 #&gt; #   Ozone_NA_shift &lt;fct&gt;, Solar.R_NA_shift &lt;fct&gt;, Month_NA_shift &lt;fct&gt;</div><div class='input'>
 </div></pre>

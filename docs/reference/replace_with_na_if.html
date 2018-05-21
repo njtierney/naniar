@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9900</span>
       </span>
     </div>
 
@@ -151,32 +151,32 @@ than 20, replace with NA".</p></td>
 <span class='no'>dat_ms</span></div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;       x y         z
 #&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1    1. A     -100.
-#&gt; 2    3. N/A    -99.
-#&gt; 3   NA  &lt;NA&gt;   -98.
-#&gt; 4  -99. E     -101.
-#&gt; 5  -98. F       -1.</div><div class='input'>
+#&gt; 1     1 A      -100
+#&gt; 2     3 N/A     -99
+#&gt; 3    NA &lt;NA&gt;    -98
+#&gt; 4   -99 E      -101
+#&gt; 5   -98 F        -1</div><div class='input'>
 <span class='fu'>replace_with_na_if</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>dat_ms</span>,
                  <span class='kw'>.predicate</span> <span class='kw'>=</span> <span class='no'>is.character</span>,
                  <span class='kw'>condition</span> <span class='kw'>=</span> ~<span class='no'>.x</span> <span class='kw'>==</span> <span class='st'>"N/A"</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;       x y         z
 #&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1    1. A     -100.
-#&gt; 2    3. &lt;NA&gt;   -99.
-#&gt; 3   NA  &lt;NA&gt;   -98.
-#&gt; 4  -99. E     -101.
-#&gt; 5  -98. F       -1.</div><div class='input'>
+#&gt; 1     1 A      -100
+#&gt; 2     3 &lt;NA&gt;    -99
+#&gt; 3    NA &lt;NA&gt;    -98
+#&gt; 4   -99 E      -101
+#&gt; 5   -98 F        -1</div><div class='input'>
 <span class='fu'><a href='replace_with_na.html'>replace_with_na</a></span>(<span class='no'>dat_ms</span>,
               <span class='kw'>to_na</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>99</span>, -<span class='fl'>98</span>),
                            <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"N/A"</span>),
                            <span class='kw'>z</span> <span class='kw'>=</span> <span class='fu'>c</span>(-<span class='fl'>101</span>)))</div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;       x y         z
 #&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-#&gt; 1    1. A     -100.
-#&gt; 2    3. N/A    -99.
-#&gt; 3   NA  &lt;NA&gt;   -98.
-#&gt; 4  -99. E     -101.
-#&gt; 5  -98. F       -1.</div><div class='input'>
+#&gt; 1     1 A      -100
+#&gt; 2     3 N/A     -99
+#&gt; 3    NA &lt;NA&gt;    -98
+#&gt; 4   -99 E      -101
+#&gt; 5   -98 F        -1</div><div class='input'>
 
 </div></pre>
   </div>

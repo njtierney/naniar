@@ -14,18 +14,23 @@ Badge](http://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/p
 Downloads Each
 Month](http://cranlogs.r-pkg.org/badges/naniar)](http://cran.rstudio.com/web/packages/naniar/index.html)
 
-naniar provides principled, tidy ways to summarise, visualise, and
+`naniar` provides principled, tidy ways to summarise, visualise, and
 manipulate missing data with minimal deviations from the workflows in
 ggplot2 and tidy data. It does this by providing:
 
-  - Shadow matrices, a tidy data structure for missing data
-    (`as_shadow()`).
-  - Shorthand summaries for missing data: `n_miss()`/`n_complete()`;
-    `prop_miss()`/`prop_complete()`.
-  - Numerical summaries of missing data in variables
-    (`miss_var_summary()`, `miss_var_run`), and cases
-    (`miss_case_summary()`, `miss_case_table()`).
-  - Visualisation methods: e.g., `geom_miss_point()`, `gg_miss_var()`,
+  - Shadow matrices, a tidy data structure for missing data:
+      - `as_shadow()` and `bind_shadow()`
+  - Shorthand summaries for missing data:
+      - `n_miss()` and `n_complete()`
+      - `pct_miss()`and `pct_complete()`
+  - Numerical summaries of missing data in variables and cases:
+      - `miss_var_summary()` and `miss_var_table()`
+      - `miss_case_summary()`, `miss_case_table()`
+  - Visualisation methods:
+      - `geom_miss_point()`
+      - `gg_miss_var()`
+      - `gg_miss_case()`
+      - `gg_miss_fct()`
 
 For more details on the workflow and theory underpinning naniar, read
 the vignette [Getting started with
@@ -46,7 +51,7 @@ install.packages("naniar")
 Or you can install the development version on github using `remotes`:
 
 ``` r
-# install.packages("devtools")
+# install.packages("remotes")
 remotes::install_github("njtierney/naniar")
 ```
 
@@ -180,6 +185,20 @@ airquality %>%
 
 ![](man/figures/README-shadow-impute-1.png)<!-- -->
 
+Or perform an upset plot - to plot of the combinations of missingness
+across cases, using the `as_shadow_upset` function
+
+``` r
+
+library(UpSetR)
+
+airquality %>%
+  as_shadow_upset() %>%
+  upset()
+```
+
+![](man/figures/README-upset-plot-1.png)<!-- -->
+
 naniar does this while following consistent principles that are easy to
 read, thanks to the tools of the tidyverse.
 
@@ -245,23 +264,23 @@ miss_var_summary(airquality)
 #>   <chr>     <int>    <dbl>         <int>
 #> 1 Ozone        37    24.2             37
 #> 2 Solar.R       7     4.58            44
-#> 3 Wind          0     0.              44
-#> 4 Temp          0     0.              44
-#> 5 Month         0     0.              44
-#> 6 Day           0     0.              44
+#> 3 Wind          0     0               44
+#> 4 Temp          0     0               44
+#> 5 Month         0     0               44
+#> 6 Day           0     0               44
 miss_case_summary(airquality)
 #> # A tibble: 153 x 4
 #>     case n_miss pct_miss n_miss_cumsum
 #>    <int>  <int>    <dbl>         <int>
-#>  1     1      0      0.              0
-#>  2     2      0      0.              0
-#>  3     3      0      0.              0
-#>  4     4      0      0.              0
+#>  1     1      0      0               0
+#>  2     2      0      0               0
+#>  3     3      0      0               0
+#>  4     4      0      0               0
 #>  5     5      2     33.3             2
 #>  6     6      1     16.7             3
-#>  7     7      0      0.              3
-#>  8     8      0      0.              3
-#>  9     9      0      0.              3
+#>  7     7      0      0               3
+#>  8     8      0      0               3
+#>  9     9      0      0               3
 #> 10    10      1     16.7             4
 #> # ... with 143 more rows
 ```
@@ -288,14 +307,14 @@ airquality %>%
 #>    <int> <chr>     <int>    <dbl>         <int>
 #>  1     5 Ozone         5     16.1             5
 #>  2     5 Solar.R       4     12.9             9
-#>  3     5 Wind          0      0.              9
-#>  4     5 Temp          0      0.              9
-#>  5     5 Day           0      0.              9
-#>  6     6 Ozone        21     70.0            21
-#>  7     6 Solar.R       0      0.             21
-#>  8     6 Wind          0      0.             21
-#>  9     6 Temp          0      0.             21
-#> 10     6 Day           0      0.             21
+#>  3     5 Wind          0      0               9
+#>  4     5 Temp          0      0               9
+#>  5     5 Day           0      0               9
+#>  6     6 Ozone        21     70              21
+#>  7     6 Solar.R       0      0              21
+#>  8     6 Wind          0      0              21
+#>  9     6 Temp          0      0              21
+#> 10     6 Day           0      0              21
 #> # ... with 15 more rows
 ```
 

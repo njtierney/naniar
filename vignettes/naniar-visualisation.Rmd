@@ -44,6 +44,7 @@ library(UpSetR)
 airquality %>%
   as_shadow_upset() %>%
   upset()
+
 ```
 
 This tells us:
@@ -51,6 +52,25 @@ This tells us:
 - Only Ozone and Solar.R have missing values
 - Ozone has the most missing values
 - There are 2 cases where both Solar.R and Ozone have missing values together
+
+We can explore this with more complex data, such as riskfactors:
+
+```{r upset-plot-riskfactors}
+
+riskfactors %>%
+  as_shadow_upset() %>%
+  upset()
+
+# explore as many sets as there are variables with missing data in risk factors
+# (24)
+n_var_miss(riskfactors)
+
+riskfactors %>%
+  as_shadow_upset() %>%
+  upset(nsets = 24)
+
+```
+
 
 # Exploring Missingness Mechanisms
 

@@ -33,6 +33,25 @@ vis_miss(airquality)
 
 This plot provides a specific visualiation of the amount of missing data, showing in black the location of missing values, and also providing information on the overall percentage of missing values overall (in the legend), and in each variable.
 
+## Exploring patterns with UpSetR
+
+An upset plot from the `UpSetR` package can be used to visualise the patterns of missingness, or rather the combinations of missingness across cases. To use the `upset` function, use `as_shadow_upset` to get the data into the right shape
+
+```{r upset-plot}
+
+library(UpSetR)
+
+airquality %>%
+  as_shadow_upset() %>%
+  upset()
+```
+
+This tells us:
+
+- Only Ozone and Solar.R have missing values
+- Ozone has the most missing values
+- There are 2 cases where both Solar.R and Ozone have missing values together
+
 # Exploring Missingness Mechanisms
 
 There are a few different ways to explore different missing data mechanisms and relationships. One way incorporates the method of shifting missing values so that they can be visualised on the same axes as the regular values, and then colours the missing and not missing points. This is implemented with `geom_miss_point()`.

@@ -44,6 +44,42 @@ as_shadow.data.frame <- function(data, ...){
 
 }
 
+
+#' Convert data into shadow format for doing an upset plot
+#'
+#' Upset plots are a way of visualising common sets, this function transforms
+#'     the data into a format that feeds directly into an upset plot
+#'
+#' @param data a data.frame
+#'
+#' @return a data.frame
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' library(UpSetR)
+#' airquality %>%
+#'   as_shadow_upset() %>%
+#'   upset()
+#' }
+#'
+#' @export
+as_shadow_upset <- function(data){
+
+  test_if_null(data)
+
+  test_if_dataframe(data)
+
+  data_shadow <- as.data.frame(is.na(data)*1)
+
+  names(data_shadow) <- paste0(names(data),"_NA")
+
+  dplyr::mutate_if(data_shadow, is.numeric, as.integer)
+
+}
+
+
 #' Bind a shadow dataframe to original data
 #'
 #' Binding a shadow matrix to a regular dataframe helps visualise and work with

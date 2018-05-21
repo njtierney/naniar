@@ -1,3 +1,9 @@
+# naniar 0.2.1.9900 (2018/05/21)
+
+# New features
+
+* `as_shadow_upset` gets the data into a format suitable for plotting in the `UpSetR` plot.
+
 # naniar 0.2.1.9800 (2018/05/10)
 
 - First pass at `impute_knn`, an imputation method that implements the k-nearest neighbours approach used in Missing Data GUI. This is still a draft function.

@@ -46,7 +46,8 @@ Suggests:
     here,
     simputation,
     imputeTS,
-    UpSetR
+    UpSetR,
+    gdtools
 VignetteBuilder: knitr
 Depends:
     R (>= 3.1.2)

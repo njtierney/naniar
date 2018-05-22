@@ -13,6 +13,7 @@ Status
 Badge](http://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar)[![CRAN
 Downloads Each
 Month](http://cranlogs.r-pkg.org/badges/naniar)](http://cran.rstudio.com/web/packages/naniar/index.html)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
 `naniar` provides principled, tidy ways to summarise, visualise, and
 manipulate missing data with minimal deviations from the workflows in

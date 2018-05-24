@@ -1,3 +1,11 @@
+# naniar 0.2.1.9990 (2018/05/23)
+
+# Minor Changes
+
+* `miss_var_summary` and `miss_case_summary` now return use `order = TRUE` by
+ default, so that the cases and variables with the most missings are presented 
+ in descending order. Fixes #163
+
 # naniar 0.2.1.9900 (2018/05/21)
 
 # New features

@@ -1,11 +1,17 @@
 #' Summarise the missingness in each variable
 #'
-#' Provide a summary for each variable of the number and percent missings,
-#'   ordering by the most missings in each variable.
+#' Provide a summary for each variable of the number, percent missings, and
+#'   cumulative sum of missings of the order of the variables. By default,
+#'   it orders by the most missings in each variable.
 #'
 #' @param data a data.frame
-#' @param order a logical indicating whether or not to order the result by n_miss. TRUE orders from largest to smallest n_miss, and FALSE orders by order provided by the data.
+#' @param order a logical indicating whether to order the result by `n_miss`.
+#'     Defaults to TRUE. If FALSE, order of variables is the order input.
 #' @param ... extra arguments
+#'
+#' @note `n_miss_cumsum` is calculated as the cumulative sum of missings in the
+#'     variables in the order that they are given in the data when entering
+#'     the function
 #'
 #' @return a tibble of the percent of missing data in each variable
 #'
@@ -35,7 +41,7 @@ miss_var_summary <- function(data, order = FALSE, ...) {
 }
 
 #' @export
-miss_var_summary.default <- function(data, order = FALSE, ...) {
+miss_var_summary.default <- function(data, order = TRUE, ...) {
   res <- purrr::map_df(data, n_miss) %>%
     tidyr::gather(key = "variable", value = "n_miss") %>%
     dplyr::mutate(pct_miss = (n_miss / nrow(data) * 100),
@@ -48,7 +54,7 @@ miss_var_summary.default <- function(data, order = FALSE, ...) {
 }
 
 #' @export
-miss_var_summary.grouped_df <- function(data, order = FALSE, ...) {
+miss_var_summary.grouped_df <- function(data, order = TRUE, ...) {
 
   group_by_fun(data, .fun = miss_var_summary, order = order)
 
@@ -56,12 +62,18 @@ miss_var_summary.grouped_df <- function(data, order = FALSE, ...) {
 
 #' Summarise the missingness in each case
 #'
-#' Return for each case the number and percent of missing values, ordered by the
-#' most number of missings.
+#' Provide a summary for each case in the data of the number, percent missings,
+#'     and cumulative sum of missings of the order of the variables. By default,
+#'     it orders by the most missings in each variable.
 #'
 #' @param data a data.frame
-#' @param order a logical indicating whether or not to order the result by n_miss. TRUE orders from largest to smallest n_miss, and FALSE orders by order provided by the data.
+#' @param order a logical indicating whether or not to order the result by
+#'     n_miss. Defaults to TRUE. If FALSE, order of cases is the order input.
 #' @param ... extra arguments
+#'
+#' @note `n_miss_cumsum` is calculated as the cumulative sum of missings in the
+#'     variables in the order that they are given in the data when entering
+#'     the function
 #'
 #' @return a tibble of the percent of missing data in each case.
 #'
@@ -79,7 +91,7 @@ miss_var_summary.grouped_df <- function(data, order = FALSE, ...) {
 #'
 #' miss_case_summary(airquality)
 #'
-miss_case_summary <- function(data, order = FALSE, ...){
+miss_case_summary <- function(data, order = TRUE, ...){
 
   test_if_null(data)
 
@@ -89,7 +101,7 @@ miss_case_summary <- function(data, order = FALSE, ...){
 }
 
 #' @export
-miss_case_summary.default <- function(data, order = FALSE, ...){
+miss_case_summary.default <- function(data, order = TRUE, ...){
 
   res <- data
 
@@ -114,7 +126,7 @@ miss_case_summary.default <- function(data, order = FALSE, ...){
 }
 
 #' @export
-miss_case_summary.grouped_df <- function(data, order = FALSE, ...){
+miss_case_summary.grouped_df <- function(data, order = TRUE, ...){
 
   group_by_fun(data, .fun = miss_case_summary, order = order)
 
@@ -150,7 +162,7 @@ miss_case_summary.grouped_df <- function(data, order = FALSE, ...){
 #' # etc, etc, etc.
 #'
 #'
-miss_summary <- function(data, order = FALSE){
+miss_summary <- function(data, order = TRUE){
 
   test_if_null(data)
 

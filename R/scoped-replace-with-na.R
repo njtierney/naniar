@@ -35,6 +35,10 @@
 #' # replace all instances of -99 or -98, or "N/A" with NA
 #' replace_with_na_all(dat_ms,
 #'                     condition = ~.x %in% c(-99, -98, "N/A"))
+
+#' # replace all instances of common na strings
+#' replace_with_na_all(dat_ms,
+#'                     condition = ~.x %in% common_na_strings)
 #'
 #' # where works with functions
 #' replace_with_na_all(airquality, ~ sqrt(.x) < 5)
@@ -81,6 +85,11 @@ replace_with_na_all <- function(data, condition) {
 #'                  .vars = c("x","z"),
 #'                  condition = ~.x == -99)
 #'
+#' # replace using values in common_na_strings
+#' replace_with_na_at(data = dat_ms,
+#'                  .vars = c("x","z"),
+#'                  condition = ~.x %in% common_na_strings)
+#'
 #'
 replace_with_na_at <- function(data, .vars, condition) {
   test_if_dataframe(data)
@@ -117,6 +126,10 @@ replace_with_na_at <- function(data, .vars, condition) {
 #' replace_with_na_if(data = dat_ms,
 #'                  .predicate = is.character,
 #'                  condition = ~.x == "N/A")
+
+#' replace_with_na_if(data = dat_ms,
+#'                    .predicate = is.character,
+#'                    condition = ~.x %in% common_na_strings)
 #'
 #' replace_with_na(dat_ms,
 #'               to_na = list(x = c(-99, -98),

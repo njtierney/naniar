@@ -70,6 +70,7 @@ Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
     'cast-shadows.R'
+    'data-common-na-strings.R'
     'data-oceanbuoys.R'
     'data-pedestrian.R'
     'data-riskfactors.R'

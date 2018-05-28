@@ -1,3 +1,9 @@
+# naniar 0.2.1.9999 (2018/05/28)
+
+# Minor Changes
+
+* Added `common_na_strings`, a list of common `NA` values - #168.
+
 # naniar 0.2.1.9990 (2018/05/23)
 
 # Minor Changes

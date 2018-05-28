@@ -28,6 +28,7 @@
 #' miss_scan_count(dat_ms,-99)
 #' miss_scan_count(dat_ms,c(-99,-98))
 #' miss_scan_count(dat_ms,c("-99","-98","N/A"))
+#' miss_scan_count(dat_ms,common_na_strings))
 #'
 miss_scan_count <- function(data,search){
   # if there is only one value to search

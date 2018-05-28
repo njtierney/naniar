@@ -41,5 +41,10 @@ replace_with_na_at(data = dat_ms,
                  .vars = c("x","z"),
                  condition = ~.x == -99)
 
+# replace using values in common_na_strings
+replace_with_na_at(data = dat_ms,
+                 .vars = c("x","z"),
+                 condition = ~.x \%in\% common_na_strings)
+
 
 }

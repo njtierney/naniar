@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.2.2.9100
+Version: 0.2.2.9200
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -70,6 +70,7 @@ Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
     'cast-shadows.R'
+    'data-common-na-numbers.R'
     'data-common-na-strings.R'
     'data-oceanbuoys.R'
     'data-pedestrian.R'

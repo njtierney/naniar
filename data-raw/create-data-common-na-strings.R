@@ -16,7 +16,14 @@ common_na_strings <- c(
   "n /a",
   "n / a",
   " a / a",
-  "n / a "
+  "n / a ",
+  "NULL",
+  "null",
+  "",
+  "?",
+  "*",
+  ".",
+  "-"
 )
 
-devtools::use_data(common_na_strings)
+devtools::use_data(common_na_strings, overwrite = TRUE)

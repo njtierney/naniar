@@ -76,7 +76,7 @@ gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
 
 # utility function to create the starting block for gg_miss_case ---------------
 
-gg_miss_case_create <- function(data, show_pct = show_pct){
+gg_miss_case_create <- function(data, show_pct){
 
   if (show_pct) {
    ylab <- "% Missing"

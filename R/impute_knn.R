@@ -116,7 +116,7 @@ for (i in which_cases_complete) {
 
 # round things for the ordered factors...
 
-ordered_factor <- which(unname(purrr::map_chr(airquality, class)) == "ordered")
+ordered_factor <- which(unname(purrr::map_chr(.tbl, class)) == "ordered")
 
 if (length(ordered_factor)) {
   for (j in ordered_factor) {

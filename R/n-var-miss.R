@@ -22,7 +22,7 @@ n_var_miss <- function(data){
 #' @export
 #' @rdname n-var-case-miss
 n_case_miss <- function(data){
-  sum(rowSums(is.na(airquality)) != 0)
+  sum(rowSums(is.na(data)) != 0)
 }
 
 #' The number of variables with complete values

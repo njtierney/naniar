@@ -56,7 +56,7 @@ replace_with_na_all <- function(data, condition) {
 #' Replace specified variables with NA where a certain condition is met
 #'
 #' @param data dataframe
-#' @param .vars The variables to refer to
+#' @param .vars A character string of variables to replace with NA values
 #' @param condition A condition required to be TRUE to set NA. Here, the condition
 #'   is specified with a formula, following the syntax: `~.x {condition}`.
 #'   For example, writing `~.x < 20` would mean "where a variable value is less
@@ -146,10 +146,9 @@ replace_with_na_if <- function(data, .predicate, condition) {
 
 # utility funs for replace_with_na_*  ------------------------------------------
 
-#' @importFrom stats as.formula
 create_mapper_na <- function(condition){
   glue::glue("~ {rlang::f_text(condition)} & !is.na(.x)") %>%
-    as.formula() %>%
+    stats::as.formula() %>%
     purrr::as_mapper()
 }
 

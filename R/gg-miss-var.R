@@ -30,9 +30,11 @@ gg_miss_var <- function(x, facet, show_pct = FALSE){
   test_if_dataframe(x)
   test_if_null(x)
 
+  if (!missing(facet)) {
   # collect group into
   quo_group_by <- rlang::enquo(facet)
   group_string <- deparse(substitute(facet))
+  }
 
   if (show_pct == FALSE & missing(facet)) {
 

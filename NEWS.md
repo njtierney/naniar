@@ -1,8 +1,9 @@
-# naniar 0.2.2.9000 (2018/06/05)
+# naniar 0.2.2.9100 (2018/06/05)
 
 # Minor Changes
 
 * imported `is_na` and `are_na` from `rlang`.
+* `gg_miss_case` gains a `show_pct` option to be consistent with `gg_miss_var` #153
 
 # naniar 0.2.1.9999 (2018/05/28)
 

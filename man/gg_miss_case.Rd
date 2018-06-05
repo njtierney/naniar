@@ -4,7 +4,7 @@
 \alias{gg_miss_case}
 \title{Plot the number of missings per case (row)}
 \usage{
-gg_miss_case(x, facet, order_cases = TRUE)
+gg_miss_case(x, facet, order_cases = TRUE, show_pct = FALSE)
 }
 \arguments{
 \item{x}{data.frame}
@@ -13,6 +13,8 @@ gg_miss_case(x, facet, order_cases = TRUE)
 
 \item{order_cases}{logical Order the rows by missingness (default is FALSE -
 no order).}
+
+\item{show_pct}{logical Show the percentage of cases}
 }
 \value{
 a ggplot object depicting the number of missings in a given case.
@@ -27,9 +29,11 @@ can be customised as normal for ggplot.
 gg_miss_case(airquality)
 library(ggplot2)
 gg_miss_case(airquality) + labs(x = "Number of Cases")
+gg_miss_case(airquality, show_pct = TRUE)
 gg_miss_case(airquality, order_cases = FALSE)
 gg_miss_case(airquality, facet = Month)
 gg_miss_case(airquality, facet = Month, order_cases = FALSE)
+gg_miss_case(airquality, facet = Month, show_pct = TRUE)
 
 }
 \seealso{

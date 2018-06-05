@@ -1,3 +1,9 @@
+# naniar 0.2.2.9000 (2018/06/05)
+
+# Minor Changes
+
+* imported `is_na` and `are_na` from `rlang`.
+
 # naniar 0.2.1.9999 (2018/05/28)
 
 # Minor Changes

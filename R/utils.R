@@ -2,6 +2,14 @@
 #' @export
 magrittr::`%>%`
 
+#' @importFrom rlang is_na
+#' @export
+rlang::is_na
+
+#' @importFrom rlang are_na
+#' @export
+rlang::are_na
+
 #' Group By Helper
 #'
 #' This is a wrapper to facilitate the `grouped_df` S3 method.

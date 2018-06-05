@@ -6,6 +6,10 @@
 \alias{vis_miss}
 \alias{reexports}
 \alias{\%>\%}
+\alias{reexports}
+\alias{is_na}
+\alias{reexports}
+\alias{are_na}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -14,6 +18,8 @@ below to see their documentation.
 
 \describe{
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+
+  \item{rlang}{\code{\link[rlang]{is_na}}, \code{\link[rlang]{are_na}}}
 
   \item{visdat}{\code{\link[visdat]{vis_miss}}}
 }}

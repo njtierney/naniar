@@ -92,7 +92,7 @@ complete_var_pct <- function(data){
 #'
 #' @export
 #' @name miss-complete-case-prop
-#'
+#' @importFrom stats complete.cases
 #' @examples
 #'
 #' miss_case_prop(airquality)

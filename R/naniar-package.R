@@ -40,6 +40,7 @@ globalVariables(
     "n_vars",
     "span_every",
     "n_miss_cumsum",
-    "as.formula"
+    "as.formula",
+    "complete.cases"
     )
   )

@@ -45,7 +45,12 @@
 #'
 #' @export
 replace_with_na_all <- function(data, condition) {
-  purrr::map_df(data, ~ na_set(.x, condition) )
+  test_if_dataframe(data)
+  test_if_null(data)
+  test_if_missing(data)
+  data[rlang::as_function(condition)(data)] <- NA
+  data
+  # purrr::map_df(data, ~ na_set(.x, condition) )
 }
 
 # Future work

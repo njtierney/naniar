@@ -1,3 +1,9 @@
+# naniar 0.3.90000 (2018/06/07)
+
+## New Features
+
+## Minor Changes
+
 # naniar 0.3.0 (2018/06/06) "Digory and his Uncle Are Both in Trouble"
 =========================
 

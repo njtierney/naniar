@@ -8,3 +8,4 @@ on_cran <- function() {
 # Use minimal fonts.conf to speed up fc-cache
 if (on_appveyor() || on_cran()) {
   gdtools::set_dummy_conf()
+}

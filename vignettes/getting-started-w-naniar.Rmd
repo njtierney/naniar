@@ -104,7 +104,7 @@ ggplot(airquality,
   geom_point()
 ```
 
-The problem with this is that ggplot does not handle missings be default, and removes the missing values. This makes them hard to explore. It also presents the strange question of "how do you visualise something that is not there?".  One approach to visualising missing data comes from [`ggobi`](http://www.ggobi.org/) and [`manet`](http://www.rosuda.org/MANET/), where we replace "NA" values with values 10% lower than the minimum value in that variable. 
+The problem with this is that ggplot does not handle missings be default, and removes the missing values. This makes them hard to explore. It also presents the strange question of "how do you visualise something that is not there?".  One approach to visualising missing data comes from [`ggobi`](https://en.wikipedia.org/wiki/GGobi) and [`manet`](http://www.rosuda.org/MANET/), where we replace "NA" values with values 10% lower than the minimum value in that variable. 
 
 This process is performed and visualised for you with the `geom_miss_point()` ggplot2 geom. Here, we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
 

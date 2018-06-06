@@ -1,33 +1,34 @@
-#' Identify if there are any missing values
+#' Identify if there are any missing or complete values
 #'
-#' It is useful to search for any instances of missing values. By default
-#'     handles atomic vectors without a class and NULL. It calls any(is.na(x))
-#'     on objects with classes and for recursive = FALSE, on lists and
-#'     pairlists. This means that you can get FALSE when you search through a
-#'     list that contains missings. So, `any_na` is shorthand for
-#'     `anyNA(x, recursive = TRUE)`.
+#' It is useful to search for any instances of missing or complete values. There
+#'     Are two fucntions that do this in `naniar` - `any_miss` and it's alias
+#'     `any_na`. These bother under the hood call `anyNA`. `any_complete` is
+#'     the complement to `any_miss` - it returns TRUE if there are any complete values.
 #'
 #'
 #' @param x an R object to be tested
 #'
 #' @name any-na
+#' @seealso [all_miss()] [all_complete]
 #'
 #' @examples
 #'
-#' # any_na() works recursively with lists
-#' bag_o_lists <- list(A = 1:5,
-#'                     B = c(NA, 5:8),
-#'                     C = c("A","NA"))
-#'
-#' anyNA(bag_o_lists)
-#' any_na(bag_o_lists)
-#'
 #' anyNA(airquality)
 #' any_na(airquality)
+#' any_miss(airquality)
+#' any_complete(airquality)
 #'
 #'
 #' @export
-any_na <- function(x) anyNA(x, recursive = TRUE)
+any_na <- function(x) anyNA(x)
+
+#' @rdname any-na
+#' @export
+any_miss <- any_na
+
+#' @rdname any-na
+#' @export
+any_complete <- function(x) any(complete.cases(x))
 
 #' Identify if all values are missing or complete
 #'
@@ -51,8 +52,20 @@ any_na <- function(x) anyNA(x, recursive = TRUE)
 #' @name all-is-miss-complete
 #' @export
 
-all_na <- function(x) all(is.na(x))
+all_na <- function(x){
+  # if there are no missings, then there cannot be all missings
+  if (!anyNA(x)) {
+    return(FALSE)
+  # else calculate missings
+  } else {
+    return(all(is.na(x)))
+  }
+}
 
 #' @rdname all-is-miss-complete
 #' @export
-all_complete <- function(x) all(!is.na(x))
+all_miss <- all_na
+
+#' @rdname all-is-miss-complete
+#' @export
+all_complete <- function(x) !anyNA(x)

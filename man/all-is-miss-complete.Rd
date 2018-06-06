@@ -3,10 +3,13 @@
 \name{all-is-miss-complete}
 \alias{all-is-miss-complete}
 \alias{all_na}
+\alias{all_miss}
 \alias{all_complete}
 \title{Identify if all values are missing or complete}
 \usage{
 all_na(x)
+
+all_miss(x)
 
 all_complete(x)
 }

@@ -3,33 +3,34 @@
 \name{any-na}
 \alias{any-na}
 \alias{any_na}
-\title{Identify if there are any missing values}
+\alias{any_miss}
+\alias{any_complete}
+\title{Identify if there are any missing or complete values}
 \usage{
 any_na(x)
+
+any_miss(x)
+
+any_complete(x)
 }
 \arguments{
 \item{x}{an R object to be tested}
 }
 \description{
-It is useful to search for any instances of missing values. By default
-handles atomic vectors without a class and NULL. It calls any(is.na(x))
-on objects with classes and for recursive = FALSE, on lists and
-pairlists. This means that you can get FALSE when you search through a
-list that contains missings. So, \code{any_na} is shorthand for
-\code{anyNA(x, recursive = TRUE)}.
+It is useful to search for any instances of missing or complete values. There
+Are two fucntions that do this in \code{naniar} - \code{any_miss} and it's alias
+\code{any_na}. These bother under the hood call \code{anyNA}. \code{any_complete} is
+the complement to \code{any_miss} - it returns TRUE if there are any complete values.
 }
 \examples{
 
-# any_na() works recursively with lists
-bag_o_lists <- list(A = 1:5,
-                    B = c(NA, 5:8),
-                    C = c("A","NA"))
-
-anyNA(bag_o_lists)
-any_na(bag_o_lists)
-
 anyNA(airquality)
 any_na(airquality)
+any_miss(airquality)
+any_complete(airquality)
 
 
+}
+\seealso{
+\code{\link[=all_miss]{all_miss()}} \link{all_complete}
 }

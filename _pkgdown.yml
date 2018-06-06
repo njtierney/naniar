@@ -8,13 +8,7 @@ home:
     href: https://github.com/njtierney/naniar
 
 reference:
-  - title: "Visualisation"
-    desc: >
-      Visualise missing data
-    contents:
-      - geom_miss_point
-      - starts_with("gg_miss_")
-  - title: "Data structures for missing data"
+- title: "Data structures for missing data"
     desc: >
       Creation and Manipulation of Shadow Matrices
     contents:
@@ -22,6 +16,16 @@ reference:
       - bind_shadow
       - gather_shadow
       - starts_with("shadow_shift")
+      - unbind_shadow
+      - unbind_data
+  - title: "Visualisation"
+    desc: >
+      Visualise missing data
+    contents:
+      - geom_miss_point
+      - starts_with("gg_miss_")
+      - as_shadow_upset
+      - vis_miss
   - title: "Numerical Summaries"
     desc: >
       Provide tidy data frame summaries of missingness
@@ -37,11 +41,25 @@ reference:
       - prop_complete
       - pct_miss
       - pct_complete
+      - common_na_numbers
+      - common_na_strings
   - title: "Add columns"
     desc: >
       Add missing data summaries/tool columns
     contents:
       - starts_with("add_")
+  - title: "Replacing values with NA"
+    desc: >
+      Functions to help replace certain values with NA, which includes scoped
+      variants (_at, _if, _all) that take formulas for flexible approachs
+    contents:
+      - starts_with("replace_with_na")
+  - title: "Imputation helpers"
+    desc: >
+      Simple imputation methods for exploring visualisation and missingness
+      structure
+    contents:
+      - starts_with("impute_")
   - title: "Cast Shadows"
     desc: >
       Add shadow information to the dataframe while reducing it to the
@@ -52,14 +70,22 @@ reference:
     desc: >
       Misc helpers
     contents:
+      - all_complete
+      - all_miss
       - all_row_complete
       - all_row_miss
+      - any_complete
+      - any_miss
+      - are_na
+      - are_shadow
       - any_row_miss
       - label_miss_1d
       - label_miss_2d
       - label_missings
       - where_na
       - which_na
+
+      -
 
 navbar:
   left:

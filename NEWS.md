@@ -2,6 +2,9 @@
 
 ## New Features
 
+- Added some detail on alternative methods for replacing with NA in the vignette
+"replacing values with NA".
+
 - Added functions: 
     - `all_miss()` / `all_na()` equivalent to `all(is.na(x))`
     - `any_complete()` equivalent to `all(complete.cases(x))`

@@ -21,14 +21,17 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
 
 <meta property="og:title" content="Changelog" />
+
 
 
 <!-- mathjax -->
@@ -55,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9900</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
       </span>
     </div>
 
@@ -101,83 +104,12 @@
       <small>Source: <a href='https://github.com/njtierney/naniar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="naniar-0-2-1-9900-20180521" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-2-1-9900-20180521" class="anchor"></a>naniar 0.2.1.9900 (2018/05/21)<small> Unreleased </small>
-</h1>
-</div>
-    <div id="naniar-0-2-1-9800-20180510" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-2-1-9800-20180510" class="anchor"></a>naniar 0.2.1.9800 (2018/05/10)<small> Unreleased </small>
-</h1>
-<ul>
-<li>First pass at <code>impute_knn</code>, an imputation method that implements the k-nearest neighbours approach used in Missing Data GUI. This is still a draft function.</li>
-<li>first pass at <code>impute_mean</code>, a simple method for imputation, which may need some tweaking in the future.</li>
-<li>
-<code>gg_miss_case</code> now presents the visualisation with <code>order_cases = TRUE</code>.</li>
-</ul>
-</div>
-    <div id="naniar-0-2-1-9600-20180502" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-2-1-9600-20180502" class="anchor"></a>naniar 0.2.1.9600 (2018/05/02)<small> Unreleased </small>
-</h1>
-<ul>
-<li>
-<code>gg_miss_which</code> is rotated 90 degrees to make it easier to read the variables</li>
-<li>added <code>miss_var_which</code>, a function that lists the variables missing</li>
-</ul>
-</div>
-    <div id="naniar-0-2-1-9500-20180501" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-2-1-9500-20180501" class="anchor"></a>naniar 0.2.1.9500 (2018/05/01)<small> Unreleased </small>
-</h1>
-</div>
-    <div id="naniar-0-2-1-9400-20180430" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-2-1-9400-20180430" class="anchor"></a>naniar 0.2.1.9400 (2018/04/30)<small> Unreleased </small>
-</h1>
-</div>
-    <div id="naniar-0-2-1-9300-20180428" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-2-1-9300-20180428" class="anchor"></a>naniar 0.2.1.9300 (2018/04/28)<small> Unreleased </small>
-</h1>
-</div>
-    <div id="naniar-0-2-1-9100-20180417" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-2-1-9100-20180417" class="anchor"></a>naniar 0.2.1.9100 (2018/04/17)<small> Unreleased </small>
-</h1>
-</div>
-    <div id="naniar-0-2-0-9400-20180322" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-2-0-9400-20180322" class="anchor"></a>naniar 0.2.0.9400 (2018/03/22)<small> Unreleased </small>
-</h1>
-</div>
-    <div id="naniar-0-2-0-9002-20180301" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-2-0-9002-20180301" class="anchor"></a>naniar 0.2.0.9002 (2018/03/01)<small> Unreleased </small>
-</h1>
-</div>
-    <div id="naniar-0-2-0-9002-20180301-1" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-2-0-9002-20180301-1" class="anchor"></a>naniar 0.2.0.9002 (2018/03/01)<small> Unreleased </small>
-</h1>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#naniar-0-2-1-9900-20180521">0.2.1.9900</a></li>
-        <li><a href="#naniar-0-2-1-9800-20180510">0.2.1.9800</a></li>
-        <li><a href="#naniar-0-2-1-9600-20180502">0.2.1.9600</a></li>
-        <li><a href="#naniar-0-2-1-9500-20180501">0.2.1.9500</a></li>
-        <li><a href="#naniar-0-2-1-9400-20180430">0.2.1.9400</a></li>
-        <li><a href="#naniar-0-2-1-9300-20180428">0.2.1.9300</a></li>
-        <li><a href="#naniar-0-2-1-9100-20180417">0.2.1.9100</a></li>
-        <li><a href="#naniar-0-2-0-9400-20180322">0.2.0.9400</a></li>
-        <li><a href="#naniar-0-2-0-9002-20180301">0.2.0.9002</a></li>
-        <li><a href="#naniar-0-2-0-9002-20180301-1">0.2.0.9002</a></li>
       </ul>
     </div>
   </div>

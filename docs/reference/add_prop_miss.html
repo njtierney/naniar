@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -32,10 +34,11 @@
 
 <meta property="og:description" content="It can be useful when doing data analysis to add the proportion of missing
 data values into your dataframe. add_prop_miss adds a column named
-"prop_miss", which contains the proportion of missing values in that row.
+&quot;prop_miss&quot;, which contains the proportion of missing values in that row.
 You can specify the variables that you would like to show the missingness
 for." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -62,7 +65,7 @@ for." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9900</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
       </span>
     </div>
 
@@ -297,7 +300,17 @@ has not been used on all of the variables.</p></td>
 #&gt; 140    18     224 13.8   67     9  17     0.0000000
 #&gt; 141    13      27 10.3   76     9  18     0.0000000
 #&gt; 142    24     238 10.3   68     9  19     0.0000000
-#&gt;  [ reached getOption("max.print") -- omitted 11 rows ]</div><div class='input'>
+#&gt; 143    16     201  8.0   82     9  20     0.0000000
+#&gt; 144    13     238 12.6   64     9  21     0.0000000
+#&gt; 145    23      14  9.2   71     9  22     0.0000000
+#&gt; 146    36     139 10.3   81     9  23     0.0000000
+#&gt; 147     7      49 10.3   69     9  24     0.0000000
+#&gt; 148    14      20 16.6   63     9  25     0.0000000
+#&gt; 149    30     193  6.9   70     9  26     0.0000000
+#&gt; 150    NA     145 13.2   77     9  27     0.1666667
+#&gt; 151    14     191 14.3   75     9  28     0.0000000
+#&gt; 152    18     131  8.0   76     9  29     0.0000000
+#&gt; 153    20     223 11.5   68     9  30     0.0000000</div><div class='input'>
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>add_prop_miss</span>(<span class='no'>Solar.R</span>)</div><div class='output co'>#&gt;     Ozone Solar.R Wind Temp Month Day prop_miss_vars
 #&gt; 1      41     190  7.4   67     5   1              0
 #&gt; 2      36     118  8.0   72     5   2              0
@@ -441,7 +454,17 @@ has not been used on all of the variables.</p></td>
 #&gt; 140    18     224 13.8   67     9  17              0
 #&gt; 141    13      27 10.3   76     9  18              0
 #&gt; 142    24     238 10.3   68     9  19              0
-#&gt;  [ reached getOption("max.print") -- omitted 11 rows ]</div><div class='input'>
+#&gt; 143    16     201  8.0   82     9  20              0
+#&gt; 144    13     238 12.6   64     9  21              0
+#&gt; 145    23      14  9.2   71     9  22              0
+#&gt; 146    36     139 10.3   81     9  23              0
+#&gt; 147     7      49 10.3   69     9  24              0
+#&gt; 148    14      20 16.6   63     9  25              0
+#&gt; 149    30     193  6.9   70     9  26              0
+#&gt; 150    NA     145 13.2   77     9  27              0
+#&gt; 151    14     191 14.3   75     9  28              0
+#&gt; 152    18     131  8.0   76     9  29              0
+#&gt; 153    20     223 11.5   68     9  30              0</div><div class='input'>
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>add_prop_miss</span>(<span class='no'>Solar.R</span>, <span class='no'>Ozone</span>)</div><div class='output co'>#&gt;     Ozone Solar.R Wind Temp Month Day prop_miss_vars
 #&gt; 1      41     190  7.4   67     5   1            0.0
 #&gt; 2      36     118  8.0   72     5   2            0.0
@@ -585,7 +608,17 @@ has not been used on all of the variables.</p></td>
 #&gt; 140    18     224 13.8   67     9  17            0.0
 #&gt; 141    13      27 10.3   76     9  18            0.0
 #&gt; 142    24     238 10.3   68     9  19            0.0
-#&gt;  [ reached getOption("max.print") -- omitted 11 rows ]</div><div class='input'>
+#&gt; 143    16     201  8.0   82     9  20            0.0
+#&gt; 144    13     238 12.6   64     9  21            0.0
+#&gt; 145    23      14  9.2   71     9  22            0.0
+#&gt; 146    36     139 10.3   81     9  23            0.0
+#&gt; 147     7      49 10.3   69     9  24            0.0
+#&gt; 148    14      20 16.6   63     9  25            0.0
+#&gt; 149    30     193  6.9   70     9  26            0.0
+#&gt; 150    NA     145 13.2   77     9  27            0.5
+#&gt; 151    14     191 14.3   75     9  28            0.0
+#&gt; 152    18     131  8.0   76     9  29            0.0
+#&gt; 153    20     223 11.5   68     9  30            0.0</div><div class='input'>
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>add_prop_miss</span>(<span class='no'>Solar.R</span>, <span class='no'>Ozone</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"testing"</span>)</div><div class='output co'>#&gt;     Ozone Solar.R Wind Temp Month Day testing_vars
 #&gt; 1      41     190  7.4   67     5   1          0.0
 #&gt; 2      36     118  8.0   72     5   2          0.0
@@ -729,7 +762,17 @@ has not been used on all of the variables.</p></td>
 #&gt; 140    18     224 13.8   67     9  17          0.0
 #&gt; 141    13      27 10.3   76     9  18          0.0
 #&gt; 142    24     238 10.3   68     9  19          0.0
-#&gt;  [ reached getOption("max.print") -- omitted 11 rows ]</div><div class='input'>
+#&gt; 143    16     201  8.0   82     9  20          0.0
+#&gt; 144    13     238 12.6   64     9  21          0.0
+#&gt; 145    23      14  9.2   71     9  22          0.0
+#&gt; 146    36     139 10.3   81     9  23          0.0
+#&gt; 147     7      49 10.3   69     9  24          0.0
+#&gt; 148    14      20 16.6   63     9  25          0.0
+#&gt; 149    30     193  6.9   70     9  26          0.0
+#&gt; 150    NA     145 13.2   77     9  27          0.5
+#&gt; 151    14     191 14.3   75     9  28          0.0
+#&gt; 152    18     131  8.0   76     9  29          0.0
+#&gt; 153    20     223 11.5   68     9  30          0.0</div><div class='input'>
 <span class='co'># this can be applied to model the proportion of missing data</span>
 <span class='co'># as in Tierney et al bmjopen.bmj.com/content/5/6/e007450.full</span>
 <span class='fu'>library</span>(<span class='no'>rpart</span>)

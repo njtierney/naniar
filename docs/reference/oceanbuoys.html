@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -35,6 +37,7 @@ and prediction of El Ni'o and La Ni'a. The data is collected by the
 Tropical Atmosphere Ocean project
 (http://www.pmel.noaa.gov/tao/index.shtml)." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -61,7 +64,7 @@ Tropical Atmosphere Ocean project
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9900</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
       </span>
     </div>
 
@@ -165,12 +168,12 @@ towards the South.</p></dd></dl>
 <span class='fu'><a href='miss_var_summary.html'>miss_var_summary</a></span>(<span class='no'>oceanbuoys</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
 #&gt;   variable   n_miss pct_miss n_miss_cumsum
 #&gt;   &lt;chr&gt;       &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-#&gt; 1 year            0    0                 0
-#&gt; 2 latitude        0    0                 0
-#&gt; 3 longitude       0    0                 0
-#&gt; 4 sea_temp_c      3    0.408             3
-#&gt; 5 air_temp_c     81   11.0              84
-#&gt; 6 humidity       93   12.6             177
+#&gt; 1 humidity       93   12.6             177
+#&gt; 2 air_temp_c     81   11.0              84
+#&gt; 3 sea_temp_c      3    0.408             3
+#&gt; 4 year            0    0                 0
+#&gt; 5 latitude        0    0                 0
+#&gt; 6 longitude       0    0                 0
 #&gt; 7 wind_ew         0    0               177
 #&gt; 8 wind_ns         0    0               177</div><div class='input'>
 <span class='co'># Look at the missingness in air temperature and humidity</span>

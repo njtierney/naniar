@@ -8,7 +8,7 @@ home:
     href: https://github.com/njtierney/naniar
 
 reference:
-- title: "Data structures for missing data"
+  - title: "Data structures for missing data"
     desc: >
       Creation and Manipulation of Shadow Matrices
     contents:

@@ -8,8 +8,8 @@
 <title>Replacing values with NA • naniar</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><meta property="og:title" content="Replacing values with NA">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Replacing values with NA">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.1.9900</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
       </span>
     </div>
 
@@ -73,7 +73,7 @@
       <h1>Replacing values with NA</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-05-21</h4>
+            <h4 class="date">2018-06-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/replace-with-na.Rmd"><code>vignettes/replace-with-na.Rmd</code></a></small>
       <div class="hidden name"><code>replace-with-na.Rmd</code></div>
@@ -108,7 +108,7 @@
 <a href="#using-replace_with_na" class="anchor"></a>Using <code>replace_with_na</code>
 </h2>
 <p>What if we want to replace the value -99 in the x column with a missing value?</p>
-<p>First, let’s load <code>naniar</code>.</p>
+<p>First, let’s load <code>naniar</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(naniar)</a></code></pre></div>
 <p>Now, we specify the fact that we want to replace -99 with a missing value. To do so we use the <code>replace</code> argument, and specify a named list, which contains the names of the variable and the value it would take to replace with NA.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/replace_with_na.html">replace_with_na</a></span>(<span class="dt">replace =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="dv">-99</span>))</a>
@@ -258,6 +258,56 @@
 </div>
 </div>
 </div>
+<div id="notes-on-alternative-ways-to-handle-replacing-with-nas" class="section level1">
+<h1 class="hasAnchor">
+<a href="#notes-on-alternative-ways-to-handle-replacing-with-nas" class="anchor"></a>Notes on alternative ways to handle replacing with NAs</h1>
+<p>There are some alternative ways to handle replacing values with NA in the tidyverse. These are ultimately not as expressive as the <code>replace_with_na</code> functions, but they are very useful if you only have one kind of value to replace with a missing, and if you know what the missing values are upon reading in the data. These alternatives are now briefly discussed.</p>
+<p><strong><code><a href="http://dplyr.tidyverse.org/reference/na_if.html">dplyr::na_if</a></code></strong></p>
+<p>This function allows you to replace exact values - similar to <code>replace_with_na</code>, but for all columns in a data frame. Here is how you would use it in our examples.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co"># instead of:</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">df_<span class="dv">1</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/replace_with_na_all.html">replace_with_na_all</a></span>(<span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">==</span><span class="st"> </span><span class="dv">-99</span>)</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">df_<span class="dv">1</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; 2 N A               3 NOt available    NA</span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a>
+<a class="sourceLine" id="cb12-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb12-14" data-line-number="14">df_<span class="dv">2</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/na_if.html">na_if</a></span>(<span class="op">-</span><span class="dv">99</span>)</a>
+<a class="sourceLine" id="cb12-15" data-line-number="15">df_<span class="dv">2</span></a>
+<a class="sourceLine" id="cb12-16" data-line-number="16"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
+<a class="sourceLine" id="cb12-17" data-line-number="17"><span class="co">#&gt;   name              x y                 z</span></a>
+<a class="sourceLine" id="cb12-18" data-line-number="18"><span class="co">#&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb12-19" data-line-number="19"><span class="co">#&gt; 1 N/A               1 N/A            -100</span></a>
+<a class="sourceLine" id="cb12-20" data-line-number="20"><span class="co">#&gt; 2 N A               3 NOt available    NA</span></a>
+<a class="sourceLine" id="cb12-21" data-line-number="21"><span class="co">#&gt; 3 N / A            NA 29              -98</span></a>
+<a class="sourceLine" id="cb12-22" data-line-number="22"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
+<a class="sourceLine" id="cb12-23" data-line-number="23"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a>
+<a class="sourceLine" id="cb12-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb12-25" data-line-number="25"><span class="co"># are they the same?</span></a>
+<a class="sourceLine" id="cb12-26" data-line-number="26"><span class="kw">all.equal</span>(df_<span class="dv">1</span>, df_<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb12-27" data-line-number="27"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
+<p>Note, however, that <code>na_if</code> can only take arguments of length one. This means that it cannot capture other statements like</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">na_strings &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"NA"</span>, <span class="st">"N A"</span>, <span class="st">"N / A"</span>, <span class="st">"N/A"</span>, <span class="st">"N/ A"</span>, <span class="st">"Not Available"</span>, <span class="st">"NOt available"</span>)</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">df_<span class="dv">3</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/replace_with_na_all.html">replace_with_na_all</a></span>(<span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>na_strings)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># Not run:</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">df_<span class="dv">4</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/na_if.html">na_if</a></span>(<span class="dt">x =</span> ., <span class="dt">y =</span> na_strings)</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co"># Error in check_length(y, x, fmt_args("y"), glue("same as {fmt_args(~x)}")) : </span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">  <span class="co"># argument "y" is missing, with no default</span></a></code></pre></div>
+<p>It also cannot handle more complex equations, where you want to refer to values in other columns, or values less than or greater than another value.</p>
+<p><strong>catch NAs with <code>readr</code></strong></p>
+<p>When reading in your data, you can use the <code>na</code> argument inside <code>readr</code> to replace certain values with NA. For example:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># not run</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">dat_raw &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/readr/topics/read_delim">read_csv</a></span>(<span class="st">"original.csv"</span>, <span class="dt">na =</span> na_strings)</a></code></pre></div>
+<p>This would convert all of the values in <code>na_strings</code> into missing values.</p>
+<p>This is useful to use if you happen to know the NA types upon reading in the data. However, this is not always practical in a data analysis pipeline.</p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -272,6 +322,7 @@
       <li><a href="#using-replace_with_na_all">Using <code>replace_with_na_all</code></a></li>
       </ul>
 </li>
+      <li><a href="#notes-on-alternative-ways-to-handle-replacing-with-nas">Notes on alternative ways to handle replacing with NAs</a></li>
       </ul>
 </div>
       </div>

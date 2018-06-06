@@ -257,7 +257,7 @@ Binding the shadow here also has great benefits when combined with imputation.
 
 # Visualising imputed values
 https://cran.r-project.org/package=naniar
-Using the easy-to-use [`simputation`](https://cran.r-project.org/package=simputation) package, we impute values for Ozone, then visualise the data:
+With the easy-to-use [`simputation`](https://cran.r-project.org/package=simputation) package, we impute values for Ozone, then visualise the data:
 
 ```{r simpute-invisible, echo = TRUE, fig.height = 3}
 

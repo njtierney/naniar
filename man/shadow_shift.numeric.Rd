@@ -12,7 +12,7 @@
 
 \item{prop_below}{the degree to shift the values. default is}
 
-\item{jitter}{the amount of jitter to add. deafult is 0.05}
+\item{jitter}{the amount of jitter to add. default is 0.05}
 
 \item{seed_shift}{a random seed to set, if you like}
 

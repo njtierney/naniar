@@ -6,7 +6,7 @@
 #'
 #' @param .tbl a data.frame
 #' @param prop_below the degree to shift the values. default is
-#' @param jitter the amount of jitter to add. deafult is 0.05
+#' @param jitter the amount of jitter to add. default is 0.05
 #' @param ... additional arguments
 #'
 #' @return an dataset with values imputed
@@ -69,7 +69,7 @@ impute_below <- function(.tbl,
 #' @param .tbl a data.frame
 #' @param .vars variables to impute
 #' @param prop_below the degree to shift the values. default is
-#' @param jitter the amount of jitter to add. deafult is 0.05
+#' @param jitter the amount of jitter to add. default is 0.05
 #' @param ... extra arguments
 #'
 #' @return an dataset with values imputed
@@ -129,7 +129,7 @@ impute_below_at <- function(.tbl,
 #' @param .tbl data.frame
 #' @param .predicate A predicate function (such as is.numeric)
 #' @param prop_below the degree to shift the values. default is
-#' @param jitter the amount of jitter to add. deafult is 0.05
+#' @param jitter the amount of jitter to add. default is 0.05
 #' @param ... extra arguments
 #'
 #' @return an dataset with values imputed

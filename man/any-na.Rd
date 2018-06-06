@@ -18,7 +18,7 @@ any_complete(x)
 }
 \description{
 It is useful to search for any instances of missing or complete values. There
-Are two fucntions that do this in \code{naniar} - \code{any_miss} and it's alias
+Are two functions that do this in \code{naniar} - \code{any_miss} and it's alias
 \code{any_na}. These bother under the hood call \code{anyNA}. \code{any_complete} is
 the complement to \code{any_miss} - it returns TRUE if there are any complete values.
 }

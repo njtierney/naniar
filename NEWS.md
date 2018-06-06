@@ -100,8 +100,8 @@
 - added `which_na` - replacement for `which(is.na(x))`
 
 - `miss_scan_count`. This makes it easier for users to search for particular
-occurences of these values across their variables. 
-[#119](https://github.com/njtierney/naniar/issues/119)
+  occurrences of these values across their variables. 
+  [#119](https://github.com/njtierney/naniar/issues/119)
 
 - `n_miss_row` calculates the number of missing values in each row, returning a
 vector. There are also 3 other functions which are similar in spirit:

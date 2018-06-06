@@ -1,7 +1,7 @@
 #' Identify if there are any missing or complete values
 #'
 #' It is useful to search for any instances of missing or complete values. There
-#'     Are two fucntions that do this in `naniar` - `any_miss` and it's alias
+#'     Are two functions that do this in `naniar` - `any_miss` and it's alias
 #'     `any_na`. These bother under the hood call `anyNA`. `any_complete` is
 #'     the complement to `any_miss` - it returns TRUE if there are any complete values.
 #'

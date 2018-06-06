@@ -11,7 +11,7 @@ impute_below(.tbl, prop_below = 0.1, jitter = 0.05, ...)
 
 \item{prop_below}{the degree to shift the values. default is}
 
-\item{jitter}{the amount of jitter to add. deafult is 0.05}
+\item{jitter}{the amount of jitter to add. default is 0.05}
 
 \item{...}{additional arguments}
 }

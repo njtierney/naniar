@@ -39,7 +39,7 @@ shadow_shift.default <- function(x, ...){
 #'
 #' @param x a variable of interest to shift
 #' @param prop_below the degree to shift the values. default is
-#' @param jitter the amount of jitter to add. deafult is 0.05
+#' @param jitter the amount of jitter to add. default is 0.05
 #' @param seed_shift a random seed to set, if you like
 #' @param ... extra arguments to pass
 #' @export

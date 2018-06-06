@@ -467,6 +467,6 @@ Naming credit (once again!) goes to Miles McBain. Among various other things, Mi
 # References
 
 - MANET: http://www.rosuda.org/MANET/
-- ggobi: http://www.ggobi.org/
+- ggobi: https://en.wikipedia.org/wiki/GGobi
 - visdat: https://www.github.com/ropensci/visdat
 - Tierney NJ, Harden FA, Harden MJ, Mengersen, KA, Using decision trees to understand structure in missing data BMJ Open 2015;5:e007450. doi: 10.1136/bmjopen-2014-007450

@@ -1,105 +1,85 @@
-# naniar 0.2.2.9300 (2018/06/06)
+# naniar 0.3.0 (2018/06/06) "Digory and his Uncle Are Both in Trouble"
+=========================
 
 ## New Features
 
-- Added some detail on alternative methods for replacing with NA in the vignette
-"replacing values with NA".
+* Added functions: 
+    * `all_miss()` / `all_na()` equivalent to `all(is.na(x))`
+    * `any_complete()` equivalent to `all(complete.cases(x))`
+    * `any_miss()` equivalent to `anyNA(x)`
+* Added `common_na_numbers` and finalised `common_na_strings` -
+  [#168](https://github.com/njtierney/naniar/issues/168)
+* Added `as_shadow_upset` which gets the data into a format suitable for 
+  plotting as an `UpSetR` plot:
+  
+  ```r
+  airquality %>%
+    as_shadow_upset() %>%
+    UpSetR::upset()
+  ```
+  
+* Added `miss_var_which`, to lists the variable names with missings
 
-- Added functions: 
-    - `all_miss()` / `all_na()` equivalent to `all(is.na(x))`
-    - `any_complete()` equivalent to `all(complete.cases(x))`
-    - `any_miss()` equivalent to `anyNA(x)`
+* Added some imputation functions to assist with exploring missingness 
+  structure and visualisation:
+    * `impute_below` Perfoms as for `shadow_shift`, but performs on all columns.
+      There are also scoped variants that work for specific named columns: 
+      `impute_below_at`, and for columns that satisfy some predicate function:
+      `impute_below_if`.
+    * `impute_mean` , a simple method for imputation, which may need some tweaking in the future.
 
-# naniar 0.2.2.9200 (2018/06/05)
+* `impute_below` and `shadow_shift` gain arguments `prop_below` and `jitter` 
+  to control the degree of shift, and also the extent of jitter.
 
-## Minor Changes
+* Added complements to `miss_var_pct/prop and miss_case_pct/prop`, and
+  `complete_case/var_pct/prop` 
+  [#150](https://github.com/njtierney/naniar/issues/150)
+* Added `unbind_shadow` and `unbind_data` as helpers to remove shadow columns 
+  from data, and data from shadows, respectively.
 
-* added `common_na_numbers` and finalised `common_na_strings` - #168
-* imported `is_na` and `are_na` from `rlang`.
-* `gg_miss_case` gains a `show_pct` option to be consistent with `gg_miss_var` #153
+* Added `is_shadow` and `are_shadow` to determine if something contains a
+  shadow column. simimlar to `rlang::is_na` and `rland::are_na`, `is_shadow` 
+  this returns a logical vector of length 1, and `are_shadow` returns a logical
+  vector of length of the number of names of a data.frame. Might need to 
+  revisit this at a later point and rejig some code (see `any_shade` in 
+  `add_label_shadow`).
 
-# naniar 0.2.1.9999 (2018/05/28)
+* Aesthetics now map as expected in geom_miss_point(). This means you can write 
+  things like `geom_miss_point(aes(colour = Month))` and it works appropriately. 
+  Fixed by [Luke Smith](https://github.com/seasmith) in Pull request
+  [#144](https://github.com/njtierney/naniar/pull/144), fixing 
+  [#137](https://github.com/njtierney/naniar/issues/137).
 
-## Minor Changes
+* Added `impute_shift` and scoped variants. This imputes missing values 10% 
+  below the range of the data (powered by `shadow_shift`), to facilitate 
+  graphical exloration of the data. Closes 
+  [#145](https://github.com/njtierney/naniar/issues/145)
 
-* Added `common_na_strings`, a list of common `NA` values - #168.
-
-# naniar 0.2.1.9990 (2018/05/23)
 
 ## Minor Changes
 
 * `miss_var_summary` and `miss_case_summary` now return use `order = TRUE` by
  default, so that the cases and variables with the most missings are presented 
- in descending order. Fixes #163
+ in descending order. Fixes [#163](https://github.com/njtierney/naniar/issues/163)
 
-# naniar 0.2.1.9900 (2018/05/21)
+* Changes for Visualisation:
+  * Changed the default colours used in `gg_miss_case` and `gg_miss_var` to 
+    lorikeet purple (from ochRe package: https://github.com/ropenscilabs/ochRe)
+  * `gg_miss_case`
+    * The y axis label is now ...
+    * Default presentation is with `order_cases = TRUE`.
+    * Gains a `show_pct` option to be consistent with `gg_miss_var` 
+    [#153](https://github.com/njtierney/naniar/issues/153)
+  * `gg_miss_which` is rotated 90 degrees so it is easier to read variable names
+  * `gg_miss_fct` uses a minimal theme and tilts the axis labels
+    [#118](https://github.com/njtierney/naniar/issues/118).
+    
+* imported `is_na` and `are_na` from `rlang`.
+* Added `common_na_strings`, a list of common `NA` values 
+  [#168](https://github.com/njtierney/naniar/issues/168).
+* Added some detail on alternative methods for replacing with NA in the 
+  vignette "replacing values with NA".
 
-## New features
-
-* `as_shadow_upset` gets the data into a format suitable for plotting in the `UpSetR` plot.
-
-# naniar 0.2.1.9800 (2018/05/10)
-
-- First pass at `impute_knn`, an imputation method that implements the k-nearest neighbours approach used in Missing Data GUI. This is still a draft function.
-- first pass at `impute_mean`, a simple method for imputation, which may need some tweaking in the future.
-- `gg_miss_case` now presents the visualisation with `order_cases = TRUE`.
-
-# naniar 0.2.1.9600 (2018/05/02) 
-
-- `gg_miss_which` is rotated 90 degrees to make it easier to read the variables
-- added `miss_var_which`, a function that lists the variables missing
-
-# naniar 0.2.1.9500 (2018/05/01) 
-
-## New features
-
-- `impute_below` and `shadow_shift` gain arguments `prop_below` and `jitter` 
-to control the degree of shift, and also the extent of jitter.
-
-# naniar 0.2.1.9400 (2018/04/30) 
-
-## New Features
-
-- renamed `impute_shift` to `impute_below`, as this more clearly describes what it does.
-- minor change to y axis label for gg_miss_case
-- Changed the default colours used in gg_miss_case and gg_miss_var to lorikeet purple (from ochRe package: https://github.com/ropenscilabs/ochRe)
-
-# naniar 0.2.1.9300 (2018/04/28) 
-
-## New Features
-
-- Added complements to `miss_var/case_pct/prop` - `complete_case/var_pct/prop` #150
-- Added `any_na()` - a version of `anyNA` with recursive = TRUE, to properly explore lists.
-- Added `any_na()` - a version of `anyNA` with recursive = TRUE, to properly explore lists.
-
-## naniar 0.2.1.9100 (2018/04/17) 
-
-# New Features
-
-- Aesthetics now map as expected in geom_miss_point(). This means you can write things like `geom_miss_point(aes(colour = Month))` and it works appropriately. Fixed by [Luke Smith](https://github.com/seasmith) in Pull request [#144](https://github.com/njtierney/naniar/pull/144), fixing [#137](https://github.com/njtierney/naniar/issues/137).
-
-- Added `impute_shift` and scoped variants. This imputes missing values 10% 
-  below the range of the data (powered by `shadow_shift`), to facilitate 
-  graphical exloration of the data. Closes [#145](https://github.com/njtierney/naniar/issues/145)
-
-# naniar 0.2.0.9400 (2018/03/22) 
-
-## New features
-
-- added `unbind_shadow` and `unbind_data` as helpers to remove shadow columns from
-data, and data from shadows, respectively.
-
-# naniar 0.2.0.9002 (2018/03/01) 
-
-## New feature
-
-- `is_shadow` and `are_shadow` to determine if something contains a shadow column. simimlar to `rlang::is_na` and `rland::are_na`, `is_shadow` returns a logical vector of length 1, and `are_shadow` returns a logical vector of length of the number of names of a data.frame. Might need to revisit this at a later point and rejig some code (see `any_shade` in `add_label_shadow`).
-
-# naniar 0.2.0.9002 (2018/03/01) 
-
-## Minor Changes
-
-- `gg_miss_fct` uses a minimal theme and tilts the axis labels ([#118](https://github.com/njtierney/naniar/issues/118)).
 
 # naniar 0.2.0 (2018/02/08) ("The First Joke and Other Matters")
 =========================

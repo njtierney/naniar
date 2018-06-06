@@ -35,12 +35,14 @@ reference:
     desc: >
       Handy helpers
     contents:
-      - n_miss
-      - n_complete
-      - prop_miss
-      - prop_complete
-      - pct_miss
-      - pct_complete
+      - starts_with("n_")
+      - starts_with("prop_")
+      - starts_with("pct_")
+      - starts_with("all_")
+      - starts_with("any_")
+      - starts_with("any_")
+      - starts_with("is_")
+      - starts_with("are_")
       - common_na_numbers
       - common_na_strings
   - title: "Add columns"
@@ -70,22 +72,11 @@ reference:
     desc: >
       Misc helpers
     contents:
-      - all_complete
-      - all_miss
-      - all_row_complete
-      - all_row_miss
-      - any_complete
-      - any_miss
-      - are_na
-      - are_shadow
-      - any_row_miss
       - label_miss_1d
       - label_miss_2d
       - label_missings
       - where_na
       - which_na
-
-      -
 
 navbar:
   left:

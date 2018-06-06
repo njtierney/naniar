@@ -4,8 +4,8 @@
 # naniar <img src="man/figures/naniar-logo.png" align="right" />
 
 [![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar)
-[![Travis-CI Build
+Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar-xb96h)[![Travis-CI
+Build
 Status](https://travis-ci.org/njtierney/naniar.svg?branch=master)](https://travis-ci.org/njtierney/naniar)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://codecov.io/github/njtierney/naniar?branch=master)[![CRAN
@@ -210,8 +210,6 @@ naniar also provides handy visualations for each variable:
 gg_miss_var(airquality)
 ```
 
-![](man/figures/README-gg-miss-var-1.png)<!-- -->
-
 Or the number of missings in a given variable at a repeating span
 
 ``` r
@@ -273,16 +271,16 @@ miss_case_summary(airquality)
 #> # A tibble: 153 x 4
 #>     case n_miss pct_miss n_miss_cumsum
 #>    <int>  <int>    <dbl>         <int>
-#>  1     1      0      0               0
-#>  2     2      0      0               0
-#>  3     3      0      0               0
-#>  4     4      0      0               0
-#>  5     5      2     33.3             2
-#>  6     6      1     16.7             3
-#>  7     7      0      0               3
-#>  8     8      0      0               3
-#>  9     9      0      0               3
-#> 10    10      1     16.7             4
+#>  1     5      2     33.3             2
+#>  2    27      2     33.3             9
+#>  3     6      1     16.7             3
+#>  4    10      1     16.7             4
+#>  5    11      1     16.7             5
+#>  6    25      1     16.7             6
+#>  7    26      1     16.7             7
+#>  8    32      1     16.7            10
+#>  9    33      1     16.7            11
+#> 10    34      1     16.7            12
 #> # ... with 143 more rows
 ```
 

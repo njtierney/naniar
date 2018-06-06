@@ -86,7 +86,6 @@ Collate:
     'gg-miss-which.R'
     'helpers.R'
     'impute_below.R'
-    'impute_knn.R'
     'impute_mean.R'
     'label-miss.R'
     'miss-complete-x-pct-prop.R'

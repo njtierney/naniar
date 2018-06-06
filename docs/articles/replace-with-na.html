@@ -73,7 +73,7 @@
       <h1>Replacing values with NA</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-06-06</h4>
+            <h4 class="date">2018-06-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/replace-with-na.Rmd"><code>vignettes/replace-with-na.Rmd</code></a></small>
       <div class="hidden name"><code>replace-with-na.Rmd</code></div>
@@ -262,7 +262,7 @@
 <h1 class="hasAnchor">
 <a href="#notes-on-alternative-ways-to-handle-replacing-with-nas" class="anchor"></a>Notes on alternative ways to handle replacing with NAs</h1>
 <p>There are some alternative ways to handle replacing values with NA in the tidyverse. These are ultimately not as expressive as the <code>replace_with_na</code> functions, but they are very useful if you only have one kind of value to replace with a missing, and if you know what the missing values are upon reading in the data. These alternatives are now briefly discussed.</p>
-<p><strong><code><a href="http://dplyr.tidyverse.org/reference/na_if.html">dplyr::na_if</a></code></strong></p>
+<p><strong><code><a href="http://www.rdocumentation.org/packages/dplyr/topics/na_if">dplyr::na_if</a></code></strong></p>
 <p>This function allows you to replace exact values - similar to <code>replace_with_na</code>, but for all columns in a data frame. Here is how you would use it in our examples.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co"># instead of:</span></a>
@@ -277,7 +277,7 @@
 <a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; 4 Not Available    NA 25             -101</span></a>
 <a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a>
 <a class="sourceLine" id="cb12-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb12-14" data-line-number="14">df_<span class="dv">2</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/na_if.html">na_if</a></span>(<span class="op">-</span><span class="dv">99</span>)</a>
+<a class="sourceLine" id="cb12-14" data-line-number="14">df_<span class="dv">2</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/na_if">na_if</a></span>(<span class="op">-</span><span class="dv">99</span>)</a>
 <a class="sourceLine" id="cb12-15" data-line-number="15">df_<span class="dv">2</span></a>
 <a class="sourceLine" id="cb12-16" data-line-number="16"><span class="co">#&gt; # A tibble: 5 x 4</span></a>
 <a class="sourceLine" id="cb12-17" data-line-number="17"><span class="co">#&gt;   name              x y                 z</span></a>
@@ -297,7 +297,7 @@
 <a class="sourceLine" id="cb13-3" data-line-number="3">df_<span class="dv">3</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/replace_with_na_all.html">replace_with_na_all</a></span>(<span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>na_strings)</a></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># Not run:</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">df_<span class="dv">4</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/na_if.html">na_if</a></span>(<span class="dt">x =</span> ., <span class="dt">y =</span> na_strings)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">df_<span class="dv">4</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/na_if">na_if</a></span>(<span class="dt">x =</span> ., <span class="dt">y =</span> na_strings)</a>
 <a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co"># Error in check_length(y, x, fmt_args("y"), glue("same as {fmt_args(~x)}")) : </span></a>
 <a class="sourceLine" id="cb14-5" data-line-number="5">  <span class="co"># argument "y" is missing, with no default</span></a></code></pre></div>
 <p>It also cannot handle more complex equations, where you want to refer to values in other columns, or values less than or greater than another value.</p>

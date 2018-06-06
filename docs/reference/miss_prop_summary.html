@@ -146,7 +146,7 @@ elements in a case contain a missing.</p>
 #&gt;       df   var  case
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 #&gt; 1 0.0479 0.333 0.275</div><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Month</span>) <span class='kw'>%&gt;%</span> <span class='fu'>miss_prop_summary</span>()</div><div class='output co'>#&gt; # A tibble: 5 x 4
+<span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/group_by'>group_by</a></span>(<span class='no'>Month</span>) <span class='kw'>%&gt;%</span> <span class='fu'>miss_prop_summary</span>()</div><div class='output co'>#&gt; # A tibble: 5 x 4
 #&gt;   Month      df   var   case
 #&gt;   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
 #&gt; 1     5 0.0581    0.4 0.226 

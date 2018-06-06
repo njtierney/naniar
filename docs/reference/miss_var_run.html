@@ -166,7 +166,7 @@ the length of the run, and whether that run describes a missing value.</p>
 <span class='co'># find the number of runs missing/complete for each month</span>
 
 <span class='no'>pedestrian</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>month</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/group_by'>group_by</a></span>(<span class='no'>month</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>miss_var_run</span>(<span class='no'>hourly_counts</span>)</div><div class='output co'>#&gt; # A tibble: 51 x 3
 #&gt;    month    run_length is_na   
 #&gt;    &lt;ord&gt;         &lt;int&gt; &lt;chr&gt;   
@@ -185,8 +185,8 @@ the length of the run, and whether that run describes a missing value.</p>
 
 <span class='co'># explore the number of missings in a given run</span>
 <span class='fu'>miss_var_run</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>is_na</span> <span class='kw'>==</span> <span class='st'>"missing"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>run_length</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/filter'>filter</a></span>(<span class='no'>is_na</span> <span class='kw'>==</span> <span class='st'>"missing"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/tally'>count</a></span>(<span class='no'>run_length</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>run_length</span>,
              <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>)) +
       <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_bar'>geom_col</a></span>()</div><div class='img'><img src='miss_var_run-1.png' alt='' width='700' height='433' /></div><div class='input'>
@@ -197,7 +197,7 @@ the length of the run, and whether that run describes a missing value.</p>
       <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot'>geom_boxplot</a></span>()</div><div class='img'><img src='miss_var_run-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># using group_by</span>
  <span class='no'>pedestrian</span> <span class='kw'>%&gt;%</span>
-   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>month</span>) <span class='kw'>%&gt;%</span>
+   <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/group_by'>group_by</a></span>(<span class='no'>month</span>) <span class='kw'>%&gt;%</span>
    <span class='fu'>miss_var_run</span>(<span class='no'>hourly_counts</span>)</div><div class='output co'>#&gt; # A tibble: 51 x 3
 #&gt;    month    run_length is_na   
 #&gt;    &lt;ord&gt;         &lt;int&gt; &lt;chr&gt;   

@@ -167,7 +167,7 @@ them into lists within a tibble</p>
 #&gt; </div><div class='input'><span class='co'># etc, etc, etc.</span>
 
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='no'>s_miss_group</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>airquality</span>, <span class='no'>Month</span>) <span class='kw'>%&gt;%</span> <span class='fu'>miss_summary</span>()
+<span class='no'>s_miss_group</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/group_by'>group_by</a></span>(<span class='no'>airquality</span>, <span class='no'>Month</span>) <span class='kw'>%&gt;%</span> <span class='fu'>miss_summary</span>()
 <span class='no'>s_miss_group</span>$<span class='no'>miss_df_prop</span></div><div class='output co'>#&gt; [1] 0.04793028</div><div class='input'><span class='no'>s_miss_group</span>$<span class='no'>miss_case_table</span></div><div class='output co'>#&gt; [[1]]
 #&gt; # A tibble: 11 x 4
 #&gt;    Month n_miss_in_case n_cases pct_miss

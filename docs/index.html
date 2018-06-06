@@ -252,7 +252,7 @@
 <div id="numerical-summaries-for-missing-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#numerical-summaries-for-missing-data" class="anchor"></a>Numerical summaries for missing data</h1>
-<p>naniar provides numerical summaries of missing data, that follow a consistent rule that uses a syntax begining with <code>miss_</code>. Summaries focussing on variables or a single selected variable, start with <code>miss_var_</code>, and summaries for cases (the initial collected row order of the data), they start with <code>miss_case_</code>. All of these functions that return dataframes also work with dplyr’s <code><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>.</p>
+<p>naniar provides numerical summaries of missing data, that follow a consistent rule that uses a syntax begining with <code>miss_</code>. Summaries focussing on variables or a single selected variable, start with <code>miss_var_</code>, and summaries for cases (the initial collected row order of the data), they start with <code>miss_case_</code>. All of these functions that return dataframes also work with dplyr’s <code><a href="http://www.rdocumentation.org/packages/dplyr/topics/group_by">group_by()</a></code>.</p>
 <p>For example, we can look at the number and percent of missings in each case and variable with <code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code>, and <code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code>, which both return output ordered by the number of missing values.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)</a>
@@ -280,7 +280,7 @@
 <a class="sourceLine" id="cb13-24" data-line-number="24"><span class="co">#&gt;  9    33      1     16.7            11</span></a>
 <a class="sourceLine" id="cb13-25" data-line-number="25"><span class="co">#&gt; 10    34      1     16.7            12</span></a>
 <a class="sourceLine" id="cb13-26" data-line-number="26"><span class="co">#&gt; # ... with 143 more rows</span></a></code></pre></div>
-<p>You could also <code><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to work out the number of missings in each variable across the levels within it.</p>
+<p>You could also <code><a href="http://www.rdocumentation.org/packages/dplyr/topics/group_by">group_by()</a></code> to work out the number of missings in each variable across the levels within it.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt; </span></a>
@@ -292,7 +292,7 @@
 <a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
 <a class="sourceLine" id="cb14-11" data-line-number="11">airquality <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Month) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/group_by">group_by</a></span>(Month) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb14-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>()</a>
 <a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co">#&gt; # A tibble: 25 x 5</span></a>
 <a class="sourceLine" id="cb14-15" data-line-number="15"><span class="co">#&gt;    Month variable n_miss pct_miss n_miss_cumsum</span></a>
@@ -378,7 +378,7 @@
       <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://ci.appveyor.com/project/njtierney/naniar"><img src="https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
+<li><a href="https://ci.appveyor.com/project/njtierney/naniar-xb96h"><img src="https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 <li><a href="https://travis-ci.org/njtierney/naniar"><img src="https://travis-ci.org/njtierney/naniar.svg?branch=master" alt="Travis-CI Build Status"></a></li>
 <li><a href="https://codecov.io/github/njtierney/naniar?branch=master"><img src="https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg" alt="Coverage Status"></a></li>
 <li><a href="https://cran.r-project.org/package=naniar"><img src="http://www.r-pkg.org/badges/version/naniar" alt="CRAN Status Badge"></a></li>

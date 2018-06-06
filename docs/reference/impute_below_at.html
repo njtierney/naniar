@@ -139,7 +139,7 @@ you must know that <code>_at`` affects variables selected with a character vecto
     </tr>
     <tr>
       <th>jitter</th>
-      <td><p>the amount of jitter to add. deafult is 0.05</p></td>
+      <td><p>the amount of jitter to add. default is 0.05</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -470,7 +470,7 @@ you must know that <code>_at`` affects variables selected with a character vecto
 #&gt; 152  18.00000 131.00000  8.0   76     9  29
 #&gt; 153  20.00000 223.00000 11.5   68     9  30</div><div class='input'><span class='co'>#'</span>
 <span class='fu'>impute_below_at</span>(<span class='no'>airquality</span>,
-                <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/vars.html'>vars</a></span>(<span class='no'>Ozone</span>))</div><div class='output co'>#&gt;         Ozone Solar.R Wind Temp Month Day
+                <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/vars'>vars</a></span>(<span class='no'>Ozone</span>))</div><div class='output co'>#&gt;         Ozone Solar.R Wind Temp Month Day
 #&gt; 1    41.00000     190  7.4   67     5   1
 #&gt; 2    36.00000     118  8.0   72     5   2
 #&gt; 3    12.00000     149 12.6   74     5   3
@@ -628,7 +628,7 @@ you must know that <code>_at`` affects variables selected with a character vecto
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='bind_shadow.html'>bind_shadow</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>impute_below_at</span>(<span class='fu'><a href='http://dplyr.tidyverse.org/reference/vars.html'>vars</a></span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'>impute_below_at</span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/vars'>vars</a></span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='add_label_shadow.html'>add_label_shadow</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>,
              <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R</span>,

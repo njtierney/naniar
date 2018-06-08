@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
       </span>
     </div>
 
@@ -73,7 +73,7 @@
       <h1>Getting Started with naniar</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-06-07</h4>
+            <h4 class="date">2018-06-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/getting-started-w-naniar.Rmd"><code>vignettes/getting-started-w-naniar.Rmd</code></a></small>
       <div class="hidden name"><code>getting-started-w-naniar.Rmd</code></div>
@@ -109,7 +109,7 @@
 <li><code>str()</code></li>
 <li>
 <a href="https://github.com/ropenscilabs/skimr"><code><a href="http://www.rdocumentation.org/packages/skimr/topics/skim">skimr::skim</a></code></a>, or</li>
-<li><code><a href="http://www.rdocumentation.org/packages/dplyr/topics/reexports">dplyr::glimpse()</a></code></li>
+<li><code><a href="http://dplyr.tidyverse.org/reference/reexports.html">dplyr::glimpse()</a></code></li>
 </ul>
 <p>These works really well when you’ve got a small amount of data, but when you have more data, you are generally limited by how much you can read.</p>
 <p>So before you start looking at missing data, you’ll need to look at the data, but what does that even mean?</p>
@@ -222,7 +222,7 @@
 <div id="tidy-missing-data-the-shadow-matrix" class="section level1">
 <h1 class="hasAnchor">
 <a href="#tidy-missing-data-the-shadow-matrix" class="anchor"></a>Tidy Missing Data: The Shadow Matrix</h1>
-<p>Representing missing data structure in a tidy format is achieved using the shadow matrix, introduced in <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization">Swayne and Buja</a>. The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as “NA”, and not missing is represented as “!NA”. Although these may be represented as 1 and 0, respectively. This representation can be seen in the figure below, adding the suffix “_NA" to the variables. This structure can also be extended to allow for additional factor levels to be created. For example 0 indicates data presence, 1 indicates missing values, 2 indicates imputed value, and 3 might indicate a particular type or class of missingness, where reasons for missingness might be known or inferred. The data matrix can also be augmented to include the shadow matrix, which facilitates visualisation of univariate and bivariate missing data visualisations. Another format is to display it in long form, which facilitates heatmap style visualisations. This approach can be very helpful for giving an overview of which variables contain the most missingness. Methods can also be applied to rearrange rows and columns to find clusters, and identify other interesting features of the data that may have previously been hidden or unclear.</p>
+<p>Representing missing data structure in a tidy format is achieved using the shadow matrix, introduced in <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization">Swayne and Buja</a>. The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as “NA”, and not missing is represented as “!NA”. Although these may be represented as 1 and 0, respectively. This representation can be seen in the figure below, adding the suffix "_NA" to the variables. This structure can also be extended to allow for additional factor levels to be created. For example 0 indicates data presence, 1 indicates missing values, 2 indicates imputed value, and 3 might indicate a particular type or class of missingness, where reasons for missingness might be known or inferred. The data matrix can also be augmented to include the shadow matrix, which facilitates visualisation of univariate and bivariate missing data visualisations. Another format is to display it in long form, which facilitates heatmap style visualisations. This approach can be very helpful for giving an overview of which variables contain the most missingness. Methods can also be applied to rearrange rows and columns to find clusters, and identify other interesting features of the data that may have previously been hidden or unclear.</p>
 <p><img src="missingness-data-structures.png" width="800px" style="display: block; margin: auto;"></p>
 <p><strong>Illustration of data structures for facilitating visualisation of missings and not missings</strong></p>
 <p>The <code>shadow</code> functions provide a way to keep track of missing values. The <code>as_shadow</code> function creates a dataframe with the same set of columns, but with the column names added a suffix <code>_NA</code></p>
@@ -253,7 +253,7 @@
 <pre><code>## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/reexports">glimpse</a></span>(aq_shadow)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="http://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(aq_shadow)</a></code></pre></div>
 <pre><code>## Observations: 153
 ## Variables: 12
 ## $ Ozone      &lt;int&gt; 41, 36, 12, 18, NA, 28, 23, 19, 8, NA, 7, 16, 11, 1...
@@ -272,8 +272,8 @@
 <p><code><a href="../reference/bind_shadow.html">bind_shadow()</a></code> also provides a useful pattern to explore missing values, grouping by the missing/complete of one variable and looking at the mean and other summary values. Below we show the mean, sd, variance, and min and max values of Solar.R for when Ozone is present, and when it is missing.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">airquality <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/group_by">group_by</a></span>(Ozone_NA) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/summarise_all">summarise_at</a></span>(<span class="dt">.vars =</span> <span class="st">"Solar.R"</span>,</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Ozone_NA) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise_all.html">summarise_at</a></span>(<span class="dt">.vars =</span> <span class="st">"Solar.R"</span>,</a>
 <a class="sourceLine" id="cb22-5" data-line-number="5">               <span class="dt">.funs =</span> <span class="kw">c</span>(<span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"var"</span>, <span class="st">"min"</span>, <span class="st">"max"</span>),</a>
 <a class="sourceLine" id="cb22-6" data-line-number="6">               <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 6
@@ -314,10 +314,10 @@
 <div id="numerical-summaries-of-missing-values" class="section level2">
 <h2 class="hasAnchor">
 <a href="#numerical-summaries-of-missing-values" class="anchor"></a>Numerical summaries of missing values</h2>
-<p><code>naniar</code> also provide numerical summaries for missing data. Two convenient counters of complete values and missings are <code>n_miss</code> and <code>n_complete</code>. These work on both dataframes and vectors, similar to <code><a href="http://www.rdocumentation.org/packages/dplyr/topics/n_distinct">dplyr::n_distinct</a></code></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/n_distinct">n_distinct</a></span>(airquality)</a></code></pre></div>
+<p><code>naniar</code> also provide numerical summaries for missing data. Two convenient counters of complete values and missings are <code>n_miss</code> and <code>n_complete</code>. These work on both dataframes and vectors, similar to <code><a href="http://dplyr.tidyverse.org/reference/n_distinct.html">dplyr::n_distinct</a></code></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span>(airquality)</a></code></pre></div>
 <pre><code>## [1] 153</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/n_distinct">n_distinct</a></span>(airquality<span class="op">$</span>Ozone)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span>(airquality<span class="op">$</span>Ozone)</a></code></pre></div>
 <pre><code>## [1] 68</code></pre>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw"><a href="../reference/n_miss.html">n_miss</a></span>(airquality)</a></code></pre></div>
 <pre><code>## [1] 44</code></pre>
@@ -455,9 +455,9 @@
 ## 9 sensor_name        0     0             2548</code></pre>
 <p>We see that this is in <code>hourly_counts</code>. We can then explore this by month, and filder by the variable being <code>hourly_counts</code>, since it is the only one with missing values.</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">pedestrian <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/group_by">group_by</a></span>(month) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(month) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb61-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/filter">filter</a></span>(variable <span class="op">==</span><span class="st"> "hourly_counts"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(variable <span class="op">==</span><span class="st"> "hourly_counts"</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 5
 ##    month     variable      n_miss pct_miss n_miss_cumsum
 ##    &lt;ord&gt;     &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;

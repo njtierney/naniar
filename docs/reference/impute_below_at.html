@@ -64,7 +64,7 @@ you must know that _at`` affects variables selected with a character vector, or 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
       </span>
     </div>
 
@@ -155,7 +155,9 @@ you must know that <code>_at`` affects variables selected with a character vecto
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># select variables starting with a particular string.</span>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
@@ -470,7 +472,7 @@ you must know that <code>_at`` affects variables selected with a character vecto
 #&gt; 152  18.00000 131.00000  8.0   76     9  29
 #&gt; 153  20.00000 223.00000 11.5   68     9  30</div><div class='input'><span class='co'>#'</span>
 <span class='fu'>impute_below_at</span>(<span class='no'>airquality</span>,
-                <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/vars'>vars</a></span>(<span class='no'>Ozone</span>))</div><div class='output co'>#&gt;         Ozone Solar.R Wind Temp Month Day
+                <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/vars.html'>vars</a></span>(<span class='no'>Ozone</span>))</div><div class='output co'>#&gt;         Ozone Solar.R Wind Temp Month Day
 #&gt; 1    41.00000     190  7.4   67     5   1
 #&gt; 2    36.00000     118  8.0   72     5   2
 #&gt; 3    12.00000     149 12.6   74     5   3
@@ -628,7 +630,7 @@ you must know that <code>_at`` affects variables selected with a character vecto
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='bind_shadow.html'>bind_shadow</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>impute_below_at</span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/vars'>vars</a></span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'>impute_below_at</span>(<span class='fu'><a href='http://dplyr.tidyverse.org/reference/vars.html'>vars</a></span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='add_label_shadow.html'>add_label_shadow</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>,
              <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R</span>,

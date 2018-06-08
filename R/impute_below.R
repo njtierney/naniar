@@ -111,8 +111,6 @@ impute_below_at <- function(.tbl,
 
   test_if_null(.tbl)
 
-  # .vars <- tidyselect::vars_select(names(.tbl), .vars)
-
   dplyr::mutate_at(.tbl = .tbl,
                    .vars = .vars,
                    .funs = shadow_shift,

@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.3.0.9000
+Version: 0.3.1
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -63,8 +63,7 @@ Imports:
     rlang,
     forcats,
     viridis,
-    glue,
-    tidyselect
+    glue
 RoxygenNote: 6.0.1
 Collate:
     'add-cols.R'

@@ -5,12 +5,6 @@
 This is a patch release that removes `tidyselect` from the package Imports, as
 it is unnecessary. Fixes [#174](https://github.com/njtierney/naniar/issues/174)
 
-# naniar 0.3.90000 (2018/06/07)
-
-## New Features
-
-## Minor Changes
-
 # naniar 0.3.0 (2018/06/06) "Digory and his Uncle Are Both in Trouble"
 =========================
 

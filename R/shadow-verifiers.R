@@ -1,10 +1,11 @@
-# Shadow verifiers
-
-#' @title Test if input is or are shadow variables
+#' Test if input is or are shadow variables
+#'
+#' Creating shadow variables can be done with `bind_shadow`. To see if there
+#'   are any shadow variables, `is_shadow` will do this.
 #'
 #' @param x a vector or data.frame
 #'
-#' @return
+#' @return logical vector of length 1
 #'
 #' @examples
 #'

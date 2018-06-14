@@ -7,7 +7,7 @@ test_that("bind_shadow returns a data.frame",{
 
 test_that("bind_shadow returns a tibble",{
   expect_equal(class(bind_shadow(airquality)),
-               c("tbl_df", "tbl", "data.frame"))
+               c("shadow", "tbl_df", "tbl", "data.frame"))
 })
 
 test_that("bind_shadow errors when given non dataframe or 0 entry",{

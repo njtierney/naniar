@@ -1,3 +1,11 @@
+# naniar 0.3.1.9000 (2018/06/14)  (special-missing branch)
+
+## Major change
+
+- `as_shadow`  and `bind_shadow` now return data of class `shadow`. This will 
+feed into `recode_shadow` methods for flexibly adding new types of missing data.
+- Note that in the future `shadow` might be changed to `nabble` or something similar.
+
 # naniar 0.3.1 (2018/06/10) "Strawberry's Adventure"
 
 ## Minor Change

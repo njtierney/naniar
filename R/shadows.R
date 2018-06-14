@@ -40,6 +40,8 @@ as_shadow.data.frame <- function(data, ...){
 
     names(data_shadow) <- paste0(names(data),"_NA")
 
+    class(data_shadow) <- c("shadow", class(data_shadow))
+
     data_shadow
 
 }
@@ -125,7 +127,11 @@ bind_shadow <- function(data, only_miss = FALSE){
 
     shadow_vars <- dplyr::select(data, !!!miss_vars) %>% as_shadow()
 
-    tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
+    shadow_data <- tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
+
+    class(shadow_data) <- c("shadow", class(shadow_data))
+
+    shadow_data
 
   # if you want All the values to be added (the default behaviour)
   } else if (!only_miss) {
@@ -134,7 +140,11 @@ bind_shadow <- function(data, only_miss = FALSE){
 
     bound_shadow <- dplyr::bind_cols(data, data_shadow)
 
-    tibble::as_tibble(bound_shadow)
+    shadow_data <- tibble::as_tibble(bound_shadow)
+
+    class(shadow_data) <- c("shadow", class(shadow_data))
+
+    shadow_data
 
   }
 

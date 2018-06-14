@@ -12,6 +12,13 @@ are_shadow(x)
 \arguments{
 \item{x}{a vector or data.frame}
 }
+\value{
+logical vector of length 1
+}
+\description{
+Creating shadow variables can be done with \code{bind_shadow}. To see if there
+are any shadow variables, \code{is_shadow} will do this.
+}
 \examples{
 
 aq_sh <- as_shadow(airquality)

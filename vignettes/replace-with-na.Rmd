@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-  When you are dealing with missing values, you might want to replace values with
+When you are dealing with missing values, you might want to replace values with
 a missing values (NA). This is useful in cases when you know the origin of the
 data and can be certain which values should be missing. For example, you might
 know that all values of "N/A", "N A", and "Not Available", or -99, or -1 are
@@ -55,7 +55,7 @@ df <- tibble::tribble(
 
 What if we want to replace the value -99 in the x column with a missing value?
 
-First, let's load `naniar`.
+First, let's load `naniar`:
 
 ```{r load-naniar}
 library(naniar)
@@ -189,3 +189,65 @@ This means that you are able to apply a rule to many variables that meet a
 pre-specified condition. This can be of particular use if you have many 
 variables and don't want to list them all, and also if you know that there is a
 particular problem for variables of a particular class.
+
+# Notes on alternative ways to handle replacing with NAs
+
+There are some alternative ways to handle replacing values with NA in the 
+tidyverse. These are ultimately not as expressive as the `replace_with_na` 
+functions, but they are very useful if you only have one kind of value to 
+replace with a missing, and if you know what the missing values are upon reading
+in the data. These alternatives are now briefly discussed.
+
+**`dplyr::na_if`**
+
+This function allows you to replace exact values - similar to `replace_with_na`,
+but for all columns in a data frame. Here is how you would use it in our
+examples.
+
+```{r dplyr-na-if}
+
+# instead of:
+df_1 <- df %>% replace_with_na_all(condition = ~.x == -99)
+df_1
+
+df_2 <- df %>% dplyr::na_if(-99)
+df_2
+
+# are they the same?
+all.equal(df_1, df_2)
+```
+
+Note, however, that `na_if` can only take arguments of length one. This means that it cannot capture other statements like
+
+```{r replace-with-na-all-final-example}
+
+na_strings <- c("NA", "N A", "N / A", "N/A", "N/ A", "Not Available", "NOt available")
+df_3 <- df %>% replace_with_na_all(condition = ~.x %in% na_strings)
+
+```
+
+```{r replace-with-na-all-na-if, eval = FALSE}
+
+# Not run:
+df_4 <- df %>% dplyr::na_if(x = ., y = na_strings)
+# Error in check_length(y, x, fmt_args("y"), glue("same as {fmt_args(~x)}")) : 
+  # argument "y" is missing, with no default
+```
+
+It also cannot handle more complex equations, where you want to refer to values in other columns, or values less than or greater than another value.
+
+**catch NAs with `readr`**
+
+When reading in your data, you can use the `na` argument inside `readr` to 
+replace certain values with NA. For example:
+
+```{r readr-example, eval = FALSE}
+# not run
+dat_raw <- readr::read_csv("original.csv", na = na_strings)
+
+```
+
+This would convert all of the values in `na_strings` into missing values.
+
+This is useful to use if you happen to know the NA types upon reading in the 
+data. However, this is not always practical in a data analysis pipeline.

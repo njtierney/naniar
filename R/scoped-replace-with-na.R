@@ -35,6 +35,10 @@
 #' # replace all instances of -99 or -98, or "N/A" with NA
 #' replace_with_na_all(dat_ms,
 #'                     condition = ~.x %in% c(-99, -98, "N/A"))
+
+#' # replace all instances of common na strings
+#' replace_with_na_all(dat_ms,
+#'                     condition = ~.x %in% common_na_strings)
 #'
 #' # where works with functions
 #' replace_with_na_all(airquality, ~ sqrt(.x) < 5)
@@ -52,7 +56,7 @@ replace_with_na_all <- function(data, condition) {
 #' Replace specified variables with NA where a certain condition is met
 #'
 #' @param data dataframe
-#' @param .vars The variables to refer to
+#' @param .vars A character string of variables to replace with NA values
 #' @param condition A condition required to be TRUE to set NA. Here, the condition
 #'   is specified with a formula, following the syntax: `~.x {condition}`.
 #'   For example, writing `~.x < 20` would mean "where a variable value is less
@@ -80,6 +84,11 @@ replace_with_na_all <- function(data, condition) {
 #' replace_with_na_at(data = dat_ms,
 #'                  .vars = c("x","z"),
 #'                  condition = ~.x == -99)
+#'
+#' # replace using values in common_na_strings
+#' replace_with_na_at(data = dat_ms,
+#'                  .vars = c("x","z"),
+#'                  condition = ~.x %in% common_na_strings)
 #'
 #'
 replace_with_na_at <- function(data, .vars, condition) {
@@ -117,6 +126,10 @@ replace_with_na_at <- function(data, .vars, condition) {
 #' replace_with_na_if(data = dat_ms,
 #'                  .predicate = is.character,
 #'                  condition = ~.x == "N/A")
+
+#' replace_with_na_if(data = dat_ms,
+#'                    .predicate = is.character,
+#'                    condition = ~.x %in% common_na_strings)
 #'
 #' replace_with_na(dat_ms,
 #'               to_na = list(x = c(-99, -98),
@@ -133,10 +146,9 @@ replace_with_na_if <- function(data, .predicate, condition) {
 
 # utility funs for replace_with_na_*  ------------------------------------------
 
-#' @importFrom stats as.formula
 create_mapper_na <- function(condition){
   glue::glue("~ {rlang::f_text(condition)} & !is.na(.x)") %>%
-    as.formula() %>%
+    stats::as.formula() %>%
     purrr::as_mapper()
 }
 

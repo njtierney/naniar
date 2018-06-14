@@ -18,13 +18,27 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Summarise the missingness in each case — miss_case_summary" />
+
+<meta property="og:description" content="Provide a summary for each case in the data of the number, percent missings,
+and cumulative sum of missings of the order of the variables. By default,
+it orders by the most missings in each variable." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +61,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">naniar</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,6 +94,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -83,20 +102,25 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Summarise the missingness in each case</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/miss-x-summary.R'><code>R/miss-x-summary.R</code></a></small>
+    <div class="hidden name"><code>miss_case_summary.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
-    <p>Return for each case the number and percent of missing values, ordered by the
-most number of missings.</p>
+    <p>Provide a summary for each case in the data of the number, percent missings,
+and cumulative sum of missings of the order of the variables. By default,
+it orders by the most missings in each variable.</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>miss_case_summary</span>(<span class='no'>data</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>miss_case_summary</span>(<span class='no'>data</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -105,7 +129,8 @@ most number of missings.</p>
     </tr>
     <tr>
       <th>order</th>
-      <td><p>a logical indicating whether or not to order the result by n_miss. TRUE orders from largest to smallest n_miss, and FALSE orders by order provided by the data.</p></td>
+      <td><p>a logical indicating whether or not to order the result by
+n_miss. Defaults to TRUE. If FALSE, order of cases is the order input.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -117,9 +142,15 @@ most number of missings.</p>
 
     <p>a tibble of the percent of missing data in each case.</p>
     
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p><code>n_miss_cumsum</code> is calculated as the cumulative sum of missings in the
+variables in the order that they are given in the data when entering
+the function</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a></p>
+    <div class='dont-index'><p><a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -131,30 +162,30 @@ most number of missings.</p>
   <span class='fu'>miss_case_summary</span>()</div><div class='output co'>#&gt; # A tibble: 153 x 5
 #&gt;    Month  case n_miss pct_miss n_miss_cumsum
 #&gt;    &lt;int&gt; &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-#&gt;  1     5     1      0      0               0
-#&gt;  2     5     2      0      0               0
-#&gt;  3     5     3      0      0               0
-#&gt;  4     5     4      0      0               0
-#&gt;  5     5     5      2     40.0             2
-#&gt;  6     5     6      1     20.0             3
-#&gt;  7     5     7      0      0               3
-#&gt;  8     5     8      0      0               3
-#&gt;  9     5     9      0      0               3
-#&gt; 10     5    10      1     20.0             4
+#&gt;  1     5     5      2       40             2
+#&gt;  2     5    27      2       40             9
+#&gt;  3     5     6      1       20             3
+#&gt;  4     5    10      1       20             4
+#&gt;  5     5    11      1       20             5
+#&gt;  6     5    25      1       20             6
+#&gt;  7     5    26      1       20             7
+#&gt;  8     5     1      0        0             0
+#&gt;  9     5     2      0        0             0
+#&gt; 10     5     3      0        0             0
 #&gt; # ... with 143 more rows</div><div class='input'>
 <span class='fu'>miss_case_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 4
 #&gt;     case n_miss pct_miss n_miss_cumsum
 #&gt;    &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-#&gt;  1     1      0      0               0
-#&gt;  2     2      0      0               0
-#&gt;  3     3      0      0               0
-#&gt;  4     4      0      0               0
-#&gt;  5     5      2     33.3             2
-#&gt;  6     6      1     16.7             3
-#&gt;  7     7      0      0               3
-#&gt;  8     8      0      0               3
-#&gt;  9     9      0      0               3
-#&gt; 10    10      1     16.7             4
+#&gt;  1     5      2     33.3             2
+#&gt;  2    27      2     33.3             9
+#&gt;  3     6      1     16.7             3
+#&gt;  4    10      1     16.7             4
+#&gt;  5    11      1     16.7             5
+#&gt;  6    25      1     16.7             6
+#&gt;  7    26      1     16.7             7
+#&gt;  8    32      1     16.7            10
+#&gt;  9    33      1     16.7            11
+#&gt; 10    34      1     16.7            12
 #&gt; # ... with 143 more rows</div><div class='input'>
 </div></pre>
   </div>
@@ -164,6 +195,8 @@ most number of missings.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
@@ -179,11 +212,14 @@ most number of missings.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

@@ -20,7 +20,8 @@ test_that("add_prop adds a column named 'prop_miss_all'",{
                c(names(test_df),"prop_miss_all"))
 })
 
-test_that("add_prop adds a column named 'prop_miss_vars' when a variable is selected",{
+test_that(
+  "add_prop adds a column named 'prop_miss_vars' when a variable is selected",{
   expect_equal(names(add_prop_miss(test_df,y)),
                c(names(test_df),"prop_miss_vars"))
 })

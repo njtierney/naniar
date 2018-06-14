@@ -13,7 +13,7 @@ n_complete(x)
 numeric number of complete values
 }
 \description{
-A complement to `n_miss``
+A complement to \code{n_miss}
 }
 \examples{
 

@@ -10,7 +10,7 @@
 #' @param data data
 #' @param search values to search for
 #'
-#' @return a dataframe of the occurences of the values you searched for
+#' @return a dataframe of the occurrences of the values you searched for
 #'
 #' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
 #'
@@ -28,6 +28,7 @@
 #' miss_scan_count(dat_ms,-99)
 #' miss_scan_count(dat_ms,c(-99,-98))
 #' miss_scan_count(dat_ms,c("-99","-98","N/A"))
+#' miss_scan_count(dat_ms,common_na_strings)
 #'
 miss_scan_count <- function(data,search){
   # if there is only one value to search

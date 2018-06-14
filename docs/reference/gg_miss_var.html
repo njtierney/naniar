@@ -18,13 +18,28 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Plot the number of missings for each variable — gg_miss_var" />
+
+<meta property="og:description" content="This is a visual analogue to miss_var_summary. It draws a ggplot of the
+number of missings in each variable, ordered to show which variables have
+the most missing data. A default minimal theme is used, which can be
+customised as normal for ggplot." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +62,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">naniar</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,6 +95,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -83,22 +103,26 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot the number of missings for each variable</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/gg-miss-var.R'><code>R/gg-miss-var.R</code></a></small>
+    <div class="hidden name"><code>gg_miss_var.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This is a visual analogue to <code>miss_var_summary</code>. It draws a ggplot of the
 number of missings in each variable, ordered to show which variables have
 the most missing data. A default minimal theme is used, which can be
 customised as normal for ggplot.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>gg_miss_var</span>(<span class='no'>x</span>, <span class='no'>facet</span>, <span class='kw'>show_pct</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -122,13 +146,14 @@ TRUE, it will display the proportion of missings.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='geom_miss_point.html'>geom_miss_point()</a></code> <code><a href='gg_miss_case.html'>gg_miss_case()</a></code> <a href='gg_miss_case_cumsum.html'>gg_miss_case_cumsum</a> <code><a href='gg_miss_fct.html'>gg_miss_fct()</a></code> <code><a href='gg_miss_span.html'>gg_miss_span()</a></code> <code>gg_miss_var()</code> <code><a href='gg_miss_var_cumsum.html'>gg_miss_var_cumsum()</a></code> <code><a href='gg_miss_which.html'>gg_miss_which()</a></code></p>
+    <div class='dont-index'><p><code><a href='geom_miss_point.html'>geom_miss_point()</a></code> <code><a href='gg_miss_case.html'>gg_miss_case()</a></code> <a href='gg_miss_case_cumsum.html'>gg_miss_case_cumsum</a> <code><a href='gg_miss_fct.html'>gg_miss_fct()</a></code> <code><a href='gg_miss_span.html'>gg_miss_span()</a></code> <code>gg_miss_var()</code> <code><a href='gg_miss_var_cumsum.html'>gg_miss_var_cumsum()</a></code> <code><a href='gg_miss_which.html'>gg_miss_which()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>gg_miss_var</span>(<span class='no'>airquality</span>)</div><div class='img'><img src='gg_miss_var-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-<span class='fu'>gg_miss_var</span>(<span class='no'>airquality</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Look at all the missing ones"</span>)</div><div class='img'><img src='gg_miss_var-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_var</span>(<span class='no'>airquality</span>, <span class='no'>Month</span>)</div><div class='img'><img src='gg_miss_var-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>gg_miss_var</span>(<span class='no'>airquality</span>, <span class='no'>Month</span>, <span class='fl'>TRUE</span>)</div><div class='img'><img src='gg_miss_var-4.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>gg_miss_var</span>(<span class='no'>airquality</span>)
+<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
+<span class='fu'>gg_miss_var</span>(<span class='no'>airquality</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Look at all the missing ones"</span>)</div><div class='img'><img src='gg_miss_var-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>gg_miss_var</span>(<span class='no'>airquality</span>, <span class='no'>Month</span>)</div><div class='img'><img src='gg_miss_var-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>gg_miss_var</span>(<span class='no'>airquality</span>, <span class='no'>Month</span>, <span class='kw'>show_pct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='gg_miss_var-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>gg_miss_var</span>(<span class='no'>airquality</span>, <span class='no'>Month</span>, <span class='kw'>show_pct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/lims'>ylim</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>)</div><div class='img'><img src='gg_miss_var-4.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -152,11 +177,14 @@ TRUE, it will display the proportion of missings.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

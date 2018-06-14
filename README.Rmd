@@ -14,16 +14,24 @@ knitr::opts_chunk$set(
 
 # naniar <img src="man/figures/naniar-logo.png" align="right" />
 
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar)
-[![Travis-CI Build Status](https://travis-ci.org/njtierney/naniar.svg?branch=master)](https://travis-ci.org/njtierney/naniar)
-[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://codecov.io/github/njtierney/naniar?branch=master)[![CRAN Status Badge](http://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar)[![CRAN Downloads Each Month](http://cranlogs.r-pkg.org/badges/naniar)](http://cran.rstudio.com/web/packages/naniar/index.html)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar-xb96h)[![Travis-CI Build Status](https://travis-ci.org/njtierney/naniar.svg?branch=master)](https://travis-ci.org/njtierney/naniar)
+[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://codecov.io/github/njtierney/naniar?branch=master)[![CRAN Status Badge](http://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar)[![CRAN Downloads Each Month](http://cranlogs.r-pkg.org/badges/naniar)](http://cran.rstudio.com/web/packages/naniar/index.html) [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
-naniar provides principled, tidy ways to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data. It does this by providing:
+`naniar` provides principled, tidy ways to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data. It does this by providing:
 
-- Shadow matrices, a tidy data structure for missing data (`as_shadow()`).
-- Shorthand summaries for missing data: `n_miss()`/`n_complete()`; `prop_miss()`/`prop_complete()`.
-- Numerical summaries of missing data in variables (`miss_var_summary()`, `miss_var_run`), and cases (`miss_case_summary()`, `miss_case_table()`).
-- Visualisation methods: e.g.,  `geom_miss_point()`, `gg_miss_var()`, 
+- Shadow matrices, a tidy data structure for missing data:
+    - `as_shadow()` and `bind_shadow()`
+- Shorthand summaries for missing data: 
+    - `n_miss()` and `n_complete()`
+    - `pct_miss()`and `pct_complete()`
+- Numerical summaries of missing data in variables and cases:
+    - `miss_var_summary()` and `miss_var_table()`
+    - `miss_case_summary()`, `miss_case_table()`
+- Visualisation methods:
+    - `geom_miss_point()`
+    - `gg_miss_var()`
+    - `gg_miss_case()`
+    - `gg_miss_fct()`
 
 For more details on the workflow and theory underpinning naniar, read the vignette [Getting started with naniar](http://naniar.njtierney.com/articles/getting-started-w-naniar.html). 
 
@@ -40,7 +48,7 @@ install.packages("naniar")
 Or you can install the development version on github using `remotes`:
 
 ```{r install-github, eval = FALSE}
-# install.packages("devtools")
+# install.packages("remotes")
 remotes::install_github("njtierney/naniar")
 ```
 
@@ -115,8 +123,8 @@ airquality %>%
 
 ```
 
-
 And even visualise imputations 
+
 
 ```{r shadow-impute}
 
@@ -130,6 +138,19 @@ airquality %>%
 
 
 ```
+
+Or perform an upset plot - to plot of the combinations of missingness across cases, using the `as_shadow_upset` function
+
+```{r upset-plot}
+
+library(UpSetR)
+
+airquality %>%
+  as_shadow_upset() %>%
+  upset()
+
+```
+
 
 naniar does this while following consistent principles that are easy to read, thanks to the tools of the tidyverse.
 

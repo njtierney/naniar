@@ -9,7 +9,7 @@ replace_with_na_at(data, .vars, condition)
 \arguments{
 \item{data}{dataframe}
 
-\item{.vars}{The variables to refer to}
+\item{.vars}{A character string of variables to replace with NA values}
 
 \item{condition}{A condition required to be TRUE to set NA. Here, the condition
 is specified with a formula, following the syntax: \code{~.x {condition}}.
@@ -40,6 +40,11 @@ replace_with_na_at(data = dat_ms,
 replace_with_na_at(data = dat_ms,
                  .vars = c("x","z"),
                  condition = ~.x == -99)
+
+# replace using values in common_na_strings
+replace_with_na_at(data = dat_ms,
+                 .vars = c("x","z"),
+                 condition = ~.x \%in\% common_na_strings)
 
 
 }

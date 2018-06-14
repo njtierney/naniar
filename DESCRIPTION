@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.2.0.9400
+Version: 0.3.1.9000
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -21,7 +21,9 @@ Authors@R: c(
          comment = c(ORCID = "https://orcid.org/0000-0001-7343-1846")),
   person("Jim", "Hester", 
          role = "ctb", 
-         email = "james.f.hester@gmail.com")
+         email = "james.f.hester@gmail.com"),
+  person("Luke", "Smith", 
+         role = "ctb")
   )
 Description: Missing values are ubiquitous in data and need to be explored and
     handled in the initial stages of analysis. 'naniar' provides data structures 
@@ -43,7 +45,9 @@ Suggests:
     vdiffr,
     here,
     simputation,
-    imputeTS
+    imputeTS,
+    UpSetR,
+    gdtools
 VignetteBuilder: knitr
 Depends:
     R (>= 3.1.2)
@@ -56,16 +60,17 @@ Imports:
     magrittr,
     stats,
     visdat,
-    purrrlyr,
     rlang,
     forcats,
     viridis,
     glue
-RoxygenNote: 6.0.1.9000
-Collate: 
+RoxygenNote: 6.0.1
+Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
     'cast-shadows.R'
+    'data-common-na-numbers.R'
+    'data-common-na-strings.R'
     'data-oceanbuoys.R'
     'data-pedestrian.R'
     'data-riskfactors.R'
@@ -78,17 +83,21 @@ Collate:
     'gg-miss-var-cumsum.R'
     'gg-miss-var.R'
     'gg-miss-which.R'
+    'helpers.R'
+    'impute_below.R'
+    'impute_mean.R'
     'label-miss.R'
+    'miss-complete-x-pct-prop.R'
     'miss-prop-pct-summary.R'
     'miss-scan-count.R'
     'miss-x-cumsum.R'
-    'miss-x-pct-prop.R'
     'miss-x-run.R'
     'miss-x-span.R'
     'miss-x-summary.R'
     'miss-x-table.R'
     'n-prop-miss-complete-rows.R'
     'n-prop-miss-complete.R'
+    'n-var-miss.R'
     'naniar-ggproto.R'
     'naniar-package.R'
     'replace-to-na.R'

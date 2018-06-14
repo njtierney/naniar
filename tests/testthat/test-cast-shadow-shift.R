@@ -23,6 +23,7 @@ test_that("cast_shadow_shift adds a column with suffix '_NA' AND '_shift'",{
                  "Ozone_shift", "Solar.R_shift", "Temp_shift"))
 })
 
-test_that("cast_shadow_shift returns a nice error when you don't include variables",{
+test_that(
+  "cast_shadow_shift returns nice error when variables aren't included",{
   expect_error(cast_shadow_shift(airquality))
 })

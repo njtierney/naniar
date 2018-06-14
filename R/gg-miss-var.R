@@ -22,7 +22,8 @@
 #' library(ggplot2)
 #' gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 #' gg_miss_var(airquality, Month)
-#' gg_miss_var(airquality, Month, TRUE)
+#' gg_miss_var(airquality, Month, show_pct = TRUE)
+#' gg_miss_var(airquality, Month, show_pct = TRUE) + ylim(0, 100)
 #'
 gg_miss_var <- function(x, facet, show_pct = FALSE){
 
@@ -30,79 +31,66 @@ gg_miss_var <- function(x, facet, show_pct = FALSE){
   test_if_dataframe(x)
   test_if_null(x)
 
+  if (!missing(facet)) {
   # collect group into
   quo_group_by <- rlang::enquo(facet)
   group_string <- deparse(substitute(facet))
+  }
 
-  if (show_pct == FALSE & missing(facet)) {
-
-    ggobject <- x %>%
-      miss_var_summary() %>%
-      gg_miss_var_create_n_miss()
-
-  } else if (show_pct == TRUE & missing(facet)) {
+  if (missing(facet)) {
 
     ggobject <- x %>%
       miss_var_summary() %>%
-      gg_miss_var_create_pct_miss()
+      gg_miss_var_create(show_pct = show_pct)
 
     # show the groupings -------------------------------------------------------
 
-  } else if (show_pct == FALSE & !missing(facet)) {
+  } else if (!missing(facet)) {
 
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
       miss_var_summary() %>%
-      gg_miss_var_create_n_miss() +
+      gg_miss_var_create(show_pct = show_pct) +
       facet_wrap(as.formula(paste("~", group_string)))
 
-  } else if (show_pct == TRUE & !missing(facet)) {
-
-    ggobject <- x %>%
-      dplyr::group_by(!!quo_group_by) %>%
-      miss_var_summary() %>%
-      gg_miss_var_create_pct_miss() +
-      facet_wrap(as.formula(paste("~", group_string)))
-
-  }
 
   return(ggobject)
 
 }
 
+}
 # utility function to create the starting block for gg_miss_var ---------------
 
-gg_miss_var_create_n_miss <- function(data){
+gg_miss_var_create <- function(data, show_pct){
+
+  if (show_pct) {
+    ylab <- "% Missing"
+    aes_y <- "pct_miss"
+  } else if (!show_pct){
+    ylab <- "# Missing"
+    aes_y <- "n_miss"
+  }
+
+
   ggplot(data = data,
-       aes(x = stats::reorder(variable, n_miss),
-           y = n_miss,
-           colour = variable)) +
-  geom_bar(stat = "identity",
+       aes(x = stats::reorder(variable, n_miss))) +
+       #     y = n_miss)) +
+       # aes(x = stats::reorder(variable, n_miss),
+       #     y = n_miss)) +
+  geom_bar(aes_string(y = aes_y),
+           stat = "identity",
            position = "dodge",
-           width = 0) +
-  geom_point() +
+           width = 0,
+           colour = "#484878",
+           fill = "#484878") +
+  geom_point(aes_string(y = aes_y),
+             colour = "#484878",
+             fill = "#484878") +
   coord_flip() +
   scale_color_discrete(guide = FALSE) +
-  labs(y = "# Missing",
+  labs(y = ylab,
        x = "Variables") +
   theme_minimal()
 
 }
 
-gg_miss_var_create_pct_miss <- function(data){
-
-  ggplot(data = data,
-         aes(x = stats::reorder(variable, pct_miss),
-             y = pct_miss,
-             colour = variable)) +
-  geom_bar(stat = "identity",
-           position = "dodge",
-           width = 0) +
-  geom_point() +
-  coord_flip() +
-  scale_color_discrete(guide = FALSE) +
-  labs(y = "% Missing Missing",
-       x = "Variables") +
-  theme_minimal()
-
-}

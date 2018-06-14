@@ -12,7 +12,7 @@ miss_scan_count(data, search)
 \item{search}{values to search for}
 }
 \value{
-a dataframe of the occurences of the values you searched for
+a dataframe of the occurrences of the values you searched for
 }
 \description{
 Searching for different kinds of missing values is really annoying. If
@@ -34,6 +34,7 @@ dat_ms <- tibble::tribble(~x,  ~y,    ~z,
 miss_scan_count(dat_ms,-99)
 miss_scan_count(dat_ms,c(-99,-98))
 miss_scan_count(dat_ms,c("-99","-98","N/A"))
+miss_scan_count(dat_ms,common_na_strings)
 
 }
 \seealso{

@@ -36,7 +36,7 @@ cast_shadow <- function(data, ...){
 
   if (missing(...)) {
 
-    stop("no variable names provided, cast_shadow requires you to input variable names")
+    stop("no variable names provided, cast_shadow requires variable names")
 
   }
 

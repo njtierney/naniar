@@ -44,6 +44,42 @@ as_shadow.data.frame <- function(data, ...){
 
 }
 
+
+#' Convert data into shadow format for doing an upset plot
+#'
+#' Upset plots are a way of visualising common sets, this function transforms
+#'     the data into a format that feeds directly into an upset plot
+#'
+#' @param data a data.frame
+#'
+#' @return a data.frame
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' library(UpSetR)
+#' airquality %>%
+#'   as_shadow_upset() %>%
+#'   upset()
+#' }
+#'
+#' @export
+as_shadow_upset <- function(data){
+
+  test_if_null(data)
+
+  test_if_dataframe(data)
+
+  data_shadow <- as.data.frame(is.na(data)*1)
+
+  names(data_shadow) <- paste0(names(data),"_NA")
+
+  dplyr::mutate_if(data_shadow, is.numeric, as.integer)
+
+}
+
+
 #' Bind a shadow dataframe to original data
 #'
 #' Binding a shadow matrix to a regular dataframe helps visualise and work with
@@ -85,7 +121,7 @@ bind_shadow <- function(data, only_miss = FALSE){
   if (only_miss) {
 
     # I want to only select columns that contain a missing value.
-    miss_vars <- rlang::syms(which_var_na(data))
+    miss_vars <- rlang::syms(miss_var_which(data))
 
     shadow_vars <- dplyr::select(data, !!!miss_vars) %>% as_shadow()
 
@@ -168,7 +204,7 @@ unbind_data <- function(data){
 gather_shadow <- function(data){
 
   as_shadow(data) %>%
-    dplyr::mutate(rows = 1:nrow(.)) %>%
+    dplyr::mutate(rows = seq_len(nrow(.))) %>%
     tidyr::gather(key = "variable",
                   value = "missing",
                   -rows) %>%

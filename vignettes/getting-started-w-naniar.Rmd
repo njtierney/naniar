@@ -96,7 +96,7 @@ We can identify key variables that are missing using `vis_miss`, but for further
 
 Typically, when exploring this data, you might want to explore the variables Solar.R and Ozone, and so plot a scatterplot of solar radiation and ozone, doing something like this:
 
-```{r echo = TRUE, fig.width = 5, fig.height=3}
+```{r example-geom-point, echo = TRUE, fig.width = 5, fig.height=3}
 library(ggplot2)
 ggplot(airquality, 
        aes(x = Solar.R, 
@@ -104,7 +104,7 @@ ggplot(airquality,
   geom_point()
 ```
 
-The problem with this is that ggplot does not handle missings be default, and removes the missing values. This makes them hard to explore. It also presents the strange question of "how do you visualise something that is not there?".  One approach to visualising missing data comes from [`ggobi`](http://www.ggobi.org/) and [`manet`](http://www.rosuda.org/MANET/), where we replace "NA" values with values 10% lower than the minimum value in that variable. 
+The problem with this is that ggplot does not handle missings be default, and removes the missing values. This makes them hard to explore. It also presents the strange question of "how do you visualise something that is not there?".  One approach to visualising missing data comes from [`ggobi`](https://en.wikipedia.org/wiki/GGobi) and [`manet`](http://www.rosuda.org/MANET/), where we replace "NA" values with values 10% lower than the minimum value in that variable. 
 
 This process is performed and visualised for you with the `geom_miss_point()` ggplot2 geom. Here, we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
 
@@ -153,7 +153,7 @@ ggplot(airquality,
 
 Another approach to visualising the missings in a dataset is to use the `gg_miss_var` plot:
 
-```{r}
+```{r gg-miss-var}
 
 gg_miss_var(airquality)
 
@@ -161,7 +161,7 @@ gg_miss_var(airquality)
 
 The plots created with the `gg_miss` family all have a basic theme, but you can customise them, and add arguments like so:
 
-```{r gg-miss-var}
+```{r gg-miss-var-theme}
 gg_miss_var(airquality) + theme_bw() 
 
 gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
@@ -201,7 +201,7 @@ You can read more about this in the vignette ["Replacing values with NA"](http:/
 
 Representing missing data structure in a tidy format is achieved using the shadow matrix, introduced in [Swayne and Buja](https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization). The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as "NA", and not missing is represented as "!NA". Although these may be represented as 1 and 0, respectively. This representation can be seen in the figure below, adding the suffix "_NA" to the variables. This structure can also be extended to allow for additional factor levels to be created. For example 0 indicates data presence, 1 indicates missing values, 2 indicates imputed value, and 3 might indicate a particular type or class of missingness, where reasons for missingness might be known or inferred. The data matrix can also be augmented to include the shadow matrix, which facilitates visualisation of univariate and bivariate missing data visualisations. Another format is to display it in long form, which facilitates heatmap style visualisations. This approach can be very helpful for giving an overview of which variables contain the most missingness. Methods can also be applied to rearrange rows and columns to find clusters, and identify other interesting features of the data that may have previously been hidden or unclear. 
 
-```{r, out.width = "800px", echo = F}
+```{r mds-fig, out.width = "800px", echo = F}
 knitr::include_graphics("missingness-data-structures.png")
 ```
 
@@ -257,7 +257,7 @@ Binding the shadow here also has great benefits when combined with imputation.
 
 # Visualising imputed values
 https://cran.r-project.org/package=naniar
-Using the easy-to-use [`simputation`](https://cran.r-project.org/package=simputation) package, we impute values for Ozone, then visualise the data:
+With the easy-to-use [`simputation`](https://cran.r-project.org/package=simputation) package, we impute values for Ozone, then visualise the data:
 
 ```{r simpute-invisible, echo = TRUE, fig.height = 3}
 
@@ -291,7 +291,7 @@ aq_shadow %>%
 
 `naniar` also provide numerical summaries for missing data. Two convenient counters of complete values and missings are `n_miss` and `n_complete`. These work on both dataframes and vectors, similar to `dplyr::n_distinct`
 
-```{r echo = TRUE}
+```{r helpers-n-miss, echo = TRUE}
 
 dplyr::n_distinct(airquality)
 dplyr::n_distinct(airquality$Ozone)
@@ -310,14 +310,14 @@ The
 
 `miss_case_prop` and `miss_case_pct` return numeric value describing the proportion or percent of missing values in the dataframe.
 
-```{r}
+```{r miss-case-prop}
 miss_case_prop(airquality)
 miss_case_pct(airquality)
 ```
 
 `miss_case_summary` returns a numeric value that describes the number of missings in a given case (aka row), the percent of missings in that row.
 
-```{r}
+```{r miss-case-summary}
 
 miss_case_summary(airquality)
 
@@ -329,7 +329,7 @@ miss_case_summary(airquality)
 - There are then 40 cases with 1 missing, these make up 26% of the data.
 - There are then 2 cases with 2 missing - these make up 1% of the data.
 
-```{r}
+```{r miss-case-table}
 
 miss_case_table(airquality)
 
@@ -337,7 +337,7 @@ miss_case_table(airquality)
 
 Similar to `miss_case_pct()` and `miss_case_prop()`, `miss_var_pct()` and `miss_var_prop()` returns the percent and proportion of variables that contain a missing value.
 
-```{r}
+```{r miss-var-prop}
 
 miss_var_prop(airquality)
 miss_var_pct(airquality)
@@ -346,7 +346,7 @@ miss_var_pct(airquality)
 
 `miss_var_summary` then returns the number of missing values in a variable, and the percent missing in that variable.
 
-```{r}
+```{r miss-var-summary}
 
 miss_var_summary(airquality)
 
@@ -358,7 +358,7 @@ Finally, `miss_var_table`. This describes the number of missings in a variable.
 - There is 1 variable with 7 missings
 - There is 1 variable with 37 missings
 
-```{r}
+```{r miss-var-table}
 
 miss_var_table(airquality)
 
@@ -373,14 +373,14 @@ There are also summary functions for exploring missings that occur over a partic
 
 To use `miss_var_run`, you specify the variable that you want to explore the runs of missingness for, in this case, `hourly_counts`:
 
-```{r}
+```{r miss-var-run}
 miss_var_run(pedestrian,
              hourly_counts)
 ```
 
 `miss_var_span()` is used to determine the number of missings over a specified repeating span of rows in variable of a dataframe. Similar to `miss_var_run()`, you specify the variable that you wish to explore, you then also specify the size of the span with the `span_every` argument.
 
-```{r}
+```{r ped-miss-var-span}
 
 miss_var_span(pedestrian,
               hourly_counts,
@@ -392,7 +392,7 @@ miss_var_span(pedestrian,
 
 Every `miss_*` summary function that returns a dataframe can be used with dplyr `group_by`. For example, if you would like to look at the number of missing values for all variables of pedestrian data.
 
-```{r}
+```{r ped-miss-var-sum}
 
 pedestrian %>% miss_var_summary()
 
@@ -400,7 +400,7 @@ pedestrian %>% miss_var_summary()
 
 We see that this is in `hourly_counts`. We can then explore this by month, and filder by the variable being `hourly_counts`, since it is the only one with missing values.
 
-```{r}
+```{r ped-group-by-miss-var-sum}
 
 pedestrian %>%
  group_by(month) %>%
@@ -467,6 +467,6 @@ Naming credit (once again!) goes to Miles McBain. Among various other things, Mi
 # References
 
 - MANET: http://www.rosuda.org/MANET/
-- ggobi: http://www.ggobi.org/
+- ggobi: https://en.wikipedia.org/wiki/GGobi
 - visdat: https://www.github.com/ropensci/visdat
 - Tierney NJ, Harden FA, Harden MJ, Mengersen, KA, Using decision trees to understand structure in missing data BMJ Open 2015;5:e007450. doi: 10.1136/bmjopen-2014-007450

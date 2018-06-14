@@ -42,6 +42,9 @@ replace_with_na_all(dat_ms,
 # replace all instances of -99 or -98, or "N/A" with NA
 replace_with_na_all(dat_ms,
                     condition = ~.x \%in\% c(-99, -98, "N/A"))
+# replace all instances of common na strings
+replace_with_na_all(dat_ms,
+                    condition = ~.x \%in\% common_na_strings)
 
 # where works with functions
 replace_with_na_all(airquality, ~ sqrt(.x) < 5)

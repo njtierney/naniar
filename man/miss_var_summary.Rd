@@ -9,7 +9,8 @@ miss_var_summary(data, order = FALSE, ...)
 \arguments{
 \item{data}{a data.frame}
 
-\item{order}{a logical indicating whether or not to order the result by n_miss. TRUE orders from largest to smallest n_miss, and FALSE orders by order provided by the data.}
+\item{order}{a logical indicating whether to order the result by \code{n_miss}.
+Defaults to TRUE. If FALSE, order of variables is the order input.}
 
 \item{...}{extra arguments}
 }
@@ -17,8 +18,14 @@ miss_var_summary(data, order = FALSE, ...)
 a tibble of the percent of missing data in each variable
 }
 \description{
-Provide a summary for each variable of the number and percent missings,
-ordering by the most missings in each variable.
+Provide a summary for each variable of the number, percent missings, and
+cumulative sum of missings of the order of the variables. By default,
+it orders by the most missings in each variable.
+}
+\note{
+\code{n_miss_cumsum} is calculated as the cumulative sum of missings in the
+variables in the order that they are given in the data when entering
+the function
 }
 \examples{
 

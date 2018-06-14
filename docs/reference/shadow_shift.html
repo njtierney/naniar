@@ -18,13 +18,29 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Shift missing values to facilitate missing data exploration/visualisation — shadow_shift" />
+
+<meta property="og:description" content="shadow_shift transforms missing values to facilitate visualisation, and has
+different behaviour for different types of variables. For numeric
+variables, the values are shifted to 10
+variable plus some jittered noise, to separate repeated values, so that
+missing values can be visualised along with the rest of the data." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +63,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">naniar</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,6 +96,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -83,12 +104,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Shift missing values to facilitate missing data exploration/visualisation</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/shadow-shifters.R'><code>R/shadow-shifters.R</code></a></small>
+    <div class="hidden name"><code>shadow_shift.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p><code>shadow_shift</code> transforms missing values to facilitate visualisation, and has
 different behaviour for different types of variables. For numeric
@@ -96,10 +120,11 @@ variables, the values are shifted to 10<!-- % below the minimum value for a give
 variable plus some jittered noise, to separate repeated values, so that
 missing values can be visualised along with the rest of the data.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>shadow_shift</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -114,7 +139,7 @@ missing values can be visualised along with the rest of the data.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='add_shadow_shift.html'>add_shadow_shift()</a></code> <code><a href='cast_shadow_shift.html'>cast_shadow_shift()</a></code> <code><a href='cast_shadow_shift_label.html'>cast_shadow_shift_label()</a></code></p>
+    <div class='dont-index'><p><code><a href='add_shadow_shift.html'>add_shadow_shift()</a></code> <code><a href='cast_shadow_shift.html'>cast_shadow_shift()</a></code> <code><a href='cast_shadow_shift_label.html'>cast_shadow_shift_label()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -292,7 +317,17 @@ missing values can be visualised along with the rest of the data.</p>
 #&gt; 140    18     224 13.8   67     9  17    18.00000
 #&gt; 141    13      27 10.3   76     9  18    13.00000
 #&gt; 142    24     238 10.3   68     9  19    24.00000
-#&gt;  [ reached getOption("max.print") -- omitted 11 rows ]</div><div class='input'>
+#&gt; 143    16     201  8.0   82     9  20    16.00000
+#&gt; 144    13     238 12.6   64     9  21    13.00000
+#&gt; 145    23      14  9.2   71     9  22    23.00000
+#&gt; 146    36     139 10.3   81     9  23    36.00000
+#&gt; 147     7      49 10.3   69     9  24     7.00000
+#&gt; 148    14      20 16.6   63     9  25    14.00000
+#&gt; 149    30     193  6.9   70     9  26    30.00000
+#&gt; 150    NA     145 13.2   77     9  27   -14.83089
+#&gt; 151    14     191 14.3   75     9  28    14.00000
+#&gt; 152    18     131  8.0   76     9  29    18.00000
+#&gt; 153    20     223 11.5   68     9  30    20.00000</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -314,11 +349,14 @@ missing values can be visualised along with the rest of the data.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

@@ -104,36 +104,41 @@
 #' @format NULL
 #' @usage NULL
 #' @export
-GeomMissPoint <- ggproto("GeomMissPoint", GeomPoint,
-                            required_aes = c("x", "y"),
-                            default_aes = aes(shape = 19,
-                                              colour = ..missing..,
-                                              size = 0.5,
-                                              fill = NA,
-                                              alpha = NA,
-                                              stroke = 1.5),
-                            draw_key = draw_key_missing_point,
-                            setup_data = function(data, params){
-                              #TODO: print warning if na.rm = T
-                              data$x <- shadow_shift(data$x)
-                              data$y <- shadow_shift(data$y)
-                              data$missing <- label_miss_2d(data$x, data$y)
-                              data
-                            } ,
-                            handle_na = function(self, data, params) data,
-                            draw_panel = function(data, panel_scales, coord) {
-                              coords <- coord$transform(data, panel_scales)
-                              grid::pointsGrob(
-                                coords$x, coords$y,
-                                pch = coords$shape,
-                                gp = grid::gpar(
-                                  col = alpha(coords$colour, coords$alpha),
-                                  fill = alpha(coords$fill, coords$alpha),
-                                  # Stroke is added around the outside of the point
-                                  fontsize = coords$size * .pt + coords$stroke * .stroke / 2,
-                                  lwd = coords$stroke * .stroke / 2
-                                )
-                              )
-                            }
+GeomMissPoint <- ggproto(
+  "GeomMissPoint",
+  GeomPoint,
+  required_aes = c("x", "y"),
+  default_aes = aes(shape = 19,
+                    colour = ..missing..,
+                    size = 0.5,
+                    fill = NA,
+                    alpha = NA,
+                    stroke = 1.5),
+  draw_key = draw_key_missing_point,
+  setup_data = function(data, params){
+    #TODO: print warning if na.rm = T
+    data$x <- shadow_shift(data$x)
+    data$y <- shadow_shift(data$y)
+    data$missing <- label_miss_2d(data$x, data$y)
+    data
+    },
+  handle_na = function(self, data, params) data,
+  draw_panel = function(data,
+                        panel_scales,
+                        coord){
+    coords <- coord$transform(data, panel_scales)
+    grid::pointsGrob(
+      coords$x,
+      coords$y,
+      pch = coords$shape,
+      gp = grid::gpar(
+        col = alpha(coords$colour, coords$alpha),
+        fill = alpha(coords$fill, coords$alpha),
+        # Stroke is added around the outside of the point
+        fontsize = coords$size * .pt + coords$stroke * .stroke / 2,
+        lwd = coords$stroke * .stroke / 2
+        )
+    )
+    }
 )
 

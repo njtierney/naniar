@@ -18,13 +18,28 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Find the number of missing and complete values in a single run — miss_var_run" />
+
+<meta property="og:description" content="It us useful to find the number of missing values that occur in a single run.
+The function, miss_var_run(), returns a dataframe with the column names
+&quot;run_length&quot; and &quot;is_na&quot;, which describe the length of the run, and
+whether that run describes a missing value." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +62,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">naniar</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,6 +95,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -83,22 +103,26 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Find the number of missing and complete values in a single run</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/miss-x-run.R'><code>R/miss-x-run.R</code></a></small>
+    <div class="hidden name"><code>miss_var_run.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>It us useful to find the number of missing values that occur in a single run.
 The function, <code>miss_var_run()</code>, returns a dataframe with the column names
 "run_length" and "is_na", which describe the length of the run, and
 whether that run describes a missing value.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>miss_var_run</span>(<span class='no'>data</span>, <span class='no'>var</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -118,7 +142,7 @@ the length of the run, and whether that run describes a missing value.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a></p>
+    <div class='dont-index'><p><a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -165,12 +189,12 @@ the length of the run, and whether that run describes a missing value.</p>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>run_length</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>run_length</span>,
              <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>n</span>)) +
-      <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_bar'>geom_col</a></span>()</div><div class='img'><img src='miss_var_run-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+      <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_bar'>geom_col</a></span>()</div><div class='img'><img src='miss_var_run-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># look at the number of missing values and the run length of these.</span>
 <span class='fu'>miss_var_run</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>is_na</span>,
              <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>run_length</span>)) +
-      <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot'>geom_boxplot</a></span>()</div><div class='img'><img src='miss_var_run-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+      <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot'>geom_boxplot</a></span>()</div><div class='img'><img src='miss_var_run-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># using group_by</span>
  <span class='no'>pedestrian</span> <span class='kw'>%&gt;%</span>
    <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>month</span>) <span class='kw'>%&gt;%</span>
@@ -212,11 +236,14 @@ the length of the run, and whether that run describes a missing value.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

@@ -4,7 +4,7 @@
 \alias{miss_summary}
 \title{Collate summary measures from naniar into one tibble}
 \usage{
-miss_summary(data, order = FALSE)
+miss_summary(data, order = TRUE)
 }
 \arguments{
 \item{data}{a dataframe}

@@ -18,13 +18,29 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Summarise the number of missings for a given repeating span on a variable — miss_var_span" />
+
+<meta property="og:description" content="To summarise the missing values in a time series object it can be useful to
+calculate the number of missing values in a given time period.
+miss_var_span takes a data.frame object, a variable, and a span_every
+argument and returns a dataframe containing the number of missing values
+within each span." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +63,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">naniar</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">naniar</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,6 +96,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -83,12 +104,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Summarise the number of missings for a given repeating span on a variable</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/miss-x-span.R'><code>R/miss-x-span.R</code></a></small>
+    <div class="hidden name"><code>miss_var_span.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>To summarise the missing values in a time series object it can be useful to
 calculate the number of missing values in a given time period.
@@ -96,10 +120,11 @@ calculate the number of missing values in a given time period.
 argument and returns a dataframe containing the number of missing values
 within each span.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>miss_var_span</span>(<span class='no'>data</span>, <span class='no'>var</span>, <span class='no'>span_every</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -124,7 +149,7 @@ complete values within that given time span.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a></p>
+    <div class='dont-index'><p><a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -134,16 +159,16 @@ complete values within that given time span.</p>
              <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>168</span>)</div><div class='output co'>#&gt; # A tibble: 225 x 5
 #&gt;    span_counter n_miss n_complete prop_miss prop_complete
 #&gt;           &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
-#&gt;  1            1      0        168         0          1.00
-#&gt;  2            2      0        168         0          1.00
-#&gt;  3            3      0        168         0          1.00
-#&gt;  4            4      0        168         0          1.00
-#&gt;  5            5      0        168         0          1.00
-#&gt;  6            6      0        168         0          1.00
-#&gt;  7            7      0        168         0          1.00
-#&gt;  8            8      0        168         0          1.00
-#&gt;  9            9      0        168         0          1.00
-#&gt; 10           10      0        168         0          1.00
+#&gt;  1            1      0        168         0             1
+#&gt;  2            2      0        168         0             1
+#&gt;  3            3      0        168         0             1
+#&gt;  4            4      0        168         0             1
+#&gt;  5            5      0        168         0             1
+#&gt;  6            6      0        168         0             1
+#&gt;  7            7      0        168         0             1
+#&gt;  8            8      0        168         0             1
+#&gt;  9            9      0        168         0             1
+#&gt; 10           10      0        168         0             1
 #&gt; # ... with 215 more rows</div><div class='input'>
  <span class='fu'>library</span>(<span class='no'>dplyr</span>)
  <span class='no'>pedestrian</span> <span class='kw'>%&gt;%</span>
@@ -152,16 +177,16 @@ complete values within that given time span.</p>
                    <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>168</span>)</div><div class='output co'>#&gt; # A tibble: 230 x 6
 #&gt;    month   span_counter n_miss n_complete prop_miss prop_complete
 #&gt;    &lt;ord&gt;          &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
-#&gt;  1 January            1      0        168         0          1.00
-#&gt;  2 January            2      0        168         0          1.00
-#&gt;  3 January            3      0        168         0          1.00
-#&gt;  4 January            4      0        168         0          1.00
-#&gt;  5 January            5      0        168         0          1.00
-#&gt;  6 January            6      0        168         0          1.00
-#&gt;  7 January            7      0        168         0          1.00
-#&gt;  8 January            8      0        168         0          1.00
-#&gt;  9 January            9      0        168         0          1.00
-#&gt; 10 January           10      0        168         0          1.00
+#&gt;  1 January            1      0        168         0             1
+#&gt;  2 January            2      0        168         0             1
+#&gt;  3 January            3      0        168         0             1
+#&gt;  4 January            4      0        168         0             1
+#&gt;  5 January            5      0        168         0             1
+#&gt;  6 January            6      0        168         0             1
+#&gt;  7 January            7      0        168         0             1
+#&gt;  8 January            8      0        168         0             1
+#&gt;  9 January            9      0        168         0             1
+#&gt; 10 January           10      0        168         0             1
 #&gt; # ... with 220 more rows</div><div class='input'>
 </div></pre>
   </div>
@@ -186,11 +211,14 @@ complete values within that given time span.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

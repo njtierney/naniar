@@ -1,7 +1,8 @@
 context("cast_shadow_shift_label")
 
 
-test_that("cast_shadow_shift_label returns a nice error when you don't include variables",{
+test_that(
+  "cast_shadow_shift_label returns nice error if variables aren't included",{
   expect_error(cast_shadow_shift(airquality))
 })
 
@@ -10,12 +11,16 @@ test_that("cast_shadow_shift_label returns a tibble",{
 })
 
 test_that("cast_shadow_shift_label adds the right number of columns",{
-  expect_equal(4, ncol(cast_shadow_shift_label(airquality, Ozone)))
-  expect_equal(7, ncol(cast_shadow_shift_label(airquality, Ozone, Solar.R)))
-  expect_equal(10, ncol(cast_shadow_shift_label(airquality, Ozone, Solar.R, Temp)))
+  expect_equal(4,
+               ncol(cast_shadow_shift_label(airquality, Ozone)))
+  expect_equal(7,
+               ncol(cast_shadow_shift_label(airquality, Ozone, Solar.R)))
+  expect_equal(10,
+               ncol(cast_shadow_shift_label(airquality, Ozone, Solar.R, Temp)))
 })
 
-test_that("cast_shadow_shift_label adds a column with suffix '_NA' AND '_shift'",{
+test_that(
+  "cast_shadow_shift_label adds a column with suffix '_NA' AND '_shift'",{
   expect_equal(names(cast_shadow_shift_label(airquality, Ozone)),
                c("Ozone","Ozone_NA", "Ozone_shift", "any_missing"))
   expect_equal(names(cast_shadow_shift(airquality, Ozone, Solar.R)),

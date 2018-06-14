@@ -16,8 +16,10 @@ are_shadow(x)
 logical vector of length 1
 }
 \description{
-Creating shadow variables can be done with \code{bind_shadow}. To see if there
-are any shadow variables, \code{is_shadow} will do this.
+Shadow matrix or "nabular" data is a useful way to store missing data to
+facilitate missing data visualisation. This data can be created using
+\code{bind_shadow}. \code{is_shadow} tells us if there are any shadow variables,
+\code{are_shadow} tells us which ones are shadow variables.
 }
 \examples{
 

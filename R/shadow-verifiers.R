@@ -1,7 +1,9 @@
 #' Test if input is or are shadow variables
 #'
-#' Creating shadow variables can be done with `bind_shadow`. To see if there
-#'   are any shadow variables, `is_shadow` will do this.
+#' Shadow matrix or "nabular" data is a useful way to store missing data to
+#'   facilitate missing data visualisation. This data can be created using
+#'   `bind_shadow`. `is_shadow` tells us if there are any shadow variables,
+#'   `are_shadow` tells us which ones are shadow variables.
 #'
 #' @param x a vector or data.frame
 #'
@@ -30,7 +32,6 @@ is_shadow <- function(x){
 #' @rdname is_shadow
 are_shadow <- function(x){
   purrr::map(x, class) %>%
-    tibble::as_tibble() %>%
     purrr::map_lgl(~any(grepl("shadow",.)))
 }
 

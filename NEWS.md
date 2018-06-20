@@ -1,3 +1,10 @@
+# naniar 0.3.1.91000 (2018/06/10)
+
+## Minor Change
+
+- `miss_case_table` and `miss_var_table` now has final column names `pct_vars`,
+and `pct_cases` instead of `pct_miss` - fixes #178.
+
 # naniar 0.3.1 (2018/06/10) "Strawberry's Adventure"
 
 ## Minor Change

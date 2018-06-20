@@ -7,7 +7,7 @@
 \alias{naniar-ggproto}
 \alias{StatMissPoint}
 \title{naniar-ggproto}
-\format{An object of class \code{StatMissPoint} (inherits from \code{Stat}, \code{ggproto}) of length 6.}
+\format{An object of class \code{StatMissPoint} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 6.}
 \usage{
 StatMissPoint
 }

@@ -37,7 +37,7 @@ miss_case_table.default <- function(data){
   data %>%
     dplyr::group_by(n_miss_in_case) %>%
     dplyr::tally() %>%
-    dplyr::mutate(pct_miss = (n / nrow(data) * 100)) %>%
+    dplyr::mutate(pct_cases = (n / nrow(data) * 100)) %>%
     dplyr::rename(n_cases = n)
 
 }
@@ -93,7 +93,7 @@ miss_var_table.default <- function(data){
     dplyr::group_by(n_miss_in_var) %>%
     dplyr::tally() %>%
     dplyr::rename(n_vars = n) %>%
-    dplyr::mutate(pct_miss = (n_vars / ncol(data) * 100))
+    dplyr::mutate(pct_vars = (n_vars / ncol(data) * 100))
 
 }
 

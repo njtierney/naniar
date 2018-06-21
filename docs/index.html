@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2.9000</span>
       </span>
     </div>
 
@@ -217,14 +217,10 @@
 <a class="sourceLine" id="cb8-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</a>
 <a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; Warning: Removed 7 rows containing missing values (geom_point).</span></a></code></pre></div>
 <p><img src="reference/figures/README-shadow-impute-1.png" width="700"></p>
-<p>Or perform an upset plot - to plot of the combinations of missingness across cases, using the <code>as_shadow_upset</code> function</p>
+<p>Or perform an <a href="https://www.nature.com/articles/nmeth.3033">upset</a> plot - to plot of the combinations of missingness across cases, using the <code>gg_miss_upset</code> function</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">library</span>(UpSetR)</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">airquality <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="reference/as_shadow_upset.html">as_shadow_upset</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/UpSetR/topics/upset">upset</a></span>()</a></code></pre></div>
-<p><img src="reference/figures/README-upset-plot-1.png" width="700"></p>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="reference/gg_miss_upset.html">gg_miss_upset</a></span>(airquality)</a></code></pre></div>
+<p><img src="reference/figures/README-gg-miss-upset-1.png" width="700"></p>
 <p>naniar does this while following consistent principles that are easy to read, thanks to the tools of the tidyverse.</p>
 <p>naniar also provides handy visualations for each variable:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>

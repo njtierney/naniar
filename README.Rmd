@@ -139,18 +139,13 @@ airquality %>%
 
 ```
 
-Or perform an upset plot - to plot of the combinations of missingness across cases, using the `as_shadow_upset` function
+Or perform an [upset](https://www.nature.com/articles/nmeth.3033) plot - to plot of the combinations of missingness across cases, using the `gg_miss_upset` function
 
-```{r upset-plot}
+```{r gg-miss-upset}
 
-library(UpSetR)
-
-airquality %>%
-  as_shadow_upset() %>%
-  upset()
+gg_miss_upset(airquality)
 
 ```
-
 
 naniar does this while following consistent principles that are easy to read, thanks to the tools of the tidyverse.
 

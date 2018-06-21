@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2.9000</span>
       </span>
     </div>
 
@@ -104,27 +104,44 @@
       <small>Source: <a href='https://github.com/njtierney/naniar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="naniar-0-3-1-20180610-strawberrys-adventure" class="section level1">
+    <div id="naniar-0-3-2-9000-20180610" class="section level1">
 <h1 class="page-header">
-<a href="#naniar-0-3-1-20180610-strawberrys-adventure" class="anchor"></a>naniar 0.3.1 (2018/06/10) “Strawberry’s Adventure”<small> Unreleased </small>
+<a href="#naniar-0-3-2-9000-20180610" class="anchor"></a>naniar 0.3.2.9000 (2018/06/10)<small> Unreleased </small>
+</h1>
+<div id="new-feature" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-feature" class="anchor"></a>New Feature</h2>
+<ul>
+<li>
+<p>Added <code>gg_miss_upset</code> to replace workflow of:</p>
+<pre><code>data %&gt;% 
+  as_shadow_upset() %&gt;%
+  UpSetR::upset()</code></pre>
+</li>
+</ul>
+</div>
+</div>
+    <div id="naniar-0-3-1-9100-20180610" class="section level1">
+<h1 class="page-header">
+<a href="#naniar-0-3-1-9100-20180610" class="anchor"></a>naniar 0.3.1.9100 (2018/06/10)<small> Unreleased </small>
 </h1>
 <div id="minor-change" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-change" class="anchor"></a>Minor Change</h2>
-<p>This is a patch release that removes <code>tidyselect</code> from the package Imports, as it is unnecessary. Fixes <a href="https://github.com/njtierney/naniar/issues/174"><a href='https://github.com/njtierney/naniar/issues/174'>#174</a></a></p>
+<ul>
+<li>
+<code>miss_case_table</code> and <code>miss_var_table</code> now has final column names <code>pct_vars</code>, and <code>pct_cases</code> instead of <code>pct_miss</code> - fixes <a href='https://github.com/njtierney/naniar/issues/178'>#178</a>.</li>
+</ul>
 </div>
 </div>
-    <div id="naniar-0-3-90000-20180607" class="section level1">
+    <div id="naniar-0-3-1-20180610-strawberrys-adventure" class="section level1">
 <h1 class="page-header">
-<a href="#naniar-0-3-90000-20180607" class="anchor"></a>naniar 0.3.90000 (2018/06/07)<small> Unreleased </small>
+<a href="#naniar-0-3-1-20180610-strawberrys-adventure" class="anchor"></a>naniar 0.3.1 (2018/06/10) “Strawberry’s Adventure”<small> 2018-06-08 </small>
 </h1>
-<div id="new-features" class="section level2">
+<div id="minor-change-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New Features</h2>
-</div>
-<div id="minor-changes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor Changes</h2>
+<a href="#minor-change-1" class="anchor"></a>Minor Change</h2>
+<p>This is a patch release that removes <code>tidyselect</code> from the package Imports, as it is unnecessary. Fixes <a href="https://github.com/njtierney/naniar/issues/174"><a href='https://github.com/njtierney/naniar/issues/174'>#174</a></a></p>
 </div>
 </div>
   </div>
@@ -133,8 +150,9 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#naniar-0-3-2-9000-20180610">0.3.2.9000</a></li>
+        <li><a href="#naniar-0-3-1-9100-20180610">0.3.1.9100</a></li>
         <li><a href="#naniar-0-3-1-20180610-strawberrys-adventure">0.3.1</a></li>
-        <li><a href="#naniar-0-3-90000-20180607">0.3.90000</a></li>
       </ul>
     </div>
   </div>

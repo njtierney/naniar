@@ -1,4 +1,15 @@
-# naniar 0.3.1.91000 (2018/06/10)
+# naniar 0.3.2.9000 (2018/06/10)
+
+## New Feature
+
+- Added `gg_miss_upset` to replace workflow of: 
+  ```
+  data %>% 
+    as_shadow_upset() %>%
+    UpSetR::upset()
+  ```
+
+# naniar 0.3.1.9100 (2018/06/10)
 
 ## Minor Change
 

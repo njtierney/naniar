@@ -1,4 +1,3 @@
-
 context("gg_miss_fct")
 
 gg_miss_fct_plot <- gg_miss_fct(riskfactors, marital)

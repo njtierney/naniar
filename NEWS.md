@@ -1,4 +1,12 @@
-# naniar 0.3.2.9000 (2018/06/10)
+# naniar 0.3.2.9100 (2018/06/25)
+
+## Minor update
+
+- Changed `common_na_string` to include  escape characters for "?", "*", "." so
+that if they are used in replacement or searching functions they don't return
+the wildcard results from the characters "?", "*", and ".".
+
+# naniar 0.3.2.9000 (2018/06/21)
 
 ## New Feature
 

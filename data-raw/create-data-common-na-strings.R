@@ -20,10 +20,9 @@ common_na_strings <- c(
   "NULL",
   "null",
   "",
-  "?",
-  "*",
-  ".",
-  "-"
+  "\\?",
+  "\\*",
+  "\\."
 )
 
 devtools::use_data(common_na_strings, overwrite = TRUE)

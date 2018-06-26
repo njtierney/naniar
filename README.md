@@ -60,7 +60,8 @@ remotes::install_github("njtierney/naniar")
 
 Visualising missing data might sound a little strange - how do you
 visualise something that is not there? One approach to visualising
-missing data comes from [ggobi]() and [manet](), where we replace “NA”
+missing data comes from [ggobi](http://ggobi.org/) and 
+[manet](https://cran.r-project.org/package=manet), where we replace “NA”
 values with values 10% lower than the minimum value in that variable.
 This visualisation is provided with the `geom_miss_point()` ggplot2 geom
 - which we illustrate by exploring the relationship between Ozone and

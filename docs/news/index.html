@@ -29,6 +29,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 <meta property="og:title" content="Changelog" />
 
@@ -58,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2.9100</span>
       </span>
     </div>
 
@@ -90,6 +96,12 @@
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -104,9 +116,21 @@
       <small>Source: <a href='https://github.com/njtierney/naniar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="naniar-0-3-2-9000-20180610" class="section level1">
+    <div id="naniar-0-3-2-9100-20180625" class="section level1">
 <h1 class="page-header">
-<a href="#naniar-0-3-2-9000-20180610" class="anchor"></a>naniar 0.3.2.9000 (2018/06/10)<small> Unreleased </small>
+<a href="#naniar-0-3-2-9100-20180625" class="anchor"></a>naniar 0.3.2.9100 (2018/06/25)<small> Unreleased </small>
+</h1>
+<div id="minor-update" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-update" class="anchor"></a>Minor update</h2>
+<ul>
+<li>Changed <code>common_na_string</code> to include escape characters for “?”, “<em>", "." so that if they are used in replacement or searching functions they don’t return the wildcard results from the characters "?", "</em>”, and “.”.</li>
+</ul>
+</div>
+</div>
+    <div id="naniar-0-3-2-9000-20180621" class="section level1">
+<h1 class="page-header">
+<a href="#naniar-0-3-2-9000-20180621" class="anchor"></a>naniar 0.3.2.9000 (2018/06/21)<small> Unreleased </small>
 </h1>
 <div id="new-feature" class="section level2">
 <h2 class="hasAnchor">
@@ -150,7 +174,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#naniar-0-3-2-9000-20180610">0.3.2.9000</a></li>
+        <li><a href="#naniar-0-3-2-9100-20180625">0.3.2.9100</a></li>
+        <li><a href="#naniar-0-3-2-9000-20180621">0.3.2.9000</a></li>
         <li><a href="#naniar-0-3-1-9100-20180610">0.3.1.9100</a></li>
         <li><a href="#naniar-0-3-1-20180610-strawberrys-adventure">0.3.1</a></li>
       </ul>
@@ -172,6 +197,23 @@
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '48bc42eefc5234a6463c3b99e53dfda1',
+    indexName: 'naniar',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>

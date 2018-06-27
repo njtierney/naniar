@@ -5,4 +5,7 @@ articles:
   getting-started-w-naniar: getting-started-w-naniar.html
   naniar-visualisation: naniar-visualisation.html
   replace-with-na: replace-with-na.html
+urls:
+  reference: http://naniar.njtierney.com//reference
+  article: http://naniar.njtierney.com//articles
 

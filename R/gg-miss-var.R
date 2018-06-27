@@ -43,6 +43,8 @@ gg_miss_var <- function(x, facet, show_pct = FALSE){
       miss_var_summary() %>%
       gg_miss_var_create(show_pct = show_pct)
 
+    return(ggobject)
+
     # show the groupings -------------------------------------------------------
 
   } else if (!missing(facet)) {

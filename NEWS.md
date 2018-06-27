@@ -1,3 +1,9 @@
+# naniar 0.3.2.9300 (2018/06/27)
+
+## Bug fix
+
+* `gg_miss_var(airquality)` now prints the ggplot - a typo meant that this did not print the plot
+
 # naniar 0.3.2.9100 (2018/06/25)
 
 ## Minor update

@@ -91,6 +91,7 @@ Collate:
     'miss-complete-x-pct-prop.R'
     'miss-prop-pct-summary.R'
     'miss-scan-count.R'
+    'miss-var-case-scan.R'
     'miss-x-cumsum.R'
     'miss-x-run.R'
     'miss-x-span.R'

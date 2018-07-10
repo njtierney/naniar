@@ -25,7 +25,7 @@ miss_var_scan <- function(data, scan){
 
   n_match <- function(x, scan){
     stopifnot(is.list(scan))
-    map(scan, ~sum(grepl(., x)))
+    purrr::map(scan, ~sum(grepl(., x)))
   }
 
   purrr::map(data,
@@ -34,7 +34,7 @@ miss_var_scan <- function(data, scan){
     purrr::transpose() %>%
     purrr::map(transpose)  %>%
     dplyr::bind_cols() %>%
-    dplyr::unnest() %>%
+    tidyr::unnest() %>%
     rlang::set_names(scan) %>%
     dplyr::mutate(variables = names(data)) %>%
     janitor::adorn_totals(where = c("col")) %>%

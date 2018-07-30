@@ -22,14 +22,24 @@ test_that("miss_var_summary grouped_df returns a tibble", {
   expect_is(miss_var_summary(aq_group), "tbl_df")
 })
 
+test_that("miss_var_summary returns the right number of columns", {
+  expect_equal(ncol(miss_var_summary(airquality)),
+               3)
+})
+
+test_that("miss_var_summary group returns the right number of columns", {
+  expect_equal(ncol(miss_var_summary(aq_group)),
+               4)
+})
+
 test_that("grouped_df returns 1 more column than regular miss_var_summary", {
   expect_equal(ncol(miss_var_summary(aq_group)),
-               ncol(miss_var_summary(airquality))+1)
+               ncol(miss_var_summary(airquality)) + 1)
 })
 
 test_that("grouped_df returns a column named 'Month'", {
   expect_identical(names(miss_var_summary(aq_group)),
-                   c("Month", "variable", "n_miss","pct_miss", "n_miss_cumsum"))
+                   c("Month", "variable", "n_miss","pct_miss"))
 })
 
 test_that("grouped_df returns a dataframe with more rows than regular", {
@@ -42,3 +52,16 @@ test_that("grouped_df returns a column named 'Month' with the right levels", {
                    5:9)
 })
 
+
+
+# add testing for cumulative sum ----------------------------------------------
+
+test_that("miss_var_summary adds cumsum when add_cumsum = TRUE", {
+  expect_equal(names(miss_var_summary(airquality, add_cumsum = TRUE)),
+               c("variable", "n_miss", "pct_miss", "n_miss_cumsum"))
+})
+
+test_that("miss_var_summary grouped adds cumsum when add_cumsum = TRUE", {
+  expect_equal(names(miss_var_summary(aq_group, add_cumsum = TRUE)),
+               c("Month", "variable", "n_miss", "pct_miss", "n_miss_cumsum"))
+})

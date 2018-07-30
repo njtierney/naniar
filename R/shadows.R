@@ -125,7 +125,9 @@ bind_shadow <- function(data, only_miss = FALSE){
 
     shadow_vars <- dplyr::select(data, !!!miss_vars) %>% as_shadow()
 
-    tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
+    return(
+      tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
+    )
 
   # if you want All the values to be added (the default behaviour)
   }
@@ -136,7 +138,9 @@ bind_shadow <- function(data, only_miss = FALSE){
 
     bound_shadow <- dplyr::bind_cols(data, data_shadow)
 
+    return(
     tibble::as_tibble(bound_shadow)
+    )
 
   }
 

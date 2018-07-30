@@ -4,13 +4,18 @@
 \alias{miss_var_summary}
 \title{Summarise the missingness in each variable}
 \usage{
-miss_var_summary(data, order = FALSE, ...)
+miss_var_summary(data, order = FALSE, add_cumsum = FALSE, ...)
 }
 \arguments{
 \item{data}{a data.frame}
 
 \item{order}{a logical indicating whether to order the result by \code{n_miss}.
 Defaults to TRUE. If FALSE, order of variables is the order input.}
+
+\item{add_cumsum}{logical indicating whether or not to add the cumulative
+sum of missings to the data. This can be useful when exploring patterns
+of nonresponse. These are calculated as the cumulative sum of the missings
+in the variables as they are first presented to the function.}
 
 \item{...}{extra arguments}
 }

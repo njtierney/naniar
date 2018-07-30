@@ -7,6 +7,10 @@
 #' @param data a data.frame
 #' @param order a logical indicating whether to order the result by `n_miss`.
 #'     Defaults to TRUE. If FALSE, order of variables is the order input.
+#' @param add_cumsum logical indicating whether or not to add the cumulative
+#'   sum of missings to the data. This can be useful when exploring patterns
+#'   of nonresponse. These are calculated as the cumulative sum of the missings
+#'   in the variables as they are first presented to the function.
 #' @param ... extra arguments
 #'
 #' @note `n_miss_cumsum` is calculated as the cumulative sum of missings in the
@@ -31,7 +35,10 @@
 #'   miss_var_summary()
 #'
 #' @export
-miss_var_summary <- function(data, order = FALSE, ...) {
+miss_var_summary <- function(data,
+                             order = FALSE,
+                             add_cumsum = FALSE,
+                             ...) {
 
   test_if_null(data)
 
@@ -41,11 +48,19 @@ miss_var_summary <- function(data, order = FALSE, ...) {
 }
 
 #' @export
-miss_var_summary.default <- function(data, order = TRUE, ...) {
+miss_var_summary.default <- function(data,
+                                     order = TRUE,
+                                     add_cumsum = FALSE,
+                                     ...) {
+
   res <- purrr::map_df(data, n_miss) %>%
     tidyr::gather(key = "variable", value = "n_miss") %>%
-    dplyr::mutate(pct_miss = (n_miss / nrow(data) * 100),
-                  n_miss_cumsum = cumsum(n_miss))
+    dplyr::mutate(pct_miss = (n_miss / nrow(data) * 100))
+
+  if (add_cumsum) {
+   res <- res %>% dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
+  }
+
   if (order) {
     return(dplyr::arrange(res, -n_miss))
   }
@@ -56,9 +71,15 @@ miss_var_summary.default <- function(data, order = TRUE, ...) {
 }
 
 #' @export
-miss_var_summary.grouped_df <- function(data, order = TRUE, ...) {
+miss_var_summary.grouped_df <- function(data,
+                                        order = TRUE,
+                                        add_cumsum = FALSE,
+                                        ...) {
 
-  group_by_fun(data, .fun = miss_var_summary, order = order)
+  group_by_fun(data,
+               .fun = miss_var_summary,
+               order = order,
+               add_cumsum = add_cumsum)
 
 }
 
@@ -72,10 +93,10 @@ miss_var_summary.grouped_df <- function(data, order = TRUE, ...) {
 #' @param order a logical indicating whether or not to order the result by
 #'     n_miss. Defaults to TRUE. If FALSE, order of cases is the order input.
 #' @param ... extra arguments
-#'
-#' @note `n_miss_cumsum` is calculated as the cumulative sum of missings in the
-#'     variables in the order that they are given in the data when entering
-#'     the function
+#' @param add_cumsum logical indicating whether or not to add the cumulative
+#'   sum of missings to the data. This can be useful when exploring patterns
+#'   of nonresponse. These are calculated as the cumulative sum of the missings
+#'   in the variables as they are first presented to the function.
 #'
 #' @return a tibble of the percent of missing data in each case.
 #'
@@ -93,7 +114,10 @@ miss_var_summary.grouped_df <- function(data, order = TRUE, ...) {
 #'
 #' miss_case_summary(airquality)
 #'
-miss_case_summary <- function(data, order = TRUE, ...){
+miss_case_summary <- function(data,
+                              order = TRUE,
+                              add_cumsum = FALSE,
+                              ...){
 
   test_if_null(data)
 
@@ -103,35 +127,56 @@ miss_case_summary <- function(data, order = TRUE, ...){
 }
 
 #' @export
-miss_case_summary.default <- function(data, order = TRUE, ...){
+miss_case_summary.default <- function(data,
+                                      order = TRUE,
+                                      add_cumsum = FALSE,
+                                      ...){
 
   res <- data
 
   res[["pct_miss"]] <- rowMeans(is.na(res))*100
   res[["n_miss"]] <- as.integer(rowSums(is.na(res)))
   res[["case"]] <- seq_len(nrow(res))
-  res[["n_miss_cumsum"]] <- cumsum(res[["n_miss"]])
 
-  res <- dplyr::as_tibble(res)
+  if (add_cumsum) {
+    res[["n_miss_cumsum"]] <- cumsum(res[["n_miss"]])
+    res <- dplyr::as_tibble(res)
+    res <- dplyr::select(res,
+                         case,
+                         n_miss,
+                         pct_miss,
+                         n_miss_cumsum)
+  }
 
-  res <- dplyr::select(res,
-                       case,
-                       n_miss,
-                       pct_miss,
-                       n_miss_cumsum)
+  if (!add_cumsum) {
+    res <- dplyr::as_tibble(res)
+
+    res <- dplyr::select(res,
+                         case,
+                         n_miss,
+                         pct_miss)
+
+  }
 
   if (order) {
     return(dplyr::arrange(res, -n_miss))
   }
 
-  return(res)
-
+  if (!order) {
+    return(res)
+  }
 }
 
 #' @export
-miss_case_summary.grouped_df <- function(data, order = TRUE, ...){
+miss_case_summary.grouped_df <- function(data,
+                                         order = TRUE,
+                                         add_cumsum = FALSE,
+                                         ...){
 
-  group_by_fun(data, .fun = miss_case_summary, order = order)
+  group_by_fun(data,
+               .fun = miss_case_summary,
+               order = order,
+               add_cumsum = add_cumsum)
 
 }
 

@@ -4,13 +4,18 @@
 \alias{miss_case_summary}
 \title{Summarise the missingness in each case}
 \usage{
-miss_case_summary(data, order = TRUE, ...)
+miss_case_summary(data, order = TRUE, add_cumsum = FALSE, ...)
 }
 \arguments{
 \item{data}{a data.frame}
 
 \item{order}{a logical indicating whether or not to order the result by
 n_miss. Defaults to TRUE. If FALSE, order of cases is the order input.}
+
+\item{add_cumsum}{logical indicating whether or not to add the cumulative
+sum of missings to the data. This can be useful when exploring patterns
+of nonresponse. These are calculated as the cumulative sum of the missings
+in the variables as they are first presented to the function.}
 
 \item{...}{extra arguments}
 }
@@ -21,11 +26,6 @@ a tibble of the percent of missing data in each case.
 Provide a summary for each case in the data of the number, percent missings,
 and cumulative sum of missings of the order of the variables. By default,
 it orders by the most missings in each variable.
-}
-\note{
-\code{n_miss_cumsum} is calculated as the cumulative sum of missings in the
-variables in the order that they are given in the data when entering
-the function
 }
 \examples{
 

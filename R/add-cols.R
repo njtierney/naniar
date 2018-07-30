@@ -65,7 +65,9 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
     # change names
     names(shadow_shifted_df) <- paste0(names(shadow_shifted_df), "_", suffix)
 
-    tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
+    return(
+      tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
+    )
 
   }
 
@@ -81,7 +83,9 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
   # change names
   names(shadow_shifted_df) <- paste0(names(shadow_shifted_df),"_",suffix)
 
-  tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
+  return(
+    tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
+  )
 
 }
 
@@ -141,7 +145,9 @@ add_any_miss <- function(data, ..., label = "any_miss"){
 
     names(stub_data_label) <- paste0(label,"_all")
 
+    return(
     dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
+    )
 
   }
 
@@ -159,7 +165,9 @@ add_any_miss <- function(data, ..., label = "any_miss"){
 
   names(stub_data_label) <- paste0(label,"_vars")
 
+  return(
   dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
+  )
 
 }
 

@@ -30,6 +30,8 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 
   if (missing(...)) {
     data[[paste0(label, "_all")]] <- n_miss_row(data)
+
+    return(data)
   }
 
   quo_vars <- rlang::quos(...)
@@ -38,7 +40,7 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 
   data[[paste0(label, "_vars")]] <- n_miss_row(selected_data)
 
-  data
+  return(data)
 }
 
 #' Add column containing proportion of missing data values
@@ -90,6 +92,8 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
 
   if (missing(...)) {
     data[[paste0(label, "_all")]] <- prop_miss_row(data)
+
+    return(data)
   }
 
   quo_vars <- rlang::quos(...)
@@ -98,5 +102,6 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
 
   data[[paste0(label, "_vars")]] <- prop_miss_row(selected_data)
 
-  data
+  return(data)
+
 }

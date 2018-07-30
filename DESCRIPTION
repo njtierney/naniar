@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.3.3.9000
+Version: 0.3.3.9100
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),

@@ -1,3 +1,11 @@
+# naniar 0.3.3.9100 (2018/07/31)
+
+## New feature
+
+* `miss_var_summary` and `miss_case_summary` now no longer provide the 
+cumulative sum of missingness in the summaries - this summary can be added back
+to the data with the option `add_cumsum = TRUE`. #186
+
 # naniar 0.3.3.9000 (2018/07/30)
 
 ## Breaking Changes

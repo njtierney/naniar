@@ -9,7 +9,7 @@
 #'
 #' @return a dataframe
 #'
-#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_case_summary]() [miss_case_table]() [miss_scan_count]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
 #'
 #' @export
 #'
@@ -34,8 +34,8 @@ miss_prop_summary <- function(data){
 miss_prop_summary.default <- function(data){
 
   tibble::tibble(df = prop_miss(data),
-                 var = miss_var_prop(data),
-                 case = miss_case_prop(data))
+                 var = prop_miss_var(data),
+                 case = prop_miss_case(data))
 
 }
 

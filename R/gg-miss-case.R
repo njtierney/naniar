@@ -44,13 +44,17 @@ gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
       dplyr::mutate(case = 1:n()) %>%
       gg_miss_case_create(show_pct = show_pct)
 
-  } else if (!order_cases & missing(facet)) {
+  }
+
+  if (!order_cases & missing(facet)) {
 
     ggobject <- x %>%
       miss_case_summary() %>%
       gg_miss_case_create(show_pct = show_pct)
 
-  } else if (order_cases & !missing(facet)) {
+  }
+
+  if (order_cases & !missing(facet)) {
 
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
@@ -60,7 +64,9 @@ gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
       gg_miss_case_create(show_pct = show_pct) +
       facet_wrap(as.formula(paste("~", group_string)))
 
-  } else if (!order_cases & !missing(facet)) {
+  }
+
+  if (!order_cases & !missing(facet)) {
 
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
@@ -81,7 +87,9 @@ gg_miss_case_create <- function(data, show_pct){
   if (show_pct) {
    ylab <- "% Missing"
    aes_y <- "pct_miss"
-  } else if (!show_pct){
+  }
+
+  if (!show_pct){
     ylab <- "# Missing"
     aes_y <- "n_miss"
   }

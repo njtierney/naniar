@@ -116,15 +116,14 @@ cast_shadow_shift_label <- function(data, ...){
 
   if (missing(...)) {
     stop("please include variables to be selected after the data")
-  } else {
+  }
 
-    quo_vars <- rlang::quos(...)
+  quo_vars <- rlang::quos(...)
 
-    shadow_vars <- dplyr::select(data, !!!quo_vars) %>% cast_shadow(...)
+  shadow_vars <- dplyr::select(data, !!!quo_vars) %>% cast_shadow(...)
 
-    # shift those values selected
-    add_shadow_shift(shadow_vars, ...) %>% add_label_missings()
+  # shift those values selected
+  add_shadow_shift(shadow_vars, ...) %>% add_label_missings()
 
-  } # close else loop
 
 }

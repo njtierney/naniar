@@ -108,14 +108,16 @@ prop_miss_case <- function(data){
   # so (1 -1)*100 = 0, whereas function should return 1
   if (temp == 1) {
     return(1)
-  } else if (temp == 0) {
+  }
+
+  if (temp == 0) {
     # Return 0 if temp is 0
     # Prevent error when no row contains a NA and then mean is 0
     # so (1 -0)*1 = 1, whereas function should return 0.
     return(0)
-  } else {
-    return((1 - temp))
   }
+
+  return((1 - temp))
 
 }
 

@@ -18,11 +18,12 @@
 label_shadow_matrix <- function(x) {
   if (length(x) == 0) {
     stop("Input is of length 0, please check your inputs.", call. = FALSE)
-  } else{
-    factor(is.na(x),
-           levels = c(FALSE, TRUE),
-           labels = c("!NA", "NA"))
   }
+
+  factor(is.na(x),
+         levels = c(FALSE, TRUE),
+         labels = c("!NA", "NA"))
+
 }
 
 #' Label a missing from one column

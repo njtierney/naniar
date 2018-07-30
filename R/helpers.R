@@ -56,10 +56,10 @@ all_na <- function(x){
   # if there are no missings, then there cannot be all missings
   if (!anyNA(x)) {
     return(FALSE)
-  # else calculate missings
-  } else {
-    return(all(is.na(x)))
   }
+
+  return(all(is.na(x)))
+
 }
 
 #' @rdname all-is-miss-complete

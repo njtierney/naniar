@@ -128,7 +128,9 @@ bind_shadow <- function(data, only_miss = FALSE){
     tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
 
   # if you want All the values to be added (the default behaviour)
-  } else if (!only_miss) {
+  }
+
+  if (!only_miss) {
 
     data_shadow <- as_shadow(data)
 

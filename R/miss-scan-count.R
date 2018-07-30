@@ -38,7 +38,9 @@ miss_scan_count <- function(data,search){
       tidyr::gather(key = "Variable",
                     value = "n")
     # but if there are more than one, we need to combine the search terms
-  } else if (length(search) > 1) {
+  }
+
+  if (length(search) > 1) {
     purrr::map_df(data,~length(grep(paste0(search, collapse ="|"),x = .))) %>%
       tidyr::gather(key = "Variable",
                     value = "n")

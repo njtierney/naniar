@@ -30,14 +30,13 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 
   if (missing(...)) {
     data[[paste0(label, "_all")]] <- n_miss_row(data)
-  } else {
+  }
 
-    quo_vars <- rlang::quos(...)
+  quo_vars <- rlang::quos(...)
 
-    selected_data <- dplyr::select(data, !!!quo_vars)
+  selected_data <- dplyr::select(data, !!!quo_vars)
 
-    data[[paste0(label, "_vars")]] <- n_miss_row(selected_data)
-  } # close else loop
+  data[[paste0(label, "_vars")]] <- n_miss_row(selected_data)
 
   data
 }
@@ -91,15 +90,13 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
 
   if (missing(...)) {
     data[[paste0(label, "_all")]] <- prop_miss_row(data)
-  } else {
+  }
 
-    quo_vars <- rlang::quos(...)
+  quo_vars <- rlang::quos(...)
 
-    selected_data <- dplyr::select(data, !!!quo_vars)
+  selected_data <- dplyr::select(data, !!!quo_vars)
 
-    data[[paste0(label, "_vars")]] <- prop_miss_row(selected_data)
-
-  } # close else loop
+  data[[paste0(label, "_vars")]] <- prop_miss_row(selected_data)
 
   data
 }

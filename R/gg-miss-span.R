@@ -57,7 +57,9 @@ gg_miss_span <- function(data,
                   x = "Span",
                   y = "Proportion Missing")
 
-  } else if (!missing(facet)){
+  }
+
+  if (!missing(facet)){
 
     quo_group_by <- rlang::enquo(facet)
 

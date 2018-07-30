@@ -22,15 +22,13 @@ add_shadow <- function(data, ...){
 
   if (missing(...)) {
     stop("No variables specified - please include variables to be selected")
-  } else {
+  }
 
-    quo_vars <- rlang::quos(...)
+  quo_vars <- rlang::quos(...)
 
-    shadow_df <- dplyr::select(data, !!!quo_vars) %>% as_shadow()
+  shadow_df <- dplyr::select(data, !!!quo_vars) %>% as_shadow()
 
-    dplyr::bind_cols(data, shadow_df) %>% dplyr::as_tibble()
-
-  } # close else statement
+  dplyr::bind_cols(data, shadow_df) %>% dplyr::as_tibble()
 
 }
 
@@ -69,22 +67,22 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
 
     tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
 
-  } else {
+  }
 
   # select variables
-    quo_vars <- rlang::quos(...)
+  quo_vars <- rlang::quos(...)
 
-    shadow_shifted_vars <- dplyr::select(data, !!!quo_vars)
+  shadow_shifted_vars <- dplyr::select(data, !!!quo_vars)
 
   # shadow shift all (using purrr:map_df)
-    # would be good to have a way of indicating that no shift was taken at all
-    shadow_shifted_df <- purrr::map_df(shadow_shifted_vars, shadow_shift)
+  # would be good to have a way of indicating that no shift was taken at all
+  shadow_shifted_df <- purrr::map_df(shadow_shifted_vars, shadow_shift)
 
   # change names
   names(shadow_shifted_df) <- paste0(names(shadow_shifted_df),"_",suffix)
 
   tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
-  } # close the else brace
+
 }
 
 #' Add a column describing presence of any missing values
@@ -145,7 +143,7 @@ add_any_miss <- function(data, ..., label = "any_miss"){
 
     dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
 
-  } else {
+  }
 
   quo_vars <- rlang::quos(...)
 
@@ -162,8 +160,6 @@ add_any_miss <- function(data, ..., label = "any_miss"){
   names(stub_data_label) <- paste0(label,"_vars")
 
   dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
-
-  }
 
 }
 

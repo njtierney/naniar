@@ -47,7 +47,9 @@ gg_miss_var <- function(x, facet, show_pct = FALSE){
 
     # show the groupings -------------------------------------------------------
 
-  } else if (!missing(facet)) {
+  }
+
+  if (!missing(facet)) {
 
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
@@ -55,10 +57,9 @@ gg_miss_var <- function(x, facet, show_pct = FALSE){
       gg_miss_var_create(show_pct = show_pct) +
       facet_wrap(as.formula(paste("~", group_string)))
 
-
   return(ggobject)
 
-}
+  }
 
 }
 # utility function to create the starting block for gg_miss_var ---------------
@@ -68,11 +69,12 @@ gg_miss_var_create <- function(data, show_pct){
   if (show_pct) {
     ylab <- "% Missing"
     aes_y <- "pct_miss"
-  } else if (!show_pct){
+  }
+
+  if (!show_pct){
     ylab <- "# Missing"
     aes_y <- "n_miss"
   }
-
 
   ggplot(data = data,
        aes(x = stats::reorder(variable, n_miss))) +

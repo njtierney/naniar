@@ -48,9 +48,11 @@ miss_var_summary.default <- function(data, order = TRUE, ...) {
                   n_miss_cumsum = cumsum(n_miss))
   if (order) {
     return(dplyr::arrange(res, -n_miss))
-  } else {
-    return(res)
   }
+
+  return(res)
+
+
 }
 
 #' @export
@@ -120,9 +122,10 @@ miss_case_summary.default <- function(data, order = TRUE, ...){
 
   if (order) {
     return(dplyr::arrange(res, -n_miss))
-  } else {
-    return(res)
   }
+
+  return(res)
+
 }
 
 #' @export

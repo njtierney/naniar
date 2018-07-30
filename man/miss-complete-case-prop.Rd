@@ -18,15 +18,8 @@ numeric the proportion of cases that contain a missing or complete
 value
 }
 \description{
-Calculate the proportion of cases (rows) that contain missing or complete
-values.
-}
-\examples{
-
-miss_case_prop(airquality)
-complete_case_prop(airquality)
-
+Deprecated, please see \code{\link[=miss_case_prop]{miss_case_prop()}} and \code{\link[=complete_case_prop]{complete_case_prop()}}.
 }
 \seealso{
-\url{miss_case_pct} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_summary} \url{miss_case_table} \url{miss_summary} \url{miss_var_pct} \url{miss_var_prop} \url{miss_var_run} \url{miss_var_span} \url{miss_var_summary} \url{miss_var_table}
+\code{\link[=pct_miss_case]{pct_miss_case()}} \code{\link[=prop_miss_case]{prop_miss_case()}} \code{\link[=pct_miss_var]{pct_miss_var()}} \code{\link[=prop_miss_var]{prop_miss_var()}} \code{\link[=pct_complete_case]{pct_complete_case()}} \code{\link[=prop_complete_case]{prop_complete_case()}} \code{\link[=pct_complete_var]{pct_complete_var()}} \code{\link[=prop_complete_var]{prop_complete_var()}} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_summary} \url{miss_case_table} \url{miss_summary} \url{miss_var_prop} \url{miss_var_run} \url{miss_var_span} \url{miss_var_summary} \url{miss_var_table}
 }

@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.3.2.9300
+Version: 0.3.3.9000
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -101,6 +101,7 @@ Collate:
     'n-var-miss.R'
     'naniar-ggproto.R'
     'naniar-package.R'
+    'prop-pct-var-case-miss-complete.R'
     'replace-to-na.R'
     'replace-with-na.R'
     'scoped-replace-with-na.R'

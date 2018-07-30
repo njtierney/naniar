@@ -39,5 +39,5 @@ miss_case_summary(airquality)
 
 }
 \seealso{
-\url{miss_case_pct} \url{miss_case_prop} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_table} \url{miss_summary} \url{miss_var_pct} \url{miss_var_prop} \url{miss_var_run} \url{miss_var_span} \url{miss_var_summary} \url{miss_var_table}
+\code{\link[=pct_miss_case]{pct_miss_case()}} \code{\link[=prop_miss_case]{prop_miss_case()}} \code{\link[=pct_miss_var]{pct_miss_var()}} \code{\link[=prop_miss_var]{prop_miss_var()}} \code{\link[=pct_complete_case]{pct_complete_case()}} \code{\link[=prop_complete_case]{prop_complete_case()}} \code{\link[=pct_complete_var]{pct_complete_var()}} \code{\link[=prop_complete_var]{prop_complete_var()}} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_summary} \url{miss_case_table} \url{miss_summary} \url{miss_var_prop} \url{miss_var_run} \url{miss_var_span} \url{miss_var_summary} \url{miss_var_table} \url{n_complete} \url{n_complete_row} \url{n_miss} \url{n_miss_row} \url{pct_complete} \url{pct_miss} \url{prop_complete} \url{prop_complete_row} \url{prop_miss}
 }

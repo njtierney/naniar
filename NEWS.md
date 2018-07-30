@@ -1,3 +1,23 @@
+# naniar 0.3.3.9000 (2018/07/30)
+
+## Breaking Changes
+
+* Deprecated old names of the scalar missingness summaries, in favour of a more
+consistent syntax [#171](https://github.com/njtierney/naniar/issues/171). The old the and new are:
+
+|old_names            |new_names            |
+|:--------------------|:--------------------|
+|`miss_case_pct`      |`pct_miss_case`      |
+|`miss_case_prop`     |`prop_miss_case`     |
+|`miss_var_pct`       |`pct_miss_var`       |
+|`miss_var_prop`      |`prop_miss_var`      |
+|`complete_case_pct`  |`pct_complete_case`  |
+|`complete_case_prop` |`prop_complete_case` |
+|`complete_var_pct`   |`pct_complete_var`   |
+|`complete_var_prop`  |`prop_complete_var`  |
+
+These old names will be made defunct in 0.5.0, and removed completely in 0.6.0.
+
 # naniar 0.3.2.9300 (2018/06/27)
 
 ## Bug fix

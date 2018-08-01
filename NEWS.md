@@ -1,3 +1,13 @@
+# naniar 0.3.3.9200 (2018/08/01)
+
+## Minor feature
+
+* Added tests for `miss_scan_count`
+
+## Bug fix
+
+* Ensured that `miss_scan_count` actually `return`'d something.
+
 # naniar 0.3.3.9100 (2018/07/31)
 
 ## New feature

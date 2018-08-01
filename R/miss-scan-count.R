@@ -33,7 +33,9 @@
 miss_scan_count <- function(data,search){
   # if there is only one value to search
   if (length(search) == 1) {
-    purrr::map_df(data,~length(grep(search,x = .))) %>%
+    res <- purrr::map_df(data,
+                         ~length(grep(search,
+                                      x = .))) %>%
       # return the dataframe with the columns "
       tidyr::gather(key = "Variable",
                     value = "n")
@@ -41,10 +43,14 @@ miss_scan_count <- function(data,search){
   }
 
   if (length(search) > 1) {
-    purrr::map_df(data,~length(grep(paste0(search, collapse ="|"),x = .))) %>%
+    res <- purrr::map_df(data,
+                         ~length(grep(paste0(search,
+                                             collapse ="|"),
+                                      x = .))) %>%
       tidyr::gather(key = "Variable",
                     value = "n")
   }
 
+  return(res)
 }
 

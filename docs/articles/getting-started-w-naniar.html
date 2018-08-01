@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9100</span>
       </span>
     </div>
 
@@ -81,7 +81,7 @@
       <h1>Getting Started with naniar</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-06-27</h4>
+            <h4 class="date">2018-08-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/getting-started-w-naniar.Rmd"><code>vignettes/getting-started-w-naniar.Rmd</code></a></small>
       <div class="hidden name"><code>getting-started-w-naniar.Rmd</code></div>
@@ -133,7 +133,7 @@
 <a href="#vis_dat" class="anchor"></a><code>vis_dat</code>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(visdat)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="http://www.rdocumentation.org/packages/visdat/topics/vis_dat">vis_dat</a></span>(airquality)</a></code></pre></div>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="http://visdat.njtierney.com//reference/vis_dat.html">vis_dat</a></span>(airquality)</a></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/vis-dat-1.png" width="500" style="display: block; margin: auto;"></p>
 <p><code>vis_dat</code> visualises the whole dataframe at once, and provides information about the class of the data input into R, as well as whether the data is missing or not.</p>
 <div id="vis_miss" class="section level3">
@@ -141,7 +141,7 @@
 <a href="#vis_miss" class="anchor"></a><code>vis_miss</code>
 </h3>
 <p>The function <code>vis_miss</code> provides a summary of whether the data is missing or not. It also provides the amount of missings in each columns.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="http://www.rdocumentation.org/packages/visdat/topics/vis_miss">vis_miss</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="http://visdat.njtierney.com//reference/vis_miss.html">vis_miss</a></span>(airquality)</a></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/vis-miss-cluster-vanilla-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>So here, Ozone and Solar.R have the most missing data, with Ozone having 24.2% missing data and Solar.R have 4.6%. The other variables do not have any missing data.</p>
 <p>To read more about the functions available in <code>visdat</code> see the vignette <a href="https://CRAN.R-project.org/package=visdat/vignettes/using_visdat.html">“Using visdat”</a></p>
@@ -202,6 +202,7 @@
 <a href="#visualising-missings-in-variables" class="anchor"></a>Visualising missings in variables</h2>
 <p>Another approach to visualising the missings in a dataset is to use the <code>gg_miss_var</code> plot:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</a></code></pre></div>
+<p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>The plots created with the <code>gg_miss</code> family all have a basic theme, but you can customise them, and add arguments like so:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>() </a></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-theme-1.png" width="500" style="display: block; margin: auto;"></p>
@@ -339,24 +340,34 @@
 <p>The</p>
 <p><code>miss_case_prop</code> and <code>miss_case_pct</code> return numeric value describing the proportion or percent of missing values in the dataframe.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw"><a href="../reference/miss-complete-case-prop.html">miss_case_prop</a></span>(airquality)</a></code></pre></div>
+<pre><code>## Warning: 'miss_case_prop' is deprecated.
+## Use 'prop_miss_case' instead.
+## See help("Deprecated")</code></pre>
 <pre><code>## [1] 0.2745098</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="../reference/miss-complete-case-pct.html">miss_case_pct</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw"><a href="../reference/miss-complete-case-pct.html">miss_case_pct</a></span>(airquality)</a></code></pre></div>
+<pre><code>## Warning: 'miss_case_pct' is deprecated.
+## Use 'pct_miss_case' instead.
+## See help("Deprecated")
+
+## Warning: 'miss_case_prop' is deprecated.
+## Use 'prop_miss_case' instead.
+## See help("Deprecated")</code></pre>
 <pre><code>## [1] 27.45098</code></pre>
 <p><code>miss_case_summary</code> returns a numeric value that describes the number of missings in a given case (aka row), the percent of missings in that row.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw"><a href="../reference/miss_case_summary.html">miss_case_summary</a></span>(airquality)</a></code></pre></div>
-<pre><code>## # A tibble: 153 x 4
-##     case n_miss pct_miss n_miss_cumsum
-##    &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-##  1     5      2     33.3             2
-##  2    27      2     33.3             9
-##  3     6      1     16.7             3
-##  4    10      1     16.7             4
-##  5    11      1     16.7             5
-##  6    25      1     16.7             6
-##  7    26      1     16.7             7
-##  8    32      1     16.7            10
-##  9    33      1     16.7            11
-## 10    34      1     16.7            12
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw"><a href="../reference/miss_case_summary.html">miss_case_summary</a></span>(airquality)</a></code></pre></div>
+<pre><code>## # A tibble: 153 x 3
+##     case n_miss pct_miss
+##    &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
+##  1     5      2     33.3
+##  2    27      2     33.3
+##  3     6      1     16.7
+##  4    10      1     16.7
+##  5    11      1     16.7
+##  6    25      1     16.7
+##  7    26      1     16.7
+##  8    32      1     16.7
+##  9    33      1     16.7
+## 10    34      1     16.7
 ## # ... with 143 more rows</code></pre>
 <p><code>miss_case_table</code> tabulates the number of missing values in a case / row. Below, this shows the number of missings in a case:</p>
 <ul>
@@ -364,7 +375,7 @@
 <li>There are then 40 cases with 1 missing, these make up 26% of the data.</li>
 <li>There are then 2 cases with 2 missing - these make up 1% of the data.</li>
 </ul>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw"><a href="../reference/miss_case_table.html">miss_case_table</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw"><a href="../reference/miss_case_table.html">miss_case_table</a></span>(airquality)</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   n_miss_in_case n_cases pct_cases
 ##            &lt;int&gt;   &lt;int&gt;     &lt;dbl&gt;
@@ -372,28 +383,38 @@
 ## 2              1      40     26.1 
 ## 3              2       2      1.31</code></pre>
 <p>Similar to <code><a href="../reference/miss-complete-case-pct.html">miss_case_pct()</a></code> and <code><a href="../reference/miss-complete-case-prop.html">miss_case_prop()</a></code>, <code><a href="../reference/miss-complete-var-pct.html">miss_var_pct()</a></code> and <code><a href="../reference/miss-complete-var-prop.html">miss_var_prop()</a></code> returns the percent and proportion of variables that contain a missing value.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw"><a href="../reference/miss-complete-var-prop.html">miss_var_prop</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw"><a href="../reference/miss-complete-var-prop.html">miss_var_prop</a></span>(airquality)</a></code></pre></div>
+<pre><code>## Warning: 'miss_var_prop' is deprecated.
+## Use 'prop_miss_var' instead.
+## See help("Deprecated")</code></pre>
 <pre><code>## [1] 0.3333333</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw"><a href="../reference/miss-complete-var-pct.html">miss_var_pct</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw"><a href="../reference/miss-complete-var-pct.html">miss_var_pct</a></span>(airquality)</a></code></pre></div>
+<pre><code>## Warning: 'miss_var_pct' is deprecated.
+## Use 'pct_miss_var' instead.
+## See help("Deprecated")
+
+## Warning: 'miss_var_prop' is deprecated.
+## Use 'prop_miss_var' instead.
+## See help("Deprecated")</code></pre>
 <pre><code>## [1] 33.33333</code></pre>
 <p><code>miss_var_summary</code> then returns the number of missing values in a variable, and the percent missing in that variable.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-##   variable n_miss pct_miss n_miss_cumsum
-##   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-## 1 Ozone        37    24.2             37
-## 2 Solar.R       7     4.58            44
-## 3 Wind          0     0               44
-## 4 Temp          0     0               44
-## 5 Month         0     0               44
-## 6 Day           0     0               44</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   variable n_miss pct_miss
+##   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;
+## 1 Ozone        37    24.2 
+## 2 Solar.R       7     4.58
+## 3 Wind          0     0   
+## 4 Temp          0     0   
+## 5 Month         0     0   
+## 6 Day           0     0</code></pre>
 <p>Finally, <code>miss_var_table</code>. This describes the number of missings in a variable.</p>
 <ul>
 <li>There are 4 variables with 0 missings, comprising 66.67% of variables in the dataset.</li>
 <li>There is 1 variable with 7 missings</li>
 <li>There is 1 variable with 37 missings</li>
 </ul>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw"><a href="../reference/miss_var_table.html">miss_var_table</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw"><a href="../reference/miss_var_table.html">miss_var_table</a></span>(airquality)</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   n_miss_in_var n_vars pct_vars
 ##           &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
@@ -408,8 +429,8 @@
 </ul>
 <p><code>miss_var_run</code> can be particularly useful in time series data, as it allows you to provide summaries for the number of missings or complete values in a single run. The function <code><a href="../reference/miss_var_run.html">miss_var_run()</a></code> provides a data.frame of the run length of missings and complete values. To explore this function we will use the built-in dataset, <code>pedestrian</code>, which contains hourly counts of pedestrians from four locations around Melbourne, Australia, from 2016.</p>
 <p>To use <code>miss_var_run</code>, you specify the variable that you want to explore the runs of missingness for, in this case, <code>hourly_counts</code>:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw"><a href="../reference/miss_var_run.html">miss_var_run</a></span>(pedestrian,</a>
-<a class="sourceLine" id="cb55-2" data-line-number="2">             hourly_counts)</a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw"><a href="../reference/miss_var_run.html">miss_var_run</a></span>(pedestrian,</a>
+<a class="sourceLine" id="cb59-2" data-line-number="2">             hourly_counts)</a></code></pre></div>
 <pre><code>## # A tibble: 35 x 2
 ##    run_length is_na   
 ##         &lt;int&gt; &lt;chr&gt;   
@@ -425,9 +446,9 @@
 ## 10          1 missing 
 ## # ... with 25 more rows</code></pre>
 <p><code><a href="../reference/miss_var_span.html">miss_var_span()</a></code> is used to determine the number of missings over a specified repeating span of rows in variable of a dataframe. Similar to <code><a href="../reference/miss_var_run.html">miss_var_run()</a></code>, you specify the variable that you wish to explore, you then also specify the size of the span with the <code>span_every</code> argument.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw"><a href="../reference/miss_var_span.html">miss_var_span</a></span>(pedestrian,</a>
-<a class="sourceLine" id="cb57-2" data-line-number="2">              hourly_counts,</a>
-<a class="sourceLine" id="cb57-3" data-line-number="3">              <span class="dt">span_every =</span> <span class="dv">100</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw"><a href="../reference/miss_var_span.html">miss_var_span</a></span>(pedestrian,</a>
+<a class="sourceLine" id="cb61-2" data-line-number="2">              hourly_counts,</a>
+<a class="sourceLine" id="cb61-3" data-line-number="3">              <span class="dt">span_every =</span> <span class="dv">100</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 377 x 5
 ##    span_counter n_miss n_complete prop_miss prop_complete
 ##           &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
@@ -448,39 +469,39 @@
 <h1 class="hasAnchor">
 <a href="#using-group_by-with-naniar" class="anchor"></a>Using <code>group_by</code> with naniar</h1>
 <p>Every <code>miss_*</code> summary function that returns a dataframe can be used with dplyr <code>group_by</code>. For example, if you would like to look at the number of missing values for all variables of pedestrian data.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">pedestrian <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>()</a></code></pre></div>
-<pre><code>## # A tibble: 9 x 4
-##   variable      n_miss pct_miss n_miss_cumsum
-##   &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-## 1 hourly_counts   2548     6.76          2548
-## 2 date_time          0     0             2548
-## 3 year               0     0             2548
-## 4 month              0     0             2548
-## 5 month_day          0     0             2548
-## 6 week_day           0     0             2548
-## 7 hour               0     0             2548
-## 8 sensor_id          0     0             2548
-## 9 sensor_name        0     0             2548</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">pedestrian <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>()</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 3
+##   variable      n_miss pct_miss
+##   &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;
+## 1 hourly_counts   2548     6.76
+## 2 date_time          0     0   
+## 3 year               0     0   
+## 4 month              0     0   
+## 5 month_day          0     0   
+## 6 week_day           0     0   
+## 7 hour               0     0   
+## 8 sensor_id          0     0   
+## 9 sensor_name        0     0</code></pre>
 <p>We see that this is in <code>hourly_counts</code>. We can then explore this by month, and filder by the variable being <code>hourly_counts</code>, since it is the only one with missing values.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">pedestrian <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(month) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb61-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(variable <span class="op">==</span><span class="st"> "hourly_counts"</span>)</a></code></pre></div>
-<pre><code>## # A tibble: 12 x 5
-##    month     variable      n_miss pct_miss n_miss_cumsum
-##    &lt;ord&gt;     &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-##  1 January   hourly_counts      0     0                0
-##  2 February  hourly_counts      0     0                0
-##  3 March     hourly_counts      0     0                0
-##  4 April     hourly_counts    552    19.2            552
-##  5 May       hourly_counts     72     2.42            72
-##  6 June      hourly_counts      0     0                0
-##  7 July      hourly_counts      0     0                0
-##  8 August    hourly_counts    408    13.7            408
-##  9 September hourly_counts      0     0                0
-## 10 October   hourly_counts    412     7.44           412
-## 11 November  hourly_counts    888    30.8            888
-## 12 December  hourly_counts    216     7.26           216</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">pedestrian <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(month) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-3" data-line-number="3"><span class="st"> </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-4" data-line-number="4"><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(variable <span class="op">==</span><span class="st"> "hourly_counts"</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 12 x 4
+##    month     variable      n_miss pct_miss
+##    &lt;ord&gt;     &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;
+##  1 January   hourly_counts      0     0   
+##  2 February  hourly_counts      0     0   
+##  3 March     hourly_counts      0     0   
+##  4 April     hourly_counts    552    19.2 
+##  5 May       hourly_counts     72     2.42
+##  6 June      hourly_counts      0     0   
+##  7 July      hourly_counts      0     0   
+##  8 August    hourly_counts    408    13.7 
+##  9 September hourly_counts      0     0   
+## 10 October   hourly_counts    412     7.44
+## 11 November  hourly_counts    888    30.8 
+## 12 December  hourly_counts    216     7.26</code></pre>
 </div>
 <div id="modelling-missingness" class="section level1">
 <h1 class="hasAnchor">
@@ -491,9 +512,9 @@
 </ol>
 <p>Sometimes it can be impractical to explore all of the variables that have missing data. One approach, however, is to model missing data using methods from Tierney et el. (2015).</p>
 <p>Here, the approach is to predict the proportion of missingness in a given case, using all variables. There is a little helper function to add a column with the proportion of cases or rows missing - <code>add_prop_miss</code>. This created a column named “prop_miss”, which is the proportion of missing values in that row.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">airquality <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/add_prop_miss.html">add_prop_miss</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb63-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">airquality <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/add_prop_miss.html">add_prop_miss</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb67-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
 <pre><code>##   Ozone Solar.R Wind Temp Month Day prop_miss_all
 ## 1    41     190  7.4   67     5   1     0.0000000
 ## 2    36     118  8.0   72     5   2     0.0000000
@@ -502,16 +523,20 @@
 ## 5    NA      NA 14.3   56     5   5     0.3333333
 ## 6    28      NA 14.9   66     5   6     0.1666667</code></pre>
 <p>We can then use a model like decision trees to predict which variables and their values are important for predicting the proportion of missingness:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">library</span>(rpart)</a>
-<a class="sourceLine" id="cb65-2" data-line-number="2"><span class="kw">library</span>(rpart.plot)</a>
-<a class="sourceLine" id="cb65-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb65-4" data-line-number="4">airquality <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/add_prop_miss.html">add_prop_miss</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rpart/topics/rpart">rpart</a></span>(prop_miss_all <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> .) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb65-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rpart.plot/topics/prp">prp</a></span>(<span class="dt">type =</span> <span class="dv">4</span>, <span class="dt">extra =</span> <span class="dv">101</span>, <span class="dt">prefix =</span> <span class="st">"Prop. Miss = "</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">library</span>(rpart)</a>
+<a class="sourceLine" id="cb69-2" data-line-number="2"><span class="kw">library</span>(rpart.plot)</a>
+<a class="sourceLine" id="cb69-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb69-4" data-line-number="4">airquality <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb69-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/add_prop_miss.html">add_prop_miss</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb69-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rpart/topics/rpart">rpart</a></span>(prop_miss_all <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> .) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb69-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rpart.plot/topics/prp">prp</a></span>(<span class="dt">type =</span> <span class="dv">4</span>, <span class="dt">extra =</span> <span class="dv">101</span>, <span class="dt">prefix =</span> <span class="st">"Prop. Miss = "</span>)</a></code></pre></div>
+<pre><code>## Warning: Cannot retrieve the model data (will ignore roundint=TRUE).
+##          To make this warning go away:
+##              Call prp with roundint=FALSE,
+##              or rebuild the rpart model with model=TRUE.</code></pre>
 <p><img src="getting-started-w-naniar_files/figure-html/rpart-miss-1.png" width="500" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="co"># library(visdat)</span></a>
-<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="co"># vis_miss(messy_airquality)</span></a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="co"># library(visdat)</span></a>
+<a class="sourceLine" id="cb71-2" data-line-number="2"><span class="co"># vis_miss(messy_airquality)</span></a></code></pre></div>
 <p>Here we can see that this produces quite a complex tree - this can be pruned back and the depth of the decision tree controlled.</p>
 </div>
 <div id="summary" class="section level1">

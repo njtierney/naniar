@@ -64,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9100</span>
       </span>
     </div>
 
@@ -116,6 +116,85 @@
       <small>Source: <a href='https://github.com/njtierney/naniar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="naniar-0-3-3-9100-20180731" class="section level1">
+<h1 class="page-header">
+<a href="#naniar-0-3-3-9100-20180731" class="anchor"></a>naniar 0.3.3.9100 (2018/07/31)<small> Unreleased </small>
+</h1>
+<div id="new-feature" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-feature" class="anchor"></a>New feature</h2>
+<ul>
+<li>
+<code>miss_var_summary</code> and <code>miss_case_summary</code> now no longer provide the cumulative sum of missingness in the summaries - this summary can be added back to the data with the option <code>add_cumsum = TRUE</code>. <a href='https://github.com/njtierney/naniar/issues/186'>#186</a></li>
+</ul>
+</div>
+</div>
+    <div id="naniar-0-3-3-9000-20180730" class="section level1">
+<h1 class="page-header">
+<a href="#naniar-0-3-3-9000-20180730" class="anchor"></a>naniar 0.3.3.9000 (2018/07/30)<small> Unreleased </small>
+</h1>
+<div id="breaking-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaking-changes" class="anchor"></a>Breaking Changes</h2>
+<ul>
+<li>Deprecated old names of the scalar missingness summaries, in favour of a more consistent syntax <a href="https://github.com/njtierney/naniar/issues/171"><a href='https://github.com/njtierney/naniar/issues/171'>#171</a></a>. The old the and new are:</li>
+</ul>
+<table>
+<thead><tr class="header">
+<th align="left">old_names</th>
+<th align="left">new_names</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>miss_case_pct</code></td>
+<td align="left"><code>pct_miss_case</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>miss_case_prop</code></td>
+<td align="left"><code>prop_miss_case</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>miss_var_pct</code></td>
+<td align="left"><code>pct_miss_var</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>miss_var_prop</code></td>
+<td align="left"><code>prop_miss_var</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>complete_case_pct</code></td>
+<td align="left"><code>pct_complete_case</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>complete_case_prop</code></td>
+<td align="left"><code>prop_complete_case</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>complete_var_pct</code></td>
+<td align="left"><code>pct_complete_var</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>complete_var_prop</code></td>
+<td align="left"><code>prop_complete_var</code></td>
+</tr>
+</tbody>
+</table>
+<p>These old names will be made defunct in 0.5.0, and removed completely in 0.6.0.</p>
+</div>
+</div>
+    <div id="naniar-0-3-2-9300-20180627" class="section level1">
+<h1 class="page-header">
+<a href="#naniar-0-3-2-9300-20180627" class="anchor"></a>naniar 0.3.2.9300 (2018/06/27)<small> Unreleased </small>
+</h1>
+<div id="bug-fix" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fix" class="anchor"></a>Bug fix</h2>
+<ul>
+<li>
+<code><a href="../reference/gg_miss_var.html">gg_miss_var(airquality)</a></code> now prints the ggplot - a typo meant that this did not print the plot</li>
+</ul>
+</div>
+</div>
     <div id="naniar-0-3-2-9100-20180625" class="section level1">
 <h1 class="page-header">
 <a href="#naniar-0-3-2-9100-20180625" class="anchor"></a>naniar 0.3.2.9100 (2018/06/25)<small> Unreleased </small>
@@ -132,9 +211,9 @@
 <h1 class="page-header">
 <a href="#naniar-0-3-2-9000-20180621" class="anchor"></a>naniar 0.3.2.9000 (2018/06/21)<small> Unreleased </small>
 </h1>
-<div id="new-feature" class="section level2">
+<div id="new-feature-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-feature" class="anchor"></a>New Feature</h2>
+<a href="#new-feature-1" class="anchor"></a>New Feature</h2>
 <ul>
 <li>
 <p>Added <code>gg_miss_upset</code> to replace workflow of:</p>
@@ -174,6 +253,9 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#naniar-0-3-3-9100-20180731">0.3.3.9100</a></li>
+        <li><a href="#naniar-0-3-3-9000-20180730">0.3.3.9000</a></li>
+        <li><a href="#naniar-0-3-2-9300-20180627">0.3.2.9300</a></li>
         <li><a href="#naniar-0-3-2-9100-20180625">0.3.2.9100</a></li>
         <li><a href="#naniar-0-3-2-9000-20180621">0.3.2.9000</a></li>
         <li><a href="#naniar-0-3-1-9100-20180610">0.3.1.9100</a></li>

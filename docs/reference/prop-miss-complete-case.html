@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create shadows — as_shadow • naniar</title>
+<title>Proportion of cases that contain a missing or complete values. — prop-miss-complete-case • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -36,14 +36,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Create shadows — as_shadow" />
+<meta property="og:title" content="Proportion of cases that contain a missing or complete values. — prop-miss-complete-case" />
 
-<meta property="og:description" content="Representing missing data structure is achieved using the shadow matrix,
-introduced in Swayne and Buja. The shadow
-matrix is the same dimension as the data, and consists of binary indicators
-of missingness of data values, where missing is represented as &quot;NA&quot;, and not
-missing is represented as &quot;!NA&quot;. Although these may be represented as 1 and
-0, respectively." />
+<meta property="og:description" content="Calculate the proportion of cases (rows) that contain missing or complete
+values." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,42 +116,45 @@ missing is represented as &quot;!NA&quot;. Although these may be represented as 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create shadows</h1>
-    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/shadows.R'><code>R/shadows.R</code></a></small>
-    <div class="hidden name"><code>as_shadow.Rd</code></div>
+    <h1>Proportion of cases that contain a missing or complete values.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/prop-pct-var-case-miss-complete.R'><code>R/prop-pct-var-case-miss-complete.R</code></a></small>
+    <div class="hidden name"><code>prop-miss-complete-case.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Representing missing data structure is achieved using the shadow matrix,
-introduced in <a href='https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization'>Swayne and Buja</a>. The shadow
-matrix is the same dimension as the data, and consists of binary indicators
-of missingness of data values, where missing is represented as "NA", and not
-missing is represented as "!NA". Although these may be represented as 1 and
-0, respectively.</p>
+    <p>Calculate the proportion of cases (rows) that contain missing or complete
+values.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>as_shadow</span>(<span class='no'>data</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>prop_miss_case</span>(<span class='no'>data</span>)
+
+<span class='fu'>prop_complete_case</span>(<span class='no'>data</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>dataframe</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>selected variables to use</p></td>
+      <td><p>a dataframe</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>appended shadow with column names</p>
+    <p>numeric the proportion of cases that contain a missing or complete
+value</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='pct-miss-complete-case.html'>pct_miss_case()</a></code> <code>prop_miss_case()</code> <code><a href='pct-miss-complete-var.html'>pct_miss_var()</a></code> <code><a href='prop-miss-complete-var.html'>prop_miss_var()</a></code> <code><a href='pct-miss-complete-case.html'>pct_complete_case()</a></code> <code>prop_complete_case()</code> <code><a href='pct-miss-complete-var.html'>pct_complete_var()</a></code> <code><a href='prop-miss-complete-var.html'>prop_complete_var()</a></code> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'>prop_miss_case</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; [1] 0.2745098</div><div class='input'><span class='fu'>prop_complete_case</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; [1] 0.7254902</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -163,7 +162,11 @@ missing is represented as "!NA". Although these may be represented as 1 and
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

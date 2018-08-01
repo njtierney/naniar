@@ -71,7 +71,7 @@ adult population (18 years of age or older) living in households." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9100</span>
       </span>
     </div>
 
@@ -284,25 +284,24 @@ every year. -7 is   for "Don't know/Not sure", and -9 is for
 <span class='co'># explore the missingness with vis_miss</span>
 <span class='fu'>library</span>(<span class='no'>naniar</span>)
 
-<span class='fu'><a href='http://www.rdocumentation.org/packages/visdat/topics/vis_miss'>vis_miss</a></span>(<span class='no'>riskfactors</span>)</div><div class='img'><img src='riskfactors-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='http://visdat.njtierney.com//reference/vis_miss.html'>vis_miss</a></span>(<span class='no'>riskfactors</span>)</div><div class='img'><img src='riskfactors-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Look at the missingness in the variables</span>
-<span class='fu'><a href='miss_var_summary.html'>miss_var_summary</a></span>(<span class='no'>riskfactors</span>)</div><div class='output co'>#&gt; # A tibble: 34 x 4
-#&gt;    variable      n_miss pct_miss n_miss_cumsum
-#&gt;    &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-#&gt;  1 pregnant         215    87.8            239
-#&gt;  2 smoke_stop       212    86.5            977
-#&gt;  3 smoke_last       161    65.7           1138
-#&gt;  4 drink_average    135    55.1            635
-#&gt;  5 drink_days       134    54.7            500
-#&gt;  6 smoke_days       128    52.2            765
-#&gt;  7 health_poor      113    46.1            358
-#&gt;  8 bmi               11     4.49            23
-#&gt;  9 weight_lbs        10     4.08            10
-#&gt; 10 diet_fruit         8     3.27          1146
+<span class='fu'><a href='miss_var_summary.html'>miss_var_summary</a></span>(<span class='no'>riskfactors</span>)</div><div class='output co'>#&gt; # A tibble: 34 x 3
+#&gt;    variable      n_miss pct_miss
+#&gt;    &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;
+#&gt;  1 pregnant         215    87.8 
+#&gt;  2 smoke_stop       212    86.5 
+#&gt;  3 smoke_last       161    65.7 
+#&gt;  4 drink_average    135    55.1 
+#&gt;  5 drink_days       134    54.7 
+#&gt;  6 smoke_days       128    52.2 
+#&gt;  7 health_poor      113    46.1 
+#&gt;  8 bmi               11     4.49
+#&gt;  9 weight_lbs        10     4.08
+#&gt; 10 diet_fruit         8     3.27
 #&gt; # ... with 24 more rows</div><div class='input'>
 <span class='co'># and now as a plot</span>
-<span class='fu'><a href='gg_miss_var.html'>gg_miss_var</a></span>(<span class='no'>riskfactors</span>)
-
+<span class='fu'><a href='gg_miss_var.html'>gg_miss_var</a></span>(<span class='no'>riskfactors</span>)</div><div class='img'><img src='riskfactors-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Look at the missingness in bmi and poor health</span>
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 <span class='no'>p</span> <span class='kw'>&lt;-</span>
@@ -311,10 +310,10 @@ every year. -7 is   for "Don't know/Not sure", and -9 is for
            <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>bmi</span>)) +
      <span class='fu'><a href='geom_miss_point.html'>geom_miss_point</a></span>()
 
- <span class='no'>p</span></div><div class='img'><img src='riskfactors-2.png' alt='' width='700' height='433' /></div><div class='input'>
+ <span class='no'>p</span></div><div class='img'><img src='riskfactors-3.png' alt='' width='700' height='433' /></div><div class='input'>
  <span class='co'># for each sex?</span>
- <span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>sex</span>)</div><div class='img'><img src='riskfactors-3.png' alt='' width='700' height='433' /></div><div class='input'> <span class='co'># for each education bracket?</span>
- <span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>education</span>)</div><div class='img'><img src='riskfactors-4.png' alt='' width='700' height='433' /></div><div class='input'>
+ <span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>sex</span>)</div><div class='img'><img src='riskfactors-4.png' alt='' width='700' height='433' /></div><div class='input'> <span class='co'># for each education bracket?</span>
+ <span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>education</span>)</div><div class='img'><img src='riskfactors-5.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

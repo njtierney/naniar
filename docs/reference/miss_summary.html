@@ -68,7 +68,7 @@ them into lists within a tibble" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.2.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9100</span>
       </span>
     </div>
 
@@ -153,7 +153,7 @@ them into lists within a tibble</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a></p></div>
+    <div class='dont-index'><p><code><a href='pct-miss-complete-case.html'>pct_miss_case()</a></code> <code><a href='prop-miss-complete-case.html'>prop_miss_case()</a></code> <code><a href='pct-miss-complete-var.html'>pct_miss_var()</a></code> <code><a href='prop-miss-complete-var.html'>prop_miss_var()</a></code> <code><a href='pct-miss-complete-case.html'>pct_complete_case()</a></code> <code><a href='prop-miss-complete-case.html'>prop_complete_case()</a></code> <code><a href='pct-miss-complete-var.html'>pct_complete_var()</a></code> <code><a href='prop-miss-complete-var.html'>prop_complete_var()</a></code> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a> <a href='n_complete'>n_complete</a> <a href='n_complete_row'>n_complete_row</a> <a href='n_miss'>n_miss</a> <a href='n_miss_row'>n_miss_row</a> <a href='pct_complete'>pct_complete</a> <a href='pct_miss'>pct_miss</a> <a href='prop_complete'>prop_complete</a> <a href='prop_complete_row'>prop_complete_row</a> <a href='prop_miss'>prop_miss</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -167,15 +167,15 @@ them into lists within a tibble</p>
 #&gt; 2              1      40     26.1 
 #&gt; 3              2       2      1.31
 #&gt; </div><div class='input'><span class='no'>s_miss</span>$<span class='no'>miss_var_summary</span></div><div class='output co'>#&gt; [[1]]
-#&gt; # A tibble: 6 x 4
-#&gt;   variable n_miss pct_miss n_miss_cumsum
-#&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-#&gt; 1 Ozone        37    24.2             37
-#&gt; 2 Solar.R       7     4.58            44
-#&gt; 3 Wind          0     0               44
-#&gt; 4 Temp          0     0               44
-#&gt; 5 Month         0     0               44
-#&gt; 6 Day           0     0               44
+#&gt; # A tibble: 6 x 3
+#&gt;   variable n_miss pct_miss
+#&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;
+#&gt; 1 Ozone        37    24.2 
+#&gt; 2 Solar.R       7     4.58
+#&gt; 3 Wind          0     0   
+#&gt; 4 Temp          0     0   
+#&gt; 5 Month         0     0   
+#&gt; 6 Day           0     0   
 #&gt; </div><div class='input'><span class='co'># etc, etc, etc.</span>
 
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)

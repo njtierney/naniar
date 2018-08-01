@@ -211,6 +211,12 @@
     <loc>http://naniar.njtierney.com//reference/oceanbuoys.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/pct-miss-complete-case.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/pct-miss-complete-var.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/pct_complete.html</loc>
   </url>
   <url>
@@ -218,6 +224,12 @@
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/pedestrian.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/prop-miss-complete-case.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/prop-miss-complete-var.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/prop_complete.html</loc>

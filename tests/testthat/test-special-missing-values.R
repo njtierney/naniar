@@ -1,6 +1,6 @@
 context("special missing values")
 
-df <- tribble(
+df <- tibble::tribble(
   ~wind, ~temp,
   -99,    45,
   68,    NA,

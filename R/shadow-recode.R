@@ -56,12 +56,19 @@ shadow_expand_relevel <- function(.var, suffix){
   #  -asking "is this a shadow" with is_shadow
 
   # create level
-  new_level <- paste0("NA_",suffix)
+  new_level <- glue::glue("NA_{suffix}")
 
   # add the factor level
-  new_var <- forcats::fct_expand(.var,levels(.var),new_level)
-  # make sure that the order is preserved
-  forcats::fct_relevel(new_var,levels(.var),new_level)
+  new_var <- forcats::fct_expand(f = .var,
+                                 levels(.var),
+                                 new_level)
+
+  new_var <- forcats::fct_relevel(new_var,
+                                      levels(.var),
+                                      new_level)
+
+  new_var
+
 }
 
 
@@ -91,10 +98,12 @@ shadow_expand_relevel <- function(.var, suffix){
 #' }
 #'
 update_shadow <- function(data, suffix){
+
   dplyr::mutate_if(.tbl = data,
                    .predicate = is_shadow,
                    .funs = shadow_expand_relevel,
                    suffix = suffix)
+
 }
 
 #' split a call into two components with a useful verb name
@@ -175,6 +184,7 @@ update_shadow <- function(data, suffix){
 #' }
 #'
 recode_shadow <- function(data, ...){
+
   quo_var <- rlang::quos(...)
 
   formulas <- rlang::dots_list(...)
@@ -185,17 +195,19 @@ recode_shadow <- function(data, ...){
 
   suffix <- purrr::pluck(formulas_pluck, "suffix")
 
-  na_suffix <- paste0("NA_", suffix)
+  na_suffix <- glue::glue("NA_{suffix}")
 
-  shadow_var <- rlang::sym(paste0(names(quo_var),"_NA"))
+  shadow_var <- rlang::sym(glue::glue("{names(quo_var)}_NA"))
 
-  data %>%
+  shadow_recoded <- data %>%
     update_shadow(suffix) %>%
     dplyr::mutate(
       !!shadow_var := dplyr::case_when(
         !!condition ~ factor(na_suffix,
-                           levels = levels(.[[shadow_var]])),
+                             levels = levels(.[[shadow_var]])),
         TRUE ~ !!shadow_var
       ))
+
+  # class(new_var) <- c("shadow", class(new_var))
 }
 

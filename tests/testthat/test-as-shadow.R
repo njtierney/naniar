@@ -10,6 +10,32 @@ test_that("as_shadow returns a tibble",{
             c("shadow", "tbl_df", "tbl", "data.frame"))
 })
 
+test_df <- as_shadow(data.frame(x = c(1,2),
+                      y = c(NA,NA),
+                      z = c(1, NA)))
+
+test_that("as_shadow returns correct values",{
+  expect_equal(as.character(test_df$x_NA), c("!NA", "!NA"))
+  expect_equal(as.character(test_df$y_NA), c("NA", "NA"))
+  expect_equal(as.character(test_df$z_NA), c("!NA", "NA"))
+})
+
+test_that("as_shadow returns factors",{
+  expect_is(test_df$x_NA, "factor")
+  expect_is(test_df$y_NA, "factor")
+  expect_is(test_df$z_NA, "factor")
+})
+
+test_that("as_shadow returns shadow",{
+  expect_is(test_df$x_NA, "shadow")
+  expect_is(test_df$y_NA, "shadow")
+  expect_is(test_df$z_NA, "shadow")
+})
+
+test_that("as_shadow returns correct levels",{
+  expect_equal(levels(test_df$x_NA), c("!NA", "NA"))
+})
+
 test_that("as_shadow errors when given non dataframe or 0 entry",{
   expect_error(as_shadow(0))
   expect_error(as_shadow("a"))

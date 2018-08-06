@@ -134,7 +134,9 @@ bind_shadow <- function(data, only_miss = FALSE){
     shadow_data
 
   # if you want All the values to be added (the default behaviour)
-  } else if (!only_miss) {
+  }
+
+  if (!only_miss) {
 
     data_shadow <- as_shadow(data)
 

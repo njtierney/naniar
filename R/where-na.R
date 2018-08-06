@@ -76,14 +76,13 @@ miss_var_which <- function(data){
 
     return(NULL)
 
-  } else {
+  }
 
   # else return variables that contain ANY missing values
   na_vars <- names(which(purrr::map_lgl(data,anyNA) == TRUE))
 
   return(na_vars)
 
-  } # close else
 }
 
 

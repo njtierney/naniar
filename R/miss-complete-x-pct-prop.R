@@ -1,27 +1,19 @@
 #' Proportion of variables containing missings or complete values
 #'
-#' Calculate the proportion of variables that contain a single missing or
-#'    complete values.
+#' Deprecated. Please see [miss_var_prop()] and [complete_var_prop()].
 #'
 #' @param data a dataframe
 #'
 #' @return numeric the proportion of variables that contain missing or complete
 #'    data
 #'
-#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
 #'
 #' @export
 #' @name miss-complete-var-prop
 #'
-#' @examples
-#'
-#' miss_var_prop(riskfactors)
-#' miss_var_prop(oceanbuoys)
-#' complete_var_prop(riskfactors)
-#' complete_var_prop(oceanbuoys)
-#'
 miss_var_prop <- function(data){
-
+  .Deprecated("prop_miss_var")
   test_if_null(data)
 
   test_if_dataframe(data)
@@ -34,15 +26,14 @@ miss_var_prop <- function(data){
 #' @export
 #' @rdname miss-complete-var-prop
 complete_var_prop <- function(data){
-
+  .Deprecated("prop_complete_var")
   1 - miss_var_prop(data)
 
 } # end function
 
 #' Percentage of variables containing missings or complete values
 #'
-#' Calculate the percentage of variables that contain a single missing or
-#'     complete value.
+#' Deprecated. Please see [miss_var_pct()] and [complete_var_pct()].
 #'
 #' @param data a dataframe
 #'
@@ -51,19 +42,13 @@ complete_var_prop <- function(data){
 #'
 #' @export
 #'
-#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
 #'
 #'
 #' @name miss-complete-var-pct
-#' @examples
-#'
-#' miss_var_pct(riskfactors)
-#' miss_var_pct(oceanbuoys)
-#' complete_var_pct(riskfactors)
-#' complete_var_pct(oceanbuoys)
 #'
 miss_var_pct <- function(data){
-
+  .Deprecated("pct_miss_var")
   # turn proportion into a percent
   miss_var_prop(data) * 100
 
@@ -73,33 +58,28 @@ miss_var_pct <- function(data){
 #' @rdname miss-complete-var-pct
 
 complete_var_pct <- function(data){
-
+  .Deprecated("pct_complete_var")
   complete_var_prop(data) * 100
 
 }
 
 #' Proportion of cases that contain a missing or complete values.
 #'
-#' Calculate the proportion of cases (rows) that contain missing or complete
-#'     values.
+#' Deprecated, please see [miss_case_prop()] and [complete_case_prop()].
 #'
 #' @param data a dataframe
 #'
 #' @return numeric the proportion of cases that contain a missing or complete
 #'     value
 #'
-#' @seealso [miss_case_pct]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
 #'
 #' @export
 #' @name miss-complete-case-prop
 #' @importFrom stats complete.cases
-#' @examples
-#'
-#' miss_case_prop(airquality)
-#' complete_case_prop(airquality)
 #'
 miss_case_prop <- function(data){
-
+  .Deprecated("prop_miss_case")
   test_if_null(data)
 
   test_if_dataframe(data)
@@ -114,47 +94,44 @@ miss_case_prop <- function(data){
   # so (1 -1)*100 = 0, whereas function should return 1
   if (temp == 1) {
     return(1)
-  } else if (temp == 0) {
+  }
+
+  if (temp == 0) {
     # Return 0 if temp is 0
     # Prevent error when no row contains a NA and then mean is 0
     # so (1 -0)*1 = 1, whereas function should return 0.
     return(0)
-  } else {
-    return((1 - temp))
   }
+
+  # return the output
+  return((1 - temp))
 
 }
 
 #' @export
 #' @rdname miss-complete-case-prop
 complete_case_prop <- function(data){
-
+  .Deprecated("prop_complete_case")
   1 - miss_case_prop(data)
 
 }
 
 #' Percentage of cases that contain a missing or complete values.
 #'
-#' Calculate the percentage of cases (rows) that contain a missing or complete
-#'    value.
+#' Deprecated, please see [miss_case_pct()] and [complete_case_pct()].
 #'
 #' @param data a dataframe
 #'
 #' @return numeric the percentage of cases that contain a missing or complete
 #'      value
 #'
-#' @seealso [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
 #'
 #' @export
 #' @name miss-complete-case-pct
 #'
-#' @examples
-#'
-#' miss_case_pct(airquality)
-#' complete_case_pct(airquality)
-#'
 miss_case_pct <- function(data){
-
+  .Deprecated("pct_miss_case")
   miss_case_prop(data) * 100
 
 }
@@ -163,7 +140,7 @@ miss_case_pct <- function(data){
 #' @rdname miss-complete-case-pct
 
 complete_case_pct <- function(data){
-
+  .Deprecated("pct_complete_case")
   complete_case_prop(data) * 100
 
 }

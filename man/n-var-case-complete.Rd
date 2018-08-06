@@ -3,7 +3,6 @@
 \name{n-var-case-complete}
 \alias{n-var-case-complete}
 \alias{n_var_complete}
-\alias{n-var-case-complete}
 \alias{n_case_complete}
 \title{The number of variables with complete values}
 \usage{

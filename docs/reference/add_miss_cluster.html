@@ -29,6 +29,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 <meta property="og:title" content="Add a column that tells us which "missingness cluster" a row belongs to — add_miss_cluster" />
 
@@ -65,7 +71,7 @@ allow for better control over the clustering from the user." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9100</span>
       </span>
     </div>
 
@@ -97,6 +103,12 @@ allow for better control over the clustering from the user." />
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -115,7 +127,7 @@ allow for better control over the clustering from the user." />
     <div class="ref-description">
     
     <p>A way to extract the cluster of missingness that a group belongs to.
-For example, if you use <code><a href='http://www.rdocumentation.org/packages/visdat/topics/vis_miss'>vis_miss(airquality, cluster = TRUE)</a></code>, you can
+For example, if you use <code><a href='http://visdat.njtierney.com//reference/vis_miss.html'>vis_miss(airquality, cluster = TRUE)</a></code>, you can
 see some clustering in the data, but you do not have a way to identify
 the cluster. Future work will incorporate the <code>seriation</code> package to
 allow for better control over the clustering from the user.</p>
@@ -232,6 +244,23 @@ helpfile, and options include: "ward.D", "ward.D2", "single", "complete",
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '48bc42eefc5234a6463c3b99e53dfda1',
+    indexName: 'naniar',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>

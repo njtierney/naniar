@@ -30,17 +30,17 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 
   if (missing(...)) {
     data[[paste0(label, "_all")]] <- n_miss_row(data)
-  } else {
 
-    quo_vars <- rlang::quos(...)
+    return(data)
+  }
 
-    selected_data <- dplyr::select(data, !!!quo_vars)
+  quo_vars <- rlang::quos(...)
 
-    data[[paste0(label, "_vars")]] <- n_miss_row(selected_data)
-  } # close else loop
+  selected_data <- dplyr::select(data, !!!quo_vars)
 
-  # return a tibble
-  tibble::as_tibble(data)
+  data[[paste0(label, "_vars")]] <- n_miss_row(selected_data)
+
+  return(data)
 }
 
 #' Add column containing proportion of missing data values
@@ -92,15 +92,16 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
 
   if (missing(...)) {
     data[[paste0(label, "_all")]] <- prop_miss_row(data)
-  } else {
 
-    quo_vars <- rlang::quos(...)
+    return(data)
+  }
 
-    selected_data <- dplyr::select(data, !!!quo_vars)
+  quo_vars <- rlang::quos(...)
 
-    data[[paste0(label, "_vars")]] <- prop_miss_row(selected_data)
+  selected_data <- dplyr::select(data, !!!quo_vars)
 
-  } # close else loop
+  data[[paste0(label, "_vars")]] <- prop_miss_row(selected_data)
 
-  tibble::as_tibble(data)
+  return(data)
+
 }

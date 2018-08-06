@@ -23,14 +23,24 @@ test_that("miss_case_summary on grouped_df returns a tibble", {
   expect_is(miss_case_summary(aq_group), "tbl_df")
 })
 
-test_that("grouped_df returns 1 more column than regular miss_case_summary", {
+test_that("miss_case_summary produces the right number of columns", {
+  expect_equal(ncol(miss_case_summary(airquality)),
+               3)
+})
+
+test_that("miss_case_summary grouped produces the right number of columns", {
   expect_equal(ncol(miss_case_summary(aq_group)),
-                   ncol(miss_case_summary(airquality))+1)
+               4)
+})
+
+test_that("grouped_df returns the same number of columns as regular miss_case_summary", {
+  expect_equal(ncol(miss_case_summary(aq_group)),
+               ncol(miss_case_summary(airquality)) + 1)
 })
 
 test_that("grouped_df returns a column named 'Month'", {
   expect_identical(names(miss_case_summary(aq_group)),
-                   c("Month", "case", "n_miss","pct_miss", "n_miss_cumsum"))
+                   c("Month", "case", "n_miss","pct_miss"))
 })
 
 test_that("grouped_df returns a column named 'Month' with the right levels", {
@@ -38,3 +48,14 @@ test_that("grouped_df returns a column named 'Month' with the right levels", {
                    5:9)
 })
 
+# add testing for cumulative sum ----------------------------------------------
+
+test_that("miss_case_summary adds cumsum when add_cumsum = TRUE", {
+  expect_equal(names(miss_case_summary(airquality, add_cumsum = TRUE)),
+               c("case", "n_miss", "pct_miss", "n_miss_cumsum"))
+})
+
+test_that("miss_case_summary grouped adds cumsum when add_cumsum = TRUE", {
+  expect_equal(names(miss_case_summary(aq_group, add_cumsum = TRUE)),
+               c("Month", "case", "n_miss", "pct_miss", "n_miss_cumsum"))
+})

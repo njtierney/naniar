@@ -18,17 +18,8 @@ numeric the proportion of variables that contain missing or complete
 data
 }
 \description{
-Calculate the proportion of variables that contain a single missing or
-complete values.
-}
-\examples{
-
-miss_var_prop(riskfactors)
-miss_var_prop(oceanbuoys)
-complete_var_prop(riskfactors)
-complete_var_prop(oceanbuoys)
-
+Deprecated. Please see \code{\link[=miss_var_prop]{miss_var_prop()}} and \code{\link[=complete_var_prop]{complete_var_prop()}}.
 }
 \seealso{
-\url{miss_case_pct} \url{miss_case_prop} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_summary} \url{miss_case_table} \url{miss_summary} \url{miss_var_pct} \url{miss_var_run} \url{miss_var_span} \url{miss_var_summary} \url{miss_var_table}
+\code{\link[=pct_miss_case]{pct_miss_case()}} \code{\link[=prop_miss_case]{prop_miss_case()}} \code{\link[=pct_miss_var]{pct_miss_var()}} \code{\link[=prop_miss_var]{prop_miss_var()}} \code{\link[=pct_complete_case]{pct_complete_case()}} \code{\link[=prop_complete_case]{prop_complete_case()}} \code{\link[=pct_complete_var]{pct_complete_var()}} \code{\link[=prop_complete_var]{prop_complete_var()}} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_summary} \url{miss_case_table} \url{miss_summary} \url{miss_var_prop} \url{miss_var_run} \url{miss_var_span} \url{miss_var_summary} \url{miss_var_table}
 }

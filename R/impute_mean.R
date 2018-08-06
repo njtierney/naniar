@@ -35,12 +35,12 @@ impute_mean.factor <- function(x){
     max_tab <- max(tab)
     if (all(tab == max_tab)) {mod = NA}
 
-    else if (is.numeric(x)){
+    if (is.numeric(x)){
       mod <- as.numeric(names(tab)[tab == max_tab])
     }
-    else {
-      mod = names(tab)[tab == max_tab]
-    }
+
+    mod <- names(tab)[tab == max_tab]
+
     # randomly break a tie
     return(sample(mod, 1))
   }

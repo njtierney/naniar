@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.3.1.9000
+Version: 0.3.3.9200
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -46,7 +46,6 @@ Suggests:
     here,
     simputation,
     imputeTS,
-    UpSetR,
     gdtools
 VignetteBuilder: knitr
 Depends:
@@ -63,8 +62,9 @@ Imports:
     rlang,
     forcats,
     viridis,
-    glue
-RoxygenNote: 6.0.1
+    glue,
+    UpSetR
+RoxygenNote: 6.0.1.9000
 Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
@@ -80,6 +80,7 @@ Collate:
     'gg-miss-case.R'
     'gg-miss-fct.R'
     'gg-miss-span.R'
+    'gg-miss-upset.R'
     'gg-miss-var-cumsum.R'
     'gg-miss-var.R'
     'gg-miss-which.R'
@@ -100,6 +101,7 @@ Collate:
     'n-var-miss.R'
     'naniar-ggproto.R'
     'naniar-package.R'
+    'prop-pct-var-case-miss-complete.R'
     'replace-to-na.R'
     'replace-with-na.R'
     'scoped-replace-with-na.R'

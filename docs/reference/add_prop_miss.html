@@ -29,6 +29,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 <meta property="og:title" content="Add column containing proportion of missing data values — add_prop_miss" />
 
@@ -65,7 +71,7 @@ for." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9100</span>
       </span>
     </div>
 
@@ -96,6 +102,12 @@ for." />
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -783,7 +795,10 @@ has not been used on all of the variables.</p></td>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/rpart/topics/rpart'>rpart</a></span>(<span class='no'>prop_miss_all</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>.</span>) <span class='kw'>%&gt;%</span>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/rpart.plot/topics/prp'>prp</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='fl'>4</span>,
     <span class='kw'>extra</span> <span class='kw'>=</span> <span class='fl'>101</span>,
-    <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"prop_miss = "</span>)</div><div class='img'><img src='add_prop_miss-1.png' alt='' width='700' height='433' /></div></pre>
+    <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"prop_miss = "</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Cannot retrieve the model data (will ignore roundint=TRUE).</span>
+#&gt; <span class='warning'>         To make this warning go away:</span>
+#&gt; <span class='warning'>             Call prp with roundint=FALSE,</span>
+#&gt; <span class='warning'>             or rebuild the rpart model with model=TRUE.</span></div><div class='img'><img src='add_prop_miss-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -813,6 +828,23 @@ has not been used on all of the variables.</p></td>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '48bc42eefc5234a6463c3b99e53dfda1',
+    indexName: 'naniar',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>

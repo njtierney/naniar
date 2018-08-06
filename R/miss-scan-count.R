@@ -12,7 +12,7 @@
 #'
 #' @return a dataframe of the occurrences of the values you searched for
 #'
-#' @seealso [miss_case_pct]() [miss_case_prop]() [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_pct]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
 #'
 #' @export
 #'
@@ -33,16 +33,24 @@
 miss_scan_count <- function(data,search){
   # if there is only one value to search
   if (length(search) == 1) {
-    purrr::map_df(data,~length(grep(search,x = .))) %>%
+    res <- purrr::map_df(data,
+                         ~length(grep(search,
+                                      x = .))) %>%
       # return the dataframe with the columns "
       tidyr::gather(key = "Variable",
                     value = "n")
     # but if there are more than one, we need to combine the search terms
-  } else if (length(search) > 1) {
-    purrr::map_df(data,~length(grep(paste0(search, collapse ="|"),x = .))) %>%
+  }
+
+  if (length(search) > 1) {
+    res <- purrr::map_df(data,
+                         ~length(grep(paste0(search,
+                                             collapse ="|"),
+                                      x = .))) %>%
       tidyr::gather(key = "Variable",
                     value = "n")
   }
 
+  return(res)
 }
 

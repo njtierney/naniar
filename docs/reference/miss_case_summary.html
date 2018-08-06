@@ -29,6 +29,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 <meta property="og:title" content="Summarise the missingness in each case — miss_case_summary" />
 
@@ -63,7 +69,7 @@ it orders by the most missings in each variable." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9100</span>
       </span>
     </div>
 
@@ -95,6 +101,12 @@ it orders by the most missings in each variable." />
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -118,7 +130,7 @@ it orders by the most missings in each variable.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>miss_case_summary</span>(<span class='no'>data</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>miss_case_summary</span>(<span class='no'>data</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>add_cumsum</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,6 +145,13 @@ it orders by the most missings in each variable.</p>
 n_miss. Defaults to TRUE. If FALSE, order of cases is the order input.</p></td>
     </tr>
     <tr>
+      <th>add_cumsum</th>
+      <td><p>logical indicating whether or not to add the cumulative
+sum of missings to the data. This can be useful when exploring patterns
+of nonresponse. These are calculated as the cumulative sum of the missings
+in the variables as they are first presented to the function.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>extra arguments</p></td>
     </tr>
@@ -142,15 +161,9 @@ n_miss. Defaults to TRUE. If FALSE, order of cases is the order input.</p></td>
 
     <p>a tibble of the percent of missing data in each case.</p>
     
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p><code>n_miss_cumsum</code> is calculated as the cumulative sum of missings in the
-variables in the order that they are given in the data when entering
-the function</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a></p></div>
+    <div class='dont-index'><p><code><a href='pct-miss-complete-case.html'>pct_miss_case()</a></code> <code><a href='prop-miss-complete-case.html'>prop_miss_case()</a></code> <code><a href='pct-miss-complete-var.html'>pct_miss_var()</a></code> <code><a href='prop-miss-complete-var.html'>prop_miss_var()</a></code> <code><a href='pct-miss-complete-case.html'>pct_complete_case()</a></code> <code><a href='prop-miss-complete-case.html'>prop_complete_case()</a></code> <code><a href='pct-miss-complete-var.html'>pct_complete_var()</a></code> <code><a href='prop-miss-complete-var.html'>prop_complete_var()</a></code> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a> <a href='n_complete'>n_complete</a> <a href='n_complete_row'>n_complete_row</a> <a href='n_miss'>n_miss</a> <a href='n_miss_row'>n_miss_row</a> <a href='pct_complete'>pct_complete</a> <a href='pct_miss'>pct_miss</a> <a href='prop_complete'>prop_complete</a> <a href='prop_complete_row'>prop_complete_row</a> <a href='prop_miss'>prop_miss</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -159,33 +172,33 @@ the function</p>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Month</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>miss_case_summary</span>()</div><div class='output co'>#&gt; # A tibble: 153 x 5
-#&gt;    Month  case n_miss pct_miss n_miss_cumsum
-#&gt;    &lt;int&gt; &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-#&gt;  1     5     5      2       40             2
-#&gt;  2     5    27      2       40             9
-#&gt;  3     5     6      1       20             3
-#&gt;  4     5    10      1       20             4
-#&gt;  5     5    11      1       20             5
-#&gt;  6     5    25      1       20             6
-#&gt;  7     5    26      1       20             7
-#&gt;  8     5     1      0        0             0
-#&gt;  9     5     2      0        0             0
-#&gt; 10     5     3      0        0             0
+  <span class='fu'>miss_case_summary</span>()</div><div class='output co'>#&gt; # A tibble: 153 x 4
+#&gt;    Month  case n_miss pct_miss
+#&gt;    &lt;int&gt; &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
+#&gt;  1     5     5      2       40
+#&gt;  2     5    27      2       40
+#&gt;  3     5     6      1       20
+#&gt;  4     5    10      1       20
+#&gt;  5     5    11      1       20
+#&gt;  6     5    25      1       20
+#&gt;  7     5    26      1       20
+#&gt;  8     5     1      0        0
+#&gt;  9     5     2      0        0
+#&gt; 10     5     3      0        0
 #&gt; # ... with 143 more rows</div><div class='input'>
-<span class='fu'>miss_case_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 4
-#&gt;     case n_miss pct_miss n_miss_cumsum
-#&gt;    &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;int&gt;
-#&gt;  1     5      2     33.3             2
-#&gt;  2    27      2     33.3             9
-#&gt;  3     6      1     16.7             3
-#&gt;  4    10      1     16.7             4
-#&gt;  5    11      1     16.7             5
-#&gt;  6    25      1     16.7             6
-#&gt;  7    26      1     16.7             7
-#&gt;  8    32      1     16.7            10
-#&gt;  9    33      1     16.7            11
-#&gt; 10    34      1     16.7            12
+<span class='fu'>miss_case_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 3
+#&gt;     case n_miss pct_miss
+#&gt;    &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
+#&gt;  1     5      2     33.3
+#&gt;  2    27      2     33.3
+#&gt;  3     6      1     16.7
+#&gt;  4    10      1     16.7
+#&gt;  5    11      1     16.7
+#&gt;  6    25      1     16.7
+#&gt;  7    26      1     16.7
+#&gt;  8    32      1     16.7
+#&gt;  9    33      1     16.7
+#&gt; 10    34      1     16.7
 #&gt; # ... with 143 more rows</div><div class='input'>
 </div></pre>
   </div>
@@ -195,8 +208,6 @@ the function</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
@@ -219,6 +230,23 @@ the function</p>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '48bc42eefc5234a6463c3b99e53dfda1',
+    indexName: 'naniar',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>

@@ -1,6 +1,11 @@
+url: http://naniar.njtierney.com/
+
 template:
   params:
     bootswatch: flatly
+    docsearch:
+      api_key: 48bc42eefc5234a6463c3b99e53dfda1
+      index_name:  naniar
 
 home:
   links:
@@ -24,7 +29,6 @@ reference:
     contents:
       - geom_miss_point
       - starts_with("gg_miss_")
-      - as_shadow_upset
       - vis_miss
   - title: "Numerical Summaries"
     desc: >

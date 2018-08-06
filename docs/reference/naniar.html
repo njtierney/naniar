@@ -29,6 +29,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 <meta property="og:title" content="naniar — naniar" />
 
@@ -63,7 +69,7 @@ principles as possible." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9100</span>
       </span>
     </div>
 
@@ -95,6 +101,12 @@ principles as possible." />
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -121,7 +133,7 @@ principles as possible.</p>
         
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='add_any_miss'>add_any_miss</a> <a href='add_label_missings'>add_label_missings</a> <a href='add_label_shadow'>add_label_shadow</a> <a href='add_miss_cluster'>add_miss_cluster</a> <a href='add_n_miss'>add_n_miss</a> <a href='add_prop_miss'>add_prop_miss</a> <a href='add_shadow'>add_shadow</a> <a href='add_shadow_shift'>add_shadow_shift</a> <a href='as_shadow'>as_shadow</a> <a href='bind_shadow'>bind_shadow</a> <a href='cast_shadow'>cast_shadow</a> <a href='cast_shadow_shift'>cast_shadow_shift</a> <a href='cast_shadow_shift_label'>cast_shadow_shift_label</a> <a href='draw_key_missing_point'>draw_key_missing_point</a> <a href='gather_shadow'>gather_shadow</a> <a href='geom_miss_point'>geom_miss_point</a> <a href='gg_miss_case'>gg_miss_case</a> <a href='gg_miss_case_cumsum'>gg_miss_case_cumsum</a> <a href='gg_miss_fct'>gg_miss_fct</a> <a href='gg_miss_span'>gg_miss_span</a> <a href='gg_miss_var'>gg_miss_var</a> <a href='gg_miss_var_cumsum'>gg_miss_var_cumsum</a> <a href='gg_miss_which'>gg_miss_which</a> <a href='label_miss_1d'>label_miss_1d</a> <a href='label_miss_2d'>label_miss_2d</a> <a href='label_missings'>label_missings</a> <a href='miss_case_pct'>miss_case_pct</a> <a href='miss_case_prop'>miss_case_prop</a> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_prop_summary'>miss_prop_summary</a> <a href='miss_scan_count'>miss_scan_count</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_pct'>miss_var_pct</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a> <a href='n_complete'>n_complete</a> <a href='n_complete_row'>n_complete_row</a> <a href='n_miss'>n_miss</a> <a href='n_miss_row'>n_miss_row</a> <a href='pct_complete'>pct_complete</a> <a href='pct_miss'>pct_miss</a> <a href='prop_complete'>prop_complete</a> <a href='prop_complete_row'>prop_complete_row</a> <a href='prop_miss'>prop_miss</a> <a href='prop_miss_row'>prop_miss_row</a> <a href='replace_to_na'>replace_to_na</a> <a href='replace_with_na'>replace_with_na</a> <a href='replace_with_na_all'>replace_with_na_all</a> <a href='replace_with_na_at'>replace_with_na_at</a> <a href='replace_with_na_if'>replace_with_na_if</a> <a href='shadow_shift'>shadow_shift</a> <a href='stat_miss_point'>stat_miss_point</a> <a href='vis_miss'>vis_miss</a> <a href='where_na'>where_na</a></p></div>
+    <div class='dont-index'><p><a href='add_any_miss'>add_any_miss</a> <a href='add_label_missings'>add_label_missings</a> <a href='add_label_shadow'>add_label_shadow</a> <a href='add_miss_cluster'>add_miss_cluster</a> <a href='add_n_miss'>add_n_miss</a> <a href='add_prop_miss'>add_prop_miss</a> <a href='add_shadow'>add_shadow</a> <a href='add_shadow_shift'>add_shadow_shift</a> <a href='as_shadow'>as_shadow</a> <a href='bind_shadow'>bind_shadow</a> <a href='cast_shadow'>cast_shadow</a> <a href='cast_shadow_shift'>cast_shadow_shift</a> <a href='cast_shadow_shift_label'>cast_shadow_shift_label</a> <a href='draw_key_missing_point'>draw_key_missing_point</a> <a href='gather_shadow'>gather_shadow</a> <a href='geom_miss_point'>geom_miss_point</a> <a href='gg_miss_case'>gg_miss_case</a> <a href='gg_miss_case_cumsum'>gg_miss_case_cumsum</a> <a href='gg_miss_fct'>gg_miss_fct</a> <a href='gg_miss_span'>gg_miss_span</a> <a href='gg_miss_var'>gg_miss_var</a> <a href='gg_miss_var_cumsum'>gg_miss_var_cumsum</a> <a href='gg_miss_which'>gg_miss_which</a> <a href='label_miss_1d'>label_miss_1d</a> <a href='label_miss_2d'>label_miss_2d</a> <a href='label_missings'>label_missings</a> <code><a href='pct-miss-complete-case.html'>pct_miss_case()</a></code> <code><a href='prop-miss-complete-case.html'>prop_miss_case()</a></code> <code><a href='pct-miss-complete-var.html'>pct_miss_var()</a></code> <code><a href='prop-miss-complete-var.html'>prop_miss_var()</a></code> <code><a href='pct-miss-complete-case.html'>pct_complete_case()</a></code> <code><a href='prop-miss-complete-case.html'>prop_complete_case()</a></code> <code><a href='pct-miss-complete-var.html'>pct_complete_var()</a></code> <code><a href='prop-miss-complete-var.html'>prop_complete_var()</a></code> <code><a href='miss_prop_summary.html'>miss_prop_summary()</a></code> <a href='miss_case_summary'>miss_case_summary</a> <a href='miss_case_table'>miss_case_table</a> <a href='miss_summary'>miss_summary</a> <a href='miss_var_prop'>miss_var_prop</a> <a href='miss_var_run'>miss_var_run</a> <a href='miss_var_span'>miss_var_span</a> <a href='miss_var_summary'>miss_var_summary</a> <a href='miss_var_table'>miss_var_table</a> <a href='n_complete'>n_complete</a> <a href='n_complete_row'>n_complete_row</a> <a href='n_miss'>n_miss</a> <a href='n_miss_row'>n_miss_row</a> <a href='pct_complete'>pct_complete</a> <a href='pct_miss'>pct_miss</a> <a href='prop_complete'>prop_complete</a> <a href='prop_complete_row'>prop_complete_row</a> <a href='prop_miss'>prop_miss</a> <a href='prop_miss_row'>prop_miss_row</a> <a href='replace_to_na'>replace_to_na</a> <a href='replace_with_na'>replace_with_na</a> <a href='replace_with_na_all'>replace_with_na_all</a> <a href='replace_with_na_at'>replace_with_na_at</a> <a href='replace_with_na_if'>replace_with_na_if</a> <a href='shadow_shift'>shadow_shift</a> <a href='stat_miss_point'>stat_miss_point</a> <a href='vis_miss'>vis_miss</a> <a href='where_na'>where_na</a></p></div>
     
 
   </div>
@@ -148,6 +160,23 @@ principles as possible.</p>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '48bc42eefc5234a6463c3b99e53dfda1',
+    indexName: 'naniar',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>

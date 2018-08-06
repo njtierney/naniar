@@ -1,10 +1,81 @@
-# naniar 0.3.1.9000 (2018/06/14)  (special-missing branch)
+# naniar 0.3.4.9000 (2018/06/14)  (special-missing branch)
 
 ## Major change
 
 - `as_shadow`  and `bind_shadow` now return data of class `shadow`. This will 
 feed into `recode_shadow` methods for flexibly adding new types of missing data.
 - Note that in the future `shadow` might be changed to `nabble` or something similar.
+
+# naniar 0.3.3.9200 (2018/08/01)
+
+## Minor feature
+
+* Added tests for `miss_scan_count`
+
+## Bug fix
+
+* Ensured that `miss_scan_count` actually `return`'d something.
+
+# naniar 0.3.3.9100 (2018/07/31)
+
+## New feature
+
+* `miss_var_summary` and `miss_case_summary` now no longer provide the 
+cumulative sum of missingness in the summaries - this summary can be added back
+to the data with the option `add_cumsum = TRUE`. #186
+
+# naniar 0.3.3.9000 (2018/07/30)
+
+## Breaking Changes
+
+* Deprecated old names of the scalar missingness summaries, in favour of a more
+consistent syntax [#171](https://github.com/njtierney/naniar/issues/171). The old the and new are:
+
+|old_names            |new_names            |
+|:--------------------|:--------------------|
+|`miss_case_pct`      |`pct_miss_case`      |
+|`miss_case_prop`     |`prop_miss_case`     |
+|`miss_var_pct`       |`pct_miss_var`       |
+|`miss_var_prop`      |`prop_miss_var`      |
+|`complete_case_pct`  |`pct_complete_case`  |
+|`complete_case_prop` |`prop_complete_case` |
+|`complete_var_pct`   |`pct_complete_var`   |
+|`complete_var_prop`  |`prop_complete_var`  |
+
+These old names will be made defunct in 0.5.0, and removed completely in 0.6.0.
+
+# naniar 0.3.2.9300 (2018/06/27)
+
+## Bug fix
+
+* `gg_miss_var(airquality)` now prints the ggplot - a typo meant that this did not print the plot
+
+# naniar 0.3.2.9100 (2018/06/25)
+
+## Minor update
+
+- Changed `common_na_string` to include  escape characters for "?", "*", "." so
+that if they are used in replacement or searching functions they don't return
+the wildcard results from the characters "?", "*", and ".".
+
+# naniar 0.3.2.9000 (2018/06/21)
+
+## New Feature
+
+- Added `gg_miss_upset` to replace workflow of: 
+  ```
+  data %>% 
+    as_shadow_upset() %>%
+    UpSetR::upset()
+  ```
+
+# naniar 0.3.1.9100 (2018/06/10)
+
+## Minor Change
+
+- `miss_case_table` and `miss_var_table` now has final column names `pct_vars`,
+and `pct_cases` instead of `pct_miss` - fixes #178.
+>>>>>>> origin/master
 
 # naniar 0.3.1 (2018/06/10) "Strawberry's Adventure"
 

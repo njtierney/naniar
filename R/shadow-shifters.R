@@ -99,7 +99,7 @@ shadow_shift.numeric <- function(x,
     return(shifted_values)
 
     # else, when there is more than 1 complete value
-  } else {
+  }
 
   range_dist <- function(x) diff(range(x, na.rm = TRUE))
 
@@ -117,8 +117,6 @@ shadow_shift.numeric <- function(x,
          # add the jitter around the those values that are missing
          yes = x_shift + x_jitter,
          no = x)
-
-  } # close else statement
 
 } # close function
 

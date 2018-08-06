@@ -29,6 +29,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 <meta property="og:title" content="Function reference" />
 
@@ -58,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9100</span>
       </span>
     </div>
 
@@ -89,6 +95,12 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -207,6 +219,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="gg_miss_upset.html">gg_miss_upset()</a></code> </p>
+        </td>
+        <td><p>Plot the pattern of missingness using an upset plot.</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="gg_miss_var.html">gg_miss_var()</a></code> </p>
         </td>
         <td><p>Plot the number of missings for each variable</p></td>
@@ -222,12 +240,6 @@
           <p><code><a href="gg_miss_which.html">gg_miss_which()</a></code> </p>
         </td>
         <td><p>Plot which variables contain a missing value</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="as_shadow_upset.html">as_shadow_upset()</a></code> </p>
-        </td>
-        <td><p>Convert data into shadow format for doing an upset plot</p></td>
       </tr><tr>
         
         <td>
@@ -373,6 +385,18 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="prop-miss-complete-case.html">prop_miss_case()</a></code> <code><a href="prop-miss-complete-case.html">prop_complete_case()</a></code> </p>
+        </td>
+        <td><p>Proportion of cases that contain a missing or complete values.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="prop-miss-complete-var.html">prop_miss_var()</a></code> <code><a href="prop-miss-complete-var.html">prop_complete_var()</a></code> </p>
+        </td>
+        <td><p>Proportion of variables containing missings or complete values</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="prop_complete.html">prop_complete()</a></code> </p>
         </td>
         <td><p>Return the proportion of complete values</p></td>
@@ -394,6 +418,18 @@
           <p><code><a href="prop_miss_row.html">prop_miss_row()</a></code> </p>
         </td>
         <td><p>Return a vector of the proportion of missing values in each row</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pct-miss-complete-case.html">pct_miss_case()</a></code> <code><a href="pct-miss-complete-case.html">pct_complete_case()</a></code> </p>
+        </td>
+        <td><p>Percentage of cases that contain a missing or complete values.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pct-miss-complete-var.html">pct_miss_var()</a></code> <code><a href="pct-miss-complete-var.html">pct_complete_var()</a></code> </p>
+        </td>
+        <td><p>Percentage of variables containing missings or complete values</p></td>
       </tr><tr>
         
         <td>
@@ -690,6 +726,23 @@
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '48bc42eefc5234a6463c3b99e53dfda1',
+    indexName: 'naniar',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>

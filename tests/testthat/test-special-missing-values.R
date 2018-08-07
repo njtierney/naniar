@@ -26,6 +26,45 @@ test_that("special missings are put in the right place", {
               c("NA_bananas", "NA", "!NA"))
 })
 
+context("recode_shadow works for multiple variables")
+
+# airquality %>%
+#   bind_shadow() %>%
+#   recode_shadow(Ozone = .where(Wind <= 5 ~ "broken_machine")) %>%
+#   recode_shadow(Temp = .where(Temp <= 58 ~ "broken_temp")) %>%
+#   arrange(Temp)
+#
+# aq_sh <- airquality %>%
+#   bind_shadow() %>%
+#   update_shadow("wat")
+#
+# aq_sh %>% map(levels)
+#
+# debugonce(update_shadow)
+#
+# aq_sh %>%
+#   update_shadow("is") %>%
+#   map(levels)
+#
+# # map(levels)
+
+context("recode_shadow works on grouped data")
+
+aq_recoded <- airquality %>%
+  bind_shadow() %>%
+  recode_shadow(Ozone = .where(Wind <= 5 ~ "broken_machine"))
+
+aq_grouped_recoded <- airquality %>%
+  bind_shadow() %>%
+  dplyr::group_by(Month) %>%
+  recode_shadow(Ozone = .where(Wind <= 5 ~ "broken_machine"))
+
+test_that("special missings are the same for grouped and ungrouped data", {
+  expect_equal(aq_grouped_recoded$Ozone_NA,
+               aq_recoded$Ozone_NA)
+})
+
+
 # these are some old tests that explore how the `is_shadow` family work
 #
 

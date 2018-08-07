@@ -69,6 +69,18 @@ shadow_expand_relevel <- function(.var, suffix){
 
   new_var
 
+  # if (inherits(new_var, "shadow")) {
+  #
+  #   return(new_var)
+  #
+  # } else if (!inherits(new_var, "shadow")) {
+  #
+  #   class(new_var) <- c("shadow", class(new_var))
+  #
+  #   return(new_var)
+  #
+  # }
+
 }
 
 
@@ -208,6 +220,6 @@ recode_shadow <- function(data, ...){
         TRUE ~ !!shadow_var
       ))
 
-  # class(new_var) <- c("shadow", class(new_var))
+  shadow_recoded
 }
 

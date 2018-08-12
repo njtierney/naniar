@@ -1,8 +1,22 @@
 #' Impute data with values shifted 10\% below range.
 #'
 #' It can be useful in exploratory graphics to impute data outside the range of
-#'   the data. `impute_below` imputes values 10% below the range for numeric
-#'   values, and for character or factor values adds a new string or label.
+#'   the data. `impute_below` imputes all variables with missings to have
+#'   values 10% below the range for numeric values, and for character or factor
+#'   values adds a new string or label. It is powered by `shadow_shift`, so
+#'   please see the documentation for [shadow_shift()] to full details on the
+#'   different implementations.
+#'
+#' @param ... extra arguments to pass - see [shadow_shift()] for discussion on this.
+#' @export
+impute_below <- function(...) shadow_shift(...)
+
+#' Impute data with values shifted 10\% below range.
+#'
+#' It can be useful in exploratory graphics to impute data outside the range of
+#'   the data. `impute_below_all` imputes all variables with missings to have
+#'   values 10% below the range for numeric values, and for character or factor
+#'   values adds a new string or label.
 #'
 #' @param .tbl a data.frame
 #' @param prop_below the degree to shift the values. default is
@@ -16,14 +30,14 @@
 #'
 #' # you can impute data like so:
 #' airquality %>%
-#'   impute_below()
+#'   impute_below_all()
 #'
 #' # However, this does not show you WHERE the missing values are.
 #' # to keep track of them, you want to use `bind_shadow()` first.
 #'
 #' airquality %>%
 #'   bind_shadow() %>%
-#'   impute_below()
+#'   impute_below_all()
 #'
 #' # This identifies where the missing values are located, which means you
 #' # can do things like this:
@@ -32,7 +46,7 @@
 #' library(ggplot2)
 #' airquality %>%
 #'   bind_shadow() %>%
-#'   impute_below() %>%
+#'   impute_below_all() %>%
 #'   # identify where there are missings across rows.
 #'   add_label_shadow() %>%
 #'   ggplot(aes(x = Ozone,
@@ -42,10 +56,10 @@
 #' # Note that this ^^ is a long version of `geom_miss_point()`.
 #' }
 #'
-impute_below <- function(.tbl,
-                         prop_below = 0.1,
-                         jitter = 0.05,
-                         ...){
+impute_below_all <- function(.tbl,
+                             prop_below = 0.1,
+                             jitter = 0.05,
+                             ...){
 
   test_if_dataframe(.tbl)
 

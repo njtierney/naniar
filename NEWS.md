@@ -1,3 +1,9 @@
+# naniar 0.3.3.9300 (2018/08/12)
+
+## Minor Change
+
+* `impute_below` has changed to be an alias of `shadow_shift` - that is it operates on a single vector. `impute_below_all` operates on all columns in a dataframe (as specified in [#159](https://github.com/njtierney/naniar/issues/159))
+
 # naniar 0.3.3.9200 (2018/08/01)
 
 ## Minor feature

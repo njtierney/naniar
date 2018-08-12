@@ -97,12 +97,26 @@ shadow_expand_relevel <- function(.var, suffix){
 #' update_shadow(dfs, "weee") %>% what_levels()
 #' }
 #'
-update_shadow <- function(data, suffix){
+update_shadow <- function(data, suffix) {
 
+  class_of_cols <- purrr::map(data,class)
+  class_of_data <- class(data)
+
+  updated_shadow <-
   dplyr::mutate_if(.tbl = data,
                    .predicate = is_shadow,
                    .funs = shadow_expand_relevel,
                    suffix = suffix)
+
+  # write a function to assist in preserving the class of the data
+  # and the columns
+  updated_shadow <- purrr::map2_dfc(updated_shadow,
+                                    class_of_cols,
+                                    `class<-`)
+
+  structure(updated_shadow,
+            class = class_of_data)
+
 
 }
 
@@ -201,11 +215,13 @@ recode_shadow <- function(data, ...){
 
   shadow_recoded <- data %>%
     update_shadow(suffix) %>%
+    # this is where the error lies
     dplyr::mutate(
       !!shadow_var := dplyr::case_when(
         !!condition ~ factor(na_suffix,
                              levels = levels(.[[shadow_var]])),
         TRUE ~ !!shadow_var
+        # TRUE ~ as_shade(!!shadow_var)
       ))
 
   shadow_recoded

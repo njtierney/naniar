@@ -99,6 +99,7 @@ Collate:
     'n-prop-miss-complete-rows.R'
     'n-prop-miss-complete.R'
     'n-var-miss.R'
+    'nabular.R'
     'naniar-ggproto.R'
     'naniar-package.R'
     'prop-pct-var-case-miss-complete.R'

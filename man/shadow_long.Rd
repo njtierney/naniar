@@ -8,16 +8,19 @@ shadow_long(shadow_data, vars_of_interest, only_main_vars = TRUE)
 }
 \arguments{
 \item{shadow_data}{a data.frame}
+
+\item{vars_of_interest}{string of variables that you want to focus on}
+
+\item{only_main_vars}{logical - do you want to filter down to main variables?}
 }
 \value{
-data in the
+data in long format, with columns \code{variable}, \code{value}, \code{variable_NA}, and \code{value_NA}.
 }
 \description{
 Once data is in \code{nabular} form, where the shadow is bound to the data, it
 can be useful to reshape it into a long format with the columns
 }
 \examples{
-
 shadow_long(bind_shadow(airquality))
 
 }

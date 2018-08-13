@@ -22,11 +22,11 @@ act_1 <- paste0(sh_1)
 exp_1 <- c("NA_broken", "!NA", "!NA", "NA")
 
 sh_2 <- shade(c(3, 1, 2, NA), broken = 1)
-act_1 <- paste0(sh_2)
+act_2 <- paste0(sh_2)
 exp_2 <- c("!NA", "NA_broken", "!NA", "NA")
 
 sh_3 <- shade(c(3, 1, 2, NA), broken = 2)
-act_1 <- paste0(sh_3)
+act_3 <- paste0(sh_3)
 exp_3 <- c("!NA", "!NA", "NA_broken", "NA")
 
 test_that("shade returns the correct values", {

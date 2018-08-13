@@ -284,16 +284,27 @@ which_are_shadow <- function(.tbl){
 #'     can be useful to reshape it into a long format with the columns
 #'
 #' @param shadow_data a data.frame
-#' @param vars_of_interest string of variables that you want to focus on
+#' @param ... bare name of variables that you want to focus on
 #' @param only_main_vars logical - do you want to filter down to main variables?
 #'
 #' @return data in long format, with columns `variable`, `value`, `variable_NA`, and `value_NA`.
 #' @export
 #'
 #' @examples
-#' shadow_long(bind_shadow(airquality))
 #'
-shadow_long <- function(shadow_data, vars_of_interest, only_main_vars = TRUE){
+#' aq_shadow <- bind_shadow(airquality)
+#'
+#' shadow_long(aq_shadow)
+#'
+#' # then filter only on Ozone
+#' shadow_long(aq_shadow, Ozone)
+#'
+#' shadow_long(aq_shadow, Ozone, Solar.R)
+#'
+#'
+shadow_long <- function(shadow_data,
+                        ...,
+                        only_main_vars = TRUE){
 
   test_if_null(shadow_data)
   test_if_dataframe(shadow_data)
@@ -311,10 +322,12 @@ shadow_long <- function(shadow_data, vars_of_interest, only_main_vars = TRUE){
                                  variable_NA == paste0(variable,"_NA"))
   }
 
-  if (!missing(vars_of_interest)) {
+  if (!missing(...)) {
+
+    vars <- bare_to_chr(...)
 
     gathered_df <- gathered_df %>%
-      dplyr::filter(variable %in% vars_of_interest)
+      dplyr::filter(variable %in% vars)
   }
 
 

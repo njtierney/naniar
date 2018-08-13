@@ -167,3 +167,15 @@ add_span_counter <- function(data, span_size) {
                                    each = span_size,
                                    length.out = nrow(data)))
 }
+
+# utility function to convert bare name to character
+bare_to_chr <- function(...){
+  ps <- rlang::exprs(...)
+
+  exprs_text <- function(ps) {
+    paste0(purrr::map_chr(ps, rlang::expr_text))
+  }
+
+  exprs_text(ps)
+
+}

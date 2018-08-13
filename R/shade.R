@@ -1,6 +1,12 @@
 # use new_shade
 #' @export
-new_shade <- function(x, ...){
+new_shade <- function(x, extra_levels = NULL){
+
+  if (!is.factor(x)) {
+    rlang::abort(message = "input to shade must be a factor")
+  }
+
+  levels(x) <- union(levels(x), glue::glue("NA_{extra_levels}"))
   structure(x,
             class = c("shade", "factor"))
 }
@@ -29,13 +35,14 @@ new_shade <- function(x, ...){
 #'       inst_fail = 100)
 #'
 #' @export
-shade <- function(x, ...){
+shade <- function(x, ..., extra_levels = NULL){
   # if no other levels are specified
   if (missing(...)) {
-    x <- factor(x,
-                levels = c("NA", "!NA"))
+    x <- factor(is.na(x),
+                labels = c("NA", "!NA"),
+                levels = c(TRUE, FALSE))
 
-    return(new_shade(x))
+    return(new_shade(x, extra_levels))
   }
 
   # if additional levels are specified
@@ -70,5 +77,5 @@ shade <- function(x, ...){
   }
 
   # and return a new shade value
-  new_shade(x)
+  new_shade(x, extra_levels)
 }

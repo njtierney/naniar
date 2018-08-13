@@ -36,9 +36,11 @@ as_shadow <- function(data, ...){
 #' @export
 as_shadow.data.frame <- function(data, ...){
 
+  # update this line with the new `shade`
     data_shadow <- purrr::map_df(data, label_shadow_matrix)
 
     names(data_shadow) <- paste0(names(data),"_NA")
+
 
     class(data_shadow) <- c("shadow", class(data_shadow))
 

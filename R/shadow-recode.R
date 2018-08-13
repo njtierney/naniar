@@ -221,8 +221,8 @@ recode_shadow <- function(data, ...){
         dplyr::case_when(
         !!condition ~ factor(na_suffix,
                              levels = levels(.[[shadow_var]])),
-        TRUE ~ !!factor(shadow_var,
-                        levels = levels(.[[shadow_var]]))
+        TRUE ~ factor(!!shadow_var,
+                      levels = levels(.[[shadow_var]]))
         ),
         class = c("shade", "factor")
         # TRUE ~ as_shade(!!shadow_var)

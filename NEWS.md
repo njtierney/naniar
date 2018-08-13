@@ -1,8 +1,9 @@
-# naniar 0.3.3.9400 (2018/08/13)
+# naniar 0.3.3.9500 (2018/08/13)
 
 ## Minor feature
 
 * new function `which_are_shadow()`, to tell you which values are shadows.
+* new function `long_shadow()`, which converts data in shadow/nabular form into a long format suitable for plotting. Related to [#165](https://github.com/njtierney/naniar/issues/165)
 
 # naniar 0.3.3.9300 (2018/08/12)
 

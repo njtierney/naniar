@@ -276,3 +276,48 @@ which_are_shadow <- function(.tbl){
   test_if_dataframe(.tbl)
   which(are_shadow(.tbl))
 }
+
+
+#' Reshape shadow data into a long format
+#'
+#' Once data is in `nabular` form, where the shadow is bound to the data, it
+#'     can be useful to reshape it into a long format with the columns
+#'
+#' @param shadow_data a data.frame
+#'
+#' @return data in the
+#' @export
+#'
+#' @examples
+#'
+#' shadow_long(bind_shadow(airquality))
+#'
+shadow_long <- function(shadow_data, vars_of_interest, only_main_vars = TRUE){
+
+  test_if_null(shadow_data)
+  test_if_dataframe(shadow_data)
+
+  gathered_df <- shadow_data %>%
+    tidyr::gather(key = "variable",
+                  value = "value",
+                  -which_are_shadow(.)) %>%
+    tidyr::gather(key = "variable_NA",
+                  value = "value_NA",
+                  which_are_shadow(.))
+
+  if (only_main_vars) {
+    gathered_df <- dplyr::filter(gathered_df,
+                                 variable_NA == paste0(variable,"_NA"))
+  }
+
+  if (!missing(vars_of_interest)) {
+
+    gathered_df <- gathered_df %>%
+      dplyr::filter(variable %in% vars_of_interest)
+  }
+
+
+    return(gathered_df)
+
+
+}

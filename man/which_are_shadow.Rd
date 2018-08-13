@@ -9,6 +9,16 @@ which_are_shadow(.tbl)
 \arguments{
 \item{.tbl}{a data.frame or tbl}
 }
+\value{
+numeric - which column numbers contain shadow information
+}
 \description{
 This function tells us which variables contain shadow information
+}
+\examples{
+
+df_shadow <- bind_shadow(airquality)
+
+which_are_shadow(df_shadow)
+
 }

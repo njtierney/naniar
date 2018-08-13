@@ -52,7 +52,7 @@ shade <- function(x, ...){
   # add exception for when there is no matches anywhere
   # so skip this if there are no matches
   if (!all_na(match_pos)) {
-    x[match_pos] <- custom_na_names[match_pos[!is.na(match_pos)]]
+    x[!is.na(match_pos)] <- custom_na_names[match_pos[!is.na(match_pos)]]
   }
 
   # add labels to those values that are missing

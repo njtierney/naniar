@@ -217,10 +217,14 @@ recode_shadow <- function(data, ...){
     update_shadow(suffix) %>%
     # this is where the error lies
     dplyr::mutate(
-      !!shadow_var := dplyr::case_when(
+      !!shadow_var := structure(
+        dplyr::case_when(
         !!condition ~ factor(na_suffix,
                              levels = levels(.[[shadow_var]])),
-        TRUE ~ !!shadow_var
+        TRUE ~ !!factor(shadow_var,
+                        levels = levels(.[[shadow_var]]))
+        ),
+        class = c("shade", "factor")
         # TRUE ~ as_shade(!!shadow_var)
       ))
 

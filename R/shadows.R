@@ -254,3 +254,25 @@ is_shadow <- function(x){
 #'
 #' @export
 are_shadow <- function(x) grepl("_NA",names(x))
+
+
+#' Which variables are shadows?
+#'
+#' This function tells us which variables contain shadow information
+#'
+#' @param .tbl a data.frame or tbl
+#'
+#' @return numeric - which column numbers contain shadow information
+#'
+#' @examples
+#'
+#' df_shadow <- bind_shadow(airquality)
+#'
+#' which_are_shadow(df_shadow)
+#'
+#' @export
+which_are_shadow <- function(.tbl){
+  test_if_null(.tbl)
+  test_if_dataframe(.tbl)
+  which(are_shadow(.tbl))
+}

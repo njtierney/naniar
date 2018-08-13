@@ -1,6 +1,12 @@
+# naniar 0.3.3.9400 (2018/08/13)
+
+## Minor feature
+
+* new function `which_are_shadow()`, to tell you which values are shadows.
+
 # naniar 0.3.3.9300 (2018/08/12)
 
-## Minor Change
+## Minor Breaking Change
 
 * `impute_below` has changed to be an alias of `shadow_shift` - that is it operates on a single vector. `impute_below_all` operates on all columns in a dataframe (as specified in [#159](https://github.com/njtierney/naniar/issues/159))
 

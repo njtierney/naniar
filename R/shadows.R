@@ -117,7 +117,7 @@ as_shadow_upset <- function(data){
 #'        facet_wrap(~Solar.R_NA,
 #'        ncol = 1)
 #'
-bind_shadow <- function(data, only_miss = FALSE){
+bind_shadow <- function(data, only_miss = FALSE, ...){
 
   # If you want only the missing values to be added
   if (only_miss) {
@@ -129,9 +129,9 @@ bind_shadow <- function(data, only_miss = FALSE){
 
     shadow_data <- tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
 
-    class(shadow_data) <- c("shadow", class(shadow_data))
+    # class(shadow_data) <- c("shadow", class(shadow_data))
 
-    return(shadow_data)
+    return(new_shadow(shadow_data))
 
   # if you want All the values to be added (the default behaviour)
   }
@@ -144,13 +144,28 @@ bind_shadow <- function(data, only_miss = FALSE){
 
     shadow_data <- tibble::as_tibble(bound_shadow)
 
-    class(shadow_data) <- c("shadow", class(shadow_data))
+    if (!missing(...)) {
+      shadow_data <- shadow_data %>% recode_shadow(...)
+    }
 
-    return(shadow_data)
+    # class(shadow_data) <- c("shadow", class(shadow_data))
+
+    return(new_shadow(shadow_data))
 
   }
 
 }
+
+#' Create a new shadow
+#'
+#' @param x a data.frame
+#'
+#' @return object with class "shadow", inhereting from it's original class
+#' @export
+new_shadow <- function(x){
+    structure(x,
+              class = c("shadow", class(x)))
+  }
 
 #' Unbind (remove) shadow from data, and vice versa
 #'

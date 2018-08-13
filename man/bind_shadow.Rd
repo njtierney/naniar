@@ -4,7 +4,7 @@
 \alias{bind_shadow}
 \title{Bind a shadow dataframe to original data}
 \usage{
-bind_shadow(data, only_miss = FALSE)
+bind_shadow(data, only_miss = FALSE, ...)
 }
 \arguments{
 \item{data}{a dataframe}

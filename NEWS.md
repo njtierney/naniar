@@ -1,3 +1,9 @@
+# naniar 0.3.4.9600 (2018/08/15)
+
+## Minor feature
+
+* Functions `add_label_shadow()` and `add_label_missings()` gain arguments so you can only label according to the missingness / shadowy-ness of given variables.
+
 # naniar 0.3.3.9500 (2018/08/13)
 
 ## Minor feature

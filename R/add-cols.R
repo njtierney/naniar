@@ -151,6 +151,8 @@ add_any_miss <- function(data, ..., label = "any_miss"){
 
   }
 
+  if (!missing(...)) {
+
   quo_vars <- rlang::quos(...)
 
   stub_data <- dplyr::select(data, !!!quo_vars)
@@ -169,6 +171,8 @@ add_any_miss <- function(data, ..., label = "any_miss"){
   dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
   )
 
+  }
+
 }
 
 #' Is there a missing value in the row of a dataframe?
@@ -178,6 +182,7 @@ add_any_miss <- function(data, ..., label = "any_miss"){
 #' @param data a dataframe or set of vectors of the same length
 #'
 #' @return character vector of "Missing" and "Not Missing".
+#' @param ... extra variable to label
 #'
 #' @export
 #'
@@ -191,7 +196,7 @@ add_any_miss <- function(data, ..., label = "any_miss"){
 #'
 #' airquality %>% mutate(is_missing = label_missings(airquality))
 #'
-label_missings <- function(data){
+label_missings <- function(data, ...){
 
   test_if_null(data)
   # find which are missing and which are not.
@@ -200,17 +205,27 @@ label_missings <- function(data){
     apply(data.frame(x), MARGIN = 1, FUN = function(x) anyNA(x))
   }
 
+  if (!missing(...)) {
+    quo_vars <- rlang::quos(...)
+
+    data <- dplyr::select(data, !!!quo_vars)
+  }
+
   temp <- any_row_na(data)
 
   dplyr::if_else(condition = temp == TRUE, # TRUE means missing
                  true = "Missing",
                  false = "Not Missing")
 
+
+
+
 }
 
 #' Add a column describing if there are any missings in the dataset
 #'
 #' @param data data.frame
+#' @param ... extra variable to label
 #'
 #' @return data.frame with a column "any_missing" that is either "Not Missing"
 #'   or "Missing" for the purposes of plotting / exploration / nice print methods
@@ -221,12 +236,28 @@ label_missings <- function(data){
 #' @examples
 #'
 #' airquality %>% add_label_missings()
+#' airquality %>% add_label_missings(Ozone)
+#' airquality %>% add_label_missings(Ozone, Solar.R)
 #'
-add_label_missings <- function(data){
+add_label_missings <- function(data, ...){
 
-  data %>%
-    dplyr::mutate(any_missing = label_missings(.)) %>%
-    dplyr::as_tibble()
+  # data %>%
+  #   dplyr::mutate(any_missing = label_missings(.)) %>%
+  #   dplyr::as_tibble()
+
+  if (missing(...)) {
+    updated_data <- data %>%
+      dplyr::mutate(any_missing = label_missings(.))
+  }
+
+  if (!missing(...)) {
+    quo_vars <- rlang::quos(...)
+    updated_data <- data %>%
+      dplyr::mutate(any_missing = label_missings(., !!!quo_vars))
+  }
+
+
+  return(tibble::as_tibble(updated_data))
 
 }
 
@@ -235,10 +266,11 @@ add_label_missings <- function(data){
 #' Powers `add_label_shadow`. For the moment it is an internal function.
 #'
 #' @param data data.frame
+#' @param ... extra variable to label
 #'
 #' @return "Missing" or "Not Missing"
 #'
-label_shadow <- function(data){
+label_shadow <- function(data, ...){
 
 # It is called "shade" because if you are in a shadow, you are in the shade.
 # this may be helpful if shadows are their own class / have special factor
@@ -248,6 +280,14 @@ label_shadow <- function(data){
 
   any_row_shade <- function(x){
     apply(data.frame(x), MARGIN = 1, FUN = function(x) any_shade(x))
+  }
+
+  if (!missing(...)) {
+    quo_vars <- rlang::quos(...)
+
+    shadow_vars <- quo_to_shade(!!!quo_vars)
+
+    data <- dplyr::select(data, !!!quo_vars, !!!shadow_vars)
   }
 
   temp <- any_row_shade(data)
@@ -265,6 +305,7 @@ label_shadow <- function(data){
 #'   missing values when the shadow was bound to the dataset.
 #'
 #' @param data data.frame
+#' @param ... extra variable to label
 #'
 #' @return data.frame with a column, "any_missing", which describes whether or
 #'   not there are any rows that have a shadow value.
@@ -279,11 +320,21 @@ label_shadow <- function(data){
 #'   add_shadow(Ozone, Solar.R) %>%
 #'   add_label_shadow()
 #'
-add_label_shadow <- function(data){
+add_label_shadow <- function(data, ...){
 
-  data %>%
+  if (missing(...)) {
+    updated_data <- data %>%
     dplyr::mutate(any_missing = label_shadow(.))
+  }
 
+  if (!missing(...)) {
+    quo_vars <- rlang::quos(...)
+    updated_data <- data %>%
+      dplyr::mutate(any_missing = label_shadow(., !!!quo_vars))
+  }
+
+
+  return(updated_data)
 }
 
 

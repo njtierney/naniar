@@ -179,3 +179,15 @@ bare_to_chr <- function(...){
   exprs_text(ps)
 
 }
+
+quo_to_shade <- function(...){
+
+  quo_vars <- rlang::quos(...)
+
+  shadow_chr <- bare_to_chr(!!!quo_vars) %>% paste0("_NA")
+
+  shadow_vars <- rlang::syms(shadow_chr)
+
+  return(shadow_vars)
+
+}

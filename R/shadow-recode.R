@@ -151,8 +151,8 @@ update_shadow <- function(data, suffix) {
 .where <- function(...){
   formulas <- rlang::dots_list(...)
 
-  fun_lhs <- map(formulas, f_lhs)
-  fun_rhs <- map(formulas, f_rhs)
+  fun_lhs <- purrr::map(formulas, f_lhs)
+  fun_rhs <- purrr::map(formulas, f_rhs)
 
   list(condition = fun_lhs,
        suffix = fun_rhs)
@@ -186,8 +186,7 @@ update_shadow <- function(data, suffix) {
 #'
 #' dfs
 #'
-#' recode_shadow(dfs,
-#'               temp = .where(wind == -99 ~ "bananas"))
+#' recode_shadow(dfs, temp = .where(wind == -99 ~ "bananas"))
 #'
 #' # need to debug this
 #'
@@ -202,30 +201,47 @@ recode_shadow <- function(data, ...){
 
   formulas <- rlang::dots_list(...)
 
-  formulas_pluck <- purrr::pluck(formulas, 1)
+  condition <- formulas %>% purrr::map("condition")
 
-  condition <- purrr::pluck(formulas_pluck, "condition")
+  suffix <- formulas %>% purrr::map("suffix")
 
-  suffix <- purrr::pluck(formulas_pluck, "suffix")
+  na_suffix <- purrr::map(suffix, ~ glue::glue("NA_{.x}"))
 
-  na_suffix <- glue::glue("NA_{suffix}")
+  shadow_var <- rlang::syms(glue::glue("{names(quo_var)}_NA"))
 
-  shadow_var <- rlang::sym(glue::glue("{names(quo_var)}_NA"))
+  magic_shade_exprs <- pmap(list(condition, na_suffix, shadow_var),
+       function(condition, na_suffix, shadow_var){
+         map2(condition, na_suffix,
+              function(condition, na_suffix){
+                 expr(
+                   !!condition ~ factor(!!na_suffix,
+                                        levels = levels(.[[!!expr_text(shadow_var)]]))
+                 )
+              }
+         )
+       })
+
+  magic_shade_case_when <- magic_shade_exprs %>%
+    map2(shadow_var, function(cases, shadow_var){
+      expr(
+        structure(
+          dplyr::case_when(
+            !!!cases,
+            TRUE ~ factor(!!shadow_var,
+                          levels = levels(.[[!!expr_text(shadow_var)]]))
+          ),
+          class = c("shade", "factor")
+        )
+      )
+    }) %>%
+    set_names(shadow_var %>% map_chr(expr_text))
 
   shadow_recoded <- data %>%
-    update_shadow(suffix) %>%
+    update_shadow(unlist(suffix, use.names = FALSE)) %>%
     # this is where the error lies
     dplyr::mutate(
-      !!shadow_var := structure(
-        dplyr::case_when(
-        !!condition ~ factor(na_suffix,
-                             levels = levels(.[[shadow_var]])),
-        TRUE ~ factor(!!shadow_var,
-                      levels = levels(.[[shadow_var]]))
-        ),
-        class = c("shade", "factor")
-        # TRUE ~ as_shade(!!shadow_var)
-      ))
+      !!!magic_shade_case_when
+      )
 
   shadow_recoded
 }

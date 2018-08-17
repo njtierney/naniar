@@ -151,12 +151,11 @@ update_shadow <- function(data, suffix) {
 .where <- function(...){
   formulas <- rlang::dots_list(...)
 
-  fun_rhs <- rlang::f_rhs(formulas[[1]])
-  fun_lhs <- rlang::f_lhs(formulas[[1]])
+  fun_lhs <- map(formulas, f_lhs)
+  fun_rhs <- map(formulas, f_rhs)
 
   list(condition = fun_lhs,
        suffix = fun_rhs)
-
 }
 
 #' Add special missing values to the shadow matrix

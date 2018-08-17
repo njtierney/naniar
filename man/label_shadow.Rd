@@ -4,10 +4,12 @@
 \alias{label_shadow}
 \title{Label shadow values as missing or not missing}
 \usage{
-label_shadow(data)
+label_shadow(data, ...)
 }
 \arguments{
 \item{data}{data.frame}
+
+\item{...}{extra variable to label}
 }
 \value{
 "Missing" or "Not Missing"

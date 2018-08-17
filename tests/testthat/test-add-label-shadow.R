@@ -14,3 +14,23 @@ test_that("add_label_shadow adds a column with suffix 'any_missing'",{
   expect_equal(names(add_label_shadow(aq_shadow)),
                c(names(aq_shadow), "any_missing"))
 })
+
+# add some tests for this condition, where ... is added to label shadow
+# aq_shade <- bind_shadow(airquality)
+#
+# # debug(label_shadow)
+#
+# add_label_shadow(aq_shade,
+#                  Ozone) %>%
+#   dplyr::select(Ozone,
+#                 Solar.R,
+#                 Ozone_NA,
+#                 Solar.R_NA,
+#                 any_missing)
+#
+# add_label_shadow(aq_shade) %>%
+#   dplyr::select(Ozone,
+#                 Solar.R,
+#                 Ozone_NA,
+#                 Solar.R_NA,
+#                 any_missing)

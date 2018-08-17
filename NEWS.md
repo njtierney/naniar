@@ -1,10 +1,29 @@
-# naniar 0.3.4.9000 (2018/06/14)  (special-missing branch)
+# naniar 0.3.9.9000 (2018/06/14)  (special-missing branch)
 
 ## Major change
 
 - `as_shadow`  and `bind_shadow` now return data of class `shadow`. This will 
 feed into `recode_shadow` methods for flexibly adding new types of missing data.
 - Note that in the future `shadow` might be changed to `nabble` or something similar.
+
+# naniar 0.3.4.9600 (2018/08/15)
+
+## Minor feature
+
+* Functions `add_label_shadow()` and `add_label_missings()` gain arguments so you can only label according to the missingness / shadowy-ness of given variables.
+
+# naniar 0.3.3.9500 (2018/08/13)
+
+## Minor feature
+
+* new function `which_are_shadow()`, to tell you which values are shadows.
+* new function `long_shadow()`, which converts data in shadow/nabular form into a long format suitable for plotting. Related to [#165](https://github.com/njtierney/naniar/issues/165)
+
+# naniar 0.3.3.9300 (2018/08/12)
+
+## Minor Breaking Change
+
+* `impute_below` has changed to be an alias of `shadow_shift` - that is it operates on a single vector. `impute_below_all` operates on all columns in a dataframe (as specified in [#159](https://github.com/njtierney/naniar/issues/159))
 
 # naniar 0.3.3.9200 (2018/08/01)
 

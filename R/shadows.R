@@ -285,3 +285,102 @@ gather_shadow <- function(data){
 #   purrr::map(x, class) %>%
 #     tibble::as_tibble() %>%
 # }
+
+#' Are these things shadows?
+#'
+#' Does this thing contain a shadow variable?
+#'
+#' @param x vector or data.frame
+#'
+#' @return logical vector - TRUE if contains a variable with a column ending in "_NA"
+#' @export
+#'
+#' @examples
+#'
+#' df_shadow <- bind_shadow(airquality)
+#'
+#' are_shadow(df_shadow)
+#'
+#' @export
+are_shadow <- function(x) grepl("_NA",names(x))
+
+
+#' Which variables are shadows?
+#'
+#' This function tells us which variables contain shadow information
+#'
+#' @param .tbl a data.frame or tbl
+#'
+#' @return numeric - which column numbers contain shadow information
+#'
+#' @examples
+#'
+#' df_shadow <- bind_shadow(airquality)
+#'
+#' which_are_shadow(df_shadow)
+#'
+#' @export
+which_are_shadow <- function(.tbl){
+  test_if_null(.tbl)
+  test_if_dataframe(.tbl)
+  which(are_shadow(.tbl))
+}
+
+
+#' Reshape shadow data into a long format
+#'
+#' Once data is in `nabular` form, where the shadow is bound to the data, it
+#'     can be useful to reshape it into a long format with the columns
+#'
+#' @param shadow_data a data.frame
+#' @param ... bare name of variables that you want to focus on
+#' @param only_main_vars logical - do you want to filter down to main variables?
+#'
+#' @return data in long format, with columns `variable`, `value`, `variable_NA`, and `value_NA`.
+#' @export
+#'
+#' @examples
+#'
+#' aq_shadow <- bind_shadow(airquality)
+#'
+#' shadow_long(aq_shadow)
+#'
+#' # then filter only on Ozone
+#' shadow_long(aq_shadow, Ozone)
+#'
+#' shadow_long(aq_shadow, Ozone, Solar.R)
+#'
+#'
+shadow_long <- function(shadow_data,
+                        ...,
+                        only_main_vars = TRUE){
+
+  test_if_null(shadow_data)
+  test_if_dataframe(shadow_data)
+
+  gathered_df <- shadow_data %>%
+    tidyr::gather(key = "variable",
+                  value = "value",
+                  -which_are_shadow(.)) %>%
+    tidyr::gather(key = "variable_NA",
+                  value = "value_NA",
+                  which_are_shadow(.))
+
+  if (only_main_vars) {
+    gathered_df <- dplyr::filter(gathered_df,
+                                 variable_NA == paste0(variable,"_NA"))
+  }
+
+  if (!missing(...)) {
+
+    vars <- bare_to_chr(...)
+
+    gathered_df <- gathered_df %>%
+      dplyr::filter(variable %in% vars)
+  }
+
+
+    return(gathered_df)
+
+
+}

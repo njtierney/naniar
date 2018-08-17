@@ -4,7 +4,7 @@
 \alias{shade}
 \title{Create new levels of missing}
 \usage{
-shade(x, ..., levels)
+shade(x, ..., extra_levels = NULL)
 }
 \arguments{
 \item{x}{a vector}

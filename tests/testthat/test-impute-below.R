@@ -103,3 +103,12 @@ test_that("impute_below_all jitter makes shifts bigger",{
 
   )
 })
+
+aq_s <- bind_shadow(airquality)
+
+test_that("impute_below works with bind_shadow", {
+  expect_is(impute_below(aq_s$Ozone), "numeric")
+  expect_is(impute_below_all(aq_s), "data.frame")
+  expect_is(impute_below_at(aq_s, dplyr::vars(Ozone, Solar.R)), "data.frame")
+  expect_is(impute_below_if(aq_s, is.numeric), "data.frame")
+})

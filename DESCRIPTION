@@ -64,7 +64,6 @@ Imports:
     viridis,
     glue,
     UpSetR
-RoxygenNote: 6.1.0
 Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
@@ -116,4 +115,6 @@ Collate:
     'where-na.R'
 URL: https://github.com/njtierney/naniar
 BugReports: https://github.com/njtierney/naniar/issues
+Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.0

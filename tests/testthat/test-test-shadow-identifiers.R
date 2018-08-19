@@ -20,10 +20,10 @@ test_that("is_shadow returns FALSE for regular data", {
 dfs_are <- are_shadow(dfs)
 
 test_that("are_shadow returns the correct values",{
-  expect_false(dfs_are[["wind"]])
-  expect_false(dfs_are[["temperature"]])
-  expect_true(dfs_are[["wind_NA"]])
-  expect_true(dfs_are[["temperature_NA"]])
+  expect_false(dfs_are[1])
+  expect_false(dfs_are[2])
+  expect_true(dfs_are[3])
+  expect_true(dfs_are[3])
 })
 
 test_that("any_shadow returns the correct values",{

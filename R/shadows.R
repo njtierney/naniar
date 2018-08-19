@@ -94,6 +94,7 @@ as_shadow_upset <- function(data){
 #'     all of the variables duplicated with their shadow. Setting this to TRUE
 #'     will bind variables only those variables that contain missing values.
 #'     See the examples for more details.
+#' @param ... extra options to pass to [recode_shadow()] - a work in progress.
 #'
 #' @return data with the added variable shifted and the suffix `_NA`
 #' @export
@@ -286,23 +287,23 @@ gather_shadow <- function(data){
 #     tibble::as_tibble() %>%
 # }
 
-#' Are these things shadows?
-#'
-#' Does this thing contain a shadow variable?
-#'
-#' @param x vector or data.frame
-#'
-#' @return logical vector - TRUE if contains a variable with a column ending in "_NA"
-#' @export
-#'
-#' @examples
-#'
-#' df_shadow <- bind_shadow(airquality)
-#'
-#' are_shadow(df_shadow)
-#'
-#' @export
-are_shadow <- function(x) grepl("_NA",names(x))
+# Are these things shadows?
+#
+# Does this thing contain a shadow variable?
+#
+# @param x vector or data.frame
+#
+# @return logical vector - TRUE if contains a variable with a column ending in "_NA"
+# @export
+#
+# @examples
+#
+# df_shadow <- bind_shadow(airquality)
+#
+# are_shadow(df_shadow)
+#
+#@export
+# are_shadow <- function(x) grepl("_NA",names(x))
 
 
 #' Which variables are shadows?

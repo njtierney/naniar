@@ -10,6 +10,8 @@ shade(x, ..., extra_levels = NULL)
 \item{x}{a vector}
 
 \item{...}{additional levels of missing to add}
+
+\item{extra_levels}{is a}
 }
 \description{
 Create new levels of missing

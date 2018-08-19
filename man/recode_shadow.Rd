@@ -36,8 +36,7 @@ dfs <- bind_shadow(df)
 
 dfs
 
-recode_shadow(dfs,
-              temp = .where(wind == -99 ~ "bananas"))
+recode_shadow(dfs, temp = .where(wind == -99 ~ "bananas"))
 
 # need to debug this
 

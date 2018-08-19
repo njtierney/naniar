@@ -1,5 +1,11 @@
 # use new_shade
-#' @export
+
+#' Create a new shade factor
+#'
+#' @param x a factor to convert into a `shade` object
+#' @param extra_levels the extra levels to give to `shade` objects, such as "broken_machine" and so on, which get converted into "NA_broken_machine".
+#'
+#' @return a new shade, which is built upon a factor
 new_shade <- function(x, extra_levels = NULL){
 
   if (!is.factor(x)) {
@@ -15,8 +21,8 @@ new_shade <- function(x, extra_levels = NULL){
 #' Create new levels of missing
 #'
 #' @param x a vector
-#'
 #' @param ... additional levels of missing to add
+#' @param extra_levels is a
 #'
 #' @examples
 #' df <- tibble::tribble(

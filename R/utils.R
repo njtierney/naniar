@@ -147,7 +147,7 @@ test_if_any_shade <- function(x){
   # test for dataframe
   test_if_dataframe(x)
   if (!any_shade(x)) {
-    stop("Input must contain shade column. See ?as_shade, ?is_shade or ?bind_shadow",
+    stop("Input must contain shade column. See ?shade, ?shade and ?bind_shadow",
          call. = FALSE)
     }
 }

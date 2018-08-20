@@ -1,21 +1,3 @@
-# recode_shadow(.data,
-#               x = .where(x == -99 ~ "too_loud"),
-#               y = .where(x == -99 ~ "not_loud"))
-
-# I see three steps to this process, kindly lifted from here:
-# https://stackoverflow.com/questions/49214287/replace-nas-in-a-dataframe-with-factor-variables-with-r/49214861#49214861
-
-# add the shadow level to all variables
-  # new_level <- paste0("NA_", suffix)
-  # levels(col) <- c(levels(col), new_level)
-# change the order of the factors.
-  # col <- relevel(col, ref = new_level)
-# add the new level where appropriate
-  # match_na_where(col) <- "new_level"
-  # or some sort of tidy_eval thing.
-
-# so, just to be clear, "update_shadow" will be run every time a new thing is added, and it will handle things so that the appropriate expansion and releveling is performed correctly
-
 #' Expand and relevel a shadow column with a new suffix
 #'
 #' Internal function to handle appropriate expansion and releveling of
@@ -120,12 +102,13 @@ update_shadow <- function(data, suffix) {
 
 }
 
-#' split a call into two components with a useful verb name
+#' Split a call into two components with a useful verb name
 #'
 #' This function is used inside `recode_shadow` to help evaluate the formula
-#'   call effectively. `.where` is a little special - you shouldn't use it outside the function `recode_shadow`.
+#'   call effectively. `.where` is a special function designed for use in
+#'   `recode_shadow`, and you shouldn't use it outside of it
 #'
-#' @param ... case_when formula
+#' @param ... case_when style formula
 #'
 #' @return a list of "condition" and "suffix" arguments
 #' @name where
@@ -197,6 +180,9 @@ update_shadow <- function(data, suffix) {
 #'
 recode_shadow <- function(data, ...){
 
+  test_if_null(data)
+  test_if_any_shade(data)
+
   quo_var <- rlang::quos(...)
 
   formulas <- rlang::dots_list(...)
@@ -257,4 +243,3 @@ recode_shadow <- function(data, ...){
 
   shadow_recoded
 }
-

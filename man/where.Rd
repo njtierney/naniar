@@ -3,19 +3,20 @@
 \name{where}
 \alias{where}
 \alias{.where}
-\title{split a call into two components with a useful verb name}
+\title{Split a call into two components with a useful verb name}
 \usage{
 .where(...)
 }
 \arguments{
-\item{...}{case_when formula}
+\item{...}{case_when style formula}
 }
 \value{
 a list of "condition" and "suffix" arguments
 }
 \description{
 This function is used inside \code{recode_shadow} to help evaluate the formula
-call effectively. \code{.where} is a little special - you shouldn't use it outside the function \code{recode_shadow}.
+call effectively. \code{.where} is a special function designed for use in
+\code{recode_shadow}, and you shouldn't use it outside of it
 }
 \examples{
 

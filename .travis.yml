@@ -1,12 +1,28 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: R
+language: r
+os:
+  - linux
+  - osx
+r:
+  - oldrel
+  - release
+  - devel
 sudo: false
+dist: trusty
 cache: packages
+warnings_are_errors: true
 
-# packages needed in the builds
-# r_github_packages:
-#  - njtierney/visdat
+r_packages:
+  - knitr
+  - rmarkdown
+  - devtools
+  - testthat
+  - covr
+
+email:
+  on_success: change
+  on_failure: change
 
 env:
   global:

@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.3.9.9000
+Version: 0.3.9.9100
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -19,6 +19,8 @@ Authors@R: c(
          role = "aut", 
          email = "contact@colinfay.me",
          comment = c(ORCID = "https://orcid.org/0000-0001-7343-1846")),
+  person("Mitchell", "O'Hara-Wild",
+         role = "ctb"),
   person("Jim", "Hester", 
          role = "ctb", 
          email = "james.f.hester@gmail.com"),

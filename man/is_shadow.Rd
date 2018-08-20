@@ -2,12 +2,9 @@
 % Please edit documentation in R/shadow-verifiers.R
 \name{is_shadow}
 \alias{is_shadow}
-\alias{are_shadow}
 \title{Test if input is or are shadow variables}
 \usage{
 is_shadow(x)
-
-are_shadow(x)
 }
 \arguments{
 \item{x}{a vector or data.frame}
@@ -18,8 +15,7 @@ logical vector of length 1
 \description{
 Shadow matrix or "nabular" data is a useful way to store missing data to
 facilitate missing data visualisation. This data can be created using
-\code{bind_shadow}. \code{is_shadow} tells us if there are any shadow variables,
-\code{are_shadow} tells us which ones are shadow variables.
+\code{bind_shadow}. \code{is_shadow} tells us if there are any shadow variables.
 }
 \examples{
 
@@ -27,8 +23,7 @@ aq_sh <- as_shadow(airquality)
 aq_bind <- bind_shadow(airquality)
 
 is_shadow(aq_sh)
-are_shadow(aq_sh)
+is_shadow(airquality)
 is_shadow(aq_bind)
-are_shadow(aq_bind)
 
 }

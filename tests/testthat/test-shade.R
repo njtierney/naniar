@@ -1,5 +1,14 @@
 context("test-shade.R")
 
+test_that("shade errors with NULLs",{
+  expect_error(shade(NULL))
+})
+
+test_that("shade errors with objects of length o",{
+  expect_error(shade(numeric(0)))
+})
+
+
 test_that("shade returns an object of class shade", {
   expect_is(shade(c(1,2, NA)), "shade")
   expect_is(shade(c(1,2, NA),

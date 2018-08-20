@@ -9,7 +9,7 @@
 new_shade <- function(x, extra_levels = NULL){
 
   if (!is.factor(x)) {
-    rlang::abort(message = "input to shade must be a factor")
+    rlang::abort(msg = "input to shade must be a factor")
   }
 
   levels(x) <- union(levels(x), glue::glue("NA_{extra_levels}"))
@@ -55,6 +55,11 @@ any_shade <- function(x){
 
 #' Create new levels of missing
 #'
+#' Returns (at least) factors of !NA and NA, where !NA indicates a datum that is
+#'   not missing, and NA indicates missingness. It also allows you to specify
+#'   some new missings, if you like. This function is what powers the factor
+#'   levels in `as_shadow()`.
+#'
 #' @param x a vector
 #' @param ... additional levels of missing to add
 #' @param extra_levels is a
@@ -77,6 +82,13 @@ any_shade <- function(x){
 #'
 #' @export
 shade <- function(x, ..., extra_levels = NULL){
+
+  test_if_null(x)
+
+  if (length(x) == 0) {
+    rlang::abort(msg = "input to shade must have length > 0")
+  }
+
   # if no other levels are specified
   if (missing(...)) {
     x <- factor(is.na(x),

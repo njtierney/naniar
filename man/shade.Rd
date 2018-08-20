@@ -14,7 +14,10 @@ shade(x, ..., extra_levels = NULL)
 \item{extra_levels}{is a}
 }
 \description{
-Create new levels of missing
+Returns (at least) factors of !NA and NA, where !NA indicates a datum that is
+not missing, and NA indicates missingness. It also allows you to specify
+some new missings, if you like. This function is what powers the factor
+levels in \code{as_shadow()}.
 }
 \examples{
 df <- tibble::tribble(

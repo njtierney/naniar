@@ -19,9 +19,6 @@ a dataframe with altered shadows
 It can be useful to add special missing values, naniar supports this with
 the \code{recode_shadow} function.
 }
-\note{
-This only works for one special missing at a time at the moment.
-}
 \examples{
 
 \dontrun{

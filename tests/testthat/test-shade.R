@@ -4,7 +4,7 @@ test_that("shade errors with NULLs",{
   expect_error(shade(NULL))
 })
 
-test_that("shade errors with objects of length o",{
+test_that("shade errors with objects of length 0",{
   expect_error(shade(numeric(0)))
 })
 

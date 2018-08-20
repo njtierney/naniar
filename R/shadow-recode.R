@@ -146,8 +146,6 @@ update_shadow <- function(data, suffix) {
 #' It can be useful to add special missing values, naniar supports this with
 #'   the `recode_shadow` function.
 #'
-#' @note This only works for one special missing at a time at the moment.
-#'
 #' @param data data.frame
 #' @param ... A sequence of two-sided formulas as in dplyr::case_when,
 #'   but when a wrapper function `.where` written around it.
@@ -195,6 +193,7 @@ recode_shadow <- function(data, ...){
 
   shadow_var <- rlang::syms(glue::glue("{names(quo_var)}_NA"))
 
+  # build up the expressions to pass to case_when
   magic_shade_exprs <- purrr::pmap(
     .l = list(condition,
               na_suffix,
@@ -215,6 +214,8 @@ recode_shadow <- function(data, ...){
          )
        })
 
+  # evaluate the cases in case_when and ensure that the case_when
+  # keeps everything as a shade/factor
   magic_shade_case_when <- magic_shade_exprs %>%
     purrr::map2(
       shadow_var,
@@ -234,12 +235,8 @@ recode_shadow <- function(data, ...){
     rlang::set_names(purrr::map_chr(shadow_var, expr_text))
 
   shadow_recoded <- data %>%
-    update_shadow(unlist(suffix,
-                         use.names = FALSE)) %>%
-    # this is where the error lies
-    dplyr::mutate(
-      !!!magic_shade_case_when
-      )
+    update_shadow(unlist(suffix, use.names = FALSE)) %>%
+    dplyr::mutate(!!!magic_shade_case_when)
 
   shadow_recoded
 }

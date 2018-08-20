@@ -1,18 +1,25 @@
 context("as_shadow")
 
+test_that("as_shadow returns shadow", {
+  expect_is(as_shadow(airquality), "shadow")
+})
+
 test_that("as_shadow returns a data.frame",{
-  expect_s3_class(as_shadow(airquality),
-            "data.frame")
+  expect_is(as_shadow(airquality), "data.frame")
 })
 
 test_that("as_shadow returns a tibble",{
-  expect_equal(class(as_shadow(airquality)),
-            c("shadow", "tbl_df", "tbl", "data.frame"))
+  expect_is(as_shadow(airquality), "tbl")
 })
 
-test_df <- as_shadow(data.frame(x = c(1,2),
+test_that("as_shadow returns correct ordering of classes",{
+  expect_equal(class(as_shadow(airquality)),
+               c("shadow", "tbl_df", "tbl", "data.frame"))
+})
+
+test_df <- data.frame(x = c(1,2),
                       y = c(NA,NA),
-                      z = c(1, NA)))
+                      z = c(1, NA)) %>% as_shadow()
 
 test_that("as_shadow returns correct values",{
   expect_equal(as.character(test_df$x_NA), c("!NA", "!NA"))
@@ -26,10 +33,10 @@ test_that("as_shadow returns factors",{
   expect_is(test_df$z_NA, "factor")
 })
 
-test_that("as_shadow returns shadow",{
-  expect_is(test_df$x_NA, "shadow")
-  expect_is(test_df$y_NA, "shadow")
-  expect_is(test_df$z_NA, "shadow")
+test_that("as_shadow returns shade",{
+  expect_is(test_df$x_NA, "shade")
+  expect_is(test_df$y_NA, "shade")
+  expect_is(test_df$z_NA, "shade")
 })
 
 test_that("as_shadow returns correct levels",{
@@ -57,7 +64,7 @@ first_classes <- map(classes, pluck, 1)
 second_classes <- map(classes, pluck, 2)
 
 test_that("as_shadow returns shadow first",{
-  expect_equal(sum(first_classes == "shadow"),
+  expect_equal(sum(first_classes == "shade"),
                ncol(airquality))
 })
 

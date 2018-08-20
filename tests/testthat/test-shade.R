@@ -8,13 +8,13 @@ test_that("shade returns an object of class shade", {
 
 test_that("shade returns right levels when no extra levels provided", {
   expect_equal(levels(shade(c(1,2, NA))),
-               c("NA", "!NA"))
+               c("!NA", "NA"))
 })
 
 test_that("shade returns the correct levels when extra levels provided",{
   expect_equal(levels(shade(c(1,2, NA),
                             broken_machine = 2)),
-               c("NA", "!NA", "NA_broken_machine"))
+               c("!NA", "NA", "NA_broken_machine"))
 })
 
 sh_1 <- shade(c(3, 1, 2, NA), broken = 3)

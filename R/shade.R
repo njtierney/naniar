@@ -18,6 +18,41 @@ new_shade <- function(x, extra_levels = NULL){
 }
 
 
+#' Detect if this is a shade
+#'
+#' This tells us if this column is a shade
+#'
+#' @param x a vector you want to test if is a shade
+#'
+#' @return logical - is this a shade?
+#' @export
+#' @name is_shade
+#'
+#' @examples
+#'
+#' xs <- shade(c(NA, 1, 2, "3"))
+#'
+#' is_shade(xs)
+#'
+is_shade <- function(x){
+  inherits(x, "shade")
+}
+
+#' @export
+#' @rdname is_shade
+are_shade <- function(x){
+  purrr::map(x, class) %>%
+    purrr::map_lgl(~any(grepl("shade",.)))
+}
+
+any_shade <- function(x){
+  # any(grepl("_NA$",colnames(x)))
+  any(are_shade(x))
+}
+
+
+
+
 #' Create new levels of missing
 #'
 #' @param x a vector
@@ -45,8 +80,8 @@ shade <- function(x, ..., extra_levels = NULL){
   # if no other levels are specified
   if (missing(...)) {
     x <- factor(is.na(x),
-                labels = c("NA", "!NA"),
-                levels = c(TRUE, FALSE))
+                labels = c("!NA", "NA"),
+                levels = c(FALSE, TRUE))
 
     return(new_shade(x, extra_levels))
   }
@@ -79,7 +114,7 @@ shade <- function(x, ..., extra_levels = NULL){
 
 
   x <- factor(x,
-              levels = c("NA", "!NA", custom_na_names))
+              levels = c("!NA", "NA", custom_na_names))
   }
 
   # and return a new shade value

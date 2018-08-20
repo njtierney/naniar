@@ -104,7 +104,7 @@ update_shadow <- function(data, suffix) {
 
   updated_shadow <-
   dplyr::mutate_if(.tbl = data,
-                   .predicate = is_shadow,
+                   .predicate = is_shade,
                    .funs = shadow_expand_relevel,
                    suffix = suffix)
 
@@ -192,7 +192,7 @@ update_shadow <- function(data, suffix) {
 #'
 #' recode_shadow(dfs,
 #'               temp = .where(wind == -99 ~ "bananas")) %>%
-#' recode_shadow(wind = .where(wind == -99 ~ "my_shhh_is"))
+#' recode_shadow(wind = .where(wind == -99 ~ "apples"))
 #' }
 #'
 recode_shadow <- function(data, ...){

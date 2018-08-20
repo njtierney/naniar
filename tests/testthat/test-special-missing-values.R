@@ -1,4 +1,4 @@
-context("special missing values")
+context("special-missings-single-recode")
 
 df <- tibble::tribble(
   ~wind, ~temp,
@@ -26,27 +26,97 @@ test_that("special missings are put in the right place", {
               c("NA_bananas", "NA", "!NA"))
 })
 
-context("recode_shadow works for multiple variables")
+context("special-missings-many-recode")
 
-# airquality %>%
-#   bind_shadow() %>%
-#   recode_shadow(Ozone = .where(Wind <= 5 ~ "broken_machine")) %>%
-#   recode_shadow(Temp = .where(Temp <= 58 ~ "broken_temp")) %>%
-#   arrange(Temp)
-#
-# aq_sh <- airquality %>%
-#   bind_shadow() %>%
-#   update_shadow("wat")
-#
-# aq_sh %>% map(levels)
-#
-# debugonce(update_shadow)
-#
-# aq_sh %>%
-#   update_shadow("is") %>%
-#   map(levels)
-#
-# # map(levels)
+df_many_recode <- df %>%
+  bind_shadow() %>%
+  recode_shadow(temp = .where(temp == 25 ~ "broken_machine")) %>%
+  recode_shadow(wind = .where(wind == -99 ~ "broken_temp"))
+
+new_shade_levels <- c("!NA", "NA", "NA_broken_machine", "NA_broken_temp")
+
+test_that("special missings levels are updated for many recodes", {
+  expect_equal(levels(df_many_recode$wind_NA),
+               new_shade_levels)
+  expect_equal(levels(df_many_recode$temp_NA),
+               new_shade_levels)
+})
+
+test_that("special missings are put in the right place for many recodes", {
+  expect_equal(as.character(df_many_recode$wind_NA),
+               c("NA_broken_temp", "!NA", "!NA"))
+  expect_equal(as.character(df_many_recode$temp_NA),
+               c("!NA", "NA", "NA_broken_machine"))
+})
+
+where_one <- .where(temp == 25 ~ "broken_machine")
+
+where_two <- .where(temp == 25 ~ "broken_machine",
+                    wind == 26 ~ "broken_wind")
+
+where_three <- .where(temp == 25 ~ "broken_machine",
+                      wind == 26 ~ "broken_wind",
+                      arbitrary == "values" ~ "are_possible")
+
+test_that(".where captures the right number of expressions", {
+  expect_equal(sum(lengths(where_one)), 2)
+  expect_equal(sum(lengths(where_two)), 4)
+  expect_equal(sum(lengths(where_three)), 6)
+})
+
+test_that(".where captures the expressions into condition and suffix", {
+  expect_equal(names(where_one), c("condition", "suffix"))
+  expect_equal(names(where_two), c("condition", "suffix"))
+  expect_equal(names(where_three), c("condition", "suffix"))
+})
+
+test_that(".where is a list", {
+  expect_is(where_one, "list")
+  expect_is(where_two, "list")
+  expect_is(where_three, "list")
+})
+
+test_that(".where is a list", {
+  expect_is(where_one, "list")
+  expect_is(where_two, "list")
+  expect_is(where_three, "list")
+})
+
+class_nest <- function(obj, slot) {
+  purrr::pluck(obj, slot) %>% purrr::map_chr(class)
+}
+
+test_that(".where returns call class", {
+  expect_true(class_nest(where_one, "condition") == "call")
+  expect_true(all(class_nest(where_two, "condition") == "call"))
+  expect_true(all(class_nest(where_three, "condition") == "call"))
+})
+
+test_that(".where returns chr class", {
+  expect_true(class_nest(where_one, "suffix") == "character")
+  expect_true(all(class_nest(where_two, "suffix") == "character"))
+  expect_true(all(class_nest(where_three, "suffix") == "character"))
+})
+
+df_mult_where <- df %>%
+  bind_shadow() %>%
+  recode_shadow(temp = .where(temp == 25 ~ "broken_machine",
+                              wind == 68 ~ "wat"))
+
+test_that("recode_shadow returns right values if .where is called many times", {
+  expect_equal(as.character(df_mult_where$wind_NA),
+               c("!NA", "!NA", "!NA"))
+  expect_equal(as.character(df_mult_where$temp_NA),
+               c("!NA", "NA_wat", "NA_broken_machine"))
+})
+
+test_that("recode_shadow returns right levels if .where is called many times", {
+  expect_equal(levels(df_mult_where$wind_NA),
+               c("!NA", "NA", "NA_broken_machine", "NA_wat"))
+  expect_equal(levels(df_mult_where$temp_NA),
+               c("!NA", "NA", "NA_broken_machine", "NA_wat"))
+})
+
 
 context("recode_shadow works on grouped data")
 

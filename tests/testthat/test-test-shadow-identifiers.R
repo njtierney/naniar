@@ -1,7 +1,7 @@
 context("test-shadow-identifiers")
 
 df <- tibble::tribble(
-  ~wind, ~temperature,
+  ~wind, ~temp,
   -99,    45,
   68,    NA,
   72,    25
@@ -17,17 +17,17 @@ test_that("is_shadow returns FALSE for regular data", {
   expect_false(is_shadow(df))
 })
 
-dfs_are <- are_shadow(dfs)
+dfs_are <- are_shade(dfs)
 
-test_that("are_shadow returns the correct values",{
-  expect_false(dfs_are[1])
-  expect_false(dfs_are[2])
-  expect_true(dfs_are[3])
-  expect_true(dfs_are[3])
+test_that("are_shade returns the correct values",{
+  expect_false(dfs_are[["wind"]])
+  expect_false(dfs_are[["temp"]])
+  expect_true(dfs_are[["wind_NA"]])
+  expect_true(dfs_are[["temp_NA"]])
 })
 
-test_that("any_shadow returns the correct values",{
-  expect_false(any_shadow(df))
-  expect_true(any_shadow(dfs))
+test_that("any_shade returns the correct values",{
+  expect_false(any_shade(df))
+  expect_true(any_shade(dfs))
 })
 

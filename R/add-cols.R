@@ -194,7 +194,9 @@ add_any_miss <- function(data, ..., label = "any_miss"){
 #'
 #' library(dplyr)
 #'
-#' airquality %>% mutate(is_missing = label_missings(airquality))
+#' airquality %>%
+#'   mutate(is_missing = label_missings(airquality)) %>%
+#'   head()
 #'
 label_missings <- function(data, ...){
 

@@ -19,7 +19,6 @@ is a dataframe
 \examples{
 
 n_complete_row(airquality)
-n_complete_row(pedestrian)
 
 }
 \seealso{

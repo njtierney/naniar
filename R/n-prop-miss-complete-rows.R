@@ -14,7 +14,6 @@
 #' @examples
 #'
 #' n_miss_row(airquality)
-#' n_miss_row(pedestrian)
 #'
 
 n_miss_row <- function(data){
@@ -39,7 +38,6 @@ n_miss_row <- function(data){
 #' @examples
 #'
 #' n_complete_row(airquality)
-#' n_complete_row(pedestrian)
 #'
 
 n_complete_row <- function(data){
@@ -64,7 +62,6 @@ n_complete_row <- function(data){
 #' @examples
 #'
 #' prop_miss_row(airquality)
-#' prop_miss_row(pedestrian)
 #'
 prop_miss_row <- function(data){
   test_if_null(data)
@@ -88,7 +85,6 @@ prop_miss_row <- function(data){
 #' @examples
 #'
 #' prop_complete_row(airquality)
-#' prop_complete_row(pedestrian)
 #'
 prop_complete_row <- function(data){
   test_if_null(data)

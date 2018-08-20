@@ -22,7 +22,7 @@ test_that("impute_mean_all works", {
 aq_shadow <- bind_shadow(airquality)
 
 test_that("impute_mean_all works with shadow", {
-  expect_false(impute_mean_all(aq_shadow) %>% all_na)
+  expect_false(impute_mean_all(aq_shadow) %>% all_na())
 })
 
 test_that("impute_mean_all retains proper shadow values", {

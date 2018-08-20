@@ -4,7 +4,7 @@
 \alias{bind_shadow}
 \title{Bind a shadow dataframe to original data}
 \usage{
-bind_shadow(data, only_miss = FALSE)
+bind_shadow(data, only_miss = FALSE, ...)
 }
 \arguments{
 \item{data}{a dataframe}
@@ -13,6 +13,8 @@ bind_shadow(data, only_miss = FALSE)
 all of the variables duplicated with their shadow. Setting this to TRUE
 will bind variables only those variables that contain missing values.
 See the examples for more details.}
+
+\item{...}{extra options to pass to \code{\link[=recode_shadow]{recode_shadow()}} - a work in progress.}
 }
 \value{
 data with the added variable shifted and the suffix \code{_NA}

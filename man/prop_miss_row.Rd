@@ -19,7 +19,6 @@ is a dataframe
 \examples{
 
 prop_miss_row(airquality)
-prop_miss_row(pedestrian)
 
 }
 \seealso{

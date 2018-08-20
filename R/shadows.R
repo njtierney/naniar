@@ -36,11 +36,12 @@ as_shadow <- function(data, ...){
 #' @export
 as_shadow.data.frame <- function(data, ...){
 
-    data_shadow <- purrr::map_df(data, label_shadow_matrix)
+  data_shadow <- purrr::map_df(data, shade)
 
-    names(data_shadow) <- paste0(names(data),"_NA")
+  names(data_shadow) <- paste0(names(data),"_NA")
 
-    data_shadow
+
+  return(new_shadow(data_shadow))
 
 }
 
@@ -90,6 +91,7 @@ as_shadow_upset <- function(data){
 #'     all of the variables duplicated with their shadow. Setting this to TRUE
 #'     will bind variables only those variables that contain missing values.
 #'     See the examples for more details.
+#' @param ... extra options to pass to [recode_shadow()] - a work in progress.
 #'
 #' @return data with the added variable shifted and the suffix `_NA`
 #' @export
@@ -115,7 +117,7 @@ as_shadow_upset <- function(data){
 #'        facet_wrap(~Solar.R_NA,
 #'        ncol = 1)
 #'
-bind_shadow <- function(data, only_miss = FALSE){
+bind_shadow <- function(data, only_miss = FALSE, ...){
 
   # If you want only the missing values to be added
   if (only_miss) {
@@ -125,9 +127,11 @@ bind_shadow <- function(data, only_miss = FALSE){
 
     shadow_vars <- dplyr::select(data, !!!miss_vars) %>% as_shadow()
 
-    return(
-      tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
-    )
+    shadow_data <- tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
+
+    # class(shadow_data) <- c("shadow", class(shadow_data))
+
+    return(new_shadow(shadow_data))
 
   # if you want All the values to be added (the default behaviour)
   }
@@ -138,13 +142,32 @@ bind_shadow <- function(data, only_miss = FALSE){
 
     bound_shadow <- dplyr::bind_cols(data, data_shadow)
 
-    return(
-    tibble::as_tibble(bound_shadow)
-    )
+    shadow_data <- tibble::as_tibble(bound_shadow)
+
+    if (!missing(...)) {
+      shadow_data <- shadow_data %>% recode_shadow(...)
+    }
+
+    # class(shadow_data) <- c("shadow", class(shadow_data))
+
+    return(new_shadow(shadow_data))
 
   }
 
 }
+
+#' Create a new shadow
+#'
+#' @param x a data.frame
+#'
+#' @return object with class "shadow", inhereting from it's original class
+#' @export
+new_shadow <- function(x){
+    # structure(x,
+    #           class = c("shadow", class(x)))
+    tibble::new_tibble(x, subclass = "shadow")
+}
+
 
 #' Unbind (remove) shadow from data, and vice versa
 #'
@@ -179,14 +202,14 @@ bind_shadow <- function(data, only_miss = FALSE){
 #' }
 #'
 unbind_shadow <- function(data){
-  test_if_any_shadow(data)
+  test_if_any_shade(data)
   dplyr::select(data, -dplyr::ends_with("_NA"))
 }
 
 #' @rdname unbinders
 #' @export
 unbind_data <- function(data){
-  test_if_any_shadow(data)
+  test_if_any_shade(data)
   dplyr::select(data, dplyr::ends_with("_NA"))
 }
 
@@ -217,64 +240,88 @@ gather_shadow <- function(data){
     dplyr::rename(case = rows)
 }
 
-#' Is this thing a shadow?
-#'
-#' Does this thing contain a shadow variable?
-#'
-#' @param x vector or data.frame
-#'
-#' @return logical - single value. TRUE if contains a variable with a column ending in "_NA"
-#' @export
-#'
-#' @examples
-#'
-#' df_shadow <- bind_shadow(airquality)
-#'
-#' is_shadow(df_shadow)
-#'
-#' @export
-is_shadow <- function(x){
-  any(grepl("_NA",names(x)))
-}
 
-#' Are these things shadows?
-#'
-#' Does this thing contain a shadow variable?
-#'
-#' @param x vector or data.frame
-#'
-#' @return logical vector - TRUE if contains a variable with a column ending in "_NA"
-#' @export
-#'
-#' @examples
-#'
-#' df_shadow <- bind_shadow(airquality)
-#'
-#' are_shadow(df_shadow)
-#'
-#' @export
-are_shadow <- function(x) grepl("_NA",names(x))
+# #' Is this thing a shadow?
+# #'
+# #' Does this thing contain a shadow variable?
+# #'
+# #' @param x vector or data.frame
+# #'
+# #' @return logical - single value. TRUE if contains a variable with a column ending in "_NA"
+# #' @export
+# #'
+# #' @examples
+# #'
+# #' df_shadow <- bind_shadow(airquality)
+# #'
+# #' is_shadow(df_shadow)
+# #'
+# #' @export
+# is_shadow <- function(x){
+#   # any(grepl("_NA",names(x)))
+#   inherits(x, "shadow")
+# }
+#
+# #' Are these things shadows?
+# #'
+# #' Does this thing contain a shadow variable?
+# #'
+# #' @param x vector or data.frame
+# #'
+# #' @return logical vector - TRUE if contains a variable with a column ending in "_NA"
+# #' @export
+# #'
+# #' @examples
+# #'
+# #' df_shadow <- bind_shadow(airquality)
+# #'
+# #' are_shadow(df_shadow)
+# #'
+# #' @export
+# are_shadow <- function(x){
+#   grepl("_NA",names(x))
+#   purrr::map(x, class) %>%
+#     tibble::as_tibble() %>%
+# }
+
+# Are these things shadows?
+#
+# Does this thing contain a shadow variable?
+#
+# @param x vector or data.frame
+#
+# @return logical vector - TRUE if contains a variable with a column ending in "_NA"
+# @export
+#
+# @examples
+#
+# df_shadow <- bind_shadow(airquality)
+#
+# are_shadow(df_shadow)
+#
+#@export
+# are_shadow <- function(x) grepl("_NA",names(x))
 
 
-#' Which variables are shadows?
+#' Which variables are shades?
 #'
-#' This function tells us which variables contain shadow information
+#' This function tells us which variables contain shade information
 #'
 #' @param .tbl a data.frame or tbl
 #'
-#' @return numeric - which column numbers contain shadow information
+#' @return numeric - which column numbers contain shade information
 #'
 #' @examples
 #'
 #' df_shadow <- bind_shadow(airquality)
 #'
-#' which_are_shadow(df_shadow)
+#' which_are_shade(df_shadow)
 #'
 #' @export
-which_are_shadow <- function(.tbl){
+which_are_shade <- function(.tbl){
   test_if_null(.tbl)
   test_if_dataframe(.tbl)
-  which(are_shadow(.tbl))
+  which(are_shade(.tbl))
 }
 
 
@@ -307,15 +354,15 @@ shadow_long <- function(shadow_data,
                         only_main_vars = TRUE){
 
   test_if_null(shadow_data)
-  test_if_dataframe(shadow_data)
+  test_if_any_shade(shadow_data)
 
   gathered_df <- shadow_data %>%
     tidyr::gather(key = "variable",
                   value = "value",
-                  -which_are_shadow(.)) %>%
+                  -which_are_shade(.)) %>%
     tidyr::gather(key = "variable_NA",
                   value = "value_NA",
-                  which_are_shadow(.))
+                  which_are_shade(.))
 
   if (only_main_vars) {
     gathered_df <- dplyr::filter(gathered_df,
@@ -323,15 +370,11 @@ shadow_long <- function(shadow_data,
   }
 
   if (!missing(...)) {
-
     vars <- bare_to_chr(...)
-
     gathered_df <- gathered_df %>%
       dplyr::filter(variable %in% vars)
   }
 
-
     return(gathered_df)
-
 
 }

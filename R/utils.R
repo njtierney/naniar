@@ -104,9 +104,33 @@ test_if_dataframe <- function(x){
     }
 }
 
+#' Test if input is a shadow
+#'
+#' @param x object
+#'
+#' @return an error if input (x) is a shadow
+#'
+#' @examples
+#' \dontrun{
+#' # success
+#' aq_shadow <- bind_shadow(airquality)
+#' test_if_shadow(aq_shadow)
+#' #fail
+#' test_if_shadow(airquality)
+#' }
+#'
+test_if_shadow <- function(x){
+  # test for dataframe
+  if (!is_shadow(x)) {
+    stop("variable must be shadow variable, use as_shadow or bind_shadow",
+         call. = FALSE)
+  }
+}
+
 # are there any columns that contain a shadow column?
 any_shadow <- function(x){
-  any(grepl("_NA$",colnames(x)))
+  # any(grepl("_NA$",colnames(x)))
+  any(are_shadow(x))
 }
 
 # # test if there are shadow columns?
@@ -114,7 +138,17 @@ test_if_any_shadow <- function(x){
   # test for dataframe
   test_if_dataframe(x)
   if (!any_shadow(x)) {
-    stop("Input must contain a shadow column ending in _NA", call. = FALSE)
+    stop("Input must contain shadow column. See ?as_shadow or ?bind_shadow",
+         call. = FALSE)
+    }
+}
+
+test_if_any_shade <- function(x){
+  # test for dataframe
+  test_if_dataframe(x)
+  if (!any_shade(x)) {
+    stop("Input must contain shade column. See ?shade, ?shade and ?bind_shadow",
+         call. = FALSE)
     }
 }
 
@@ -167,6 +201,15 @@ add_span_counter <- function(data, span_size) {
                                    each = span_size,
                                    length.out = nrow(data)))
 }
+
+#' check the levels of many things
+#'
+#' this function is used internally to check what the levels are of the dataframe.
+#'
+#' @param x data.frame, usually
+#'
+#' @return a list containing the levels of everything
+what_levels <- function(x) purrr::map(x, levels)
 
 # utility function to convert bare name to character
 bare_to_chr <- function(...){

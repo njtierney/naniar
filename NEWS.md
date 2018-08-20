@@ -1,3 +1,24 @@
+# naniar 0.3.9.9100 (2018/08/20)  (special-missing branch)
+
+## Major Change
+
+* `recode_shadow` now works! This function allows you to recode your missing
+values into special missing values. These special missing values are stored in
+the shadow part of the dataframe, which ends in `_NA`.
+
+## Minor Change
+
+* implemented `shade` where appropriate throughout naniar, and also added 
+verifiers, `is_shade`, `are_shade`, `which_are_shade`, and removed `which_are_shadow`.
+
+# naniar 0.3.9.9000 (2018/06/14)  (special-missing branch)
+
+## Major change
+
+- `as_shadow`  and `bind_shadow` now return data of class `shadow`. This will 
+feed into `recode_shadow` methods for flexibly adding new types of missing data.
+- Note that in the future `shadow` might be changed to `nabble` or something similar.
+
 # naniar 0.3.4.9600 (2018/08/15)
 
 ## Minor feature
@@ -86,6 +107,7 @@ the wildcard results from the characters "?", "*", and ".".
 
 - `miss_case_table` and `miss_var_table` now has final column names `pct_vars`,
 and `pct_cases` instead of `pct_miss` - fixes #178.
+>>>>>>> origin/master
 
 # naniar 0.3.1 (2018/06/10) "Strawberry's Adventure"
 

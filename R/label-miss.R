@@ -1,34 +1,3 @@
-#' Give NAs a more meaningful label
-#'
-#' Returns a binary factor of !NA and NA, where !NA indicates a datum that is
-#'   not missing, and NA indicates missingness. This function is what powers the
-#'   factor levels in `as_shadow()`.
-#'
-#' @param x a vector
-#'
-#' @return a vector of factors containing the labels "!NA" for Not missing and
-#'   "NA" for missing.
-#'
-#' @seealso as_shadow
-#'
-#' @examples
-#' \dontrun{
-#' label_shadow_matrix(airquality$Ozone)
-#'}
-label_shadow_matrix <- function(x) {
-  if (length(x) == 0) {
-    stop("Input is of length 0, please check your inputs.", call. = FALSE)
-  } else{
-    result <- factor(is.na(x),
-                     levels = c(FALSE, TRUE),
-                     labels = c("!NA", "NA"))
-  }
-
-  # update and add the new class 'shadow'.
-  class(result) <- c("shadow" , class(result))
-  result
-}
-
 #' Label a missing from one column
 #'
 #' Label whether a value is missing in a row of one columns.

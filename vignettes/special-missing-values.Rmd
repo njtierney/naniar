@@ -1,0 +1,33 @@
+---
+title: "Special Missing Values"
+author: "Nicholas Tierney"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Special Missing Values}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Unusual or spurious data values are often identified and `flagged`. For example, there might be special codes to mark an individual dropping out of a study, or for known instrument failure in weather instruments, or for when values are censored in analysis. These special types of missingness can be encoded in the shadow matrix of nabular data, using the `recode_shadow` function. This provides a fluent interface to recode, or flag, the shadow information in the shadow matrix as a special type of missing value. Using `recode_shadow` requires specifying a suffix for the new type of missing value. This is then recoded as a new factor level in the shadow matrix, so that every column is aware of all possible new values of missingness. For example, the values -99 and -98 could be recoded to mean a broken machine sensor.
+
+
+```{r recode-shadow}
+dat_ms <- tibble::tribble(~x,  ~y,    ~z,
+                         1,   "A",   -100,
+                         3,   "N/A", -99,
+                         NA,  NA,    -98,
+                         -99, "E",   -101,
+                         -98, "F",   -1)
+
+dat_ms %>%
+  bind_shadow() %>%
+  recode_shadow(x = .where(x == -99 ~ "broken_sensor"))
+```

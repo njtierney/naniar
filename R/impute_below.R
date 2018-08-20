@@ -62,7 +62,6 @@ impute_below_all <- function(.tbl,
                              ...){
 
   test_if_dataframe(.tbl)
-
   test_if_null(.tbl)
 
   dplyr::mutate_all(.tbl = .tbl,

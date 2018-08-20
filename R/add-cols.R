@@ -324,6 +324,11 @@ label_shadow <- function(data, ...){
 #'
 add_label_shadow <- function(data, ...){
 
+  if (!any_shade(data)) {
+    rlang::abort("add_label_shadow works with shadow data, which has columns
+                 created by `shade()`, `as_shadow()`, or `bind_shadow()`")
+  }
+
   if (missing(...)) {
     updated_data <- data %>%
     dplyr::mutate(any_missing = label_shadow(.))

@@ -1,36 +1,57 @@
 context("add_label_shadow")
 
-aq_shadow <- airquality %>% add_shadow(Ozone)
+aq_shadow <- bind_shadow(airquality)
 
 test_that("add_label_shadow returns a tibble",{
   expect_is(add_label_shadow(aq_shadow), "tbl_df")
+  expect_is(add_label_shadow(aq_shadow, Ozone), "tbl_df")
+  expect_is(add_label_shadow(aq_shadow, Ozone, Temp), "tbl_df")
 })
 
 test_that("add_label_shadow adds the right number of columns",{
   expect_equal(ncol(aq_shadow)+1, ncol(add_label_shadow(aq_shadow)))
+  expect_equal(ncol(aq_shadow)+1, ncol(add_label_shadow(aq_shadow, Ozone)))
+  expect_equal(ncol(aq_shadow)+1, ncol(add_label_shadow(aq_shadow, Ozone, Temp)))
 })
 
 test_that("add_label_shadow adds a column with suffix 'any_missing'",{
   expect_equal(names(add_label_shadow(aq_shadow)),
                c(names(aq_shadow), "any_missing"))
+  expect_equal(names(add_label_shadow(aq_shadow, Ozone)),
+               c(names(aq_shadow), "any_missing"))
+  expect_equal(names(add_label_shadow(aq_shadow, Ozone, Temp)),
+               c(names(aq_shadow), "any_missing"))
 })
 
 # add some tests for this condition, where ... is added to label shadow
-# aq_shade <- bind_shadow(airquality)
-#
-# # debug(label_shadow)
-#
-# add_label_shadow(aq_shade,
-#                  Ozone) %>%
-#   dplyr::select(Ozone,
-#                 Solar.R,
-#                 Ozone_NA,
-#                 Solar.R_NA,
-#                 any_missing)
-#
-# add_label_shadow(aq_shade) %>%
-#   dplyr::select(Ozone,
-#                 Solar.R,
-#                 Ozone_NA,
-#                 Solar.R_NA,
-#                 any_missing)
+dat <- tibble::tribble(
+  ~air, ~wind, ~water,
+   -99,    NA,  23,
+   -98,    NA,  NA,
+   25,     30,  21,
+   NA,     99,  NA,
+   23,     40,  NA
+)
+
+test_that("add_label_shadow errors when using a dataframe with no shadow", {
+  expect_error(add_label_shadow(dat))
+})
+
+
+dat_sh <- bind_shadow(dat)
+
+dat_sh_add <- add_label_shadow(dat_sh)
+
+dat_sh_add_air <- add_label_shadow(dat_sh, air)
+
+dat_sh_add_air_wind <- add_label_shadow(dat_sh, air, wind)
+
+test_that("add_label_shadow adds the right values to the column", {
+  expect_equal(dat_sh_add$any_missing,
+               c("Missing", "Missing", "Not Missing", "Missing", "Missing"))
+  expect_equal(dat_sh_add_air$any_missing,
+               c(rep("Not Missing", 3), "Missing", "Not Missing"))
+  expect_equal(dat_sh_add_air_wind$any_missing,
+               c(rep("Missing", 2), "Not Missing", "Missing", "Not Missing"))
+})
+

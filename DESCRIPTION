@@ -65,7 +65,8 @@ Imports:
     forcats,
     viridis,
     glue,
-    UpSetR
+    UpSetR,
+    forecast
 Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
@@ -85,6 +86,7 @@ Collate:
     'gg-miss-var-cumsum.R'
     'gg-miss-var.R'
     'gg-miss-which.R'
+    'ggplot.R'
     'helpers.R'
     'impute_below.R'
     'impute_mean.R'

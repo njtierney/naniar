@@ -159,11 +159,14 @@ miss_case_summary.default <- function(data,
   }
 
   if (order) {
-    return(dplyr::arrange(res, -n_miss))
+    return(
+      dplyr::arrange(res, -n_miss) %>%
+        new_mc_sum()
+      )
   }
 
   if (!order) {
-    return(res)
+    return(new_mc_sum(res))
   }
 }
 

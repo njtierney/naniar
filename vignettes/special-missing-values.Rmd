@@ -16,9 +16,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-Data can have special missing values to indicate reasons for missingness.
-For example, "-99" is pretty common in weather data (see scipps CO2 data) to indicate something like instrument failure, there might be special codes to mark an individual dropping out of a study, or for known instrument failure in weather instruments, or for when values are censored in analysis.
+Data can have special missing values to indicate specific reasons for missingness.
+For example, "9999" is sometimes used in weather data, say for for example, the [Global Historical Climate Network (GHCN) data](https://www.ncdc.noaa.gov/ghcn-daily-description)), to indicate specific types of missingness, such as instrument failure.
 
+You might be interested in creating your own special missing values so that you can mark an individual dropping out of a study, for known instrument failure in weather instruments, or for when values are censored in analysis.
 This means that although the value was not recorded when it should have been - it is a missing value - we happen to have some information about _why_ it is missing, which now gets lost if it is recoded as `NA`.
 
 What we want is to have a way to recode missingness by recoding the missing value `NA` as something else, like `NA_reason`. Other stats programming languages like STATA, SAS, and SPSS have this capacity, but currently `R` does not. So, it is
@@ -70,16 +71,18 @@ dfs <- bind_shadow(df)
 dfs
 ```
 
-Special types of missingness are encoded in the shadow part nabular data, using the `recode_shadow` function, like so:
+Special types of missingness are encoded in the shadow part nabular data, using the `recode_shadow` function, we can recode the missing values like so:
 
 ```{r example-recode-shadow}
 dfs_recode <- dfs %>% 
   recode_shadow(wind = .where(wind == -99 ~ "broken_machine"))
 ```
 
-This reads as "recode shadow for wind where wind is equal to -99, and give it the label "broken_machine". 
+This reads as "recode shadow for wind where wind is equal to -99, and give it the label "broken_machine". The `.where` function is used to help make our intent clearer, and reads very much like the `dplyr::case_when()` functions.
 
 This provides a fluent interface to recode, or flag, the shadow information in the shadow matrix as a special type of missing value. 
+
+## More details
 
 Using `recode_shadow` requires specifying a suffix for the new type of missing value. 
 

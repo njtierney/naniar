@@ -18,14 +18,12 @@ knitr::opts_chunk$set(
 
 Data sometimes have special missing values to indicate specific reasons for missingness. For example, "9999" is sometimes used in weather data, say for for example, the [Global Historical Climate Network (GHCN) data](https://www.ncdc.noaa.gov/ghcn-daily-description)), to indicate specific types of missingness, such as instrument failure.
 
-You might be interested in creating your own special missing values so that you can mark specific, known reasons for missingness. For example, an individual dropping out of a study, known instrument failure in weather instruments, or for values being censored in analysis.
-This means that although the value was not recorded when it should have been - it is a missing value - we happen to have some information about _why_ it is missing, which now gets lost if it is recoded as `NA`.  Other stats programming languages like STATA, SAS, and SPSS have this capacity, but currently `R` does not. So, it is
-difficult to create these special missing values.
+You might be interested in creating your own special missing values so that you can mark specific, known reasons for missingness. For example, an individual dropping out of a study, known instrument failure in weather instruments, or for values being censored in analysis. In these cases, the data is missing, but we have information about _why_ it is missing. Coding these cases as `NA` would cause us to lose this valuable information. Other stats programming languages like STATA, SAS, and SPSS have this capacity, but currently `R` does not. So, we need a way to create these special missing values.
 
-To recode missingness by recoding the missing value `NA` as something else, like `NA_reason` we can use `recode_shadow`. `naniar` makes it easy recode missing values into special missings, by recording them in the `shadow` part of the `nabular` data, which is a special dataframe that contains missingness information. 
+We can use `recode_shadoe` to recode missingness by recoding the special missing value as something like `NA_reason`. `naniar` records these values in the `shadow` part of `nabular` data, which is a special dataframe that contains missingness information. 
 
-This vignette will walk you through how to add special missing values using the
-`recode_shadow()` function, and describe how it would work in a workflow. First we consider some terminology to explain these ideas, if you are not familiar with the workflows in `naniar`.
+This vignette describes how to add special missing values using the
+`recode_shadow()` function. First we consider some terminology to explain these ideas, if you are not familiar with the workflows in `naniar`.
 
 # Terminology
 
@@ -92,49 +90,19 @@ levels(dfs_recode$wind_NA)
 levels(dfs_recode$temp_NA)
 ```
 
-All additional types of missingness are recorded across all shadow variables, even if those variables don't contain that special missing value. This ensures all flaviours of missingness are known.
+All additional types of missingness are recorded across all shadow variables, even if those variables don't contain that special missing value. This ensures all flavours of missingness are known.
 
-`recode_shadow` provides a flexible and fluent interface to recode, or flag, the shadow information in the shadow matrix as a special type of missing value.
-
-So summarise, to use `recode_shadow`, the user provides the following information:
+To summarise, to use `recode_shadow`, the user provides the following information:
 
 * A variable that they want to effect (`recode_shadow(var = ...)`)
 * A condition that they want to implement (`.where(condition ~ ...)`)
 * A suffix for the new type of missing value (`.where(condition ~ suffix)`
 
-Under the hood, this is recoded as a new factor level in the shadow matrix, so that every column is aware of all possible new values of missingness.
+Under the hood, this special missing value is recoded as a new factor level in the shadow matrix, so that every column is aware of all possible new values of missingness.
 
-Some examples of using `recode_shadow` in a workflow are now discussed.
+Some examples of using `recode_shadow` in a workflow will be discussed in more detail in the near future, for the moment, here is a recommended workflow:
 
-## Using `recode_shadow` in a workflow
-
-Now that we have discussed how `recode_shadow` works, we are going to cover using it in a workflow, specifically covering:
-
-* Using `recode_shadow()` with actual data
-* Replacing the previous actual values using `replace_with_na()`
+* Use `recode_shadow()` with actual data
+* Replacing the previous actual values using `replace_with_na()` (see the vignette on [replacing values with NA](http://naniar.njtierney.com/articles/replace-with-na.html))
 * Explore missings where special cases are considered
 * Explore imputed values, looking at these special cases
-
-### Using `recode_shadow()` with actual data
-
-To replace the actual data, we need to consider a new dataset, ...
-
-
-### Replacing the previous actual values using `replace_with_na()`
-
-Once the values are appropriately recorded as special missing values, you might want to change these back to missing values.
-
-For more information
-
-
-### Explore missings where special cases are considered
-
-
-
-
-### Explore imputed values, looking at these special cases
-
-
-
-
-# References

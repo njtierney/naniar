@@ -1,4 +1,10 @@
-# naniar 0.3.9.9100 (2018/08/20)  (special-missing branch)
+# naniar 0.3.10.9000 (2018/08/20)
+
+## New Feature
+
+* Added two new vignettes, "Exploring Imputed Values", and  "Special Missing Values"
+
+# naniar 0.3.9.9100 (2018/08/20)
 
 ## Major Change
 
@@ -11,7 +17,7 @@ the shadow part of the dataframe, which ends in `_NA`.
 * implemented `shade` where appropriate throughout naniar, and also added 
 verifiers, `is_shade`, `are_shade`, `which_are_shade`, and removed `which_are_shadow`.
 
-# naniar 0.3.9.9000 (2018/06/14)  (special-missing branch)
+# naniar 0.3.9.9000 (2018/06/14)
 
 ## Major change
 

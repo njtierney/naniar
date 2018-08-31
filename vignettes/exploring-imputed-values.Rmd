@@ -16,9 +16,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-Imputation is usually an iterative process. The naniar package aims to make it easier to manage your imputed values by providing the `nabular` data structure to make it easier to manage the missings. This vignette lays down some useful recipes for imputing and exploring imputed data.
+Imputating missing values is an iterative process. `naniar` aims to make it easier to manage imputed values by providing the `nabular` data structure to simplify managing missingness. This vignette provides some useful recipes for imputing and exploring imputed data.
 
-`naniar` implementes a few imputation methods to facilitate exploration and visualisations, which were not otherwise available: `impute_below`, `impute_mean`, `impute_median`, and `impute_mode`. For single imputation, the R package `simputation` works very well with `naniar`. Other packages such as `mice`, `mi`, and `VIM` can be used with naniar, and examples are given at the end of this vignette.
+`naniar` implements a few imputation methods to facilitate exploration and visualisations, which were not otherwise available: `impute_below`, and `impute_mean`. For single imputation, the R package `simputation` works very well with `naniar`, and provides the main example given.
 
 # Imputing and tracking missing values
 
@@ -27,70 +27,89 @@ Imputation is usually an iterative process. The naniar package aims to make it e
 `impute_below` imputes values below the minimum of the data, with some noise to reduce overplotting. The amount data is imputed below, and the amount of jitter, can be changed by changing the arguments `prop_below` and `jitter`.
 
 ```{r demonstrate-impute-below}
+library(dplyr)
+library(naniar)
+
 airquality %>%
   impute_below_at(vars(Ozone)) %>%
   select(Ozone, Solar.R) %>%
   head()
 ```
 
-# Using `impue_mean`
+# Using `impute_mean`
 
-The mean, median, and mode can all be imputed with `impute_mean`, `impute_median`, and `impute_mode`. These imputation methods are useful to explore structure in missingness, but are not recommended for use in analysis. Similar to `simputation`, each `impute_` function returns the data with values imputed. However, `naniar` does not use a formula syntax, and instead each function implements "scoped variants" `_all`, `_at` and `_if`. Here, `_all` operates on all columns, `_at` operates on specific columns, and `_if` operates on columns that meet some condition (such as `is.numeric` or `is.character`). If the `impute_` functions are used as-is - e.g., `impute_mean`, this will work on a single vector, but not a data.frame.
+The mean can be imputed using `impute_mean`, and is useful to explore structure in missingness, but are not recommended for use in analysis. Similar to `simputation`, each `impute_` function returns the data with values imputed. 
+
+Imputation functions in `naniar` implement "scoped variants" for imputation: `_all`, `_at` and `_if`. 
+
+This means: 
+
+- `_all` operates on all columns
+- `_at` operates on specific columns, and 
+- `_if` operates on columns that meet some condition (such as `is.numeric` or `is.character`). 
+
+If the `impute_` functions are used as-is - e.g., `impute_mean`, this will work on a single vector, but not a data.frame.
+
+Some examples for `impute_mean` are now given:
 
 ```{r impute-vector, echo = TRUE}
 
-impute_mean(airquality$Ozone) %>% head()
+impute_mean(oceanbuoys$air_temp_c) %>% head()
 
-impute_mean_at(airquality, .vars = vars(Ozone)) %>% head()
+impute_mean_at(oceanbuoys, .vars = vars(air_temp_c)) %>% head()
 
-impute_mean_if(airquality, .predicate = is.integer) %>% head()
+impute_mean_if(oceanbuoys, .predicate = is.integer) %>% head()
 
-impute_mean_all(airquality) %>% head()
+impute_mean_all(oceanbuoys) %>% head()
 
 ```
 
-One drawback to imputation functions in this form is that the location of imputed values is not tracked - these can be tracked using the `nabular` format of the data.
+When we impute data like this, we cannot identify where the imputed values are - we need to track them. We can track the imputed values using the `nabular` format of the data.
 
 ### Track imputed values using nabular data
 
-To track missing values, combine the verbs `bind_shadow`, `impute_`, `add_label_shadow`. Missing values can be referred to by their shadow variable, `_NA`. The missingness of any observation can be referred to with `any_missing`. 
+We can track the missing values by combining the verbs `bind_shadow`, `impute_`, `add_label_shadow`. We can then refer to missing values by their shadow variable, `_NA`. The `add_label_shadow` function adds an additional column called `any_missing`, which tells us if any observation has a missing value. 
 
-The code chunk below shows the track pattern, first using `bind_shadow`, then imputing with `impute_lm`, and adding a `label_shadow`.
+We can impute the data using the easy-to-use `simputation`, and then track the missingness using `bind_shadow` and `add_label_shadow`:
 
 ```{r bind-impute-label-example, echo = TRUE}
+
 library(simputation)
-aq_imputed <- airquality %>%
+ocean_imp <- oceanbuoys %>%
   bind_shadow() %>%
-  impute_lm(Ozone ~ .) %>%
-  impute_lm(Solar.R ~ .) %>%
+  impute_lm(air_temp_c ~ .) %>%
+  impute_lm(humidity ~ .) %>%
+  impute_lm(sea_temp_c ~ .) %>%
   add_label_shadow()
 
 ```
 
-The missing values can then be shown for example in a scatterplot by setting the `color` aesthetic in ggplot to `any_missing`, or in a density plot looking at one variable, using the `fill = any_missing`   
+We can then show the previously missing (now imputed!) data in a scatterplot with ggplot2 by setting the `color` aesthetic in ggplot to `any_missing`:   
 
-```{r track-impute-points, fig.show = "hold", fig.cap = "Example plots of the revealing imputed values.", fig.height = 4, fig.width = 4, out.width = "70%", echo = TRUE}
-
-ggplot(aq_imputed,
-       aes(x = Ozone,
-           y = Solar.R,
+```{r ocean-imp-air-temp-humidity}
+library(ggplot2)
+ggplot(ocean_imp,
+       aes(x = air_temp_c,
+           y = humidity,
            color = any_missing)) + 
   geom_point() +
   scale_color_brewer(palette = "Dark2") +
   theme(legend.position = "bottom")
 ```
 
-```{r track-impute-density, fig.show = "hold", fig.cap = "Example plots of the revealing imputed values.", fig.height = 4, fig.width = 4, out.width = "49%", echo = TRUE}
+Or, if you want to look at one variable, you can look at a density plot of one variable, using `fill = any_missing`
 
-ggplot(aq_imputed,
-       aes(x = Ozone,
+```{r ocean-imp-density, fig.show = "hold", fig.height = 4, fig.width = 4, out.width = "49%"}
+
+ggplot(ocean_imp,
+       aes(x = air_temp_c,
            fill = any_missing)) + 
   geom_density(alpha = 0.3) + 
   scale_fill_brewer(palette = "Dark2") +
   theme(legend.position = "bottom")
 
-ggplot(aq_imputed,
-       aes(x = Solar.R,
+ggplot(ocean_imp,
+       aes(x = humidity,
            fill = any_missing)) + 
   geom_density(alpha = 0.3) + 
   scale_fill_brewer(palette = "Dark2") +
@@ -98,16 +117,11 @@ ggplot(aq_imputed,
 
 ```
 
-Imputed values can be compared to complete case data by grouping by any missing values, and summarising.
+We can also compare imputed values to complete cases by grouping by `any_missing`, and summarising.
 
-```{r impute-summary}
-aq_imputed %>%
+```{r summarise-imputations}
+ocean_imp %>%
   group_by(any_missing) %>%
-  summarise_at(.vars = vars(Ozone),
-               .funs = funs(min, mean, median, max)) %>%
-  knitr::kable(
-    digits = 1, 
-    caption = "summary statistics of the imputed and complete cases",
-    booktabs = TRUE) %>%
-  kable_styling(latex_options = c("hold_position"))
+  summarise_at(.vars = vars(air_temp_c),
+               .funs = funs(min, mean, median, max, .args = list(na.rm = TRUE)))
 ```

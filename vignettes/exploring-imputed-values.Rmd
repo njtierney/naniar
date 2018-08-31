@@ -77,9 +77,9 @@ We can impute the data using the easy-to-use `simputation`, and then track the m
 library(simputation)
 ocean_imp <- oceanbuoys %>%
   bind_shadow() %>%
-  impute_lm(air_temp_c ~ .) %>%
-  impute_lm(humidity ~ .) %>%
-  impute_lm(sea_temp_c ~ .) %>%
+  impute_lm(air_temp_c ~ wind_ew + wind_ns) %>%
+  impute_lm(humidity ~  wind_ew + wind_ns) %>%
+  impute_lm(sea_temp_c ~  wind_ew + wind_ns) %>%
   add_label_shadow()
 
 ```
@@ -125,3 +125,27 @@ ocean_imp %>%
   summarise_at(.vars = vars(air_temp_c),
                .funs = funs(min, mean, median, max, .args = list(na.rm = TRUE)))
 ```
+
+# Improving imputations
+
+One thing that we notice with our imputations are that they aren't very good - we can improve upon the imputation by including the variables year and latitude and longitude:
+
+```{r imp-add-year}
+ocean_imp_yr <- oceanbuoys %>%
+  bind_shadow() %>%
+  impute_lm(air_temp_c ~ wind_ew + wind_ns + year + longitude + latitude) %>%
+  impute_lm(humidity ~  wind_ew + wind_ns + year + longitude + latitude) %>%
+  impute_lm(sea_temp_c ~  wind_ew + wind_ns + year + longitude + latitude) %>%
+  add_label_shadow()
+```
+
+```{r ggplot-air-temp-humidity}
+ggplot(ocean_imp_yr,
+       aes(x = air_temp_c,
+           y = humidity,
+           color = any_missing)) + 
+  geom_point() +
+  scale_color_brewer(palette = "Dark2") +
+  theme(legend.position = "bottom")
+```
+

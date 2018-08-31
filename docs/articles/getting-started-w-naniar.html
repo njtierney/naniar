@@ -31,23 +31,38 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.10.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li>
   <a href="../articles/getting-started-w-naniar.html">Getting Started</a>
 </li>
 <li>
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="../articles/replace-with-na.html">Replace with NA</a>
+      <a href="../articles/replace-with-na.html">Replace with NA</a>
+    </li>
+    <li>
+      <a href="../articles/special-missing-values.html">Special Missings</a>
+    </li>
+    <li>
+      <a href="../articles/exploring-imputed-values.html">Exploring Imputations</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -81,7 +96,7 @@
       <h1>Getting Started with naniar</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-08-01</h4>
+            <h4 class="date">2018-08-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/getting-started-w-naniar.Rmd"><code>vignettes/getting-started-w-naniar.Rmd</code></a></small>
       <div class="hidden name"><code>getting-started-w-naniar.Rmd</code></div>
@@ -530,10 +545,10 @@
 <a class="sourceLine" id="cb69-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/add_prop_miss.html">add_prop_miss</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb69-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rpart/topics/rpart">rpart</a></span>(prop_miss_all <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> .) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb69-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rpart.plot/topics/prp">prp</a></span>(<span class="dt">type =</span> <span class="dv">4</span>, <span class="dt">extra =</span> <span class="dv">101</span>, <span class="dt">prefix =</span> <span class="st">"Prop. Miss = "</span>)</a></code></pre></div>
-<pre><code>## Warning: Cannot retrieve the model data (will ignore roundint=TRUE).
-##          To make this warning go away:
-##              Call prp with roundint=FALSE,
-##              or rebuild the rpart model with model=TRUE.</code></pre>
+<pre><code>## Warning: Cannot retrieve the data used to build the model (so cannot determine roundint and is.binary for the variables).
+## To silence this warning:
+##     Call prp with roundint=FALSE,
+##     or rebuild the rpart model with model=TRUE.</code></pre>
 <p><img src="getting-started-w-naniar_files/figure-html/rpart-miss-1.png" width="500" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="co"># library(visdat)</span></a>
 <a class="sourceLine" id="cb71-2" data-line-number="2"><span class="co"># vis_miss(messy_airquality)</span></a></code></pre></div>

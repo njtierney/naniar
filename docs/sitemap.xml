@@ -46,9 +46,6 @@
     <loc>http://naniar.njtierney.com//reference/any_row_miss.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com//reference/are_shadow.html</loc>
-  </url>
-  <url>
     <loc>http://naniar.njtierney.com//reference/as_shadow.html</loc>
   </url>
   <url>
@@ -115,6 +112,9 @@
     <loc>http://naniar.njtierney.com//reference/impute_below.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/impute_below_all.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/impute_below_at.html</loc>
   </url>
   <url>
@@ -122,6 +122,9 @@
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/impute_mean.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/is_shade.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/is_shadow.html</loc>
@@ -137,9 +140,6 @@
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/label_shadow.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/label_shadow_matrix.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/miss-complete-case-pct.html</loc>
@@ -208,6 +208,15 @@
     <loc>http://naniar.njtierney.com//reference/naniar.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/new_nabular.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/new_shade.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/new_shadow.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/oceanbuoys.html</loc>
   </url>
   <url>
@@ -244,6 +253,9 @@
     <loc>http://naniar.njtierney.com//reference/prop_miss_row.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/recode_shadow.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/reexports.html</loc>
   </url>
   <url>
@@ -268,6 +280,15 @@
     <loc>http://naniar.njtierney.com//reference/scoped-impute_mean.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/shade.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/shadow_expand_relevel.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/shadow_long.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/shadow_shift.html</loc>
   </url>
   <url>
@@ -286,13 +307,31 @@
     <loc>http://naniar.njtierney.com//reference/test_if_null.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/test_if_shadow.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/unbinders.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/update_shadow.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/what_levels.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/where.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/where_na.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/which_are_shade.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/which_na.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//articles/exploring-imputed-values.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//articles/getting-started-w-naniar.html</loc>
@@ -302,5 +341,8 @@
   </url>
   <url>
     <loc>http://naniar.njtierney.com//articles/replace-with-na.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//articles/special-missing-values.html</loc>
   </url>
 </urlset>

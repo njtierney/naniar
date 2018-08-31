@@ -71,23 +71,38 @@ for." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3.9100</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.10.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li>
   <a href="../articles/getting-started-w-naniar.html">Getting Started</a>
 </li>
 <li>
   <a href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/replace-with-na.html">Replace with NA</a>
+    </li>
+    <li>
+      <a href="../articles/special-missing-values.html">Special Missings</a>
+    </li>
+    <li>
+      <a href="../articles/exploring-imputed-values.html">Exploring Imputations</a>
+    </li>
+  </ul>
+</li>
 <li>
-  <a href="../articles/replace-with-na.html">Replace with NA</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -795,10 +810,10 @@ has not been used on all of the variables.</p></td>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/rpart/topics/rpart'>rpart</a></span>(<span class='no'>prop_miss_all</span> ~ <span class='no'>.</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>.</span>) <span class='kw'>%&gt;%</span>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/rpart.plot/topics/prp'>prp</a></span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='fl'>4</span>,
     <span class='kw'>extra</span> <span class='kw'>=</span> <span class='fl'>101</span>,
-    <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"prop_miss = "</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Cannot retrieve the model data (will ignore roundint=TRUE).</span>
-#&gt; <span class='warning'>         To make this warning go away:</span>
-#&gt; <span class='warning'>             Call prp with roundint=FALSE,</span>
-#&gt; <span class='warning'>             or rebuild the rpart model with model=TRUE.</span></div><div class='img'><img src='add_prop_miss-1.png' alt='' width='700' height='433' /></div></pre>
+    <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"prop_miss = "</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Cannot retrieve the data used to build the model (so cannot determine roundint and is.binary for the variables).</span>
+#&gt; <span class='warning'>To silence this warning:</span>
+#&gt; <span class='warning'>    Call prp with roundint=FALSE,</span>
+#&gt; <span class='warning'>    or rebuild the rpart model with model=TRUE.</span></div><div class='img'><img src='add_prop_miss-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -20,9 +20,17 @@ reference:
       - starts_with("as_shadow")
       - bind_shadow
       - gather_shadow
-      - starts_with("shadow_shift")
+      - shade
+      - shadow_long
       - unbind_shadow
       - unbind_data
+      - starts_with("shadow_shift")
+  - title: "Create special missing values"
+    desc: >
+      Create special missing values so that they don't get lost!
+    contents:
+      - recode_shadow
+
   - title: "Visualisation"
     desc: >
       Visualise missing data
@@ -84,13 +92,19 @@ reference:
 
 navbar:
   left:
-  - text: Reference
-    href: reference/index.html
   - text: Getting Started
     href: articles/getting-started-w-naniar.html
   - text: Gallery
     href: articles/naniar-visualisation.html
-  - text: Replace with NA
-    href: articles/replace-with-na.html
+  - text: "Articles"
+    menu:
+      - text: Replace with NA
+        href: articles/replace-with-na.html
+      - text: Special Missings
+        href: articles/special-missing-values.html
+      - text: Exploring Imputations
+        href: articles/exploring-imputed-values.html
+  - text: Reference
+    href: reference/index.html
   - text: News
     href: news/index.html

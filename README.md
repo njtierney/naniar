@@ -60,8 +60,8 @@ remotes::install_github("njtierney/naniar")
 
 Visualising missing data might sound a little strange - how do you
 visualise something that is not there? One approach to visualising
-missing data comes from [ggobi](http://ggobi.org/) and 
-[manet](https://cran.r-project.org/package=manet), where we replace “NA”
+missing data comes from [ggobi](http://www.ggobi.org/) and
+[manet](https://www.swmath.org/software/3067), where we replace “NA”
 values with values 10% lower than the minimum value in that variable.
 This visualisation is provided with the `geom_miss_point()` ggplot2 geom
 - which we illustrate by exploring the relationship between Ozone and
@@ -187,19 +187,16 @@ airquality %>%
 
 ![](man/figures/README-shadow-impute-1.png)<!-- -->
 
-Or perform an upset plot - to plot of the combinations of missingness
-across cases, using the `as_shadow_upset` function
+Or perform an [upset](https://www.nature.com/articles/nmeth.3033) plot -
+to plot of the combinations of missingness across cases, using the
+`gg_miss_upset` function
 
 ``` r
 
-library(UpSetR)
-
-airquality %>%
-  as_shadow_upset() %>%
-  upset()
+gg_miss_upset(airquality)
 ```
 
-![](man/figures/README-upset-plot-1.png)<!-- -->
+![](man/figures/README-gg-miss-upset-1.png)<!-- -->
 
 naniar does this while following consistent principles that are easy to
 read, thanks to the tools of the tidyverse.
@@ -210,6 +207,8 @@ naniar also provides handy visualations for each variable:
 
 gg_miss_var(airquality)
 ```
+
+![](man/figures/README-gg-miss-var-1.png)<!-- -->
 
 Or the number of missings in a given variable at a repeating span
 
@@ -259,29 +258,29 @@ which both return output ordered by the number of missing values.
 ``` r
 
 miss_var_summary(airquality)
-#> # A tibble: 6 x 4
-#>   variable n_miss pct_miss n_miss_cumsum
-#>   <chr>     <int>    <dbl>         <int>
-#> 1 Ozone        37    24.2             37
-#> 2 Solar.R       7     4.58            44
-#> 3 Wind          0     0               44
-#> 4 Temp          0     0               44
-#> 5 Month         0     0               44
-#> 6 Day           0     0               44
+#> # A tibble: 6 x 3
+#>   variable n_miss pct_miss
+#>   <chr>     <int>    <dbl>
+#> 1 Ozone        37    24.2 
+#> 2 Solar.R       7     4.58
+#> 3 Wind          0     0   
+#> 4 Temp          0     0   
+#> 5 Month         0     0   
+#> 6 Day           0     0
 miss_case_summary(airquality)
-#> # A tibble: 153 x 4
-#>     case n_miss pct_miss n_miss_cumsum
-#>    <int>  <int>    <dbl>         <int>
-#>  1     5      2     33.3             2
-#>  2    27      2     33.3             9
-#>  3     6      1     16.7             3
-#>  4    10      1     16.7             4
-#>  5    11      1     16.7             5
-#>  6    25      1     16.7             6
-#>  7    26      1     16.7             7
-#>  8    32      1     16.7            10
-#>  9    33      1     16.7            11
-#> 10    34      1     16.7            12
+#> # A tibble: 153 x 3
+#>     case n_miss pct_miss
+#>    <int>  <int>    <dbl>
+#>  1     5      2     33.3
+#>  2    27      2     33.3
+#>  3     6      1     16.7
+#>  4    10      1     16.7
+#>  5    11      1     16.7
+#>  6    25      1     16.7
+#>  7    26      1     16.7
+#>  8    32      1     16.7
+#>  9    33      1     16.7
+#> 10    34      1     16.7
 #> # ... with 143 more rows
 ```
 
@@ -302,19 +301,19 @@ library(dplyr)
 airquality %>%
   group_by(Month) %>%
   miss_var_summary()
-#> # A tibble: 25 x 5
-#>    Month variable n_miss pct_miss n_miss_cumsum
-#>    <int> <chr>     <int>    <dbl>         <int>
-#>  1     5 Ozone         5     16.1             5
-#>  2     5 Solar.R       4     12.9             9
-#>  3     5 Wind          0      0               9
-#>  4     5 Temp          0      0               9
-#>  5     5 Day           0      0               9
-#>  6     6 Ozone        21     70              21
-#>  7     6 Solar.R       0      0              21
-#>  8     6 Wind          0      0              21
-#>  9     6 Temp          0      0              21
-#> 10     6 Day           0      0              21
+#> # A tibble: 25 x 4
+#>    Month variable n_miss pct_miss
+#>    <int> <chr>     <int>    <dbl>
+#>  1     5 Ozone         5     16.1
+#>  2     5 Solar.R       4     12.9
+#>  3     5 Wind          0      0  
+#>  4     5 Temp          0      0  
+#>  5     5 Day           0      0  
+#>  6     6 Ozone        21     70  
+#>  7     6 Solar.R       0      0  
+#>  8     6 Wind          0      0  
+#>  9     6 Temp          0      0  
+#> 10     6 Day           0      0  
 #> # ... with 15 more rows
 ```
 

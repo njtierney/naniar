@@ -1,4 +1,13 @@
-# naniar 0.3.10.9000 (2018/08/20)
+# naniar 0.3.10.9100 (2018/09/03)
+
+## New Feature
+
+* `any_shade()` returns a logical TRUE or FALSE depending on if there are any `shade` values
+* `nabular()` an alias for `bind_shadow()` to tie the `nabular` term into the work.
+* `is_nabular()` checks if input is nabular.
+
+
+# naniar 0.3.10.9000 (2018/08/31)
 
 ## New Feature
 

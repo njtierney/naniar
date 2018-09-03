@@ -33,6 +33,16 @@ new_shade <- function(x, extra_levels = NULL){
 #' xs <- shade(c(NA, 1, 2, "3"))
 #'
 #' is_shade(xs)
+#' are_shade(xs)
+#' any_shade(xs)
+#'
+#' aq_s <- as_shadow(airquality)
+#'
+#' is_shade(aq_s)
+#' are_shade(aq_s)
+#' any_shade(aq_s)
+#' any_shade(airquality)
+#'
 #'
 is_shade <- function(x){
   inherits(x, "shade")
@@ -86,7 +96,7 @@ shade <- function(x, ..., extra_levels = NULL){
   test_if_null(x)
 
   if (length(x) == 0) {
-    rlang::abort(msg = "input to shade must have length > 0")
+    rlang::abort(message = "input to shade must have length > 0")
   }
 
   # if no other levels are specified
@@ -131,4 +141,10 @@ shade <- function(x, ..., extra_levels = NULL){
 
   # and return a new shade value
   new_shade(x, extra_levels)
+}
+
+#' @export
+#' @rdname is_shade
+any_shade <- function(x){
+  any(are_shade(x))
 }

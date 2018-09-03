@@ -215,15 +215,18 @@ as_shadow(airquality)
 
 ```
 
-The `bind_shadow` argument attaches a shadow to the current dataframe
+`bind_shadow` attaches a shadow to the current dataframe, a format we call "nabular", a portmanteau of `NA` a `tabular`. You can also use `nabular` to do the same thing:
 
 ```{r bind-shadow, echo = TRUE}
 
 aq_shadow <- bind_shadow(airquality)
+aq_nab <- nabular(airquality)
 
 library(dplyr)
 
 glimpse(aq_shadow)
+
+all.equal(aq_shadow, aq_nab)
 
 ```
 

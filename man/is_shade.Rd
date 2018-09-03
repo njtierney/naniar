@@ -3,11 +3,14 @@
 \name{is_shade}
 \alias{is_shade}
 \alias{are_shade}
+\alias{any_shade}
 \title{Detect if this is a shade}
 \usage{
 is_shade(x)
 
 are_shade(x)
+
+any_shade(x)
 }
 \arguments{
 \item{x}{a vector you want to test if is a shade}
@@ -23,5 +26,15 @@ This tells us if this column is a shade
 xs <- shade(c(NA, 1, 2, "3"))
 
 is_shade(xs)
+are_shade(xs)
+any_shade(xs)
+
+aq_s <- as_shadow(airquality)
+
+is_shade(aq_s)
+are_shade(aq_s)
+any_shade(aq_s)
+any_shade(airquality)
+
 
 }

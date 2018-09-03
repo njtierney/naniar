@@ -20,14 +20,14 @@ manipulate missing data with minimal deviations from the workflows in
 ggplot2 and tidy data. It does this by providing:
 
   - Shadow matrices, a tidy data structure for missing data:
-      - `as_shadow()` and `bind_shadow()`
+      - `bind_shadow()` and `nabular()`
   - Shorthand summaries for missing data:
       - `n_miss()` and `n_complete()`
       - `pct_miss()`and `pct_complete()`
   - Numerical summaries of missing data in variables and cases:
       - `miss_var_summary()` and `miss_var_table()`
       - `miss_case_summary()`, `miss_case_table()`
-  - Visualisation methods:
+  - Visualisation for missing data:
       - `geom_miss_point()`
       - `gg_miss_var()`
       - `gg_miss_case()`
@@ -61,7 +61,7 @@ remotes::install_github("njtierney/naniar")
 Visualising missing data might sound a little strange - how do you
 visualise something that is not there? One approach to visualising
 missing data comes from [ggobi](http://www.ggobi.org/) and
-[manet](https://www.swmath.org/software/3067), where we replace “NA”
+[manet](https://www.swmath.org/software/3067), which replaces `NA`
 values with values 10% lower than the minimum value in that variable.
 This visualisation is provided with the `geom_miss_point()` ggplot2 geom
 - which we illustrate by exploring the relationship between Ozone and
@@ -83,7 +83,7 @@ ggplot(data = airquality,
 ggplot2 does not handle these missing values, and we get a warning
 message about the missing values.
 
-We can instead use the `geom_miss_point()` to display the missing data
+We can instead use `geom_miss_point()` to display the missing data
 
 ``` r
 
@@ -156,7 +156,47 @@ as_shadow(airquality)
 #> # ... with 143 more rows
 ```
 
-Using the shadow matrix helps you manage where missing values are in
+Binding the shadow data to the data you help keep better track of the
+missing values. This format is called “nabular”, a portmanteau of `NA`
+and `tabular`. You can bind the shadow to the data using `bind_shadow`
+or `nabular`:
+
+``` r
+bind_shadow(airquality)
+#> # A tibble: 153 x 12
+#>    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA Solar.R_NA Wind_NA
+#>    <int>   <int> <dbl> <int> <int> <int> <fct>    <fct>      <fct>  
+#>  1    41     190   7.4    67     5     1 !NA      !NA        !NA    
+#>  2    36     118   8      72     5     2 !NA      !NA        !NA    
+#>  3    12     149  12.6    74     5     3 !NA      !NA        !NA    
+#>  4    18     313  11.5    62     5     4 !NA      !NA        !NA    
+#>  5    NA      NA  14.3    56     5     5 NA       NA         !NA    
+#>  6    28      NA  14.9    66     5     6 !NA      NA         !NA    
+#>  7    23     299   8.6    65     5     7 !NA      !NA        !NA    
+#>  8    19      99  13.8    59     5     8 !NA      !NA        !NA    
+#>  9     8      19  20.1    61     5     9 !NA      !NA        !NA    
+#> 10    NA     194   8.6    69     5    10 NA       !NA        !NA    
+#> # ... with 143 more rows, and 3 more variables: Temp_NA <fct>,
+#> #   Month_NA <fct>, Day_NA <fct>
+nabular(airquality)
+#> # A tibble: 153 x 12
+#>    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA Solar.R_NA Wind_NA
+#>    <int>   <int> <dbl> <int> <int> <int> <fct>    <fct>      <fct>  
+#>  1    41     190   7.4    67     5     1 !NA      !NA        !NA    
+#>  2    36     118   8      72     5     2 !NA      !NA        !NA    
+#>  3    12     149  12.6    74     5     3 !NA      !NA        !NA    
+#>  4    18     313  11.5    62     5     4 !NA      !NA        !NA    
+#>  5    NA      NA  14.3    56     5     5 NA       NA         !NA    
+#>  6    28      NA  14.9    66     5     6 !NA      NA         !NA    
+#>  7    23     299   8.6    65     5     7 !NA      !NA        !NA    
+#>  8    19      99  13.8    59     5     8 !NA      !NA        !NA    
+#>  9     8      19  20.1    61     5     9 !NA      !NA        !NA    
+#> 10    NA     194   8.6    69     5    10 NA       !NA        !NA    
+#> # ... with 143 more rows, and 3 more variables: Temp_NA <fct>,
+#> #   Month_NA <fct>, Day_NA <fct>
+```
+
+Using the nabular format helps you manage where missing values are in
 your dataset and make it easy to do visualisations where you split by
 missingness:
 

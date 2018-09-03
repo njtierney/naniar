@@ -9,8 +9,8 @@ df <- tibble::tribble(
 
 dfs <- bind_shadow(df)
 
-test_that("is_shadow returns TRUE for a shadow", {
-  expect_true(is_shadow(dfs))
+test_that("is_nabular returns TRUE for nabular data", {
+  expect_true(is_nabular(dfs))
 })
 
 test_that("is_shadow returns FALSE for regular data", {
@@ -23,7 +23,7 @@ test_that("are_shade returns the correct values",{
   expect_false(dfs_are[["wind"]])
   expect_false(dfs_are[["temp"]])
   expect_true(dfs_are[["wind_NA"]])
-  expect_true(dfs_are[["temp_NA"]])
+expect_true(dfs_are[["temp_NA"]])
 })
 
 test_that("any_shade returns the correct values",{

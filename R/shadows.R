@@ -131,7 +131,8 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
 
     # class(shadow_data) <- c("shadow", class(shadow_data))
 
-    return(new_shadow(shadow_data))
+    # return(new_shadow(shadow_data))
+    return(new_nabular(shadow_data))
 
   # if you want All the values to be added (the default behaviour)
   }
@@ -150,7 +151,8 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
 
     # class(shadow_data) <- c("shadow", class(shadow_data))
 
-    return(new_shadow(shadow_data))
+    # return(new_shadow(shadow_data))
+    return(new_nabular(shadow_data))
 
   }
 

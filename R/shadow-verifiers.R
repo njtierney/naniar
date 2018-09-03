@@ -16,10 +16,17 @@
 #' is_shadow(aq_sh)
 #' is_shadow(airquality)
 #' is_shadow(aq_bind)
+#' is_nabular(aq_bind)
 #'
 #' @export
 #' @name is_shadow
-
 is_shadow <- function(x){
   inherits(x, "shadow")
 }
+
+#' @export
+#' @rdname is_shadow
+is_nabular <- function(x){
+  inherits(x, "nabular")
+}
+

@@ -2,9 +2,12 @@
 % Please edit documentation in R/shadow-verifiers.R
 \name{is_shadow}
 \alias{is_shadow}
+\alias{is_nabular}
 \title{Test if input is or are shadow variables}
 \usage{
 is_shadow(x)
+
+is_nabular(x)
 }
 \arguments{
 \item{x}{a vector or data.frame}
@@ -25,5 +28,6 @@ aq_bind <- bind_shadow(airquality)
 is_shadow(aq_sh)
 is_shadow(airquality)
 is_shadow(aq_bind)
+is_nabular(aq_bind)
 
 }

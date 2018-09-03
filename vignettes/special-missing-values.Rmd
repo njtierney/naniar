@@ -20,7 +20,7 @@ Data sometimes have special missing values to indicate specific reasons for miss
 
 You might be interested in creating your own special missing values so that you can mark specific, known reasons for missingness. For example, an individual dropping out of a study, known instrument failure in weather instruments, or for values being censored in analysis. In these cases, the data is missing, but we have information about _why_ it is missing. Coding these cases as `NA` would cause us to lose this valuable information. Other stats programming languages like STATA, SAS, and SPSS have this capacity, but currently `R` does not. So, we need a way to create these special missing values.
 
-We can use `recode_shadoe` to recode missingness by recoding the special missing value as something like `NA_reason`. `naniar` records these values in the `shadow` part of `nabular` data, which is a special dataframe that contains missingness information. 
+We can use `recode_shadow` to recode missingness by recoding the special missing value as something like `NA_reason`. `naniar` records these values in the `shadow` part of `nabular` data, which is a special dataframe that contains missingness information. 
 
 This vignette describes how to add special missing values using the
 `recode_shadow()` function. First we consider some terminology to explain these ideas, if you are not familiar with the workflows in `naniar`.
@@ -96,7 +96,7 @@ To summarise, to use `recode_shadow`, the user provides the following informatio
 
 * A variable that they want to effect (`recode_shadow(var = ...)`)
 * A condition that they want to implement (`.where(condition ~ ...)`)
-* A suffix for the new type of missing value (`.where(condition ~ suffix)`
+* A suffix for the new type of missing value (`.where(condition ~ suffix)`)
 
 Under the hood, this special missing value is recoded as a new factor level in the shadow matrix, so that every column is aware of all possible new values of missingness.
 

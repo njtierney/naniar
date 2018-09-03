@@ -96,7 +96,7 @@
       <h1>Special Missing Values</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-08-31</h4>
+            <h4 class="date">2018-09-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/special-missing-values.Rmd"><code>vignettes/special-missing-values.Rmd</code></a></small>
       <div class="hidden name"><code>special-missing-values.Rmd</code></div>
@@ -107,7 +107,7 @@
     
 <p>Data sometimes have special missing values to indicate specific reasons for missingness. For example, “9999” is sometimes used in weather data, say for for example, the <a href="https://www.ncdc.noaa.gov/ghcn-daily-description">Global Historical Climate Network (GHCN) data</a>), to indicate specific types of missingness, such as instrument failure.</p>
 <p>You might be interested in creating your own special missing values so that you can mark specific, known reasons for missingness. For example, an individual dropping out of a study, known instrument failure in weather instruments, or for values being censored in analysis. In these cases, the data is missing, but we have information about <em>why</em> it is missing. Coding these cases as <code>NA</code> would cause us to lose this valuable information. Other stats programming languages like STATA, SAS, and SPSS have this capacity, but currently <code>R</code> does not. So, we need a way to create these special missing values.</p>
-<p>We can use <code>recode_shadoe</code> to recode missingness by recoding the special missing value as something like <code>NA_reason</code>. <code>naniar</code> records these values in the <code>shadow</code> part of <code>nabular</code> data, which is a special dataframe that contains missingness information.</p>
+<p>We can use <code>recode_shadow</code> to recode missingness by recoding the special missing value as something like <code>NA_reason</code>. <code>naniar</code> records these values in the <code>shadow</code> part of <code>nabular</code> data, which is a special dataframe that contains missingness information.</p>
 <p>This vignette describes how to add special missing values using the <code><a href="../reference/recode_shadow.html">recode_shadow()</a></code> function. First we consider some terminology to explain these ideas, if you are not familiar with the workflows in <code>naniar</code>.</p>
 <div id="terminology" class="section level1">
 <h1 class="hasAnchor">
@@ -200,8 +200,7 @@
 <ul>
 <li>A variable that they want to effect (<code><a href="../reference/recode_shadow.html">recode_shadow(var = ...)</a></code>)</li>
 <li>A condition that they want to implement (<code><a href="../reference/where.html">.where(condition ~ ...)</a></code>)</li>
-<li>A suffix for the new type of missing value (<code><a href="../reference/where.html">.where(condition ~ suffix)</a></code>
-</li>
+<li>A suffix for the new type of missing value (<code><a href="../reference/where.html">.where(condition ~ suffix)</a></code>)</li>
 </ul>
 <p>Under the hood, this special missing value is recoded as a new factor level in the shadow matrix, so that every column is aware of all possible new values of missingness.</p>
 <p>Some examples of using <code>recode_shadow</code> in a workflow will be discussed in more detail in the near future, for the moment, here is a recommended workflow:</p>

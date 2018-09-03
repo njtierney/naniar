@@ -21,6 +21,10 @@
 #' @param data A data frame. If specified, overrides the default data frame
 #' defined at the top level of the plot.
 #'
+#' @param prop_below the degree to shift the values. The default is 0.1
+#'
+#' @param jitter the amount of jitter to add. The default is 0.05
+#'
 # @param stat The statistical transformation to use on the data for this layer, as a string.
 #'
 #' @param position Position adjustment, either as a string, or the result of a
@@ -76,14 +80,16 @@
 #'
 #' @export
  geom_miss_point <- function(mapping = NULL,
-                               data = NULL,
-                               # stat = "identity",
-                               position = "identity",
-                               colour = ..missing..,
-                               na.rm = FALSE,
-                               show.legend = NA,
-                               inherit.aes = TRUE,
-                               ...) {
+                             data = NULL,
+                             prop_below = 0.1,
+                             jitter = 0.05,
+                             # stat = "identity",
+                             position = "identity",
+                             colour = ..missing..,
+                             na.rm = FALSE,
+                             show.legend = NA,
+                             inherit.aes = TRUE,
+                             ...) {
   layer(
     data = data,
     mapping = mapping,
@@ -93,6 +99,8 @@
     show.legend = show.legend,
     inherit.aes = inherit.aes,
     params = list(
+      prop_below = prop_below,
+      jitter = jitter,
       na.rm = na.rm,
       ...
     )
@@ -117,8 +125,14 @@ GeomMissPoint <- ggproto(
   draw_key = draw_key_missing_point,
   setup_data = function(data, params){
     #TODO: print warning if na.rm = T
-    data$x <- shadow_shift(data$x)
-    data$y <- shadow_shift(data$y)
+    data$x <- shadow_shift(data$x,
+                           prop_below = params$prop_below,
+                           jitter = params$jitter)
+
+    data$y <- shadow_shift(data$y,
+                           prop_below = params$prop_below,
+                           jitter = params$jitter)
+
     data$missing <- label_miss_2d(data$x, data$y)
     data
     },

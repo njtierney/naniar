@@ -4,9 +4,9 @@
 \alias{geom_miss_point}
 \title{geom_miss_point}
 \usage{
-geom_miss_point(mapping = NULL, data = NULL, position = "identity",
-  colour = ..missing.., na.rm = FALSE, show.legend = NA,
-  inherit.aes = TRUE, ...)
+geom_miss_point(mapping = NULL, data = NULL, prop_below = 0.1,
+  jitter = 0.05, position = "identity", colour = ..missing..,
+  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, ...)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2:aes]{ggplot2::aes()}}
@@ -17,6 +17,10 @@ the plot.}
 
 \item{data}{A data frame. If specified, overrides the default data frame
 defined at the top level of the plot.}
+
+\item{prop_below}{the degree to shift the values. The default is 0.1}
+
+\item{jitter}{the amount of jitter to add. The default is 0.05}
 
 \item{position}{Position adjustment, either as a string, or the result of a
 call to a position adjustment function.}

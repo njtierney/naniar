@@ -83,7 +83,7 @@
                              data = NULL,
                              prop_below = 0.1,
                              jitter = 0.05,
-                             # stat = "identity",
+                             stat = "miss_point",
                              position = "identity",
                              colour = ..missing..,
                              na.rm = FALSE,
@@ -93,7 +93,7 @@
   layer(
     data = data,
     mapping = mapping,
-    stat = StatMissPoint,
+    stat = stat,
     geom = GeomMissPoint,
     position = position,
     show.legend = show.legend,
@@ -123,19 +123,6 @@ GeomMissPoint <- ggproto(
                     alpha = NA,
                     stroke = 1.5),
   draw_key = draw_key_missing_point,
-  setup_data = function(data, params){
-    #TODO: print warning if na.rm = T
-    data$x <- shadow_shift(data$x,
-                           prop_below = params$prop_below,
-                           jitter = params$jitter)
-
-    data$y <- shadow_shift(data$y,
-                           prop_below = params$prop_below,
-                           jitter = params$jitter)
-
-    data$missing <- label_miss_2d(data$x, data$y)
-    data
-    },
   handle_na = function(self, data, params) data,
   draw_panel = function(data,
                         panel_scales,

@@ -5,8 +5,9 @@
 \title{geom_miss_point}
 \usage{
 geom_miss_point(mapping = NULL, data = NULL, prop_below = 0.1,
-  jitter = 0.05, position = "identity", colour = ..missing..,
-  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, ...)
+  jitter = 0.05, stat = "miss_point", position = "identity",
+  colour = ..missing.., na.rm = FALSE, show.legend = NA,
+  inherit.aes = TRUE, ...)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2:aes]{ggplot2::aes()}}

@@ -1,3 +1,9 @@
+# naniar 0.3.10.9200 (2018/09/04)
+
+## New Feature
+
+* `geom_miss_point()` now gains the arguments from `shadow_shift()`/`impute_below()` for altering the amount of `jitter` and proportion below (`prop_below`).
+
 # naniar 0.3.10.9100 (2018/09/03)
 
 ## New Feature

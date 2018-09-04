@@ -42,13 +42,15 @@
 #'
 #' @export
 stat_miss_point <- function(mapping = NULL,
-                               data = NULL,
-                               geom = "point",
-                               position = "identity",
-                               na.rm = FALSE,
-                               show.legend = NA,
-                               inherit.aes = TRUE,
-                               ...) {
+                            data = NULL,
+                            prop_below = 0.1,
+                            jitter = 0.05,
+                            geom = "point",
+                            position = "identity",
+                            na.rm = FALSE,
+                            show.legend = NA,
+                            inherit.aes = TRUE,
+                            ...) {
   ggplot2::layer(
     stat = StatMissPoint,
     data = data,
@@ -57,7 +59,9 @@ stat_miss_point <- function(mapping = NULL,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
-    params = list(na.rm = na.rm, ...)
+    params = list(prop_below = prop_below,
+                  jitter = jitter,
+                  na.rm = na.rm, ...)
   )
 
 }
@@ -71,13 +75,18 @@ StatMissPoint <- ggproto("StatMissPoint", Stat,
       #TODO: print warning if na.rm = T
       data$x_miss <- data$x
       data$y_miss <- data$y
-      data$x <- shadow_shift(data$x)
-      data$y <- shadow_shift(data$y)
+      data$x <- shadow_shift(data$x,
+                             prop_below = params$prop_below,
+                             jitter = params$jitter)
+
+      data$y <- shadow_shift(data$y,
+                             prop_below = params$prop_below,
+                             jitter = params$jitter)
       data
       } ,
 
     handle_na = function(self, data, params) data,
-    compute_group = function(data, scales) {
+    compute_group = function(data, scales, prop_below = 0.1, jitter = 0.05) {
       missing_label <- label_miss_2d(data$x_miss, data$y_miss)
 
       data.frame(data,

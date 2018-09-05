@@ -30,6 +30,12 @@ new_nabular <- function(x){
 #' @seealso [bind_shadow()]
 #'
 #' @examples
+#'
+#' aq_nab <- nabular(airquality)
+#' aq_s <- bind_shadow(airquality)
+#'
+#' all.equal(aq_nab, aq_s)
+#'
 #' @export
 nabular <- function(data, only_miss = FALSE, ...){
   bind_shadow(data = data, only_miss = only_miss, ...)

@@ -23,6 +23,14 @@ data with the added variable shifted and the suffix \code{_NA}
 Binding a shadow matrix to a regular dataframe converts it into nabular data,
 which makes it easier to visualise and work with missing data.
 }
+\examples{
+
+aq_nab <- nabular(airquality)
+aq_s <- bind_shadow(airquality)
+
+all.equal(aq_nab, aq_s)
+
+}
 \seealso{
 \code{\link[=bind_shadow]{bind_shadow()}}
 }

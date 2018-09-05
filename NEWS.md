@@ -1,3 +1,9 @@
+# naniar 0.3.10.9300 (2018/09/05)
+
+## Minor Improvement
+
+* `shadow_shift` gains a more informative error message when it doesn't know the class.
+
 # naniar 0.3.10.9200 (2018/09/04)
 
 ## New Feature

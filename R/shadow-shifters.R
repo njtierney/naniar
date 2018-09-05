@@ -28,8 +28,8 @@ shadow_shift.NULL <- function(x, ...) NULL
 shadow_shift.default <- function(x, ...){
   stop(
     "shadow_shift does not know how to deal with data of class ",
-    class(x),
-    " please check your input is more than length one",
+    class_glue(x),
+    "please check if your input is more than length one, and that you are using the right function.",
     call. = FALSE
   )
 

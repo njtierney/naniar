@@ -218,3 +218,7 @@ quo_to_shade <- function(...){
   return(shadow_vars)
 
 }
+
+class_glue <- function(x){
+  class(x) %>% glue::glue_collapse(sep = ", ", last = ", or ")
+}

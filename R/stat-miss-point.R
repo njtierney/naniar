@@ -12,6 +12,10 @@
 #' @param data A data frame. If specified, overrides the default data frame
 #'   defined at the top level of the plot.
 #'
+#' @param prop_below the degree to shift the values. The default is 0.1
+#'
+#' @param jitter the amount of jitter to add. The default is 0.05
+#'
 #' @param geom, stat Override the default connection between `geom_point` and
 #'   `stat_point`.
 #'

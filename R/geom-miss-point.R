@@ -25,7 +25,7 @@
 #'
 #' @param jitter the amount of jitter to add. The default is 0.05
 #'
-# @param stat The statistical transformation to use on the data for this layer, as a string.
+#' @param stat The statistical transformation to use on the data for this layer, as a string.
 #'
 #' @param position Position adjustment, either as a string, or the result of a
 #' call to a position adjustment function.

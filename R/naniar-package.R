@@ -12,6 +12,7 @@
 #' @import rlang
 NULL
 
+#' @importFrom stats median
 #' @importFrom visdat vis_miss
 #' @export
 visdat::vis_miss
@@ -20,6 +21,7 @@ visdat::vis_miss
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
 globalVariables(
   c(
+    "median",
     "variable_NA",
     ".temp",
     ".temp_label",

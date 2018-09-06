@@ -3,11 +3,14 @@
 \name{impute_mean}
 \alias{impute_mean}
 \alias{impute_mean.default}
+\alias{impute_mean.factor}
 \title{Impute the mean value into a vector with missing values}
 \usage{
 impute_mean(x)
 
 \method{impute_mean}{default}(x)
+
+\method{impute_mean}{factor}(x)
 }
 \arguments{
 \item{x}{vector}

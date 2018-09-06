@@ -1,3 +1,9 @@
+# naniar 0.3.10.9400 (2018/09/06)
+
+## New Feature
+
+* `impute_median` and scoped variants
+
 # naniar 0.3.10.9300 (2018/09/05)
 
 ## Minor Improvement

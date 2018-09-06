@@ -1,3 +1,21 @@
+the_mode <- function(x, na.rm = FALSE) {
+
+  if (na.rm) {
+    x <- x[!is.na(x)]
+  }
+
+  if (length(x) <= 1) {
+    x
+  }
+
+  if (length(x) > 1) {
+    d <- density(x)
+    d$x[which.max(d$y)]
+  }
+
+}
+
+
 #' Impute the mode value into a vector with missing values
 #'
 #' @param x vector

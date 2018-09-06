@@ -222,3 +222,20 @@ quo_to_shade <- function(...){
 class_glue <- function(x){
   class(x) %>% glue::glue_collapse(sep = ", ", last = ", or ")
 }
+
+the_mode <- function(x, na.rm = FALSE) {
+
+  if (na.rm) {
+    x <- x[!is.na(x)]
+  }
+
+  if (length(x) <= 1) {
+    x
+  }
+
+  if (length(x) > 1) {
+    d <- density(x)
+    d$x[which.max(d$y)]
+  }
+
+}

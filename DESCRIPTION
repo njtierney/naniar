@@ -87,6 +87,7 @@ Collate:
     'gg-miss-which.R'
     'helpers.R'
     'impute-median.R'
+    'impute-mode.R'
     'impute_below.R'
     'impute_mean.R'
     'label-miss.R'

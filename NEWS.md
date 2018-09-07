@@ -1,3 +1,11 @@
+# naniar 0.3.10.9500 (2018/09/07)
+
+## Minor Improvement
+
+* `gg_miss_upset` gets a better default presentation by ordering by the largest
+intersections, and also an improved error message when data with only 1 or no
+variables have missing values.
+
 # naniar 0.3.10.9400 (2018/09/06)
 
 ## New Feature

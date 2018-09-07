@@ -48,7 +48,8 @@ Suggests:
     here,
     simputation,
     imputeTS,
-    gdtools
+    gdtools,
+    Hmisc
 VignetteBuilder: knitr
 Depends:
     R (>= 3.1.2)

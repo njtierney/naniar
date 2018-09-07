@@ -70,7 +70,9 @@ When we impute data like this, we cannot identify where the imputed values are -
 
 We can track the missing values by combining the verbs `bind_shadow`, `impute_`, `add_label_shadow`. We can then refer to missing values by their shadow variable, `_NA`. The `add_label_shadow` function adds an additional column called `any_missing`, which tells us if any observation has a missing value. 
 
-We can impute the data using the easy-to-use `simputation`, and then track the missingness using `bind_shadow` and `add_label_shadow`:
+#### Imputing values using simputation
+
+We can impute the data using the easy-to-use `simputation` package, and then track the missingness using `bind_shadow` and `add_label_shadow`:
 
 ```{r bind-impute-label-example, echo = TRUE}
 
@@ -149,3 +151,49 @@ ggplot(ocean_imp_yr,
   theme(legend.position = "bottom")
 ```
 
+# Other imputation approaches
+
+Not all imputation packages return data in tidy 
+
+## Hmisc aregImpute
+
+We can explore using a single imputation of `Hmisc::aregImpute()`, which allows for multiple imputation with bootstrapping, additive regression, and predictive mean matching. We are going to explore predicting mean matching, and single imputation.
+
+```{r Hmisc-aregimpute}
+
+library(Hmisc)
+
+aq_imp <- aregImpute(~Ozone + Temp + Wind + Solar.R,
+                     n.impute = 1,
+                     type = "pmm",
+                     data = airquality)
+
+aq_imp
+```
+
+We are now going to get our data into `nabular` form, and then insert the imputed values:
+
+```{r Hmisc-aregimpute-insert}
+
+# nabular form!
+aq_nab <- nabular(airquality) %>%  add_label_shadow()
+
+# insert imputed values
+aq_nab$Ozone[is.na(aq_nab$Ozone)] <- aq_imp$imputed$Ozone
+aq_nab$Solar.R[is.na(aq_nab$Solar.R)] <- aq_imp$imputed$Solar.R
+
+```
+
+In the future there will be a more concise way to insert these imputed values into data, but for the moment the method above is what I would recommend for single imputation.
+
+We can then explore the imputed values like so:
+
+```{r hmisc-aregimpute-vis}
+
+ggplot(aq_nab,
+       aes(x = Ozone,
+           y = Solar.R,
+           colour = any_missing)) + 
+  geom_point()
+
+```

@@ -48,7 +48,7 @@ We create `nabular` data by `bind`ing the shadow to the data:
 bind_shadow(oceanbuoys)
 ```
 
-This keeps the data values tied to their missingness, and has great benefits for exploring missing and imputed values in data. See the vignettes [Getting Started with naniar](http://naniar.njtierney.com/articles/getting-started-w-naniar.html) and [Exploring Imputations with naniar](http://naniar.njtierney.com/exploring-imputed-values.html) for more details.
+This keeps the data values tied to their missingness, and has great benefits for exploring missing and imputed values in data. See the vignettes [Getting Started with naniar](http://naniar.njtierney.com/articles/getting-started-w-naniar.html) and [Exploring Imputations with naniar](http://naniar.njtierney.com/articles/exploring-imputed-values.html) for more details.
 
 # Recoding missing values
 

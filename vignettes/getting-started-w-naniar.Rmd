@@ -20,7 +20,7 @@ knitr::opts_chunk$set(fig.align = "center",
 
 # Introduction
 
-Missing values are ubiquitous in data and need to be carefully explored and handled in the initial stages of analysis. In this vignette we describe the tools in the package `naniar` for exploring missing data structures with minimal deviation from the common workflows of ggplot and tidy data [@Wickham2014; @Wickham2009].
+Missing values are ubiquitous in data and need to be carefully explored and handled in the initial stages of analysis. In this vignette we describe the tools in the package `naniar` for exploring missing data structures with minimal deviation from the common workflows of ggplot and tidy data ([Wickham, 2014](https://www.jstatsoft.org/article/view/v059i10), [Wickham, 2009](https://www.springer.com/gp/book/9780387981413)).
 
 Sometimes researchers or analysts will introduce or describe a mechanism for missingness. For example, they might explain that data from a weather station might have a malfunction when there are extreme weather events, and does not record temperature data when gusts speeds are high. This seems like a nice simple, logical explanation. However, like all good explanations, this one is simple, but the process to get there was probably not, and likely involved more time than you would have liked developing exploratory data analyses and models. 
 
@@ -225,6 +225,7 @@ aq_nab <- nabular(airquality)
 library(dplyr)
 
 glimpse(aq_shadow)
+glimpse(aq_nab)
 
 all.equal(aq_shadow, aq_nab)
 
@@ -232,7 +233,7 @@ all.equal(aq_shadow, aq_nab)
 
 Doing this provides a consistent syntax for referring to variables with missing values.
 
-`bind_shadow()` also provides a useful pattern to explore missing values, grouping by the missing/complete of one variable and looking at the mean and other summary values. Below we show the mean, sd, variance, and min and max values of Solar.R for when Ozone is present, and when it is missing.
+_Nabular_ data provides a useful pattern to explore missing values, grouping by the missing/complete of one variable and looking at the mean and other summary values. Below we show the mean, sd, variance, and min and max values of Solar.R for when Ozone is present, and when it is missing.
 
 ```{r bind-shadow-pattern}
 
@@ -259,7 +260,7 @@ ggplot(aq_shadow,
 Binding the shadow here also has great benefits when combined with imputation.
 
 # Visualising imputed values
-https://cran.r-project.org/package=naniar
+
 With the easy-to-use [`simputation`](https://cran.r-project.org/package=simputation) package, we impute values for Ozone, then visualise the data:
 
 ```{r simpute-invisible, echo = TRUE, fig.height = 3}
@@ -292,7 +293,7 @@ aq_shadow %>%
 
 ## Numerical summaries of missing values
 
-`naniar` also provide numerical summaries for missing data. Two convenient counters of complete values and missings are `n_miss` and `n_complete`. These work on both dataframes and vectors, similar to `dplyr::n_distinct`
+`naniar` also provide numerical summaries for missing data. Two convenient counters of complete values and missings are `n_miss()` and `n_complete()`. These work on both dataframes and vectors, similar to `dplyr::n_distinct()`
 
 ```{r helpers-n-miss, echo = TRUE}
 
@@ -307,9 +308,7 @@ n_complete(airquality$Ozone)
 
 ```
 
-The syntax for the other numerical sumamries in `naniar` are `miss_`, and then `case`, or `var` to refer to cases or variables. There are then `summary`, `table`, `run`, `span`, and `cumsum` options to explore missing data.
-
-The
+The syntax for the other numerical sumamries in `naniar` are `miss_`, and then `case`, or `var` to refer to cases or variables. There are then `summary`, `table`, `run`, `span`, and `cumsum` options to explore missing data. 
 
 `miss_case_prop` and `miss_case_pct` return numeric value describing the proportion or percent of missing values in the dataframe.
 
@@ -318,7 +317,7 @@ miss_case_prop(airquality)
 miss_case_pct(airquality)
 ```
 
-`miss_case_summary` returns a numeric value that describes the number of missings in a given case (aka row), the percent of missings in that row.
+`miss_case_summary()` returns a numeric value that describes the number of missings in a given case (aka row), the percent of missings in that row.
 
 ```{r miss-case-summary}
 
@@ -326,7 +325,7 @@ miss_case_summary(airquality)
 
 ```
 
-`miss_case_table` tabulates the number of missing values in a case / row. Below, this shows the number of missings in a case:
+`miss_case_table()` tabulates the number of missing values in a case / row. Below, this shows the number of missings in a case:
 
 - There are 111 cases with 0 missings, which comprises about 72% of the data.
 - There are then 40 cases with 1 missing, these make up 26% of the data.
@@ -347,7 +346,7 @@ miss_var_pct(airquality)
 
 ```
 
-`miss_var_summary` then returns the number of missing values in a variable, and the percent missing in that variable.
+`miss_var_summary()` then returns the number of missing values in a variable, and the percent missing in that variable.
 
 ```{r miss-var-summary}
 
@@ -355,7 +354,7 @@ miss_var_summary(airquality)
 
 ```
 
-Finally, `miss_var_table`. This describes the number of missings in a variable.
+Finally, `miss_var_table()`. This describes the number of missings in a variable.
 
 - There are 4 variables with 0 missings, comprising 66.67% of variables in the dataset.
 - There is 1 variable with 7 missings
@@ -372,9 +371,9 @@ There are also summary functions for exploring missings that occur over a partic
 - `miss_var_run()`, and 
 - `miss_var_span()`
 
-`miss_var_run` can be particularly useful in time series data, as it allows you to provide summaries for the number of missings or complete values in a single run. The function `miss_var_run()` provides a data.frame of the run length of missings and complete values. To explore this function we will use the built-in dataset, `pedestrian`, which contains hourly counts of pedestrians from four locations around Melbourne, Australia, from 2016.
+`miss_var_run()` can be particularly useful in time series data, as it allows you to provide summaries for the number of missings or complete values in a single run. The function `miss_var_run()` provides a data.frame of the run length of missings and complete values. To explore this function we will use the built-in dataset, `pedestrian`, which contains hourly counts of pedestrians from four locations around Melbourne, Australia, from 2016.
 
-To use `miss_var_run`, you specify the variable that you want to explore the runs of missingness for, in this case, `hourly_counts`:
+To use `miss_var_run()`, you specify the variable that you want to explore the runs of missingness for, in this case, `hourly_counts`:
 
 ```{r miss-var-run}
 miss_var_run(pedestrian,
@@ -391,9 +390,9 @@ miss_var_span(pedestrian,
 
 ```
 
-# Using `group_by` with naniar
+# Using `group_by()` with naniar
 
-Every `miss_*` summary function that returns a dataframe can be used with dplyr `group_by`. For example, if you would like to look at the number of missing values for all variables of pedestrian data.
+Every `miss_*` summary function that returns a dataframe can be used with dplyr `group_by()`. For example, if you would like to look at the number of missing values for all variables of pedestrian data.
 
 ```{r ped-miss-var-sum}
 
@@ -421,7 +420,7 @@ The final question we proposed in this vignette was:
 
 Sometimes it can be impractical to explore all of the variables that have missing data. One approach, however, is to model missing data using methods from Tierney et el. (2015).
 
-Here, the approach is to predict the proportion of missingness in a given case, using all variables. There is a little helper function to add a column with the proportion of cases or rows missing - `add_prop_miss`. This created a column named "prop_miss", which is the proportion of missing values in that row.
+Here, the approach is to predict the proportion of missingness in a given case, using all variables. There is a little helper function to add a column with the proportion of cases or rows missing - `add_prop_miss()`. This created a column named "prop_miss", which is the proportion of missing values in that row.
 
 ```{r add-prop-miss, echo = TRUE}
 
@@ -443,8 +442,6 @@ airquality %>%
   rpart(prop_miss_all ~ ., data = .) %>%
   prp(type = 4, extra = 101, prefix = "Prop. Miss = ")
 
-# library(visdat)
-# vis_miss(messy_airquality)
 ```
 
 Here we can see that this produces quite a complex tree - this can be pruned back and the depth of the decision tree controlled.

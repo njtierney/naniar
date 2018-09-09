@@ -1,103 +1,53 @@
-# naniar 0.3.10.9500 (2018/09/07)
-
-## Minor Improvement
-
-* `gg_miss_upset` gets a better default presentation by ordering by the largest
-intersections, and also an improved error message when data with only 1 or no
-variables have missing values.
-
-# naniar 0.3.10.9400 (2018/09/06)
+# naniar 0.4.0.0 (2018/09/10)
 
 ## New Feature
 
-* `impute_median` and scoped variants
-
-# naniar 0.3.10.9300 (2018/09/05)
-
-## Minor Improvement
-
-* `shadow_shift` gains a more informative error message when it doesn't know the class.
-
-# naniar 0.3.10.9200 (2018/09/04)
-
-## New Feature
-
-* `geom_miss_point()` now gains the arguments from `shadow_shift()`/`impute_below()` for altering the amount of `jitter` and proportion below (`prop_below`).
-
-# naniar 0.3.10.9100 (2018/09/03)
-
-## New Feature
-
+* `impute_median()` and scoped variants
 * `any_shade()` returns a logical TRUE or FALSE depending on if there are any `shade` values
 * `nabular()` an alias for `bind_shadow()` to tie the `nabular` term into the work.
 * `is_nabular()` checks if input is nabular.
 
-
-# naniar 0.3.10.9000 (2018/08/31)
-
-## New Feature
-
+* `geom_miss_point()` now gains the arguments from `shadow_shift()`/`impute_below()` for altering the amount of `jitter` and proportion below (`prop_below`).
 * Added two new vignettes, "Exploring Imputed Values", and  "Special Missing Values"
-
-# naniar 0.3.9.9100 (2018/08/20)
+* `miss_var_summary` and `miss_case_summary` now no longer provide the 
+cumulative sum of missingness in the summaries - this summary can be added back
+to the data with the option `add_cumsum = TRUE`. #186
+- Added `gg_miss_upset` to replace workflow of: 
+  ```
+  data %>% 
+    as_shadow_upset() %>%
+    UpSetR::upset()
+  ```
 
 ## Major Change
 
 * `recode_shadow` now works! This function allows you to recode your missing
 values into special missing values. These special missing values are stored in
 the shadow part of the dataframe, which ends in `_NA`.
-
-## Minor Change
-
 * implemented `shade` where appropriate throughout naniar, and also added 
 verifiers, `is_shade`, `are_shade`, `which_are_shade`, and removed `which_are_shadow`.
-
-# naniar 0.3.9.9000 (2018/06/14)
-
-## Major change
-
 - `as_shadow`  and `bind_shadow` now return data of class `shadow`. This will 
 feed into `recode_shadow` methods for flexibly adding new types of missing data.
 - Note that in the future `shadow` might be changed to `nabble` or something similar.
 
-# naniar 0.3.4.9600 (2018/08/15)
-
 ## Minor feature
 
 * Functions `add_label_shadow()` and `add_label_missings()` gain arguments so you can only label according to the missingness / shadowy-ness of given variables.
-
-# naniar 0.3.3.9500 (2018/08/13)
-
-## Minor feature
-
 * new function `which_are_shadow()`, to tell you which values are shadows.
 * new function `long_shadow()`, which converts data in shadow/nabular form into a long format suitable for plotting. Related to [#165](https://github.com/njtierney/naniar/issues/165)
-
-# naniar 0.3.3.9300 (2018/08/12)
-
-## Minor Breaking Change
-
-* `impute_below` has changed to be an alias of `shadow_shift` - that is it operates on a single vector. `impute_below_all` operates on all columns in a dataframe (as specified in [#159](https://github.com/njtierney/naniar/issues/159))
-
-# naniar 0.3.3.9200 (2018/08/01)
-
-## Minor feature
-
 * Added tests for `miss_scan_count`
 
-## Bug fix
+## Minor Changes
 
-* Ensured that `miss_scan_count` actually `return`'d something.
-
-# naniar 0.3.3.9100 (2018/07/31)
-
-## New feature
-
-* `miss_var_summary` and `miss_case_summary` now no longer provide the 
-cumulative sum of missingness in the summaries - this summary can be added back
-to the data with the option `add_cumsum = TRUE`. #186
-
-# naniar 0.3.3.9000 (2018/07/30)
+* `gg_miss_upset` gets a better default presentation by ordering by the largest
+intersections, and also an improved error message when data with only 1 or no
+variables have missing values.
+* `shadow_shift` gains a more informative error message when it doesn't know the class.
+* Changed `common_na_string` to include  escape characters for "?", "*", "." so
+that if they are used in replacement or searching functions they don't return
+the wildcard results from the characters "?", "*", and ".".
+* `miss_case_table` and `miss_var_table` now has final column names `pct_vars`,
+and `pct_cases` instead of `pct_miss` - fixes #178.
 
 ## Breaking Changes
 
@@ -117,38 +67,12 @@ consistent syntax [#171](https://github.com/njtierney/naniar/issues/171). The ol
 
 These old names will be made defunct in 0.5.0, and removed completely in 0.6.0.
 
-# naniar 0.3.2.9300 (2018/06/27)
+* `impute_below` has changed to be an alias of `shadow_shift` - that is it operates on a single vector. `impute_below_all` operates on all columns in a dataframe (as specified in [#159](https://github.com/njtierney/naniar/issues/159))
 
 ## Bug fix
 
+* Ensured that `miss_scan_count` actually `return`'d something.
 * `gg_miss_var(airquality)` now prints the ggplot - a typo meant that this did not print the plot
-
-# naniar 0.3.2.9100 (2018/06/25)
-
-## Minor update
-
-- Changed `common_na_string` to include  escape characters for "?", "*", "." so
-that if they are used in replacement or searching functions they don't return
-the wildcard results from the characters "?", "*", and ".".
-
-# naniar 0.3.2.9000 (2018/06/21)
-
-## New Feature
-
-- Added `gg_miss_upset` to replace workflow of: 
-  ```
-  data %>% 
-    as_shadow_upset() %>%
-    UpSetR::upset()
-  ```
-
-# naniar 0.3.1.9100 (2018/06/10)
-
-## Minor Change
-
-- `miss_case_table` and `miss_var_table` now has final column names `pct_vars`,
-and `pct_cases` instead of `pct_miss` - fixes #178.
->>>>>>> origin/master
 
 # naniar 0.3.1 (2018/06/10) "Strawberry's Adventure"
 

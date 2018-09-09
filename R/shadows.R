@@ -162,7 +162,7 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
 #'
 #' @param x a data.frame
 #'
-#' @return object with class "shadow", inhereting from it's original class
+#' @return object with class "shadow", inheriting from it's original class
 #' @export
 new_shadow <- function(x){
     # structure(x,

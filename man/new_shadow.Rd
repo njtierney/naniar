@@ -10,7 +10,7 @@ new_shadow(x)
 \item{x}{a data.frame}
 }
 \value{
-object with class "shadow", inhereting from it's original class
+object with class "shadow", inheriting from it's original class
 }
 \description{
 Create a new shadow

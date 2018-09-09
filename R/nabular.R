@@ -2,7 +2,7 @@
 #'
 #' @param x a data.frame
 #'
-#' @return object with class "nabular", inhereting from it's original class
+#' @return object with class "nabular", inheriting from it's original class
 #' @export
 new_nabular <- function(x){
 

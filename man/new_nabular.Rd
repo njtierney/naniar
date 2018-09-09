@@ -10,7 +10,7 @@ new_nabular(x)
 \item{x}{a data.frame}
 }
 \value{
-object with class "nabular", inhereting from it's original class
+object with class "nabular", inheriting from it's original class
 }
 \description{
 Create a new nabular format

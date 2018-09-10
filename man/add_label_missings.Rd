@@ -4,12 +4,17 @@
 \alias{add_label_missings}
 \title{Add a column describing if there are any missings in the dataset}
 \usage{
-add_label_missings(data, ...)
+add_label_missings(data, ..., missing = "Missing",
+  complete = "Not Missing")
 }
 \arguments{
 \item{data}{data.frame}
 
 \item{...}{extra variable to label}
+
+\item{missing}{character a label for when values are missing - defaults to "Missing"}
+
+\item{complete}{character character a label for when values are complete - defaults to "Not Missing"}
 }
 \value{
 data.frame with a column "any_missing" that is either "Not Missing"
@@ -23,6 +28,7 @@ Add a column describing if there are any missings in the dataset
 airquality \%>\% add_label_missings()
 airquality \%>\% add_label_missings(Ozone)
 airquality \%>\% add_label_missings(Ozone, Solar.R)
+airquality \%>\% add_label_missings(Ozone, Solar.R, missing = "yes", complete = "no")
 
 }
 \seealso{

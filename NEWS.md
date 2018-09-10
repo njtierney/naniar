@@ -1,4 +1,4 @@
-# naniar 0.4.0.0 (2018/09/10) "An Unexpected Meeting"
+# naniar 0.4.0 (2018/09/10) "An Unexpected Meeting"
 
 ## New Feature
 

@@ -55,3 +55,21 @@ test_that("add_label_shadow adds the right values to the column", {
                c(rep("Missing", 2), "Not Missing", "Missing", "Not Missing"))
 })
 
+dat_sh_add_1 <- add_label_shadow(dat_sh,
+                                 missing = "wat")
+dat_sh_add_2 <- add_label_shadow(dat_sh,
+                                 complete = "even")
+dat_sh_add_3 <- add_label_shadow(dat_sh,
+                                 missing = "wat",
+                                 complete = "even")
+
+
+test_that("add_label_shadow adds the right values to the column", {
+  expect_equal(dat_sh_add_1$any_missing,
+               c("wat", "wat", "Not Missing", "wat", "wat"))
+  expect_equal(dat_sh_add_2$any_missing,
+               c("Missing", "Missing", "even", "Missing", "Missing"))
+  expect_equal(dat_sh_add_3$any_missing,
+               c("wat", "wat", "even", "wat", "wat"))
+})
+

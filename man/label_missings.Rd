@@ -4,12 +4,17 @@
 \alias{label_missings}
 \title{Is there a missing value in the row of a dataframe?}
 \usage{
-label_missings(data, ...)
+label_missings(data, ..., missing = "Missing",
+  complete = "Not Missing")
 }
 \arguments{
 \item{data}{a dataframe or set of vectors of the same length}
 
 \item{...}{extra variable to label}
+
+\item{missing}{character a label for when values are missing - defaults to "Missing"}
+
+\item{complete}{character character a label for when values are complete - defaults to "Not Missing"}
 }
 \value{
 character vector of "Missing" and "Not Missing".
@@ -25,6 +30,12 @@ library(dplyr)
 
 airquality \%>\%
   mutate(is_missing = label_missings(airquality)) \%>\%
+  head()
+
+airquality \%>\%
+  mutate(is_missing = label_missings(airquality,
+                                     missing = "definitely missing",
+                                     complete = "absolutely complete")) \%>\%
   head()
 
 }

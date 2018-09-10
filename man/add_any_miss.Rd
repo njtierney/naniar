@@ -4,7 +4,8 @@
 \alias{add_any_miss}
 \title{Add a column describing presence of any missing values}
 \usage{
-add_any_miss(data, ..., label = "any_miss")
+add_any_miss(data, ..., label = "any_miss", missing = "missing",
+  complete = "complete")
 }
 \arguments{
 \item{data}{data.frame}
@@ -19,6 +20,10 @@ has not been used on all of the variables.}
 \item{label}{label for the column, defaults to "any_miss". By default if no
 additional variables are listed the label col is "any_miss_all", otherwise
 it is "any_miss_vars", if variables are specified.}
+
+\item{missing}{character a label for when values are missing - defaults to "missing"}
+
+\item{complete}{character character a label for when values are complete - defaults to "complete"}
 }
 \value{
 data.frame with data and the column labelling whether that row (for

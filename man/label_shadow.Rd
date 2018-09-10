@@ -4,12 +4,16 @@
 \alias{label_shadow}
 \title{Label shadow values as missing or not missing}
 \usage{
-label_shadow(data, ...)
+label_shadow(data, ..., missing = "Missing", complete = "Not Missing")
 }
 \arguments{
 \item{data}{data.frame}
 
 \item{...}{extra variable to label}
+
+\item{missing}{character a label for when values are missing - defaults to "Missing"}
+
+\item{complete}{character character a label for when values are complete - defaults to "Not Missing"}
 }
 \value{
 "Missing" or "Not Missing"

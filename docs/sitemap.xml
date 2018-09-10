@@ -124,6 +124,9 @@
     <loc>http://naniar.njtierney.com//reference/impute_mean.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/impute_median.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/is_shade.html</loc>
   </url>
   <url>
@@ -202,6 +205,9 @@
     <loc>http://naniar.njtierney.com//reference/n_miss_row.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/nabular.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/naniar-ggproto.html</loc>
   </url>
   <url>
@@ -278,6 +284,9 @@
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/scoped-impute_mean.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/scoped-impute_median.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/shade.html</loc>

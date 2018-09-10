@@ -70,7 +70,7 @@ the same axis." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.10.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -147,7 +147,8 @@ the same axis.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>geom_miss_point</span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
+    <pre class="usage"><span class='fu'>geom_miss_point</span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>prop_below</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
+  <span class='kw'>jitter</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"miss_point"</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
   <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>..missing..</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>show.legend</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='kw'>inherit.aes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
@@ -166,6 +167,18 @@ the plot.</p></td>
       <th>data</th>
       <td><p>A data frame. If specified, overrides the default data frame
 defined at the top level of the plot.</p></td>
+    </tr>
+    <tr>
+      <th>prop_below</th>
+      <td><p>the degree to shift the values. The default is 0.1</p></td>
+    </tr>
+    <tr>
+      <th>jitter</th>
+      <td><p>the amount of jitter to add. The default is 0.05</p></td>
+    </tr>
+    <tr>
+      <th>stat</th>
+      <td><p>The statistical transformation to use on the data for this layer, as a string.</p></td>
     </tr>
     <tr>
       <th>position</th>

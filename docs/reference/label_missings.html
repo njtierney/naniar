@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.10.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -141,7 +141,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>label_missings</span>(<span class='no'>data</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>label_missings</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>missing</span> <span class='kw'>=</span> <span class='st'>"Missing"</span>,
+  <span class='kw'>complete</span> <span class='kw'>=</span> <span class='st'>"Not Missing"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,6 +154,14 @@
     <tr>
       <th>...</th>
       <td><p>extra variable to label</p></td>
+    </tr>
+    <tr>
+      <th>missing</th>
+      <td><p>character a label for when values are missing - defaults to "Missing"</p></td>
+    </tr>
+    <tr>
+      <th>complete</th>
+      <td><p>character character a label for when values are complete - defaults to "Not Missing"</p></td>
     </tr>
     </table>
     
@@ -209,6 +218,17 @@
 #&gt; 4    18     313 11.5   62     5   4 Not Missing
 #&gt; 5    NA      NA 14.3   56     5   5     Missing
 #&gt; 6    28      NA 14.9   66     5   6     Missing</div><div class='input'>
+<span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>is_missing</span> <span class='kw'>=</span> <span class='fu'>label_missings</span>(<span class='no'>airquality</span>,
+                                     <span class='kw'>missing</span> <span class='kw'>=</span> <span class='st'>"definitely missing"</span>,
+                                     <span class='kw'>complete</span> <span class='kw'>=</span> <span class='st'>"absolutely complete"</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'>head</span>()</div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day          is_missing
+#&gt; 1    41     190  7.4   67     5   1 absolutely complete
+#&gt; 2    36     118  8.0   72     5   2 absolutely complete
+#&gt; 3    12     149 12.6   74     5   3 absolutely complete
+#&gt; 4    18     313 11.5   62     5   4 absolutely complete
+#&gt; 5    NA      NA 14.3   56     5   5  definitely missing
+#&gt; 6    28      NA 14.9   66     5   6  definitely missing</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

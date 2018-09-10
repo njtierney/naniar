@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a shadow column to dataframe — add_shadow • naniar</title>
+<title>Impute the median value into a vector with missing values — impute_median • naniar</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -36,11 +36,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Add a shadow column to dataframe — add_shadow" />
+<meta property="og:title" content="Impute the median value into a vector with missing values — impute_median" />
 
-<meta property="og:description" content="As an alternative to bind_shadow(), you can add specific individual shadow
-columns to a dataset. These also respect the dplyr verbs
-starts_with, contains, ends_with, etc." />
+<meta property="og:description" content="Impute the median value into a vector with missing values" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -132,73 +130,47 @@ starts_with, contains, ends_with, etc." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add a shadow column to dataframe</h1>
-    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/add-cols.R'><code>R/add-cols.R</code></a></small>
-    <div class="hidden name"><code>add_shadow.Rd</code></div>
+    <h1>Impute the median value into a vector with missing values</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/impute-median.R'><code>R/impute-median.R</code></a></small>
+    <div class="hidden name"><code>impute_median.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>As an alternative to <code><a href='bind_shadow.html'>bind_shadow()</a></code>, you can add specific individual shadow
-columns to a dataset. These also respect the dplyr verbs
-<code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, etc.</p>
+    <p>Impute the median value into a vector with missing values</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_shadow</span>(<span class='no'>data</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>impute_median</span>(<span class='no'>x</span>)
+
+<span class='co'># S3 method for default</span>
+<span class='fu'>impute_median</span>(<span class='no'>x</span>)
+
+<span class='co'># S3 method for factor</span>
+<span class='fu'>impute_median</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>data.frame</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>One or more unquoted variable names, separated by commas. These also
-respect the dplyr verbs <code>starts_with</code>, <code>contains</code>, <code>ends_with</code>, etc.</p></td>
+      <th>x</th>
+      <td><p>vector</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='bind_shadow.html'>bind_shadow()</a></code> <code><a href='add_any_miss.html'>add_any_miss()</a></code> <code><a href='add_label_missings.html'>add_label_missings()</a></code> <code><a href='add_label_shadow.html'>add_label_shadow()</a></code> <code><a href='add_miss_cluster.html'>add_miss_cluster()</a></code> <code><a href='add_n_miss.html'>add_n_miss()</a></code> <code><a href='add_prop_miss.html'>add_prop_miss()</a></code> <code><a href='add_shadow_shift.html'>add_shadow_shift()</a></code> <code><a href='cast_shadow.html'>cast_shadow()</a></code></p></div>
+    <p>vector with median values replaced</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>add_shadow</span>(<span class='no'>Ozone</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 7
-#&gt;    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA
-#&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;   
-#&gt;  1    41     190   7.4    67     5     1 !NA     
-#&gt;  2    36     118   8      72     5     2 !NA     
-#&gt;  3    12     149  12.6    74     5     3 !NA     
-#&gt;  4    18     313  11.5    62     5     4 !NA     
-#&gt;  5    NA      NA  14.3    56     5     5 NA      
-#&gt;  6    28      NA  14.9    66     5     6 !NA     
-#&gt;  7    23     299   8.6    65     5     7 !NA     
-#&gt;  8    19      99  13.8    59     5     8 !NA     
-#&gt;  9     8      19  20.1    61     5     9 !NA     
-#&gt; 10    NA     194   8.6    69     5    10 NA      
-#&gt; # ... with 143 more rows</div><div class='input'><span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>add_shadow</span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 8
-#&gt;    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA Solar.R_NA
-#&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;     
-#&gt;  1    41     190   7.4    67     5     1 !NA      !NA       
-#&gt;  2    36     118   8      72     5     2 !NA      !NA       
-#&gt;  3    12     149  12.6    74     5     3 !NA      !NA       
-#&gt;  4    18     313  11.5    62     5     4 !NA      !NA       
-#&gt;  5    NA      NA  14.3    56     5     5 NA       NA        
-#&gt;  6    28      NA  14.9    66     5     6 !NA      NA        
-#&gt;  7    23     299   8.6    65     5     7 !NA      !NA       
-#&gt;  8    19      99  13.8    59     5     8 !NA      !NA       
-#&gt;  9     8      19  20.1    61     5     9 !NA      !NA       
-#&gt; 10    NA     194   8.6    69     5    10 NA       !NA       
-#&gt; # ... with 143 more rows</div><div class='input'>
+<span class='no'>vec</span> <span class='kw'>&lt;-</span> <span class='fu'>rnorm</span>(<span class='fl'>10</span>)
+
+<span class='no'>vec</span>[<span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>3</span>)] <span class='kw'>&lt;-</span> <span class='fl'>NA</span>
+
+<span class='fu'>impute_median</span>(<span class='no'>vec</span>)</div><div class='output co'>#&gt;  [1] -0.3795665 -0.5889187  1.4241911 -0.7945301 -0.3795665 -0.3795665
+#&gt;  [7] -0.2165372 -0.3795665  1.0867538 -1.5802161</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -207,8 +179,6 @@ respect the dplyr verbs <code>starts_with</code>, <code>contains</code>, <code>e
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

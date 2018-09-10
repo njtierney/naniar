@@ -69,7 +69,7 @@ bind_shadow. is_shadow tells us if there are any shadow variables." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.10.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -145,7 +145,9 @@ facilitate missing data visualisation. This data can be created using
     
     </div>
 
-    <pre class="usage"><span class='fu'>is_shadow</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>is_shadow</span>(<span class='no'>x</span>)
+
+<span class='fu'>is_nabular</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,7 +168,7 @@ facilitate missing data visualisation. This data can be created using
 <span class='no'>aq_sh</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as_shadow.html'>as_shadow</a></span>(<span class='no'>airquality</span>)
 <span class='no'>aq_bind</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='bind_shadow.html'>bind_shadow</a></span>(<span class='no'>airquality</span>)
 
-<span class='fu'>is_shadow</span>(<span class='no'>aq_sh</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>is_shadow</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>is_shadow</span>(<span class='no'>aq_bind</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'>is_shadow</span>(<span class='no'>aq_sh</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>is_shadow</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>is_shadow</span>(<span class='no'>aq_bind</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>is_nabular</span>(<span class='no'>aq_bind</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

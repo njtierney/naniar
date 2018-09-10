@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.10.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -96,7 +96,7 @@
       <h1>Gallery of Missing Data Visualisations</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-09-03</h4>
+            <h4 class="date">2018-09-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/naniar-visualisation.Rmd"><code>vignettes/naniar-visualisation.Rmd</code></a></small>
       <div class="hidden name"><code>naniar-visualisation.Rmd</code></div>
@@ -110,10 +110,10 @@
 <div id="getting-started" class="section level1">
 <h1 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h1>
-<p>One of the first plots that I recommend you start with when you are first exploring your missing data, is the <code><a href="http://visdat.njtierney.com//reference/vis_miss.html">vis_miss()</a></code> plot, which is re-exported from <a href="https://www.github.com/ropensci/visdat"><code>visdat</code></a>.</p>
+<p>One of the first plots that I recommend you start with when you are first exploring your missing data, is the <code><a href="http://www.rdocumentation.org/packages/visdat/topics/vis_miss">vis_miss()</a></code> plot, which is re-exported from <a href="https://www.github.com/ropensci/visdat"><code>visdat</code></a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(naniar)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="http://visdat.njtierney.com//reference/vis_miss.html">vis_miss</a></span>(airquality)</a></code></pre></div>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="http://www.rdocumentation.org/packages/visdat/topics/vis_miss">vis_miss</a></span>(airquality)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/vis-miss-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>This plot provides a specific visualiation of the amount of missing data, showing in black the location of missing values, and also providing information on the overall percentage of missing values overall (in the legend), and in each variable.</p>
 <div id="exploring-patterns-with-upsetr" class="section level2">

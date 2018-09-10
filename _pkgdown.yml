@@ -19,6 +19,7 @@ reference:
     contents:
       - starts_with("as_shadow")
       - bind_shadow
+      - nabular
       - gather_shadow
       - shade
       - shadow_long
@@ -55,6 +56,7 @@ reference:
       - starts_with("any_")
       - starts_with("is_")
       - starts_with("are_")
+      - which_are_shade
       - common_na_numbers
       - common_na_strings
   - title: "Add columns"

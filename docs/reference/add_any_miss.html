@@ -73,7 +73,7 @@ that not all variables have been used to create the labels." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.10.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -153,7 +153,8 @@ that not all variables have been used to create the labels.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_any_miss</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"any_miss"</span>)</pre>
+    <pre class="usage"><span class='fu'>add_any_miss</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"any_miss"</span>, <span class='kw'>missing</span> <span class='kw'>=</span> <span class='st'>"missing"</span>,
+  <span class='kw'>complete</span> <span class='kw'>=</span> <span class='st'>"complete"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -176,6 +177,14 @@ has not been used on all of the variables.</p></td>
       <td><p>label for the column, defaults to "any_miss". By default if no
 additional variables are listed the label col is "any_miss_all", otherwise
 it is "any_miss_vars", if variables are specified.</p></td>
+    </tr>
+    <tr>
+      <th>missing</th>
+      <td><p>character a label for when values are missing - defaults to "missing"</p></td>
+    </tr>
+    <tr>
+      <th>complete</th>
+      <td><p>character character a label for when values are complete - defaults to "complete"</p></td>
     </tr>
     </table>
     

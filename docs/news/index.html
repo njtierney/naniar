@@ -64,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.10.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -131,128 +131,72 @@
       <small>Source: <a href='https://github.com/njtierney/naniar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="naniar-0-3-10-9000-20180820" class="section level1">
+    <div id="naniar-0-4-0-0-20180910-an-unexpected-meeting" class="section level1">
 <h1 class="page-header">
-<a href="#naniar-0-3-10-9000-20180820" class="anchor"></a>naniar 0.3.10.9000 (2018/08/20)<small> Unreleased </small>
+<a href="#naniar-0-4-0-0-20180910-an-unexpected-meeting" class="anchor"></a>naniar 0.4.0.0 (2018/09/10) “An Unexpected Meeting”<small> Unreleased </small>
 </h1>
 <div id="new-feature" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-feature" class="anchor"></a>New Feature</h2>
 <ul>
+<li>Add custom label support for missings and not missings with functions <code>add_label_missings</code> and <code><a href="../reference/add_label_shadow.html">add_label_shadow()</a></code> and <code><a href="../reference/add_any_miss.html">add_any_miss()</a></code>. So you can now do `add_label_missings(data, missing = “custom_missing_label”, complete = “custom_complete_label”)</li>
+<li>
+<code><a href="../reference/impute_median.html">impute_median()</a></code> and scoped variants</li>
+<li>
+<code><a href="../reference/is_shade.html">any_shade()</a></code> returns a logical TRUE or FALSE depending on if there are any <code>shade</code> values</li>
+<li>
+<code><a href="../reference/nabular.html">nabular()</a></code> an alias for <code><a href="../reference/bind_shadow.html">bind_shadow()</a></code> to tie the <code>nabular</code> term into the work.</li>
+<li><p><code><a href="../reference/is_shadow.html">is_nabular()</a></code> checks if input is nabular.</p></li>
+<li>
+<code><a href="../reference/geom_miss_point.html">geom_miss_point()</a></code> now gains the arguments from <code><a href="../reference/shadow_shift.html">shadow_shift()</a></code>/<code><a href="../reference/impute_below.html">impute_below()</a></code> for altering the amount of <code>jitter</code> and proportion below (<code>prop_below</code>).</li>
 <li>Added two new vignettes, “Exploring Imputed Values”, and “Special Missing Values”</li>
+<li>
+<code>miss_var_summary</code> and <code>miss_case_summary</code> now no longer provide the cumulative sum of missingness in the summaries - this summary can be added back to the data with the option <code>add_cumsum = TRUE</code>. <a href='https://github.com/njtierney/naniar/issues/186'>#186</a></li>
+<li>
+<p>Added <code>gg_miss_upset</code> to replace workflow of:</p>
+<pre><code>data %&gt;% 
+  as_shadow_upset() %&gt;%
+  UpSetR::upset()</code></pre>
+</li>
 </ul>
 </div>
-</div>
-    <div id="naniar-0-3-9-9100-20180820" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-9-9100-20180820" class="anchor"></a>naniar 0.3.9.9100 (2018/08/20)<small> Unreleased </small>
-</h1>
 <div id="major-change" class="section level2">
 <h2 class="hasAnchor">
 <a href="#major-change" class="anchor"></a>Major Change</h2>
 <ul>
 <li>
 <code>recode_shadow</code> now works! This function allows you to recode your missing values into special missing values. These special missing values are stored in the shadow part of the dataframe, which ends in <code>_NA</code>.</li>
-</ul>
-</div>
-<div id="minor-change" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minor-change" class="anchor"></a>Minor Change</h2>
-<ul>
 <li>implemented <code>shade</code> where appropriate throughout naniar, and also added verifiers, <code>is_shade</code>, <code>are_shade</code>, <code>which_are_shade</code>, and removed <code>which_are_shadow</code>.</li>
-</ul>
-</div>
-</div>
-    <div id="naniar-0-3-9-9000-20180614" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-9-9000-20180614" class="anchor"></a>naniar 0.3.9.9000 (2018/06/14)<small> Unreleased </small>
-</h1>
-<div id="major-change-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#major-change-1" class="anchor"></a>Major change</h2>
-<ul>
 <li>
 <code>as_shadow</code> and <code>bind_shadow</code> now return data of class <code>shadow</code>. This will feed into <code>recode_shadow</code> methods for flexibly adding new types of missing data.</li>
 <li>Note that in the future <code>shadow</code> might be changed to <code>nabble</code> or something similar.</li>
 </ul>
 </div>
-</div>
-    <div id="naniar-0-3-4-9600-20180815" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-4-9600-20180815" class="anchor"></a>naniar 0.3.4.9600 (2018/08/15)<small> Unreleased </small>
-</h1>
 <div id="minor-feature" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-feature" class="anchor"></a>Minor feature</h2>
 <ul>
 <li>Functions <code><a href="../reference/add_label_shadow.html">add_label_shadow()</a></code> and <code><a href="../reference/add_label_missings.html">add_label_missings()</a></code> gain arguments so you can only label according to the missingness / shadowy-ness of given variables.</li>
-</ul>
-</div>
-</div>
-    <div id="naniar-0-3-3-9500-20180813" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-3-9500-20180813" class="anchor"></a>naniar 0.3.3.9500 (2018/08/13)<small> Unreleased </small>
-</h1>
-<div id="minor-feature-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minor-feature-1" class="anchor"></a>Minor feature</h2>
-<ul>
 <li>new function <code>which_are_shadow()</code>, to tell you which values are shadows.</li>
 <li>new function <code>long_shadow()</code>, which converts data in shadow/nabular form into a long format suitable for plotting. Related to <a href="https://github.com/njtierney/naniar/issues/165"><a href='https://github.com/njtierney/naniar/issues/165'>#165</a></a>
 </li>
-</ul>
-</div>
-</div>
-    <div id="naniar-0-3-3-9300-20180812" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-3-9300-20180812" class="anchor"></a>naniar 0.3.3.9300 (2018/08/12)<small> Unreleased </small>
-</h1>
-<div id="minor-breaking-change" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minor-breaking-change" class="anchor"></a>Minor Breaking Change</h2>
-<ul>
-<li>
-<code>impute_below</code> has changed to be an alias of <code>shadow_shift</code> - that is it operates on a single vector. <code>impute_below_all</code> operates on all columns in a dataframe (as specified in <a href="https://github.com/njtierney/naniar/issues/159"><a href='https://github.com/njtierney/naniar/issues/159'>#159</a></a>)</li>
-</ul>
-</div>
-</div>
-    <div id="naniar-0-3-3-9200-20180801" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-3-9200-20180801" class="anchor"></a>naniar 0.3.3.9200 (2018/08/01)<small> Unreleased </small>
-</h1>
-<div id="minor-feature-2" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minor-feature-2" class="anchor"></a>Minor feature</h2>
-<ul>
 <li>Added tests for <code>miss_scan_count</code>
 </li>
 </ul>
 </div>
-<div id="bug-fix" class="section level2">
+<div id="minor-changes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fix" class="anchor"></a>Bug fix</h2>
-<ul>
-<li>Ensured that <code>miss_scan_count</code> actually <code>return</code>’d something.</li>
-</ul>
-</div>
-</div>
-    <div id="naniar-0-3-3-9100-20180731" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-3-9100-20180731" class="anchor"></a>naniar 0.3.3.9100 (2018/07/31)<small> Unreleased </small>
-</h1>
-<div id="new-feature-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-feature-1" class="anchor"></a>New feature</h2>
+<a href="#minor-changes" class="anchor"></a>Minor Changes</h2>
 <ul>
 <li>
-<code>miss_var_summary</code> and <code>miss_case_summary</code> now no longer provide the cumulative sum of missingness in the summaries - this summary can be added back to the data with the option <code>add_cumsum = TRUE</code>. <a href='https://github.com/njtierney/naniar/issues/186'>#186</a></li>
+<code>gg_miss_upset</code> gets a better default presentation by ordering by the largest intersections, and also an improved error message when data with only 1 or no variables have missing values.</li>
+<li>
+<code>shadow_shift</code> gains a more informative error message when it doesn’t know the class.</li>
+<li>Changed <code>common_na_string</code> to include escape characters for “?”, “<em>", "." so that if they are used in replacement or searching functions they don’t return the wildcard results from the characters "?", "</em>”, and “.”.</li>
+<li>
+<code>miss_case_table</code> and <code>miss_var_table</code> now has final column names <code>pct_vars</code>, and <code>pct_cases</code> instead of <code>pct_miss</code> - fixes <a href='https://github.com/njtierney/naniar/issues/178'>#178</a>.</li>
 </ul>
 </div>
-</div>
-    <div id="naniar-0-3-3-9000-20180730" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-3-9000-20180730" class="anchor"></a>naniar 0.3.3.9000 (2018/07/30)<small> Unreleased </small>
-</h1>
 <div id="breaking-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#breaking-changes" class="anchor"></a>Breaking Changes</h2>
@@ -300,76 +244,18 @@
 </tbody>
 </table>
 <p>These old names will be made defunct in 0.5.0, and removed completely in 0.6.0.</p>
-</div>
-</div>
-    <div id="naniar-0-3-2-9300-20180627" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-2-9300-20180627" class="anchor"></a>naniar 0.3.2.9300 (2018/06/27)<small> Unreleased </small>
-</h1>
-<div id="bug-fix-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bug-fix-1" class="anchor"></a>Bug fix</h2>
 <ul>
+<li>
+<code>impute_below</code> has changed to be an alias of <code>shadow_shift</code> - that is it operates on a single vector. <code>impute_below_all</code> operates on all columns in a dataframe (as specified in <a href="https://github.com/njtierney/naniar/issues/159"><a href='https://github.com/njtierney/naniar/issues/159'>#159</a></a>)</li>
+</ul>
+</div>
+<div id="bug-fix" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fix" class="anchor"></a>Bug fix</h2>
+<ul>
+<li>Ensured that <code>miss_scan_count</code> actually <code>return</code>’d something.</li>
 <li>
 <code><a href="../reference/gg_miss_var.html">gg_miss_var(airquality)</a></code> now prints the ggplot - a typo meant that this did not print the plot</li>
-</ul>
-</div>
-</div>
-    <div id="naniar-0-3-2-9100-20180625" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-2-9100-20180625" class="anchor"></a>naniar 0.3.2.9100 (2018/06/25)<small> Unreleased </small>
-</h1>
-<div id="minor-update" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minor-update" class="anchor"></a>Minor update</h2>
-<ul>
-<li>Changed <code>common_na_string</code> to include escape characters for “?”, “<em>", "." so that if they are used in replacement or searching functions they don’t return the wildcard results from the characters "?", "</em>”, and “.”.</li>
-</ul>
-</div>
-</div>
-    <div id="naniar-0-3-2-9000-20180621" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-2-9000-20180621" class="anchor"></a>naniar 0.3.2.9000 (2018/06/21)<small> Unreleased </small>
-</h1>
-<div id="new-feature-2" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-feature-2" class="anchor"></a>New Feature</h2>
-<ul>
-<li>
-<p>Added <code>gg_miss_upset</code> to replace workflow of:</p>
-<pre><code>data %&gt;% 
-  as_shadow_upset() %&gt;%
-  UpSetR::upset()</code></pre>
-</li>
-</ul>
-</div>
-</div>
-    <div id="naniar-0-3-1-9100-20180610" class="section level1">
-<h1 class="page-header">
-<a href="#naniar-0-3-1-9100-20180610" class="anchor"></a>naniar 0.3.1.9100 (2018/06/10)<small> Unreleased </small>
-</h1>
-<div id="minor-change-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minor-change-1" class="anchor"></a>Minor Change</h2>
-<ul>
-<li>
-<p><code>miss_case_table</code> and <code>miss_var_table</code> now has final column names <code>pct_vars</code>, and <code>pct_cases</code> instead of <code>pct_miss</code> - fixes <a href='https://github.com/njtierney/naniar/issues/178'>#178</a>.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>origin/master</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</li>
 </ul>
 </div>
 </div>
@@ -377,9 +263,9 @@
 <h1 class="page-header">
 <a href="#naniar-0-3-1-20180610-strawberrys-adventure" class="anchor"></a>naniar 0.3.1 (2018/06/10) “Strawberry’s Adventure”<small> 2018-06-08 </small>
 </h1>
-<div id="minor-change-2" class="section level2">
+<div id="minor-change" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-change-2" class="anchor"></a>Minor Change</h2>
+<a href="#minor-change" class="anchor"></a>Minor Change</h2>
 <p>This is a patch release that removes <code>tidyselect</code> from the package Imports, as it is unnecessary. Fixes <a href="https://github.com/njtierney/naniar/issues/174"><a href='https://github.com/njtierney/naniar/issues/174'>#174</a></a></p>
 </div>
 </div>
@@ -389,19 +275,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#naniar-0-3-10-9000-20180820">0.3.10.9000</a></li>
-        <li><a href="#naniar-0-3-9-9100-20180820">0.3.9.9100</a></li>
-        <li><a href="#naniar-0-3-9-9000-20180614">0.3.9.9000</a></li>
-        <li><a href="#naniar-0-3-4-9600-20180815">0.3.4.9600</a></li>
-        <li><a href="#naniar-0-3-3-9500-20180813">0.3.3.9500</a></li>
-        <li><a href="#naniar-0-3-3-9300-20180812">0.3.3.9300</a></li>
-        <li><a href="#naniar-0-3-3-9200-20180801">0.3.3.9200</a></li>
-        <li><a href="#naniar-0-3-3-9100-20180731">0.3.3.9100</a></li>
-        <li><a href="#naniar-0-3-3-9000-20180730">0.3.3.9000</a></li>
-        <li><a href="#naniar-0-3-2-9300-20180627">0.3.2.9300</a></li>
-        <li><a href="#naniar-0-3-2-9100-20180625">0.3.2.9100</a></li>
-        <li><a href="#naniar-0-3-2-9000-20180621">0.3.2.9000</a></li>
-        <li><a href="#naniar-0-3-1-9100-20180610">0.3.1.9100</a></li>
+        <li><a href="#naniar-0-4-0-0-20180910-an-unexpected-meeting">0.4.0.0</a></li>
         <li><a href="#naniar-0-3-1-20180610-strawberrys-adventure">0.3.1</a></li>
       </ul>
     </div>

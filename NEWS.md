@@ -2,6 +2,7 @@
 
 ## New Feature
 
+* Add custom label support for missings and not missings with functions `add_label_missings` and `add_label_shadow()` and `add_any_miss()`. So you can now do `add_label_missings(data, missing = "custom_missing_label", complete = "custom_complete_label")
 * `impute_median()` and scoped variants
 * `any_shade()` returns a logical TRUE or FALSE depending on if there are any `shade` values
 * `nabular()` an alias for `bind_shadow()` to tie the `nabular` term into the work.

@@ -34,9 +34,7 @@ add_n_miss <- function(data, ..., label = "n_miss"){
     return(data)
   }
 
-  quo_vars <- rlang::quos(...)
-
-  selected_data <- dplyr::select(data, !!!quo_vars)
+  selected_data <- dplyr::select(data, ...)
 
   data[[paste0(label, "_vars")]] <- n_miss_row(selected_data)
 
@@ -96,9 +94,7 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
     return(data)
   }
 
-  quo_vars <- rlang::quos(...)
-
-  selected_data <- dplyr::select(data, !!!quo_vars)
+  selected_data <- dplyr::select(data, ...)
 
   data[[paste0(label, "_vars")]] <- prop_miss_row(selected_data)
 

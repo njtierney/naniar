@@ -181,8 +181,6 @@ recode_shadow <- function(data, ...){
   test_if_null(data)
   test_if_any_shade(data)
 
-  quo_var <- rlang::quos(...)
-
   formulas <- rlang::dots_list(...)
 
   condition <- formulas %>% purrr::map("condition")
@@ -191,7 +189,7 @@ recode_shadow <- function(data, ...){
 
   na_suffix <- purrr::map(suffix, ~ glue::glue("NA_{.x}"))
 
-  shadow_var <- rlang::syms(glue::glue("{names(quo_var)}_NA"))
+  shadow_var <- rlang::syms(glue::glue("{names(formulas)}_NA"))
 
   # build up the expressions to pass to case_when
   magic_shade_exprs <- purrr::pmap(

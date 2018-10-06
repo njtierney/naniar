@@ -23,10 +23,7 @@ add_shadow <- function(data, ...){
   if (missing(...)) {
     stop("No variables specified - please include variables to be selected")
   }
-
-  quo_vars <- rlang::quos(...)
-
-  shadow_df <- dplyr::select(data, !!!quo_vars) %>% as_shadow()
+  shadow_df <- dplyr::select(data, ...) %>% as_shadow()
 
   dplyr::bind_cols(data, shadow_df) %>% dplyr::as_tibble()
 
@@ -72,9 +69,7 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
   }
 
   # select variables
-  quo_vars <- rlang::quos(...)
-
-  shadow_shifted_vars <- dplyr::select(data, !!!quo_vars)
+  shadow_shifted_vars <- dplyr::select(data, ...)
 
   # shadow shift all (using purrr:map_df)
   # would be good to have a way of indicating that no shift was taken at all
@@ -156,11 +151,7 @@ add_any_miss <- function(data, ...,
 
   }
 
-  if (!missing(...)) {
-
-  quo_vars <- rlang::quos(...)
-
-  stub_data <- dplyr::select(data, !!!quo_vars)
+  stub_data <- dplyr::select(data, ...)
 
   stub_data_label <- stub_data %>%
     dplyr::mutate(.temp = any_row_miss(stub_data),
@@ -172,12 +163,7 @@ add_any_miss <- function(data, ...,
 
   names(stub_data_label) <- paste0(label,"_vars")
 
-  return(
   dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
-  )
-
-  }
-
 }
 
 #' Is there a missing value in the row of a dataframe?
@@ -224,9 +210,7 @@ label_missings <- function(data,
   }
 
   if (!missing(...)) {
-    quo_vars <- rlang::quos(...)
-
-    data <- dplyr::select(data, !!!quo_vars)
+    data <- dplyr::select(data, ...)
   }
 
   temp <- any_row_na(data)
@@ -266,21 +250,11 @@ add_label_missings <- function(data,
   #   dplyr::mutate(any_missing = label_missings(.)) %>%
   #   dplyr::as_tibble()
 
-  if (missing(...)) {
-    updated_data <- data %>%
-      dplyr::mutate(any_missing = label_missings(.,
-                                                 missing = missing,
-                                                 complete = complete))
-  }
-
-  if (!missing(...)) {
-    quo_vars <- rlang::quos(...)
-    updated_data <- data %>%
-      dplyr::mutate(any_missing = label_missings(.,
-                                                 !!!quo_vars,
-                                                 missing = missing,
-                                                 complete = complete))
-  }
+  updated_data <- data %>%
+    dplyr::mutate(any_missing = label_missings(.,
+                                               ...,
+                                               missing = missing,
+                                               complete = complete))
 
 
   return(tibble::as_tibble(updated_data))
@@ -314,11 +288,9 @@ label_shadow <- function(data,
   }
 
   if (!missing(...)) {
-    quo_vars <- rlang::quos(...)
+    shadow_vars <- quo_to_shade(...)
 
-    shadow_vars <- quo_to_shade(!!!quo_vars)
-
-    data <- dplyr::select(data, !!!quo_vars, !!!shadow_vars)
+    data <- dplyr::select(data, ..., !!!shadow_vars)
   }
 
   temp <- any_row_shade(data)
@@ -363,21 +335,11 @@ add_label_shadow <- function(data,
                  created by `shade()`, `as_shadow()`, or `bind_shadow()`")
   }
 
-  if (missing(...)) {
-    updated_data <- data %>%
+  updated_data <- data %>%
     dplyr::mutate(any_missing = label_shadow(.,
+                                             ...,
                                              missing = missing,
                                              complete = complete))
-  }
-
-  if (!missing(...)) {
-    quo_vars <- rlang::quos(...)
-    updated_data <- data %>%
-      dplyr::mutate(any_missing = label_shadow(.,
-                                               !!!quo_vars,
-                                               missing = missing,
-                                               complete = complete))
-  }
 
 
   return(updated_data)

@@ -206,7 +206,7 @@ recode_shadow <- function(data, ...){
                  na_suffix){
           rlang::expr(
             !!condition ~ factor(!!na_suffix,
-                                 levels = levels(.[[!!expr_text(shadow_var)]]))
+                                 levels = levels(.[[!!as_string(shadow_var)]]))
                  )
               }
          )
@@ -224,13 +224,13 @@ recode_shadow <- function(data, ...){
             dplyr::case_when(
               !!!cases,
               TRUE ~ factor(!!shadow_var,
-                            levels = levels(.[[!!expr_text(shadow_var)]]))
+                            levels = levels(.[[!!as_string(shadow_var)]]))
               ),
             class = c("shade", "factor")
             )
           )
         }) %>%
-    rlang::set_names(purrr::map_chr(shadow_var, expr_text))
+    rlang::set_names(purrr::map_chr(shadow_var, as_string))
 
   shadow_recoded <- data %>%
     update_shadow(unlist(suffix, use.names = FALSE)) %>%

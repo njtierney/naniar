@@ -372,7 +372,7 @@ shadow_long <- function(shadow_data,
   }
 
   if (!missing(...)) {
-    vars <- bare_to_chr(...)
+    vars <- purrr::map(ensyms(...), as_string)
     gathered_df <- gathered_df %>%
       dplyr::filter(variable %in% vars)
   }

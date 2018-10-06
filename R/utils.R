@@ -195,24 +195,19 @@ add_span_counter <- function(data, span_size) {
 #' @return a list containing the levels of everything
 what_levels <- function(x) purrr::map(x, levels)
 
-# utility function to convert bare name to character
-bare_to_chr <- function(...){
-  ps <- rlang::exprs(...)
-
-  exprs_text <- function(ps) {
-    paste0(purrr::map_chr(ps, rlang::expr_text))
-  }
-
-  exprs_text(ps)
-
-}
-
 quo_to_shade <- function(...){
 
-  quo_vars <- rlang::quos(...)
+  # Use ensyms() rather than quos() because the latter allows
+  # arbitrary expressions. These variables are forwarded to select(),
+  # so potential expressions are `starts_with()`, `one_of()`, etc.
+  # The naniar code generally assumes that only symbols are passed in
+  # dots. `ensyms()` is a way of ensuring the input types.
+  vars <- rlang::ensyms(...)
 
-  shadow_chr <- bare_to_chr(!!!quo_vars) %>% paste0("_NA")
+  # Adding `_NA` suffix to user symbols
+  shadow_chr <- purrr::map(vars, as_string) %>% paste0("_NA")
 
+  # Casting back to symbols
   shadow_vars <- rlang::syms(shadow_chr)
 
   return(shadow_vars)

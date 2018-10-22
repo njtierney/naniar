@@ -181,8 +181,6 @@ recode_shadow <- function(data, ...){
   test_if_null(data)
   test_if_any_shade(data)
 
-  quo_var <- rlang::quos(...)
-
   formulas <- rlang::dots_list(...)
 
   condition <- formulas %>% purrr::map("condition")
@@ -191,7 +189,7 @@ recode_shadow <- function(data, ...){
 
   na_suffix <- purrr::map(suffix, ~ glue::glue("NA_{.x}"))
 
-  shadow_var <- rlang::syms(glue::glue("{names(quo_var)}_NA"))
+  shadow_var <- rlang::syms(glue::glue("{names(formulas)}_NA"))
 
   # build up the expressions to pass to case_when
   magic_shade_exprs <- purrr::pmap(
@@ -208,7 +206,7 @@ recode_shadow <- function(data, ...){
                  na_suffix){
           rlang::expr(
             !!condition ~ factor(!!na_suffix,
-                                 levels = levels(.[[!!expr_text(shadow_var)]]))
+                                 levels = levels(.[[!!as_string(shadow_var)]]))
                  )
               }
          )
@@ -226,13 +224,13 @@ recode_shadow <- function(data, ...){
             dplyr::case_when(
               !!!cases,
               TRUE ~ factor(!!shadow_var,
-                            levels = levels(.[[!!expr_text(shadow_var)]]))
+                            levels = levels(.[[!!as_string(shadow_var)]]))
               ),
             class = c("shade", "factor")
             )
           )
         }) %>%
-    rlang::set_names(purrr::map_chr(shadow_var, expr_text))
+    rlang::set_names(purrr::map_chr(shadow_var, as_string))
 
   shadow_recoded <- data %>%
     update_shadow(unlist(suffix, use.names = FALSE)) %>%

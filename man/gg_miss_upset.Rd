@@ -17,7 +17,7 @@ gg_miss_upset(data, order.by = "freq", ...)
 a ggplot visualisation of missing data
 }
 \description{
-Upset plots are a way of visualising common sets, \code{gg_miss_upset`` shows the number of missing values for each of the sets of data. The default option of}gg_miss_upset\code{is taken from}UpSetR::upset\code{- which is to use up to 5 sets and up to 40 interactions. We also set the ordering to by the frequency of the intersections. Setting}nsets = 5\code{means to look at 5 variables and their combinations. The number of combinations or rather}intersections\code{is controlled by}nintersects\code{. If there are 40 intersections, there will be 40 combinations of variables explored. The number of sets and intersections can be changed by passing arguments}nsets
+Upset plots are a way of visualising common sets, \code{gg_miss_upset`` shows the number of missing values for each of the sets of data. The default option of }gg_miss_upset\code{is taken from}UpSetR::upset\code{- which is to use up to 5 sets and up to 40 interactions. We also set the ordering to by the frequency of the intersections. Setting}nsets = 5\code{means to look at 5 variables and their combinations. The number of combinations or rather}intersections\code{is controlled by}nintersects\code{. If there are 40 intersections, there will be 40 combinations of variables explored. The number of sets and intersections can be changed by passing arguments }nsets
 = 10\code{to look at 10 sets of variables, and}nintersects = 50` to look at 50
 intersections.
 }

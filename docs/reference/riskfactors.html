@@ -71,7 +71,7 @@ adult population (18 years of age or older) living in households." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
       </span>
     </div>
 
@@ -299,7 +299,7 @@ every year. -7 is   for "Don't know/Not sure", and -9 is for
 <span class='co'># explore the missingness with vis_miss</span>
 <span class='fu'>library</span>(<span class='no'>naniar</span>)
 
-<span class='fu'><a href='http://www.rdocumentation.org/packages/visdat/topics/vis_miss'>vis_miss</a></span>(<span class='no'>riskfactors</span>)</div><div class='img'><img src='riskfactors-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='http://visdat.njtierney.com//reference/vis_miss.html'>vis_miss</a></span>(<span class='no'>riskfactors</span>)</div><div class='img'><img src='riskfactors-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Look at the missingness in the variables</span>
 <span class='fu'><a href='miss_var_summary.html'>miss_var_summary</a></span>(<span class='no'>riskfactors</span>)</div><div class='output co'>#&gt; # A tibble: 34 x 3
 #&gt;    variable      n_miss pct_miss
@@ -320,15 +320,15 @@ every year. -7 is   for "Don't know/Not sure", and -9 is for
 <span class='co'># Look at the missingness in bmi and poor health</span>
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 <span class='no'>p</span> <span class='kw'>&lt;-</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>riskfactors</span>,
-       <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>health_poor</span>,
+<span class='fu'><a href='ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>riskfactors</span>,
+       <span class='fu'><a href='ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>health_poor</span>,
            <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>bmi</span>)) +
      <span class='fu'><a href='geom_miss_point.html'>geom_miss_point</a></span>()
 
  <span class='no'>p</span></div><div class='img'><img src='riskfactors-3.png' alt='' width='700' height='433' /></div><div class='input'>
  <span class='co'># for each sex?</span>
- <span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>sex</span>)</div><div class='img'><img src='riskfactors-4.png' alt='' width='700' height='433' /></div><div class='input'> <span class='co'># for each education bracket?</span>
- <span class='no'>p</span> + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>education</span>)</div><div class='img'><img src='riskfactors-5.png' alt='' width='700' height='433' /></div><div class='input'>
+ <span class='no'>p</span> + <span class='fu'><a href='ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~<span class='no'>sex</span>)</div><div class='img'><img src='riskfactors-4.png' alt='' width='700' height='433' /></div><div class='input'> <span class='co'># for each education bracket?</span>
+ <span class='no'>p</span> + <span class='fu'><a href='ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~<span class='no'>education</span>)</div><div class='img'><img src='riskfactors-5.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

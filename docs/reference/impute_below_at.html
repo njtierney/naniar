@@ -41,7 +41,7 @@
 <meta property="og:description" content="impute_below operates on all variables. To only impute variables
 that satisfy a specific condition, use the scoped variants,
 impute_below_at, and impute_below_if. To use _at effectively,
-you must know that _at`` affects variables selected with a character vector, or withvars()`." />
+you must know that _at`` affects variables selected with a character vector, or with vars()`." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -70,7 +70,7 @@ you must know that _at`` affects variables selected with a character vector, or 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
       </span>
     </div>
 
@@ -143,7 +143,7 @@ you must know that _at`` affects variables selected with a character vector, or 
     <p><code>impute_below</code> operates on all variables. To only impute variables
 that satisfy a specific condition, use the scoped variants,
 <code>impute_below_at</code>, and <code>impute_below_if</code>. To use <code>_at</code> effectively,
-you must know that <code>_at`` affects variables selected with a character vector, or with</code>vars()`.</p>
+you must know that <code>_at`` affects variables selected with a character vector, or with </code>vars()`.</p>
     
     </div>
 
@@ -182,7 +182,9 @@ you must know that <code>_at`` affects variables selected with a character vecto
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># select variables starting with a particular string.</span>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
@@ -655,12 +657,12 @@ you must know that <code>_at`` affects variables selected with a character vecto
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='bind_shadow.html'>bind_shadow</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>impute_below_at</span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/vars'>vars</a></span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'>impute_below_at</span>(<span class='fu'><a href='ggplot2.tidyverse.org/reference/vars.html'>vars</a></span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='add_label_shadow.html'>add_label_shadow</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>,
+  <span class='fu'><a href='ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='fu'><a href='ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>,
              <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R</span>,
              <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>any_missing</span>)) +
-         <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>()
+         <span class='fu'><a href='ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>()
 <span class='co'># }</span><div class='input'>
 </div></pre>
   </div>

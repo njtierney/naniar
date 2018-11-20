@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
       </span>
     </div>
 
@@ -96,7 +96,7 @@
       <h1>Exploring Imputed Values</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2018-09-10</h4>
+            <h4 class="date">2018-11-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/exploring-imputed-values.Rmd"><code>vignettes/exploring-imputed-values.Rmd</code></a></small>
       <div class="hidden name"><code>exploring-imputed-values.Rmd</code></div>
@@ -216,34 +216,34 @@
 <a class="sourceLine" id="cb3-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="../reference/add_label_shadow.html">add_label_shadow</a></span>()</a></code></pre></div>
 <p>We can then show the previously missing (now imputed!) data in a scatterplot with ggplot2 by setting the <code>color</code> aesthetic in ggplot to <code>any_missing</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(ocean_imp,</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> air_temp_c,</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp,</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">       <span class="kw"><a href="ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> air_temp_c,</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4">           <span class="dt">y =</span> humidity,</a>
 <a class="sourceLine" id="cb4-5" data-line-number="5">           <span class="dt">color =</span> any_missing)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_brewer">scale_color_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a></code></pre></div>
 <p><img src="exploring-imputed-values_files/figure-html/ocean-imp-air-temp-humidity-1.png" width="700"></p>
 <p>Or, if you want to look at one variable, you can look at a density plot of one variable, using <code>fill = any_missing</code></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(ocean_imp,</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> air_temp_c,</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp,</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">       <span class="kw"><a href="ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> air_temp_c,</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">           <span class="dt">fill =</span> any_missing)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_density">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_brewer">scale_fill_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(ocean_imp,</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> humidity,</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="kw"><a href="ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp,</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">       <span class="kw"><a href="ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> humidity,</a>
 <a class="sourceLine" id="cb5-11" data-line-number="11">           <span class="dt">fill =</span> any_missing)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_density">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_brewer">scale_fill_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a></code></pre></div>
 <p><img src="exploring-imputed-values_files/figure-html/ocean-imp-density-1.png" width="49%"><img src="exploring-imputed-values_files/figure-html/ocean-imp-density-2.png" width="49%"></p>
 <p>We can also compare imputed values to complete cases by grouping by <code>any_missing</code>, and summarising.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">ocean_imp <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(any_missing) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise_all.html">summarise_at</a></span>(<span class="dt">.vars =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/vars">vars</a></span>(air_temp_c),</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise_all.html">summarise_at</a></span>(<span class="dt">.vars =</span> <span class="kw"><a href="ggplot2.tidyverse.org/reference/vars.html">vars</a></span>(air_temp_c),</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4">               <span class="dt">.funs =</span> <span class="kw"><a href="http://dplyr.tidyverse.org/reference/funs.html">funs</a></span>(min, mean, median, max, <span class="dt">.args =</span> <span class="kw">list</span>(<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; # A tibble: 2 x 5</span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;   any_missing   min  mean median   max</span></a>
@@ -263,13 +263,13 @@
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/simputation/topics/impute_lm">impute_lm</a></span>(humidity <span class="op">~</span><span class="st">  </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns <span class="op">+</span><span class="st"> </span>year <span class="op">+</span><span class="st"> </span>longitude <span class="op">+</span><span class="st"> </span>latitude) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/simputation/topics/impute_lm">impute_lm</a></span>(sea_temp_c <span class="op">~</span><span class="st">  </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns <span class="op">+</span><span class="st"> </span>year <span class="op">+</span><span class="st"> </span>longitude <span class="op">+</span><span class="st"> </span>latitude) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/add_label_shadow.html">add_label_shadow</a></span>()</a></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(ocean_imp_yr,</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> air_temp_c,</a>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp_yr,</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">       <span class="kw"><a href="ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> air_temp_c,</a>
 <a class="sourceLine" id="cb8-3" data-line-number="3">           <span class="dt">y =</span> humidity,</a>
 <a class="sourceLine" id="cb8-4" data-line-number="4">           <span class="dt">color =</span> any_missing)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/scale_brewer">scale_color_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a></code></pre></div>
 <p><img src="exploring-imputed-values_files/figure-html/ggplot-air-temp-humidity-1.png" width="700"></p>
 </div>
 <div id="other-imputation-approaches" class="section level1">
@@ -342,11 +342,11 @@
 <p>In the future there will be a more concise way to insert these imputed values into data, but for the moment the method above is what I would recommend for single imputation.</p>
 <p>We can then explore the imputed values like so:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(aq_nab,</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">       <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(aq_nab,</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">       <span class="kw"><a href="ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
 <a class="sourceLine" id="cb11-4" data-line-number="4">           <span class="dt">y =</span> Solar.R,</a>
 <a class="sourceLine" id="cb11-5" data-line-number="5">           <span class="dt">colour =</span> any_missing)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</a></code></pre></div>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</a></code></pre></div>
 <p><img src="exploring-imputed-values_files/figure-html/hmisc-aregimpute-vis-1.png" width="700"></p>
 </div>
 </div>

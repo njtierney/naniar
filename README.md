@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# naniar <img src="man/figures/naniar-logo.png" align="right" />
+# naniar <img src="man/figures/logo.png" align="right" height=140/>
 
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/naniar-xb96h)[![Travis-CI
@@ -153,7 +153,7 @@ as_shadow(airquality)
 #>  8 !NA      !NA        !NA     !NA     !NA      !NA   
 #>  9 !NA      !NA        !NA     !NA     !NA      !NA   
 #> 10 NA       !NA        !NA     !NA     !NA      !NA   
-#> # ... with 143 more rows
+#> # … with 143 more rows
 ```
 
 Binding the shadow data to the data you help keep better track of the
@@ -176,7 +176,7 @@ bind_shadow(airquality)
 #>  8    19      99  13.8    59     5     8 !NA      !NA        !NA    
 #>  9     8      19  20.1    61     5     9 !NA      !NA        !NA    
 #> 10    NA     194   8.6    69     5    10 NA       !NA        !NA    
-#> # ... with 143 more rows, and 3 more variables: Temp_NA <fct>,
+#> # … with 143 more rows, and 3 more variables: Temp_NA <fct>,
 #> #   Month_NA <fct>, Day_NA <fct>
 nabular(airquality)
 #> # A tibble: 153 x 12
@@ -192,7 +192,7 @@ nabular(airquality)
 #>  8    19      99  13.8    59     5     8 !NA      !NA        !NA    
 #>  9     8      19  20.1    61     5     9 !NA      !NA        !NA    
 #> 10    NA     194   8.6    69     5    10 NA       !NA        !NA    
-#> # ... with 143 more rows, and 3 more variables: Temp_NA <fct>,
+#> # … with 143 more rows, and 3 more variables: Temp_NA <fct>,
 #> #   Month_NA <fct>, Day_NA <fct>
 ```
 
@@ -321,7 +321,7 @@ miss_case_summary(airquality)
 #>  8    32      1     16.7
 #>  9    33      1     16.7
 #> 10    34      1     16.7
-#> # ... with 143 more rows
+#> # … with 143 more rows
 ```
 
 You could also `group_by()` to work out the number of missings in each
@@ -354,7 +354,7 @@ airquality %>%
 #>  8     6 Wind          0      0  
 #>  9     6 Temp          0      0  
 #> 10     6 Day           0      0  
-#> # ... with 15 more rows
+#> # … with 15 more rows
 ```
 
 You can read more about all of these functions in the vignette [“Getting

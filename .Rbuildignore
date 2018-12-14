@@ -9,6 +9,7 @@
 ^codecov\.yml$
 ^docs$
 ^doc$
+^pkgdown$
 ^_pkgdown\.yml$
 ^missingness-data-structures\.png$
 ^README-figs$

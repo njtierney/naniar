@@ -10,7 +10,7 @@ new_nabular <- function(x){
   if (sum(are_shade(x) == ncol(x)) | !any_shade(x)) {
     rlang::abort(message = "data must have shadow data with the regular data")
   }
-  tibble::new_tibble(x, subclass = "nabular", nrow = nrow(x))
+  tibble::new_tibble(x, subclass = "nabular", nrow = as.integer(nrow(x)))
 }
 
 #' Convert data into nabular form by binding shade to it

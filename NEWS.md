@@ -1,3 +1,11 @@
+# naniar 0.4.1.9000 (2018/12/14)
+
+## Minor Changes
+
+* pkgdown updates: update favicon and logo, set up for gh-pages deployment
+* use a scalar integer in `new_tibble`
+
+
 # naniar 0.4.1 (2018/11/20) "Aslan's Song"
 
 ## Minor Change

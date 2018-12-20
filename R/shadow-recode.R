@@ -82,7 +82,7 @@ shadow_expand_relevel <- function(.var, suffix){
 update_shadow <- function(data, suffix) {
 
   class_of_cols <- purrr::map(data,class)
-  class_of_data <- class(data)
+  attributes_of_data <- attributes(data)
 
   updated_shadow <-
   dplyr::mutate_if(.tbl = data,
@@ -96,9 +96,9 @@ update_shadow <- function(data, suffix) {
                                     class_of_cols,
                                     `class<-`)
 
-  structure(updated_shadow,
-            class = class_of_data)
+  attributes(updated_shadow) <- attributes_of_data
 
+  updated_shadow
 
 }
 

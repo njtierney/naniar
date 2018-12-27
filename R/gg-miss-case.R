@@ -41,7 +41,7 @@ gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
       x %>%
       miss_case_summary(order = TRUE) %>%
       # overwrite case
-      dplyr::mutate(case = 1:n()) %>%
+      dplyr::mutate(case = dplyr::row_number()) %>%
       gg_miss_case_create(show_pct = show_pct)
 
   }
@@ -60,7 +60,7 @@ gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
       dplyr::group_by(!!quo_group_by) %>%
       # overwrite case
       miss_case_summary(order = TRUE) %>%
-      dplyr::mutate(case = 1:n()) %>%
+      dplyr::mutate(case = dplyr::row_number()) %>%
       gg_miss_case_create(show_pct = show_pct) +
       facet_wrap(as.formula(paste("~", group_string)))
 

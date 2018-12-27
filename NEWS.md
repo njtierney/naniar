@@ -1,3 +1,15 @@
+# naniar 0.4.2.9000 (2018/12/27)
+
+## Dependency fixes
+
+* Thanks to a PR ([#223](https://github.com/njtierney/naniar/pull/223)) from @romainfrancois: 
+
+    * This fixes two problems that were identified as part of reverse dependency checks of dplyr 0.8.0 release candidate. https://github.com/tidyverse/dplyr/blob/revdep_dplyr_0_8_0_RC/revdep/problems.md#naniar
+
+    * n() must be imported or prefixed like any other function. In the PR, I've changed 1:n() to dplyr::row_number() as naniar seems to prefix all dplyr functions.
+
+    * update_shadow was only restoring the class attributes, changed so that it restores all attributes, this was causing problems when data was a grouped_df. This likely was a problem before too, but dplyr 0.8.0 is stricter about what is a grouped data frame.
+
 # naniar 0.4.1.9000 (2018/12/14)
 
 ## Minor Changes

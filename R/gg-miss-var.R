@@ -84,7 +84,7 @@ gg_miss_var_create <- function(data, show_pct){
   geom_bar(aes_string(y = aes_y),
            stat = "identity",
            position = "dodge",
-           width = 0,
+           width = 0.001,
            colour = "#484878",
            fill = "#484878") +
   geom_point(aes_string(y = aes_y),

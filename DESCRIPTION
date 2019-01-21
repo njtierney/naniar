@@ -78,6 +78,7 @@ Collate:
     'data-riskfactors.R'
     'legend-draw.R'
     'geom-miss-point.R'
+    'geom2plotly.R'
     'gg-miss-case-cumsum.R'
     'gg-miss-case.R'
     'gg-miss-fct.R'

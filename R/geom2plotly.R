@@ -3,7 +3,6 @@
 #' @description Helper functions to make it easier to automatically create plotly charts
 #' @export
 to_basic.GeomMissPoint <- function(data, prestats_data, layout, params, p, ...)  {
-  View(data)
   prefix_class(data, "GeomPoint")
 }
 

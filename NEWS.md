@@ -3,6 +3,7 @@
 ## Improvements
 
 * The `geom_miss_point()` **ggplot2** layer can now be converted into an interactive web-based version by the `ggplotly()` function in the **plotly** package. In order for this to work, **naniar** now exports the `geom2trace.GeomMissPoint()` function (users should never need to call `geom2trace.GeomMissPoint()` directly -- `ggplotly()` calls it for you).
+* adds WORDLIST for spelling thanks to `usethis::use_spell_check()`
 
 ## Dependency fixes
 

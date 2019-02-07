@@ -57,6 +57,7 @@ bind_row_n <- function(data, n){
   tibble::as_tibble(data[rep(seq_len(nrow(data)), n), ])
   
 }
+# function taken from https://stackoverflow.com/questions/8753531/repeat-data-frame-n-times/8753732
 
 bind_row_n(africa, 2)
 

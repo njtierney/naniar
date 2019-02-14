@@ -19,7 +19,7 @@
 #'
 #' @return a tibble of the percent of missing data in each variable
 #'
-#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]() [n_complete]() [n_complete_row]() [n_miss]() [n_miss_row]() [pct_complete]() [pct_miss]() [prop_complete]() [prop_complete_row]() [prop_miss]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()] [n_complete()] [n_complete_row()] [n_miss()] [n_miss_row()] [pct_complete()] [pct_miss()] [prop_complete()] [prop_complete_row()] [prop_miss()]
 #'
 #' @export
 #'
@@ -100,7 +100,7 @@ miss_var_summary.grouped_df <- function(data,
 #'
 #' @return a tibble of the percent of missing data in each case.
 #'
-#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]() [n_complete]() [n_complete_row]() [n_miss]() [n_miss_row]() [pct_complete]() [pct_miss]() [prop_complete]() [prop_complete_row]() [prop_miss]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()] [n_complete()] [n_complete_row()] [n_miss()] [n_miss_row()] [pct_complete()] [pct_miss()] [prop_complete()] [prop_complete_row()] [prop_miss()]
 #'
 #' @export
 #'
@@ -191,7 +191,7 @@ miss_case_summary.grouped_df <- function(data,
 #'
 #' @return a tibble of missing data summaries
 #'
-#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]() [n_complete]() [n_complete_row]() [n_miss]() [n_miss_row]() [pct_complete]() [pct_miss]() [prop_complete]() [prop_complete_row]() [prop_miss]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()] [n_complete()] [n_complete_row()] [n_miss()] [n_miss_row()] [pct_complete()] [pct_miss()] [prop_complete()] [prop_complete_row()] [prop_miss()]
 #'
 #' @export
 #'

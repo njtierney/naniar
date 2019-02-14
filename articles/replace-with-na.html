@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
       </span>
     </div>
 
@@ -104,7 +104,7 @@
       <h1>Replacing values with NA</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2019-02-07</h4>
+            <h4 class="date">2019-02-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/replace-with-na.Rmd"><code>vignettes/replace-with-na.Rmd</code></a></small>
       <div class="hidden name"><code>replace-with-na.Rmd</code></div>
@@ -140,12 +140,7 @@
 </h2>
 <p>What if we want to replace the value -99 in the <code>x</code> column with a missing value?</p>
 <p>First, let’s load <code>naniar</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(naniar)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Registered S3 methods overwritten by 'ggplot2':</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;   method         from </span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;   [.quosures     rlang</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;   c.quosures     rlang</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;   print.quosures rlang</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(naniar)</a></code></pre></div>
 <p>Now, we specify the fact that we want to replace -99 with a missing value. To do so we use the <code>replace</code> argument, and specify a named list, which contains the names of the variable and the value it would take to replace with <code>NA</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/replace_with_na.html">replace_with_na</a></span>(<span class="dt">replace =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">x =</span> <span class="dv">-99</span>))</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 5 x 4</span></a>

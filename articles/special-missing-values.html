@@ -122,22 +122,27 @@
 <a href="#terminology" class="anchor"></a>Terminology</h1>
 <p>Missing data can be represented as a binary matrix of “missing” or “not missing”, which in <code>naniar</code> we call a “shadow matrix”, a term borrowed from <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization">Swayne and Buja, 1998</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(naniar)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="../reference/as_shadow.html">as_shadow</a></span>(oceanbuoys)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; # A tibble: 736 x 8</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt;    year_NA latitude_NA longitude_NA sea_temp_c_NA air_temp_c_NA humidity_NA</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt;    &lt;fct&gt;   &lt;fct&gt;       &lt;fct&gt;        &lt;fct&gt;         &lt;fct&gt;         &lt;fct&gt;      </span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt;  1 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt;  2 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt;  3 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt;  4 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt;  5 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt;  6 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt;  7 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt;  8 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt;  9 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt; 10 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt; # … with 726 more rows, and 2 more variables: wind_ew_NA &lt;fct&gt;,</span></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt; #   wind_ns_NA &lt;fct&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; Registered S3 methods overwritten by 'ggplot2':</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt;   method         from </span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt;   [.quosures     rlang</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt;   c.quosures     rlang</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt;   print.quosures rlang</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="kw"><a href="../reference/as_shadow.html">as_shadow</a></span>(oceanbuoys)</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; # A tibble: 736 x 8</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt;    year_NA latitude_NA longitude_NA sea_temp_c_NA air_temp_c_NA humidity_NA</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt;    &lt;fct&gt;   &lt;fct&gt;       &lt;fct&gt;        &lt;fct&gt;         &lt;fct&gt;         &lt;fct&gt;      </span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt;  1 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt;  2 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt;  3 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt;  4 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt;  5 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt;  6 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt;  7 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">#&gt;  8 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="co">#&gt;  9 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#&gt; 10 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#&gt; # … with 726 more rows, and 2 more variables: wind_ew_NA &lt;fct&gt;,</span></a>
+<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co">#&gt; #   wind_ns_NA &lt;fct&gt;</span></a></code></pre></div>
 <p>The <code>shadow matrix</code> has three key features to facilitate analysis</p>
 <ol style="list-style-type: decimal">
 <li><p>Coordinated names: Variables in the shadow matrix gain the same name as in the data, with the suffix "_NA".</p></li>

@@ -1,4 +1,4 @@
-# naniar 0.4.2.9000 (2018/12/27)
+# naniar 0.4.2 (2018/12/27)
 
 ## Improvements
 
@@ -15,7 +15,7 @@
 
     * update_shadow was only restoring the class attributes, changed so that it restores all attributes, this was causing problems when data was a grouped_df. This likely was a problem before too, but dplyr 0.8.0 is stricter about what is a grouped data frame.
 
-# naniar 0.4.1.9000 (2018/12/14)
+# naniar 0.4.1 (2018/12/14)
 
 ## Minor Changes
 

@@ -15,7 +15,9 @@ gg_miss_var(x, facet, show_pct = FALSE)
 TRUE, it will display the proportion of missings.}
 }
 \value{
-a ggplot object depicting the number of missings in a given column
+a ggplot object depicting the number of missings in a given column.
+Variables with no missing data are drawn with a diamond shape and green color whereas
+variables with missing data are drawn with a circle shape and blue color.
 }
 \description{
 This is a visual analogue to \code{miss_var_summary}. It draws a ggplot of the
@@ -31,6 +33,15 @@ gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 gg_miss_var(airquality, Month)
 gg_miss_var(airquality, Month, show_pct = TRUE)
 gg_miss_var(airquality, Month, show_pct = TRUE) + ylim(0, 100)
+
+# A little more complex example
+n <- nrow(airquality)
+gg_miss_var(airquality) +
+  geom_text(aes(label = glue::glue("{n_miss}\\n({scales::percent(n_miss / n)})")),
+                nudge_y = 2) +
+  scale_y_continuous(sec.axis = sec_axis(trans = ~ ./n,
+                                         labels = scales::percent,
+                                         name = percent_missing))
 
 }
 \seealso{

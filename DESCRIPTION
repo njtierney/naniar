@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.4.2
+Version: 0.4.2.9000
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -50,7 +50,8 @@ Suggests:
     imputeTS,
     gdtools,
     Hmisc,
-    spelling
+    spelling,
+    scales
 VignetteBuilder: knitr
 Depends:
     R (>= 3.1.2)
@@ -125,3 +126,4 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Language: en-US
+Date: 2019-02-15

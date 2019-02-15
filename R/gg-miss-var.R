@@ -10,7 +10,9 @@
 #' @param show_pct logical shows the number of missings (default), but if set to
 #'  TRUE, it will display the proportion of missings.
 #'
-#' @return a ggplot object depicting the number of missings in a given column
+#' @return a ggplot object depicting the number of missings in a given column.
+#' Variables with no missing data are drawn with a diamond shape and green color whereas
+#' variables with missing data are drawn with a circle shape and blue color.
 #'
 #' @seealso [geom_miss_point()] [gg_miss_case()] [gg_miss_case_cumsum] [gg_miss_fct()] [gg_miss_span()] [gg_miss_var()] [gg_miss_var_cumsum()] [gg_miss_which()]
 #'
@@ -24,6 +26,15 @@
 #' gg_miss_var(airquality, Month)
 #' gg_miss_var(airquality, Month, show_pct = TRUE)
 #' gg_miss_var(airquality, Month, show_pct = TRUE) + ylim(0, 100)
+#'
+#' # A little more complex example
+#' n <- nrow(airquality)
+#' gg_miss_var(airquality) +
+#'   geom_text(aes(label = glue::glue("{n_miss}\n({scales::percent(n_miss / n)})")),
+#'                 nudge_y = 2) +
+#'   scale_y_continuous(sec.axis = sec_axis(trans = ~ ./n,
+#'                                          labels = scales::percent,
+#'                                          name = percent_missing))
 #'
 gg_miss_var <- function(x, facet, show_pct = FALSE){
 
@@ -76,20 +87,20 @@ gg_miss_var_create <- function(data, show_pct){
     aes_y <- "n_miss"
   }
 
-  ggplot(data = data,
-       aes(x = stats::reorder(variable, n_miss))) +
-       #     y = n_miss)) +
-       # aes(x = stats::reorder(variable, n_miss),
-       #     y = n_miss)) +
-  geom_bar(aes_string(y = aes_y),
-           stat = "identity",
+  data %>%
+    ggplot(aes(x = stats::reorder(variable, n_miss), y = !!rlang::sym(aes_y))) +
+  geom_bar(stat = "identity",
            position = "dodge",
            width = 0.001,
            colour = "#484878",
            fill = "#484878") +
-  geom_point(aes_string(y = aes_y),
+  geom_point(data = data[data[[aes_y]] > 0,],
              colour = "#484878",
              fill = "#484878") +
+    geom_point(data = data[data[[aes_y]] == 0,],
+               colour = "#2ca25f",
+               fill = "#2ca25f",
+               shape = "diamond filled") +
   coord_flip() +
   scale_color_discrete(guide = FALSE) +
   labs(y = ylab,

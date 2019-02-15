@@ -104,7 +104,7 @@
       <h1>Gallery of Missing Data Visualisations</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2019-02-14</h4>
+            <h4 class="date">2019-02-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/naniar-visualisation.Rmd"><code>vignettes/naniar-visualisation.Rmd</code></a></small>
       <div class="hidden name"><code>naniar-visualisation.Rmd</code></div>
@@ -119,20 +119,16 @@
 <h1 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h1>
 <p>One of the first plots that I recommend you start with when you are first exploring your missing data, is the <code><a href="http://visdat.njtierney.com//reference/vis_miss.html">vis_miss()</a></code> plot, which is re-exported from <a href="https://www.github.com/ropensci/visdat"><code>visdat</code></a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(naniar)</a></code></pre></div>
-<pre><code>## Registered S3 methods overwritten by 'ggplot2':
-##   method         from 
-##   [.quosures     rlang
-##   c.quosures     rlang
-##   print.quosures rlang</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="http://visdat.njtierney.com//reference/vis_miss.html">vis_miss</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(naniar)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="http://visdat.njtierney.com//reference/vis_miss.html">vis_miss</a></span>(airquality)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/vis-miss-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>This plot provides a specific visualiation of the amount of missing data, showing in black the location of missing values, and also providing information on the overall percentage of missing values overall (in the legend), and in each variable.</p>
 <div id="exploring-patterns-with-upsetr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exploring-patterns-with-upsetr" class="anchor"></a>Exploring patterns with UpSetR</h2>
 <p>An upset plot from the <code>UpSetR</code> package can be used to visualise the patterns of missingness, or rather the combinations of missingness across cases. To see combinations of missingness and intersections of missingness amongst variables, use the <code>gg_miss_upset</code> function:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_upset.html">gg_miss_upset</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_upset.html">gg_miss_upset</a></span>(airquality)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-upset-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>This tells us:</p>
 <ul>
@@ -141,23 +137,23 @@
 <li>There are 2 cases where both Solar.R and Ozone have missing values together</li>
 </ul>
 <p>We can explore this with more complex data, such as riskfactors:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_upset.html">gg_miss_upset</a></span>(riskfactors)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_upset.html">gg_miss_upset</a></span>(riskfactors)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/upset-plot-riskfactors-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>The default option of <code>gg_miss_upset</code> is taken from <code><a href="https://www.rdocumentation.org/packages/UpSetR/topics/upset">UpSetR::upset</a></code> - which is to use up to 5 sets and up to 40 interactions. Here, setting <code>nsets = 5</code> means to look at 5 variables and their combinations. The number of combinations or rather <code>intersections</code> is controlled by <code>nintersects</code>. You could, for example look at all of the number of missing variables using <code>n_var_miss</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># how many missings?</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="../reference/n-var-case-miss.html">n_var_miss</a></span>(riskfactors)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># how many missings?</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="../reference/n-var-case-miss.html">n_var_miss</a></span>(riskfactors)</a></code></pre></div>
 <pre><code>## [1] 24</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_upset.html">gg_miss_upset</a></span>(riskfactors, <span class="dt">nsets =</span> <span class="kw"><a href="../reference/n-var-case-miss.html">n_var_miss</a></span>(riskfactors))</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_upset.html">gg_miss_upset</a></span>(riskfactors, <span class="dt">nsets =</span> <span class="kw"><a href="../reference/n-var-case-miss.html">n_var_miss</a></span>(riskfactors))</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-upset-n-var-miss-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>If there are 40 intersections, there will be up to 40 combinations of variables explored. The number of sets and intersections can be changed by passing arguments <code>nsets = 10</code> to look at 10 sets of variables, and <code>nintersects = 50</code> to look at 50 intersections.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_upset.html">gg_miss_upset</a></span>(riskfactors, </a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">              <span class="dt">nsets =</span> <span class="dv">10</span>,</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">              <span class="dt">nintersects =</span> <span class="dv">50</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_upset.html">gg_miss_upset</a></span>(riskfactors, </a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">              <span class="dt">nsets =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">              <span class="dt">nintersects =</span> <span class="dv">50</span>)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-upset-n-sets-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>Setting <code>nintersects</code> to <code>NA</code> it will plot all sets and all intersections.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_upset.html">gg_miss_upset</a></span>(riskfactors, </a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">              <span class="dt">nsets =</span> <span class="dv">10</span>,</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">              <span class="dt">nintersects =</span> <span class="ot">NA</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_upset.html">gg_miss_upset</a></span>(riskfactors, </a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">              <span class="dt">nsets =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">              <span class="dt">nintersects =</span> <span class="ot">NA</span>)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-upset-nintersect-NA-1.png" width="500" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -170,35 +166,35 @@
 <h1 class="hasAnchor">
 <a href="#geom_miss_point" class="anchor"></a><code><a href="../reference/geom_miss_point.html">geom_miss_point()</a></code>
 </h1>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co"># using regular geom_point()</span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality,</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co"># using regular geom_point()</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality,</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
 <p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-1.png" width="500" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(naniar)</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co"># using  geom_miss_point()</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality,</a>
-<a class="sourceLine" id="cb13-5" data-line-number="5">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
-<a class="sourceLine" id="cb13-6" data-line-number="6">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="st"> </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(naniar)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co"># using  geom_miss_point()</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality,</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="st"> </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>()</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-2.png" width="500" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># Facets!</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality,</a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="st"> </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span>Month)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># Facets!</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality,</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="st"> </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span>Month)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-3.png" width="500" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># Themes</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality,</a>
-<a class="sourceLine" id="cb15-3" data-line-number="3">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="st"> </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_dark</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># Themes</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality,</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="st"> </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_dark</a></span>()</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/ggplot-geom-miss-point-4.png" width="500" style="display: block; margin: auto;"></p>
 </div>
 <div id="general-visual-summaries-of-missing-data" class="section level1">
@@ -210,17 +206,17 @@
 <a href="#gg_miss_var" class="anchor"></a><code><a href="../reference/gg_miss_var.html">gg_miss_var()</a></code>
 </h2>
 <p>This plot shows the number of missing values in each variable in a dataset. It is powered by the <code><a href="../reference/miss_var_summary.html">miss_var_summary()</a></code> function.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-var-1.png" width="500" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">y =</span> <span class="st">"Look at all the missing ones"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">y =</span> <span class="st">"Look at all the missing ones"</span>)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-var-2.png" width="500" style="display: block; margin: auto;"></p>
 <p>If you wish, you can also change whether to show the % of missing instead with <code>show_pct = TRUE</code>.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality, <span class="dt">show_pct =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality, <span class="dt">show_pct =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-var-show-pct-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>You can also plot the number of missings in a variable grouped by another variable using the <code>facet</code> argument.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality,</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">            <span class="dt">facet =</span> Month)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality,</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">            <span class="dt">facet =</span> Month)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-var-group-1.png" width="500" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_case" class="section level2">
@@ -228,15 +224,15 @@
 <a href="#gg_miss_case" class="anchor"></a><code><a href="../reference/gg_miss_case.html">gg_miss_case()</a></code>
 </h2>
 <p>This plot shows the number of missing values in each case. It is powered by the <code><a href="../reference/miss_case_summary.html">miss_case_summary()</a></code> function.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-case-1.png" width="500" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"Number of Cases"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"Number of Cases"</span>)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-case-2.png" width="500" style="display: block; margin: auto;"></p>
 <p>You can also order by the number of cases using <code>order_cases = TRUE</code></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality, <span class="dt">order_cases =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality, <span class="dt">order_cases =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-case-order-by-case-1.png" width="500" style="display: block; margin: auto;"></p>
 <p>You can also explore the misisngness in cases over some variable using <code>facet = Month</code></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality, <span class="dt">facet =</span> Month)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_case.html">gg_miss_case</a></span>(airquality, <span class="dt">facet =</span> Month)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-case-group-1.png" width="500" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_fct" class="section level2">
@@ -244,10 +240,20 @@
 <a href="#gg_miss_fct" class="anchor"></a><code><a href="../reference/gg_miss_fct.html">gg_miss_fct()</a></code>
 </h2>
 <p>This plot shows the number of missings in each column, broken down by a categorical variable from the dataset. It is powered by a <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by</a></code> statement followed by <code><a href="../reference/miss_var_summary.html">miss_var_summary()</a></code>.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_fct.html">gg_miss_fct</a></span>(<span class="dt">x =</span> riskfactors, <span class="dt">fct =</span> marital)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_fct.html">gg_miss_fct</a></span>(<span class="dt">x =</span> riskfactors, <span class="dt">fct =</span> marital)</a></code></pre></div>
+<pre><code>## Warning: Factor `marital` contains implicit NA, consider using
+## `forcats::fct_explicit_na`
+
+## Warning: Factor `marital` contains implicit NA, consider using
+## `forcats::fct_explicit_na`</code></pre>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-fct-1.png" width="500" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="kw"><a href="../reference/gg_miss_fct.html">gg_miss_fct</a></span>(<span class="dt">x =</span> riskfactors, <span class="dt">fct =</span> marital) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"NA in Risk Factors and Marital status"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="kw"><a href="../reference/gg_miss_fct.html">gg_miss_fct</a></span>(<span class="dt">x =</span> riskfactors, <span class="dt">fct =</span> marital) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"NA in Risk Factors and Marital status"</span>)</a></code></pre></div>
+<pre><code>## Warning: Factor `marital` contains implicit NA, consider using
+## `forcats::fct_explicit_na`
+
+## Warning: Factor `marital` contains implicit NA, consider using
+## `forcats::fct_explicit_na`</code></pre>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-fct-2.png" width="500" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co"># using group_by</span></a>
 <a class="sourceLine" id="cb26-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a></code></pre></div>
@@ -262,6 +268,11 @@
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">riskfactors <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb30-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(marital) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb30-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>()</a></code></pre></div>
+<pre><code>## Warning: Factor `marital` contains implicit NA, consider using
+## `forcats::fct_explicit_na`
+
+## Warning: Factor `marital` contains implicit NA, consider using
+## `forcats::fct_explicit_na`</code></pre>
 <pre><code>## # A tibble: 231 x 4
 ##    marital variable      n_miss pct_miss
 ##    &lt;fct&gt;   &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;
@@ -282,9 +293,9 @@
 <a href="#gg_miss_span" class="anchor"></a><code><a href="../reference/gg_miss_span.html">gg_miss_span()</a></code>
 </h2>
 <p>This plot shows the number of missings in a given span, or breaksize, for a single selected variable. In this case we look at the span of <code>hourly_counts</code> from the pedestrian dataset. It is powered by the <code>miss_var_span</code> function</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="co"># data method</span></a>
-<a class="sourceLine" id="cb32-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="kw"><a href="../reference/miss_var_span.html">miss_var_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co"># data method</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="kw"><a href="../reference/miss_var_span.html">miss_var_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 13 x 5
 ##    span_counter n_miss n_complete prop_miss prop_complete
 ##           &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
@@ -301,18 +312,18 @@
 ## 11           11      0       3000  0                1    
 ## 12           12    745       2255  0.248            0.752
 ## 13           13    432       2568  0.144            0.856</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-span-1.png" width="500" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co"># works with the rest of ggplot</span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"custom"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co"># works with the rest of ggplot</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"custom"</span>)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-span-2.png" width="500" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_dark</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, hourly_counts, <span class="dt">span_every =</span> <span class="dv">3000</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_dark</a></span>()</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-span-3.png" width="500" style="display: block; margin: auto;"></p>
 <p>You can also explore <code>miss_var_span</code> by group with the <code>facet</code> argument.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, </a>
-<a class="sourceLine" id="cb37-2" data-line-number="2">             hourly_counts, </a>
-<a class="sourceLine" id="cb37-3" data-line-number="3">             <span class="dt">span_every =</span> <span class="dv">3000</span>, </a>
-<a class="sourceLine" id="cb37-4" data-line-number="4">             <span class="dt">facet =</span> sensor_name)</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian, </a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">             hourly_counts, </a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">             <span class="dt">span_every =</span> <span class="dv">3000</span>, </a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">             <span class="dt">facet =</span> sensor_name)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-span-group-1.png" width="500" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_case_cumsum" class="section level2">
@@ -320,10 +331,10 @@
 <a href="#gg_miss_case_cumsum" class="anchor"></a><code><a href="../reference/gg_miss_case_cumsum.html">gg_miss_case_cumsum()</a></code>
 </h2>
 <p>This plot shows the cumulative sum of missing values, reading the rows of the dataset from the top to bottom. It is powered by the <code>miss_case_cumsum()</code> function.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_case_cumsum.html">gg_miss_case_cumsum</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_case_cumsum.html">gg_miss_case_cumsum</a></span>(airquality)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-case-cumsum-1.png" width="500" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="kw"><a href="../reference/gg_miss_case_cumsum.html">gg_miss_case_cumsum</a></span>(riskfactors, <span class="dt">breaks =</span> <span class="dv">50</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="kw"><a href="../reference/gg_miss_case_cumsum.html">gg_miss_case_cumsum</a></span>(riskfactors, <span class="dt">breaks =</span> <span class="dv">50</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-case-cumsum-2.png" width="500" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_var_cumsum" class="section level2">
@@ -331,7 +342,7 @@
 <a href="#gg_miss_var_cumsum" class="anchor"></a><code><a href="../reference/gg_miss_var_cumsum.html">gg_miss_var_cumsum()</a></code>
 </h2>
 <p>This plot shows the cumulative sum of missing values, reading columns from the left to the right of your dataframe. It is powered by the <code>miss_var_cumsum()</code> function.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_var_cumsum.html">gg_miss_var_cumsum</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_var_cumsum.html">gg_miss_var_cumsum</a></span>(airquality)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-var-cumsum-1.png" width="500" style="display: block; margin: auto;"></p>
 </div>
 <div id="gg_miss_which" class="section level2">
@@ -339,7 +350,7 @@
 <a href="#gg_miss_which" class="anchor"></a><code><a href="../reference/gg_miss_which.html">gg_miss_which()</a></code>
 </h2>
 <p>This plot shows a set of rectangles that indicate whether there is a missing element in a column or not.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_which.html">gg_miss_which</a></span>(airquality)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw"><a href="../reference/gg_miss_which.html">gg_miss_which</a></span>(airquality)</a></code></pre></div>
 <p><img src="naniar-visualisation_files/figure-html/gg-miss-which-1.png" width="500" style="display: block; margin: auto;"></p>
 </div>
 </div>

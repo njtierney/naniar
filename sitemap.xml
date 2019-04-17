@@ -157,6 +157,9 @@
     <loc>http://naniar.njtierney.com//reference/miss-complete-var-prop.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/miss_case_cumsum.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/miss_case_summary.html</loc>
   </url>
   <url>
@@ -170,6 +173,9 @@
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/miss_summary.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/miss_var_cumsum.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/miss_var_run.html</loc>

@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2.9001</span>
       </span>
     </div>
 
@@ -104,7 +104,7 @@
       <h1>Exploring Imputed Values</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2019-03-28</h4>
+            <h4 class="date">2019-04-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/exploring-imputed-values.Rmd"><code>vignettes/exploring-imputed-values.Rmd</code></a></small>
       <div class="hidden name"><code>exploring-imputed-values.Rmd</code></div>
@@ -134,23 +134,18 @@
 <a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
 <a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(naniar)</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt; Registered S3 methods overwritten by 'ggplot2':</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt;   method         from </span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt;   [.quosures     rlang</span></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt;   c.quosures     rlang</span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt;   print.quosures rlang</span></a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17">airquality <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="st">  </span><span class="kw"><a href="../reference/impute_below_at.html">impute_below_at</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(Ozone)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(Ozone, Solar.R) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>()</a>
-<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#&gt;       Ozone Solar.R</span></a>
-<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co">#&gt; 1  41.00000     190</span></a>
-<a class="sourceLine" id="cb1-23" data-line-number="23"><span class="co">#&gt; 2  36.00000     118</span></a>
-<a class="sourceLine" id="cb1-24" data-line-number="24"><span class="co">#&gt; 3  12.00000     149</span></a>
-<a class="sourceLine" id="cb1-25" data-line-number="25"><span class="co">#&gt; 4  18.00000     313</span></a>
-<a class="sourceLine" id="cb1-26" data-line-number="26"><span class="co">#&gt; 5 -19.72321      NA</span></a>
-<a class="sourceLine" id="cb1-27" data-line-number="27"><span class="co">#&gt; 6  28.00000      NA</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">airquality <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="../reference/impute_below_at.html">impute_below_at</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(Ozone)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(Ozone, Solar.R) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>()</a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt;       Ozone Solar.R</span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt; 1  41.00000     190</span></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">#&gt; 2  36.00000     118</span></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="co">#&gt; 3  12.00000     149</span></a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#&gt; 4  18.00000     313</span></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#&gt; 5 -19.72321      NA</span></a>
+<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co">#&gt; 6  28.00000      NA</span></a></code></pre></div>
 </div>
 <div id="using-impute_mean" class="section level1">
 <h1 class="hasAnchor">
@@ -352,7 +347,7 @@
 <a class="sourceLine" id="cb9-48" data-line-number="48"><span class="co">#&gt; R-squares for Predicting Non-Missing Values for Each Variable</span></a>
 <a class="sourceLine" id="cb9-49" data-line-number="49"><span class="co">#&gt; Using Last Imputations of Predictors</span></a>
 <a class="sourceLine" id="cb9-50" data-line-number="50"><span class="co">#&gt;   Ozone Solar.R </span></a>
-<a class="sourceLine" id="cb9-51" data-line-number="51"><span class="co">#&gt;   0.667   0.224</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-51" data-line-number="51"><span class="co">#&gt;   0.694   0.223</span></a></code></pre></div>
 <p>We are now going to get our data into <code>nabular</code> form, and then insert the imputed values:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co"># nabular form!</span></a>

@@ -9,9 +9,6 @@
 #'
 #' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()]
 #'
-#'
-#' @noRd
-#'
 #' @examples
 #'
 #' miss_var_cumsum(airquality)
@@ -24,6 +21,7 @@
 #'   group_by(Month) %>%
 #'   miss_var_cumsum()
 #'
+#' @export
 miss_var_cumsum <- function(data){
 
   test_if_null(data)
@@ -34,6 +32,7 @@ miss_var_cumsum <- function(data){
 
 }
 
+#' @export
 miss_var_cumsum.default <- function(data){
 
   purrr::map_df(data,
@@ -45,6 +44,7 @@ miss_var_cumsum.default <- function(data){
 
 }
 
+#' @export
 miss_var_cumsum.grouped_df <- function(data){
 
   group_by_fun(data, .fun = miss_var_cumsum)
@@ -61,7 +61,6 @@ miss_var_cumsum.grouped_df <- function(data){
 #'
 #' @return a tibble containing the number and percent of missing data in each
 #'   case
-#' @noRd
 #'
 #' @examples
 #'
@@ -73,6 +72,7 @@ miss_var_cumsum.grouped_df <- function(data){
 #'   group_by(Month) %>%
 #'   miss_case_cumsum()
 #'
+#' @export
 miss_case_cumsum <- function(data){
 
   test_if_null(data)
@@ -82,6 +82,7 @@ miss_case_cumsum <- function(data){
   UseMethod("miss_case_cumsum")
 }
 
+#' @export
 miss_case_cumsum.default <- function(data){
 
   miss_case_summary(data) %>%
@@ -91,6 +92,7 @@ miss_case_cumsum.default <- function(data){
     dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
 }
 
+#' @export
 miss_case_cumsum.grouped_df <- function(data){
 
   group_by_fun(data, .fun = miss_case_cumsum)

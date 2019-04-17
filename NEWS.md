@@ -1,4 +1,8 @@
-# naniar 0.4.2.9000 (2019/02/19)
+# naniar 0.4.2.9001 (2019/04/17)
+
+## Minor Changs
+
+* `miss_var_cumsum` and `miss_case_cumsum` are now exported
 
 # naniar 0.4.2 (2019/02/15) "The Planting of The Tree"
 

@@ -167,14 +167,14 @@
 <div id="a-short-overview-of-naniar" class="section level1">
 <h1 class="hasAnchor">
 <a href="#a-short-overview-of-naniar" class="anchor"></a>A short overview of naniar</h1>
-<p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from <a href="http://www.ggobi.org/">ggobi</a> and <a href="https://www.swmath.org/software/3067">manet</a>, which replaces <code>NA</code> values with values 10% lower than the minimum value in that variable. This visualisation is provided with the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom - which we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
+<p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from <a href="http://www.ggobi.org/">ggobi</a> and <a href="https://www.swmath.org/software/3067">manet</a>, which replaces <code>NA</code> values with values 10% lower than the minimum value in that variable. This visualisation is provided with the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom, which we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> airquality,</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">       <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="dt">data =</span> airquality,</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; Warning: Removed 42 rows containing missing values (geom_point).</span></a></code></pre></div>
 <p><img src="reference/figures/README-regular-geom-point-1.png" width="700"></p>
 <p>ggplot2 does not handle these missing values, and we get a warning message about the missing values.</p>
@@ -182,20 +182,20 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(naniar)</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> airquality,</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">       <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="dt">data =</span> airquality,</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
 <a class="sourceLine" id="cb4-6" data-line-number="6">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="reference/geom_miss_point.html">geom_miss_point</a></span>()</a></code></pre></div>
 <p><img src="reference/figures/README-geom-miss-point-1.png" width="700"></p>
 <p><code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive. As it is a ggplot2 geom, it supports features like faceting and other ggplot features.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">p1 &lt;-</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> airquality,</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">       <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="dt">data =</span> airquality,</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>Month, <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span>Month, <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a>
 <a class="sourceLine" id="cb5-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10">p1</a></code></pre></div>
 <p><img src="reference/figures/README-facet-by-month-1.png" width="700"></p>
@@ -266,19 +266,19 @@
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">airquality <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Temp,</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Temp,</a>
 <a class="sourceLine" id="cb8-5" data-line-number="5">             <span class="dt">fill =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_density">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-shadow-w-ggplot-1.png" width="700"></p>
 <p>And even visualise imputations</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">airquality <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span>simputation<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/simputation/topics/impute_lm">impute_lm</a></span>(Ozone <span class="op">~</span><span class="st"> </span>Temp <span class="op">+</span><span class="st"> </span>Solar.R) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Solar.R,</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Solar.R,</a>
 <a class="sourceLine" id="cb9-6" data-line-number="6">             <span class="dt">y =</span> Ozone,</a>
 <a class="sourceLine" id="cb9-7" data-line-number="7">             <span class="dt">colour =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>()</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</a>
 <a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; Warning: Removed 7 rows containing missing values (geom_point).</span></a></code></pre></div>
 <p><img src="reference/figures/README-shadow-impute-1.png" width="700"></p>
 <p>Or perform an <a href="https://www.nature.com/articles/nmeth.3033">upset</a> plot - to plot of the combinations of missingness across cases, using the <code>gg_miss_upset</code> function</p>

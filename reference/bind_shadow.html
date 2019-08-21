@@ -220,10 +220,10 @@ See the examples for more details.</p></td>
 <span class='co'># using the bounded shadow to visualise Ozone according to whether Solar</span>
 <span class='co'># Radiation is missing or not.</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>aq_shadow</span>,
-       <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>)) +
-       <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>() +
-       <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>Solar.R_NA</span>,
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>aq_shadow</span>,
+       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>)) +
+       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span>() +
+       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~<span class='no'>Solar.R_NA</span>,
        <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='message'>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 37 rows containing non-finite values (stat_bin).</span></div><div class='img'><img src='bind_shadow-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>

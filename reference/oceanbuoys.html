@@ -217,14 +217,14 @@ towards the South.</p></dd></dl>
 <span class='co'># Look at the missingness in air temperature and humidity</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
 <span class='no'>p</span> <span class='kw'>&lt;-</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>oceanbuoys</span>,
-       <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>air_temp_c</span>,
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>oceanbuoys</span>,
+       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>air_temp_c</span>,
            <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>humidity</span>)) +
      <span class='fu'><a href='geom_miss_point.html'>geom_miss_point</a></span>()
 
  <span class='no'>p</span></div><div class='img'><img src='oceanbuoys-2.png' alt='' width='700' height='433' /></div><div class='input'>
  <span class='co'># for each year?</span>
- <span class='no'>p</span> + <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>year</span>)</div><div class='img'><img src='oceanbuoys-3.png' alt='' width='700' height='433' /></div><div class='input'>
+ <span class='no'>p</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~<span class='no'>year</span>)</div><div class='img'><img src='oceanbuoys-3.png' alt='' width='700' height='433' /></div><div class='input'>
  <span class='co'># this shows that there are more missing values in humidity in 1993, and</span>
  <span class='co'># more air temperature missing values in 1997</span>
 
@@ -233,14 +233,14 @@ towards the South.</p></dd></dl>
 
  <span class='no'>oceanbuoys</span> <span class='kw'>%&gt;%</span>
    <span class='fu'><a href='bind_shadow.html'>bind_shadow</a></span>() <span class='kw'>%&gt;%</span>
-   <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>air_temp_c</span>,
+   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>air_temp_c</span>,
               <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>humidity_NA</span>)) +
-       <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>()</div><div class='output co'>#&gt; <span class='message'>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 81 rows containing non-finite values (stat_bin).</span></div><div class='img'><img src='oceanbuoys-4.png' alt='' width='700' height='433' /></div><div class='input'>
+       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span>()</div><div class='output co'>#&gt; <span class='message'>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 81 rows containing non-finite values (stat_bin).</span></div><div class='img'><img src='oceanbuoys-4.png' alt='' width='700' height='433' /></div><div class='input'>
  <span class='no'>oceanbuoys</span> <span class='kw'>%&gt;%</span>
    <span class='fu'><a href='bind_shadow.html'>bind_shadow</a></span>() <span class='kw'>%&gt;%</span>
-   <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>humidity</span>,
+   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>humidity</span>,
               <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>air_temp_c_NA</span>)) +
-       <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>()</div><div class='output co'>#&gt; <span class='message'>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 93 rows containing non-finite values (stat_bin).</span></div><div class='img'><img src='oceanbuoys-5.png' alt='' width='700' height='433' /></div><div class='input'>
+       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span>()</div><div class='output co'>#&gt; <span class='message'>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 93 rows containing non-finite values (stat_bin).</span></div><div class='img'><img src='oceanbuoys-5.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

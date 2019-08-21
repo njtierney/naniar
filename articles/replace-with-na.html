@@ -104,7 +104,7 @@
       <h1>Replacing values with NA</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2019-04-17</h4>
+            <h4 class="date">2019-08-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/replace-with-na.Rmd"><code>vignettes/replace-with-na.Rmd</code></a></small>
       <div class="hidden name"><code>replace-with-na.Rmd</code></div>
@@ -136,7 +136,7 @@
 <a class="sourceLine" id="cb1-8" data-line-number="8">  <span class="st">"John Smith"</span>,    <span class="dv">-98</span>, <span class="dv">28</span>,              <span class="dv">-1</span>)</a></code></pre></div>
 <div id="using-replace_with_na" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-replace_with_na" class="anchor"></a>Using <code><a href="../reference/replace_with_na.html">replace_with_na()</a></code>
+<a href="#using-replace_with_na" class="anchor"></a>Using <code>replace_with_na</code>
 </h2>
 <p>What if we want to replace the value -99 in the <code>x</code> column with a missing value?</p>
 <p>First, let’s load <code>naniar</code>:</p>
@@ -178,7 +178,7 @@
 </div>
 <div id="extending-replace_with_na" class="section level2">
 <h2 class="hasAnchor">
-<a href="#extending-replace_with_na" class="anchor"></a>Extending <code><a href="../reference/replace_with_na.html">replace_with_na()</a></code>
+<a href="#extending-replace_with_na" class="anchor"></a>Extending <code>replace_with_na</code>
 </h2>
 <p>Sometimes you have many of the same value that you want to replace. For example, -99 and -98 above, and also the variants of “NA”, such as “N/A”, and “N / A”, and “Not Available”. You might also have certain variables that you want to be affected by these rules, or you might have more complex rules, like, “only affect variables that are numeric, or character, with this rule”.</p>
 <p>To account for these cases we have borrowed from <a href="http://dplyr.tidyverse.org/reference/scoped.html"><code>dplyr</code>’s scoped variants</a> and created the functions:</p>
@@ -194,7 +194,7 @@
 </div>
 <div id="using-replace_with_na_all" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-replace_with_na_all" class="anchor"></a>Using <code><a href="../reference/replace_with_na_all.html">replace_with_na_all()</a></code>
+<a href="#using-replace_with_na_all" class="anchor"></a>Using <code>replace_with_na_all</code>
 </h2>
 <p>Use <code><a href="../reference/replace_with_na_all.html">replace_with_na_all()</a></code> when you want to replace ALL values that meet a condition across an entire dataset. The syntax here is a little different, and follows the rules for rlang’s expression of simple functions. This means that the function starts with <code>~</code>, and when referencing a variable, you use <code>.x</code>.</p>
 <p>For example, if we want to replace all cases of -99 in our dataset, we write:</p>
@@ -249,7 +249,7 @@
 <a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; 5 John Smith      -98 28               -1</span></a></code></pre></div>
 <div id="replace_with_na_at" class="section level3">
 <h3 class="hasAnchor">
-<a href="#replace_with_na_at" class="anchor"></a><code><a href="../reference/replace_with_na_at.html">replace_with_na_at()</a></code>
+<a href="#replace_with_na_at" class="anchor"></a><code>replace_with_na_at</code>
 </h3>
 <p>This is similar to <code>_all</code>, but instead in this case you can specify the variables that you want affected by the rule that you state. This is useful in cases where you want to specify a rule that only affects a selected number of variables.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"></a>
@@ -280,7 +280,7 @@
 </div>
 <div id="replace_with_na_if" class="section level3">
 <h3 class="hasAnchor">
-<a href="#replace_with_na_if" class="anchor"></a><code><a href="../reference/replace_with_na_if.html">replace_with_na_if()</a></code>
+<a href="#replace_with_na_if" class="anchor"></a><code>replace_with_na_if</code>
 </h3>
 <p>There may be some cases where you can identify variables based on some test - <code><a href="https://www.rdocumentation.org/packages/base/topics/character">is.character()</a></code> - are they character variables? <code><a href="https://www.rdocumentation.org/packages/base/topics/numeric">is.numeric()</a></code> - Are they numeric or double? and a given value inside that type of data. For example,</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"></a>
@@ -371,9 +371,9 @@
       <ul class="nav nav-pills nav-stacked">
 <li>
 <a href="#example-data">Example data</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#using-replace_with_na">Using <code><a href="--/reference/replace_with_na-html">replace_with_na()</a></code></a></li>
-      <li><a href="#extending-replace_with_na">Extending <code><a href="--/reference/replace_with_na-html">replace_with_na()</a></code></a></li>
-      <li><a href="#using-replace_with_na_all">Using <code><a href="--/reference/replace_with_na_all-html">replace_with_na_all()</a></code></a></li>
+<li><a href="#using-replace_with_na">Using <code>replace_with_na</code></a></li>
+      <li><a href="#extending-replace_with_na">Extending <code>replace_with_na</code></a></li>
+      <li><a href="#using-replace_with_na_all">Using <code>replace_with_na_all</code></a></li>
       </ul>
 </li>
       <li><a href="#notes-on-alternative-ways-to-handle-replacing-with-nas">Notes on alternative ways to handle replacing with NAs</a></li>

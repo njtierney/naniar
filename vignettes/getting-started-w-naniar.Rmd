@@ -390,7 +390,7 @@ miss_var_span(pedestrian,
 
 ```
 
-# Using `group_by()` with naniar
+# Using `group_by` with naniar
 
 Every `miss_*` summary function that returns a dataframe can be used with dplyr `group_by()`. For example, if you would like to look at the number of missing values for all variables of pedestrian data.
 

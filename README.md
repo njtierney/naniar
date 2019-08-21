@@ -63,9 +63,9 @@ visualise something that is not there? One approach to visualising
 missing data comes from [ggobi](http://www.ggobi.org/) and
 [manet](https://www.swmath.org/software/3067), which replaces `NA`
 values with values 10% lower than the minimum value in that variable.
-This visualisation is provided with the `geom_miss_point()` ggplot2 geom
-- which we illustrate by exploring the relationship between Ozone and
-Solar radiation from the airquality dataset.
+This visualisation is provided with the `geom_miss_point()` ggplot2
+geom, which we illustrate by exploring the relationship between Ozone
+and Solar radiation from the airquality dataset.
 
 ``` r
 

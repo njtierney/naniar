@@ -97,7 +97,7 @@ gg_miss_upset(riskfactors,
 
 There are a few different ways to explore different missing data mechanisms and relationships. One way incorporates the method of shifting missing values so that they can be visualised on the same axes as the regular values, and then colours the missing and not missing points. This is implemented with `geom_miss_point()`.
 
-# `geom_miss_point()`
+## `geom_miss_point`
 
 ```{r ggplot-geom-miss-point}
 library(ggplot2)
@@ -136,7 +136,7 @@ ggplot(airquality,
 
 Here are some function that provide quick summaries of missingness in your data, they all start with `gg_miss_` - so that they are easy to remember and tab-complete.
 
-## `gg_miss_var()`
+## Missingness in variables with `gg_miss_var`
 
 This plot shows the number of missing values in each variable in a dataset. It is powered by the `miss_var_summary()` function.
 
@@ -164,7 +164,7 @@ gg_miss_var(airquality,
 ```
 
 
-## `gg_miss_case()`
+## Missingness in cases with `gg_miss_case`
 
 This plot shows the number of missing values in each case. It is powered by the `miss_case_summary()` function.
 
@@ -189,7 +189,7 @@ gg_miss_case(airquality, facet = Month)
 
 ```
 
-## `gg_miss_fct()`
+## Missingness across factors with `gg_miss_fct`
 
 This plot shows the number of missings in each column, broken down by a categorical variable from the dataset. It is powered by a `dplyr::group_by` statement followed by `miss_var_summary()`. 
 
@@ -207,7 +207,7 @@ riskfactors %>%
 
 ```
 
-## `gg_miss_span()`
+## Missingness along a repeating span with `gg_miss_span`
 
 This plot shows the number of missings in a given span, or breaksize, for a single selected variable. In this case we look at the span of `hourly_counts` from the pedestrian dataset.  It is powered by the `miss_var_span` function
 
@@ -236,7 +236,7 @@ gg_miss_span(pedestrian,
 ```
 
 
-## `gg_miss_case_cumsum()`
+## `gg_miss_case_cumsum`
 
 This plot shows the cumulative sum of missing values, reading the rows of the dataset from the top to bottom. It is powered by the `miss_case_cumsum()` function.
 
@@ -247,7 +247,7 @@ gg_miss_case_cumsum(riskfactors, breaks = 50) + theme_bw()
 
 ```
 
-## `gg_miss_var_cumsum()`
+## `gg_miss_var_cumsum`
 
 This plot shows the cumulative sum of missing values, reading columns from the left to the right of your dataframe. It is powered by the `miss_var_cumsum()` function.
 
@@ -256,7 +256,7 @@ gg_miss_var_cumsum(airquality)
 ```
 
 
-## `gg_miss_which()`
+## `gg_miss_which`
 
 This plot shows a set of rectangles that indicate whether there is a missing element in a column or not.
 

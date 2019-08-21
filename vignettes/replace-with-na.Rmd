@@ -51,7 +51,7 @@ df <- tibble::tribble(
 
 ```
 
-## Using `replace_with_na()`
+## Using `replace_with_na`
 
 What if we want to replace the value -99 in the `x` column with a missing value?
 
@@ -89,7 +89,7 @@ Using `replace_with_na()` works well when we know the exact value to be replaced
 and for which variables we want to replace, providing there are not many 
 variables. But what do you do when you've got many variables you want to observe?
 
-## Extending `replace_with_na()`
+## Extending `replace_with_na`
 
 Sometimes you have many of the same value that you want to replace. For example,
 -99 and -98 above, and also the variants of "NA", such as "N/A", and "N / A",
@@ -107,7 +107,7 @@ subset of variables for which a predicate function (is.numeric, is.character, et
 
 Below we will now consider some very simple examples of the use of these functions, so that you can better understand how to use them.
 
-## Using `replace_with_na_all()`
+## Using `replace_with_na_all`
 
 Use `replace_with_na_all()` when you want to replace ALL values that meet a
 condition across an entire dataset. The syntax here is a little different, and
@@ -160,7 +160,7 @@ df %>%
 ```
 
 
-### `replace_with_na_at()`
+### `replace_with_na_at`
 
 This is similar to `_all`, but instead in this case you can specify the 
 variables that you want affected by the rule that you state. This is useful in 
@@ -186,7 +186,7 @@ df %>%
                      condition = ~ exp(.x) < 1)
 ```
 
-### `replace_with_na_if()`
+### `replace_with_na_if`
 
 There may be some cases where you can identify variables based on some test 
 - `is.character()` - are they character variables? `is.numeric()` - Are they numeric or double? and a given value inside that type of data. For example, 

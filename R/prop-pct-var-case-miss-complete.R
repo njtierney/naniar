@@ -95,30 +95,13 @@ pct_complete_var <- function(data){
 #'
 prop_miss_case <- function(data){
   test_if_null(data)
-
   test_if_dataframe(data)
 
-  temp <- data %>%
-    # which rows are complete?
-    stats::complete.cases() %>%
-    mean()
+  # How many missings in each row?
+  n_miss_in_rows <- rowSums(is.na(data))
 
-  # Return 1 if temp is 1
-  # Prevent error when all the rows contain a NA and then mean is 1
-  # so (1 -1)*100 = 0, whereas function should return 1
-  if (temp == 1) {
-    return(1)
-  }
-
-  if (temp == 0) {
-    # Return 0 if temp is 0
-    # Prevent error when no row contains a NA and then mean is 0
-    # so (1 -0)*1 = 1, whereas function should return 0.
-    return(0)
-  }
-
-  return((1 - temp))
-
+  # What is the proportion of rows with any missings?
+  mean(n_miss_in_rows > 0)
 }
 
 #' @export

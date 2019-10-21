@@ -217,3 +217,23 @@ quo_to_shade <- function(...){
 class_glue <- function(x){
   class(x) %>% glue::glue_collapse(sep = ", ", last = ", or ")
 }
+
+simple_names <- function(x){
+  paste0("x",ncol(seq_len(x)))
+}
+
+diag_na <- function(nrow = 5,
+                    ncol = 5){
+
+  dna <- diag(x = NA,
+              nrow = 4,
+              ncol = 4)
+  suppressMessages(
+  tibble::as_tibble(dna,
+                    .name_repair = "unique")) %>%
+    set_names(paste0("x",seq_len(ncol(.))))
+}
+
+
+
+

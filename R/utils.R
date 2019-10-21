@@ -34,7 +34,7 @@ rlang::are_na
 group_by_fun <- function(data,.fun, ...){
   tidyr::nest(data) %>%
     dplyr::mutate(data = purrr::map(data, .fun, ...)) %>%
-    tidyr::unnest()
+    tidyr::unnest(cols = c(data))
 }
 
 

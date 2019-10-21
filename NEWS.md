@@ -1,5 +1,9 @@
 # naniar 0.4.3.9000 (2019/10/21)
 
+## Minor changes
+
+- use `map_dfc` instead of `map_df`
+
 ## Big Fix
 
 - Address bug where the number of missings in a row is not calculated properly - see [238](https://github.com/njtierney/naniar/issues/238) and [232](https://github.com/njtierney/naniar/issues/232). The solution involved using rowSums(is.na(x)), which was 3 times faster.

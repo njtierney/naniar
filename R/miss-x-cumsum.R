@@ -35,7 +35,7 @@ miss_var_cumsum <- function(data){
 #' @export
 miss_var_cumsum.default <- function(data){
 
-  purrr::map_df(data,
+  purrr::map_dfc(data,
                 # how many are missing in each variable?
                 function(x) n_miss(x)) %>%
     tidyr::gather(key = "variable",

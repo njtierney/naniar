@@ -23,8 +23,8 @@ gg_miss_which <- function(x){
 
   # tell us which columns have missing data
   ggobject <- x %>%
-    purrr::map_df(anyNA) %>%
-    purrr::map_df(function(x) ifelse(x == 0, "complete", "missing")) %>%
+    purrr::map_dfc(anyNA) %>%
+    purrr::map_dfc(function(x) ifelse(x == 0, "complete", "missing")) %>%
     tidyr::gather(key = "variable",
                   value = "value") %>%
     dplyr::mutate(nheight = 1) %>%

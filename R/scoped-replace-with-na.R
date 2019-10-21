@@ -45,7 +45,7 @@
 #'
 #' @export
 replace_with_na_all <- function(data, condition) {
-  purrr::map_df(data, ~ na_set(.x, condition) )
+  purrr::map_dfc(data, ~ na_set(.x, condition) )
 }
 
 # Future work

@@ -33,7 +33,7 @@
 miss_scan_count <- function(data,search){
   # if there is only one value to search
   if (length(search) == 1) {
-    res <- purrr::map_df(data,
+    res <- purrr::map_dfc(data,
                          ~length(grep(search,
                                       x = .))) %>%
       # return the dataframe with the columns "
@@ -43,7 +43,7 @@ miss_scan_count <- function(data,search){
   }
 
   if (length(search) > 1) {
-    res <- purrr::map_df(data,
+    res <- purrr::map_dfc(data,
                          ~length(grep(paste0(search,
                                              collapse ="|"),
                                       x = .))) %>%

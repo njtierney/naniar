@@ -53,7 +53,7 @@ miss_var_summary.default <- function(data,
                                      add_cumsum = FALSE,
                                      ...) {
 
-  res <- purrr::map_df(data, n_miss) %>%
+  res <- purrr::map_dfc(data, n_miss) %>%
     tidyr::gather(key = "variable", value = "n_miss") %>%
     dplyr::mutate(pct_miss = (n_miss / nrow(data) * 100))
 

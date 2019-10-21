@@ -25,10 +25,13 @@ gg_miss_fct <- function(x, fct){
 
   fct <- rlang::enquo(fct)
 
-  ggobject <- x %>%
+  data <- x %>%
     dplyr::group_by(!!fct) %>%
-    miss_var_summary() %>%
-    ggplot(aes_string(quo_name(fct),
+    miss_var_summary()
+
+  ggobject <-
+    ggplot(data,
+           aes_string(quo_name(fct),
                       "variable",
                       fill = "pct_miss")) +
     geom_tile() +

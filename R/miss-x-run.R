@@ -89,7 +89,7 @@ miss_var_run.grouped_df <- function(data,var){
     dplyr::mutate(data = purrr::map(data,
                                     var = !!var,
                                     .f = miss_var_run)) %>%
-    tidyr::unnest()
+    tidyr::unnest(cols = c(data))
 
 }
 

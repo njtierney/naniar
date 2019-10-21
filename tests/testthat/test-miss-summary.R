@@ -34,3 +34,14 @@ test_that("The columns are named correctly",{
 
 # need to add more of the missingness summaries here, along with tests for this
 # function
+
+library(naniar)
+risk_group <- dplyr::group_by(riskfactors, marital)
+
+miss_var_summary(risk_group)
+miss_var_summary(riskfactors)
+
+library(naniar)
+riskfactors %>%
+  dplyr::mutate(m2 = forcats::fct_explicit_na(marital)) %>%
+  dplyr::group_by(m2)

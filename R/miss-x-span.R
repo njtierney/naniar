@@ -75,7 +75,7 @@ miss_var_span.grouped_df <- function(data, var, span_every){
                                     .f = miss_var_span,
                                     var = !!var,
                                     span_every = span_every)) %>%
-    tidyr::unnest()
+    tidyr::unnest(cols = c(data))
 
 }
 

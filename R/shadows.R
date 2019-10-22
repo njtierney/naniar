@@ -68,6 +68,24 @@ as_shadow.data.frame <- function(data, ...){
 #' @export
 as_shadow_upset <- function(data){
 
+  if (n_var_miss(data) <= 1 ) {
+
+    if (n_var_miss(data) == 1) {
+      glu_st <- glue::glue("upset plots for missing data requre at least two \\
+                         variables to have missing data, only one variable, \\
+                         '{miss_var_which(data)}' has missing values.")
+    }
+
+    if (n_var_miss(data) == 0) {
+
+      glu_st <- glue::glue("upset plots for missing data requre at least two \\
+                         variables to have missing data, there are no missing \\
+                         values in your data! This is probably a good thing.")
+    }
+
+    rlang::abort(message = glu_st)
+  }
+
   test_if_null(data)
 
   test_if_dataframe(data)
@@ -171,12 +189,13 @@ new_shadow <- function(x){
 
 #' Unbind (remove) shadow from data, and vice versa
 #'
-#' Remove the shadow variables (which end in _NA) from the data, or vice versa
+#' Remove the shadow variables (which end in `_NA`) from the data, or vice versa.
+#' This will also remove the `nabular` class from the data.
 #'
-#' @param data a data.frame containing shadow columns (created by bind_shadow)
+#' @param data data.frame containing shadow columns (created by [bind_shadow()])
 #'
-#' @return dataframe without shadow columns if using unbind_shadow, or without
-#'  the original data, if using unbind_data
+#' @return `data.frame` without shadow columns if using [unbind_shadow()], or
+#'   without the original data, if using [unbind_data()].
 #' @name unbinders
 #'
 #' @export
@@ -203,7 +222,9 @@ new_shadow <- function(x){
 #'
 unbind_shadow <- function(data){
   test_if_any_shade(data)
-  dplyr::select(data, -dplyr::ends_with("_NA"))
+  temp <- dplyr::select(data, -dplyr::ends_with("_NA"))
+  class(temp) <- c("tbl_df", "tbl", "data.frame")
+  return(temp)
 }
 
 #' @rdname unbinders

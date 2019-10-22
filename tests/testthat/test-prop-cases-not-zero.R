@@ -4,6 +4,7 @@ test_that("prop missing / complete are 0 or 1 where there is one variable", {
   expect_equal(prop_miss_case(mdf), 1)
   expect_equal(n_case_complete(mdf), 0)
   expect_equal(prop_complete_case(mdf), 0)
+  expect_equal(n_var_complete(mdf), 0)
 })
 
 df_diag_na <- diag_na(10)
@@ -12,6 +13,7 @@ test_that("prop missing / complete are 0 or 1 where no complete cases", {
   expect_equal(prop_miss_case(df_diag_na), 1)
   expect_equal(n_case_complete(df_diag_na), 0)
   expect_equal(prop_complete_case(df_diag_na), 0)
+  expect_equal(n_var_complete(df_diag_na), 0)
 })
 
 # This tests against

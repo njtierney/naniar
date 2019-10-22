@@ -17,37 +17,17 @@
 #' @param ... arguments to pass to upset plot - see `?UpSetR::upset`
 #'
 #' @return a ggplot visualisation of missing data
-#' @export
 #'
 #' @examples
 #'
 #' \dontrun{
 #' gg_miss_upset(airquality)
-#' gg_miss_upset(pedestrian)
 #' gg_miss_upset(riskfactors)
 #' gg_miss_upset(riskfactors, nsets = 10)
 #' gg_miss_upset(riskfactors, nsets = 10, nintersects = 10)
 #' }
-#'
+#' @export
 gg_miss_upset <- function(data, order.by = "freq", ...){
-
-  if (n_var_miss(data) <= 1 ) {
-
-    if (n_var_miss(data) == 1) {
-    glu_st <- glue::glue("upset plots for missing data requre at least two \\
-                         variables to have missing data, only one variable, \\
-                         '{miss_var_which(data)}' has missing values.")
-    }
-
-    if (n_var_miss(data) == 0) {
-
-      glu_st <- glue::glue("upset plots for missing data requre at least two \\
-                         variables to have missing data, there are no missing \\
-                         values in your data! This is probably a good thing.")
-    }
-
-    rlang::abort(message = glu_st)
-  }
 
   data %>%
     as_shadow_upset() %>%

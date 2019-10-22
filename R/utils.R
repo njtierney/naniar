@@ -104,29 +104,6 @@ test_if_dataframe <- function(x){
     }
 }
 
-#' Test if input is a shadow
-#'
-#' @param x object
-#'
-#' @return an error if input (x) is a shadow
-#'
-#' @examples
-#' \dontrun{
-#' # success
-#' aq_shadow <- bind_shadow(airquality)
-#' test_if_shadow(aq_shadow)
-#' #fail
-#' test_if_shadow(airquality)
-#' }
-#'
-test_if_shadow <- function(x){
-  # test for dataframe
-  if (!is_shadow(x)) {
-    stop("variable must be shadow variable, use as_shadow or bind_shadow",
-         call. = FALSE)
-  }
-}
-
 test_if_any_shade <- function(x){
   # test for dataframe
   test_if_dataframe(x)
@@ -144,24 +121,6 @@ test_if_any_shade <- function(x){
 #'
 any_row_miss <- function(x){
   apply(data.frame(x), MARGIN = 1, FUN = function(x) anyNA(x))
-}
-
-#' Helper function to determine whether all rows are missing
-#'
-#' @param x a vector
-#'
-#' @return logical vector
-all_row_miss <- function(x){
-  apply(data.frame(x), MARGIN = 1, FUN = function(x) all(is.na(x)))
-}
-
-#' Helper function to determine whether all rows are complete
-#'
-#' @param x a vector
-#'
-#' @return logical vector
-all_row_complete <- function(x){
-  apply(data.frame(x), MARGIN = 1, FUN = function(x) all(!is.na(x)))
 }
 
 #' Add a counter variable for a span of dataframe
@@ -218,22 +177,19 @@ class_glue <- function(x){
   class(x) %>% glue::glue_collapse(sep = ", ", last = ", or ")
 }
 
-simple_names <- function(x){
-  paste0("x",ncol(seq_len(x)))
-}
-
-diag_na <- function(nrow = 5,
-                    ncol = 5){
+diag_na <- function(size = 5){
 
   dna <- diag(x = NA,
-              nrow = 4,
-              ncol = 4)
+              nrow = size,
+              ncol = size)
   suppressMessages(
   tibble::as_tibble(dna,
                     .name_repair = "unique")) %>%
     set_names(paste0("x",seq_len(ncol(.))))
 }
 
-
-
-
+coerce_fct_na_explicit <- function(x){
+  if (is.factor(x) & anyNA(x)) {
+    forcats::fct_explicit_na(x, na_level = "NA")
+  }
+}

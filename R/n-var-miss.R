@@ -7,14 +7,13 @@
 #' @return integer, number of missings
 #' @seealso [n_var_complete()]
 #' @name n-var-case-miss
-#' @export
 #'
 #' @examples
-#'
 #' # how many variables contain missing values?
 #' n_var_miss(airquality)
 #' n_case_miss(airquality)
 #'
+#' @export
 n_var_miss <- function(data){
   sum(colSums(is.na(data)) != 0)
 }

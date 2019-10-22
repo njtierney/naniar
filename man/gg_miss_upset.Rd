@@ -25,10 +25,8 @@ intersections.
 
 \dontrun{
 gg_miss_upset(airquality)
-gg_miss_upset(pedestrian)
 gg_miss_upset(riskfactors)
 gg_miss_upset(riskfactors, nsets = 10)
 gg_miss_upset(riskfactors, nsets = 10, nintersects = 10)
 }
-
 }

@@ -32,11 +32,6 @@
 #'}
 shadow_expand_relevel <- function(.var, suffix){
 
-  # is it a shadow?
-  # test_if_shadow(.var)
-  # - no longer needed, as mutate_if tests the predicate
-  #  -asking "is this a shadow" with is_shadow
-
   # create level
   new_level <- glue::glue("NA_{suffix}")
 

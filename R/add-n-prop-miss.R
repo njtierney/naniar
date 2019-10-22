@@ -81,7 +81,7 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #'
 #' airquality %>%
 #' add_prop_miss() %>%
-#' rpart(prop_miss_all ~ ., data = .) %>%
+#' rpart(prop_miss_all ~ ., data = ., model = TRUE) %>%
 #' prp(type = 4,
 #'     extra = 101,
 #'     prefix = "prop_miss = ")

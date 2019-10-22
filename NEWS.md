@@ -3,10 +3,12 @@
 ## Minor changes
 
 - use `map_dfc` instead of `map_df`
+- Fix various extra warnings and improve test coverage
 
 ## Big Fix
 
 - Address bug where the number of missings in a row is not calculated properly - see [238](https://github.com/njtierney/naniar/issues/238) and [232](https://github.com/njtierney/naniar/issues/232). The solution involved using rowSums(is.na(x)), which was 3 times faster.
+- Resolve bug in `gg_miss_fct()` where warning is given for non explicit NA values - see [241](https://github.com/njtierney/naniar/issues/241).
 
 # naniar 0.4.2.9001 (2019/04/17)
 

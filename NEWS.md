@@ -1,4 +1,20 @@
-# naniar 0.4.3.9000 (2019/10/21)
+# naniar 0.5.0.9000 (2019/10/21)
+
+## Breaking Changes
+
+- The following functions related to calculating the proportion/percentage of missingness were made Defunct and will no longer work: 
+  - `miss_var_prop()`
+  - `complete_var_prop()`
+  - `miss_var_pct()`
+  - `complete_var_pct()`
+  - `miss_case_prop()`
+  - `complete_case_prop()`
+  - `miss_case_pct()`
+  - `complete_case_pct()`
+
+Instead use: `prop_miss_var()`, `prop_complete_var()`, `pct_miss_var()`, `pct_complete_var()`, `prop_miss_case()`, `prop_complete_case()`, `pct_miss_case()`, `pct_complete_case()`. (see [242](https://github.com/njtierney/naniar/issues/242))
+
+- `replace_to_na()` was made defunct, please use `replace_with_na()` instead. (see [242](https://github.com/njtierney/naniar/issues/242))
 
 ## Minor changes
 

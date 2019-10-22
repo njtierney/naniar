@@ -1,12 +1,3 @@
-context("replace_to_na deprecation test")
-
-
-test_that("replace_to_na is deprecated", {
-  df <- tibble::tibble(x = c("A", NA))
-  expect_warning(replace_to_na(df),
-                 "'replace_to_na' is deprecated")
-})
-
 context("replace_with_na")
 
 test_that("empty call does nothing", {

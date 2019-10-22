@@ -310,11 +310,11 @@ n_complete(airquality$Ozone)
 
 The syntax for the other numerical sumamries in `naniar` are `miss_`, and then `case`, or `var` to refer to cases or variables. There are then `summary`, `table`, `run`, `span`, and `cumsum` options to explore missing data. 
 
-`miss_case_prop` and `miss_case_pct` return numeric value describing the proportion or percent of missing values in the dataframe.
+`prop_miss_case` and `pct_miss_case` return numeric value describing the proportion or percent of missing values in the dataframe.
 
-```{r miss-case-prop}
-miss_case_prop(airquality)
-miss_case_pct(airquality)
+```{r prop-miss-case}
+prop_miss_case(airquality)
+pct_miss_case(airquality)
 ```
 
 `miss_case_summary()` returns a numeric value that describes the number of missings in a given case (aka row), the percent of missings in that row.
@@ -337,13 +337,11 @@ miss_case_table(airquality)
 
 ```
 
-Similar to `miss_case_pct()` and `miss_case_prop()`, `miss_var_pct()` and `miss_var_prop()` returns the percent and proportion of variables that contain a missing value.
+Similar to `pct_miss_case()`, `prop_miss_case()`, `pct_miss_var()` and `prop_miss_var()`  returns the percent and proportion of variables that contain a missing value.
 
-```{r miss-var-prop}
-
-miss_var_prop(airquality)
-miss_var_pct(airquality)
-
+```{r prop-miss-var}
+prop_miss_var(airquality)
+pct_miss_var(airquality)
 ```
 
 `miss_var_summary()` then returns the number of missing values in a variable, and the percent missing in that variable.

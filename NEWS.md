@@ -18,26 +18,22 @@ Instead use: `prop_miss_var()`, `prop_complete_var()`, `pct_miss_var()`, `pct_co
 
 ## Minor changes
 
+- `miss_var_cumsum` and `miss_case_cumsum` are now exported
 - use `map_dfc` instead of `map_df`
 - Fix various extra warnings and improve test coverage
 
 ## Big Fix
 
-- Address bug where the number of missings in a row is not calculated properly - see [238](https://github.com/njtierney/naniar/issues/238) and [232](https://github.com/njtierney/naniar/issues/232). The solution involved using rowSums(is.na(x)), which was 3 times faster.
+- Address bug where the number of missings in a row is not calculated properly - see [238](https://github.com/njtierney/naniar/issues/238) and [232](https://github.com/njtierney/naniar/issues/232). The solution involved using `rowSums(is.na(x))`, which was 3 times faster.
 - Resolve bug in `gg_miss_fct()` where warning is given for non explicit NA values - see [241](https://github.com/njtierney/naniar/issues/241).
 
-# naniar 0.4.2.9001 (2019/04/17)
-
-## Minor Changs
-
-* `miss_var_cumsum` and `miss_case_cumsum` are now exported
 
 # naniar 0.4.2 (2019/02/15) "The Planting of The Tree"
 
 ## Improvements
 
 * The `geom_miss_point()` **ggplot2** layer can now be converted into an interactive web-based version by the `ggplotly()` function in the **plotly** package. In order for this to work, **naniar** now exports the `geom2trace.GeomMissPoint()` function (users should never need to call `geom2trace.GeomMissPoint()` directly -- `ggplotly()` calls it for you).
-* adds WORDLIST for spelling thanks to `usethis::use_spell_check()`
+* adds `WORDLIST` for spelling thanks to `usethis::use_spell_check()`
 * fix documentation `@seealso` bug ([#228](https://github.com/njtierney/naniar/issues/228)) (@sfirke)
 
 ## Dependency fixes

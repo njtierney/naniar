@@ -135,7 +135,7 @@ any_row_miss <- function(x){
 #'
 #' @examples
 #' \dontrun{
-#' add_span_counter(pedestrian, span_size = 100)
+#' # add_span_counter(pedestrian, span_size = 100)
 #' }
 add_span_counter <- function(data, span_size) {
 

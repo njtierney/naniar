@@ -34,12 +34,6 @@
     <loc>http://naniar.njtierney.com//reference/all-is-miss-complete.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com//reference/all_row_complete.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/all_row_miss.html</loc>
-  </url>
-  <url>
     <loc>http://naniar.njtierney.com//reference/any-na.html</loc>
   </url>
   <url>
@@ -145,16 +139,7 @@
     <loc>http://naniar.njtierney.com//reference/label_shadow.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com//reference/miss-complete-case-pct.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/miss-complete-case-prop.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/miss-complete-var-pct.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/miss-complete-var-prop.html</loc>
+    <loc>http://naniar.njtierney.com//reference/miss-pct-prop-defunct.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/miss_case_cumsum.html</loc>
@@ -323,9 +308,6 @@
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/test_if_null.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/test_if_shadow.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/unbinders.html</loc>

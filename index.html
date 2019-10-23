@@ -13,16 +13,17 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Data Structures, Summaries, and Visualisations for Missing Data">
 <meta property="og:description" content="Missing values are ubiquitous in data and need to be explored and
-    handled in the initial stages of analysis. 'naniar' provides data structures 
+    handled in the initial stages of analysis. naniar provides data structures 
     and functions that facilitate the plotting of missing values and examination 
     of imputations. This allows missing data dependencies to be explored with 
-    minimal deviation from the common work patterns of 'ggplot2' and tidy data. ">
+    minimal deviation from the common work patterns of ggplot2 and tidy data. ">
 <meta property="og:image" content="http://naniar.njtierney.com/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -31,7 +32,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -43,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
       </span>
     </div>
 
@@ -83,12 +84,12 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/njtierney/naniar">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right" role="search">
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
@@ -102,13 +103,10 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+      </header><div class="row">
+  <div class="contents col-md-9">
+
 <div id="naniar" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#naniar" class="anchor"></a>naniar <img src="reference/figures/logo.png" align="right" height="140/">
@@ -159,34 +157,34 @@
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>You can install naniar from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"naniar"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"naniar"</span>)</a></code></pre></div>
 <p>Or you can install the development version on github using <code>remotes</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"njtierney/naniar"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"njtierney/naniar"</span>)</a></code></pre></div>
 </div>
 <div id="a-short-overview-of-naniar" class="section level1">
 <h1 class="hasAnchor">
 <a href="#a-short-overview-of-naniar" class="anchor"></a>A short overview of naniar</h1>
 <p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from <a href="http://www.ggobi.org/">ggobi</a> and <a href="https://www.swmath.org/software/3067">manet</a>, which replaces <code>NA</code> values with values 10% lower than the minimum value in that variable. This visualisation is provided with the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom, which we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="dt">data =</span> airquality,</a>
 <a class="sourceLine" id="cb3-5" data-line-number="5">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; Warning: Removed 42 rows containing missing values (geom_point).</span></a></code></pre></div>
-<p><img src="reference/figures/README-regular-geom-point-1.png" width="700"></p>
+<p><img src="reference/figures/README-regular-geom-point-1.png"><!-- --></p>
 <p>ggplot2 does not handle these missing values, and we get a warning message about the missing values.</p>
 <p>We can instead use <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> to display the missing data</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(naniar)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(naniar)</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="dt">data =</span> airquality,</a>
 <a class="sourceLine" id="cb4-5" data-line-number="5">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
 <a class="sourceLine" id="cb4-6" data-line-number="6">           <span class="dt">y =</span> Solar.R)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="reference/geom_miss_point.html">geom_miss_point</a></span>()</a></code></pre></div>
-<p><img src="reference/figures/README-geom-miss-point-1.png" width="700"></p>
+<p><img src="reference/figures/README-geom-miss-point-1.png"><!-- --></p>
 <p><code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive. As it is a ggplot2 geom, it supports features like faceting and other ggplot features.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">p1 &lt;-</a>
@@ -198,14 +196,14 @@
 <a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a>
 <a class="sourceLine" id="cb5-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10">p1</a></code></pre></div>
-<p><img src="reference/figures/README-facet-by-month-1.png" width="700"></p>
+<p><img src="reference/figures/README-facet-by-month-1.png"><!-- --></p>
 </div>
 <div id="data-structures" class="section level1">
 <h1 class="hasAnchor">
 <a href="#data-structures" class="anchor"></a>Data Structures</h1>
-<p>naniar provides a data structure for working with missing data, the shadow matrix <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization">(Swayne and Buja, 1998)</a>. The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as “NA”, and not missing is represented as “!NA”, and variable names are kep the same, with the added suffix “_NA" to the variables.</p>
+<p>naniar provides a data structure for working with missing data, the shadow matrix <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization">(Swayne and Buja, 1998)</a>. The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as “NA”, and not missing is represented as “!NA”, and variable names are kep the same, with the added suffix “_NA” to the variables.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(airquality)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(airquality)</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; 1    41     190  7.4   67     5   1</span></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; 2    36     118  8.0   72     5   2</span></a>
@@ -269,32 +267,32 @@
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Temp,</a>
 <a class="sourceLine" id="cb8-5" data-line-number="5">             <span class="dt">fill =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>)</a></code></pre></div>
-<p><img src="reference/figures/README-shadow-w-ggplot-1.png" width="700"></p>
+<p><img src="reference/figures/README-shadow-w-ggplot-1.png"><!-- --></p>
 <p>And even visualise imputations</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">airquality <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span>simputation<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/simputation/topics/impute_lm">impute_lm</a></span>(Ozone <span class="op">~</span><span class="st"> </span>Temp <span class="op">+</span><span class="st"> </span>Solar.R) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">  </span>simputation<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(Ozone <span class="op">~</span><span class="st"> </span>Temp <span class="op">+</span><span class="st"> </span>Solar.R) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Solar.R,</a>
 <a class="sourceLine" id="cb9-6" data-line-number="6">             <span class="dt">y =</span> Ozone,</a>
 <a class="sourceLine" id="cb9-7" data-line-number="7">             <span class="dt">colour =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb9-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</a>
 <a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; Warning: Removed 7 rows containing missing values (geom_point).</span></a></code></pre></div>
-<p><img src="reference/figures/README-shadow-impute-1.png" width="700"></p>
+<p><img src="reference/figures/README-shadow-impute-1.png"><!-- --></p>
 <p>Or perform an <a href="https://www.nature.com/articles/nmeth.3033">upset</a> plot - to plot of the combinations of missingness across cases, using the <code>gg_miss_upset</code> function</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="reference/gg_miss_upset.html">gg_miss_upset</a></span>(airquality)</a></code></pre></div>
-<p><img src="reference/figures/README-gg-miss-upset-1.png" width="700"></p>
+<p><img src="reference/figures/README-gg-miss-upset-1.png"><!-- --></p>
 <p>naniar does this while following consistent principles that are easy to read, thanks to the tools of the tidyverse.</p>
 <p>naniar also provides handy visualations for each variable:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</a></code></pre></div>
-<p><img src="reference/figures/README-gg-miss-var-1.png" width="700"></p>
+<p><img src="reference/figures/README-gg-miss-var-1.png"><!-- --></p>
 <p>Or the number of missings in a given variable at a repeating span</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian,</a>
 <a class="sourceLine" id="cb12-2" data-line-number="2">             <span class="dt">var =</span> hourly_counts,</a>
 <a class="sourceLine" id="cb12-3" data-line-number="3">             <span class="dt">span_every =</span> <span class="dv">1500</span>)</a></code></pre></div>
-<p><img src="reference/figures/README-gg-miss-span-1.png" width="700"></p>
+<p><img src="reference/figures/README-gg-miss-span-1.png"><!-- --></p>
 <p>You can read about all of the visualisations in naniar in the vignette <a href="http://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of missing data visualisations using naniar</a>.</p>
 <p>naniar also provides handy helpers for calculating the number, proportion, and percentage of missing and complete observations:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="reference/n_miss.html">n_miss</a></span>(airquality)</a>
@@ -343,7 +341,7 @@
 <a class="sourceLine" id="cb14-26" data-line-number="26"><span class="co">#&gt; # … with 143 more rows</span></a></code></pre></div>
 <p>You could also <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to work out the number of missings in each variable across the levels within it.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
 <a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
@@ -398,9 +396,10 @@
 <blockquote>
 <p>…But <em>why</em> naniar?</p>
 </blockquote>
-<p>Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like <a href="https://en.wikipedia.org/wiki/The_Chronicles_of_naniar">C.S. Lewis’s Narnia</a> - a different world, hidden away. You go inside, and sometimes it seems like you’ve spent no time in there but time has passed very quickly, or the opposite. Also, <code>NA</code>niar = na in r, and if you so desire, naniar may sound like “noneoya” in an nz/aussie accent. Full credit to <span class="citation">@MilesMcbain</span> for the name, and <span class="citation">@Hadley</span> for the rearranged spelling.</p>
+<p>Well, I think it is useful to think of missing values in data being like this other dimension, perhaps like <a href="https://en.wikipedia.org/wiki/The_Chronicles_of_naniar">C.S. Lewis’s Narnia</a> - a different world, hidden away. You go inside, and sometimes it seems like you’ve spent no time in there but time has passed very quickly, or the opposite. Also, <code>NA</code>niar = na in r, and if you so desire, naniar may sound like “noneoya” in an nz/aussie accent. Full credit to @MilesMcbain for the name, and @Hadley for the rearranged spelling.</p>
 </div>
 </div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -425,18 +424,24 @@
 </li>
 </ul>
 </div>
+<div class="community">
+<h2>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+</ul>
+</div>
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Nicholas Tierney <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/https://orcid.org/0000-0003-1460-8722" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Di Cook <br><small class="roles"> Author </small> <a href="https://orcid.org/https://orcid.org/0000-0002-3813-7155" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Miles McBain <br><small class="roles"> Author </small> <a href="https://orcid.org/https://orcid.org/0000-0003-2865-2548" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
-<li>Colin Fay <br><small class="roles"> Author </small> <a href="https://orcid.org/https://orcid.org/0000-0001-7343-1846" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
+<li>Nicholas Tierney <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/https://orcid.org/0000-0003-1460-8722" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>Di Cook <br><small class="roles"> Author </small> <a href="https://orcid.org/https://orcid.org/0000-0002-3813-7155" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>Miles McBain <br><small class="roles"> Author </small> <a href="https://orcid.org/https://orcid.org/0000-0003-2865-2548" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>Colin Fay <br><small class="roles"> Author </small> <a href="https://orcid.org/https://orcid.org/0000-0001-7343-1846" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 
-      <div class="dev-status">
+  <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://ci.appveyor.com/project/njtierney/naniar-xb96h"><img src="https://ci.appveyor.com/api/projects/status/github/njtierney/naniar?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
@@ -448,7 +453,6 @@
 </ul>
 </div>
 </div>
-
 </div>
 
 
@@ -457,8 +461,9 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 

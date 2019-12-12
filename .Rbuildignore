@@ -18,3 +18,4 @@
 ^cran-comments\.md$
 ^LICENSE\.md$
 .Rprofile
+^\.github/workflows/R-CMD-check\.yaml$

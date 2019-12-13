@@ -26,7 +26,8 @@ Instead use: `prop_miss_var()`, `prop_complete_var()`, `pct_miss_var()`, `pct_co
 
 - Address bug where the number of missings in a row is not calculated properly - see [238](https://github.com/njtierney/naniar/issues/238) and [232](https://github.com/njtierney/naniar/issues/232). The solution involved using `rowSums(is.na(x))`, which was 3 times faster.
 - Resolve bug in `gg_miss_fct()` where warning is given for non explicit NA values - see [241](https://github.com/njtierney/naniar/issues/241).
-
+- skip vdiffr tests on github actions
+- use `tibble()` not `data_frame()`
 
 # naniar 0.4.2 (2019/02/15) "The Planting of The Tree"
 

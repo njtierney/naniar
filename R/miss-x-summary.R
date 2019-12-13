@@ -217,7 +217,7 @@ miss_summary <- function(data, order = TRUE){
   test_if_dataframe(data)
 
   return(
-    tibble::data_frame(
+    tibble::tibble(
         miss_df_prop = prop_miss(data),
         miss_var_prop = prop_miss_var(data),
         miss_case_prop = prop_miss_case(data),

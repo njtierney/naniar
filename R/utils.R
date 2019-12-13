@@ -193,3 +193,10 @@ coerce_fct_na_explicit <- function(x){
     forcats::fct_explicit_na(x, na_level = "NA")
   }
 }
+
+skip_on_gh_actions <- function() {
+  if (!identical(Sys.getenv("GITHUB_ACTIONS"), "true")) {
+    return(invisible(TRUE))
+  }
+  testthat::skip("On GitHub Actions")
+}

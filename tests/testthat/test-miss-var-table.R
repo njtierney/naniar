@@ -10,7 +10,7 @@ test_that("miss_var_table errors when a non-dataframe given",{
   expect_error(miss_var_table(matrix(iris)))
 })
 
-test_that("miss_var_table produces a data_frame", {
+test_that("miss_var_table produces a tibble", {
   expect_is(miss_var_table(airquality), "tbl_df")
 })
 

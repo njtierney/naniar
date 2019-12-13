@@ -10,7 +10,7 @@ test_that("miss_var_summary errors when a non-dataframe given",{
   expect_error(miss_var_summary(matrix(iris)))
 })
 
-test_that("miss_var_summary produces a data_frame", {
+test_that("miss_var_summary produces a tibble", {
   expect_is(miss_var_summary(airquality), "tbl_df")
 })
 

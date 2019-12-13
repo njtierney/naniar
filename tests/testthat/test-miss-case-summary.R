@@ -11,7 +11,7 @@ test_that("miss_case_summary errors when a non-dataframe given",{
   expect_error(miss_case_summary(matrix(iris)))
 })
 
-test_that("miss_case_summary produces a data_frame", {
+test_that("miss_case_summary produces a tibble", {
   expect_is(miss_case_summary(airquality), "tbl_df")
 })
 

@@ -10,7 +10,7 @@ test_that("miss_case_table errors when a non-dataframe given",{
   expect_error(miss_case_table(matrix(iris)))
 })
 
-test_that("miss_case_table produces a data_frame", {
+test_that("miss_case_table produces a tibble", {
   expect_is(miss_case_table(airquality), "tbl_df")
 })
 

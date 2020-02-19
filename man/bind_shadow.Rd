@@ -17,7 +17,7 @@ See the examples for more details.}
 \item{...}{extra options to pass to \code{\link[=recode_shadow]{recode_shadow()}} - a work in progress.}
 }
 \value{
-data with the added variable shifted and the suffix \code{_NA}
+data with the added variable shifted and the suffix \verb{_NA}
 }
 \description{
 Binding a shadow matrix to a regular dataframe helps visualise and work with

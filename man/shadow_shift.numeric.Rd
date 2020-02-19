@@ -4,8 +4,13 @@
 \alias{shadow_shift.numeric}
 \title{Shift (impute) numeric values for graphical exploration}
 \usage{
-\method{shadow_shift}{numeric}(x, prop_below = 0.1, jitter = 0.05,
-  seed_shift = 2017 - 7 - 1 - 1850, ...)
+\method{shadow_shift}{numeric}(
+  x,
+  prop_below = 0.1,
+  jitter = 0.05,
+  seed_shift = 2017 - 7 - 1 - 1850,
+  ...
+)
 }
 \arguments{
 \item{x}{a variable of interest to shift}

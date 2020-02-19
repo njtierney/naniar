@@ -187,7 +187,6 @@ miss_case_summary.grouped_df <- function(data,
 #'
 #' @param data a dataframe
 #' @param order whether or not to order the result by n_miss
-#' @param ... extra arguments
 #'
 #' @return a tibble of missing data summaries
 #'

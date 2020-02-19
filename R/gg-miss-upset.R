@@ -1,6 +1,6 @@
 #' Plot the pattern of missingness using an upset plot.
 #'
-#' Upset plots are a way of visualising common sets, `gg_miss_upset`` shows the
+#' Upset plots are a way of visualising common sets, `gg_miss_upset` shows the
 #'   number of missing values for each of the sets of data. The default option
 #'   of `gg_miss_upset` is taken from `UpSetR::upset` - which is to use up to 5
 #'   sets and up to 40 interactions. We also set the ordering to by the

@@ -4,8 +4,7 @@
 \alias{add_label_shadow}
 \title{Add a column describing whether there is a shadow}
 \usage{
-add_label_shadow(data, ..., missing = "Missing",
-  complete = "Not Missing")
+add_label_shadow(data, ..., missing = "Missing", complete = "Not Missing")
 }
 \arguments{
 \item{data}{data.frame}

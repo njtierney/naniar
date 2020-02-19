@@ -18,7 +18,7 @@ unbind_data(data)
 without the original data, if using \code{\link[=unbind_data]{unbind_data()}}.
 }
 \description{
-Remove the shadow variables (which end in \code{_NA}) from the data, or vice versa.
+Remove the shadow variables (which end in \verb{_NA}) from the data, or vice versa.
 This will also remove the \code{nabular} class from the data.
 }
 \examples{

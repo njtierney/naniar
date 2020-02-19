@@ -27,8 +27,8 @@ an dataset with values imputed
 \code{impute_mean} imputes the mean for a vector. To get it to work on all
 variables, use \code{impute_mean_all}. To only impute variables
 that satisfy a specific condition, use the scoped variants,
-\code{impute_below_at}, and \code{impute_below_if}. To use \code{_at} effectively,
-you must know that \code{_at`` affects variables selected with a character vector, or with }vars()`.
+\code{impute_below_at}, and \code{impute_below_if}. To use \verb{_at} effectively,
+you must know that \verb{_at`` affects variables selected with a character vector, or with }vars()`.
 }
 \examples{
 # select variables starting with a particular string.

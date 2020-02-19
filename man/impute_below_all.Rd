@@ -2,7 +2,7 @@
 % Please edit documentation in R/impute_below.R
 \name{impute_below_all}
 \alias{impute_below_all}
-\title{Impute data with values shifted 10\% below range.}
+\title{Impute data with values shifted 10 percent below range.}
 \usage{
 impute_below_all(.tbl, prop_below = 0.1, jitter = 0.05, ...)
 }
@@ -21,7 +21,7 @@ an dataset with values imputed
 \description{
 It can be useful in exploratory graphics to impute data outside the range of
 the data. \code{impute_below_all} imputes all variables with missings to have
-values 10% below the range for numeric values, and for character or factor
+values 10\\% below the range for numeric values, and for character or factor
 values adds a new string or label.
 }
 \examples{

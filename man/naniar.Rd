@@ -3,7 +3,6 @@
 \docType{package}
 \name{naniar}
 \alias{naniar}
-\alias{naniar-package}
 \title{naniar}
 \description{
 naniar is a package to make it easier to summarise and handle missing values

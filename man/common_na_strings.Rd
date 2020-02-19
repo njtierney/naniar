@@ -16,7 +16,7 @@ strings used can be found by printing out \code{common_na_strings}. It is a
 useful way to explore your data for possible missings, but I strongly warn
 against using this to replace NA values without very carefully looking at
 the incidence for each of the cases. Please note that \code{common_na_strings}
-uses \code{\\} around the "?", "." and "*" characters to protect against using
+uses \verb{\\\\} around the "?", "." and "*" characters to protect against using
 their wildcard features in grep. Common NA numbers are in the data object
 \code{common_na_numbers}.
 }

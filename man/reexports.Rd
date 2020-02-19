@@ -16,7 +16,7 @@ below to see their documentation.
 \describe{
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
 
-  \item{rlang}{\code{\link[rlang]{is_na}}, \code{\link[rlang]{are_na}}}
+  \item{rlang}{\code{\link[rlang]{are_na}}, \code{\link[rlang]{is_na}}}
 
   \item{visdat}{\code{\link[visdat]{vis_miss}}}
 }}

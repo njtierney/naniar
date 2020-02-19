@@ -92,8 +92,8 @@ mean --  1: Employed for wages; 2: Self-employed; 3: Out of work for more
 than 1 year; 4: Out of work for less that 1 year;  5: A homemaker; 6: A
 student; 7:Retired; 8: Unable to work.}
 \item{\code{income}}{The annual household income from all sources with
-levels \code{<10k} \code{10-15k} \code{15-20k} \code{20-25k} \code{25-35k}
-\code{35-50k} \code{50-75k} \code{>75k} \code{Dontknow} \code{Refused}.}
+levels \verb{<10k} \verb{10-15k} \verb{15-20k} \verb{20-25k} \verb{25-35k}
+\verb{35-50k} \verb{50-75k} \verb{>75k} \code{Dontknow} \code{Refused}.}
 \item{\code{veteran}}{A factor with levels \code{1} \code{2} \code{3}
 \code{4} \code{5}. The question for this variable is: Have you ever
 served on active duty in the United States Armed Forces, either in the

@@ -12,7 +12,7 @@ gg_miss_fct(x, fct)
 \item{fct}{column containing the factor variable to visualise}
 }
 \value{
-ggplot object depicting the % missing of each factor level for
+ggplot object depicting the \% missing of each factor level for
 each variable.
 }
 \description{

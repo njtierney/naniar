@@ -4,8 +4,7 @@
 \alias{label_missings}
 \title{Is there a missing value in the row of a dataframe?}
 \usage{
-label_missings(data, ..., missing = "Missing",
-  complete = "Not Missing")
+label_missings(data, ..., missing = "Missing", complete = "Not Missing")
 }
 \arguments{
 \item{data}{a dataframe or set of vectors of the same length}

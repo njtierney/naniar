@@ -28,7 +28,7 @@ variables.
 by the TAO buoys at one meter below the surface.}
 \item{\code{air_temp_c}}{Air temperature(degree Celsius), measured by the
 TAO buoys three meters above the sea surface.}
-\item{\code{humidity}}{Relative humidity(%), measured by the TAO buoys 3
+\item{\code{humidity}}{Relative humidity(\%), measured by the TAO buoys 3
 meters above the sea surface.}
 \item{\code{wind_ew}}{The East-West wind vector components(M/s).  TAO buoys
 measure the wind speed and direction four meters above the sea surface.

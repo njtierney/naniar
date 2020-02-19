@@ -10,8 +10,6 @@ miss_summary(data, order = TRUE)
 \item{data}{a dataframe}
 
 \item{order}{whether or not to order the result by n_miss}
-
-\item{...}{extra arguments}
 }
 \value{
 a tibble of missing data summaries

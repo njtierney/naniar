@@ -4,8 +4,13 @@
 \alias{add_any_miss}
 \title{Add a column describing presence of any missing values}
 \usage{
-add_any_miss(data, ..., label = "any_miss", missing = "missing",
-  complete = "complete")
+add_any_miss(
+  data,
+  ...,
+  label = "any_miss",
+  missing = "missing",
+  complete = "complete"
+)
 }
 \arguments{
 \item{data}{data.frame}

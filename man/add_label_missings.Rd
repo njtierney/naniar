@@ -4,8 +4,7 @@
 \alias{add_label_missings}
 \title{Add a column describing if there are any missings in the dataset}
 \usage{
-add_label_missings(data, ..., missing = "Missing",
-  complete = "Not Missing")
+add_label_missings(data, ..., missing = "Missing", complete = "Not Missing")
 }
 \arguments{
 \item{data}{data.frame}

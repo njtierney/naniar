@@ -123,23 +123,23 @@
 <h1 class="hasAnchor">
 <a href="#terminology" class="anchor"></a>Terminology</h1>
 <p>Missing data can be represented as a binary matrix of “missing” or “not missing”, which in <code>naniar</code> we call a “shadow matrix”, a term borrowed from <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization">Swayne and Buja, 1998</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(naniar)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw"><a href="../reference/as_shadow.html">as_shadow</a></span>(oceanbuoys)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#&gt; # A tibble: 736 x 8</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#&gt;    year_NA latitude_NA longitude_NA sea_temp_c_NA air_temp_c_NA humidity_NA</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#&gt;    &lt;fct&gt;   &lt;fct&gt;       &lt;fct&gt;        &lt;fct&gt;         &lt;fct&gt;         &lt;fct&gt;      </span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#&gt;  1 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#&gt;  2 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt;  3 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#&gt;  4 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#&gt;  5 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#&gt;  6 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt;  7 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#&gt;  8 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co">#&gt;  9 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#&gt; 10 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#&gt; # … with 726 more rows, and 2 more variables: wind_ew_NA &lt;fct&gt;,</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#&gt; #   wind_ns_NA &lt;fct&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(naniar)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="../reference/as_shadow.html">as_shadow</a></span>(oceanbuoys)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; # A tibble: 736 x 8</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt;    year_NA latitude_NA longitude_NA sea_temp_c_NA air_temp_c_NA humidity_NA</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt;    &lt;fct&gt;   &lt;fct&gt;       &lt;fct&gt;        &lt;fct&gt;         &lt;fct&gt;         &lt;fct&gt;      </span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt;  1 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt;  2 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt;  3 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt;  4 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt;  5 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt;  6 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt;  7 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt;  8 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt;  9 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt; 10 !NA     !NA         !NA          !NA           !NA           !NA        </span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt; # … with 726 more rows, and 2 more variables: wind_ew_NA &lt;fct&gt;,</span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt; #   wind_ns_NA &lt;fct&gt;</span></a></code></pre></div>
 <p>The <code>shadow matrix</code> has three key features to facilitate analysis</p>
 <ol style="list-style-type: decimal">
 <li><p>Coordinated names: Variables in the shadow matrix gain the same name as in the data, with the suffix "_NA".</p></li>
@@ -147,63 +147,63 @@
 <li><p>Cohesiveness: Binding the shadow matrix column-wise to the original data creates a cohesive “nabular” data form, useful for visualization and summaries.</p></li>
 </ol>
 <p>We create <code>nabular</code> data by <code>bind</code>ing the shadow to the data:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>(oceanbuoys)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#&gt; # A tibble: 736 x 16</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt;     year latitude longitude sea_temp_c air_temp_c humidity wind_ew wind_ns</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt;  1  1997        0      -110       27.6       27.1     79.6   -6.40    5.40</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt;  2  1997        0      -110       27.5       27.0     75.8   -5.30    5.30</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;  3  1997        0      -110       27.6       27       76.5   -5.10    4.5 </span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt;  4  1997        0      -110       27.6       26.9     76.2   -4.90    2.5 </span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt;  5  1997        0      -110       27.6       26.8     76.4   -3.5     4.10</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt;  6  1997        0      -110       27.8       26.9     76.7   -4.40    1.60</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt;  7  1997        0      -110       28.0       27.0     76.5   -2       3.5 </span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt;  8  1997        0      -110       28.0       27.1     78.3   -3.70    4.5 </span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt;  9  1997        0      -110       28.0       27.2     78.6   -4.20    5   </span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt; 10  1997        0      -110       28.0       27.2     76.9   -3.60    3.5 </span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; # … with 726 more rows, and 8 more variables: year_NA &lt;fct&gt;, latitude_NA &lt;fct&gt;,</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; #   longitude_NA &lt;fct&gt;, sea_temp_c_NA &lt;fct&gt;, air_temp_c_NA &lt;fct&gt;,</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt; #   humidity_NA &lt;fct&gt;, wind_ew_NA &lt;fct&gt;, wind_ns_NA &lt;fct&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>(oceanbuoys)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; # A tibble: 736 x 16</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;     year latitude longitude sea_temp_c air_temp_c humidity wind_ew wind_ns</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  1  1997        0      -110       27.6       27.1     79.6   -6.40    5.40</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  2  1997        0      -110       27.5       27.0     75.8   -5.30    5.30</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;  3  1997        0      -110       27.6       27       76.5   -5.10    4.5 </span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  4  1997        0      -110       27.6       26.9     76.2   -4.90    2.5 </span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  5  1997        0      -110       27.6       26.8     76.4   -3.5     4.10</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  6  1997        0      -110       27.8       26.9     76.7   -4.40    1.60</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  7  1997        0      -110       28.0       27.0     76.5   -2       3.5 </span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  8  1997        0      -110       28.0       27.1     78.3   -3.70    4.5 </span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  9  1997        0      -110       28.0       27.2     78.6   -4.20    5   </span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 10  1997        0      -110       28.0       27.2     76.9   -3.60    3.5 </span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; # … with 726 more rows, and 8 more variables: year_NA &lt;fct&gt;, latitude_NA &lt;fct&gt;,</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; #   longitude_NA &lt;fct&gt;, sea_temp_c_NA &lt;fct&gt;, air_temp_c_NA &lt;fct&gt;,</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; #   humidity_NA &lt;fct&gt;, wind_ew_NA &lt;fct&gt;, wind_ns_NA &lt;fct&gt;</span></a></code></pre></div>
 <p>This keeps the data values tied to their missingness, and has great benefits for exploring missing and imputed values in data. See the vignettes <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">Getting Started with naniar</a> and <a href="http://naniar.njtierney.com/articles/exploring-imputed-values.html">Exploring Imputations with naniar</a> for more details.</p>
 </div>
 <div id="recoding-missing-values" class="section level1">
 <h1 class="hasAnchor">
 <a href="#recoding-missing-values" class="anchor"></a>Recoding missing values</h1>
 <p>To demonstrate recoding of missing values, we use a toy dataset, <code>dat</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="op">~</span>wind, <span class="op">~</span>temp,</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="dv">-99</span>,    <span class="dv">45</span>,</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="dv">68</span>,    <span class="ot">NA</span>,</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="dv">72</span>,    <span class="dv">25</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>)</span>
-<span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a>df</span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;    wind  temp</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt; 1   -99    45</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 2    68    NA</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; 3    72    25</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="op">~</span>wind, <span class="op">~</span>temp,</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="dv">-99</span>,    <span class="dv">45</span>,</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="dv">68</span>,    <span class="ot">NA</span>,</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="dv">72</span>,    <span class="dv">25</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">)</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">df</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; # A tibble: 3 x 2</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;    wind  temp</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 1   -99    45</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; 2    68    NA</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; 3    72    25</span></a></code></pre></div>
 <p>To recode the value -99 as a missing value “broken_machine”, we first create nabular data with <code>bind_shadow</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2"></a>dfs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>(df)</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a>dfs</span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt; # A tibble: 3 x 4</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;    wind  temp wind_NA temp_NA</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;  </span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt; 1   -99    45 !NA     !NA    </span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt; 2    68    NA !NA     NA     </span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt; 3    72    25 !NA     !NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">dfs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>(df)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">dfs</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; # A tibble: 3 x 4</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;    wind  temp wind_NA temp_NA</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;  </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 1   -99    45 !NA     !NA    </span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 2    68    NA !NA     NA     </span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 3    72    25 !NA     !NA</span></a></code></pre></div>
 <p>Special types of missingness are encoded in the shadow part nabular data, using the <code>recode_shadow</code> function, we can recode the missing values like so:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>dfs_recode &lt;-<span class="st"> </span>dfs <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="st">  </span><span class="kw"><a href="../reference/recode_shadow.html">recode_shadow</a></span>(<span class="dt">wind =</span> <span class="kw"><a href="../reference/where.html">.where</a></span>(wind <span class="op">==</span><span class="st"> </span><span class="dv">-99</span> <span class="op">~</span><span class="st"> "broken_machine"</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">dfs_recode &lt;-<span class="st"> </span>dfs <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/recode_shadow.html">recode_shadow</a></span>(<span class="dt">wind =</span> <span class="kw"><a href="../reference/where.html">.where</a></span>(wind <span class="op">==</span><span class="st"> </span><span class="dv">-99</span> <span class="op">~</span><span class="st"> "broken_machine"</span>))</a></code></pre></div>
 <p>This reads as “recode shadow for wind where wind is equal to -99, and give it the label”broken_machine". The <code>.where</code> function is used to help make our intent clearer, and reads very much like the <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> function, but takes care of encoding extra factor levels into the missing data.</p>
 <p>The extra types of missingness are recoded in the shadow part of the nabular data as additional factor levels:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(dfs_recode<span class="op">$</span>wind_NA)</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt; [1] "!NA"               "NA"                "NA_broken_machine"</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(dfs_recode<span class="op">$</span>temp_NA)</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt; [1] "!NA"               "NA"                "NA_broken_machine"</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(dfs_recode<span class="op">$</span>wind_NA)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; [1] "!NA"               "NA"                "NA_broken_machine"</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(dfs_recode<span class="op">$</span>temp_NA)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; [1] "!NA"               "NA"                "NA_broken_machine"</span></a></code></pre></div>
 <p>All additional types of missingness are recorded across all shadow variables, even if those variables don’t contain that special missing value. This ensures all flavours of missingness are known.</p>
 <p>To summarise, to use <code>recode_shadow</code>, the user provides the following information:</p>
 <ul>
@@ -243,7 +243,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

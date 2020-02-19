@@ -179,32 +179,32 @@ variables make up.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>miss_var_table</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 3
+<span class='fu'>miss_var_table</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 3</span><span>
 #&gt;   n_miss_in_var n_vars pct_vars
-#&gt;           &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
-#&gt; 1             0      4     66.7
-#&gt; 2             7      1     16.7
-#&gt; 3            37      1     16.7</div><div class='input'>
+#&gt;           </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>             0      4     66.7
+#&gt; </span><span style='color: #555555;'>2</span><span>             7      1     16.7
+#&gt; </span><span style='color: #555555;'>3</span><span>            37      1     16.7</div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Month</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>miss_var_table</span>()</div><div class='output co'>#&gt; # A tibble: 12 x 4
-#&gt; # Groups:   Month [5]
+  <span class='fu'>miss_var_table</span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 12 x 4</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   Month [5]</span><span>
 #&gt;    Month n_miss_in_var n_vars pct_vars
-#&gt;    &lt;int&gt;         &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
-#&gt;  1     5             0      3       60
-#&gt;  2     5             4      1       20
-#&gt;  3     5             5      1       20
-#&gt;  4     6             0      4       80
-#&gt;  5     6            21      1       20
-#&gt;  6     7             0      4       80
-#&gt;  7     7             5      1       20
-#&gt;  8     8             0      3       60
-#&gt;  9     8             3      1       20
-#&gt; 10     8             5      1       20
-#&gt; 11     9             0      4       80
-#&gt; 12     9             1      1       20</div><div class='input'>
-</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>     5             0      3       60
+#&gt; </span><span style='color: #555555;'> 2</span><span>     5             4      1       20
+#&gt; </span><span style='color: #555555;'> 3</span><span>     5             5      1       20
+#&gt; </span><span style='color: #555555;'> 4</span><span>     6             0      4       80
+#&gt; </span><span style='color: #555555;'> 5</span><span>     6            21      1       20
+#&gt; </span><span style='color: #555555;'> 6</span><span>     7             0      4       80
+#&gt; </span><span style='color: #555555;'> 7</span><span>     7             5      1       20
+#&gt; </span><span style='color: #555555;'> 8</span><span>     8             0      3       60
+#&gt; </span><span style='color: #555555;'> 9</span><span>     8             3      1       20
+#&gt; </span><span style='color: #555555;'>10</span><span>     8             5      1       20
+#&gt; </span><span style='color: #555555;'>11</span><span>     9             0      4       80
+#&gt; </span><span style='color: #555555;'>12</span><span>     9             1      1       20</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -225,7 +225,7 @@ variables make up.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>

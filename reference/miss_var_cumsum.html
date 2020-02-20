@@ -177,37 +177,37 @@ missingness for each variable.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>miss_var_cumsum</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 3</span><span>
+<span class='fu'>miss_var_cumsum</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 3
 #&gt;   variable n_miss n_miss_cumsum
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Ozone        37            37
-#&gt; </span><span style='color: #555555;'>2</span><span> Solar.R       7            44
-#&gt; </span><span style='color: #555555;'>3</span><span> Wind          0            44
-#&gt; </span><span style='color: #555555;'>4</span><span> Temp          0            44
-#&gt; </span><span style='color: #555555;'>5</span><span> Month         0            44
-#&gt; </span><span style='color: #555555;'>6</span><span> Day           0            44</div><div class='input'>
+#&gt;   &lt;chr&gt;     &lt;int&gt;         &lt;int&gt;
+#&gt; 1 Ozone        37            37
+#&gt; 2 Solar.R       7            44
+#&gt; 3 Wind          0            44
+#&gt; 4 Temp          0            44
+#&gt; 5 Month         0            44
+#&gt; 6 Day           0            44</div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 
 <span class='co'># respects dplyr::group_by</span>
 
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Month</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>miss_var_cumsum</span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 25 x 4</span><span>
-#&gt; </span><span style='color: #555555;'># Groups:   Month [5]</span><span>
+  <span class='fu'>miss_var_cumsum</span>()</div><div class='output co'>#&gt; # A tibble: 25 x 4
+#&gt; # Groups:   Month [5]
 #&gt;    Month variable n_miss n_miss_cumsum
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>     5 Ozone         5             5
-#&gt; </span><span style='color: #555555;'> 2</span><span>     5 Solar.R       4             9
-#&gt; </span><span style='color: #555555;'> 3</span><span>     5 Wind          0             9
-#&gt; </span><span style='color: #555555;'> 4</span><span>     5 Temp          0             9
-#&gt; </span><span style='color: #555555;'> 5</span><span>     5 Day           0             9
-#&gt; </span><span style='color: #555555;'> 6</span><span>     6 Ozone        21            21
-#&gt; </span><span style='color: #555555;'> 7</span><span>     6 Solar.R       0            21
-#&gt; </span><span style='color: #555555;'> 8</span><span>     6 Wind          0            21
-#&gt; </span><span style='color: #555555;'> 9</span><span>     6 Temp          0            21
-#&gt; </span><span style='color: #555555;'>10</span><span>     6 Day           0            21
-#&gt; </span><span style='color: #555555;'># … with 15 more rows</span><span></div><div class='input'>
-</div></span></pre>
+#&gt;    &lt;int&gt; &lt;chr&gt;     &lt;int&gt;         &lt;int&gt;
+#&gt;  1     5 Ozone         5             5
+#&gt;  2     5 Solar.R       4             9
+#&gt;  3     5 Wind          0             9
+#&gt;  4     5 Temp          0             9
+#&gt;  5     5 Day           0             9
+#&gt;  6     6 Ozone        21            21
+#&gt;  7     6 Solar.R       0            21
+#&gt;  8     6 Wind          0            21
+#&gt;  9     6 Temp          0            21
+#&gt; 10     6 Day           0            21
+#&gt; # … with 15 more rows</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -228,7 +228,7 @@ missingness for each variable.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

@@ -87,7 +87,7 @@ within each span." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -195,40 +195,40 @@ complete values within that given time span.</p>
     <pre class="examples"><div class='input'>
 <span class='fu'>miss_var_span</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>pedestrian</span>,
              <span class='kw'>var</span> <span class='kw'>=</span> <span class='no'>hourly_counts</span>,
-             <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>168</span>)</div><div class='output co'>#&gt; # A tibble: 225 x 5
+             <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>168</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 225 x 5</span><span>
 #&gt;    span_counter n_miss n_complete prop_miss prop_complete
-#&gt;           &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
-#&gt;  1            1      0        168         0             1
-#&gt;  2            2      0        168         0             1
-#&gt;  3            3      0        168         0             1
-#&gt;  4            4      0        168         0             1
-#&gt;  5            5      0        168         0             1
-#&gt;  6            6      0        168         0             1
-#&gt;  7            7      0        168         0             1
-#&gt;  8            8      0        168         0             1
-#&gt;  9            9      0        168         0             1
-#&gt; 10           10      0        168         0             1
-#&gt; # … with 215 more rows</div><div class='input'>
+#&gt;           </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>            1      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 2</span><span>            2      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 3</span><span>            3      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 4</span><span>            4      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 5</span><span>            5      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 6</span><span>            6      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 7</span><span>            7      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 8</span><span>            8      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 9</span><span>            9      0        168         0             1
+#&gt; </span><span style='color: #555555;'>10</span><span>           10      0        168         0             1
+#&gt; </span><span style='color: #555555;'># … with 215 more rows</span><span></div><div class='input'>
  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
  <span class='no'>pedestrian</span> <span class='kw'>%&gt;%</span>
    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>month</span>) <span class='kw'>%&gt;%</span>
      <span class='fu'>miss_var_span</span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='no'>hourly_counts</span>,
-                   <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>168</span>)</div><div class='output co'>#&gt; # A tibble: 230 x 6
-#&gt; # Groups:   month [12]
+                   <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>168</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 230 x 6</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   month [12]</span><span>
 #&gt;    month   span_counter n_miss n_complete prop_miss prop_complete
-#&gt;    &lt;ord&gt;          &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
-#&gt;  1 January            1      0        168         0             1
-#&gt;  2 January            2      0        168         0             1
-#&gt;  3 January            3      0        168         0             1
-#&gt;  4 January            4      0        168         0             1
-#&gt;  5 January            5      0        168         0             1
-#&gt;  6 January            6      0        168         0             1
-#&gt;  7 January            7      0        168         0             1
-#&gt;  8 January            8      0        168         0             1
-#&gt;  9 January            9      0        168         0             1
-#&gt; 10 January           10      0        168         0             1
-#&gt; # … with 220 more rows</div><div class='input'>
-</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> January            1      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 2</span><span> January            2      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 3</span><span> January            3      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 4</span><span> January            4      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 5</span><span> January            5      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 6</span><span> January            6      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 7</span><span> January            7      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 8</span><span> January            8      0        168         0             1
+#&gt; </span><span style='color: #555555;'> 9</span><span> January            9      0        168         0             1
+#&gt; </span><span style='color: #555555;'>10</span><span> January           10      0        168         0             1
+#&gt; </span><span style='color: #555555;'># … with 220 more rows</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -249,7 +249,7 @@ complete values within that given time span.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>

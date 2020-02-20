@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -106,7 +106,7 @@
       <h1>Exploring Imputed Values</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2020-02-19</h4>
+            <h4 class="date">2020-02-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/exploring-imputed-values.Rmd"><code>vignettes/exploring-imputed-values.Rmd</code></a></small>
       <div class="hidden name"><code>exploring-imputed-values.Rmd</code></div>
@@ -126,28 +126,28 @@
 <a href="#using-impute_below" class="anchor"></a>Using <code>impute_below</code>
 </h1>
 <p><code>impute_below</code> imputes values below the minimum of the data, with some noise to reduce overplotting. The amount data is imputed below, and the amount of jitter, can be changed by changing the arguments <code>prop_below</code> and <code>jitter</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt;     filter, lag</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(naniar)</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">airquality <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="../reference/impute_below_at.html">impute_below_at</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(Ozone)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(Ozone, Solar.R) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt;       Ozone Solar.R</span></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt; 1  41.00000     190</span></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">#&gt; 2  36.00000     118</span></a>
-<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="co">#&gt; 3  12.00000     149</span></a>
-<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="co">#&gt; 4  18.00000     313</span></a>
-<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#&gt; 5 -19.72321      NA</span></a>
-<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co">#&gt; 6  28.00000      NA</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#&gt; </span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#&gt; </span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#&gt;     filter, lag</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt; </span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(naniar)</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>airquality <span class="op">%&gt;%</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="st">  </span><span class="kw"><a href="../reference/impute_below_at.html">impute_below_at</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(Ozone)) <span class="op">%&gt;%</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(Ozone, Solar.R) <span class="op">%&gt;%</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#&gt;       Ozone Solar.R</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#&gt; 1  41.00000     190</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#&gt; 2  36.00000     118</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#&gt; 3  12.00000     149</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">#&gt; 4  18.00000     313</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#&gt; 5 -19.72321      NA</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">#&gt; 6  28.00000      NA</span></span></code></pre></div>
 </div>
 <div id="using-impute_mean" class="section level1">
 <h1 class="hasAnchor">
@@ -166,42 +166,42 @@
 </ul>
 <p>If the <code>impute_</code> functions are used as-is - e.g., <code>impute_mean</code>, this will work on a single vector, but not a data.frame.</p>
 <p>Some examples for <code>impute_mean</code> are now given:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="../reference/impute_mean.html">impute_mean</a></span>(oceanbuoys<span class="op">$</span>air_temp_c) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; [1] 27.15 27.02 27.00 26.93 26.84 26.94</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="../reference/scoped-impute_mean.html">impute_mean_at</a></span>(oceanbuoys, <span class="dt">.vars =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(air_temp_c)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; # A tibble: 6 x 8</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;    year latitude longitude sea_temp_c air_temp_c humidity wind_ew wind_ns</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 1  1997        0      -110       27.6       27.1     79.6   -6.40    5.40</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 2  1997        0      -110       27.5       27.0     75.8   -5.30    5.30</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 3  1997        0      -110       27.6       27       76.5   -5.10    4.5 </span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; 4  1997        0      -110       27.6       26.9     76.2   -4.90    2.5 </span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; 5  1997        0      -110       27.6       26.8     76.4   -3.5     4.10</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 6  1997        0      -110       27.8       26.9     76.7   -4.40    1.60</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="kw"><a href="../reference/scoped-impute_mean.html">impute_mean_if</a></span>(oceanbuoys, <span class="dt">.predicate =</span> is.integer) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; # A tibble: 6 x 8</span></a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt;    year latitude longitude sea_temp_c air_temp_c humidity wind_ew wind_ns</span></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt; 1  1997        0      -110       27.6       27.1     79.6   -6.40    5.40</span></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt; 2  1997        0      -110       27.5       27.0     75.8   -5.30    5.30</span></a>
-<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt; 3  1997        0      -110       27.6       27       76.5   -5.10    4.5 </span></a>
-<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt; 4  1997        0      -110       27.6       26.9     76.2   -4.90    2.5 </span></a>
-<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt; 5  1997        0      -110       27.6       26.8     76.4   -3.5     4.10</span></a>
-<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt; 6  1997        0      -110       27.8       26.9     76.7   -4.40    1.60</span></a>
-<a class="sourceLine" id="cb2-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="kw"><a href="../reference/scoped-impute_mean.html">impute_mean_all</a></span>(oceanbuoys) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</a>
-<a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt; # A tibble: 6 x 8</span></a>
-<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">#&gt;    year latitude longitude sea_temp_c air_temp_c humidity wind_ew wind_ns</span></a>
-<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="co">#&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-31" data-line-number="31"><span class="co">#&gt; 1  1997        0      -110       27.6       27.1     79.6   -6.40    5.40</span></a>
-<a class="sourceLine" id="cb2-32" data-line-number="32"><span class="co">#&gt; 2  1997        0      -110       27.5       27.0     75.8   -5.30    5.30</span></a>
-<a class="sourceLine" id="cb2-33" data-line-number="33"><span class="co">#&gt; 3  1997        0      -110       27.6       27       76.5   -5.10    4.5 </span></a>
-<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="co">#&gt; 4  1997        0      -110       27.6       26.9     76.2   -4.90    2.5 </span></a>
-<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt; 5  1997        0      -110       27.6       26.8     76.4   -3.5     4.10</span></a>
-<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt; 6  1997        0      -110       27.8       26.9     76.7   -4.40    1.60</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="../reference/impute_mean.html">impute_mean</a></span>(oceanbuoys<span class="op">$</span>air_temp_c) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt; [1] 27.15 27.02 27.00 26.93 26.84 26.94</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw"><a href="../reference/scoped-impute_mean.html">impute_mean_at</a></span>(oceanbuoys, <span class="dt">.vars =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(air_temp_c)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt; # A tibble: 6 x 8</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;    year latitude longitude sea_temp_c air_temp_c humidity wind_ew wind_ns</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt; 1  1997        0      -110       27.6       27.1     79.6   -6.40    5.40</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt; 2  1997        0      -110       27.5       27.0     75.8   -5.30    5.30</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt; 3  1997        0      -110       27.6       27       76.5   -5.10    4.5 </span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt; 4  1997        0      -110       27.6       26.9     76.2   -4.90    2.5 </span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt; 5  1997        0      -110       27.6       26.8     76.4   -3.5     4.10</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt; 6  1997        0      -110       27.8       26.9     76.7   -4.40    1.60</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="kw"><a href="../reference/scoped-impute_mean.html">impute_mean_if</a></span>(oceanbuoys, <span class="dt">.predicate =</span> is.integer) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt; # A tibble: 6 x 8</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt;    year latitude longitude sea_temp_c air_temp_c humidity wind_ew wind_ns</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt; 1  1997        0      -110       27.6       27.1     79.6   -6.40    5.40</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="co">#&gt; 2  1997        0      -110       27.5       27.0     75.8   -5.30    5.30</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="co">#&gt; 3  1997        0      -110       27.6       27       76.5   -5.10    4.5 </span></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="co">#&gt; 4  1997        0      -110       27.6       26.9     76.2   -4.90    2.5 </span></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="co">#&gt; 5  1997        0      -110       27.6       26.8     76.4   -3.5     4.10</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="co">#&gt; 6  1997        0      -110       27.8       26.9     76.7   -4.40    1.60</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="kw"><a href="../reference/scoped-impute_mean.html">impute_mean_all</a></span>(oceanbuoys) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="co">#&gt; # A tibble: 6 x 8</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="co">#&gt;    year latitude longitude sea_temp_c air_temp_c humidity wind_ew wind_ns</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="co">#&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="co">#&gt; 1  1997        0      -110       27.6       27.1     79.6   -6.40    5.40</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="co">#&gt; 2  1997        0      -110       27.5       27.0     75.8   -5.30    5.30</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="co">#&gt; 3  1997        0      -110       27.6       27       76.5   -5.10    4.5 </span></span>
+<span id="cb2-34"><a href="#cb2-34"></a><span class="co">#&gt; 4  1997        0      -110       27.6       26.9     76.2   -4.90    2.5 </span></span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="co">#&gt; 5  1997        0      -110       27.6       26.8     76.4   -3.5     4.10</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a><span class="co">#&gt; 6  1997        0      -110       27.8       26.9     76.7   -4.40    1.60</span></span></code></pre></div>
 <p>When we impute data like this, we cannot identify where the imputed values are - we need to track them. We can track the imputed values using the <code>nabular</code> format of the data.</p>
 <div id="track-imputed-values-using-nabular-data" class="section level3">
 <h3 class="hasAnchor">
@@ -211,67 +211,67 @@
 <h4 class="hasAnchor">
 <a href="#imputing-values-using-simputation" class="anchor"></a>Imputing values using simputation</h4>
 <p>We can impute the data using the easy-to-use <code>simputation</code> package, and then track the missingness using <code>bind_shadow</code> and <code>add_label_shadow</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(simputation)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'simputation'</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; The following object is masked from 'package:naniar':</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;     impute_median</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">ocean_imp &lt;-<span class="st"> </span>oceanbuoys <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(air_temp_c <span class="op">~</span><span class="st"> </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(humidity <span class="op">~</span><span class="st">  </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(sea_temp_c <span class="op">~</span><span class="st">  </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="../reference/add_label_shadow.html">add_label_shadow</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(simputation)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; </span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; Attaching package: 'simputation'</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; The following object is masked from 'package:naniar':</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; </span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;     impute_median</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>ocean_imp &lt;-<span class="st"> </span>oceanbuoys <span class="op">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="st">  </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(air_temp_c <span class="op">~</span><span class="st"> </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns) <span class="op">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(humidity <span class="op">~</span><span class="st">  </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns) <span class="op">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(sea_temp_c <span class="op">~</span><span class="st">  </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns) <span class="op">%&gt;%</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="st">  </span><span class="kw"><a href="../reference/add_label_shadow.html">add_label_shadow</a></span>()</span></code></pre></div>
 <p>We can then show the previously missing (now imputed!) data in a scatterplot with ggplot2 by setting the <code>color</code> aesthetic in ggplot to <code>any_missing</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp,</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> air_temp_c,</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">           <span class="dt">y =</span> humidity,</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">           <span class="dt">color =</span> any_missing)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp,</span>
+<span id="cb4-3"><a href="#cb4-3"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> air_temp_c,</span>
+<span id="cb4-4"><a href="#cb4-4"></a>           <span class="dt">y =</span> humidity,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>           <span class="dt">color =</span> any_missing)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div>
 <p><img src="exploring-imputed-values_files/figure-html/ocean-imp-air-temp-humidity-1.png" width="700"></p>
 <p>Or, if you want to look at one variable, you can look at a density plot of one variable, using <code>fill = any_missing</code></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp,</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> air_temp_c,</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">           <span class="dt">fill =</span> any_missing)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp,</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> humidity,</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11">           <span class="dt">fill =</span> any_missing)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp,</span>
+<span id="cb5-3"><a href="#cb5-3"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> air_temp_c,</span>
+<span id="cb5-4"><a href="#cb5-4"></a>           <span class="dt">fill =</span> any_missing)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp,</span>
+<span id="cb5-10"><a href="#cb5-10"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> humidity,</span>
+<span id="cb5-11"><a href="#cb5-11"></a>           <span class="dt">fill =</span> any_missing)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div>
 <p><img src="exploring-imputed-values_files/figure-html/ocean-imp-density-1.png" width="49%"><img src="exploring-imputed-values_files/figure-html/ocean-imp-density-2.png" width="49%"></p>
 <p>We can also compare imputed values to complete cases by grouping by <code>any_missing</code>, and summarising.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">ocean_imp <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(any_missing) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_at</a></span>(<span class="dt">.vars =</span> <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span>(air_temp_c),</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">               <span class="dt">.funs =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span>(min, mean, median, max, <span class="dt">.args =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; Warning: funs() is soft deprecated as of dplyr 0.8.0</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; Please use a list of either functions or lambdas: </span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;   # Simple named list: </span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt;   list(mean = mean, median = median)</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;   # Auto named with `tibble::lst()`: </span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;   tibble::lst(mean, median)</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt;   # Using lambdas</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt;   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))</span></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; This warning is displayed once per session.</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; # A tibble: 2 x 5</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt;   any_missing   min  mean median   max</span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt; 1 Missing      21.4  23.9   24.4  25.2</span></a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; 2 Not Missing  22.1  25.3   25.8  28.5</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>ocean_imp <span class="op">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(any_missing) <span class="op">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_at</a></span>(<span class="dt">.vars =</span> <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span>(air_temp_c),</span>
+<span id="cb6-4"><a href="#cb6-4"></a>               <span class="dt">.funs =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span>(min, mean, median, max, <span class="dt">.args =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt; Warning: funs() is soft deprecated as of dplyr 0.8.0</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt; Please use a list of either functions or lambdas: </span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt; </span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;   # Simple named list: </span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;   list(mean = mean, median = median)</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt; </span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt;   # Auto named with `tibble::lst()`: </span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt;   tibble::lst(mean, median)</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt; </span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt;   # Using lambdas</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt;   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co">#&gt; This warning is displayed once per session.</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="co">#&gt; # A tibble: 2 x 5</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="co">#&gt;   any_missing   min  mean median   max</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="co">#&gt; 1 Missing      21.4  23.9   24.4  25.2</span></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="co">#&gt; 2 Not Missing  22.1  25.3   25.8  28.5</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -279,19 +279,19 @@
 <h1 class="hasAnchor">
 <a href="#improving-imputations" class="anchor"></a>Improving imputations</h1>
 <p>One thing that we notice with our imputations are that they aren’t very good - we can improve upon the imputation by including the variables year and latitude and longitude:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">ocean_imp_yr &lt;-<span class="st"> </span>oceanbuoys <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(air_temp_c <span class="op">~</span><span class="st"> </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns <span class="op">+</span><span class="st"> </span>year <span class="op">+</span><span class="st"> </span>longitude <span class="op">+</span><span class="st"> </span>latitude) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(humidity <span class="op">~</span><span class="st">  </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns <span class="op">+</span><span class="st"> </span>year <span class="op">+</span><span class="st"> </span>longitude <span class="op">+</span><span class="st"> </span>latitude) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(sea_temp_c <span class="op">~</span><span class="st">  </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns <span class="op">+</span><span class="st"> </span>year <span class="op">+</span><span class="st"> </span>longitude <span class="op">+</span><span class="st"> </span>latitude) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/add_label_shadow.html">add_label_shadow</a></span>()</a></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp_yr,</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> air_temp_c,</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">           <span class="dt">y =</span> humidity,</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">           <span class="dt">color =</span> any_missing)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>ocean_imp_yr &lt;-<span class="st"> </span>oceanbuoys <span class="op">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="st">  </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(air_temp_c <span class="op">~</span><span class="st"> </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns <span class="op">+</span><span class="st"> </span>year <span class="op">+</span><span class="st"> </span>longitude <span class="op">+</span><span class="st"> </span>latitude) <span class="op">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(humidity <span class="op">~</span><span class="st">  </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns <span class="op">+</span><span class="st"> </span>year <span class="op">+</span><span class="st"> </span>longitude <span class="op">+</span><span class="st"> </span>latitude) <span class="op">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(sea_temp_c <span class="op">~</span><span class="st">  </span>wind_ew <span class="op">+</span><span class="st"> </span>wind_ns <span class="op">+</span><span class="st"> </span>year <span class="op">+</span><span class="st"> </span>longitude <span class="op">+</span><span class="st"> </span>latitude) <span class="op">%&gt;%</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="st">  </span><span class="kw"><a href="../reference/add_label_shadow.html">add_label_shadow</a></span>()</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(ocean_imp_yr,</span>
+<span id="cb8-2"><a href="#cb8-2"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> air_temp_c,</span>
+<span id="cb8-3"><a href="#cb8-3"></a>           <span class="dt">y =</span> humidity,</span>
+<span id="cb8-4"><a href="#cb8-4"></a>           <span class="dt">color =</span> any_missing)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span>(<span class="dt">palette =</span> <span class="st">"Dark2"</span>) <span class="op">+</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div>
 <p><img src="exploring-imputed-values_files/figure-html/ggplot-air-temp-humidity-1.png" width="700"></p>
 </div>
 <div id="other-imputation-approaches" class="section level1">
@@ -302,73 +302,73 @@
 <h2 class="hasAnchor">
 <a href="#hmisc-aregimpute" class="anchor"></a>Hmisc aregImpute</h2>
 <p>We can explore using a single imputation of <code><a href="https://rdrr.io/pkg/Hmisc/man/aregImpute.html">Hmisc::aregImpute()</a></code>, which allows for multiple imputation with bootstrapping, additive regression, and predictive mean matching. We are going to explore predicting mean matching, and single imputation.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Hmisc)</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; Loading required package: lattice</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; Loading required package: survival</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; Loading required package: Formula</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; Attaching package: 'Hmisc'</span></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; The following object is masked from 'package:simputation':</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt;     impute</span></a>
-<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; The following objects are masked from 'package:dplyr':</span></a>
-<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt;     src, summarize</span></a>
-<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt;     format.pval, units</span></a>
-<a class="sourceLine" id="cb9-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb9-18" data-line-number="18">aq_imp &lt;-<span class="st"> </span><span class="kw">aregImpute</span>(<span class="op">~</span>Ozone <span class="op">+</span><span class="st"> </span>Temp <span class="op">+</span><span class="st"> </span>Wind <span class="op">+</span><span class="st"> </span>Solar.R,</a>
-<a class="sourceLine" id="cb9-19" data-line-number="19">                     <span class="dt">n.impute =</span> <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb9-20" data-line-number="20">                     <span class="dt">type =</span> <span class="st">"pmm"</span>,</a>
-<a class="sourceLine" id="cb9-21" data-line-number="21">                     <span class="dt">data =</span> airquality)</a>
-<a class="sourceLine" id="cb9-22" data-line-number="22"><span class="co">#&gt; Iteration 1 </span></a>
-<a class="sourceLine" id="cb9-23" data-line-number="23">Iteration <span class="dv">2</span> </a>
-<a class="sourceLine" id="cb9-24" data-line-number="24">Iteration <span class="dv">3</span> </a>
-<a class="sourceLine" id="cb9-25" data-line-number="25">Iteration <span class="dv">4</span> </a>
-<a class="sourceLine" id="cb9-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb9-27" data-line-number="27">aq_imp</a>
-<a class="sourceLine" id="cb9-28" data-line-number="28"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-29" data-line-number="29"><span class="co">#&gt; Multiple Imputation using Bootstrap and PMM</span></a>
-<a class="sourceLine" id="cb9-30" data-line-number="30"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-31" data-line-number="31"><span class="co">#&gt; aregImpute(formula = ~Ozone + Temp + Wind + Solar.R, data = airquality, </span></a>
-<a class="sourceLine" id="cb9-32" data-line-number="32"><span class="co">#&gt;     n.impute = 1, type = "pmm")</span></a>
-<a class="sourceLine" id="cb9-33" data-line-number="33"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-34" data-line-number="34"><span class="co">#&gt; n: 153   p: 4    Imputations: 1      nk: 3 </span></a>
-<a class="sourceLine" id="cb9-35" data-line-number="35"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-36" data-line-number="36"><span class="co">#&gt; Number of NAs:</span></a>
-<a class="sourceLine" id="cb9-37" data-line-number="37"><span class="co">#&gt;   Ozone    Temp    Wind Solar.R </span></a>
-<a class="sourceLine" id="cb9-38" data-line-number="38"><span class="co">#&gt;      37       0       0       7 </span></a>
-<a class="sourceLine" id="cb9-39" data-line-number="39"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-40" data-line-number="40"><span class="co">#&gt;         type d.f.</span></a>
-<a class="sourceLine" id="cb9-41" data-line-number="41"><span class="co">#&gt; Ozone      s    2</span></a>
-<a class="sourceLine" id="cb9-42" data-line-number="42"><span class="co">#&gt; Temp       s    2</span></a>
-<a class="sourceLine" id="cb9-43" data-line-number="43"><span class="co">#&gt; Wind       s    2</span></a>
-<a class="sourceLine" id="cb9-44" data-line-number="44"><span class="co">#&gt; Solar.R    s    1</span></a>
-<a class="sourceLine" id="cb9-45" data-line-number="45"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-46" data-line-number="46"><span class="co">#&gt; Transformation of Target Variables Forced to be Linear</span></a>
-<a class="sourceLine" id="cb9-47" data-line-number="47"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-48" data-line-number="48"><span class="co">#&gt; R-squares for Predicting Non-Missing Values for Each Variable</span></a>
-<a class="sourceLine" id="cb9-49" data-line-number="49"><span class="co">#&gt; Using Last Imputations of Predictors</span></a>
-<a class="sourceLine" id="cb9-50" data-line-number="50"><span class="co">#&gt;   Ozone Solar.R </span></a>
-<a class="sourceLine" id="cb9-51" data-line-number="51"><span class="co">#&gt;   0.667   0.224</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Hmisc)</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt; Loading required package: lattice</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt; Loading required package: survival</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; Loading required package: Formula</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; </span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; Attaching package: 'Hmisc'</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt; The following object is masked from 'package:simputation':</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt; </span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#&gt;     impute</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#&gt; The following objects are masked from 'package:dplyr':</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="co">#&gt; </span></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="co">#&gt;     src, summarize</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="co">#&gt; </span></span>
+<span id="cb9-16"><a href="#cb9-16"></a><span class="co">#&gt;     format.pval, units</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a></span>
+<span id="cb9-18"><a href="#cb9-18"></a>aq_imp &lt;-<span class="st"> </span><span class="kw">aregImpute</span>(<span class="op">~</span>Ozone <span class="op">+</span><span class="st"> </span>Temp <span class="op">+</span><span class="st"> </span>Wind <span class="op">+</span><span class="st"> </span>Solar.R,</span>
+<span id="cb9-19"><a href="#cb9-19"></a>                     <span class="dt">n.impute =</span> <span class="dv">1</span>,</span>
+<span id="cb9-20"><a href="#cb9-20"></a>                     <span class="dt">type =</span> <span class="st">"pmm"</span>,</span>
+<span id="cb9-21"><a href="#cb9-21"></a>                     <span class="dt">data =</span> airquality)</span>
+<span id="cb9-22"><a href="#cb9-22"></a><span class="co">#&gt; Iteration 1 </span></span>
+<span id="cb9-23"><a href="#cb9-23"></a>Iteration <span class="dv">2</span> </span>
+<span id="cb9-24"><a href="#cb9-24"></a>Iteration <span class="dv">3</span> </span>
+<span id="cb9-25"><a href="#cb9-25"></a>Iteration <span class="dv">4</span> </span>
+<span id="cb9-26"><a href="#cb9-26"></a></span>
+<span id="cb9-27"><a href="#cb9-27"></a>aq_imp</span>
+<span id="cb9-28"><a href="#cb9-28"></a><span class="co">#&gt; </span></span>
+<span id="cb9-29"><a href="#cb9-29"></a><span class="co">#&gt; Multiple Imputation using Bootstrap and PMM</span></span>
+<span id="cb9-30"><a href="#cb9-30"></a><span class="co">#&gt; </span></span>
+<span id="cb9-31"><a href="#cb9-31"></a><span class="co">#&gt; aregImpute(formula = ~Ozone + Temp + Wind + Solar.R, data = airquality, </span></span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="co">#&gt;     n.impute = 1, type = "pmm")</span></span>
+<span id="cb9-33"><a href="#cb9-33"></a><span class="co">#&gt; </span></span>
+<span id="cb9-34"><a href="#cb9-34"></a><span class="co">#&gt; n: 153   p: 4    Imputations: 1      nk: 3 </span></span>
+<span id="cb9-35"><a href="#cb9-35"></a><span class="co">#&gt; </span></span>
+<span id="cb9-36"><a href="#cb9-36"></a><span class="co">#&gt; Number of NAs:</span></span>
+<span id="cb9-37"><a href="#cb9-37"></a><span class="co">#&gt;   Ozone    Temp    Wind Solar.R </span></span>
+<span id="cb9-38"><a href="#cb9-38"></a><span class="co">#&gt;      37       0       0       7 </span></span>
+<span id="cb9-39"><a href="#cb9-39"></a><span class="co">#&gt; </span></span>
+<span id="cb9-40"><a href="#cb9-40"></a><span class="co">#&gt;         type d.f.</span></span>
+<span id="cb9-41"><a href="#cb9-41"></a><span class="co">#&gt; Ozone      s    2</span></span>
+<span id="cb9-42"><a href="#cb9-42"></a><span class="co">#&gt; Temp       s    2</span></span>
+<span id="cb9-43"><a href="#cb9-43"></a><span class="co">#&gt; Wind       s    2</span></span>
+<span id="cb9-44"><a href="#cb9-44"></a><span class="co">#&gt; Solar.R    s    1</span></span>
+<span id="cb9-45"><a href="#cb9-45"></a><span class="co">#&gt; </span></span>
+<span id="cb9-46"><a href="#cb9-46"></a><span class="co">#&gt; Transformation of Target Variables Forced to be Linear</span></span>
+<span id="cb9-47"><a href="#cb9-47"></a><span class="co">#&gt; </span></span>
+<span id="cb9-48"><a href="#cb9-48"></a><span class="co">#&gt; R-squares for Predicting Non-Missing Values for Each Variable</span></span>
+<span id="cb9-49"><a href="#cb9-49"></a><span class="co">#&gt; Using Last Imputations of Predictors</span></span>
+<span id="cb9-50"><a href="#cb9-50"></a><span class="co">#&gt;   Ozone Solar.R </span></span>
+<span id="cb9-51"><a href="#cb9-51"></a><span class="co">#&gt;   0.667   0.224</span></span></code></pre></div>
 <p>We are now going to get our data into <code>nabular</code> form, and then insert the imputed values:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co"># nabular form!</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">aq_nab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nabular.html">nabular</a></span>(airquality) <span class="op">%&gt;%</span><span class="st">  </span><span class="kw"><a href="../reference/add_label_shadow.html">add_label_shadow</a></span>()</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co"># insert imputed values</span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">aq_nab<span class="op">$</span>Ozone[<span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(aq_nab<span class="op">$</span>Ozone)] &lt;-<span class="st"> </span>aq_imp<span class="op">$</span>imputed<span class="op">$</span>Ozone</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">aq_nab<span class="op">$</span>Solar.R[<span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(aq_nab<span class="op">$</span>Solar.R)] &lt;-<span class="st"> </span>aq_imp<span class="op">$</span>imputed<span class="op">$</span>Solar.R</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co"># nabular form!</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>aq_nab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nabular.html">nabular</a></span>(airquality) <span class="op">%&gt;%</span><span class="st">  </span><span class="kw"><a href="../reference/add_label_shadow.html">add_label_shadow</a></span>()</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co"># insert imputed values</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>aq_nab<span class="op">$</span>Ozone[<span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(aq_nab<span class="op">$</span>Ozone)] &lt;-<span class="st"> </span>aq_imp<span class="op">$</span>imputed<span class="op">$</span>Ozone</span>
+<span id="cb10-7"><a href="#cb10-7"></a>aq_nab<span class="op">$</span>Solar.R[<span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(aq_nab<span class="op">$</span>Solar.R)] &lt;-<span class="st"> </span>aq_imp<span class="op">$</span>imputed<span class="op">$</span>Solar.R</span></code></pre></div>
 <p>In the future there will be a more concise way to insert these imputed values into data, but for the moment the method above is what I would recommend for single imputation.</p>
 <p>We can then explore the imputed values like so:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(aq_nab,</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">           <span class="dt">y =</span> Solar.R,</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">           <span class="dt">colour =</span> any_missing)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(aq_nab,</span>
+<span id="cb11-3"><a href="#cb11-3"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</span>
+<span id="cb11-4"><a href="#cb11-4"></a>           <span class="dt">y =</span> Solar.R,</span>
+<span id="cb11-5"><a href="#cb11-5"></a>           <span class="dt">colour =</span> any_missing)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</span></code></pre></div>
 <p><img src="exploring-imputed-values_files/figure-html/hmisc-aregimpute-vis-1.png" width="700"></p>
 </div>
 </div>
@@ -402,7 +402,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>

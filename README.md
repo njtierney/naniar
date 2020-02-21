@@ -11,7 +11,7 @@ Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](ht
 Status
 Badge](http://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar)[![CRAN
 Downloads Each
-Month](http://cranlogs.r-pkg.org/badges/naniar)](http://cran.rstudio.com/web/packages/naniar/index.html)
+Month](http://cranlogs.r-pkg.org/badges/naniar)](https://CRAN.R-project.org/package=naniar)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
@@ -401,7 +401,7 @@ missing values and imputations, manipulate, and summarise missing data.
 
 Well, I think it is useful to think of missing values in data being like
 this other dimension, perhaps like [C.S. Lewis’s
-Narnia](https://en.wikipedia.org/wiki/The_Chronicles_of_naniar) - a
+Narnia](https://en.wikipedia.org/wiki/The_Chronicles_of_Narnia) - a
 different world, hidden away. You go inside, and sometimes it seems like
 you’ve spent no time in there but time has passed very quickly, or the
 opposite. Also, `NA`niar = na in r, and if you so desire, naniar may

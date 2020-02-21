@@ -181,55 +181,55 @@ without the original data, if using <code>unbind_data()</code>.</p>
 <span class='no'>aq_sh</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='bind_shadow.html'>bind_shadow</a></span>(<span class='no'>airquality</span>)
 
 <span class='co'># print data</span>
-<span class='no'>aq_sh</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 153 x 12</span><span>
+<span class='no'>aq_sh</span></div><div class='output co'>#&gt; # A tibble: 153 x 12
 #&gt;    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA Solar.R_NA Wind_NA Temp_NA
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>  
-#&gt; </span><span style='color: #555555;'> 1</span><span>    41     190   7.4    67     5     1 !NA      !NA        !NA     !NA    
-#&gt; </span><span style='color: #555555;'> 2</span><span>    36     118   8      72     5     2 !NA      !NA        !NA     !NA    
-#&gt; </span><span style='color: #555555;'> 3</span><span>    12     149  12.6    74     5     3 !NA      !NA        !NA     !NA    
-#&gt; </span><span style='color: #555555;'> 4</span><span>    18     313  11.5    62     5     4 !NA      !NA        !NA     !NA    
-#&gt; </span><span style='color: #555555;'> 5</span><span>    </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>  14.3    56     5     5 NA       NA         !NA     !NA    
-#&gt; </span><span style='color: #555555;'> 6</span><span>    28      </span><span style='color: #BB0000;'>NA</span><span>  14.9    66     5     6 !NA      NA         !NA     !NA    
-#&gt; </span><span style='color: #555555;'> 7</span><span>    23     299   8.6    65     5     7 !NA      !NA        !NA     !NA    
-#&gt; </span><span style='color: #555555;'> 8</span><span>    19      99  13.8    59     5     8 !NA      !NA        !NA     !NA    
-#&gt; </span><span style='color: #555555;'> 9</span><span>     8      19  20.1    61     5     9 !NA      !NA        !NA     !NA    
-#&gt; </span><span style='color: #555555;'>10</span><span>    </span><span style='color: #BB0000;'>NA</span><span>     194   8.6    69     5    10 NA       !NA        !NA     !NA    
-#&gt; </span><span style='color: #555555;'># … with 143 more rows, and 2 more variables: Month_NA </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span style='color: #555555;'>, Day_NA </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span></div><div class='input'>
+#&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;  
+#&gt;  1    41     190   7.4    67     5     1 !NA      !NA        !NA     !NA    
+#&gt;  2    36     118   8      72     5     2 !NA      !NA        !NA     !NA    
+#&gt;  3    12     149  12.6    74     5     3 !NA      !NA        !NA     !NA    
+#&gt;  4    18     313  11.5    62     5     4 !NA      !NA        !NA     !NA    
+#&gt;  5    NA      NA  14.3    56     5     5 NA       NA         !NA     !NA    
+#&gt;  6    28      NA  14.9    66     5     6 !NA      NA         !NA     !NA    
+#&gt;  7    23     299   8.6    65     5     7 !NA      !NA        !NA     !NA    
+#&gt;  8    19      99  13.8    59     5     8 !NA      !NA        !NA     !NA    
+#&gt;  9     8      19  20.1    61     5     9 !NA      !NA        !NA     !NA    
+#&gt; 10    NA     194   8.6    69     5    10 NA       !NA        !NA     !NA    
+#&gt; # … with 143 more rows, and 2 more variables: Month_NA &lt;fct&gt;, Day_NA &lt;fct&gt;</div><div class='input'>
 <span class='co'># remove shadow columns</span>
-<span class='fu'>unbind_shadow</span>(<span class='no'>aq_sh</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 153 x 6</span><span>
+<span class='fu'>unbind_shadow</span>(<span class='no'>aq_sh</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 6
 #&gt;    Ozone Solar.R  Wind  Temp Month   Day
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>    41     190   7.4    67     5     1
-#&gt; </span><span style='color: #555555;'> 2</span><span>    36     118   8      72     5     2
-#&gt; </span><span style='color: #555555;'> 3</span><span>    12     149  12.6    74     5     3
-#&gt; </span><span style='color: #555555;'> 4</span><span>    18     313  11.5    62     5     4
-#&gt; </span><span style='color: #555555;'> 5</span><span>    </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>  14.3    56     5     5
-#&gt; </span><span style='color: #555555;'> 6</span><span>    28      </span><span style='color: #BB0000;'>NA</span><span>  14.9    66     5     6
-#&gt; </span><span style='color: #555555;'> 7</span><span>    23     299   8.6    65     5     7
-#&gt; </span><span style='color: #555555;'> 8</span><span>    19      99  13.8    59     5     8
-#&gt; </span><span style='color: #555555;'> 9</span><span>     8      19  20.1    61     5     9
-#&gt; </span><span style='color: #555555;'>10</span><span>    </span><span style='color: #BB0000;'>NA</span><span>     194   8.6    69     5    10
-#&gt; </span><span style='color: #555555;'># … with 143 more rows</span><span></div><div class='input'>
+#&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+#&gt;  1    41     190   7.4    67     5     1
+#&gt;  2    36     118   8      72     5     2
+#&gt;  3    12     149  12.6    74     5     3
+#&gt;  4    18     313  11.5    62     5     4
+#&gt;  5    NA      NA  14.3    56     5     5
+#&gt;  6    28      NA  14.9    66     5     6
+#&gt;  7    23     299   8.6    65     5     7
+#&gt;  8    19      99  13.8    59     5     8
+#&gt;  9     8      19  20.1    61     5     9
+#&gt; 10    NA     194   8.6    69     5    10
+#&gt; # … with 143 more rows</div><div class='input'>
 <span class='co'># remove data</span>
-<span class='fu'>unbind_data</span>(<span class='no'>aq_sh</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 153 x 6</span><span>
+<span class='fu'>unbind_data</span>(<span class='no'>aq_sh</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 6
 #&gt;    Ozone_NA Solar.R_NA Wind_NA Temp_NA Month_NA Day_NA
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> 
-#&gt; </span><span style='color: #555555;'> 1</span><span> !NA      !NA        !NA     !NA     !NA      !NA   
-#&gt; </span><span style='color: #555555;'> 2</span><span> !NA      !NA        !NA     !NA     !NA      !NA   
-#&gt; </span><span style='color: #555555;'> 3</span><span> !NA      !NA        !NA     !NA     !NA      !NA   
-#&gt; </span><span style='color: #555555;'> 4</span><span> !NA      !NA        !NA     !NA     !NA      !NA   
-#&gt; </span><span style='color: #555555;'> 5</span><span> NA       NA         !NA     !NA     !NA      !NA   
-#&gt; </span><span style='color: #555555;'> 6</span><span> !NA      NA         !NA     !NA     !NA      !NA   
-#&gt; </span><span style='color: #555555;'> 7</span><span> !NA      !NA        !NA     !NA     !NA      !NA   
-#&gt; </span><span style='color: #555555;'> 8</span><span> !NA      !NA        !NA     !NA     !NA      !NA   
-#&gt; </span><span style='color: #555555;'> 9</span><span> !NA      !NA        !NA     !NA     !NA      !NA   
-#&gt; </span><span style='color: #555555;'>10</span><span> NA       !NA        !NA     !NA     !NA      !NA   
-#&gt; </span><span style='color: #555555;'># … with 143 more rows</span><span></div><div class='input'>
+#&gt;    &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;   &lt;fct&gt;    &lt;fct&gt; 
+#&gt;  1 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  2 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  3 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  4 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  5 NA       NA         !NA     !NA     !NA      !NA   
+#&gt;  6 !NA      NA         !NA     !NA     !NA      !NA   
+#&gt;  7 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  8 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt;  9 !NA      !NA        !NA     !NA     !NA      !NA   
+#&gt; 10 NA       !NA        !NA     !NA     !NA      !NA   
+#&gt; # … with 143 more rows</div><div class='input'>
 <span class='co'># errors when you don't use data with shadows</span>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
  <span class='fu'>unbind_data</span>(<span class='no'>airquality</span>)
  <span class='fu'>unbind_shadow</span>(<span class='no'>airquality</span>)
-}</div></span></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -249,7 +249,7 @@ without the original data, if using <code>unbind_data()</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

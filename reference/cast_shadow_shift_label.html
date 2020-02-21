@@ -180,33 +180,33 @@ respect the dplyr verbs "starts_with", "contains", "ends_with", etc.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow_shift_label</span>(<span class='no'>Ozone</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 153 x 4</span><span>
+<span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow_shift_label</span>(<span class='no'>Ozone</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 4
 #&gt;    Ozone Ozone_NA Ozone_shift any_missing
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #555555;'> 1</span><span>    41 !NA             41   Not Missing
-#&gt; </span><span style='color: #555555;'> 2</span><span>    36 !NA             36   Not Missing
-#&gt; </span><span style='color: #555555;'> 3</span><span>    12 !NA             12   Not Missing
-#&gt; </span><span style='color: #555555;'> 4</span><span>    18 !NA             18   Not Missing
-#&gt; </span><span style='color: #555555;'> 5</span><span>    </span><span style='color: #BB0000;'>NA</span><span> NA             -</span><span style='color: #BB0000;'>19.7</span><span> Missing    
-#&gt; </span><span style='color: #555555;'> 6</span><span>    28 !NA             28   Not Missing
-#&gt; </span><span style='color: #555555;'> 7</span><span>    23 !NA             23   Not Missing
-#&gt; </span><span style='color: #555555;'> 8</span><span>    19 !NA             19   Not Missing
-#&gt; </span><span style='color: #555555;'> 9</span><span>     8 !NA              8   Not Missing
-#&gt; </span><span style='color: #555555;'>10</span><span>    </span><span style='color: #BB0000;'>NA</span><span> NA             -</span><span style='color: #BB0000;'>18.5</span><span> Missing    
-#&gt; </span><span style='color: #555555;'># … with 143 more rows</span><span></div><div class='input'><span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow_shift_label</span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 153 x 7</span><span>
+#&gt;    &lt;int&gt; &lt;fct&gt;          &lt;dbl&gt; &lt;chr&gt;      
+#&gt;  1    41 !NA             41   Not Missing
+#&gt;  2    36 !NA             36   Not Missing
+#&gt;  3    12 !NA             12   Not Missing
+#&gt;  4    18 !NA             18   Not Missing
+#&gt;  5    NA NA             -19.7 Missing    
+#&gt;  6    28 !NA             28   Not Missing
+#&gt;  7    23 !NA             23   Not Missing
+#&gt;  8    19 !NA             19   Not Missing
+#&gt;  9     8 !NA              8   Not Missing
+#&gt; 10    NA NA             -18.5 Missing    
+#&gt; # … with 143 more rows</div><div class='input'><span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>cast_shadow_shift_label</span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)</div><div class='output co'>#&gt; # A tibble: 153 x 7
 #&gt;    Ozone Solar.R Ozone_NA Solar.R_NA Ozone_shift Solar.R_shift any_missing
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #555555;'> 1</span><span>    41     190 !NA      !NA               41           190   Not Missing
-#&gt; </span><span style='color: #555555;'> 2</span><span>    36     118 !NA      !NA               36           118   Not Missing
-#&gt; </span><span style='color: #555555;'> 3</span><span>    12     149 !NA      !NA               12           149   Not Missing
-#&gt; </span><span style='color: #555555;'> 4</span><span>    18     313 !NA      !NA               18           313   Not Missing
-#&gt; </span><span style='color: #555555;'> 5</span><span>    </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span> NA       NA               -</span><span style='color: #BB0000;'>19.7</span><span>         -</span><span style='color: #BB0000;'>33.6</span><span> Missing    
-#&gt; </span><span style='color: #555555;'> 6</span><span>    28      </span><span style='color: #BB0000;'>NA</span><span> !NA      NA                28           -</span><span style='color: #BB0000;'>33.1</span><span> Missing    
-#&gt; </span><span style='color: #555555;'> 7</span><span>    23     299 !NA      !NA               23           299   Not Missing
-#&gt; </span><span style='color: #555555;'> 8</span><span>    19      99 !NA      !NA               19            99   Not Missing
-#&gt; </span><span style='color: #555555;'> 9</span><span>     8      19 !NA      !NA                8            19   Not Missing
-#&gt; </span><span style='color: #555555;'>10</span><span>    </span><span style='color: #BB0000;'>NA</span><span>     194 NA       !NA              -</span><span style='color: #BB0000;'>18.5</span><span>         194   Missing    
-#&gt; </span><span style='color: #555555;'># … with 143 more rows</span><span></div><div class='input'>
+#&gt;    &lt;int&gt;   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;      
+#&gt;  1    41     190 !NA      !NA               41           190   Not Missing
+#&gt;  2    36     118 !NA      !NA               36           118   Not Missing
+#&gt;  3    12     149 !NA      !NA               12           149   Not Missing
+#&gt;  4    18     313 !NA      !NA               18           313   Not Missing
+#&gt;  5    NA      NA NA       NA               -19.7         -33.6 Missing    
+#&gt;  6    28      NA !NA      NA                28           -33.1 Missing    
+#&gt;  7    23     299 !NA      !NA               23           299   Not Missing
+#&gt;  8    19      99 !NA      !NA               19            99   Not Missing
+#&gt;  9     8      19 !NA      !NA                8            19   Not Missing
+#&gt; 10    NA     194 NA       !NA              -18.5         194   Missing    
+#&gt; # … with 143 more rows</div><div class='input'>
 <span class='co'># replicate the plot generated by geom_miss_point()</span>
 
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
@@ -217,7 +217,7 @@ respect the dplyr verbs "starts_with", "contains", "ends_with", etc.</p></td>
              <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R_shift</span>,
              <span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>any_missing</span>)) +
         <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>()</div><div class='img'><img src='cast_shadow_shift_label-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -238,7 +238,7 @@ respect the dplyr verbs "starts_with", "contains", "ends_with", etc.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

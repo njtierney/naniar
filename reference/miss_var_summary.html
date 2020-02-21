@@ -200,45 +200,45 @@ the function</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>miss_var_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 3
+<span class='fu'>miss_var_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 3</span><span>
 #&gt;   variable n_miss pct_miss
-#&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;
-#&gt; 1 Ozone        37    24.2 
-#&gt; 2 Solar.R       7     4.58
-#&gt; 3 Wind          0     0   
-#&gt; 4 Temp          0     0   
-#&gt; 5 Month         0     0   
-#&gt; 6 Day           0     0   </div><div class='input'><span class='fu'>miss_var_summary</span>(<span class='no'>oceanbuoys</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 3
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> Ozone        37    24.2 
+#&gt; </span><span style='color: #555555;'>2</span><span> Solar.R       7     4.58
+#&gt; </span><span style='color: #555555;'>3</span><span> Wind          0     0   
+#&gt; </span><span style='color: #555555;'>4</span><span> Temp          0     0   
+#&gt; </span><span style='color: #555555;'>5</span><span> Month         0     0   
+#&gt; </span><span style='color: #555555;'>6</span><span> Day           0     0   </div><div class='input'><span class='fu'>miss_var_summary</span>(<span class='no'>oceanbuoys</span>, <span class='kw'>order</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 8 x 3</span><span>
 #&gt;   variable   n_miss pct_miss
-#&gt;   &lt;chr&gt;       &lt;int&gt;    &lt;dbl&gt;
-#&gt; 1 humidity       93   12.6  
-#&gt; 2 air_temp_c     81   11.0  
-#&gt; 3 sea_temp_c      3    0.408
-#&gt; 4 year            0    0    
-#&gt; 5 latitude        0    0    
-#&gt; 6 longitude       0    0    
-#&gt; 7 wind_ew         0    0    
-#&gt; 8 wind_ns         0    0    </div><div class='input'>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> humidity       93   12.6  
+#&gt; </span><span style='color: #555555;'>2</span><span> air_temp_c     81   11.0  
+#&gt; </span><span style='color: #555555;'>3</span><span> sea_temp_c      3    0.408
+#&gt; </span><span style='color: #555555;'>4</span><span> year            0    0    
+#&gt; </span><span style='color: #555555;'>5</span><span> latitude        0    0    
+#&gt; </span><span style='color: #555555;'>6</span><span> longitude       0    0    
+#&gt; </span><span style='color: #555555;'>7</span><span> wind_ew         0    0    
+#&gt; </span><span style='color: #555555;'>8</span><span> wind_ns         0    0    </div><div class='input'>
 <span class='co'># works with group_by from dplyr</span>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Month</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>miss_var_summary</span>()</div><div class='output co'>#&gt; # A tibble: 25 x 4
-#&gt; # Groups:   Month [5]
+  <span class='fu'>miss_var_summary</span>()</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 25 x 4</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   Month [5]</span><span>
 #&gt;    Month variable n_miss pct_miss
-#&gt;    &lt;int&gt; &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;
-#&gt;  1     5 Ozone         5     16.1
-#&gt;  2     5 Solar.R       4     12.9
-#&gt;  3     5 Wind          0      0  
-#&gt;  4     5 Temp          0      0  
-#&gt;  5     5 Day           0      0  
-#&gt;  6     6 Ozone        21     70  
-#&gt;  7     6 Solar.R       0      0  
-#&gt;  8     6 Wind          0      0  
-#&gt;  9     6 Temp          0      0  
-#&gt; 10     6 Day           0      0  
-#&gt; # … with 15 more rows</div><div class='input'>
-</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>     5 Ozone         5     16.1
+#&gt; </span><span style='color: #555555;'> 2</span><span>     5 Solar.R       4     12.9
+#&gt; </span><span style='color: #555555;'> 3</span><span>     5 Wind          0      0  
+#&gt; </span><span style='color: #555555;'> 4</span><span>     5 Temp          0      0  
+#&gt; </span><span style='color: #555555;'> 5</span><span>     5 Day           0      0  
+#&gt; </span><span style='color: #555555;'> 6</span><span>     6 Ozone        21     70  
+#&gt; </span><span style='color: #555555;'> 7</span><span>     6 Solar.R       0      0  
+#&gt; </span><span style='color: #555555;'> 8</span><span>     6 Wind          0      0  
+#&gt; </span><span style='color: #555555;'> 9</span><span>     6 Temp          0      0  
+#&gt; </span><span style='color: #555555;'>10</span><span>     6 Day           0      0  
+#&gt; </span><span style='color: #555555;'># … with 15 more rows</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -260,7 +260,7 @@ the function</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>

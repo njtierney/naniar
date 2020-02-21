@@ -48,7 +48,7 @@ ggplot(riskfactors,
 }
 \seealso{
 the codebook:
-\url{http://ftp.cdc.gov/pub/data/brfss/codebook_09.rtf}
+\url{https://www.cdc.gov/brfss/annual_data/annual_2009.htm}
 
 Format: a data frame with 245 observations on the following 34
 variables.

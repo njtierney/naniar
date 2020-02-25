@@ -260,8 +260,8 @@ row, and the proportion of complete obserations in a row
 - `add_miss_cluster` is a new function that calculates a cluster of missingness 
   for each row, using `hclust`. This can be useful in exploratory modelling
   of missingness, similar to 
-  Tierney et al 2015: "https://bmjopen.bmj.com/content/5/6/e007450.full" and 
-  Barnett et al. 2017: "https://bmjopen.bmj.com/content/7/10/e017284"
+  Tierney et al 2015: "doi: 10.1136/bmjopen-2014-007450" and 
+  Barnett et al. 2017: "doi: 10.1136/bmjopen-2017-017284"
 
 - Now exported `where_na` - a function that returns the positions of NA values. 
   For a dataframe it returns a matrix of row and col positions of NAs, and for 

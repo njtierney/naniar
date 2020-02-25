@@ -39,7 +39,7 @@ airquality \%>\% add_prop_miss(Solar.R, Ozone)
 airquality \%>\% add_prop_miss(Solar.R, Ozone, label = "testing")
 
 # this can be applied to model the proportion of missing data
-# as in Tierney et al bmjopen.bmj.com/content/5/6/e007450.full
+# as in Tierney et al (doi: 10.1136/bmjopen-2014-007450)
 library(rpart)
 library(rpart.plot)
 

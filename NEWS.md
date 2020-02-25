@@ -548,7 +548,7 @@ helps us make it easier to work with missing data
 - `add_n_miss` and `add_prop_miss` are helpers that add columns to a dataframe
 containing the number and proportion of missing values. An example has been
 provided to use decision trees to explore missing data structure as in 
-[Tierney et al](bmjopen.bmj.com/content/5/6/e007450.full)
+ "doi: 10.1136/bmjopen-2014-007450"
 
 - `geom_miss_point()` now supports transparency, thanks to @seasmith (Luke Smith)
  

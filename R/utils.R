@@ -191,6 +191,8 @@ diag_na <- function(size = 5){
 coerce_fct_na_explicit <- function(x){
   if (is.factor(x) & anyNA(x)) {
     forcats::fct_explicit_na(x, na_level = "NA")
+  } else {
+    x
   }
 }
 

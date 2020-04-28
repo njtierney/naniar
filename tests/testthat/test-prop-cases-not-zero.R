@@ -37,10 +37,12 @@ library(dplyr)
 library(tibble)
 
 bad_na_df <- bad_air_quality %>%
-  summarise(n_missing = n_case_miss(.),
-            n_complete = n_case_complete(.),
-            prop_missing = prop_miss_case(.),
-            prop_complete = prop_complete_case(.))
+  summarise(
+    n_missing = n_case_miss(.),
+    n_complete = n_case_complete(.),
+    prop_complete = prop_complete_case(.),
+    prop_missing = prop_miss_case(.),
+  )
 
 expected_bad_na_df <- tibble(
   n_missing = 12L,

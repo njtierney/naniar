@@ -60,7 +60,7 @@ Imports:
     ggplot2,
     purrr,
     tidyr,
-    tibble,
+    tibble (>= 2.0.0),
     magrittr,
     stats,
     visdat,

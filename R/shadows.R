@@ -183,7 +183,7 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
 #' @return object with class "shadow", inheriting from it's original class
 #' @export
 new_shadow <- function(x){
-  tibble::new_tibble(x, subclass = "shadow", nrow = as.integer(nrow(x)))
+  tibble::new_tibble(x, class = "shadow", nrow = as.integer(nrow(x)))
 }
 
 

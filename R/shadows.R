@@ -143,9 +143,9 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
     # I want to only select columns that contain a missing value.
     miss_vars <- rlang::syms(miss_var_which(data))
 
-    shadow_vars <- dplyr::select(data, !!!miss_vars) %>% as_shadow()
-
-    shadow_data <- tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
+    shadow_vars <- dplyr::as_tibble(as_shadow(dplyr::select(data, !!!miss_vars)))
+    data <- tibble::as_tibble(data)
+    shadow_data <- dplyr::bind_cols(data, shadow_vars)
 
     # class(shadow_data) <- c("shadow", class(shadow_data))
 
@@ -157,11 +157,9 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
 
   if (!only_miss) {
 
-    data_shadow <- as_shadow(data)
-
-    bound_shadow <- dplyr::bind_cols(data, data_shadow)
-
-    shadow_data <- tibble::as_tibble(bound_shadow)
+    data_shadow <- tibble::as_tibble(as_shadow(data))
+    data <- tibble::as_tibble(data)
+    shadow_data <- dplyr::bind_cols(data, data_shadow)
 
     if (!missing(...)) {
       shadow_data <- shadow_data %>% recode_shadow(...)

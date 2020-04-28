@@ -25,8 +25,9 @@ add_shadow <- function(data, ...){
   }
   shadow_df <- dplyr::select(data, ...) %>% as_shadow()
 
-  dplyr::bind_cols(data, shadow_df) %>% dplyr::as_tibble()
-
+  data <- tibble::as_tibble(data)
+  shadow_df <- tibble::as_tibble(shadow_df)
+  dplyr::bind_cols(data, shadow_df)
 }
 
 #' Add a shadow shifted column to a dataset
@@ -62,10 +63,10 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
     # change names
     names(shadow_shifted_df) <- paste0(names(shadow_shifted_df), "_", suffix)
 
-    return(
-      tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
-    )
+    data <- tibble::as_tibble(data)
+    shadow_shifted_df <- tibble::as_tibble(shadow_shifted_df)
 
+    return(dplyr::bind_cols(data, shadow_shifted_df))
   }
 
   # select variables
@@ -78,10 +79,10 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
   # change names
   names(shadow_shifted_df) <- paste0(names(shadow_shifted_df),"_",suffix)
 
-  return(
-    tibble::as_tibble(dplyr::bind_cols(data, shadow_shifted_df))
-  )
+  data <- tibble::as_tibble(data)
+  shadow_shifted_df <- tibble::as_tibble(shadow_shifted_df)
 
+  return(dplyr::bind_cols(data, shadow_shifted_df))
 }
 
 #' Add a column describing presence of any missing values

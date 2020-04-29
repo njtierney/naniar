@@ -40,12 +40,10 @@ cast_shadow <- function(data, ...){
 
   }
 
-    shadow_vars <- dplyr::select(data, ...) %>% as_shadow()
+    shadow_vars <- tibble::as_tibble(as_shadow(dplyr::select(data, ...)))
+    my_data <- tibble::as_tibble(dplyr::select(data, ...))
 
-    my_data <- dplyr::select(data, ...)
-
-    tibble::as_tibble(dplyr::bind_cols(my_data, shadow_vars))
-
+    dplyr::bind_cols(my_data, shadow_vars)
   }
 
 #' Add a shadow and a shadow_shift column to a dataset

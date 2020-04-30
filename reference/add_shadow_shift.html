@@ -85,7 +85,7 @@ starts_with, contains, ends_with, etc." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
       </span>
     </div>
 
@@ -201,8 +201,8 @@ respect the dplyr verbs <code>starts_with</code>, <code>contains</code>, <code>e
 #&gt; </span><span style='color: #555555;'> 8</span><span>            52 2016-01-01 </span><span style='color: #555555;'>07:00:00</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016 Janu…         1 Friday       7
 #&gt; </span><span style='color: #555555;'> 9</span><span>           120 2016-01-01 </span><span style='color: #555555;'>08:00:00</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016 Janu…         1 Friday       8
 #&gt; </span><span style='color: #555555;'>10</span><span>           333 2016-01-01 </span><span style='color: #555555;'>09:00:00</span><span>  </span><span style='text-decoration: underline;'>2</span><span>016 Janu…         1 Friday       9
-#&gt; </span><span style='color: #555555;'># … with 37,690 more rows, and 3 more variables: sensor_id </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,
-#&gt; #   sensor_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, hourly_counts_shift </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
+#&gt; </span><span style='color: #555555;'># … with 37,690 more rows, and 3 more variables: sensor_id </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   sensor_name </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, hourly_counts_shift </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
 <span class='no'>airquality</span> <span class='kw'>%&gt;%</span> <span class='fu'>add_shadow_shift</span>(<span class='no'>Ozone</span>, <span class='no'>Solar.R</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 153 x 8</span><span>
 #&gt;    Ozone Solar.R  Wind  Temp Month   Day Ozone_shift Solar.R_shift
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>

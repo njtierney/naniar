@@ -4,7 +4,9 @@
 \name{oceanbuoys}
 \alias{oceanbuoys}
 \title{West Pacific Tropical Atmosphere Ocean Data, 1993 & 1997.}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 736 rows and 8 columns.}
+\format{
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 736 rows and 8 columns.
+}
 \source{
 \url{http://www.pmel.noaa.gov/tao/data_deliv/deliv.html}
 }

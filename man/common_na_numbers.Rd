@@ -4,7 +4,9 @@
 \name{common_na_numbers}
 \alias{common_na_numbers}
 \title{Common number values for NA}
-\format{An object of class \code{numeric} of length 8.}
+\format{
+An object of class \code{numeric} of length 8.
+}
 \usage{
 common_na_numbers
 }

@@ -4,7 +4,8 @@
 \name{pedestrian}
 \alias{pedestrian}
 \title{Pedestrian count information around Melbourne for 2016}
-\format{A tibble with 37,700 rows and 9 variables:
+\format{
+A tibble with 37,700 rows and 9 variables:
 \describe{
 \item{hourly_counts}{(integer) the number of pedestrians counted at that sensor
 at that time}
@@ -18,7 +19,8 @@ December)}
 \item{hour}{(integer) The hour of the day in 24 hour format}
 \item{sensor_id}{(integer) the id of the sensor}
 \item{sensor_name}{(character) the full name of the sensor}
-}}
+}
+}
 \source{
 \url{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}
 }

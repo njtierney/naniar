@@ -45,9 +45,9 @@ df <- tibble::tribble(
   ~name,           ~x,  ~y,              ~z,  
   "N/A",           1,   "N/A",           -100, 
   "N A",           3,   "NOt available", -99,
-  "N / A",         NA,  29,              -98,
-  "Not Available", -99, 25,              -101,
-  "John Smith",    -98, 28,              -1)
+  "N / A",         NA,  "29",              -98,
+  "Not Available", -99, "25",              -101,
+  "John Smith",    -98, "28",              -1)
 
 ```
 

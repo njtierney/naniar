@@ -283,6 +283,7 @@ Using the shadow matrix to keep track of where the missings are, you can actuall
 ```{r simpute-visible, echo = TRUE, fig.height = 3}
 
 aq_shadow %>%
+  as.data.frame() %>% 
   impute_lm(Ozone ~ Temp + Wind) %>%
   ggplot(aes(x = Temp,
              y = Ozone,

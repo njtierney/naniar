@@ -1,3 +1,9 @@
+# naniar 0.5.1 (2020/04/10) "Uncle Andrew's Applewood Wardrobe"
+
+## Minor Changes
+
+* Fixes warnings and errors from `tibble` and subsequent downstream impacts on `simputation`. 
+
 # naniar 0.5.0 (2020/02/20) "The End of this Story and the Beginning of all of the Others"
 
 ## Breaking Changes

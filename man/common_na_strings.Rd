@@ -4,7 +4,9 @@
 \name{common_na_strings}
 \alias{common_na_strings}
 \title{Common string values for NA}
-\format{An object of class \code{character} of length 24.}
+\format{
+An object of class \code{character} of length 24.
+}
 \usage{
 common_na_strings
 }

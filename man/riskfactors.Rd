@@ -5,7 +5,9 @@
 \alias{riskfactors}
 \title{The Behavioral Risk Factor Surveillance System (BRFSS) Survey
 Data, 2009.}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 245 rows and 34 columns.}
+\format{
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 245 rows and 34 columns.
+}
 \source{
 \url{https://www.cdc.gov/brfss/annual_data/annual_2009.htm}
 }

@@ -207,6 +207,18 @@ riskfactors %>%
 
 ```
 
+`gg_miss_fct` can also be used to explore missingness along time, like so:
+
+```{r}
+gg_miss_fct(oceanbuoys, year)
+# to load who data
+library(tidyr)
+gg_miss_fct(who, year)
+```
+
+
+(Thanks to [Maria Paula Caldas](https://github.com/mpaulacaldas) for inspiration for this visualisation, [discussed here](https://github.com/njtierney/naniar/issues/254))
+
 ## Missingness along a repeating span with `gg_miss_span`
 
 This plot shows the number of missings in a given span, or breaksize, for a single selected variable. In this case we look at the span of `hourly_counts` from the pedestrian dataset.  It is powered by the `miss_var_span` function

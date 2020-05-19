@@ -87,9 +87,9 @@ miss_var_table <- function(data){
 
 miss_var_table.default <- function(data){
 
-  purrr::map_dfc(data, ~n_miss(.)) %>%
-    tidyr::gather(key = "variable",
-                  value = "n_miss_in_var") %>%
+  miss_var_summary(data) %>%
+    dplyr::rename(n_miss_in_var = n_miss) %>%
+    dplyr::select(-pct_miss) %>%
     dplyr::group_by(n_miss_in_var) %>%
     dplyr::tally() %>%
     dplyr::rename(n_vars = n) %>%

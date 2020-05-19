@@ -21,12 +21,13 @@
 
 gg_miss_which <- function(x){
 
+  col_na <- colSums(is.na(x)) == 0
+  col_na_val <- dplyr::if_else(col_na, "complete", "missing")
+
+
   # tell us which columns have missing data
-  ggobject <- x %>%
-    miss_var_summary() %>%
-    dplyr::select(variable,
-                  value = n_miss) %>%
-    dplyr::mutate(value = dplyr::if_else(value == 0, "complete", "missing")) %>%
+  ggobject <- tibble::tibble(variable = names(col_na),
+                             value = col_na_val) %>%
     dplyr::mutate(nheight = 1) %>%
     ggplot(data = .,
            aes(x = variable,

@@ -23,10 +23,10 @@ gg_miss_which <- function(x){
 
   # tell us which columns have missing data
   ggobject <- x %>%
-    purrr::map_dfc(anyNA) %>%
-    purrr::map_dfc(function(x) ifelse(x == 0, "complete", "missing")) %>%
-    tidyr::gather(key = "variable",
-                  value = "value") %>%
+    miss_var_summary() %>%
+    dplyr::select(variable,
+                  value = n_miss) %>%
+    dplyr::mutate(value = dplyr::if_else(value == 0, "complete", "missing")) %>%
     dplyr::mutate(nheight = 1) %>%
     ggplot(data = .,
            aes(x = variable,

@@ -2,8 +2,8 @@
 
 ## Minor Changes
 
-- Improved code in `miss_var_summary()`, `miss_var_table()`, and 
- `prop_miss_var()`, improving speed.
+- Improvements to code in `miss_var_summary()`, `miss_var_table()`, and 
+ `prop_miss_var()`, resulting in a 3-10x speedup.
 
 # naniar 0.5.1 (2020/04/10) "Uncle Andrew's Applewood Wardrobe"
 

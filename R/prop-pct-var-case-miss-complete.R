@@ -26,7 +26,7 @@ prop_miss_var <- function(data){
   test_if_dataframe(data)
 
   # find the proportion of variables that contain (any) missing values
-  mean(purrr::map_lgl(data, anyNA))
+  mean(colSums(is.na(data)) > 0)
 
 } # end function
 

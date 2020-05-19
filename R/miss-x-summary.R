@@ -53,9 +53,12 @@ miss_var_summary.default <- function(data,
                                      add_cumsum = FALSE,
                                      ...) {
 
-  res <- purrr::map_dfc(data, n_miss) %>%
-    tidyr::gather(key = "variable", value = "n_miss") %>%
-    dplyr::mutate(pct_miss = (n_miss / nrow(data) * 100))
+  col_n_miss <- colSums(is.na(data))
+  col_pct_miss <- colMeans(is.na(data)) * 100
+
+  res <- tibble::tibble(variable = names(col_n_miss),
+                        n_miss = as.integer(col_n_miss),
+                        pct_miss = as.numeric(col_pct_miss))
 
   if (add_cumsum) {
    res <- res %>% dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
@@ -66,7 +69,6 @@ miss_var_summary.default <- function(data,
   }
 
   return(res)
-
 
 }
 

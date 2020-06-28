@@ -1,4 +1,4 @@
-# naniar 0.5.1.9000
+# naniar 0.5.2 (2020/06/28) "Silver Apple"
 
 ## Minor Changes
 

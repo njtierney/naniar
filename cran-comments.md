@@ -1,6 +1,6 @@
 ## Test environments
-* local OS X install, R 4.0.0
-* ubuntu 12.04 (on travis-ci), R 4.0.0
+* local OS X install, R 4.0.2
+* ubuntu 12.04 (on GitHub Actions), R 4.0.2
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -17,5 +17,5 @@ The first part regarding the spelling of my name - my name is spelt "Tierney", I
 
 ## Reverse dependencies
 
-There are two reverse dependencies, and these have been checked.
+There are four reverse dependencies, these have been checked.
 

@@ -84,11 +84,13 @@ test_that("impute_median_all works with shadow", {
 })
 
 test_that("impute_median_all retains proper shadow values", {
+  skip_on_cran()
   expect_equal(unbind_data(impute_median_all(aq_shadow)),
                unbind_data(aq_shadow))
 })
 
 test_that("impute_median_all retains proper shadow values", {
+  skip_on_cran()
   expect_equal(unbind_data(impute_median_all(aq_shadow)),
                unbind_data(aq_shadow))
 })
@@ -99,11 +101,13 @@ test_that("impute_median_all works with shadow", {
 })
 
 test_that("impute_median_all retains proper shadow values", {
+  skip_on_cran()
   expect_equal(unbind_data(impute_median_all(aq_shadow)),
                unbind_data(aq_shadow))
 })
 
 test_that("impute_median_all retains proper shadow values", {
+  skip_on_cran()
   expect_equal(unbind_data(impute_median_all(aq_shadow)),
                unbind_data(aq_shadow))
 })

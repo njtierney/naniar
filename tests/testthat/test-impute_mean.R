@@ -75,11 +75,13 @@ test_that("impute_mean_at works with shadow", {
 })
 
 test_that("impute_mean_at retains proper shadow values", {
+  skip_on_cran()
   expect_equal(unbind_data(impute_mean_at(aq_shadow, vars(Ozone))),
                unbind_data(aq_shadow))
 })
 
 test_that("impute_mean_at retains proper shadow values", {
+  skip_on_cran()
   expect_equal(unbind_data(impute_mean_at(aq_shadow, vars(Ozone))),
                unbind_data(aq_shadow))
 })
@@ -95,11 +97,13 @@ test_that("impute_mean_all works with shadow", {
 })
 
 test_that("impute_mean_all retains proper shadow values", {
+  skip_on_cran()
   expect_equal(unbind_data(impute_mean_all(aq_shadow)),
                unbind_data(aq_shadow))
 })
 
 test_that("impute_mean_all retains proper shadow values", {
+  skip_on_cran()
   expect_equal(unbind_data(impute_mean_all(aq_shadow)),
                unbind_data(aq_shadow))
 })

@@ -40,6 +40,7 @@ df_many_recode <- df %>%
 new_shade_levels <- c("!NA", "NA", "NA_broken_machine", "NA_broken_temp")
 
 test_that("special missings levels are updated for many recodes", {
+  skip_on_cran()
   expect_equal(levels(df_many_recode$wind_NA),
                new_shade_levels)
   expect_equal(levels(df_many_recode$temp_NA),
@@ -47,6 +48,7 @@ test_that("special missings levels are updated for many recodes", {
 })
 
 test_that("special missings are put in the right place for many recodes", {
+  skip_on_cran()
   expect_equal(as.character(df_many_recode$wind_NA),
                c("NA_broken_temp", "!NA", "!NA"))
   expect_equal(as.character(df_many_recode$temp_NA),

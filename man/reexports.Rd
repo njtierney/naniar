@@ -14,9 +14,9 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{magrittr}{\code{\link[magrittr:pipe]{\%>\%}}}
 
-  \item{rlang}{\code{\link[rlang]{are_na}}, \code{\link[rlang]{is_na}}}
+  \item{rlang}{\code{\link[rlang]{are_na}}, \code{\link[rlang:are_na]{is_na}}}
 
   \item{visdat}{\code{\link[visdat]{vis_miss}}}
 }}

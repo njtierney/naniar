@@ -1,3 +1,7 @@
+# naniar 0.5.3 (2020/08/17) "Spur of the lamp post"
+
+- Minor bugfix for CRAN
+
 # naniar 0.5.2 (2020/06/28) "Silver Apple"
 
 ## Minor Changes

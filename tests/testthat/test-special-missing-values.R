@@ -136,6 +136,7 @@ aq_grouped_recoded <- airquality %>%
   recode_shadow(Ozone = .where(Wind <= 5 ~ "broken_machine"))
 
 test_that("special missings are the same for grouped and ungrouped data", {
+  skip_on_cran()
   expect_equal(aq_grouped_recoded$Ozone_NA,
                aq_recoded$Ozone_NA)
 })

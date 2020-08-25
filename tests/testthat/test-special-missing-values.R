@@ -136,9 +136,15 @@ aq_grouped_recoded <- airquality %>%
   recode_shadow(Ozone = .where(Wind <= 5 ~ "broken_machine"))
 
 test_that("special missings are the same for grouped and ungrouped data", {
-  skip_on_cran()
-  expect_equal(aq_grouped_recoded$Ozone_NA,
-               aq_recoded$Ozone_NA)
+  expect_equal(as.character(aq_grouped_recoded$Ozone_NA),
+               as.character(aq_recoded$Ozone_NA))
+})
+
+
+test_that("special missings class is maintained for grouped and ungrouped data", {
+  skip_on_ci()
+  expect_equal(class(aq_grouped_recoded$Ozone_NA),
+               class(aq_recoded$Ozone_NA))
 })
 
 

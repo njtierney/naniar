@@ -48,10 +48,24 @@ replace_with_na <- function(data, replace = list(), ...){
 #' @export
 replace_with_na.data.frame <- function(data, replace = list(), ...){
 
-  stopifnot(is.list(replace))
+  if (!is.list(replace)) {
+    stop("`replace` must be a list, I see that replace has ",
+         class(replace),
+         " and typeof ",
+         typeof(replace),
+         "see ?replace_with_na for more details")
+  }
 
-  for (var in names(replace)) {
-    data[[var]][data[[var]] %in% unlist(replace[[var]])] <- NA
+  new_replace <- replace[names(replace) %in% names(data)]
+
+  missing <- setdiff(names(replace), names(new_replace))
+
+    if (length(missing) >0) {
+      warning(paste("Missing from data:", paste(missing, collapse = ", ")))
+    }
+
+  for (var in names(new_replace)) {
+    data[[var]][data[[var]] %in% unlist(new_replace[[var]])] <- NA
   }
   data
 }

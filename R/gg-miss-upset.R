@@ -38,3 +38,54 @@ gg_miss_upset <- function(data, order.by = "freq", ...){
 
 
 
+#' Convert data into shadow format for doing an upset plot
+#'
+#' Upset plots are a way of visualising common sets, this function transforms
+#'     the data into a format that feeds directly into an upset plot
+#'
+#' @param data a data.frame
+#'
+#' @return a data.frame
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' library(UpSetR)
+#' airquality %>%
+#'   as_shadow_upset() %>%
+#'   upset()
+#' }
+#'
+#' @export
+as_shadow_upset <- function(data){
+
+  if (n_var_miss(data) <= 1 ) {
+
+    if (n_var_miss(data) == 1) {
+      glu_st <- glue::glue("upset plots for missing data requre at least two \\
+                         variables to have missing data, only one variable, \\
+                         '{miss_var_which(data)}' has missing values.")
+    }
+
+    if (n_var_miss(data) == 0) {
+
+      glu_st <- glue::glue("upset plots for missing data requre at least two \\
+                         variables to have missing data, there are no missing \\
+                         values in your data! This is probably a good thing.")
+    }
+
+    rlang::abort(message = glu_st)
+  }
+
+  test_if_null(data)
+
+  test_if_dataframe(data)
+
+  data_shadow <- as.data.frame(is.na(data)*1)
+
+  names(data_shadow) <- paste0(names(data),"_NA")
+
+  dplyr::mutate_if(data_shadow, is.numeric, as.integer)
+
+}

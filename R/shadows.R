@@ -45,60 +45,6 @@ as_shadow.data.frame <- function(data, ...){
 
 }
 
-
-#' Convert data into shadow format for doing an upset plot
-#'
-#' Upset plots are a way of visualising common sets, this function transforms
-#'     the data into a format that feeds directly into an upset plot
-#'
-#' @param data a data.frame
-#'
-#' @return a data.frame
-#'
-#' @examples
-#'
-#' \dontrun{
-#'
-#' library(UpSetR)
-#' airquality %>%
-#'   as_shadow_upset() %>%
-#'   upset()
-#' }
-#'
-#' @export
-as_shadow_upset <- function(data){
-
-  if (n_var_miss(data) <= 1 ) {
-
-    if (n_var_miss(data) == 1) {
-      glu_st <- glue::glue("upset plots for missing data requre at least two \\
-                         variables to have missing data, only one variable, \\
-                         '{miss_var_which(data)}' has missing values.")
-    }
-
-    if (n_var_miss(data) == 0) {
-
-      glu_st <- glue::glue("upset plots for missing data requre at least two \\
-                         variables to have missing data, there are no missing \\
-                         values in your data! This is probably a good thing.")
-    }
-
-    rlang::abort(message = glu_st)
-  }
-
-  test_if_null(data)
-
-  test_if_dataframe(data)
-
-  data_shadow <- as.data.frame(is.na(data)*1)
-
-  names(data_shadow) <- paste0(names(data),"_NA")
-
-  dplyr::mutate_if(data_shadow, is.numeric, as.integer)
-
-}
-
-
 #' Bind a shadow dataframe to original data
 #'
 #' Binding a shadow matrix to a regular dataframe helps visualise and work with
@@ -143,13 +89,11 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
     # I want to only select columns that contain a missing value.
     miss_vars <- rlang::syms(miss_var_which(data))
 
-    shadow_vars <- dplyr::as_tibble(as_shadow(dplyr::select(data, !!!miss_vars)))
+    shadow_vars <- dplyr::as_tibble(as_shadow(dplyr::select(data,
+                                                            !!!miss_vars)))
     data <- tibble::as_tibble(data)
     shadow_data <- dplyr::bind_cols(data, shadow_vars)
 
-    # class(shadow_data) <- c("shadow", class(shadow_data))
-
-    # return(new_shadow(shadow_data))
     return(new_nabular(shadow_data))
 
   # if you want All the values to be added (the default behaviour)
@@ -165,9 +109,6 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
       shadow_data <- shadow_data %>% recode_shadow(...)
     }
 
-    # class(shadow_data) <- c("shadow", class(shadow_data))
-
-    # return(new_shadow(shadow_data))
     return(new_nabular(shadow_data))
 
   }
@@ -183,7 +124,6 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
 new_shadow <- function(x){
   tibble::new_tibble(x, class = "shadow", nrow = as.integer(nrow(x)))
 }
-
 
 #' Unbind (remove) shadow from data, and vice versa
 #'
@@ -258,69 +198,6 @@ gather_shadow <- function(data){
                   -rows) %>%
     dplyr::rename(case = rows)
 }
-
-
-# #' Is this thing a shadow?
-# #'
-# #' Does this thing contain a shadow variable?
-# #'
-# #' @param x vector or data.frame
-# #'
-# #' @return logical - single value. TRUE if contains a variable with a column ending in "_NA"
-# #' @export
-# #'
-# #' @examples
-# #'
-# #' df_shadow <- bind_shadow(airquality)
-# #'
-# #' is_shadow(df_shadow)
-# #'
-# #' @export
-# is_shadow <- function(x){
-#   # any(grepl("_NA",names(x)))
-#   inherits(x, "shadow")
-# }
-#
-# #' Are these things shadows?
-# #'
-# #' Does this thing contain a shadow variable?
-# #'
-# #' @param x vector or data.frame
-# #'
-# #' @return logical vector - TRUE if contains a variable with a column ending in "_NA"
-# #' @export
-# #'
-# #' @examples
-# #'
-# #' df_shadow <- bind_shadow(airquality)
-# #'
-# #' are_shadow(df_shadow)
-# #'
-# #' @export
-# are_shadow <- function(x){
-#   grepl("_NA",names(x))
-#   purrr::map(x, class) %>%
-#     tibble::as_tibble() %>%
-# }
-
-# Are these things shadows?
-#
-# Does this thing contain a shadow variable?
-#
-# @param x vector or data.frame
-#
-# @return logical vector - TRUE if contains a variable with a column ending in "_NA"
-# @export
-#
-# @examples
-#
-# df_shadow <- bind_shadow(airquality)
-#
-# are_shadow(df_shadow)
-#
-#@export
-# are_shadow <- function(x) grepl("_NA",names(x))
-
 
 #' Which variables are shades?
 #'

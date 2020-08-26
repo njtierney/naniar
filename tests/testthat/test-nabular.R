@@ -22,3 +22,13 @@ test_that("new_nabular errors when given non dataframe or 0 entry",{
   expect_error(new_nabular(0))
   expect_error(new_nabular(NULL))
 })
+
+nab_min <- nabular(data.frame(x = c(1, NA),
+                   group = c(1,2)))
+
+test_that("nabular data is kept when data is grouped", {
+  expect_s3_class(nab_min,
+                  class = "nabular")
+  expect_s3_class(dplyr::group_by(nab_min, group),
+                  class = "nabular")
+})

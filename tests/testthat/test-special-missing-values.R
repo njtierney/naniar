@@ -142,6 +142,8 @@ test_that("special missings are the same for grouped and ungrouped data", {
 
 
 test_that("special missings class is maintained for grouped and ungrouped data", {
+  skip_on_cran()
+  skip_on_ci()
   expect_equal(class(aq_grouped_recoded$Ozone_NA),
                class(aq_recoded$Ozone_NA))
 })

@@ -1,20 +1,11 @@
 context("as_shadow")
 
-test_that("as_shadow returns shadow", {
-  expect_is(as_shadow(airquality), "shadow")
-})
-
 test_that("as_shadow returns a data.frame",{
   expect_is(as_shadow(airquality), "data.frame")
 })
 
 test_that("as_shadow returns a tibble",{
   expect_is(as_shadow(airquality), "tbl")
-})
-
-test_that("as_shadow returns correct ordering of classes",{
-  expect_equal(class(as_shadow(airquality)),
-               c("shadow", "tbl_df", "tbl", "data.frame"))
 })
 
 test_df <- data.frame(x = c(1,2),

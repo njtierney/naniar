@@ -1,18 +1,3 @@
-#' Create a new nabular format
-#'
-#' @param x a data.frame
-#'
-#' @return object with class "nabular", inheriting from it's original class
-#' @export
-new_nabular <- function(x){
-
-  # is there some mixture of shade and regular data?
-  if (sum(are_shade(x) == ncol(x)) | !any_shade(x)) {
-    rlang::abort(message = "data must have shadow data with the regular data")
-  }
-  tibble::new_tibble(x, class = "nabular", nrow = as.integer(nrow(x)))
-}
-
 #' Convert data into nabular form by binding shade to it
 #'
 #' Binding a shadow matrix to a regular dataframe converts it into nabular data,

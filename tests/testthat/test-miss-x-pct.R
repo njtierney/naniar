@@ -26,40 +26,32 @@ test_that("pct_complete* errors on NULL",{
 
 test_that("prop_miss* errors when a non-dataframe given",{
   expect_error(prop_miss_var(1))
-  expect_error(prop_miss_var("a"))
   expect_error(prop_miss_var(matrix(0)))
 
   expect_error(prop_miss_case(1))
-  expect_error(prop_miss_case("a"))
   expect_error(prop_miss_case(matrix(0)))
 })
 
 test_that("prop_complete* errors when a non-dataframe given",{
   expect_error(prop_complete_var(1))
-  expect_error(prop_complete_var("a"))
   expect_error(prop_complete_var(matrix(0)))
 
   expect_error(prop_complete_case(1))
-  expect_error(prop_complete_case("a"))
   expect_error(prop_complete_case(matrix(0)))
 })
 test_that("pct_miss* errors when a non-dataframe given",{
   expect_error(pct_miss_var(1))
-  expect_error(pct_miss_var("a"))
   expect_error(pct_miss_var(matrix(0)))
 
   expect_error(pct_miss_case(1))
-  expect_error(pct_miss_case("a"))
   expect_error(pct_miss_case(matrix(0)))
 })
 
 test_that("pct_complete* errors when a non-dataframe given",{
   expect_error(pct_complete_var(1))
-  expect_error(pct_complete_var("a"))
   expect_error(pct_complete_var(matrix(0)))
 
   expect_error(pct_complete_case(1))
-  expect_error(pct_complete_case("a"))
   expect_error(pct_complete_case(matrix(0)))
 })
 

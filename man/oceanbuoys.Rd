@@ -8,7 +8,7 @@
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 736 rows and 8 columns.
 }
 \source{
-\url{http://www.pmel.noaa.gov/tao/data_deliv/deliv.html}
+\url{https://www.pmel.noaa.gov/tao/data_deliv/deliv.html}
 }
 \usage{
 data(oceanbuoys)
@@ -17,7 +17,7 @@ data(oceanbuoys)
 Real-time data from moored ocean buoys for improved detection, understanding
 and prediction of El Ni'o and La Ni'a. The data is collected by the
 Tropical Atmosphere Ocean project
-(\url{http://www.pmel.noaa.gov/tao/index.shtml}).
+(\url{https://www.pmel.noaa.gov/tao/index.shtml}).
 }
 \details{
 Format: a data frame with 736 observations on the following 8

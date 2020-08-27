@@ -23,7 +23,7 @@ A key point to remember with the visualisation tools in `naniar` is that there i
 
 # Getting started
 
-One of the first plots that I recommend you start with when you are first exploring your missing data, is the `vis_miss()` plot, which is re-exported from [`visdat`](https://www.github.com/ropensci/visdat).
+One of the first plots that I recommend you start with when you are first exploring your missing data, is the `vis_miss()` plot, which is re-exported from [`visdat`](https://github.com/ropensci/visdat).
 
 ```{r vis-miss}
 library(naniar)
@@ -181,7 +181,7 @@ gg_miss_case(airquality, order_cases = TRUE)
 
 ```
 
-You can also explore the misisngness in cases over some variable using `facet = Month`
+You can also explore the missingness in cases over some variable using `facet = Month`
 
 ```{r gg-miss-case-group}
 

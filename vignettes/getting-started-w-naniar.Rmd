@@ -44,14 +44,14 @@ When you start with a dataset, you might do something where you look at the gene
 
 - `summary()`
 - `str()`
-- [`skimr::skim`](https://github.com/ropenscilabs/skimr), or
+- [`skimr::skim`](https://github.com/ropensci/skimr), or
 - `dplyr::glimpse()`
 
 These works really well when you've got a small amount of data, but when you have more data, you are generally limited by how much you can read.
 
 So before you start looking at missing data, you'll need to look at the data, but what does that even mean?
 
-The package `visdat` helps you get a handle on this. `visdat` provides a visualisation of an entire data frame at once, and was heavily inspired by [`csv-fingerprint`](http://setosa.io/blog/2014/08/03/csv-fingerprints/), and functions like `missmap`, from `Amelia`.
+The package `visdat` helps you get a handle on this. `visdat` provides a visualisation of an entire data frame at once, and was heavily inspired by [`csv-fingerprint`](https://setosa.io/blog/2014/08/03/csv-fingerprints/), and functions like `missmap`, from `Amelia`.
 
 There are two main functions in the `visdat` package:
 
@@ -467,5 +467,5 @@ Naming credit (once again!) goes to Miles McBain. Among various other things, Mi
 
 - MANET: http://www.rosuda.org/MANET/
 - ggobi: https://en.wikipedia.org/wiki/GGobi
-- visdat: https://www.github.com/ropensci/visdat
+- visdat: https://github.com/ropensci/visdat
 - Tierney NJ, Harden FA, Harden MJ, Mengersen, KA, Using decision trees to understand structure in missing data BMJ Open 2015;5:e007450. doi: 10.1136/bmjopen-2014-007450

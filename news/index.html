@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0</span>
       </span>
     </div>
 
@@ -149,14 +149,20 @@
       <small>Source: <a href='https://github.com/njtierney/naniar/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="naniar-053-20200817-spur-of-the-lamp-post" class="section level1">
+    <div id="naniar-060-20200817-spur-of-the-lamp-post" class="section level1">
 <h1 class="page-header">
-<a href="#naniar-053-20200817-spur-of-the-lamp-post" class="anchor"></a>naniar 0.5.3 (2020/08/17) “Spur of the lamp post”<small> Unreleased </small>
+<a href="#naniar-060-20200817-spur-of-the-lamp-post" class="anchor"></a>naniar 0.6.0 (2020/08/17) “Spur of the lamp post”<small> Unreleased </small>
 </h1>
 <ul>
-<li>Minor bugfix for CRAN</li>
 <li>Provide warning for <code>replace_with_na</code> when columns provided that don’t exist (see <a href='https://github.com/njtierney/naniar/issues/160'>#160</a>). Thank you to <a href="https://github.com/michael-dewar">michael-dewar</a> for their help with this.</li>
 </ul>
+<div id="breaking-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaking-changes" class="anchor"></a>Breaking Changes</h2>
+<ul>
+<li>Drop the “nabular” and “shadow” classes (<a href='https://github.com/njtierney/naniar/issues/268'>#268</a>) used in <code><a href="../reference/nabular.html">nabular()</a></code> and <code><a href="../reference/bind_shadow.html">bind_shadow()</a></code>. In doing so removes the functions, <code><a href="../reference/as_shadow.html">as_shadow()</a></code>, <code>is_shadow()</code>, <code>is_nabular()</code>, <code>new_nabular()</code>, <code>new_shadow()</code>. These were mostly used internally and it is not expected that users would have used this functions. If these were used, please file an issue and I can reimplement them.</li>
+</ul>
+</div>
 </div>
     <div id="naniar-052-20200628-silver-apple" class="section level1">
 <h1 class="page-header">
@@ -186,9 +192,9 @@
 <h1 class="page-header">
 <a href="#naniar-050-20200220-the-end-of-this-story-and-the-beginning-of-all-of-the-others" class="anchor"></a>naniar 0.5.0 (2020/02/20) “The End of this Story and the Beginning of all of the Others”<small> 2020-02-28 </small>
 </h1>
-<div id="breaking-changes" class="section level2">
+<div id="breaking-changes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#breaking-changes" class="anchor"></a>Breaking Changes</h2>
+<a href="#breaking-changes-1" class="anchor"></a>Breaking Changes</h2>
 <ul>
 <li>The following functions related to calculating the proportion/percentage of missingness were made Defunct and will no longer work:
 <ul>
@@ -300,7 +306,7 @@
 <li><p><code><a href="../reference/impute_median.html">impute_median()</a></code> and scoped variants</p></li>
 <li><p><code><a href="../reference/is_shade.html">any_shade()</a></code> returns a logical TRUE or FALSE depending on if there are any <code>shade</code> values</p></li>
 <li><p><code><a href="../reference/nabular.html">nabular()</a></code> an alias for <code><a href="../reference/bind_shadow.html">bind_shadow()</a></code> to tie the <code>nabular</code> term into the work.</p></li>
-<li><p><code><a href="../reference/is_shadow.html">is_nabular()</a></code> checks if input is nabular.</p></li>
+<li><p><code>is_nabular()</code> checks if input is nabular.</p></li>
 <li><p><code><a href="../reference/geom_miss_point.html">geom_miss_point()</a></code> now gains the arguments from <code><a href="../reference/shadow_shift.html">shadow_shift()</a></code>/<code><a href="../reference/impute_below.html">impute_below()</a></code> for altering the amount of <code>jitter</code> and proportion below (<code>prop_below</code>).</p></li>
 <li><p>Added two new vignettes, “Exploring Imputed Values”, and “Special Missing Values”</p></li>
 <li><p><code>miss_var_summary</code> and <code>miss_case_summary</code> now no longer provide the cumulative sum of missingness in the summaries - this summary can be added back to the data with the option <code>add_cumsum = TRUE</code>. <a href='https://github.com/njtierney/naniar/issues/186'>#186</a></p></li>
@@ -349,9 +355,9 @@
 <code>miss_case_table</code> and <code>miss_var_table</code> now has final column names <code>pct_vars</code>, and <code>pct_cases</code> instead of <code>pct_miss</code> - fixes <a href='https://github.com/njtierney/naniar/issues/178'>#178</a>.</li>
 </ul>
 </div>
-<div id="breaking-changes-1" class="section level2">
+<div id="breaking-changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#breaking-changes-1" class="anchor"></a>Breaking Changes</h2>
+<a href="#breaking-changes-2" class="anchor"></a>Breaking Changes</h2>
 <ul>
 <li>Deprecated old names of the scalar missingness summaries, in favour of a more consistent syntax <a href="https://github.com/njtierney/naniar/issues/171"><a href='https://github.com/njtierney/naniar/issues/171'>#171</a></a>. The old the and new are:</li>
 </ul>
@@ -427,7 +433,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#naniar-053-20200817-spur-of-the-lamp-post">0.5.3</a></li>
+        <li><a href="#naniar-060-20200817-spur-of-the-lamp-post">0.6.0</a></li>
         <li><a href="#naniar-052-20200628-silver-apple">0.5.2</a></li>
         <li><a href="#naniar-051-20200410-uncle-andrews-applewood-wardrobe">0.5.1</a></li>
         <li><a href="#naniar-050-20200220-the-end-of-this-story-and-the-beginning-of-all-of-the-others">0.5.0</a></li>

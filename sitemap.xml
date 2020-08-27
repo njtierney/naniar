@@ -43,9 +43,6 @@
     <loc>http://naniar.njtierney.com//reference/as_shadow.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com//reference/as_shadow.data.frame.html</loc>
-  </url>
-  <url>
     <loc>http://naniar.njtierney.com//reference/as_shadow_upset.html</loc>
   </url>
   <url>
@@ -122,9 +119,6 @@
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/is_shade.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/is_shadow.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/label_miss_1d.html</loc>
@@ -205,13 +199,7 @@
     <loc>http://naniar.njtierney.com//reference/naniar.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com//reference/new_nabular.html</loc>
-  </url>
-  <url>
     <loc>http://naniar.njtierney.com//reference/new_shade.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/new_shadow.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/oceanbuoys.html</loc>

@@ -40,7 +40,7 @@ test_that("add_label_shadow errors when using a dataframe with no shadow", {
 })
 
 
-dat_sh <- bind_shadow(dat)
+dat_sh <- nabular(dat)
 
 dat_sh_add <- add_label_shadow(dat_sh)
 

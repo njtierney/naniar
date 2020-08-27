@@ -4,9 +4,6 @@ x <- c(NA, 1, 2, "3")
 xs <- shade(c(NA, 1, 2, "3"))
 aq <- airquality
 aq_s <- as_shadow(airquality)
-are_shade(aq_s)
-
-is_shadow(aq_s)
 
 test_that("is_shade returns appropriate output",{
   expect_true(is_shade(xs))

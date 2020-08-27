@@ -1,6 +1,6 @@
 context("test-shadow-long")
 
-aq_shadow <- bind_shadow(airquality)
+aq_shadow <- nabular(airquality)
 
 aq_sh_long <- shadow_long(aq_shadow)
 

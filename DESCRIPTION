@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.5.3
+Version: 0.6.0
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -115,7 +115,6 @@ Collate:
     'shade.R'
     'shadow-recode.R'
     'shadow-shifters.R'
-    'shadow-verifiers.R'
     'shadows.R'
     'stat-miss-point.R'
     'utils.R'

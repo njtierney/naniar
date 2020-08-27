@@ -7,15 +7,7 @@ df <- tibble::tribble(
   72,    25
 )
 
-dfs <- bind_shadow(df)
-
-test_that("is_nabular returns TRUE for nabular data", {
-  expect_true(is_nabular(dfs))
-})
-
-test_that("is_shadow returns FALSE for regular data", {
-  expect_false(is_shadow(df))
-})
+dfs <- nabular(df)
 
 dfs_are <- are_shade(dfs)
 

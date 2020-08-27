@@ -254,27 +254,29 @@ are three types of arguments you can use here:</p><ul>
     <div class='dont-index'><p>[gg_miss_case()][gg_miss_case_cumsum()][gg_miss_fct()][gg_miss_span()][gg_miss_var()][gg_miss_var_cumsum()][gg_miss_which()]</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
 
 <span class='co'># using regular geom_point()</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>airquality</span>,
        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>,
            <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R</span>)) +
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 42 rows containing missing values (geom_point).</span></div><div class='img'><img src='geom_miss_point-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>()
+
 <span class='co'># using  geom_miss_point()</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>airquality</span>,
        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>,
            <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R</span>)) +
- <span class='fu'>geom_miss_point</span>()</div><div class='img'><img src='geom_miss_point-2.png' alt='' width='700' height='433' /></div><div class='input'>
+ <span class='fu'>geom_miss_point</span>()
+
  <span class='co'># using facets</span>
 
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>airquality</span>,
        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>,
            <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Solar.R</span>)) +
  <span class='fu'>geom_miss_point</span>() +
- <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~<span class='no'>Month</span>)</div><div class='img'><img src='geom_miss_point-3.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+ <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~<span class='no'>Month</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

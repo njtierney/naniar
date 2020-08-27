@@ -216,6 +216,7 @@ See the examples for more details.</p></td>
 #&gt; </span><span style='color: #555555;'># … with 143 more rows</span><span></div><div class='input'>
 <span class='no'>aq_shadow</span> <span class='kw'>&lt;-</span> <span class='fu'>bind_shadow</span>(<span class='no'>airquality</span>)
 
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># explore missing data visually</span>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
 
@@ -226,8 +227,8 @@ See the examples for more details.</p></td>
        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ozone</span>)) +
        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span>() +
        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~<span class='no'>Solar.R_NA</span>,
-       <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='message'>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 37 rows containing non-finite values (stat_bin).</span></div><div class='img'><img src='bind_shadow-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></span></pre>
+       <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+}</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

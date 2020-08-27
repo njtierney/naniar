@@ -179,7 +179,6 @@ but when a wrapper function <code>.where</code> written around it.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span>(
 ~<span class='no'>wind</span>, ~<span class='no'>temp</span>,
 -<span class='fl'>99</span>,    <span class='fl'>45</span>,
@@ -189,16 +188,27 @@ but when a wrapper function <code>.where</code> written around it.</p></td>
 
 <span class='no'>dfs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='bind_shadow.html'>bind_shadow</a></span>(<span class='no'>df</span>)
 
-<span class='no'>dfs</span>
-
-<span class='fu'>recode_shadow</span>(<span class='no'>dfs</span>, <span class='kw'>temp</span> <span class='kw'>=</span> <span class='fu'><a href='where.html'>.where</a></span>(<span class='no'>wind</span> <span class='kw'>==</span> -<span class='fl'>99</span> ~ <span class='st'>"bananas"</span>))
-
-<span class='co'># need to debug this</span>
-
+<span class='no'>dfs</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 4</span><span>
+#&gt;    wind  temp wind_NA temp_NA
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>  
+#&gt; </span><span style='color: #555555;'>1</span><span>   -</span><span style='color: #BB0000;'>99</span><span>    45 !NA     !NA    
+#&gt; </span><span style='color: #555555;'>2</span><span>    68    </span><span style='color: #BB0000;'>NA</span><span> !NA     NA     
+#&gt; </span><span style='color: #555555;'>3</span><span>    72    25 !NA     !NA    </div><div class='input'>
+<span class='fu'>recode_shadow</span>(<span class='no'>dfs</span>, <span class='kw'>temp</span> <span class='kw'>=</span> <span class='fu'><a href='where.html'>.where</a></span>(<span class='no'>wind</span> <span class='kw'>==</span> -<span class='fl'>99</span> ~ <span class='st'>"bananas"</span>))</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 4</span><span>
+#&gt;    wind  temp wind_NA temp_NA   
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     
+#&gt; </span><span style='color: #555555;'>1</span><span>   -</span><span style='color: #BB0000;'>99</span><span>    45 !NA     NA_bananas
+#&gt; </span><span style='color: #555555;'>2</span><span>    68    </span><span style='color: #BB0000;'>NA</span><span> !NA     NA        
+#&gt; </span><span style='color: #555555;'>3</span><span>    72    25 !NA     !NA       </div><div class='input'>
 <span class='fu'>recode_shadow</span>(<span class='no'>dfs</span>,
               <span class='kw'>temp</span> <span class='kw'>=</span> <span class='fu'><a href='where.html'>.where</a></span>(<span class='no'>wind</span> <span class='kw'>==</span> -<span class='fl'>99</span> ~ <span class='st'>"bananas"</span>)) <span class='kw'>%&gt;%</span>
-<span class='fu'>recode_shadow</span>(<span class='kw'>wind</span> <span class='kw'>=</span> <span class='fu'><a href='where.html'>.where</a></span>(<span class='no'>wind</span> <span class='kw'>==</span> -<span class='fl'>99</span> ~ <span class='st'>"apples"</span>))
-}</div></pre>
+<span class='fu'>recode_shadow</span>(<span class='kw'>wind</span> <span class='kw'>=</span> <span class='fu'><a href='where.html'>.where</a></span>(<span class='no'>wind</span> <span class='kw'>==</span> -<span class='fl'>99</span> ~ <span class='st'>"apples"</span>))</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 4</span><span>
+#&gt;    wind  temp wind_NA   temp_NA   
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     
+#&gt; </span><span style='color: #555555;'>1</span><span>   -</span><span style='color: #BB0000;'>99</span><span>    45 NA_apples NA_bananas
+#&gt; </span><span style='color: #555555;'>2</span><span>    68    </span><span style='color: #BB0000;'>NA</span><span> !NA       NA        
+#&gt; </span><span style='color: #555555;'>3</span><span>    72    25 !NA       !NA       </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

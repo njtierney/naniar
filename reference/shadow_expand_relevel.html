@@ -177,8 +177,7 @@ shadow variables.</p>
     <p>a factor with expanded levels</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span>(
+    <pre class="examples"><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span>(
   ~<span class='no'>wind</span>, ~<span class='no'>temp</span>,
   -<span class='fl'>99</span>,    <span class='fl'>45</span>,
   <span class='fl'>68</span>,    <span class='fl'>NA</span>,
@@ -189,15 +188,14 @@ shadow variables.</p>
 
 <span class='no'>test_shade</span> <span class='kw'>&lt;-</span> <span class='no'>dfs</span>$<span class='no'>wind_NA</span>
 
-<span class='fu'>shadow_expand_relevel</span>(<span class='no'>test_shade</span>, <span class='st'>"weee"</span>)
+<span class='co'>#  shadow_expand_relevel(test_shade, "weee")</span>
 
-<span class='no'>dfs</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>mutate</span>(<span class='kw'>temp_NA</span> <span class='kw'>=</span> <span class='fu'>shadow_expand_relevel</span>(<span class='no'>temp_NA</span>, <span class='st'>"weee"</span>))
+<span class='co'>#  dfs %&gt;%</span>
+<span class='co'>#    mutate(temp_NA = shadow_expand_relevel(temp_NA, "weee"))</span>
 
 
 <span class='co'># test that this breaks</span>
-<span class='fu'>shadow_expand_relevel</span>(<span class='no'>airquality</span>, <span class='st'>"weee"</span>)
-}</div></pre>
+<span class='co'># shadow_expand_relevel(airquality, "weee")</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

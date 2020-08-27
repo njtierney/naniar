@@ -90,17 +90,16 @@ impute_below_all <- function(.tbl,
 #'
 #' @examples
 #' # select variables starting with a particular string.
-#' library(dplyr)
 #' impute_below_at(airquality,
 #'                 .vars = c("Ozone", "Solar.R"))
 #'
-#' impute_below_at(airquality,
-#'                 .vars = 1:2)
-#'#'
+#' impute_below_at(airquality, .vars = 1:2)
+#'
+#' \dontrun{
+#' library(dplyr)
 #' impute_below_at(airquality,
 #'                 .vars = vars(Ozone))
 #'
-#' \dontrun{
 #' library(ggplot2)
 #' airquality %>%
 #'   bind_shadow() %>%

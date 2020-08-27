@@ -24,12 +24,13 @@
 #'              var = hourly_counts,
 #'              span_every = 168)
 #'
+#' \dontrun{
 #'  library(dplyr)
 #'  pedestrian %>%
 #'    group_by(month) %>%
 #'      miss_var_span(var = hourly_counts,
 #'                    span_every = 168)
-#'
+#' }
 miss_var_span <- function(data, var, span_every){
 
   test_if_null(data)

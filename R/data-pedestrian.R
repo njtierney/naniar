@@ -28,15 +28,14 @@
 #' @keywords datasets
 #'
 #' @examples
-#' \dontrun{
 #' # explore the missingness with vis_miss
-#' library(naniar)
 #'
 #' vis_miss(pedestrian)
 #'
 #' # Look at the missingness in the variables
 #' miss_var_summary(pedestrian)
 #'
+#' \dontrun{
 #' # There is only missingness in hourly_counts
 #' # Look at the missingness over a rolling window
 #' library(ggplot2)

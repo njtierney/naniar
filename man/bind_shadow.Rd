@@ -32,6 +32,7 @@ bind_shadow(airquality, only_miss = TRUE)
 
 aq_shadow <- bind_shadow(airquality)
 
+\dontrun{
 # explore missing data visually
 library(ggplot2)
 
@@ -43,5 +44,6 @@ ggplot(data = aq_shadow,
        geom_histogram() +
        facet_wrap(~Solar.R_NA,
        ncol = 1)
+}
 
 }

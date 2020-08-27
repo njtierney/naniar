@@ -20,8 +20,6 @@ customised as normal for ggplot.
 \examples{
 
 gg_miss_which(airquality)
-library(ggplot2)
-
 }
 \seealso{
 \code{\link[=geom_miss_point]{geom_miss_point()}} \code{\link[=gg_miss_case]{gg_miss_case()}} \link{gg_miss_case_cumsum} \code{\link[=gg_miss_fct]{gg_miss_fct()}} \code{\link[=gg_miss_span]{gg_miss_span()}} \code{\link[=gg_miss_var]{gg_miss_var()}} \code{\link[=gg_miss_var_cumsum]{gg_miss_var_cumsum()}} \code{\link[=gg_miss_which]{gg_miss_which()}}

@@ -25,9 +25,10 @@ whether that run describes a missing value.
 
 miss_var_run(pedestrian, hourly_counts)
 
+\dontrun{
+# find the number of runs missing/complete for each month
 library(dplyr)
 
-# find the number of runs missing/complete for each month
 
 pedestrian \%>\%
   group_by(month) \%>\%
@@ -53,7 +54,7 @@ miss_var_run(pedestrian, hourly_counts) \%>\%
  pedestrian \%>\%
    group_by(month) \%>\%
    miss_var_run(hourly_counts)
-
+}
 
 }
 \seealso{

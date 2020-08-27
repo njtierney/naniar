@@ -23,10 +23,8 @@ complete values.
 }
 \examples{
 
-prop_miss_var(riskfactors)
-prop_miss_var(oceanbuoys)
-prop_complete_var(riskfactors)
-prop_complete_var(oceanbuoys)
+prop_miss_var(airquality)
+prop_complete_var(airquality)
 
 }
 \seealso{

@@ -55,7 +55,7 @@
 #' @param colour the colour chosen for the aesthetic
 #'
 #' @examples
-#'
+#' \dontrun{
 #' library(ggplot2)
 #'
 #' # using regular geom_point()
@@ -77,7 +77,7 @@
 #'            y = Solar.R)) +
 #'  geom_miss_point() +
 #'  facet_wrap(~Month)
-#'
+#'}
 #' @export
  geom_miss_point <- function(mapping = NULL,
                              data = NULL,

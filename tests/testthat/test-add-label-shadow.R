@@ -1,26 +1,28 @@
 context("add_label_shadow")
+df <- data.frame(x = c(1:3),
+                 y = c(NA, NA, 1))
 
-aq_shadow <- bind_shadow(airquality)
+df_sh <- nabular(df)
 
 test_that("add_label_shadow returns a tibble",{
-  expect_is(add_label_shadow(aq_shadow), "tbl_df")
-  expect_is(add_label_shadow(aq_shadow, Ozone), "tbl_df")
-  expect_is(add_label_shadow(aq_shadow, Ozone, Temp), "tbl_df")
+  expect_is(add_label_shadow(df_sh), "tbl_df")
+  expect_is(add_label_shadow(df_sh, x), "tbl_df")
+  expect_is(add_label_shadow(df_sh, x, y), "tbl_df")
 })
 
 test_that("add_label_shadow adds the right number of columns",{
-  expect_equal(ncol(aq_shadow)+1, ncol(add_label_shadow(aq_shadow)))
-  expect_equal(ncol(aq_shadow)+1, ncol(add_label_shadow(aq_shadow, Ozone)))
-  expect_equal(ncol(aq_shadow)+1, ncol(add_label_shadow(aq_shadow, Ozone, Temp)))
+  expect_equal(ncol(df_sh)+1, ncol(add_label_shadow(df_sh)))
+  expect_equal(ncol(df_sh)+1, ncol(add_label_shadow(df_sh, x)))
+  expect_equal(ncol(df_sh)+1, ncol(add_label_shadow(df_sh, x, y)))
 })
 
 test_that("add_label_shadow adds a column with suffix 'any_missing'",{
-  expect_equal(names(add_label_shadow(aq_shadow)),
-               c(names(aq_shadow), "any_missing"))
-  expect_equal(names(add_label_shadow(aq_shadow, Ozone)),
-               c(names(aq_shadow), "any_missing"))
-  expect_equal(names(add_label_shadow(aq_shadow, Ozone, Temp)),
-               c(names(aq_shadow), "any_missing"))
+  expect_equal(names(add_label_shadow(df_sh)),
+               c(names(df_sh), "any_missing"))
+  expect_equal(names(add_label_shadow(df_sh, x)),
+               c(names(df_sh), "any_missing"))
+  expect_equal(names(add_label_shadow(df_sh, x, y)),
+               c(names(df_sh), "any_missing"))
 })
 
 # add some tests for this condition, where ... is added to label shadow

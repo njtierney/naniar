@@ -27,14 +27,14 @@ is used, which can be customised as normal for ggplot.
 \examples{
 
 miss_var_span(pedestrian, hourly_counts, span_every = 3000)
+\dontrun{
 library(ggplot2)
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000)
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000, facet = sensor_name)
 # works with the rest of ggplot
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + labs(x = "custom")
 gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
-
-gg_miss_span(pedestrian, hourly_counts, span_every = 3000, facet = sensor_name)
+}
 }
 \seealso{
 \code{\link[=geom_miss_point]{geom_miss_point()}} \code{\link[=gg_miss_case]{gg_miss_case()}} \link{gg_miss_case_cumsum} \code{\link[=gg_miss_fct]{gg_miss_fct()}} \code{\link[=gg_miss_var]{gg_miss_var()}} \code{\link[=gg_miss_var_cumsum]{gg_miss_var_cumsum()}} \code{\link[=gg_miss_which]{gg_miss_which()}}

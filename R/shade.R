@@ -60,9 +60,6 @@ any_shade <- function(x){
   any(are_shade(x))
 }
 
-
-
-
 #' Create new levels of missing
 #'
 #' Returns (at least) factors of !NA and NA, where !NA indicates a datum that is
@@ -72,7 +69,7 @@ any_shade <- function(x){
 #'
 #' @param x a vector
 #' @param ... additional levels of missing to add
-#' @param extra_levels is a
+#' @param extra_levels extra levels you might to specify for the factor.
 #'
 #' @examples
 #' df <- tibble::tribble(
@@ -84,11 +81,7 @@ any_shade <- function(x){
 #'
 #' shade(df$wind)
 #'
-#' shade(df$wind,
-#'       inst_fail = -99)
-#'
-#' shade(df$wind,
-#'       inst_fail = 100)
+#' shade(df$wind, inst_fail = -99)
 #'
 #' @export
 shade <- function(x, ..., extra_levels = NULL){

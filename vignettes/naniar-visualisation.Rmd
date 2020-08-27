@@ -4,7 +4,7 @@ author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Gallery of Missing Data Visualisations}
+  %\VignetteIndexEntry{gallery}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -215,7 +215,6 @@ gg_miss_fct(oceanbuoys, year)
 library(tidyr)
 gg_miss_fct(who, year)
 ```
-
 
 (Thanks to [Maria Paula Caldas](https://github.com/mpaulacaldas) for inspiration for this visualisation, [discussed here](https://github.com/njtierney/naniar/issues/254))
 

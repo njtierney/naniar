@@ -15,8 +15,6 @@
 #' @examples
 #'
 #' gg_miss_case_cumsum(airquality)
-#' library(ggplot2)
-#' gg_miss_case_cumsum(riskfactors, breaks = 50) + theme_bw()
 
 gg_miss_case_cumsum <- function(x, breaks = 20){
 

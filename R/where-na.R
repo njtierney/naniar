@@ -59,7 +59,7 @@ which_na <- function(x){
 
 #' miss_var_which(airquality)
 #'
-#' miss_var_which(iris)
+#' miss_var_which(mtcars)
 
 #'
 miss_var_which <- function(data){

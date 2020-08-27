@@ -29,13 +29,15 @@ it orders by the most missings in each variable.
 }
 \examples{
 
+miss_case_summary(airquality)
+
+\dontrun{
 # works with group_by from dplyr
 library(dplyr)
 airquality \%>\%
   group_by(Month) \%>\%
   miss_case_summary()
-
-miss_case_summary(airquality)
+}
 
 }
 \seealso{

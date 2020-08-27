@@ -4,7 +4,7 @@ author: "Nicholas Tierney"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting Started with naniar}
+  %\VignetteIndexEntry{getting-started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -245,7 +245,6 @@ airquality %>%
                na.rm = TRUE)
 ```
 
-
 Below, we can plot the distribution of Temperature, plotting for values of temperature when Ozone is missing, and when it is not missing.
 
 ```{r shadow-plot, echo = TRUE, out.width = "60%"}
@@ -256,6 +255,26 @@ ggplot(aq_shadow,
   geom_density()
 
 ```
+
+We can also explore the value of air temperature and humidity based on missingness of each.
+
+```{r temp-humidity-explore}
+# what if we explore the value of air temperature and humidity based on
+# the missingness of each
+  oceanbuoys %>%
+    bind_shadow() %>%
+    ggplot(aes(x = air_temp_c,
+               fill = humidity_NA)) +
+        geom_histogram()
+
+  oceanbuoys %>%
+    bind_shadow() %>%
+    ggplot(aes(x = humidity,
+               fill = air_temp_c_NA)) +
+        geom_histogram()
+
+```
+
 
 Binding the shadow here also has great benefits when combined with imputation.
 

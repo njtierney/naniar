@@ -74,7 +74,7 @@ Plot Missing Data Points
 Warning message if na.rm = T is supplied.
 }
 \examples{
-
+\dontrun{
 library(ggplot2)
 
 # using regular geom_point()
@@ -96,7 +96,7 @@ ggplot(airquality,
            y = Solar.R)) +
  geom_miss_point() +
  facet_wrap(~Month)
-
+}
 }
 \seealso{
 [gg_miss_case()][gg_miss_case_cumsum()][gg_miss_fct()][gg_miss_span()][gg_miss_var()][gg_miss_var_cumsum()][gg_miss_which()]

@@ -9,7 +9,6 @@
 #' @return a factor with expanded levels
 #'
 #' @examples
-#' \dontrun{
 #' df <- tibble::tribble(
 #'   ~wind, ~temp,
 #'   -99,    45,
@@ -21,15 +20,14 @@
 #'
 #' test_shade <- dfs$wind_NA
 #'
-#' shadow_expand_relevel(test_shade, "weee")
+#'#  shadow_expand_relevel(test_shade, "weee")
 #'
-#' dfs %>%
-#'   mutate(temp_NA = shadow_expand_relevel(temp_NA, "weee"))
+#'#  dfs %>%
+#'#    mutate(temp_NA = shadow_expand_relevel(temp_NA, "weee"))
 #'
 #'
 #' # test that this breaks
-#' shadow_expand_relevel(airquality, "weee")
-#'}
+#' # shadow_expand_relevel(airquality, "weee")
 shadow_expand_relevel <- function(.var, suffix){
 
   # create level
@@ -70,8 +68,8 @@ shadow_expand_relevel <- function(.var, suffix){
 #'
 #' dfs <- bind_shadow(df)
 #'
-#' update_shadow(dfs, "weee")
-#' update_shadow(dfs, "weee") %>% what_levels()
+#'# update_shadow(dfs, "weee")
+#'# update_shadow(dfs, "weee") %>% what_levels()
 #' }
 #'
 update_shadow <- function(data, suffix) {
@@ -150,7 +148,6 @@ update_shadow <- function(data, suffix) {
 #'
 #' @examples
 #'
-#' \dontrun{
 #' df <- tibble::tribble(
 #' ~wind, ~temp,
 #' -99,    45,
@@ -164,12 +161,9 @@ update_shadow <- function(data, suffix) {
 #'
 #' recode_shadow(dfs, temp = .where(wind == -99 ~ "bananas"))
 #'
-#' # need to debug this
-#'
 #' recode_shadow(dfs,
 #'               temp = .where(wind == -99 ~ "bananas")) %>%
 #' recode_shadow(wind = .where(wind == -99 ~ "apples"))
-#' }
 #'
 recode_shadow <- function(data, ...){
 

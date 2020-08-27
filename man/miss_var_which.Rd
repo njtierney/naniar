@@ -21,6 +21,6 @@ there are no missings.
 \examples{
 miss_var_which(airquality)
 
-miss_var_which(iris)
+miss_var_which(mtcars)
 
 }

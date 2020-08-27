@@ -51,7 +51,6 @@ prefix "any_miss" is used, but this can be changed in the \code{label} argument.
 \examples{
 
 airquality \%>\% add_any_miss()
-airquality \%>\% add_any_miss(Ozone)
 airquality \%>\% add_any_miss(Ozone, Solar.R)
 
 }

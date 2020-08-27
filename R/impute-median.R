@@ -69,19 +69,18 @@ impute_median.factor <- function(x){
 #'
 #' @examples
 #' # select variables starting with a particular string.
-#' library(dplyr)
 #' impute_median_all(airquality)
 #'
 #' impute_median_at(airquality,
 #'                .vars = c("Ozone", "Solar.R"))
-#'
+#' \dontrun{
+#' library(dplyr)
 #' impute_median_at(airquality,
 #'                 .vars = vars(Ozone))
 #'
 #' impute_median_if(airquality,
 #'                 .predicate = is.numeric)
 #'
-#' \dontrun{
 #' library(ggplot2)
 #' airquality %>%
 #'   bind_shadow() %>%

@@ -19,12 +19,13 @@
 #' @examples
 #'
 #' gg_miss_var(airquality)
+#' \dontrun{
 #' library(ggplot2)
 #' gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 #' gg_miss_var(airquality, Month)
 #' gg_miss_var(airquality, Month, show_pct = TRUE)
 #' gg_miss_var(airquality, Month, show_pct = TRUE) + ylim(0, 100)
-#'
+#'}
 gg_miss_var <- function(x, facet, show_pct = FALSE){
 
   # get a tidy data frame of the number of missings in each column

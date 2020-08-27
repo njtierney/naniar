@@ -275,15 +275,7 @@ label_shadow <- function(data,
                          missing = "Missing",
                          complete = "Not Missing"){
 
-# It is called "shade" because if you are in a shadow, you are in the shade.
-# this may be helpful if shadows are their own class / have special factor
-# attributes, then all you need is to test to see if they are of a class.
-
-  any_shade <- function(x) any(grepl("^NA|^NA_", x))
-
-  any_row_shade <- function(x){
-    apply(data.frame(x), MARGIN = 1, FUN = function(x) any_shade(x))
-  }
+  # any_shade <- function(x) any(grepl("^NA|^NA_", x))
 
   if (!missing(...)) {
     shadow_vars <- quo_to_shade(...)
@@ -333,9 +325,9 @@ add_label_shadow <- function(data,
                  created by `shade()`, `as_shadow()`, or `bind_shadow()`")
   }
 
-  updated_data <- data %>%
-    dplyr::mutate(any_missing = label_shadow(.,
-                                             ...,
+  updated_data <- dplyr::mutate(data,
+                                any_missing = label_shadow(data,
+                                                           ...,
                                              missing = missing,
                                              complete = complete))
 

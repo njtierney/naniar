@@ -1,23 +1,16 @@
 context("miss_case_table tidiers")
 
-test_that("miss_case_table errors on NULL",{
+test_that("miss_case_table errors when given wrong type",{
   expect_error(miss_case_table(NULL))
-})
-
-test_that("miss_case_table errors when a non-dataframe given",{
   expect_error(miss_case_table(1))
   expect_error(miss_case_table("a"))
-  expect_error(miss_case_table(matrix(iris)))
-})
-
-test_that("miss_case_table produces a tibble", {
-  expect_is(miss_case_table(airquality), "tbl_df")
+  expect_error(miss_case_table(matrix(0)))
 })
 
 aq_group <- dplyr::group_by(airquality, Month)
 
-
-test_that("grouped_df returns a tibble miss_case_table", {
+test_that("miss_case_table produces a tibble", {
+  expect_is(miss_case_table(airquality), "tbl_df")
   expect_is(miss_case_table(aq_group), "tbl_df")
 })
 

@@ -1,5 +1,9 @@
 context("prop_complete")
 
+df <- data.frame(x = c(NA, 1:4),
+                 y = c(NA, NA, 1:3))
+
+
 test_that("prop_complete handles 0 cases as I expect",{
 
   expect_equal(prop_complete(0), 1)
@@ -18,6 +22,9 @@ test_that("prop_complete correctly counts the proportion of missings",{
   expect_equal(prop_complete(c(1,2,3,4,5)),1)
 })
 
+df <- data.frame(x = c(NA, 1:4),
+                 y = c(NA, NA, 1:3))
+
 test_that("prop_complete works for dataframes",{
-  expect_true(dplyr::near(round(prop_complete(airquality), 5), 0.95207))
+  expect_true(dplyr::near(round(prop_complete(df), 5), 0.7))
 })

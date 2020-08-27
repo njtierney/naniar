@@ -196,3 +196,8 @@ coerce_fct_na_explicit <- function(x){
   }
 }
 
+# any_shade <- function(x) any(grepl("^NA|^NA_", x))
+
+any_row_shade <- function(x){
+  apply(data.frame(x), MARGIN = 1, FUN = function(x) any(grepl("^NA|^NA_", x)))
+}

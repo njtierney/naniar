@@ -14,11 +14,10 @@
 #'
 #' @seealso [geom_miss_point()] [gg_miss_case_cumsum] [gg_miss_fct()] [gg_miss_span()] [gg_miss_var()] [gg_miss_var_cumsum()] [gg_miss_which()]
 #'
-#' @export
-#'
 #' @examples
 #'
 #' gg_miss_case(airquality)
+#' \dontrun{
 #' library(ggplot2)
 #' gg_miss_case(airquality) + labs(x = "Number of Cases")
 #' gg_miss_case(airquality, show_pct = TRUE)
@@ -26,7 +25,8 @@
 #' gg_miss_case(airquality, facet = Month)
 #' gg_miss_case(airquality, facet = Month, order_cases = FALSE)
 #' gg_miss_case(airquality, facet = Month, show_pct = TRUE)
-#'
+#'}
+#' @export
 gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
 
   if (!missing(facet)) {

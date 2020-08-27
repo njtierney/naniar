@@ -24,8 +24,6 @@ by specifying variable names or use dplyr \code{vars} and dplyr verbs
 }
 \examples{
 
-pedestrian \%>\% add_shadow_shift(hourly_counts)
-
 airquality \%>\% add_shadow_shift(Ozone, Solar.R)
 
 }

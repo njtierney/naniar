@@ -182,7 +182,7 @@ test_that("special missings class is maintained for grouped and ungrouped data",
 #
 # test_shade <- dfs$wind_NA
 #
-# expanded_vec <- shadow_expand_relevel(test_shade, "weee")
+# # expanded_vec <- shadow_expand_relevel(test_shade, "weee")
 #
 # test_that("shadow_expand_relevel returns shadow type data",{
 #   expect_is(expanded_vec,

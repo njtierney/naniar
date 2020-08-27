@@ -19,7 +19,6 @@ Internal function to handle appropriate expansion and releveling of
 shadow variables.
 }
 \examples{
-\dontrun{
 df <- tibble::tribble(
   ~wind, ~temp,
   -99,    45,
@@ -31,13 +30,12 @@ dfs <- bind_shadow(df)
 
 test_shade <- dfs$wind_NA
 
-shadow_expand_relevel(test_shade, "weee")
+#  shadow_expand_relevel(test_shade, "weee")
 
-dfs \%>\%
-  mutate(temp_NA = shadow_expand_relevel(temp_NA, "weee"))
+#  dfs \%>\%
+#    mutate(temp_NA = shadow_expand_relevel(temp_NA, "weee"))
 
 
 # test that this breaks
-shadow_expand_relevel(airquality, "weee")
-}
+# shadow_expand_relevel(airquality, "weee")
 }

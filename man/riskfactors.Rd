@@ -21,9 +21,6 @@ adult population (18 years of age or older) living in households.
 }
 \examples{
 
-# explore the missingness with vis_miss
-library(naniar)
-
 vis_miss(riskfactors)
 
 # Look at the missingness in the variables
@@ -32,6 +29,7 @@ miss_var_summary(riskfactors)
 # and now as a plot
 gg_miss_var(riskfactors)
 
+\dontrun{
 # Look at the missingness in bmi and poor health
 library(ggplot2)
 p <-
@@ -46,7 +44,7 @@ ggplot(riskfactors,
  p + facet_wrap(~sex)
  # for each education bracket?
  p + facet_wrap(~education)
-
+}
 }
 \seealso{
 the codebook:

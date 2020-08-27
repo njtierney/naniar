@@ -19,7 +19,7 @@ missingness for each variable.
 \examples{
 
 miss_var_cumsum(airquality)
-
+\dontrun{
 library(dplyr)
 
 # respects dplyr::group_by
@@ -27,7 +27,7 @@ library(dplyr)
 airquality \%>\%
   group_by(Month) \%>\%
   miss_var_cumsum()
-
+}
 }
 \seealso{
 \code{\link[=pct_miss_case]{pct_miss_case()}} \code{\link[=prop_miss_case]{prop_miss_case()}} \code{\link[=pct_miss_var]{pct_miss_var()}} \code{\link[=prop_miss_var]{prop_miss_var()}} \code{\link[=pct_complete_case]{pct_complete_case()}} \code{\link[=prop_complete_case]{prop_complete_case()}} \code{\link[=pct_complete_var]{pct_complete_var()}} \code{\link[=prop_complete_var]{prop_complete_var()}} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \code{\link[=miss_case_summary]{miss_case_summary()}} \code{\link[=miss_case_table]{miss_case_table()}} \code{\link[=miss_summary]{miss_summary()}} \code{\link[=miss_var_prop]{miss_var_prop()}} \code{\link[=miss_var_run]{miss_var_run()}} \code{\link[=miss_var_span]{miss_var_span()}} \code{\link[=miss_var_summary]{miss_var_summary()}} \code{\link[=miss_var_table]{miss_var_table()}}

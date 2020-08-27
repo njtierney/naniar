@@ -24,14 +24,7 @@
 #'                replace = list(x = -99))
 #'
 #'replace_with_na(dat_ms,
-#'              replace = list(x = -98))
-#'
-#'replace_with_na(dat_ms,
 #'              replace = list(x = c(-99, -98)))
-#'
-#'replace_with_na(dat_ms,
-#'              replace = list(x = c(-99, -98),
-#'                           y = c("N/A")))
 #'
 #'replace_with_na(dat_ms,
 #'              replace = list(x = c(-99, -98),

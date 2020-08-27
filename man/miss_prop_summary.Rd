@@ -21,8 +21,11 @@ elements in a case contain a missing.
 \examples{
 
 miss_prop_summary(airquality)
+\dontrun{
 library(dplyr)
+# respects dplyr::group_by
 airquality \%>\% group_by(Month) \%>\% miss_prop_summary()
+}
 
 }
 \seealso{

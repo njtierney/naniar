@@ -2,7 +2,16 @@
 
 context("gg_miss_var_plot")
 
-gg_miss_var_plot <- gg_miss_var(airquality)
+dat <- tibble::tribble(
+  ~air, ~wind, ~water, ~month,
+  -99,    NA,  23,     1,
+  -98,    NA,  NA,     1,
+  25,     30,  21,     2,
+  NA,     99,  NA,     2,
+  23,     40,  NA,     2
+)
+
+gg_miss_var_plot <- gg_miss_var(dat)
 
 test_that("gg_miss_var_works",{
   skip_on_cran()
@@ -11,7 +20,7 @@ test_that("gg_miss_var_works",{
                               gg_miss_var_plot)
 })
 
-gg_miss_var_plot_group <- gg_miss_var(airquality, facet = Month)
+gg_miss_var_plot_group <- gg_miss_var(dat, facet = month)
 
 test_that("gg_miss_var_group_works",{
   skip_on_cran()
@@ -21,7 +30,7 @@ test_that("gg_miss_var_group_works",{
 })
 
 
-gg_miss_var_plot_pct <- gg_miss_var(airquality,
+gg_miss_var_plot_pct <- gg_miss_var(dat,
                                     show_pct = TRUE)
 
 test_that("gg_miss_var_pct_works",{
@@ -31,8 +40,8 @@ test_that("gg_miss_var_pct_works",{
                               gg_miss_var_plot_pct)
 })
 
-gg_miss_var_plot_group_pct <- gg_miss_var(airquality,
-                                          facet = Month,
+gg_miss_var_plot_group_pct <- gg_miss_var(dat,
+                                          facet = month,
                                           show_pct = TRUE)
 
 test_that("gg_miss_var_works",{

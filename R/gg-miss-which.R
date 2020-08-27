@@ -16,8 +16,6 @@
 #' @examples
 #'
 #' gg_miss_which(airquality)
-#' library(ggplot2)
-#'
 
 gg_miss_which <- function(x){
 

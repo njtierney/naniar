@@ -32,19 +32,19 @@ you must know that \verb{_at`` affects variables selected with a character vecto
 }
 \examples{
 # select variables starting with a particular string.
-library(dplyr)
 impute_mean_all(airquality)
 
 impute_mean_at(airquality,
                .vars = c("Ozone", "Solar.R"))
 
+\dontrun{
+library(dplyr)
 impute_mean_at(airquality,
                 .vars = vars(Ozone))
 
 impute_mean_if(airquality,
                 .predicate = is.numeric)
 
-\dontrun{
 library(ggplot2)
 airquality \%>\%
   bind_shadow() \%>\%

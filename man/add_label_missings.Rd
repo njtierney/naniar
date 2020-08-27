@@ -25,7 +25,6 @@ Add a column describing if there are any missings in the dataset
 \examples{
 
 airquality \%>\% add_label_missings()
-airquality \%>\% add_label_missings(Ozone)
 airquality \%>\% add_label_missings(Ozone, Solar.R)
 airquality \%>\% add_label_missings(Ozone, Solar.R, missing = "yes", complete = "no")
 

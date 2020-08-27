@@ -123,6 +123,7 @@ as_shadow_upset <- function(data){
 #'
 #' aq_shadow <- bind_shadow(airquality)
 #'
+#' \dontrun{
 #' # explore missing data visually
 #' library(ggplot2)
 #'
@@ -134,6 +135,7 @@ as_shadow_upset <- function(data){
 #'        geom_histogram() +
 #'        facet_wrap(~Solar.R_NA,
 #'        ncol = 1)
+#' }
 #'
 bind_shadow <- function(data, only_miss = FALSE, ...){
 

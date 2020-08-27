@@ -31,14 +31,6 @@ dat_ms
 replace_with_na_all(data = dat_ms,
                     condition = ~.x == -99)
 
-# replace all instances of -98 with NA
-replace_with_na_all(data = dat_ms,
-                    condition = ~.x == -98)
-
-# replace all instances of -99 or -98 with NA
-replace_with_na_all(dat_ms,
-                    condition = ~.x \%in\% c(-99, -98))
-
 # replace all instances of -99 or -98, or "N/A" with NA
 replace_with_na_all(dat_ms,
                     condition = ~.x \%in\% c(-99, -98, "N/A"))

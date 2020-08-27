@@ -14,10 +14,11 @@
 #' @examples
 #' airquality$Ozone
 #' shadow_shift(airquality$Ozone)
+#' \dontrun{
 #' library(dplyr)
 #' airquality %>%
 #'     mutate(Ozone_shift = shadow_shift(Ozone))
-#'
+#' }
 #' @export
 shadow_shift <- function(x, ...) UseMethod("shadow_shift")
 

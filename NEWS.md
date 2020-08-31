@@ -4,7 +4,7 @@
 
 ## Breaking Changes
 
-- Drop the "nabular" and "shadow" classes (#268) used in `nabular()` and `bind_shadow()`. In doing so removes the functions, `as_shadow()`, `is_shadow()`, `is_nabular()`, `new_nabular()`, `new_shadow()`. These were mostly used internally and it is not expected that users would have used this functions. If these were used, please file an issue and I can reimplement them.
+- Drop the "nabular" and "shadow" classes (#268) used in `nabular()` and `bind_shadow()`. In doing so removes the functions, `as_shadow()`, `is_shadow()`, `is_nabular()`, `new_nabular()`, `new_shadow()`. These were mostly used internally and it is not expected that users would have used this functions. If these were used, please file an issue and I can implement them again.
 
 # naniar 0.5.2 (2020/06/28) "Silver Apple"
 

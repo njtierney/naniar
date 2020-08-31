@@ -41,3 +41,27 @@ test_that("works for multiple columns",{
   expect_equal(out$y, c("A",NA,NA,"E","F"))
   expect_equal(out$z, c(-100, NA, -98, -101, NA))
 })
+
+test_that("throws a warning when elements provided don't exist", {
+  expect_warning(
+    replace_with_na(dat_ms,
+                    replace = list(
+                      x = -99, # dat_ms$x exists
+                      w = -99  # dat_ms$w does not
+                      )
+                    )
+    )
+})
+
+dat_ms_replace_w <- suppressWarnings(
+  {replace_with_na(dat_ms,
+                   replace = list(
+                     x = -99, # dat_ms$x exists
+                     w = -99  # dat_ms$w does not
+                     ))}
+  )
+
+test_that("Still operates on X when elements provided don't exist", {
+  expect_equal(dat_ms_replace_w$x[4], NA_real_)
+
+})

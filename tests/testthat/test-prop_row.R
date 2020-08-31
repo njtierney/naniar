@@ -2,38 +2,23 @@ context("rowwise missings")
 
 # is there a more general way to write these kinds of tests?
 test_that("rowwise errors for non data frames",{
-  expect_error(n_miss_row(0))
-  expect_error(n_miss_row(TRUE))
-  expect_error(n_miss_row(NULL))
   expect_error(n_miss_row(numeric(0)))
-  # expect_error(n_miss_row(iris[0]))
+  expect_error(n_miss_row(NULL))
 
-  expect_error(n_complete_row(0))
-  expect_error(n_complete_row(TRUE))
-  expect_error(n_complete_row(NULL))
   expect_error(n_complete_row(numeric(0)))
-  # expect_error(n_complete_row(iris[0]))
+  expect_error(n_complete_row(NULL))
 
-  expect_error(prop_miss_row(0))
-  expect_error(prop_miss_row(TRUE))
-  expect_error(prop_miss_row(NULL))
   expect_error(prop_miss_row(numeric(0)))
-  # expect_error(prop_miss_row(iris[0]))
+  expect_error(prop_miss_row(NULL))
 
-  expect_error(prop_complete_row(0))
-  expect_error(prop_complete_row(TRUE))
-  expect_error(prop_complete_row(NULL))
   expect_error(prop_complete_row(numeric(0)))
-  # expect_error(prop_complete_row(iris[0]))
+  expect_error(prop_complete_row(NULL))
 
 })
 
 d10 <- diag_na(10)
 ds <- d10
 ds[upper.tri(ds)] <- NA
-
-n_miss_row(d10)
-n_miss_row(ds)
 
 test_that("n/prop_miss_row correctly counts the missings",{
   expect_equal(n_miss_row(d10), rep(1,10))

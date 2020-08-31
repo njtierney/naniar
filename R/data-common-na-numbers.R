@@ -22,7 +22,6 @@
 #'                           -98, "F",   -1)
 #'
 #' miss_scan_count(dat_ms, -99)
-#' miss_scan_count(dat_ms, c(-99,-98))
 #' miss_scan_count(dat_ms, c("-99","-98","N/A"))
 #' common_na_numbers
 #' miss_scan_count(dat_ms, common_na_numbers)

@@ -21,7 +21,6 @@ verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.
 }
 \examples{
 
-airquality \%>\% cast_shadow_shift(Ozone)
 airquality \%>\% cast_shadow_shift(Ozone,Temp)
 
 airquality \%>\% cast_shadow_shift(dplyr::contains("o"))

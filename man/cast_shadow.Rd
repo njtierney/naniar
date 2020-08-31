@@ -27,8 +27,8 @@ to select variables.
 }
 \examples{
 
-airquality \%>\% cast_shadow(Ozone)
 airquality \%>\% cast_shadow(Ozone, Solar.R)
+\dontrun{
 library(ggplot2)
 library(magrittr)
 airquality  \%>\%
@@ -36,6 +36,7 @@ airquality  \%>\%
   ggplot(aes(x = Ozone,
              colour = Solar.R_NA)) +
         geom_density()
+}
 
 }
 \seealso{

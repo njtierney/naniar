@@ -11,7 +11,7 @@ shade(x, ..., extra_levels = NULL)
 
 \item{...}{additional levels of missing to add}
 
-\item{extra_levels}{is a}
+\item{extra_levels}{extra levels you might to specify for the factor.}
 }
 \description{
 Returns (at least) factors of !NA and NA, where !NA indicates a datum that is
@@ -29,10 +29,6 @@ df <- tibble::tribble(
 
 shade(df$wind)
 
-shade(df$wind,
-      inst_fail = -99)
-
-shade(df$wind,
-      inst_fail = 100)
+shade(df$wind, inst_fail = -99)
 
 }

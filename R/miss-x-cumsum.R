@@ -12,7 +12,7 @@
 #' @examples
 #'
 #' miss_var_cumsum(airquality)
-#'
+#' \dontrun{
 #' library(dplyr)
 #'
 #' # respects dplyr::group_by
@@ -20,7 +20,7 @@
 #' airquality %>%
 #'   group_by(Month) %>%
 #'   miss_var_cumsum()
-#'
+#'}
 #' @export
 miss_var_cumsum <- function(data){
 
@@ -66,12 +66,13 @@ miss_var_cumsum.grouped_df <- function(data){
 #'
 #' miss_case_cumsum(airquality)
 #'
+#'\dontrun{
 #' library(dplyr)
 #'
 #' airquality %>%
 #'   group_by(Month) %>%
 #'   miss_case_cumsum()
-#'
+#'}
 #' @export
 miss_case_cumsum <- function(data){
 

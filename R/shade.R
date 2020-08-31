@@ -9,8 +9,52 @@ new_shade <- function(x, extra_levels = NULL){
   vctrs::vec_assert(x = x, ptype = factor())
 
   levels(x) <- union(levels(x), glue::glue("NA_{extra_levels}"))
+
   vctrs::new_vctr(x,
                   class = c("shade"))
+}
+
+#' Detect if this is a shade
+#'
+#' This tells us if this column is a shade
+#'
+#' @param x a vector you want to test if is a shade
+#'
+#' @return logical - is this a shade?
+#' @export
+#' @name is_shade
+#'
+#' @examples
+#'
+#' xs <- shade(c(NA, 1, 2, "3"))
+#'
+#' is_shade(xs)
+#' are_shade(xs)
+#' any_shade(xs)
+#'
+#' aq_s <- as_shadow(airquality)
+#'
+#' is_shade(aq_s)
+#' are_shade(aq_s)
+#' any_shade(aq_s)
+#' any_shade(airquality)
+#'
+#'
+is_shade <- function(x){
+  inherits(x, "shade")
+}
+
+#' @export
+#' @rdname is_shade
+are_shade <- function(x){
+  purrr::map(x, class) %>%
+    purrr::map_lgl(~any(grepl("shade",.)))
+}
+
+#' @export
+#' @rdname is_shade
+any_shade <- function(x){
+  any(are_shade(x))
 }
 
 #' Create new levels of missing
@@ -22,7 +66,7 @@ new_shade <- function(x, extra_levels = NULL){
 #'
 #' @param x a vector
 #' @param ... additional levels of missing to add
-#' @param extra_levels is a
+#' @param extra_levels extra levels you might to specify for the factor.
 #'
 #' @examples
 #' df <- tibble::tribble(
@@ -34,11 +78,7 @@ new_shade <- function(x, extra_levels = NULL){
 #'
 #' shade(df$wind)
 #'
-#' shade(df$wind,
-#'       inst_fail = -99)
-#'
-#' shade(df$wind,
-#'       inst_fail = 100)
+#' shade(df$wind, inst_fail = -99)
 #'
 #' @export
 shade <- function(x, ..., extra_levels = NULL){
@@ -133,8 +173,24 @@ are_shade <- function(x){
     purrr::map_lgl(~any(grepl("shade",.)))
 }
 
+#' Which variables are shades?
+#'
+#' This function tells us which variables contain shade information
+#'
+#' @param .tbl a data.frame or tbl
+#'
+#' @return numeric - which column numbers contain shade information
+#'
+#' @examples
+#'
+#' df_shadow <- bind_shadow(airquality)
+#'
+#' which_are_shade(df_shadow)
+#'
 #' @export
-#' @rdname is_shade
-any_shade <- function(x){
-  any(are_shade(x))
+which_are_shade <- function(.tbl){
+  test_if_null(.tbl)
+  test_if_dataframe(.tbl)
+  which(are_shade(.tbl))
 }
+

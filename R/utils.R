@@ -196,9 +196,8 @@ coerce_fct_na_explicit <- function(x){
   }
 }
 
-skip_on_gh_actions <- function() {
-  if (!identical(Sys.getenv("GITHUB_ACTIONS"), "true")) {
-    return(invisible(TRUE))
-  }
-  testthat::skip("On GitHub Actions")
+# any_shade <- function(x) any(grepl("^NA|^NA_", x))
+
+any_row_shade <- function(x){
+  apply(data.frame(x), MARGIN = 1, FUN = function(x) any(grepl("^NA|^NA_", x)))
 }

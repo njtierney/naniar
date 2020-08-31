@@ -21,7 +21,6 @@ the \code{recode_shadow} function.
 }
 \examples{
 
-\dontrun{
 df <- tibble::tribble(
 ~wind, ~temp,
 -99,    45,
@@ -35,11 +34,8 @@ dfs
 
 recode_shadow(dfs, temp = .where(wind == -99 ~ "bananas"))
 
-# need to debug this
-
 recode_shadow(dfs,
               temp = .where(wind == -99 ~ "bananas")) \%>\%
 recode_shadow(wind = .where(wind == -99 ~ "apples"))
-}
 
 }

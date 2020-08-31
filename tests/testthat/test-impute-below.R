@@ -10,30 +10,25 @@ test_that("impute_below_all returns NULL when given NULL",{
   expect_equal(impute_below_all(data.frame(NULL)), data.frame(NULL))
 })
 
-test_that("impute_below_all returns an error when given the wrong kind of object",{
+test_that("impute_below_all errors when given wrong object",{
   expect_error(impute_below_all(as.POSIXct(111, origin = "1970-01-01")))
 })
-
 
 miss_vec_5 <- c(10,10,9,NA,3)
 
 which_miss <- function(x) which(is.na(x))
 
-test_that("impute_below_all returns NA values less than minimum for one location",{
+test_that("impute_below_all returns NA values less than min for one location",{
   expect_lt(impute_below_all(data.frame(miss_vec_5))[which_miss(miss_vec_5), ],
             min(miss_vec_5, na.rm = TRUE))
 })
 
 miss_vec_2 <- data.frame(x = c(4,NA))
-miss_vec_3 <- data.frame(x = c(4,NA,NA))
 miss_vec_4 <- data.frame(x = c(4,NA,NA,NA))
 
-test_that(
-  "impute_below_all returns NA values less than min when only one missing value",{
+test_that("impute_below_all returns NA values < min when only one missing",{
   expect_lt(impute_below_all(miss_vec_2)[which_miss(miss_vec_2), ],
             min(miss_vec_2, na.rm = TRUE))
-  expect_lt(min(impute_below_all(miss_vec_3)[which_miss(miss_vec_3), ]),
-            min(miss_vec_3, na.rm = TRUE))
   expect_lt(min(impute_below_all(miss_vec_4)[which_miss(miss_vec_4), ]),
             min(miss_vec_4, na.rm = TRUE))
 })
@@ -53,7 +48,7 @@ test_that("impute_below_all returns the same input when length == 1",{
 })
 
 test_vec <- data.frame(x = runif(100))
-test_that("impute_below_all returns same input when there are no missing values",{
+test_that("impute_below_all returns same input when no missings",{
   expect_equal(impute_below_all(test_vec),test_vec)
 })
 
@@ -104,9 +99,9 @@ test_that("impute_below_all jitter makes shifts bigger",{
   )
 })
 
-aq_s <- bind_shadow(airquality)
+aq_s <- nabular(airquality)
 
-test_that("impute_below works with bind_shadow", {
+test_that("impute_below works with nabular", {
   expect_is(impute_below(aq_s$Ozone), "numeric")
   expect_is(impute_below_all(aq_s), "data.frame")
   expect_is(impute_below_at(aq_s, dplyr::vars(Ozone, Solar.R)), "data.frame")

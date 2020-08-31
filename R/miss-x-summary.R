@@ -28,12 +28,13 @@
 #' miss_var_summary(airquality)
 #' miss_var_summary(oceanbuoys, order = TRUE)
 #'
+#' \dontrun{
 #' # works with group_by from dplyr
 #' library(dplyr)
 #' airquality %>%
 #'   group_by(Month) %>%
 #'   miss_var_summary()
-#'
+#' }
 #' @export
 miss_var_summary <- function(data,
                              order = FALSE,
@@ -108,13 +109,15 @@ miss_var_summary.grouped_df <- function(data,
 #'
 #' @examples
 #'
+#' miss_case_summary(airquality)
+#'
+#' \dontrun{
 #' # works with group_by from dplyr
 #' library(dplyr)
 #' airquality %>%
 #'   group_by(Month) %>%
 #'   miss_case_summary()
-#'
-#' miss_case_summary(airquality)
+#'}
 #'
 miss_case_summary <- function(data,
                               order = TRUE,
@@ -204,12 +207,13 @@ miss_case_summary.grouped_df <- function(data,
 #' s_miss$miss_var_summary
 #' # etc, etc, etc.
 #'
+#' \dontrun{
 #' library(dplyr)
 #' s_miss_group <- group_by(airquality, Month) %>% miss_summary()
 #' s_miss_group$miss_df_prop
 #' s_miss_group$miss_case_table
 #' # etc, etc, etc.
-#'
+#' }
 #'
 miss_summary <- function(data, order = TRUE){
 

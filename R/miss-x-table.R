@@ -14,11 +14,12 @@
 #' @examples
 #'
 #' miss_case_table(airquality)
+#' \dontrun{
 #' library(dplyr)
 #' airquality %>%
 #'   group_by(Month) %>%
 #'   miss_case_table()
-#'
+#' }
 miss_case_table <- function(data){
 
   test_if_null(data)
@@ -62,17 +63,17 @@ miss_case_table.grouped_df <- function(data){
 #'
 #' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()] [n_complete()] [n_complete_row()] [n_miss()] [n_miss_row()] [pct_complete()] [pct_miss()] [prop_complete()] [prop_complete_row()] [prop_miss()]
 #'
-#' @export
 #'
 #' @examples
 #'
 #' miss_var_table(airquality)
-#'
+#' \dontrun{
 #' library(dplyr)
 #' airquality %>%
 #'   group_by(Month) %>%
 #'   miss_var_table()
-#'
+#' }
+#' @export
 miss_var_table <- function(data){
 
   test_if_null(data)

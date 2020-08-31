@@ -26,79 +26,74 @@ test_that("pct_complete* errors on NULL",{
 
 test_that("prop_miss* errors when a non-dataframe given",{
   expect_error(prop_miss_var(1))
-  expect_error(prop_miss_var("a"))
-  expect_error(prop_miss_var(matrix(iris)))
+  expect_error(prop_miss_var(matrix(0)))
 
   expect_error(prop_miss_case(1))
-  expect_error(prop_miss_case("a"))
-  expect_error(prop_miss_case(matrix(iris)))
+  expect_error(prop_miss_case(matrix(0)))
 })
 
 test_that("prop_complete* errors when a non-dataframe given",{
   expect_error(prop_complete_var(1))
-  expect_error(prop_complete_var("a"))
-  expect_error(prop_complete_var(matrix(iris)))
+  expect_error(prop_complete_var(matrix(0)))
 
   expect_error(prop_complete_case(1))
-  expect_error(prop_complete_case("a"))
-  expect_error(prop_complete_case(matrix(iris)))
+  expect_error(prop_complete_case(matrix(0)))
 })
 test_that("pct_miss* errors when a non-dataframe given",{
   expect_error(pct_miss_var(1))
-  expect_error(pct_miss_var("a"))
-  expect_error(pct_miss_var(matrix(iris)))
+  expect_error(pct_miss_var(matrix(0)))
 
   expect_error(pct_miss_case(1))
-  expect_error(pct_miss_case("a"))
-  expect_error(pct_miss_case(matrix(iris)))
+  expect_error(pct_miss_case(matrix(0)))
 })
 
 test_that("pct_complete* errors when a non-dataframe given",{
   expect_error(pct_complete_var(1))
-  expect_error(pct_complete_var("a"))
-  expect_error(pct_complete_var(matrix(iris)))
+  expect_error(pct_complete_var(matrix(0)))
 
   expect_error(pct_complete_case(1))
-  expect_error(pct_complete_case("a"))
-  expect_error(pct_complete_case(matrix(iris)))
+  expect_error(pct_complete_case(matrix(0)))
 })
+
+df <- data.frame(x = c(NA, 1:4),
+                 y = c(NA, NA, 1:3))
 
 test_that("missingness scalar summaries produce a single, numeric number", {
 
-  expect_length(prop_miss(airquality), 1)
-  expect_type(prop_miss(airquality), "double")
+  expect_length(prop_miss(df), 1)
+  expect_type(prop_miss(df), "double")
 
-  expect_length(pct_miss(airquality), 1)
-  expect_type(pct_miss(airquality), "double")
+  expect_length(pct_miss(df), 1)
+  expect_type(pct_miss(df), "double")
 
-  expect_length(prop_miss_var(airquality), 1)
-  expect_type(prop_miss_var(airquality), "double")
+  expect_length(prop_miss_var(df), 1)
+  expect_type(prop_miss_var(df), "double")
 
-  expect_length(pct_miss_var(airquality), 1)
-  expect_type(pct_miss_var(airquality), "double")
+  expect_length(pct_miss_var(df), 1)
+  expect_type(pct_miss_var(df), "double")
 
-  expect_length(prop_miss_case(airquality), 1)
-  expect_type(prop_miss_case(airquality), "double")
+  expect_length(prop_miss_case(df), 1)
+  expect_type(prop_miss_case(df), "double")
 
-  expect_length(pct_miss_case(airquality), 1)
-  expect_type(pct_miss_case(airquality), "double")
+  expect_length(pct_miss_case(df), 1)
+  expect_type(pct_miss_case(df), "double")
 
-  expect_length(prop_complete(airquality), 1)
-  expect_type(prop_complete(airquality), "double")
+  expect_length(prop_complete(df), 1)
+  expect_type(prop_complete(df), "double")
 
-  expect_length(pct_complete(airquality), 1)
-  expect_type(pct_complete(airquality), "double")
+  expect_length(pct_complete(df), 1)
+  expect_type(pct_complete(df), "double")
 
-  expect_length(prop_complete_var(airquality), 1)
-  expect_type(prop_complete_var(airquality), "double")
+  expect_length(prop_complete_var(df), 1)
+  expect_type(prop_complete_var(df), "double")
 
-  expect_length(pct_complete_var(airquality), 1)
-  expect_type(pct_complete_var(airquality), "double")
+  expect_length(pct_complete_var(df), 1)
+  expect_type(pct_complete_var(df), "double")
 
-  expect_length(prop_complete_case(airquality), 1)
-  expect_type(prop_complete_case(airquality), "double")
+  expect_length(prop_complete_case(df), 1)
+  expect_type(prop_complete_case(df), "double")
 
-  expect_length(pct_complete_case(airquality), 1)
-  expect_type(pct_complete_case(airquality), "double")
+  expect_length(pct_complete_case(df), 1)
+  expect_type(pct_complete_case(df), "double")
 
 })

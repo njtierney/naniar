@@ -15,10 +15,18 @@ as_shadow(data, ...)
 appended shadow with column names
 }
 \description{
+Return a tibble in shadow matrix form, where the variables are the same but
+have a suffix _NA attached to distinguish them.
+}
+\details{
 Representing missing data structure is achieved using the shadow matrix,
 introduced in \href{https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization}{Swayne and Buja}. The shadow
 matrix is the same dimension as the data, and consists of binary indicators
 of missingness of data values, where missing is represented as "NA", and not
 missing is represented as "!NA". Although these may be represented as 1 and
 0, respectively.
+}
+\examples{
+
+as_shadow(airquality)
 }

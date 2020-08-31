@@ -10,7 +10,7 @@ vec2 <- vec
 
 vec2[is.na(vec)] <- median_val
 
-aq_shadow <- bind_shadow(airquality)
+aq_shadow <- nabular(airquality)
 
 test_that("impute_median works", {
   expect_equal(impute_median(vec), vec2)

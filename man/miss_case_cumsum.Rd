@@ -21,10 +21,11 @@ missing values in each case.
 
 miss_case_cumsum(airquality)
 
+\dontrun{
 library(dplyr)
 
 airquality \%>\%
   group_by(Month) \%>\%
   miss_case_cumsum()
-
+}
 }

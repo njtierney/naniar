@@ -26,12 +26,13 @@ s_miss$miss_case_table
 s_miss$miss_var_summary
 # etc, etc, etc.
 
+\dontrun{
 library(dplyr)
 s_miss_group <- group_by(airquality, Month) \%>\% miss_summary()
 s_miss_group$miss_df_prop
 s_miss_group$miss_case_table
 # etc, etc, etc.
-
+}
 
 }
 \seealso{

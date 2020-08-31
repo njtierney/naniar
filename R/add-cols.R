@@ -49,8 +49,6 @@ add_shadow <- function(data, ...){
 #'
 #' @examples
 #'
-#' pedestrian %>% add_shadow_shift(hourly_counts)
-#'
 #' airquality %>% add_shadow_shift(Ozone, Solar.R)
 #'
 add_shadow_shift <- function(data, ..., suffix = "shift"){
@@ -125,7 +123,6 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
 #' @examples
 #'
 #' airquality %>% add_any_miss()
-#' airquality %>% add_any_miss(Ozone)
 #' airquality %>% add_any_miss(Ozone, Solar.R)
 #'
 add_any_miss <- function(data, ...,
@@ -186,6 +183,7 @@ add_any_miss <- function(data, ...,
 #'
 #' label_missings(airquality)
 #'
+#' \dontrun{
 #' library(dplyr)
 #'
 #' airquality %>%
@@ -197,7 +195,7 @@ add_any_miss <- function(data, ...,
 #'                                      missing = "definitely missing",
 #'                                      complete = "absolutely complete")) %>%
 #'   head()
-#'
+#' }
 label_missings <- function(data,
                            ...,
                            missing = "Missing",
@@ -238,7 +236,6 @@ label_missings <- function(data,
 #' @examples
 #'
 #' airquality %>% add_label_missings()
-#' airquality %>% add_label_missings(Ozone)
 #' airquality %>% add_label_missings(Ozone, Solar.R)
 #' airquality %>% add_label_missings(Ozone, Solar.R, missing = "yes", complete = "no")
 #'
@@ -278,15 +275,7 @@ label_shadow <- function(data,
                          missing = "Missing",
                          complete = "Not Missing"){
 
-# It is called "shade" because if you are in a shadow, you are in the shade.
-# this may be helpful if shadows are their own class / have special factor
-# attributes, then all you need is to test to see if they are of a class.
-
-  any_shade <- function(x) any(grepl("^NA|^NA_", x))
-
-  any_row_shade <- function(x){
-    apply(data.frame(x), MARGIN = 1, FUN = function(x) any_shade(x))
-  }
+  # any_shade <- function(x) any(grepl("^NA|^NA_", x))
 
   if (!missing(...)) {
     shadow_vars <- quo_to_shade(...)
@@ -336,9 +325,9 @@ add_label_shadow <- function(data,
                  created by `shade()`, `as_shadow()`, or `bind_shadow()`")
   }
 
-  updated_data <- data %>%
-    dplyr::mutate(any_missing = label_shadow(.,
-                                             ...,
+  updated_data <- dplyr::mutate(data,
+                                any_missing = label_shadow(data,
+                                                           ...,
                                              missing = missing,
                                              complete = complete))
 
@@ -370,9 +359,8 @@ add_label_shadow <- function(data,
 #' @examples
 #'
 #' add_miss_cluster(airquality)
-#' add_miss_cluster(airquality, cluster_method = "ward.D")
-#' add_miss_cluster(airquality, cluster_method = "ward.D", n_clusters = 3)
 #' add_miss_cluster(airquality, n_clusters = 3)
+#' add_miss_cluster(airquality, cluster_method = "ward.D", n_clusters = 3)
 
 add_miss_cluster <- function(data,
                              cluster_method = "mcquitty",

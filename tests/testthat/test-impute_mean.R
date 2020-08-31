@@ -10,7 +10,7 @@ vec2 <- vec
 
 vec2[is.na(vec)] <- mean_val
 
-aq_shadow <- bind_shadow(airquality)
+aq_shadow <- nabular(airquality)
 
 
 test_that("impute_mean and scoped variants fail when given wrong input", {

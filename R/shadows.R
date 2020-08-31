@@ -1,5 +1,8 @@
 #' Create shadows
 #'
+#' Return a tibble in shadow matrix form, where the variables are the same but
+#' have a suffix _NA attached to distinguish them.
+#'
 #' Representing missing data structure is achieved using the shadow matrix,
 #' introduced in [Swayne and Buja](https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization). The shadow
 #' matrix is the same dimension as the data, and consists of binary indicators
@@ -11,6 +14,9 @@
 #' @param ... selected variables to use
 #'
 #' @return appended shadow with column names
+#' @examples
+#'
+#' as_shadow(airquality)
 #' @export
 
 as_shadow <- function(data, ...){
@@ -19,29 +25,11 @@ as_shadow <- function(data, ...){
 
   test_if_dataframe(data)
 
-  UseMethod("as_shadow")
-}
-
-#' Create shadow data
-#'
-#' Return a tibble in shadow matrix form, where the variables are the same but
-#' have a suffix _NA attached to distinguish them.
-#'
-#' @inheritParams as_shadow
-#'
-#' @examples
-#'
-#' as_shadow(airquality)
-#'
-#' @export
-as_shadow.data.frame <- function(data, ...){
-
   data_shadow <- purrr::map_dfc(data, shade)
 
   names(data_shadow) <- paste0(names(data),"_NA")
 
-
-  return(new_shadow(data_shadow))
+  return(data_shadow)
 
 }
 
@@ -69,6 +57,7 @@ as_shadow.data.frame <- function(data, ...){
 #'
 #' aq_shadow <- bind_shadow(airquality)
 #'
+#' \dontrun{
 #' # explore missing data visually
 #' library(ggplot2)
 #'
@@ -80,6 +69,7 @@ as_shadow.data.frame <- function(data, ...){
 #'        geom_histogram() +
 #'        facet_wrap(~Solar.R_NA,
 #'        ncol = 1)
+#' }
 #'
 bind_shadow <- function(data, only_miss = FALSE, ...){
 
@@ -94,9 +84,8 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
     data <- tibble::as_tibble(data)
     shadow_data <- dplyr::bind_cols(data, shadow_vars)
 
-    return(new_nabular(shadow_data))
+    return(shadow_data)
 
-  # if you want All the values to be added (the default behaviour)
   }
 
   if (!only_miss) {
@@ -109,20 +98,10 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
       shadow_data <- shadow_data %>% recode_shadow(...)
     }
 
-    return(new_nabular(shadow_data))
+    return(shadow_data)
 
   }
 
-}
-
-#' Create a new shadow
-#'
-#' @param x a data.frame
-#'
-#' @return object with class "shadow", inheriting from it's original class
-#' @export
-new_shadow <- function(x){
-  tibble::new_tibble(x, class = "shadow", nrow = as.integer(nrow(x)))
 }
 
 #' Unbind (remove) shadow from data, and vice versa
@@ -161,7 +140,6 @@ new_shadow <- function(x){
 unbind_shadow <- function(data){
   test_if_any_shade(data)
   temp <- dplyr::select(data, -dplyr::ends_with("_NA"))
-  class(temp) <- c("tbl_df", "tbl", "data.frame")
   return(temp)
 }
 
@@ -198,28 +176,6 @@ gather_shadow <- function(data){
                   -rows) %>%
     dplyr::rename(case = rows)
 }
-
-#' Which variables are shades?
-#'
-#' This function tells us which variables contain shade information
-#'
-#' @param .tbl a data.frame or tbl
-#'
-#' @return numeric - which column numbers contain shade information
-#'
-#' @examples
-#'
-#' df_shadow <- bind_shadow(airquality)
-#'
-#' which_are_shade(df_shadow)
-#'
-#' @export
-which_are_shade <- function(.tbl){
-  test_if_null(.tbl)
-  test_if_dataframe(.tbl)
-  which(are_shade(.tbl))
-}
-
 
 #' Reshape shadow data into a long format
 #'
@@ -274,3 +230,56 @@ shadow_long <- function(shadow_data,
     return(gathered_df)
 
 }
+
+#' Convert data into shadow format for doing an upset plot
+#'
+#' Upset plots are a way of visualising common sets, this function transforms
+#'     the data into a format that feeds directly into an upset plot
+#'
+#' @param data a data.frame
+#'
+#' @return a data.frame
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' library(UpSetR)
+#' airquality %>%
+#'   as_shadow_upset() %>%
+#'   upset()
+#' }
+#'
+#' @export
+as_shadow_upset <- function(data){
+
+  if (n_var_miss(data) <= 1 ) {
+
+    if (n_var_miss(data) == 1) {
+      glu_st <- glue::glue("upset plots for missing data requre at least two \\
+                         variables to have missing data, only one variable, \\
+                         '{miss_var_which(data)}' has missing values.")
+    }
+
+    if (n_var_miss(data) == 0) {
+
+      glu_st <- glue::glue("upset plots for missing data requre at least two \\
+                         variables to have missing data, there are no missing \\
+                         values in your data! This is probably a good thing.")
+    }
+
+    rlang::abort(message = glu_st)
+  }
+
+  test_if_null(data)
+
+  test_if_dataframe(data)
+
+  data_shadow <- as.data.frame(is.na(data)*1)
+
+  names(data_shadow) <- paste0(names(data),"_NA")
+
+  dplyr::mutate_if(data_shadow, is.numeric, as.integer)
+
+}
+

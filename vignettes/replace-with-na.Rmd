@@ -96,7 +96,7 @@ Sometimes you have many of the same value that you want to replace. For example,
 and "Not Available". You might also have certain variables that you want to be
 affected by these rules, or you might have more complex rules, like, "only affect variables that are numeric, or character, with this rule".
 
-To account for these cases we have borrowed from [`dplyr`'s scoped variants](http://dplyr.tidyverse.org/reference/scoped.html) and created the 
+To account for these cases we have borrowed from [`dplyr`'s scoped variants](https://dplyr.tidyverse.org/reference/scoped.html) and created the 
 functions:
 
 - `replace_with_na_all()` Replaces NA for all variables. 

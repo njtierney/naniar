@@ -29,8 +29,8 @@ df <- tibble::tribble(
 
 dfs <- bind_shadow(df)
 
-update_shadow(dfs, "weee")
-update_shadow(dfs, "weee") \%>\% what_levels()
+# update_shadow(dfs, "weee")
+# update_shadow(dfs, "weee") \%>\% what_levels()
 }
 
 }

@@ -83,19 +83,13 @@ any_shade <- function(x){
 #' @export
 shade <- function(x, ..., extra_levels = NULL){
 
-  # test_if_null(x)
-  #
-  # if (length(x) == 0) {
-  #   rlang::abort(message = "input to shade must have length > 0")
-  # }
-
-  x <- vctrs::vec_cast(x, factor())
-
   # if no other levels are specified
   if (missing(...)) {
-    x <- factor(is.na(x),
-                labels = c("!NA", "NA"),
-                levels = c(FALSE, TRUE))
+    x <- vctrs::vec_cast(is.na(x),
+                         factor(x = is.na(x),
+                                labels = c("!NA", "NA"),
+                                levels = c(FALSE, TRUE))
+    )
 
     return(new_shade(x, extra_levels))
   }
@@ -127,8 +121,10 @@ shade <- function(x, ..., extra_levels = NULL){
                                   no = "!NA")
 
 
-    x <- factor(x,
-                levels = c("!NA", "NA", custom_na_names))
+    x <- vctrs::vec_cast(x,
+                         factor(x,
+                                levels = c("!NA", "NA", custom_na_names))
+    )
   }
 
   # and return a new shade value

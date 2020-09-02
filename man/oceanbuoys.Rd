@@ -14,7 +14,10 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 data(oceanbuoys)
 }
 \description{
-
+Real-time data from moored ocean buoys for improved detection, understanding
+and prediction of El Ni'o and La Ni'a. The data is collected by the
+Tropical Atmosphere Ocean project
+(\url{https://www.pmel.noaa.gov/gtmba/pmel-theme/pacific-ocean-tao}).
 }
 \details{
 Format: a data frame with 736 observations on the following 8

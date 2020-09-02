@@ -3,7 +3,7 @@
 #' Real-time data from moored ocean buoys for improved detection, understanding
 #'   and prediction of El Ni'o and La Ni'a. The data is collected by the
 #'   Tropical Atmosphere Ocean project
-#'   (\url{https://www.pmel.noaa.gov/tao/index.shtml}).
+#'   (https://www.pmel.noaa.gov/gtmba/pmel-theme/pacific-ocean-tao}).
 #'
 #' Format: a data frame with 736 observations on the following 8
 #' variables.
@@ -29,7 +29,7 @@
 #' @name oceanbuoys
 #' @docType data
 #' @usage data(oceanbuoys)
-#' @source \url{https://www.pmel.noaa.gov/tao/data_deliv/deliv.html}
+#' @source \url{https://www.pmel.noaa.gov/tao/drupal/disdel/}
 #' @keywords datasets
 #' @seealso library(MissingDataGUI) (data named "tao")
 #' @examples

@@ -1,5 +1,12 @@
 # naniar 0.6.0.9000
 
+## Bug fixes
+
+- Fix bug in `miss_var_span()` (#270) where the number of missings + number of
+ complete values added up to more than the number of rows in the data. This was
+ due to the remainder not being used when calculating the number of complete
+ values.
+
 # naniar 0.6.0 (2020/08/17) "Spur of the lamp post"
 
 - Provide warning for `replace_with_na` when columns provided that don't exist (see #160). Thank you to [michael-dewar](https://github.com/michael-dewar) for their help with this.

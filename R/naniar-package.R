@@ -34,6 +34,7 @@ globalVariables(
     "span_counter",
     "n",
     "n_miss",
+    "n_in_span",
     "nheight",
     "pct_miss",
     "n_miss_in_case",

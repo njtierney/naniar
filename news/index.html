@@ -153,6 +153,13 @@
 <h1 class="page-header">
 <a href="#naniar-0609000" class="anchor"></a>naniar 0.6.0.9000<small> Unreleased </small>
 </h1>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>Fix bug in <code><a href="../reference/miss_var_span.html">miss_var_span()</a></code> (<a href='https://github.com/njtierney/naniar/issues/270'>#270</a>) where the number of missings + number of complete values added up to more than the number of rows in the data. This was due to the remainder not being used when calculating the number of complete values.</li>
+</ul>
+</div>
 </div>
     <div id="naniar-060-20200817-spur-of-the-lamp-post" class="section level1">
 <h1 class="page-header">
@@ -231,9 +238,9 @@
 <li>Fix various extra warnings and improve test coverage</li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug Fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug Fixes</h2>
 <ul>
 <li>Address bug where the number of missings in a row is not calculated properly - see <a href="https://github.com/njtierney/naniar/issues/238">238</a> and <a href="https://github.com/njtierney/naniar/issues/232">232</a>. The solution involved using <code><a href="https://rdrr.io/r/base/colSums.html">rowSums(is.na(x))</a></code>, which was 3 times faster.</li>
 <li>Resolve bug in <code><a href="../reference/gg_miss_fct.html">gg_miss_fct()</a></code> where warning is given for non explicit NA values - see <a href="https://github.com/njtierney/naniar/issues/241">241</a>.</li>

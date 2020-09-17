@@ -23,7 +23,11 @@ To summarise the missing values in a time series object it can be useful to
 calculate the number of missing values in a given time period.
 \code{miss_var_span} takes a data.frame object, a variable, and a \code{span_every}
 argument and returns a dataframe containing the number of missing values
-within each span.
+within each span. When the number of observations isn't a perfect
+multiple of the span length, the final span is whatever the last
+remainder is. For example, the \code{pedestrian} dataset has 37,700 rows. If
+the span is set to 4000, then there will be 1700 rows remaining. This can
+be provided using modulo (\code{\%\%}): \code{nrow(data) \%\% 4000}.
 }
 \examples{
 

@@ -16,7 +16,8 @@ miss_var_span(data, var, span_every)
 \value{
 dataframe with variables \code{n_miss}, \code{n_complete}, \code{prop_miss}, and
 \code{prop_complete}, which describe the number, or proportion of missing or
-complete values within that given time span.
+complete values within that given time span. The final variable,
+\code{n_in_span} states how many observations are in the span.
 }
 \description{
 To summarise the missing values in a time series object it can be useful to
@@ -27,7 +28,8 @@ within each span. When the number of observations isn't a perfect
 multiple of the span length, the final span is whatever the last
 remainder is. For example, the \code{pedestrian} dataset has 37,700 rows. If
 the span is set to 4000, then there will be 1700 rows remaining. This can
-be provided using modulo (\code{\%\%}): \code{nrow(data) \%\% 4000}.
+be provided using modulo (\code{\%\%}): \code{nrow(data) \%\% 4000}. This remainder
+number is provided in \code{n_in_span}.
 }
 \examples{
 

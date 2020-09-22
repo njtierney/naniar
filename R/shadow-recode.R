@@ -38,9 +38,15 @@ shadow_expand_relevel <- function(.var, suffix){
                                  levels(.var),
                                  new_level)
 
+  # add check to see if relevelling needs to happen, in case the levels
+  # are the same
+  if (new_level %nin% levels(.var)) {
+
   new_var <- forcats::fct_relevel(new_var,
                                       levels(.var),
                                       new_level)
+
+  }
 
   return(new_var)
 

@@ -6,6 +6,7 @@
  complete values added up to more than the number of rows in the data. This was
  due to the remainder not being used when calculating the number of complete
  values.
+- Fix bug in `recode_shadow()` (#272) where adding the same special missing value in two subsequent operations fails.
 
 # naniar 0.6.0 (2020/08/17) "Spur of the lamp post"
 

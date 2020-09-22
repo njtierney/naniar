@@ -202,4 +202,6 @@ any_row_shade <- function(x){
   apply(data.frame(x), MARGIN = 1, FUN = function(x) any(grepl("^NA|^NA_", x)))
 }
 
-`%nin%` <- purrr::negate(`%in%`)
+vecIsFALSE <- Vectorize(isFALSE)
+
+are_any_false <- function(x, ...) any(vecIsFALSE(x), ...)

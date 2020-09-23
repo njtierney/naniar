@@ -158,6 +158,7 @@
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix bug in <code><a href="../reference/miss_var_span.html">miss_var_span()</a></code> (<a href='https://github.com/njtierney/naniar/issues/270'>#270</a>) where the number of missings + number of complete values added up to more than the number of rows in the data. This was due to the remainder not being used when calculating the number of complete values.</li>
+<li>Fix bug in <code><a href="../reference/recode_shadow.html">recode_shadow()</a></code> (<a href='https://github.com/njtierney/naniar/issues/272'>#272</a>) where adding the same special missing value in two subsequent operations fails.</li>
 </ul>
 </div>
 </div>

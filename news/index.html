@@ -122,7 +122,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/njtierney/naniar">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -153,6 +153,13 @@
 <h1 class="page-header">
 <a href="#naniar-0609000" class="anchor"></a>naniar 0.6.0.9000<small> Unreleased </small>
 </h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>naniar now provides <code><a href="../reference/mcar_test.html">mcar_test()</a></code> for <a href="https://doi.org/10.1080/01621459.1988.10478722">Little’s (1988)</a> statistical test for missing completely at random (MCAR) data. The null hypothesis in this test is that the data is MCAR, and the test statistic is a chi-squared value. Given a high statistic value and low p-value, we can conclude data are not missing completely at random. Thanks to <a href="https://www.andrewheiss.com/">Andrew Heiss</a> for the <a href="https://github.com/njtierney/naniar/pull/279/">PR</a>.</li>
+</ul>
+</div>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>

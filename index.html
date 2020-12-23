@@ -85,7 +85,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/njtierney/naniar">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -143,6 +143,12 @@
 </li>
 </ul>
 </li>
+<li>Statistical tests of missingness:
+<ul>
+<li>
+<code><a href="reference/mcar_test.html">mcar_test()</a></code> for <a href="https://doi.org/10.1080/01621459.1988.10478722">Little’s (1988)</a> missing completely at random (MCAR) test</li>
+</ul>
+</li>
 <li>Visualisation for missing data:
 <ul>
 <li><code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code></li>
@@ -159,16 +165,16 @@
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>You can install naniar from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"naniar"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"naniar"</span>)</span></code></pre></div>
 <p>Or you can install the development version on github using <code>remotes</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># install.packages("remotes")</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># install.packages("remotes")</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>remotes<span class="op">::</span><span class="kw"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"njtierney/naniar"</span>)</span></code></pre></div>
 </div>
 <div id="a-short-overview-of-naniar" class="section level1">
 <h1 class="hasAnchor">
 <a href="#a-short-overview-of-naniar" class="anchor"></a>A short overview of naniar</h1>
 <p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from <a href="http://ggobi.org/">ggobi</a> and <a href="https://www.swmath.org/software/3067">manet</a>, which replaces <code>NA</code> values with values 10% lower than the minimum value in that variable. This visualisation is provided with the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom, which we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="dt">data =</span> airquality,</span>
 <span id="cb3-4"><a href="#cb3-4"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</span>
@@ -178,7 +184,7 @@
 <p><img src="reference/figures/README-regular-geom-point-1.png"><!-- --></p>
 <p>ggplot2 does not handle these missing values, and we get a warning message about the missing values.</p>
 <p>We can instead use <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> to display the missing data</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(naniar)</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(naniar)</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="dt">data =</span> airquality,</span>
 <span id="cb4-4"><a href="#cb4-4"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</span>
@@ -186,7 +192,7 @@
 <span id="cb4-6"><a href="#cb4-6"></a><span class="st">  </span><span class="kw"><a href="reference/geom_miss_point.html">geom_miss_point</a></span>()</span></code></pre></div>
 <p><img src="reference/figures/README-geom-miss-point-1.png"><!-- --></p>
 <p><code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> has shifted the missing values to now be 10% below the minimum value. The missing values are a different colour so that missingness becomes pre-attentive. As it is a ggplot2 geom, it supports features like faceting and other ggplot features.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>p1 &lt;-</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>p1 &lt;-</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="dt">data =</span> airquality,</span>
 <span id="cb5-3"><a href="#cb5-3"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Ozone,</span>
 <span id="cb5-4"><a href="#cb5-4"></a>           <span class="dt">y =</span> Solar.R)) <span class="op">+</span><span class="st"> </span></span>
@@ -201,7 +207,7 @@
 <h1 class="hasAnchor">
 <a href="#data-structures" class="anchor"></a>Data Structures</h1>
 <p>naniar provides a data structure for working with missing data, the shadow matrix <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization">(Swayne and Buja, 1998)</a>. The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as “NA”, and not missing is represented as “!NA”, and variable names are kep the same, with the added suffix “_NA” to the variables.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(airquality)</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(airquality)</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; 1    41     190  7.4   67     5   1</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt; 2    36     118  8.0   72     5   2</span></span>
@@ -226,7 +232,7 @@
 <span id="cb6-23"><a href="#cb6-23"></a><span class="co">#&gt; 10 NA       !NA        !NA     !NA     !NA      !NA   </span></span>
 <span id="cb6-24"><a href="#cb6-24"></a><span class="co">#&gt; # … with 143 more rows</span></span></code></pre></div>
 <p>Binding the shadow data to the data you help keep better track of the missing values. This format is called “nabular”, a portmanteau of <code>NA</code> and <code>tabular</code>. You can bind the shadow to the data using <code>bind_shadow</code> or <code>nabular</code>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw"><a href="reference/bind_shadow.html">bind_shadow</a></span>(airquality)</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw"><a href="reference/bind_shadow.html">bind_shadow</a></span>(airquality)</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; # A tibble: 153 x 12</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA Solar.R_NA Wind_NA Temp_NA</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;    &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;  </span></span>
@@ -257,14 +263,14 @@
 <span id="cb7-29"><a href="#cb7-29"></a><span class="co">#&gt; 10    NA     194   8.6    69     5    10 NA       !NA        !NA     !NA    </span></span>
 <span id="cb7-30"><a href="#cb7-30"></a><span class="co">#&gt; # … with 143 more rows, and 2 more variables: Month_NA &lt;fct&gt;, Day_NA &lt;fct&gt;</span></span></code></pre></div>
 <p>Using the nabular format helps you manage where missing values are in your dataset and make it easy to do visualisations where you split by missingness:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>airquality <span class="op">%&gt;%</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>airquality <span class="op">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="st">  </span><span class="kw"><a href="reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Temp,</span>
 <span id="cb8-4"><a href="#cb8-4"></a>             <span class="dt">fill =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb8-5"><a href="#cb8-5"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="reference/figures/README-shadow-w-ggplot-1.png"><!-- --></p>
 <p>And even visualise imputations</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>airquality <span class="op">%&gt;%</span></span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>airquality <span class="op">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="st">  </span><span class="kw"><a href="reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb9-4"><a href="#cb9-4"></a><span class="st">   </span>simputation<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(Ozone <span class="op">~</span><span class="st"> </span>Temp <span class="op">+</span><span class="st"> </span>Solar.R) <span class="op">%&gt;%</span></span>
@@ -275,20 +281,20 @@
 <span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt; Warning: Removed 7 rows containing missing values (geom_point).</span></span></code></pre></div>
 <p><img src="reference/figures/README-shadow-impute-1.png"><!-- --></p>
 <p>Or perform an <a href="https://www.nature.com/articles/nmeth.3033">upset</a> plot - to plot of the combinations of missingness across cases, using the <code>gg_miss_upset</code> function</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw"><a href="reference/gg_miss_upset.html">gg_miss_upset</a></span>(airquality)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw"><a href="reference/gg_miss_upset.html">gg_miss_upset</a></span>(airquality)</span></code></pre></div>
 <p><img src="reference/figures/README-gg-miss-upset-1.png"><!-- --></p>
 <p>naniar does this while following consistent principles that are easy to read, thanks to the tools of the tidyverse.</p>
 <p>naniar also provides handy visualations for each variable:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw"><a href="reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw"><a href="reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</span></code></pre></div>
 <p><img src="reference/figures/README-gg-miss-var-1.png"><!-- --></p>
 <p>Or the number of missings in a given variable at a repeating span</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw"><a href="reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian,</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw"><a href="reference/gg_miss_span.html">gg_miss_span</a></span>(pedestrian,</span>
 <span id="cb12-2"><a href="#cb12-2"></a>             <span class="dt">var =</span> hourly_counts,</span>
 <span id="cb12-3"><a href="#cb12-3"></a>             <span class="dt">span_every =</span> <span class="dv">1500</span>)</span></code></pre></div>
 <p><img src="reference/figures/README-gg-miss-span-1.png"><!-- --></p>
 <p>You can read about all of the visualisations in naniar in the vignette <a href="https://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of missing data visualisations using naniar</a>.</p>
 <p>naniar also provides handy helpers for calculating the number, proportion, and percentage of missing and complete observations:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw"><a href="reference/n_miss.html">n_miss</a></span>(airquality)</span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw"><a href="reference/n_miss.html">n_miss</a></span>(airquality)</span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="co">#&gt; [1] 44</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="kw"><a href="reference/n_complete.html">n_complete</a></span>(airquality)</span>
 <span id="cb13-4"><a href="#cb13-4"></a><span class="co">#&gt; [1] 874</span></span>
@@ -306,7 +312,7 @@
 <a href="#numerical-summaries-for-missing-data" class="anchor"></a>Numerical summaries for missing data</h1>
 <p>naniar provides numerical summaries of missing data, that follow a consistent rule that uses a syntax begining with <code>miss_</code>. Summaries focussing on variables or a single selected variable, start with <code>miss_var_</code>, and summaries for cases (the initial collected row order of the data), they start with <code>miss_case_</code>. All of these functions that return dataframes also work with dplyr’s <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>.</p>
 <p>For example, we can look at the number and percent of missings in each case and variable with <code><a href="reference/miss_var_summary.html">miss_var_summary()</a></code>, and <code><a href="reference/miss_case_summary.html">miss_case_summary()</a></code>, which both return output ordered by the number of missing values.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)</span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw"><a href="reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)</span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="co">#&gt; # A tibble: 6 x 3</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="co">#&gt;   variable n_miss pct_miss</span></span>
 <span id="cb14-4"><a href="#cb14-4"></a><span class="co">#&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;</span></span>
@@ -332,7 +338,7 @@
 <span id="cb14-24"><a href="#cb14-24"></a><span class="co">#&gt; 10    34      1     16.7</span></span>
 <span id="cb14-25"><a href="#cb14-25"></a><span class="co">#&gt; # … with 143 more rows</span></span></code></pre></div>
 <p>You could also <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to work out the number of missings in each variable across the levels within it.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="co">#&gt; </span></span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
 <span id="cb15-4"><a href="#cb15-4"></a><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
@@ -360,6 +366,16 @@
 <span id="cb15-26"><a href="#cb15-26"></a><span class="co">#&gt; 10     6 Day           0      0  </span></span>
 <span id="cb15-27"><a href="#cb15-27"></a><span class="co">#&gt; # … with 15 more rows</span></span></code></pre></div>
 <p>You can read more about all of these functions in the vignette <a href="https://naniar.njtierney.com/articles/getting-started-w-naniar.html">“Getting Started with naniar”</a>.</p>
+</div>
+<div id="statistical-tests-of-missingness" class="section level1">
+<h1 class="hasAnchor">
+<a href="#statistical-tests-of-missingness" class="anchor"></a>Statistical tests of missingness</h1>
+<p>naniar provides <code><a href="reference/mcar_test.html">mcar_test()</a></code> for <a href="https://doi.org/10.1080/01621459.1988.10478722">Little’s (1988)</a> statistical test for missing completely at random (MCAR) data. The null hypothesis in this test is that the data is MCAR, and the test statistic is a chi-squared value. Given the high statistic value and low p-value, we can conclude that the <code>airquality</code> data is not missing completely at random:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw"><a href="reference/mcar_test.html">mcar_test</a></span>(airquality)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="co">#&gt; # A tibble: 1 x 4</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="co">#&gt;   statistic    df p.value missing.patterns</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;            &lt;int&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co">#&gt; 1      35.1    14 0.00142                4</span></span></code></pre></div>
 </div>
 <div id="contributions" class="section level1">
 <h1 class="hasAnchor">

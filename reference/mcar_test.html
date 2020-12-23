@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Test if input is a data.frame — test_if_dataframe • naniar</title>
+<title>Little's missing completely at random (MCAR) test — mcar_test • naniar</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,13 @@
 
 
 
-<meta property="og:title" content="Test if input is a data.frame — test_if_dataframe" />
-<meta property="og:description" content="Test if input is a data.frame" />
+<meta property="og:title" content="Little's missing completely at random (MCAR) test — mcar_test" />
+<meta property="og:description" content="Use Little's (1988) test statistic to assess if data is missing completely
+at random (MCAR). The null hypothesis in this test is that the data is
+MCAR, and the test statistic is a chi-squared value. The example below
+shows the output of mcar_test(airquality). Given the high statistic
+value and low p-value, we can conclude the airquality data is not
+missing completely at random." />
 <meta property="og:image" content="http://naniar.njtierney.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -146,47 +151,79 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Test if input is a data.frame</h1>
-    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>test_if_dataframe.Rd</code></div>
+    <h1>Little's missing completely at random (MCAR) test</h1>
+    <small class="dont-index">Source: <a href='https://github.com/njtierney/naniar/blob/master/R/mcar-test.R'><code>R/mcar-test.R</code></a></small>
+    <div class="hidden name"><code>mcar_test.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Test if input is a data.frame</p>
+    <p>Use Little's (1988) test statistic to assess if data is missing completely
+at random (MCAR). The null hypothesis in this test is that the data is
+MCAR, and the test statistic is a chi-squared value. The example below
+shows the output of <code>mcar_test(airquality)</code>. Given the high statistic
+value and low p-value, we can conclude the <code>airquality</code> data is not
+missing completely at random.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>test_if_dataframe</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>mcar_test</span>(<span class='no'>data</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>object</p></td>
+      <th>data</th>
+      <td><p>A data frame</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>an error if input (x) is a data.frame</p>
+    <p>A <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble::tibble()</a></code> with one row and four columns:</p>
+<dt>statistic</dt><dd><p>Chi-squared statistic for Little's test</p></dd>
+<dt>df</dt><dd><p>Degrees of freedom used for chi-squared statistic</p></dd>
+<dt>p.value</dt><dd><p>P-value for the chi-squared statistic</p></dd>
+<dt>missing.patterns</dt><dd><p>Number of missing data patterns in the data</p></dd>
+
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Code is adapted from LittleMCAR() in the now-orphaned BaylorEdPsych
+package: https://rdrr.io/cran/BaylorEdPsych/man/LittleMCAR.html. Some of
+code is adapted from Eric Stemmler - <a href='https://stats-bayes.com/post/2020/08/14/r-function-for-little-s-test-for-data-missing-completely-at-random/'>https://stats-bayes.com/post/2020/08/14/r-function-for-little-s-test-for-data-missing-completely-at-random/</a>
+using Maximum likelihood estimation from norm.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Little, Roderick J. A. 1988. "A Test of Missing Completely at
+Random for Multivariate Data with Missing Values."
+<em>Journal of the American Statistical Association</em> 83 (404):
+1198--1202. <a href='https://doi.org/10.1080/01621459.1988.10478722'>https://doi.org/10.1080/01621459.1988.10478722</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'># success</span>
-<span class='fu'>test_if_dataframe</span>(<span class='no'>airquality</span>)
-<span class='co'>#fail</span>
-<span class='no'>my_test</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>10</span>)
-<span class='fu'>test_if_dataframe</span>(<span class='no'>my_test</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>mcar_test</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 4</span><span>
+#&gt;   statistic    df p.value missing.patterns
+#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>      35.1    14 0.001</span><span style='text-decoration: underline;'>42</span><span>                4</div><div class='input'><span class='fu'>mcar_test</span>(<span class='no'>oceanbuoys</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 4</span><span>
+#&gt;   statistic    df p.value missing.patterns
+#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>      747.    31       0                6</div><div class='input'>
+<span class='co'># If there are non-numeric columns, there will be a warning</span>
+<span class='fu'>mcar_test</span>(<span class='no'>riskfactors</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion to integer range</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 4</span><span>
+#&gt;   statistic    df  p.value missing.patterns
+#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     </span><span style='text-decoration: underline;'>1</span><span>741.  </span><span style='text-decoration: underline;'>1</span><span>319 3.32</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-14</span><span>               48</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#note">Note</a></li>
+      <li><a href="#references">References</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
+    <h2>Author</h2>
+    <p>Andrew Heiss, <a href='mailto:andrew@andrewheiss.com'>andrew@andrewheiss.com</a></p>
   </div>
 </div>
 

@@ -28,6 +28,8 @@ knitr::opts_chunk$set(
 - Numerical summaries of missing data in variables and cases:
     - `miss_var_summary()` and `miss_var_table()`
     - `miss_case_summary()`, `miss_case_table()`
+- Statistical tests of missingness:
+    - `mcar_test()` for [Little's (1988)](https://doi.org/10.1080/01621459.1988.10478722) missing completely at random (MCAR) test
 - Visualisation for missing data:
     - `geom_miss_point()`
     - `gg_miss_var()`
@@ -210,6 +212,14 @@ airquality %>%
 ```
 
 You can read more about all of these functions in the vignette ["Getting Started with naniar"](https://naniar.njtierney.com/articles/getting-started-w-naniar.html).
+
+# Statistical tests of missingness
+
+naniar provides `mcar_test()` for [Little's (1988)](https://doi.org/10.1080/01621459.1988.10478722) statistical test for missing completely at random (MCAR) data. The null hypothesis in this test is that the data is MCAR, and the test statistic is a chi-squared value. Given the high statistic value and low p-value, we can conclude that the `airquality` data is not missing completely at random:
+
+```{r mcar-test}
+mcar_test(airquality)
+```
 
 # Contributions
 

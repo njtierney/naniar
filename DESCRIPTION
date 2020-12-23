@@ -25,7 +25,11 @@ Authors@R: c(
          role = "ctb", 
          email = "james.f.hester@gmail.com"),
   person("Luke", "Smith", 
-         role = "ctb")
+         role = "ctb"),
+  person("Andrew", "Heiss", 
+         role = "ctb",
+         email = "andrew@andrewheiss.com", 
+         comment = c(ORCID = "https://orcid.org/0000-0002-3948-3914"))
   )
 Description: Missing values are ubiquitous in data and need to be explored and
     handled in the initial stages of analysis. 'naniar' provides data structures 
@@ -61,6 +65,7 @@ Imports:
     purrr,
     tidyr,
     tibble (>= 2.0.0),
+    norm,
     magrittr,
     stats,
     visdat,
@@ -94,6 +99,7 @@ Collate:
     'impute_below.R'
     'impute_mean.R'
     'label-miss.R'
+    'mcar-test.R'
     'miss-complete-x-pct-prop.R'
     'miss-prop-pct-summary.R'
     'miss-scan-count.R'

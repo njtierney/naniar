@@ -1,5 +1,9 @@
 # naniar 0.6.0.9000
 
+## New features
+
+- naniar now provides `mcar_test()` for [Little's (1988)](https://doi.org/10.1080/01621459.1988.10478722) statistical test for missing completely at random (MCAR) data. The null hypothesis in this test is that the data is MCAR, and the test statistic is a chi-squared value. Given a high statistic value and low p-value, we can conclude data are not missing completely at random. Thanks to [Andrew Heiss](https://www.andrewheiss.com/) for the [PR](https://github.com/njtierney/naniar/pull/279/).
+
 ## Bug fixes
 
 - Fix bug in `miss_var_span()` (#270) where the number of missings + number of

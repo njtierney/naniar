@@ -1,6 +1,11 @@
 #' Little's missing completely at random (MCAR) test
 #'
-#' Use Little's (1988) test statistic to assess if data is missing completely at random (MCAR).
+#' Use Little's (1988) test statistic to assess if data is missing completely
+#'   at random (MCAR). The null hypothesis in this test is that the data is
+#'    MCAR, and the test statistic is a chi-squared value. The example below
+#'    shows the output of `mcar_test(airquality)`. Given the high statistic
+#'    value and low p-value, we can conclude the `airquality` data is not
+#'    missing completely at random.
 #'
 #' @param data A data frame
 #'
@@ -10,7 +15,17 @@
 #' \item{p.value}{P-value for the chi-squared statistic}
 #' \item{missing.patterns}{Number of missing data patterns in the data}
 #'
-#' @references Little, Roderick J. A. 1988. "A Test of Missing Completely at Random for Multivariate Data with Missing Values." *Journal of the American Statistical Association* 83 (404): 1198--1202. <https://doi.org/10.1080/01621459.1988.10478722>.
+#' @references Little, Roderick J. A. 1988. "A Test of Missing Completely at
+#'   Random for Multivariate Data with Missing Values."
+#'   *Journal of the American Statistical Association* 83 (404):
+#'   1198--1202. <https://doi.org/10.1080/01621459.1988.10478722>.
+#'
+#' @note Code is adapted from LittleMCAR() in the now-orphaned {BaylorEdPsych}
+#'   package: https://rdrr.io/cran/BaylorEdPsych/man/LittleMCAR.html. Some of
+#'   code is adapted from Eric Stemmler - <https://stats-bayes.com/post/2020/08/14/r-function-for-little-s-test-for-data-missing-completely-at-random/>
+#'   using Maximum likelihood estimation from {norm}.
+#'
+#' @author Andrew Heiss, \email{andrew@andrewheiss.com}
 #'
 #' @examples
 #' mcar_test(airquality)
@@ -19,21 +34,21 @@
 #' # If there are non-numeric columns, there will be a warning
 #' mcar_test(riskfactors)
 #'
-#' @importFrom stats pchisq
-#' @importFrom norm prelim.norm em.norm getparam.norm
 #' @importFrom rlang .data
 #'
 #' @export
 mcar_test <- function(data) {
-  # This code is adapted from LittleMCAR() in the now-orphaned {BaylorEdPsych}
-  # package: https://rdrr.io/cran/BaylorEdPsych/man/LittleMCAR.html
+
   test_if_dataframe(data)
 
   # norm::prelim.norm needs to work with a data.matrix
   data <- data.matrix(data)
 
-  n_var <- ncol(data)  # Number of variables in data
-  n <- nrow(data)  # Number of rows
+  # Number of variables in data
+  n_var <- ncol(data)
+
+  # Number of rows
+  n <- nrow(data)
   var_names <- colnames(data)
 
   # Calculate pattern of missingness for each row
@@ -101,7 +116,7 @@ mcar_test <- function(data) {
   # Main calculations
   d2 <- sum(little_calculations$d2)  # Little's d2
   df <- sum(little_calculations$kj) - n_var  # Degrees of freedom
-  p_value <- 1 - pchisq(d2, df)  # p-value
+  p_value <- 1 - stats::pchisq(d2, df)  # p-value
 
   # Return everything as a glance-like tibble
   tibble::tibble(statistic = d2, df = df, p.value = p_value,

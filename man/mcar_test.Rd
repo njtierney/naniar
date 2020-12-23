@@ -17,7 +17,18 @@ A \code{\link[tibble:tibble]{tibble::tibble()}} with one row and four columns:
 \item{missing.patterns}{Number of missing data patterns in the data}
 }
 \description{
-Use Little's (1988) test statistic to assess if data is missing completely at random (MCAR).
+Use Little's (1988) test statistic to assess if data is missing completely
+at random (MCAR). The null hypothesis in this test is that the data is
+MCAR, and the test statistic is a chi-squared value. The example below
+shows the output of \code{mcar_test(airquality)}. Given the high statistic
+value and low p-value, we can conclude the \code{airquality} data is not
+missing completely at random.
+}
+\note{
+Code is adapted from LittleMCAR() in the now-orphaned {BaylorEdPsych}
+package: https://rdrr.io/cran/BaylorEdPsych/man/LittleMCAR.html. Some of
+code is adapted from Eric Stemmler - \url{https://stats-bayes.com/post/2020/08/14/r-function-for-little-s-test-for-data-missing-completely-at-random/}
+using Maximum likelihood estimation from {norm}.
 }
 \examples{
 mcar_test(airquality)
@@ -28,5 +39,11 @@ mcar_test(riskfactors)
 
 }
 \references{
-Little, Roderick J. A. 1988. "A Test of Missing Completely at Random for Multivariate Data with Missing Values." \emph{Journal of the American Statistical Association} 83 (404): 1198--1202. \url{https://doi.org/10.1080/01621459.1988.10478722}.
+Little, Roderick J. A. 1988. "A Test of Missing Completely at
+Random for Multivariate Data with Missing Values."
+\emph{Journal of the American Statistical Association} 83 (404):
+1198--1202. \url{https://doi.org/10.1080/01621459.1988.10478722}.
+}
+\author{
+Andrew Heiss, \email{andrew@andrewheiss.com}
 }

@@ -92,7 +92,7 @@ common_na_numbers." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1</span>
       </span>
     </div>
 
@@ -178,7 +178,7 @@ their wildcard features in grep. Common NA numbers are in the data object
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>character</code> of length 24.</p>
+    <p>An object of class <code>character</code> of length 25.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>original discussion here <a href='https://github.com/njtierney/naniar/issues/168'>https://github.com/njtierney/naniar/issues/168</a></p>
@@ -192,24 +192,25 @@ their wildcard features in grep. Common NA numbers are in the data object
                           -<span class='fl'>99</span>, <span class='st'>"E"</span>,   -<span class='fl'>101</span>,
                           -<span class='fl'>98</span>, <span class='st'>"F"</span>,   -<span class='fl'>1</span>)
 
-<span class='fu'><a href='miss_scan_count.html'>miss_scan_count</a></span>(<span class='no'>dat_ms</span>, -<span class='fl'>99</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 2</span><span>
+<span class='fu'><a href='miss_scan_count.html'>miss_scan_count</a></span>(<span class='no'>dat_ms</span>, -<span class='fl'>99</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 2
 #&gt;   Variable     n
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> x            1
-#&gt; </span><span style='color: #555555;'>2</span><span> y            0
-#&gt; </span><span style='color: #555555;'>3</span><span> z            1</div><div class='input'><span class='fu'><a href='miss_scan_count.html'>miss_scan_count</a></span>(<span class='no'>dat_ms</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"-99"</span>,<span class='st'>"-98"</span>,<span class='st'>"N/A"</span>))</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 2</span><span>
+#&gt;   &lt;chr&gt;    &lt;int&gt;
+#&gt; 1 x            1
+#&gt; 2 y            0
+#&gt; 3 z            1</div><div class='input'><span class='fu'><a href='miss_scan_count.html'>miss_scan_count</a></span>(<span class='no'>dat_ms</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"-99"</span>,<span class='st'>"-98"</span>,<span class='st'>"N/A"</span>))</div><div class='output co'>#&gt; # A tibble: 3 x 2
 #&gt;   Variable     n
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> x            2
-#&gt; </span><span style='color: #555555;'>2</span><span> y            1
-#&gt; </span><span style='color: #555555;'>3</span><span> z            2</div><div class='input'><span class='no'>common_na_strings</span></div><div class='output co'>#&gt;  [1] "NA"     "N A"    "N/A"    "NA "    " NA"    "N /A"   "N / A"  " N / A"
-#&gt;  [9] "N / A " "na"     "n a"    "n/a"    "na "    " na"    "n /a"   "n / a" 
-#&gt; [17] " a / a" "n / a " "NULL"   "null"   ""       "\\?"    "\\*"    "\\."   </div><div class='input'><span class='fu'><a href='miss_scan_count.html'>miss_scan_count</a></span>(<span class='no'>dat_ms</span>, <span class='no'>common_na_strings</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 2</span><span>
+#&gt;   &lt;chr&gt;    &lt;int&gt;
+#&gt; 1 x            2
+#&gt; 2 y            1
+#&gt; 3 z            2</div><div class='input'><span class='no'>common_na_strings</span></div><div class='output co'>#&gt;  [1] "NA"     "N A"    "N/A"    "#N/A"   "NA "    " NA"    "N /A"   "N / A" 
+#&gt;  [9] " N / A" "N / A " "na"     "n a"    "n/a"    "na "    " na"    "n /a"  
+#&gt; [17] "n / a"  " a / a" "n / a " "NULL"   "null"   ""       "\\?"    "\\*"   
+#&gt; [25] "\\."   </div><div class='input'><span class='fu'><a href='miss_scan_count.html'>miss_scan_count</a></span>(<span class='no'>dat_ms</span>, <span class='no'>common_na_strings</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 2
 #&gt;   Variable     n
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> x            4
-#&gt; </span><span style='color: #555555;'>2</span><span> y            4
-#&gt; </span><span style='color: #555555;'>3</span><span> z            5</div></span></pre>
+#&gt;   &lt;chr&gt;    &lt;int&gt;
+#&gt; 1 x            4
+#&gt; 2 y            4
+#&gt; 3 z            5</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -87,7 +87,7 @@ adult population (18 years of age or older) living in households." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1</span>
       </span>
     </div>
 
@@ -312,20 +312,20 @@ every year. -7 is   for "Don't know/Not sure", and -9 is for
     <pre class="examples"><div class='input'>
 <span class='fu'><a href='http://visdat.njtierney.com//reference/vis_miss.html'>vis_miss</a></span>(<span class='no'>riskfactors</span>)</div><div class='img'><img src='riskfactors-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Look at the missingness in the variables</span>
-<span class='fu'><a href='miss_var_summary.html'>miss_var_summary</a></span>(<span class='no'>riskfactors</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 34 x 3</span><span>
+<span class='fu'><a href='miss_var_summary.html'>miss_var_summary</a></span>(<span class='no'>riskfactors</span>)</div><div class='output co'>#&gt; # A tibble: 34 x 3
 #&gt;    variable      n_miss pct_miss
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> pregnant         215    87.8 
-#&gt; </span><span style='color: #555555;'> 2</span><span> smoke_stop       212    86.5 
-#&gt; </span><span style='color: #555555;'> 3</span><span> smoke_last       161    65.7 
-#&gt; </span><span style='color: #555555;'> 4</span><span> drink_average    135    55.1 
-#&gt; </span><span style='color: #555555;'> 5</span><span> drink_days       134    54.7 
-#&gt; </span><span style='color: #555555;'> 6</span><span> smoke_days       128    52.2 
-#&gt; </span><span style='color: #555555;'> 7</span><span> health_poor      113    46.1 
-#&gt; </span><span style='color: #555555;'> 8</span><span> bmi               11     4.49
-#&gt; </span><span style='color: #555555;'> 9</span><span> weight_lbs        10     4.08
-#&gt; </span><span style='color: #555555;'>10</span><span> diet_fruit         8     3.27
-#&gt; </span><span style='color: #555555;'># … with 24 more rows</span><span></div><div class='input'>
+#&gt;    &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;
+#&gt;  1 pregnant         215    87.8 
+#&gt;  2 smoke_stop       212    86.5 
+#&gt;  3 smoke_last       161    65.7 
+#&gt;  4 drink_average    135    55.1 
+#&gt;  5 drink_days       134    54.7 
+#&gt;  6 smoke_days       128    52.2 
+#&gt;  7 health_poor      113    46.1 
+#&gt;  8 bmi               11     4.49
+#&gt;  9 weight_lbs        10     4.08
+#&gt; 10 diet_fruit         8     3.27
+#&gt; # … with 24 more rows</div><div class='input'>
 <span class='co'># and now as a plot</span>
 <span class='fu'><a href='gg_miss_var.html'>gg_miss_var</a></span>(<span class='no'>riskfactors</span>)</div><div class='img'><img src='riskfactors-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -343,7 +343,7 @@ every year. -7 is   for "Don't know/Not sure", and -9 is for
  <span class='no'>p</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~<span class='no'>sex</span>)
  <span class='co'># for each education bracket?</span>
  <span class='no'>p</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~<span class='no'>education</span>)
-}</div></span></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

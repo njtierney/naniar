@@ -86,7 +86,7 @@ is used, which can be customised as normal for ggplot." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1</span>
       </span>
     </div>
 
@@ -193,29 +193,29 @@ is used, which can be customised as normal for ggplot.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='miss_var_span.html'>miss_var_span</a></span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 13 x 6</span><span>
+<span class='fu'><a href='miss_var_span.html'>miss_var_span</a></span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>)</div><div class='output co'>#&gt; # A tibble: 13 x 6
 #&gt;    span_counter n_miss n_complete prop_miss prop_complete n_in_span
-#&gt;           </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>            1      0       </span><span style='text-decoration: underline;'>3</span><span>000  0                1          </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'> 2</span><span>            2      0       </span><span style='text-decoration: underline;'>3</span><span>000  0                1          </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'> 3</span><span>            3      1       </span><span style='text-decoration: underline;'>2</span><span>999  0.000</span><span style='text-decoration: underline;'>333</span><span>         1.00       </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'> 4</span><span>            4    121       </span><span style='text-decoration: underline;'>2</span><span>879  0.040</span><span style='text-decoration: underline;'>3</span><span>           0.960      </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'> 5</span><span>            5    503       </span><span style='text-decoration: underline;'>2</span><span>497  0.168            0.832      </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'> 6</span><span>            6    555       </span><span style='text-decoration: underline;'>2</span><span>445  0.185            0.815      </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'> 7</span><span>            7    190       </span><span style='text-decoration: underline;'>2</span><span>810  0.063</span><span style='text-decoration: underline;'>3</span><span>           0.937      </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'> 8</span><span>            8      0       </span><span style='text-decoration: underline;'>3</span><span>000  0                1          </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'> 9</span><span>            9      1       </span><span style='text-decoration: underline;'>2</span><span>999  0.000</span><span style='text-decoration: underline;'>333</span><span>         1.00       </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'>10</span><span>           10      0       </span><span style='text-decoration: underline;'>3</span><span>000  0                1          </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'>11</span><span>           11      0       </span><span style='text-decoration: underline;'>3</span><span>000  0                1          </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'>12</span><span>           12    745       </span><span style='text-decoration: underline;'>2</span><span>255  0.248            0.752      </span><span style='text-decoration: underline;'>3</span><span>000
-#&gt; </span><span style='color: #555555;'>13</span><span>           13    432       </span><span style='text-decoration: underline;'>1</span><span>268  0.254            0.746      </span><span style='text-decoration: underline;'>1</span><span>700</div><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+#&gt;           &lt;int&gt;  &lt;int&gt;      &lt;int&gt;     &lt;dbl&gt;         &lt;dbl&gt;     &lt;int&gt;
+#&gt;  1            1      0       3000  0                1          3000
+#&gt;  2            2      0       3000  0                1          3000
+#&gt;  3            3      1       2999  0.000333         1.00       3000
+#&gt;  4            4    121       2879  0.0403           0.960      3000
+#&gt;  5            5    503       2497  0.168            0.832      3000
+#&gt;  6            6    555       2445  0.185            0.815      3000
+#&gt;  7            7    190       2810  0.0633           0.937      3000
+#&gt;  8            8      0       3000  0                1          3000
+#&gt;  9            9      1       2999  0.000333         1.00       3000
+#&gt; 10           10      0       3000  0                1          3000
+#&gt; 11           11      0       3000  0                1          3000
+#&gt; 12           12    745       2255  0.248            0.752      3000
+#&gt; 13           13    432       1268  0.254            0.746      1700</div><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
 <span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>)
 <span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='no'>sensor_name</span>)
 <span class='co'># works with the rest of ggplot</span>
 <span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"custom"</span>)
 <span class='fu'>gg_miss_span</span>(<span class='no'>pedestrian</span>, <span class='no'>hourly_counts</span>, <span class='kw'>span_every</span> <span class='kw'>=</span> <span class='fl'>3000</span>) + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_dark</a></span>()
-}</div></span></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

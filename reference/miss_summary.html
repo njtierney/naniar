@@ -84,7 +84,7 @@ them into lists within a tibble" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1</span>
       </span>
     </div>
 
@@ -183,22 +183,22 @@ them into lists within a tibble</p>
     <pre class="examples"><div class='input'>
 <span class='no'>s_miss</span> <span class='kw'>&lt;-</span> <span class='fu'>miss_summary</span>(<span class='no'>airquality</span>)
 <span class='no'>s_miss</span>$<span class='no'>miss_df_prop</span></div><div class='output co'>#&gt; [1] 0.04793028</div><div class='input'><span class='no'>s_miss</span>$<span class='no'>miss_case_table</span></div><div class='output co'>#&gt; [[1]]
-#&gt; <span style='color: #555555;'># A tibble: 3 x 3</span><span>
+#&gt; # A tibble: 3 x 3
 #&gt;   n_miss_in_case n_cases pct_cases
-#&gt;            </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>              0     111     72.5 
-#&gt; </span><span style='color: #555555;'>2</span><span>              1      40     26.1 
-#&gt; </span><span style='color: #555555;'>3</span><span>              2       2      1.31
+#&gt;            &lt;int&gt;   &lt;int&gt;     &lt;dbl&gt;
+#&gt; 1              0     111     72.5 
+#&gt; 2              1      40     26.1 
+#&gt; 3              2       2      1.31
 #&gt; </div><div class='input'><span class='no'>s_miss</span>$<span class='no'>miss_var_summary</span></div><div class='output co'>#&gt; [[1]]
-#&gt; </span><span style='color: #555555;'># A tibble: 6 x 3</span><span>
+#&gt; # A tibble: 6 x 3
 #&gt;   variable n_miss pct_miss
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Ozone        37    24.2 
-#&gt; </span><span style='color: #555555;'>2</span><span> Solar.R       7     4.58
-#&gt; </span><span style='color: #555555;'>3</span><span> Wind          0     0   
-#&gt; </span><span style='color: #555555;'>4</span><span> Temp          0     0   
-#&gt; </span><span style='color: #555555;'>5</span><span> Month         0     0   
-#&gt; </span><span style='color: #555555;'>6</span><span> Day           0     0   
+#&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;
+#&gt; 1 Ozone        37    24.2 
+#&gt; 2 Solar.R       7     4.58
+#&gt; 3 Wind          0     0   
+#&gt; 4 Temp          0     0   
+#&gt; 5 Month         0     0   
+#&gt; 6 Day           0     0   
 #&gt; </div><div class='input'><span class='co'># etc, etc, etc.</span>
 
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -207,7 +207,7 @@ them into lists within a tibble</p>
 <span class='no'>s_miss_group</span>$<span class='no'>miss_df_prop</span>
 <span class='no'>s_miss_group</span>$<span class='no'>miss_case_table</span>
 <span class='co'># etc, etc, etc.</span>
-}</div></span></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

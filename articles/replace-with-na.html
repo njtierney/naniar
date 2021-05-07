@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1</span>
       </span>
     </div>
 
@@ -106,7 +106,7 @@
       <h1>Replacing values with NA</h1>
                         <h4 class="author">Nicholas Tierney</h4>
             
-            <h4 class="date">2020-12-23</h4>
+            <h4 class="date">2021-05-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/replace-with-na.Rmd"><code>vignettes/replace-with-na.Rmd</code></a></small>
       <div class="hidden name"><code>replace-with-na.Rmd</code></div>
@@ -234,9 +234,10 @@
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>common_na_numbers</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt; [1]    -9   -99  -999 -9999  9999    66    77    88</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>common_na_strings</span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt;  [1] "NA"     "N A"    "N/A"    "NA "    " NA"    "N /A"   "N / A"  " N / A"</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt;  [9] "N / A " "na"     "n a"    "n/a"    "na "    " na"    "n /a"   "n / a" </span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; [17] " a / a" "n / a " "NULL"   "null"   ""       "\\?"    "\\*"    "\\."</span></span></code></pre></div>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt;  [1] "NA"     "N A"    "N/A"    "#N/A"   "NA "    " NA"    "N /A"   "N / A" </span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt;  [9] " N / A" "N / A " "na"     "n a"    "n/a"    "na "    " na"    "n /a"  </span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt; [17] "n / a"  " a / a" "n / a " "NULL"   "null"   ""       "\\?"    "\\*"   </span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt; [25] "\\."</span></span></code></pre></div>
 <p>And you can replace values matching those strings or numbers like so:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>df <span class="op">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="st">  </span><span class="kw"><a href="../reference/replace_with_na_all.html">replace_with_na_all</a></span>(<span class="dt">condition =</span> <span class="op">~</span>.x <span class="op">%in%</span><span class="st"> </span>common_na_strings)</span>

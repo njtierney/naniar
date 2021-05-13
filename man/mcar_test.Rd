@@ -27,7 +27,7 @@ missing completely at random.
 \note{
 Code is adapted from LittleMCAR() in the now-orphaned {BaylorEdPsych}
 package: https://rdrr.io/cran/BaylorEdPsych/man/LittleMCAR.html. Some of
-code is adapted from Eric Stemmler - \url{https://stats-bayes.com/post/2020/08/14/r-function-for-little-s-test-for-data-missing-completely-at-random/}
+code is adapted from Eric Stemmler - \url{https://web.archive.org/web/20201120030409/https://stats-bayes.com/post/2020/08/14/r-function-for-little-s-test-for-data-missing-completely-at-random/}
 using Maximum likelihood estimation from {norm}.
 }
 \examples{

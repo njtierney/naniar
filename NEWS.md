@@ -1,4 +1,4 @@
-# naniar 0.6.1 (2020/12/23) "Incandescent lightbulbs killed the Arc lamps"
+# naniar 0.6.1 (2021/05/13) "Incandescent lightbulbs killed the Arc lamps"
 
 ## New features
 

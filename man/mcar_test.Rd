@@ -42,7 +42,7 @@ mcar_test(riskfactors)
 Little, Roderick J. A. 1988. "A Test of Missing Completely at
 Random for Multivariate Data with Missing Values."
 \emph{Journal of the American Statistical Association} 83 (404):
-1198--1202. \url{https://doi.org/10.1080/01621459.1988.10478722}.
+1198--1202. \doi{10.1080/01621459.1988.10478722}.
 }
 \author{
 Andrew Heiss, \email{andrew@andrewheiss.com}

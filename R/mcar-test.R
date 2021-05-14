@@ -18,7 +18,7 @@
 #' @references Little, Roderick J. A. 1988. "A Test of Missing Completely at
 #'   Random for Multivariate Data with Missing Values."
 #'   *Journal of the American Statistical Association* 83 (404):
-#'   1198--1202. <https://doi.org/10.1080/01621459.1988.10478722>.
+#'   1198--1202. \doi{10.1080/01621459.1988.10478722}.
 #'
 #' @note Code is adapted from LittleMCAR() in the now-orphaned {BaylorEdPsych}
 #'   package: https://rdrr.io/cran/BaylorEdPsych/man/LittleMCAR.html. Some of

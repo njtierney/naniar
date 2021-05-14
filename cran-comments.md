@@ -1,9 +1,6 @@
 ## Test environments
-* local OS X install, R 4.0.2
-* ubuntu 12.04 (on GitHub Actions), R 4.0.2
-* Could not run win-builder (devel and release) due to an error with winbuilder.
-  This has been discussed with Uwe Ligges, Kurt Hornik, and Jeroen Ooms and this
-  is an issue with winbuilder, and I have been encouraged to submit to CRAN.
+* local OS X install, R 4.0.5
+* github actions testing for devel, release, and ubuntu, windows, and macOSX
 
 ## R CMD check results
 0 errors | 0 warnings | 1 note

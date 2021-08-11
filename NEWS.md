@@ -1,3 +1,10 @@
+# naniar 0.6.1.9000
+
+## Bug Fixes
+
+- Fix bug in `gg_miss_var()` where a warning appears to due change in how to 
+remove legend [#288](https://github.com/njtierney/naniar/issues/288).
+
 # naniar 0.6.1 (2021/05/13) "Incandescent lightbulbs killed the Arc lamps"
 
 ## New features

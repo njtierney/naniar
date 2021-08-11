@@ -92,7 +92,7 @@ gg_miss_var_create <- function(data, show_pct){
              colour = "#484878",
              fill = "#484878") +
   coord_flip() +
-  scale_color_discrete(guide = FALSE) +
+  scale_color_discrete(guide = "none") +
   labs(y = ylab,
        x = "Variables") +
   theme_minimal()

@@ -99,6 +99,11 @@ shade <- function(x, ..., extra_levels = NULL){
     return(new_shade(x, extra_levels))
   }
 
+  if (!missing(...) & is.list(x)) {
+    rlang::abort(message = "additional levels of missing are not available when shade-ing lists column")
+  }
+
+
   # if no other levels are specified
   if (missing(...)) {
     x <- factor(is.na(x),

@@ -42,14 +42,20 @@ sh_3 <- shade(c(3, 1, 2, NA), broken = 2)
 act_3 <- paste0(sh_3)
 exp_3 <- c("!NA", "!NA", "NA_broken", "NA")
 
-sh_4 <- shade(c(list(3), list(1), list(2,3), list()), broken = 2)
-act_4 <- paste0(sh_4)
-exp_4 <- c("!NA", "!NA", "NA_broken", "NA")
-
 test_that("shade returns the correct values", {
   expect_equal(act_1, exp_1)
   expect_equal(act_2, exp_2)
   expect_equal(act_3, exp_3)
-  expect_equal(act_4, exp_4)
 })
+
+sh_4 <- shade(list(3, list(1), c(2,3), list()))
+act_4 <- paste0(sh_4)
+exp_4 <- c("!NA", "!NA", "!NA", "NA")
+
+test_that("shade returns the correct values with list columns", {
+  expect_equal(act_4, exp_4)
+  expect_error(shade(list(3, list(1), c(2,3), list()), broken=3),
+               "additional levels of missing")
+})
+
 

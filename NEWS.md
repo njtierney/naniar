@@ -1,4 +1,16 @@
-# naniar 0.6.0.9000
+# naniar 0.6.1.9000
+
+## Bug Fixes
+
+- Fix bug in `gg_miss_var()` where a warning appears to due change in how to 
+remove legend [#288](https://github.com/njtierney/naniar/issues/288).
+
+# naniar 0.6.1 (2021/05/13) "Incandescent lightbulbs killed the Arc lamps"
+
+## New features
+
+- naniar now provides `mcar_test()` for [Little's (1988)](https://doi.org/10.1080/01621459.1988.10478722) statistical test for missing completely at random (MCAR) data. The null hypothesis in this test is that the data is MCAR, and the test statistic is a chi-squared value. Given a high statistic value and low p-value, we can conclude data are not missing completely at random. Thanks to [Andrew Heiss](https://www.andrewheiss.com/) for the [PR](https://github.com/njtierney/naniar/pull/279/).
+- `common_na_strings` gains `"#N/A"`.
 
 ## Bug fixes
 
@@ -403,8 +415,7 @@ style.
 - `miss_var_summary` & `miss_case_summary` now have consistent output (one was 
   ordered by n_missing, not the other).
 - prevent error in `miss_case_pct`
-- `enquo_x` is now `x` (as adviced by 
-  [Hadley](https://twitter.com/hadleywickham/status/885993307968593920))
+- `enquo_x` is now `x`
 - Now has ByteCompile to TRUE
 - add Colin to auth
 

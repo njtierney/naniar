@@ -1,3 +1,13 @@
+# naniar 0.6.1.9001
+
+## Bug Fixes
+
+- Fix bug in `geom_miss_point()` where passing a shape in the mapping would result in error [#290](https://github.com/njtierney/naniar/issues/290).
+
+## Minor Improvements
+
+- Make `label_miss_1d()` and `label_miss_2d()` return a factor with levels `"Not Missing"` and `"Missing"` instead of just character vector. Thanks to that each level will always have the same color regardless of the input data.
+
 # naniar 0.6.1.9000
 
 ## Bug Fixes

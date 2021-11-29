@@ -15,16 +15,16 @@ test_that("label_miss_1d returns a vector of the same length as the input",{
 
 test_that("label_miss_1d returns character vector",{
   expect_type(label_miss_1d(test_df$x),
-              "character")
+              "integer")
 })
 
 test_that("label_miss_1d identifies the correct location of missingness",{
   expect_equal(label_miss_1d(test_df$x),
-               c("Missing", "Not Missing", "Not Missing"))
+               structure(c(2L, 1L, 1L), .Label = c("Not Missing", "Missing"), class = "factor"))
   expect_equal(label_miss_1d(test_df$y),
-               c("Not Missing", "Missing", "Not Missing"))
+               structure(c(1L, 2L, 1L), .Label = c("Not Missing", "Missing"), class = "factor"))
   expect_equal(label_miss_1d(test_df$z),
-               c("Not Missing", "Not Missing", "Not Missing"))
+               structure(c(1L, 1L, 1L), .Label = c("Not Missing", "Missing"), class = "factor"))
 })
 
 

@@ -117,7 +117,7 @@ GeomMissPoint <- ggproto(
   GeomPoint,
   required_aes = c("x", "y"),
   default_aes = aes(shape = 19,
-                    colour = ..missing..,
+                    colour = NA,
                     size = 1.5,
                     fill = NA,
                     alpha = NA,

@@ -22,10 +22,13 @@ label_miss_1d <- function(x1){
   test_if_null(x1)
   # find which are missing and which are not.
   temp <- data.frame(x1) %>% is.na %>% rowSums()
-  ifelse(temp == 0, # 0 means not missing
-         "Not Missing", # not missing
-         "Missing") # missing
-
+  factor( # factor assures that Missing and Not Missing will always have same colour
+    ifelse(temp == 0, # 0 means not missing
+           "Not Missing", # not missing
+           "Missing"), # missing
+    levels = c("Not Missing", "Missing")
+  )
+  
 }
 
 #' label_miss_2d
@@ -48,9 +51,12 @@ label_miss_2d <- function(x1, x2){
   if(is.null(x1) | is.null(x2)) stop("Input cannot be NULL", call. = FALSE)
   # find which are missing and which are not.
   temp <- data.frame(x1,x2) %>% is.na %>% rowSums()
-  ifelse(temp == 0, # 0 means not missing
+  factor( # factor assures that Missing and Not Missing will always have same colour
+    ifelse(temp == 0, # 0 means not missing
          "Not Missing", # not missing
-         "Missing") # missing
+         "Missing"), # missing
+    levels = c("Not Missing", "Missing")
+    )
 
 }
 

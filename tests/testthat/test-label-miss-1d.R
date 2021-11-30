@@ -13,8 +13,9 @@ test_that("label_miss_1d returns a vector of the same length as the input",{
                 nrow(test_df))
 })
 
-test_that("label_miss_1d returns character vector",{
+test_that("label_miss_1d returns factor vector",{
   expect_type(label_miss_1d(test_df$x),
+              # typeof(factor()) is "integer"
               "integer")
 })
 

@@ -21,8 +21,9 @@ test_that("label_miss_2d returns a vector of the same length as the input",{
                 nrow(test_df))
 })
 
-test_that("label_miss_2d returns character vector",{
+test_that("label_miss_2d returns factor vector",{
   expect_type(label_miss_2d(test_df$x, test_df$y),
+              # typeof(factor()) is "integer"
               "integer")
 })
 

@@ -22,16 +22,19 @@ label_miss_1d <- function(x1){
   test_if_null(x1)
   # find which are missing and which are not.
   temp <- data.frame(x1) %>% is.na %>% rowSums()
-  # Were all values in x1 originally NA, they would be cast to factor of 1 
+  # Were all values in x1 originally NA, they would be cast to factor of 1
   # and assigned mapped_discrete class. Lets cast it back to NA
-  if (all(x1 == 1) && inherits(x1, "mapped_discrete")) x1[] <- NA
-  factor( # factor assures that Missing and Not Missing will always have same colour
-    ifelse(temp == 0, # 0 means not missing
-           "Not Missing", # not missing
-           "Missing"), # missing
+  if (all(x1 == 1) && inherits(x1, "mapped_discrete")) {
+    x1[] <- NA
+  }
+  # factor assures that Missing and Not Missing will always have same colour
+  factor(
+    x = ifelse(temp == 0, # 0 means not missing
+               "Not Missing", # not missing
+               "Missing"), # missing
     levels = c("Not Missing", "Missing")
   )
-  
+
 }
 
 #' label_miss_2d
@@ -53,15 +56,22 @@ label_miss_2d <- function(x1, x2){
   # Catch NULL entries
   if(is.null(x1) | is.null(x2)) stop("Input cannot be NULL", call. = FALSE)
   # find which are missing and which are not.
-  # Were all values in x1/x2 originally NA, they would be cast to factor of 1 
+  # Were all values in x1/x2 originally NA, they would be cast to factor of 1
   # and assigned mapped_discrete class. Lets cast it back to NA
-  if (all(x1 == 1) && inherits(x1, "mapped_discrete")) x1[] <- NA
-  if (all(x2 == 1) && inherits(x2, "mapped_discrete")) x2[] <- NA
+  if (all(x1 == 1) && inherits(x1, "mapped_discrete")) {
+    x1[] <- NA
+  }
+
+  if (all(x2 == 1) && inherits(x2, "mapped_discrete")) {
+    x2[] <- NA
+  }
+
   temp <- data.frame(x1,x2) %>% is.na %>% rowSums()
-  factor( # factor assures that Missing and Not Missing will always have same colour
-    ifelse(temp == 0, # 0 means not missing
-         "Not Missing", # not missing
-         "Missing"), # missing
+  # factor assures that Missing and Not Missing will always have same colour
+  factor(
+    x = ifelse(temp == 0, # 0 means not missing
+               "Not Missing", # not missing
+               "Missing"), # missing
     levels = c("Not Missing", "Missing")
     )
 

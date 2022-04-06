@@ -5,7 +5,7 @@
 \alias{common_na_strings}
 \title{Common string values for NA}
 \format{
-An object of class \code{character} of length 25.
+An object of class \code{character} of length 26.
 }
 \usage{
 common_na_strings
@@ -38,5 +38,6 @@ miss_scan_count(dat_ms, -99)
 miss_scan_count(dat_ms, c("-99","-98","N/A"))
 common_na_strings
 miss_scan_count(dat_ms, common_na_strings)
+replace_with_na(dat_ms, replace = list(y = common_na_strings))
 }
 \keyword{datasets}

@@ -1,5 +1,3 @@
-context("impute values below range")
-
 toy_data <- data.frame(
   x = c(1,2,3,NA,NA,NA,7,8,9),
   y = c(LETTERS[1:7], NA, NA),
@@ -102,8 +100,9 @@ test_that("impute_below_all jitter makes shifts bigger",{
 aq_s <- nabular(airquality)
 
 test_that("impute_below works with nabular", {
-  expect_is(impute_below(aq_s$Ozone), "numeric")
-  expect_is(impute_below_all(aq_s), "data.frame")
-  expect_is(impute_below_at(aq_s, dplyr::vars(Ozone, Solar.R)), "data.frame")
-  expect_is(impute_below_if(aq_s, is.numeric), "data.frame")
+  expect_type(impute_below(aq_s$Ozone), "double")
+  expect_s3_class(impute_below_all(aq_s), "data.frame")
+  expect_s3_class(impute_below_at(aq_s,
+                                  dplyr::vars(Ozone, Solar.R)), "data.frame")
+  expect_s3_class(impute_below_if(aq_s, is.numeric), "data.frame")
 })

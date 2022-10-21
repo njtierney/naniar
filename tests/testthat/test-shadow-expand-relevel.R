@@ -1,5 +1,3 @@
-context("shadow_expand_relevel")
-
 library(dplyr)
 
 df_sh <- data.frame(Q1 = c("yes", "no", "no", NA),

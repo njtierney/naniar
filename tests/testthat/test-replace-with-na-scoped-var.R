@@ -1,5 +1,3 @@
-context("replace_with_na scoped variants")
-
 test_that("empty call provides an error", {
   df <- tibble::tibble(x = c("A", NA))
   expect_error(replace_with_na_all(df))

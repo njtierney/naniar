@@ -1,4 +1,3 @@
-context("add_label_shadow")
 # add some tests for this condition, where ... is added to label shadow
 dat <- tibble::tribble(
   ~air, ~wind, ~water,
@@ -12,8 +11,8 @@ dat <- tibble::tribble(
 dat_sh <- nabular(dat)
 
 test_that("add_label_shadow returns a tibble",{
-  expect_is(add_label_shadow(dat_sh), "tbl_df")
-  expect_is(add_label_shadow(dat_sh, air, wind), "tbl_df")
+  expect_s3_class(add_label_shadow(dat_sh), "tbl_df")
+  expect_s3_class(add_label_shadow(dat_sh, air, wind), "tbl_df")
 })
 
 test_that("add_label_shadow adds the right number of columns",{

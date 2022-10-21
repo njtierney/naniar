@@ -1,5 +1,3 @@
-context("rowwise missings")
-
 # is there a more general way to write these kinds of tests?
 test_that("rowwise errors for non data frames",{
   expect_error(n_miss_row(numeric(0)))

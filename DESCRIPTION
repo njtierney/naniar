@@ -43,7 +43,7 @@ ByteCompile: TRUE
 Suggests:
     knitr,
     rmarkdown,
-    testthat (>= 2.1.0),
+    testthat (>= 3.0.0),
     rpart,
     rpart.plot,
     covr,
@@ -130,3 +130,4 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Language: en-US
+Config/testthat/edition: 3

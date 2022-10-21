@@ -10,7 +10,7 @@ df_prop_miss <- data.frame(prop_miss_all = c(1/3,
 test_df_answer <- dplyr::bind_cols(test_df,df_prop_miss)
 
 test_that("add_shadow_shift returns a tibble",{
-          expect_is(add_shadow_shift(test_df), "tbl_df")
+          expect_s3_class(add_shadow_shift(test_df), "tbl_df")
   })
 
 test_that("add_shadow_shift doubles the number of columns when default used",{

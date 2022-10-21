@@ -6,8 +6,7 @@ dat_ms <- tibble::tribble(~x,  ~y,    ~z,
                          -98, "F",   -1)
 
 test_that("miss_scan_count returns a data.frame", {
-  expect_is(miss_scan_count(dat_ms,-99),
-            "data.frame")
+  expect_s3_class(miss_scan_count(dat_ms,-99), "data.frame")
 })
 
 test_that("miss_scan_count returns an error when no search is provided", {

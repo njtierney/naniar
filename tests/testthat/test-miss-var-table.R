@@ -18,13 +18,13 @@ test_that("miss_var_table errors when a non-dataframe given",{
 })
 
 test_that("miss_var_table produces a tibble", {
-  expect_is(miss_var_table(dat), "tbl_df")
+  expect_s3_class(miss_var_table(dat), "tbl_df")
 })
 
 aq_group <- dplyr::group_by(dat, month)
 
 test_that("miss_var_table grouped_df returns a tibble", {
-  expect_is(miss_var_table(aq_group), "tbl_df")
+  expect_s3_class(miss_var_table(aq_group), "tbl_df")
 })
 
 test_that("grouped_df returns 1 more column than regular miss_var_table", {

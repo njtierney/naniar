@@ -13,7 +13,7 @@ test_that("miss_var_summary errors when a non-dataframe given",{
 })
 
 test_that("miss_var_summary produces a tibble", {
-  expect_is(miss_var_summary(dat), "tbl_df")
+  expect_s3_class(miss_var_summary(dat), "tbl_df")
 })
 
 # group_by testing -------------------------------------------------------------
@@ -21,7 +21,7 @@ test_that("miss_var_summary produces a tibble", {
 aq_group <- dplyr::group_by(dat, month)
 
 test_that("miss_var_summary grouped_df returns a tibble", {
-  expect_is(miss_var_summary(aq_group), "tbl_df")
+  expect_s3_class(miss_var_summary(aq_group), "tbl_df")
 })
 
 test_that("miss_var_summary returns the right number of columns", {

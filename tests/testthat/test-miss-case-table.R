@@ -8,8 +8,8 @@ test_that("miss_case_table errors when given wrong type",{
 aq_group <- dplyr::group_by(airquality, Month)
 
 test_that("miss_case_table produces a tibble", {
-  expect_is(miss_case_table(airquality), "tbl_df")
-  expect_is(miss_case_table(aq_group), "tbl_df")
+  expect_s3_class(miss_case_table(airquality), "tbl_df")
+  expect_s3_class(miss_case_table(aq_group), "tbl_df")
 })
 
 test_that("grouped_df returns 1 more column than regular miss_case_table", {

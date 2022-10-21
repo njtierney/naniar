@@ -8,8 +8,8 @@ test_that("shade errors with objects of length 0",{
 
 
 test_that("shade returns an object of class shade", {
-  expect_is(shade(c(1,2, NA)), "shade")
-  expect_is(shade(c(1,2, NA),
+  expect_s3_class(shade(c(1,2, NA)), "shade")
+  expect_s3_class(shade(c(1,2, NA),
                   broken_machine = 2), "shade")
 })
 

@@ -3,8 +3,8 @@ test_that("nabular and bind_shadow return the same output", {
 })
 
 test_that("nabular returns a data.frame or tbl",{
-  expect_is(nabular(airquality), "data.frame")
-  expect_is(nabular(airquality), "tbl_df")
+  expect_s3_class(nabular(airquality), "data.frame")
+  expect_s3_class(nabular(airquality), "tbl_df")
 })
 
 test_that("nabular errors when given non dataframe or 0 entry",{

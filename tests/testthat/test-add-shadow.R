@@ -2,7 +2,7 @@ df <- data.frame(x = c(NA, 1:4),
              y = c(NA, NA, 1:3))
 
 test_that("add_shadow returns a tibble",{
-  expect_is(add_shadow(df, x), "tbl_df")
+  expect_s3_class(add_shadow(df, x), "tbl_df")
 })
 
 test_that(

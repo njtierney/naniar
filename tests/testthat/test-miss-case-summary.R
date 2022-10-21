@@ -19,7 +19,7 @@ dat <- tibble::tribble(
 )
 
 test_that("miss_case_summary produces a tibble", {
-  expect_is(miss_case_summary(dat), "tbl_df")
+  expect_s3_class(miss_case_summary(dat), "tbl_df")
 })
 
 # grouping
@@ -27,7 +27,7 @@ test_that("miss_case_summary produces a tibble", {
 aq_group <- dplyr::group_by(dat, month)
 
 test_that("miss_case_summary on grouped_df returns a tibble", {
-  expect_is(miss_case_summary(aq_group), "tbl_df")
+  expect_s3_class(miss_case_summary(aq_group), "tbl_df")
 })
 
 test_that("miss_case_summary produces the right number of columns", {

@@ -1,5 +1,3 @@
-context("label_shadow")
-
 test_that("label_shadow returns character",{
   expect_is(label_shadow(airquality), "character")
 })

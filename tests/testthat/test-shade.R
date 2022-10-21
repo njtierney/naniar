@@ -1,5 +1,3 @@
-context("test-shade.R")
-
 test_that("shade errors with NULLs",{
   expect_error(shade(NULL))
 })

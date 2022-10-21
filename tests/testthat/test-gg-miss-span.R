@@ -1,5 +1,3 @@
-context("gg_miss_span")
-
 dat <- tibble::tribble(
   ~air, ~wind, ~water, ~month,
   -99,    NA,  23,     1,

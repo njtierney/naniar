@@ -1,5 +1,3 @@
-context("miss_var_summary tidiers")
-
 dat <- tibble::tribble(
   ~air, ~wind, ~water, ~month,
   -99,    NA,  23,  1,

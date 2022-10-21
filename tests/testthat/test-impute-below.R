@@ -1,5 +1,3 @@
-context("impute values below range")
-
 toy_data <- data.frame(
   x = c(1,2,3,NA,NA,NA,7,8,9),
   y = c(LETTERS[1:7], NA, NA),

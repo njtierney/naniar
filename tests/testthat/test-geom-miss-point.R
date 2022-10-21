@@ -1,5 +1,3 @@
-context("geom_miss_point")
-
 dat <- tibble::tribble(
   ~air, ~wind, ~water, ~month,
   -99,    NA,  23,     1,

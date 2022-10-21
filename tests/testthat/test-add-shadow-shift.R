@@ -1,5 +1,3 @@
-context("add_shadow_shift")
-
 test_df <- data.frame(x = c(NA,2,3),
                       y = c(1,NA,3),
                       z = c(1,2,3),

@@ -1,5 +1,3 @@
-context("miss_prop_summary")
-
 test_that("miss_prop_summary returns a data.frame",{
   expect_s3_class(miss_prop_summary(airquality),
                   "data.frame")

@@ -1,4 +1,3 @@
-context("add_label_shadow")
 # add some tests for this condition, where ... is added to label shadow
 dat <- tibble::tribble(
   ~air, ~wind, ~water,

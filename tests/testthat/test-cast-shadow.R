@@ -1,5 +1,3 @@
-context("cast_shadow")
-
 test_that("cast_shadow returns a tibble",{
   expect_is(cast_shadow(airquality, Ozone), "tbl_df")
 })

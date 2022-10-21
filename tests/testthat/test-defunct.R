@@ -1,5 +1,3 @@
-context("Defuncts")
-
 df <- tibble::tibble(x = c("A", NA))
 
 test_that("miss_var_prop is defunct", {

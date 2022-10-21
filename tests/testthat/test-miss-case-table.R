@@ -1,5 +1,3 @@
-context("miss_case_table tidiers")
-
 test_that("miss_case_table errors when given wrong type",{
   expect_error(miss_case_table(NULL))
   expect_error(miss_case_table(1))

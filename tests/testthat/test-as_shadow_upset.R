@@ -1,5 +1,3 @@
-context("as_shadow_upset words")
-
 test_that("as_shadow_upset errors when given datasets with <= 1 variables", {
   expect_error(as_shadow_upset(diag_na(1)))
   expect_error(as_shadow_upset(data.frame(x = NA)))

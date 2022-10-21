@@ -1,5 +1,3 @@
-context("special-missings-single-recode")
-
 df <- tibble::tribble(
   ~wind, ~temp,
   -99,    45,
@@ -29,8 +27,6 @@ test_that("special missings are put in the right place", {
   expect_equal(as.character(dfs_special$temp_NA),
               c("NA_bananas", "NA", "!NA"))
 })
-
-context("special-missings-many-recode")
 
 df_many_recode <- df %>%
   nabular() %>%
@@ -122,9 +118,6 @@ test_that("recode_shadow returns right levels if .where is called many times", {
   expect_equal(levels(df_mult_where$temp_NA),
                c("!NA", "NA", "NA_broken_machine", "NA_wat"))
 })
-
-
-context("recode_shadow works on grouped data")
 
 aq_recoded <- airquality %>%
   nabular() %>%

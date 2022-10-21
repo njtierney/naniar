@@ -1,5 +1,3 @@
-context("miss-scan-count")
-
 dat_ms <- tibble::tribble(~x,  ~y,    ~z,
                          1,   "A",   -100,
                          3,   "N/A", -99,

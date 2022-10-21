@@ -1,5 +1,3 @@
-context("add_any_miss")
-
 df <- data.frame(x = c(NA, 1:4),
              y = c(NA, NA, 1:3))
 

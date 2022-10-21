@@ -1,5 +1,3 @@
-context("bind_shadow and nabular")
-
 test_that("nabular and bind_shadow return the same output", {
   expect_equal(nabular(airquality), bind_shadow(airquality))
 })

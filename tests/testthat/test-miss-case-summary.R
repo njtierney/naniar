@@ -1,5 +1,3 @@
-context("miss_case_summary tidiers")
-
 test_that("miss_case_summary errors on NULL",{
   expect_error(miss_case_summary(NULL))
 })

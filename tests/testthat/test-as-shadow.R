@@ -1,5 +1,3 @@
-context("as_shadow")
-
 test_that("as_shadow returns a data.frame or tibble",{
   expect_is(as_shadow(airquality), "data.frame")
   expect_is(as_shadow(airquality), "tbl")

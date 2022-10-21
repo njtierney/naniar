@@ -66,7 +66,6 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
           remotes::install_cran("vdiffr")
-          remotes::install_cran("gdtools")
         shell: Rscript {0}
 
       - name: Check

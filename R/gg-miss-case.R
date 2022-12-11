@@ -95,10 +95,10 @@ gg_miss_case_create <- function(data, show_pct){
   }
 
   ggplot(data = data,
-         aes_string(x = "case",
+         aes(x = case,
              # possibly include an if() statement here to change `n_miss` to
              # `pct_miss` when the appropriate indicator is passed through
-             y = aes_y)) +
+             y = .data[[aes_y]])) +
     geom_col(width = 1,
              colour = "#484878", # lorikeet purple
              fill = "#484878") + # lorikeet purple

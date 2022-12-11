@@ -125,7 +125,12 @@ We can also compare imputed values to complete cases by grouping by `any_missing
 ocean_imp %>%
   group_by(any_missing) %>%
   summarise_at(.vars = vars(air_temp_c),
-               .funs = funs(min, mean, median, max, .args = list(na.rm = TRUE)))
+               .funs = list(
+                 min = ~ min(.x, na.rm = TRUE), 
+                 mean = ~ mean(.x, na.rm = TRUE), 
+                 median = ~ median(.x, na.rm = TRUE), 
+                 max = ~ max(.x, na.rm = TRUE)
+              ))
 ```
 
 # Improving imputations

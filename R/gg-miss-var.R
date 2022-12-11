@@ -82,13 +82,13 @@ gg_miss_var_create <- function(data, show_pct){
        #     y = n_miss)) +
        # aes(x = stats::reorder(variable, n_miss),
        #     y = n_miss)) +
-  geom_bar(aes_string(y = aes_y),
+  geom_bar(aes(y = .data[[aes_y]]),
            stat = "identity",
            position = "dodge",
            width = 0.001,
            colour = "#484878",
            fill = "#484878") +
-  geom_point(aes_string(y = aes_y),
+  geom_point(aes(y = .data[[aes_y]]),
              colour = "#484878",
              fill = "#484878") +
   coord_flip() +

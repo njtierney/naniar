@@ -37,9 +37,9 @@
 <polyline points='210.65,545.11 210.65,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='286.17,545.11 286.17,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='361.68,545.11 361.68,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='59.63' y='292.19' width='302.05' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
-<rect x='59.63' y='134.17' width='151.03' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
-<rect x='59.63' y='450.22' width='0.00' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
+<rect x='59.63' y='292.19' width='302.05' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
+<rect x='59.63' y='134.17' width='151.03' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
+<rect x='59.63' y='450.22' width='0.00' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
 <circle cx='361.68' cy='292.27' r='1.95' style='stroke-width: 0.71; stroke: #484878; fill: #484878;' />
 <circle cx='210.65' cy='134.25' r='1.95' style='stroke-width: 0.71; stroke: #484878; fill: #484878;' />
 <circle cx='59.63' cy='450.30' r='1.95' style='stroke-width: 0.71; stroke: #484878; fill: #484878;' />
@@ -64,9 +64,9 @@
 <polyline points='548.39,545.11 548.39,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='623.90,545.11 623.90,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='699.42,545.11 699.42,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='397.37' y='134.17' width='201.37' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
-<rect x='397.37' y='450.22' width='100.68' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
-<rect x='397.37' y='292.19' width='0.00' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
+<rect x='397.37' y='134.17' width='201.37' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
+<rect x='397.37' y='450.22' width='100.68' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
+<rect x='397.37' y='292.19' width='0.00' height='0.16' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
 <circle cx='598.73' cy='134.25' r='1.95' style='stroke-width: 0.71; stroke: #484878; fill: #484878;' />
 <circle cx='498.05' cy='450.30' r='1.95' style='stroke-width: 0.71; stroke: #484878; fill: #484878;' />
 <circle cx='397.37' cy='292.27' r='1.95' style='stroke-width: 0.71; stroke: #484878; fill: #484878;' />

@@ -45,11 +45,11 @@
 <polyline points='371.21,545.11 371.21,22.78 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='527.26,545.11 527.26,22.78 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='683.31,545.11 683.31,22.78 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='59.11' y='46.53' width='624.20' height='94.97' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
-<rect x='59.11' y='141.49' width='624.20' height='94.97' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
-<rect x='59.11' y='236.46' width='312.10' height='94.97' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
-<rect x='59.11' y='331.43' width='312.10' height='94.97' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
-<rect x='59.11' y='426.40' width='0.00' height='94.97' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
+<rect x='59.11' y='46.53' width='624.20' height='94.97' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
+<rect x='59.11' y='141.49' width='624.20' height='94.97' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
+<rect x='59.11' y='236.46' width='312.10' height='94.97' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
+<rect x='59.11' y='331.43' width='312.10' height='94.97' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
+<rect x='59.11' y='426.40' width='0.00' height='94.97' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 <text x='22.97' y='97.04' text-anchor='end' style='font-size: 8.80px; fill: #4D4D4D; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>1</text>

@@ -39,8 +39,8 @@
 <polyline points='136.26,545.11 136.26,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='229.15,545.11 229.15,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='322.03,545.11 322.03,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='43.38' y='62.42' width='309.61' height='153.24' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
-<rect x='43.38' y='215.66' width='154.81' height='153.24' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
+<rect x='43.38' y='62.42' width='309.61' height='153.24' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
+<rect x='43.38' y='215.66' width='154.81' height='153.24' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 </g>
@@ -64,9 +64,9 @@
 <polyline points='482.31,545.11 482.31,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='575.20,545.11 575.20,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='668.08,545.11 668.08,39.43 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='389.43' y='62.42' width='309.61' height='153.24' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
-<rect x='389.43' y='215.66' width='154.81' height='153.24' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
-<rect x='389.43' y='368.89' width='0.00' height='153.24' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: square; stroke-linejoin: miter; fill: #484878;' />
+<rect x='389.43' y='62.42' width='309.61' height='153.24' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
+<rect x='389.43' y='215.66' width='154.81' height='153.24' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
+<rect x='389.43' y='368.89' width='0.00' height='153.24' style='stroke-width: 1.07; stroke: #484878; stroke-linecap: butt; stroke-linejoin: miter; fill: #484878;' />
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 </g>

@@ -23,7 +23,7 @@ gg_miss_var_cumsum <- function(x){
     ggplot(aes(x = stats::reorder(variable, n_miss_cumsum),
                y = n_miss_cumsum,
                group = 1)) +
-    geom_line(size = 2) +
+    geom_line(linewidth = 2) +
     labs(x = "Var",
          y = "Cumsum of missing values") +
     theme_bw() +

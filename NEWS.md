@@ -8,6 +8,8 @@ remove legend [#288](https://github.com/njtierney/naniar/issues/288).
 ## Misc
 
 - Removed gdtools from naniar as no longer needed [302](https://github.com/njtierney/naniar/issues/302).
+- The DOI in the CITATION is for a new JSS publication that will be registered 
+  after publication on CRAN.
 
 # naniar 0.6.1 (2021/05/13) "Incandescent lightbulbs killed the Arc lamps"
 

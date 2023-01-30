@@ -79,9 +79,6 @@ gg_miss_var_create <- function(data, show_pct){
 
   ggplot(data = data,
        aes(x = stats::reorder(variable, n_miss))) +
-       #     y = n_miss)) +
-       # aes(x = stats::reorder(variable, n_miss),
-       #     y = n_miss)) +
   geom_bar(aes(y = .data[[aes_y]]),
            stat = "identity",
            position = "dodge",

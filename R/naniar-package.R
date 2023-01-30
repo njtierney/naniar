@@ -2,7 +2,8 @@
 #'
 #' naniar is a package to make it easier to summarise and handle missing values
 #' in R. It strives to do this in a way that is as consistent with tidyverse
-#' principles as possible.
+#' principles as possible.  The work is fully discussed at Tierney & Cook (2023)
+#' <doi:10.18637/jss.v105.i07>.
 #'
 #' @name naniar
 #' @docType package

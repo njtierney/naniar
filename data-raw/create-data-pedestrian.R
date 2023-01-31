@@ -14,6 +14,7 @@ library(magrittr)
 # Data cleaning code largely written by Earo Wang.
 
 # data taken from https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp
+# recently -https://data.melbourne.vic.gov.au/explore/dataset/pedestrian-counting-system-monthly-counts-per-hour/information/
 
 dat_ped <- read_csv("../earo-miss/Pedestrian_volume__updated_monthly_.csv") %>%
   filter(Year > 2013) %>%

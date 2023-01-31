@@ -1,5 +1,3 @@
-context("Label 1d missings")
-
 test_df <- data.frame(x = c(NA,2,3),
                       y = c(1,NA,3),
                       z = c(1,2,3))

@@ -40,6 +40,8 @@ For more details on the workflow and theory underpinning naniar, read the vignet
 
 For a short primer on the data visualisation available in naniar, read the vignette [Gallery of Missing Data Visualisations](https://naniar.njtierney.com/articles/naniar-visualisation.html).
 
+For full details of the package, including 
+
 # Installation
 
 You can install naniar from CRAN:

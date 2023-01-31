@@ -1,5 +1,3 @@
-context("test-miss-var-which.R")
-
 test_that("miss-var-which returns the right variables", {
   expect_equal(miss_var_which(airquality),
                c("Ozone", "Solar.R"))

@@ -1,5 +1,3 @@
-context("test-shade-verifiers")
-
 x <- c(NA, 1, 2, "3")
 xs <- shade(c(NA, 1, 2, "3"))
 aq <- airquality

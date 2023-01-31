@@ -1,5 +1,3 @@
-context("test-impute-median")
-
 vec <- rnorm(10)
 
 vec[sample(1:10, 3)] <- NA

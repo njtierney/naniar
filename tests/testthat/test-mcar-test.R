@@ -1,5 +1,3 @@
-context("mcar_test")
-
 test_that("mcar_test calculates correct statistics", {
   out_test <- mcar_test(airquality)
 

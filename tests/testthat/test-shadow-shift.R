@@ -1,5 +1,3 @@
-context("shadow shift")
-
 test_that("shadow_shift returns NULL when given NULL",{
   expect_null(shadow_shift(NULL))
 })

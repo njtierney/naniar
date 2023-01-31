@@ -1,5 +1,3 @@
-context("miss_prop_summary")
-
 test_that("miss_prop_summary returns a data.frame",{
   expect_s3_class(miss_prop_summary(airquality),
                   "data.frame")
@@ -29,7 +27,7 @@ test_that("The columns are named df, var, case",{
 aq_group <- dplyr::group_by(airquality, Month)
 
 test_that("miss_prop_summary grouped_df returns a tibble", {
-  expect_is(miss_prop_summary(aq_group), "tbl_df")
+  expect_s3_class(miss_prop_summary(aq_group), "tbl_df")
 })
 
 test_that("grouped_df returns 1 more column than regular miss_prop_summary", {

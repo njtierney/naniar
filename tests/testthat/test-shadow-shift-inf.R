@@ -1,5 +1,3 @@
-context("infinite values for shadow shift")
-
 df_inf <-  data.frame(x = c(-Inf,rnorm(2), NA, Inf))
 
 test_that("missing values are replaced in shadow shift",{

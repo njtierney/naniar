@@ -1,7 +1,5 @@
 # gg_miss_var plots ------------------------------------------------------------
 
-context("gg_miss_var_plot")
-
 dat <- tibble::tribble(
   ~air, ~wind, ~water, ~month,
   -99,    NA,  23,     1,

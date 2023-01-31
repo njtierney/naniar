@@ -1,13 +1,10 @@
-context("cast_shadow_shift_label")
-
-
 test_that(
   "cast_shadow_shift_label returns nice error if variables aren't included",{
   expect_error(cast_shadow_shift(airquality))
 })
 
 test_that("cast_shadow_shift_label returns a tibble",{
-  expect_is(cast_shadow_shift_label(airquality, Ozone), "tbl_df")
+  expect_s3_class(cast_shadow_shift_label(airquality, Ozone), "tbl_df")
 })
 
 test_that("cast_shadow_shift_label adds the right number of columns",{

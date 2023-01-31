@@ -1,5 +1,3 @@
-context("miss-var-run")
-
 library(dplyr)
 
 p_group <- pedestrian %>% group_by(month)

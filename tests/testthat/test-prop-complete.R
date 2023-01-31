@@ -1,5 +1,3 @@
-context("prop_complete")
-
 df <- data.frame(x = c(NA, 1:4),
                  y = c(NA, NA, 1:3))
 

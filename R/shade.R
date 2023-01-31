@@ -90,6 +90,20 @@ shade <- function(x, ..., extra_levels = NULL){
     rlang::abort(message = "input to shade must have length > 0")
   }
 
+  # is list column
+  if (missing(...) & is.list(x)) {
+    x <- factor(purrr::map_lgl(x, ~length(.x)==0),
+                labels = c("!NA", "NA"),
+                levels = c(FALSE, TRUE))
+
+    return(new_shade(x, extra_levels))
+  }
+
+  if (!missing(...) & is.list(x)) {
+    rlang::abort(message = "additional levels of missing are not available when shade-ing lists column")
+  }
+
+
   # if no other levels are specified
   if (missing(...)) {
     x <- factor(is.na(x),

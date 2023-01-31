@@ -28,6 +28,8 @@
 #'
 #' # test that this breaks
 #' # shadow_expand_relevel(airquality, "weee")
+#' @keywords internal
+#' @noRd
 shadow_expand_relevel <- function(.var, suffix){
 
   # create level
@@ -78,7 +80,8 @@ shadow_expand_relevel <- function(.var, suffix){
 #'# update_shadow(dfs, "weee")
 #'# update_shadow(dfs, "weee") %>% what_levels()
 #' }
-#'
+#'@keywords internal
+#'@noRd
 update_shadow <- function(data, suffix) {
 
   class_of_cols <- purrr::map(data,class)

@@ -4,6 +4,8 @@
 #' @param extra_levels the extra levels to give to `shade` objects, such as "broken_machine" and so on, which get converted into "NA_broken_machine".
 #'
 #' @return a new shade, which is built upon a factor
+#' @keywords internal
+#' @noRd
 new_shade <- function(x, extra_levels = NULL){
 
   if (!is.factor(x)) {

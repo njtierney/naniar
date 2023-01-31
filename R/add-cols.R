@@ -269,6 +269,8 @@ add_label_missings <- function(data,
 #' @param complete character character a label for when values are complete - defaults to "Not Missing"
 #'
 #' @return "Missing" or "Not Missing"
+#' @keywords internal
+#' @noRd
 #'
 label_shadow <- function(data,
                          ...,

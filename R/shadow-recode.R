@@ -155,6 +155,7 @@ update_shadow <- function(data, suffix) {
 #'
 #' @return a dataframe with altered shadows
 #' @export
+#' @rdname recode_shadow
 #'
 #' @examples
 #'
@@ -179,6 +180,12 @@ recode_shadow <- function(data, ...){
 
   test_if_null(data)
   test_if_any_shade(data)
+  UseMethod("recode_shadow")
+}
+
+#' @name recode_shadow
+#' @export
+recode_shadow.data.frame <- function(data, ...){
 
   formulas <- rlang::dots_list(...)
 
@@ -236,4 +243,10 @@ recode_shadow <- function(data, ...){
     dplyr::mutate(!!!magic_shade_case_when)
 
   shadow_recoded
+}
+
+#' @name recode_shadow
+#' @export
+recode_shadow.grouped_df <- function(data, ...){
+  group_by_fun(data, .fun = recode_shadow, ...)
 }

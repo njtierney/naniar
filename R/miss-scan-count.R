@@ -37,8 +37,9 @@ miss_scan_count <- function(data,search){
                          ~length(grep(search,
                                       x = .))) %>%
       # return the dataframe with the columns "
-      tidyr::gather(key = "Variable",
-                    value = "n")
+      tidyr::pivot_longer(cols = dplyr::everything(),
+                          names_to = "Variable",
+                          values_to = "n")
     # but if there are more than one, we need to combine the search terms
   }
 
@@ -47,8 +48,9 @@ miss_scan_count <- function(data,search){
                          ~length(grep(paste0(search,
                                              collapse ="|"),
                                       x = .))) %>%
-      tidyr::gather(key = "Variable",
-                    value = "n")
+      tidyr::pivot_longer(cols = dplyr::everything(),
+                          names_to = "Variable",
+                          values_to = "n")
   }
 
   return(res)

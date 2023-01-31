@@ -39,9 +39,9 @@ gg_miss_span <- function(data,
   ggobject <-  miss_var_span(data = data,
                              var = !!var_enquo,
                              span_every = span_every) %>%
-    tidyr::gather(key = variable,
-                  value = value,
-                  prop_miss:prop_complete) %>%
+    tidyr::pivot_longer(cols = prop_miss:prop_complete,
+                        names_to = "variable",
+                        values_to = "value") %>%
     ggplot2::ggplot(ggplot2::aes(x = span_counter,
                                  y = value,
                                  fill = variable)) +
@@ -70,9 +70,9 @@ gg_miss_span <- function(data,
       dplyr::group_by(!!quo_group_by) %>%
       miss_var_span(var = !!var_enquo,
                     span_every = span_every) %>%
-      tidyr::gather(key = variable,
-                    value = value,
-                    prop_miss:prop_complete) %>%
+      tidyr::pivot_longer(cols = prop_miss:prop_complete,
+                          names_to = "variable",
+                          values_to = "value") %>%
       ggplot2::ggplot(ggplot2::aes(x = span_counter,
                                    y = value,
                                    fill = variable)) +

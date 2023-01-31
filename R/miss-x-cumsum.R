@@ -38,8 +38,9 @@ miss_var_cumsum.default <- function(data){
   purrr::map_dfc(data,
                 # how many are missing in each variable?
                 function(x) n_miss(x)) %>%
-    tidyr::gather(key = "variable",
-                  value = "n_miss") %>%
+    tidyr::pivot_longer(cols = dplyr::everything(),
+                        names_to = "variable",
+                        values_to = "n_miss") %>%
     dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
 
 }

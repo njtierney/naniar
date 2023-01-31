@@ -7,7 +7,6 @@ dat <- tibble::tribble(
   23,     40,  NA,     2
 )
 
-# gg_miss_span_plot <- gg_miss_span(pedestrian, hourly_counts, 4000)
 gg_miss_span_plot <- gg_miss_span(dat, water, 3)
 
 test_that("gg_miss_span works",{

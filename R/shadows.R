@@ -171,9 +171,9 @@ gather_shadow <- function(data){
 
   as_shadow(data) %>%
     dplyr::mutate(rows = seq_len(nrow(.))) %>%
-    tidyr::gather(key = "variable",
-                  value = "missing",
-                  -rows) %>%
+    tidyr::pivot_longer(cols = -rows,
+                        names_to = "variable",
+                        values_to = "missing") %>%
     dplyr::rename(case = rows)
 }
 
@@ -202,24 +202,36 @@ gather_shadow <- function(data){
 #' shadow_long(aq_shadow, Ozone, Solar.R)
 #'
 #'
-shadow_long <- function(shadow_data,
-                        ...,
-                        only_main_vars = TRUE){
+shadow_long <- function(
+  shadow_data,
+  ...,
+  only_main_vars = TRUE
+    ) {
 
   test_if_null(shadow_data)
   test_if_any_shade(shadow_data)
 
-  gathered_df <- shadow_data %>%
-    tidyr::gather(key = "variable",
-                  value = "value",
-                  -which_are_shade(.)) %>%
-    tidyr::gather(key = "variable_NA",
-                  value = "value_NA",
-                  which_are_shade(.))
+  shadow_data_names <- names(which_are_shade(shadow_data))
+  longer_one <- tidyr::pivot_longer(
+    shadow_data,
+    cols = -dplyr::one_of(shadow_data_names),
+    names_to = "variable",
+    values_to = "value"
+  )
+
+  longer_one_shade_names <- names(which_are_shade(longer_one))
+  gathered_df <- tidyr::pivot_longer(
+    longer_one,
+    cols = dplyr::one_of(longer_one_shade_names),
+    names_to = "variable_NA",
+    values_to = "value_NA"
+  )
 
   if (only_main_vars) {
-    gathered_df <- dplyr::filter(gathered_df,
-                                 variable_NA == paste0(variable,"_NA"))
+    gathered_df <- dplyr::filter(
+      gathered_df,
+      variable_NA == paste0(variable, "_NA")
+    )
   }
 
   if (!missing(...)) {
@@ -228,8 +240,7 @@ shadow_long <- function(shadow_data,
       dplyr::filter(variable %in% vars)
   }
 
-    return(gathered_df)
-
+  return(gathered_df)
 }
 
 #' Convert data into shadow format for doing an upset plot

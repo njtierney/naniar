@@ -1,5 +1,3 @@
-context("replace_with_na")
-
 test_that("empty call does nothing", {
   df <- tibble::tibble(x = c("A", NA))
   out <- replace_with_na(df)

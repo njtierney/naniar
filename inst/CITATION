@@ -1,0 +1,13 @@
+bibentry(bibtype = "Article",
+  title        = "Expanding Tidy Data Principles to Facilitate Missing Data Exploration, Visualization and Assessment of Imputations",
+  author       = c(person(given = "Nicholas", family = "Tierney", email = "nicholas.tierney@gmail.com"),
+                   person(given = "Dianne", family = "Cook")),
+  journal      = "Journal of Statistical Software",
+  year         = "2023",
+  volume       = "105",
+  number       = "7",
+  pages        = "1--31",
+  doi          = "10.18637/jss.v105.i07",
+  header       = "To cite naniar in publications use:"
+)
+

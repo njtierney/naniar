@@ -71,7 +71,7 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #' airquality %>% add_prop_miss(Solar.R, Ozone, label = "testing")
 #'
 #' # this can be applied to model the proportion of missing data
-#' # as in Tierney et al (doi: 10.1136/bmjopen-2014-007450)
+#' # as in Tierney et al \doi{10.1136/bmjopen-2014-007450}
 #' # see "Modelling missingness" in vignette "Getting Started with naniar"
 #' # for details
 

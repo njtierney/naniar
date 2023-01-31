@@ -1,11 +1,9 @@
-context("gather_shadow")
-
 df <- data.frame(x = c(NA, 1:4),
              y = c(NA, NA, 1:3))
 
 test_that("gather_shadow returns a tibble or data.frame",{
-  expect_is(gather_shadow(df), "data.frame")
-  expect_is(gather_shadow(df), "tbl")
+  expect_s3_class(gather_shadow(df), "data.frame")
+  expect_s3_class(gather_shadow(df), "tbl")
 })
 
 test_that("gather_shadow errors when given non dataframe or 0 entry",{

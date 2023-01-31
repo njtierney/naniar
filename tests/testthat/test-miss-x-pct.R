@@ -1,5 +1,3 @@
-context("missingness scalar summaries")
-
 test_that("prop_miss* errors on NULL",{
   expect_error(prop_miss(NULL))
   expect_error(prop_miss_var(NULL))

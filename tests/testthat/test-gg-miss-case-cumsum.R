@@ -1,7 +1,5 @@
 # gg_miss_case_cumsum plots ----------------------------------------------------
 
-context("gg_miss_case_cumsum")
-
 dat <- tibble::tribble(
   ~air, ~wind, ~water, ~month,
   -99,    NA,  23,     1,

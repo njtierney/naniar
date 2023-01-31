@@ -35,9 +35,11 @@ gg_miss_fct <- function(x, fct){
 
   ggobject <-
     ggplot(data,
-           aes_string(x = quo_name(fct),
-                      y = "variable",
-                      fill = "pct_miss")) +
+           aes(
+             x = .data[[fct]],
+             y = variable,
+             fill = pct_miss
+           )) +
     geom_tile() +
     viridis::scale_fill_viridis(name = "% Miss") +
     theme_minimal() +

@@ -1,5 +1,3 @@
-context("impute_below_at works")
-
 miss_vec <- rnorm(100)
 
 # add 20 missing values
@@ -20,8 +18,6 @@ test_that("impute_below_at works with vars",{
                           dplyr::vars(miss_vec))[which(is.na(miss_df$miss_vec)), ])
   )
 })
-
-context("impute_below_if works")
 
 miss_vec <- rnorm(100)
 

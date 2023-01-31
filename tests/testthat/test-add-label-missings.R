@@ -1,5 +1,3 @@
-context("add_label_missings")
-
 # add some tests for this condition, where ... is added to label shadow
 dat <- tibble::tribble(
   ~air, ~wind, ~water,
@@ -11,7 +9,7 @@ dat <- tibble::tribble(
 )
 
 test_that("add_label_missings returns a tibble",{
-  expect_is(add_label_missings(dat), "tbl_df")
+  expect_s3_class(add_label_missings(dat), "tbl_df")
 })
 
 test_that("add_label_missings respects dimensions",{

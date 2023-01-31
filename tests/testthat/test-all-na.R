@@ -1,5 +1,3 @@
-context("test all_na and all_complete")
-
 misses <- c(NA, NA, NA)
 complete <- c(1, 2, 3)
 mixture <- c(NA, 1, NA)

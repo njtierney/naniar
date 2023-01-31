@@ -1,5 +1,3 @@
-context("n_complete")
-
 test_that("n_complete handles 0 cases as I expect",{
 
   expect_equal(n_complete(0), 1)

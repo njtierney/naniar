@@ -27,4 +27,5 @@
 #' miss_scan_count(dat_ms, c("-99","-98","N/A"))
 #' common_na_strings
 #' miss_scan_count(dat_ms, common_na_strings)
+#' replace_with_na(dat_ms, replace = list(y = common_na_strings))
 "common_na_strings"

@@ -1,5 +1,3 @@
-context("test-shadow-identifiers")
-
 df <- tibble::tribble(
   ~wind, ~temp,
   -99,    45,

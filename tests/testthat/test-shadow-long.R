@@ -1,5 +1,3 @@
-context("test-shadow-long")
-
 aq_shadow <- nabular(airquality)
 
 aq_sh_long <- shadow_long(aq_shadow)
@@ -16,7 +14,7 @@ library(purrr)
 
 test_that("shadow_long returns right data class", {
   expect_equal(as.character(map_chr(aq_sh_long, class)),
-               c("character", "numeric", "character", "character"))
+               c("character", "numeric", "character", "factor"))
 })
 
 aq_sh_long_ozone <- shadow_long(aq_shadow, Ozone)
@@ -32,7 +30,7 @@ test_that("shadow_long returns data with right names when filtered", {
 
 test_that("shadow_long returns right data class when filtered", {
   expect_equal(as.character(map_chr(aq_sh_long_ozone, class)),
-               c("character", "numeric", "character", "character"))
+               c("character", "numeric", "character", "factor"))
 })
 
 
@@ -49,6 +47,6 @@ test_that("shadow_long returns data with right names when filtered", {
 
 test_that("shadow_long returns right data class when filtered", {
   expect_equal(as.character(map_chr(aq_sh_long_ozone_solar, class)),
-               c("character", "numeric", "character", "character"))
+               c("character", "numeric", "character", "factor"))
 })
 

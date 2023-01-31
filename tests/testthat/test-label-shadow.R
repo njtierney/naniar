@@ -1,7 +1,5 @@
-context("label_shadow")
-
 test_that("label_shadow returns character",{
-  expect_is(label_shadow(airquality), "character")
+  expect_type(label_shadow(airquality), "character")
 })
 
 test_that("label_shadow adds the right number of elements",{

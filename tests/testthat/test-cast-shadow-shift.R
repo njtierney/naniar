@@ -1,7 +1,5 @@
-context("cast_shadow_shift")
-
 test_that("cast_shadow_shift returns a tibble",{
-  expect_is(cast_shadow_shift(airquality, Ozone), "tbl_df")
+  expect_s3_class(cast_shadow_shift(airquality, Ozone), "tbl_df")
 })
 
 test_that("cast_shadow_shift adds the right number of columns",{

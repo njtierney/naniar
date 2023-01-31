@@ -205,3 +205,37 @@ any_row_shade <- function(x){
 vecIsFALSE <- Vectorize(isFALSE)
 
 are_any_false <- function(x, ...) any(vecIsFALSE(x), ...)
+
+check_btn_0_1 <- function(prop){
+  if (prop < 0 || prop > 1) {
+    cli::cli_abort(
+      c(
+        "{.var prop} must be between 0 and 1",
+        "{.var prop} is {prop}"
+      )
+    )
+  }
+}
+
+check_is_integer <- function(x){
+  if (x < 0) {
+    cli::cli_abort(
+      c(
+        "{.var x} must be greater than 0",
+        "{.var x} is {x}"
+      )
+    )
+  }
+  vctrs::vec_cast(x, integer())
+}
+
+check_is_scalar <- function(x){
+  if (length(x) != 1) {
+    cli::cli_abort(
+      c(
+        "{.var x} must be length 1",
+        "{.var x} is {x}, and {.var x} has length: {length(x)}"
+      )
+    )
+  }
+}

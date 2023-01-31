@@ -73,7 +73,9 @@ Imports:
     forcats,
     viridis,
     glue,
-    UpSetR
+    UpSetR,
+    cli,
+    vctrs
 Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
@@ -118,6 +120,7 @@ Collate:
     'replace-to-na.R'
     'replace-with-na.R'
     'scoped-replace-with-na.R'
+    'set-n-prop-miss.R'
     'shade.R'
     'shadow-recode.R'
     'shadow-shifters.R'

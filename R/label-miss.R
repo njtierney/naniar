@@ -27,14 +27,19 @@ label_miss_1d <- function(x1){
   if (all(x1 == 1) && inherits(x1, "mapped_discrete")) {
     x1[] <- NA
   }
+
+  as_missing_factor(temp)
+
+}
+
+as_missing_factor <- function(x){
   # factor assures that Missing and Not Missing will always have same colour
   factor(
-    x = ifelse(temp == 0, # 0 means not missing
+    x = ifelse(x == 0, # 0 means not missing, 1 means missing
                "Not Missing", # not missing
                "Missing"), # missing
     levels = c("Not Missing", "Missing")
   )
-
 }
 
 #' label_miss_2d
@@ -67,13 +72,8 @@ label_miss_2d <- function(x1, x2){
   }
 
   temp <- data.frame(x1,x2) %>% is.na %>% rowSums()
-  # factor assures that Missing and Not Missing will always have same colour
-  factor(
-    x = ifelse(temp == 0, # 0 means not missing
-               "Not Missing", # not missing
-               "Missing"), # missing
-    levels = c("Not Missing", "Missing")
-    )
+
+  as_missing_factor(temp)
 
 }
 

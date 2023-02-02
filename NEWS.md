@@ -1,4 +1,14 @@
-# naniar 0.6.1.9000
+# naniar 1.0.0
+
+Version 1.0.0 of naniar is to signify that this release is associated with
+the publication of the associated JSS paper, <doi:10.18637/jss.v105.i07>.
+There are also a few small changes that have been implemented in this release, 
+which are described below.
+
+There is still a lot to do in naniar, and this release does not signify that
+there are no changes upcoming, more so to establish that this is a stable
+release, and that any changes upcoming will go through a more formal deprecation
+process and so on.
 
 ## New
 

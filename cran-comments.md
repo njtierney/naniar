@@ -1,5 +1,5 @@
 ## Test environments
-* local OS X install, R 4.0.5
+* local OS X install, R 4.2.2
 * github actions testing for devel, release, and ubuntu, windows, and macOSX
 
 ## R CMD check results
@@ -8,14 +8,20 @@
 There were no ERRORs or WARNINGs, and one NOTE:
 
 ```
-checking for future file timestamps ... NOTE
-  unable to verify current time
+Found the following (possibly) invalid DOIs:
+  DOI: 10.18637/jss.v105.i07
+    From: DESCRIPTION
+          inst/CITATION
+    Status: 404
+    Message: Not Found
 ```
 
-My understanding of this note is that a website whose API was used to check
-time is currently down, and the NOTE is unrelated to my package.
+The DOI in the CITATION is for a new JSS publication that will be registered after publication on CRAN.
 
 ## Reverse dependencies
 
-There are four reverse dependencies, these have been checked.
+We checked 3 reverse dependencies (2 from CRAN + 1 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 0 new problems
+ * We failed to check 0 packages
 

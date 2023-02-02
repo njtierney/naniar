@@ -21,8 +21,8 @@
 #'   1198--1202. \doi{10.1080/01621459.1988.10478722}.
 #'
 #' @note Code is adapted from LittleMCAR() in the now-orphaned {BaylorEdPsych}
-#'   package: https://rdrr.io/cran/BaylorEdPsych/man/LittleMCAR.html. Some of
-#'   code is adapted from Eric Stemmler - <https://web.archive.org/web/20201120030409/https://stats-bayes.com/post/2020/08/14/r-function-for-little-s-test-for-data-missing-completely-at-random/>
+#'   package: \url{https://rdrr.io/cran/BaylorEdPsych/man/LittleMCAR.html}. Some of
+#'   code is adapted from Eric Stemmler: \url{https://web.archive.org/web/20201120030409/https://stats-bayes.com/post/2020/08/14/r-function-for-little-s-test-for-data-missing-completely-at-random/}
 #'   using Maximum likelihood estimation from {norm}.
 #'
 #' @author Andrew Heiss, \email{andrew@andrewheiss.com}

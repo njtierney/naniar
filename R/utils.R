@@ -19,7 +19,8 @@ rlang::are_na
 #' @param ... additional arguments to be passed to map
 #'
 #' @return a dataframe with the function applied to each group
-#'
+#' @keywords internal
+#' @noRd
 #' @examples
 #'
 #' \dontrun{
@@ -52,6 +53,8 @@ group_by_fun <- function(data,.fun, ...){
 #' my_test <- NULL
 #' test_if_null(my_test)
 #' }
+#' @keywords internal
+#' @noRd
 test_if_null <- function(x){
 
   # test for null
@@ -74,6 +77,8 @@ test_if_null <- function(x){
 #' #fail
 #' test_if_missing()
 #' }
+#' @keywords internal
+#' @noRd
 test_if_missing <- function(x){
 
   # test for null
@@ -97,6 +102,8 @@ test_if_missing <- function(x){
 #' test_if_dataframe(my_test)
 #' }
 #'
+#' @keywords internal
+#' @noRd
 test_if_dataframe <- function(x){
   # test for dataframe
   if (!inherits(x, "data.frame")) {
@@ -152,6 +159,8 @@ add_span_counter <- function(data, span_size) {
 #' @param x data.frame, usually
 #'
 #' @return a list containing the levels of everything
+#' @keywords internal
+#' @noRd
 what_levels <- function(x) purrr::map(x, levels)
 
 quo_to_shade <- function(...){

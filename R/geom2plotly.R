@@ -12,7 +12,7 @@
 #' @param p a ggplot2 object (the conversion may depend on scales, for
 #'        instance).
 #' @param ... currently ignored
-#' @export
+#' @keywords internal
 to_basic.GeomMissPoint <- function(data,
                                    prestats_data,
                                    layout,

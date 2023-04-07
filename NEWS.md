@@ -1,5 +1,9 @@
 # naniar (development version)
 
+## New
+
+- implement `impute_fixed` and `impute_zero`, notably these do not implement "scoped variants" which were previously implemented - for example, `impute_fixed_if` etc. This is in favour of using the new `across` workflow within `dplyr`, and it is easier to maintain.
+
 # naniar 1.0.0
 
 Version 1.0.0 of naniar is to signify that this release is associated with

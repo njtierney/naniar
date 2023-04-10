@@ -19,12 +19,13 @@
 #' @examples
 #'
 #' gg_miss_var(airquality)
+#' \dontrun{
 #' library(ggplot2)
 #' gg_miss_var(airquality) + labs(y = "Look at all the missing ones")
 #' gg_miss_var(airquality, Month)
 #' gg_miss_var(airquality, Month, show_pct = TRUE)
 #' gg_miss_var(airquality, Month, show_pct = TRUE) + ylim(0, 100)
-#'
+#'}
 gg_miss_var <- function(x, facet, show_pct = FALSE){
 
   # get a tidy data frame of the number of missings in each column
@@ -78,20 +79,17 @@ gg_miss_var_create <- function(data, show_pct){
 
   ggplot(data = data,
        aes(x = stats::reorder(variable, n_miss))) +
-       #     y = n_miss)) +
-       # aes(x = stats::reorder(variable, n_miss),
-       #     y = n_miss)) +
-  geom_bar(aes_string(y = aes_y),
+  geom_bar(aes(y = .data[[aes_y]]),
            stat = "identity",
            position = "dodge",
-           width = 0,
+           width = 0.001,
            colour = "#484878",
            fill = "#484878") +
-  geom_point(aes_string(y = aes_y),
+  geom_point(aes(y = .data[[aes_y]]),
              colour = "#484878",
              fill = "#484878") +
   coord_flip() +
-  scale_color_discrete(guide = FALSE) +
+  scale_color_discrete(guide = "none") +
   labs(y = ylab,
        x = "Variables") +
   theme_minimal()

@@ -4,7 +4,8 @@
 \name{pedestrian}
 \alias{pedestrian}
 \title{Pedestrian count information around Melbourne for 2016}
-\format{A tibble with 37,700 rows and 9 variables:
+\format{
+A tibble with 37,700 rows and 9 variables:
 \describe{
 \item{hourly_counts}{(integer) the number of pedestrians counted at that sensor
 at that time}
@@ -18,9 +19,10 @@ December)}
 \item{hour}{(integer) The hour of the day in 24 hour format}
 \item{sensor_id}{(integer) the id of the sensor}
 \item{sensor_name}{(character) the full name of the sensor}
-}}
+}
+}
 \source{
-\url{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}
+\url{https://data.melbourne.vic.gov.au/explore/dataset/pedestrian-counting-system-monthly-counts-per-hour/information/}
 }
 \usage{
 data(pedestrian)
@@ -30,18 +32,17 @@ This dataset contains hourly counts of pedestrians from 4 sensors around
 Melbourne: Birrarung Marr, Bourke Street Mall, Flagstaff station, and
 Spencer St-Collins St (south), recorded from January 1st 2016 at 00:00:00
 to December 31st 2016 at 23:00:00. The data is made free and publicly
-available from \url{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}
+available from \url{https://data.melbourne.vic.gov.au/explore/dataset/pedestrian-counting-system-monthly-counts-per-hour/information/}
 }
 \examples{
-\dontrun{
 # explore the missingness with vis_miss
-library(naniar)
 
 vis_miss(pedestrian)
 
 # Look at the missingness in the variables
 miss_var_summary(pedestrian)
 
+\dontrun{
 # There is only missingness in hourly_counts
 # Look at the missingness over a rolling window
 library(ggplot2)

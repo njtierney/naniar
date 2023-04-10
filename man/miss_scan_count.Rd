@@ -20,23 +20,31 @@ you have values like -99 in your data, when they shouldn't be there,
 or they should be encoded as missing, it can be difficult to ascertain
 if they are there, and if so, where they are. \code{miss_scan_count} makes it
 easier for users to search for particular occurrences of these values
-across their variables.
+across their variables. Note that the searches are done with regular
+expressions, which are special ways of searching for text. See the
+example below to see how to look for characters like \verb{?}.
 }
 \examples{
 
-dat_ms <- tibble::tribble(~x,  ~y,    ~z,
-                         1,   "A",   -100,
-                         3,   "N/A", -99,
-                         NA,  NA,    -98,
-                         -99, "E",   -101,
-                         -98, "F",   -1)
+dat_ms <- tibble::tribble(~x,  ~y,    ~z,  ~specials,
+                         1,   "A",   -100, "?",
+                         3,   "N/A", -99,  "!",
+                         NA,  NA,    -98,  ".",
+                         -99, "E",   -101, "*",
+                         -98, "F",   -1,  "-")
 
 miss_scan_count(dat_ms,-99)
 miss_scan_count(dat_ms,c(-99,-98))
 miss_scan_count(dat_ms,c("-99","-98","N/A"))
+miss_scan_count(dat_ms, "\\\\?")
+miss_scan_count(dat_ms, "\\\\!")
+miss_scan_count(dat_ms, "\\\\.")
+miss_scan_count(dat_ms, "\\\\*")
+miss_scan_count(dat_ms, "-")
 miss_scan_count(dat_ms,common_na_strings)
+
 
 }
 \seealso{
-\code{\link[=pct_miss_case]{pct_miss_case()}} \code{\link[=prop_miss_case]{prop_miss_case()}} \code{\link[=pct_miss_var]{pct_miss_var()}} \code{\link[=prop_miss_var]{prop_miss_var()}} \code{\link[=pct_complete_case]{pct_complete_case()}} \code{\link[=prop_complete_case]{prop_complete_case()}} \code{\link[=pct_complete_var]{pct_complete_var()}} \code{\link[=prop_complete_var]{prop_complete_var()}} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_summary} \url{miss_case_table} \url{miss_summary} \url{miss_var_prop} \url{miss_var_run} \url{miss_var_span} \url{miss_var_summary} \url{miss_var_table}
+\code{\link[=pct_miss_case]{pct_miss_case()}} \code{\link[=prop_miss_case]{prop_miss_case()}} \code{\link[=pct_miss_var]{pct_miss_var()}} \code{\link[=prop_miss_var]{prop_miss_var()}} \code{\link[=pct_complete_case]{pct_complete_case()}} \code{\link[=prop_complete_case]{prop_complete_case()}} \code{\link[=pct_complete_var]{pct_complete_var()}} \code{\link[=prop_complete_var]{prop_complete_var()}} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \code{\link[=miss_case_summary]{miss_case_summary()}} \code{\link[=miss_case_table]{miss_case_table()}} \code{\link[=miss_summary]{miss_summary()}} \code{\link[=miss_var_prop]{miss_var_prop()}} \code{\link[=miss_var_run]{miss_var_run()}} \code{\link[=miss_var_span]{miss_var_span()}} \code{\link[=miss_var_summary]{miss_var_summary()}} \code{\link[=miss_var_table]{miss_var_table()}}
 }

@@ -34,9 +34,7 @@ add_n_miss <- function(data, ..., label = "n_miss"){
     return(data)
   }
 
-  quo_vars <- rlang::quos(...)
-
-  selected_data <- dplyr::select(data, !!!quo_vars)
+  selected_data <- dplyr::select(data, ...)
 
   data[[paste0(label, "_vars")]] <- n_miss_row(selected_data)
 
@@ -69,24 +67,13 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #' @examples
 #'
 #' airquality %>% add_prop_miss()
-#'
-#' airquality %>% add_prop_miss(Solar.R)
-#'
 #' airquality %>% add_prop_miss(Solar.R, Ozone)
-#'
 #' airquality %>% add_prop_miss(Solar.R, Ozone, label = "testing")
 #'
 #' # this can be applied to model the proportion of missing data
-#' # as in Tierney et al bmjopen.bmj.com/content/5/6/e007450.full
-#' library(rpart)
-#' library(rpart.plot)
-#'
-#' airquality %>%
-#' add_prop_miss() %>%
-#' rpart(prop_miss_all ~ ., data = .) %>%
-#' prp(type = 4,
-#'     extra = 101,
-#'     prefix = "prop_miss = ")
+#' # as in Tierney et al \doi{10.1136/bmjopen-2014-007450}
+#' # see "Modelling missingness" in vignette "Getting Started with naniar"
+#' # for details
 
 add_prop_miss <- function(data, ..., label = "prop_miss"){
 
@@ -96,9 +83,7 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
     return(data)
   }
 
-  quo_vars <- rlang::quos(...)
-
-  selected_data <- dplyr::select(data, !!!quo_vars)
+  selected_data <- dplyr::select(data, ...)
 
   data[[paste0(label, "_vars")]] <- prop_miss_row(selected_data)
 

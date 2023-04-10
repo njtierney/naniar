@@ -13,7 +13,7 @@ replace_with_na_if(data, .predicate, condition)
 logical vector.}
 
 \item{condition}{A condition required to be TRUE to set NA. Here, the condition
-is specified with a formula, following the syntax: \code{~.x {condition}}.
+is specified with a formula, following the syntax: \verb{~.x \{condition\}}.
 For example, writing \code{~.x < 20} would mean "where a variable value is less
 than 20, replace with NA".}
 }

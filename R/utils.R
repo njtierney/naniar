@@ -19,7 +19,8 @@ rlang::are_na
 #' @param ... additional arguments to be passed to map
 #'
 #' @return a dataframe with the function applied to each group
-#'
+#' @keywords internal
+#' @noRd
 #' @examples
 #'
 #' \dontrun{
@@ -34,7 +35,7 @@ rlang::are_na
 group_by_fun <- function(data,.fun, ...){
   tidyr::nest(data) %>%
     dplyr::mutate(data = purrr::map(data, .fun, ...)) %>%
-    tidyr::unnest()
+    tidyr::unnest(cols = c(data))
 }
 
 
@@ -52,6 +53,8 @@ group_by_fun <- function(data,.fun, ...){
 #' my_test <- NULL
 #' test_if_null(my_test)
 #' }
+#' @keywords internal
+#' @noRd
 test_if_null <- function(x){
 
   # test for null
@@ -74,6 +77,8 @@ test_if_null <- function(x){
 #' #fail
 #' test_if_missing()
 #' }
+#' @keywords internal
+#' @noRd
 test_if_missing <- function(x){
 
   # test for null
@@ -97,34 +102,13 @@ test_if_missing <- function(x){
 #' test_if_dataframe(my_test)
 #' }
 #'
+#' @keywords internal
+#' @noRd
 test_if_dataframe <- function(x){
   # test for dataframe
   if (!inherits(x, "data.frame")) {
     stop("Input must inherit from data.frame", call. = FALSE)
     }
-}
-
-#' Test if input is a shadow
-#'
-#' @param x object
-#'
-#' @return an error if input (x) is a shadow
-#'
-#' @examples
-#' \dontrun{
-#' # success
-#' aq_shadow <- bind_shadow(airquality)
-#' test_if_shadow(aq_shadow)
-#' #fail
-#' test_if_shadow(airquality)
-#' }
-#'
-test_if_shadow <- function(x){
-  # test for dataframe
-  if (!is_shadow(x)) {
-    stop("variable must be shadow variable, use as_shadow or bind_shadow",
-         call. = FALSE)
-  }
 }
 
 test_if_any_shade <- function(x){
@@ -146,24 +130,6 @@ any_row_miss <- function(x){
   apply(data.frame(x), MARGIN = 1, FUN = function(x) anyNA(x))
 }
 
-#' Helper function to determine whether all rows are missing
-#'
-#' @param x a vector
-#'
-#' @return logical vector
-all_row_miss <- function(x){
-  apply(data.frame(x), MARGIN = 1, FUN = function(x) all(is.na(x)))
-}
-
-#' Helper function to determine whether all rows are complete
-#'
-#' @param x a vector
-#'
-#' @return logical vector
-all_row_complete <- function(x){
-  apply(data.frame(x), MARGIN = 1, FUN = function(x) all(!is.na(x)))
-}
-
 #' Add a counter variable for a span of dataframe
 #'
 #' Adds a variable, `span_counter` to a dataframe. Used internally to facilitate
@@ -176,7 +142,7 @@ all_row_complete <- function(x){
 #'
 #' @examples
 #' \dontrun{
-#' add_span_counter(pedestrian, span_size = 100)
+#' # add_span_counter(pedestrian, span_size = 100)
 #' }
 add_span_counter <- function(data, span_size) {
 
@@ -193,26 +159,23 @@ add_span_counter <- function(data, span_size) {
 #' @param x data.frame, usually
 #'
 #' @return a list containing the levels of everything
+#' @keywords internal
+#' @noRd
 what_levels <- function(x) purrr::map(x, levels)
-
-# utility function to convert bare name to character
-bare_to_chr <- function(...){
-  ps <- rlang::exprs(...)
-
-  exprs_text <- function(ps) {
-    paste0(purrr::map_chr(ps, rlang::expr_text))
-  }
-
-  exprs_text(ps)
-
-}
 
 quo_to_shade <- function(...){
 
-  quo_vars <- rlang::quos(...)
+  # Use ensyms() rather than quos() because the latter allows
+  # arbitrary expressions. These variables are forwarded to select(),
+  # so potential expressions are `starts_with()`, `one_of()`, etc.
+  # The naniar code generally assumes that only symbols are passed in
+  # dots. `ensyms()` is a way of ensuring the input types.
+  vars <- rlang::ensyms(...)
 
-  shadow_chr <- bare_to_chr(!!!quo_vars) %>% paste0("_NA")
+  # Adding `_NA` suffix to user symbols
+  shadow_chr <- purrr::map(vars, as_string) %>% paste0("_NA")
 
+  # Casting back to symbols
   shadow_vars <- rlang::syms(shadow_chr)
 
   return(shadow_vars)
@@ -221,4 +184,67 @@ quo_to_shade <- function(...){
 
 class_glue <- function(x){
   class(x) %>% glue::glue_collapse(sep = ", ", last = ", or ")
+}
+
+diag_na <- function(size = 5){
+
+  dna <- diag(x = NA,
+              nrow = size,
+              ncol = size)
+  suppressMessages(
+  tibble::as_tibble(dna,
+                    .name_repair = "unique")) %>%
+    set_names(paste0("x",seq_len(ncol(.))))
+}
+
+coerce_fct_na_explicit <- function(x){
+  if (is.factor(x) & anyNA(x)) {
+    forcats::fct_na_value_to_level(x, level = "NA")
+  } else {
+    x
+  }
+}
+
+# any_shade <- function(x) any(grepl("^NA|^NA_", x))
+
+any_row_shade <- function(x){
+  apply(data.frame(x), MARGIN = 1, FUN = function(x) any(grepl("^NA|^NA_", x)))
+}
+
+vecIsFALSE <- Vectorize(isFALSE)
+
+are_any_false <- function(x, ...) any(vecIsFALSE(x), ...)
+
+check_btn_0_1 <- function(prop){
+  if (prop < 0 || prop > 1) {
+    cli::cli_abort(
+      c(
+        "{.var prop} must be between 0 and 1",
+        "{.var prop} is {prop}"
+      )
+    )
+  }
+}
+
+check_is_integer <- function(x){
+  if (x < 0) {
+    cli::cli_abort(
+      c(
+        "{.var x} must be greater than 0",
+        "{.var x} is {x}"
+      )
+    )
+  }
+  vctrs::vec_cast(x, integer())
+}
+
+check_is_scalar <- function(x){
+  if (length(x) != 1) {
+    cli::cli_abort(
+      c(
+        "{.var x} must be length 1",
+        "{.var x} is {x}, and {.var x} has length: {length(x)}"
+      )
+    )
+  }
 }

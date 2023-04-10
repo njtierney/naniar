@@ -24,14 +24,6 @@
 #' replace_with_na_all(data = dat_ms,
 #'                     condition = ~.x == -99)
 #'
-#' # replace all instances of -98 with NA
-#' replace_with_na_all(data = dat_ms,
-#'                     condition = ~.x == -98)
-#'
-#' # replace all instances of -99 or -98 with NA
-#' replace_with_na_all(dat_ms,
-#'                     condition = ~.x %in% c(-99, -98))
-#'
 #' # replace all instances of -99 or -98, or "N/A" with NA
 #' replace_with_na_all(dat_ms,
 #'                     condition = ~.x %in% c(-99, -98, "N/A"))
@@ -45,7 +37,7 @@
 #'
 #' @export
 replace_with_na_all <- function(data, condition) {
-  purrr::map_df(data, ~ na_set(.x, condition) )
+  purrr::map_dfc(data, ~ na_set(.x, condition) )
 }
 
 # Future work

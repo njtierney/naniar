@@ -10,7 +10,7 @@ replace_with_na_all(data, condition)
 \item{data}{A dataframe}
 
 \item{condition}{A condition required to be TRUE to set NA. Here, the condition
-is specified with a formula, following the syntax: \code{~.x {condition}}.
+is specified with a formula, following the syntax: \verb{~.x \{condition\}}.
 For example, writing \code{~.x < 20} would mean "where a variable value is less
 than 20, replace with NA".}
 }
@@ -30,14 +30,6 @@ dat_ms
 #replace all instances of -99 with NA
 replace_with_na_all(data = dat_ms,
                     condition = ~.x == -99)
-
-# replace all instances of -98 with NA
-replace_with_na_all(data = dat_ms,
-                    condition = ~.x == -98)
-
-# replace all instances of -99 or -98 with NA
-replace_with_na_all(dat_ms,
-                    condition = ~.x \%in\% c(-99, -98))
 
 # replace all instances of -99 or -98, or "N/A" with NA
 replace_with_na_all(dat_ms,

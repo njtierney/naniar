@@ -1,5 +1,3 @@
-context("prop_miss")
-
 test_that("prop_miss handles 0 cases as I expect",{
 
   expect_equal(prop_miss(0), 0)

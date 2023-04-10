@@ -1,14 +1,3 @@
-context("replace_to_na deprecation test")
-
-
-test_that("replace_to_na is deprecated", {
-  df <- tibble::tibble(x = c("A", NA))
-  expect_warning(replace_to_na(df),
-                 "'replace_to_na' is deprecated")
-})
-
-context("replace_with_na")
-
 test_that("empty call does nothing", {
   df <- tibble::tibble(x = c("A", NA))
   out <- replace_with_na(df)
@@ -49,4 +38,28 @@ test_that("works for multiple columns",{
   expect_equal(out$x, c(1,3,NA,NA,NA))
   expect_equal(out$y, c("A",NA,NA,"E","F"))
   expect_equal(out$z, c(-100, NA, -98, -101, NA))
+})
+
+test_that("throws a warning when elements provided don't exist", {
+  expect_warning(
+    replace_with_na(dat_ms,
+                    replace = list(
+                      x = -99, # dat_ms$x exists
+                      w = -99  # dat_ms$w does not
+                      )
+                    )
+    )
+})
+
+dat_ms_replace_w <- suppressWarnings(
+  {replace_with_na(dat_ms,
+                   replace = list(
+                     x = -99, # dat_ms$x exists
+                     w = -99  # dat_ms$w does not
+                     ))}
+  )
+
+test_that("Still operates on X when elements provided don't exist", {
+  expect_equal(dat_ms_replace_w$x[4], NA_real_)
+
 })

@@ -16,17 +16,16 @@
 #' @examples
 #'
 #' gg_miss_which(airquality)
-#' library(ggplot2)
-#'
 
 gg_miss_which <- function(x){
 
+  col_na <- colSums(is.na(x)) == 0
+  col_na_val <- dplyr::if_else(col_na, "complete", "missing")
+
+
   # tell us which columns have missing data
-  ggobject <- x %>%
-    purrr::map_df(anyNA) %>%
-    purrr::map_df(function(x) ifelse(x == 0, "complete", "missing")) %>%
-    tidyr::gather(key = "variable",
-                  value = "value") %>%
+  ggobject <- tibble::tibble(variable = names(col_na),
+                             value = col_na_val) %>%
     dplyr::mutate(nheight = 1) %>%
     ggplot(data = .,
            aes(x = variable,

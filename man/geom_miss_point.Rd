@@ -4,10 +4,19 @@
 \alias{geom_miss_point}
 \title{geom_miss_point}
 \usage{
-geom_miss_point(mapping = NULL, data = NULL, prop_below = 0.1,
-  jitter = 0.05, stat = "miss_point", position = "identity",
-  colour = ..missing.., na.rm = FALSE, show.legend = NA,
-  inherit.aes = TRUE, ...)
+geom_miss_point(
+  mapping = NULL,
+  data = NULL,
+  prop_below = 0.1,
+  jitter = 0.05,
+  stat = "miss_point",
+  position = "identity",
+  colour = ..missing..,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE,
+  ...
+)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2:aes]{ggplot2::aes()}}
@@ -55,7 +64,7 @@ are three types of arguments you can use here:
 \description{
 \code{geom_miss_point} provides a way to transform and plot missing
 values in ggplot2. To do so it uses methods from ggobi to display missing
-data points 10\% below the minimum value, so that the values can be seen on
+data points 10\\% below the minimum value, so that the values can be seen on
 the same axis.
 }
 \details{
@@ -65,7 +74,7 @@ Plot Missing Data Points
 Warning message if na.rm = T is supplied.
 }
 \examples{
-
+\dontrun{
 library(ggplot2)
 
 # using regular geom_point()
@@ -87,7 +96,7 @@ ggplot(airquality,
            y = Solar.R)) +
  geom_miss_point() +
  facet_wrap(~Month)
-
+}
 }
 \seealso{
 [gg_miss_case()][gg_miss_case_cumsum()][gg_miss_fct()][gg_miss_span()][gg_miss_var()][gg_miss_var_cumsum()][gg_miss_which()]

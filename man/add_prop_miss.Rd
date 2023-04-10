@@ -31,24 +31,13 @@ for.
 \examples{
 
 airquality \%>\% add_prop_miss()
-
-airquality \%>\% add_prop_miss(Solar.R)
-
 airquality \%>\% add_prop_miss(Solar.R, Ozone)
-
 airquality \%>\% add_prop_miss(Solar.R, Ozone, label = "testing")
 
 # this can be applied to model the proportion of missing data
-# as in Tierney et al bmjopen.bmj.com/content/5/6/e007450.full
-library(rpart)
-library(rpart.plot)
-
-airquality \%>\%
-add_prop_miss() \%>\%
-rpart(prop_miss_all ~ ., data = .) \%>\%
-prp(type = 4,
-    extra = 101,
-    prefix = "prop_miss = ")
+# as in Tierney et al \doi{10.1136/bmjopen-2014-007450}
+# see "Modelling missingness" in vignette "Getting Started with naniar"
+# for details
 }
 \seealso{
 \code{\link[=bind_shadow]{bind_shadow()}} \code{\link[=add_any_miss]{add_any_miss()}} \code{\link[=add_label_missings]{add_label_missings()}} \code{\link[=add_label_shadow]{add_label_shadow()}} \code{\link[=add_miss_cluster]{add_miss_cluster()}} \code{\link[=add_prop_miss]{add_prop_miss()}} \code{\link[=add_shadow_shift]{add_shadow_shift()}} \code{\link[=cast_shadow]{cast_shadow()}}

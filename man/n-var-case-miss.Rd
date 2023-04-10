@@ -20,7 +20,6 @@ integer, number of missings
 This function calculates the number of variables or cases that contain a missing value
 }
 \examples{
-
 # how many variables contain missing values?
 n_var_miss(airquality)
 n_case_miss(airquality)

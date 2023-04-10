@@ -23,22 +23,21 @@ an dataset with values imputed
 \description{
 \code{impute_below} operates on all variables. To only impute variables
 that satisfy a specific condition, use the scoped variants,
-\code{impute_below_at}, and \code{impute_below_if}. To use \code{_at} effectively,
-you must know that \code{_at`` affects variables selected with a character vector, or with}vars()`.
+\code{impute_below_at}, and \code{impute_below_if}. To use \verb{_at} effectively,
+you must know that \verb{_at`` affects variables selected with a character vector, or with }vars()`.
 }
 \examples{
 # select variables starting with a particular string.
-library(dplyr)
 impute_below_at(airquality,
                 .vars = c("Ozone", "Solar.R"))
 
-impute_below_at(airquality,
-                .vars = 1:2)
-#'
+impute_below_at(airquality, .vars = 1:2)
+
+\dontrun{
+library(dplyr)
 impute_below_at(airquality,
                 .vars = vars(Ozone))
 
-\dontrun{
 library(ggplot2)
 airquality \%>\%
   bind_shadow() \%>\%

@@ -5,7 +5,9 @@
 \alias{riskfactors}
 \title{The Behavioral Risk Factor Surveillance System (BRFSS) Survey
 Data, 2009.}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 245 rows and 34 columns.}
+\format{
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 245 rows and 34 columns.
+}
 \source{
 \url{https://www.cdc.gov/brfss/annual_data/annual_2009.htm}
 }
@@ -19,9 +21,6 @@ adult population (18 years of age or older) living in households.
 }
 \examples{
 
-# explore the missingness with vis_miss
-library(naniar)
-
 vis_miss(riskfactors)
 
 # Look at the missingness in the variables
@@ -30,6 +29,7 @@ miss_var_summary(riskfactors)
 # and now as a plot
 gg_miss_var(riskfactors)
 
+\dontrun{
 # Look at the missingness in bmi and poor health
 library(ggplot2)
 p <-
@@ -44,11 +44,11 @@ ggplot(riskfactors,
  p + facet_wrap(~sex)
  # for each education bracket?
  p + facet_wrap(~education)
-
+}
 }
 \seealso{
 the codebook:
-\url{http://ftp.cdc.gov/pub/data/brfss/codebook_09.rtf}
+\url{https://www.cdc.gov/brfss/annual_data/annual_2009.htm}
 
 Format: a data frame with 245 observations on the following 34
 variables.
@@ -92,8 +92,8 @@ mean --  1: Employed for wages; 2: Self-employed; 3: Out of work for more
 than 1 year; 4: Out of work for less that 1 year;  5: A homemaker; 6: A
 student; 7:Retired; 8: Unable to work.}
 \item{\code{income}}{The annual household income from all sources with
-levels \code{<10k} \code{10-15k} \code{15-20k} \code{20-25k} \code{25-35k}
-\code{35-50k} \code{50-75k} \code{>75k} \code{Dontknow} \code{Refused}.}
+levels \verb{<10k} \verb{10-15k} \verb{15-20k} \verb{20-25k} \verb{25-35k}
+\verb{35-50k} \verb{50-75k} \verb{>75k} \code{Dontknow} \code{Refused}.}
 \item{\code{veteran}}{A factor with levels \code{1} \code{2} \code{3}
 \code{4} \code{5}. The question for this variable is: Have you ever
 served on active duty in the United States Armed Forces, either in the

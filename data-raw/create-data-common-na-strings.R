@@ -1,7 +1,9 @@
 common_na_strings <- c(
+  "missing",
   "NA",
   "N A",
   "N/A",
+  "#N/A",
   "NA ",
   " NA",
   "N /A",
@@ -25,4 +27,4 @@ common_na_strings <- c(
   "\\."
 )
 
-devtools::use_data(common_na_strings, overwrite = TRUE)
+usethis::use_data(common_na_strings, overwrite = TRUE)

@@ -1,95 +1,191 @@
-# naniar 0.3.10.9400 (2018/09/06)
+# naniar (development version)
+
+## New
+
+- implement `impute_fixed`, `impute_zero`, and `impute_factor`. notably these do not implement "scoped variants" which were previously implemented - for example, `impute_fixed_if` etc. This is in favour of using the new `across` workflow within `dplyr`, and it is easier to maintain. #261
+- add `digit` argument to `miss_var_summary` to help display %missing data correctly when there is a very small fraction of missingness. #284
+
+# naniar 1.0.0
+
+Version 1.0.0 of naniar is to signify that this release is associated with
+the publication of the associated JSS paper, <doi:10.18637/jss.v105.i07>.
+There are also a few small changes that have been implemented in this release, 
+which are described below.
+
+There is still a lot to do in naniar, and this release does not signify that
+there are no changes upcoming, more so to establish that this is a stable
+release, and that any changes upcoming will go through a more formal deprecation
+process and so on.
+
+## New
+
+- The DOI in the CITATION is for a new JSS publication that will be registered 
+  after publication on CRAN.
+- Replaced `tidyr::gather` with `tidyr::pivot_longer` - resolves #301
+- added `set_n_miss` and `set_prop_miss` functions - resolved #298
+
+## Bug Fixes
+
+- Fix bug in `gg_miss_var()` where a warning appears to due change in how to 
+remove legend [#288](https://github.com/njtierney/naniar/issues/288).
+
+## Misc
+
+- Removed gdtools from naniar as no longer needed [302](https://github.com/njtierney/naniar/issues/302).
+- added imports, `vctrs` and `cli` - which are both free dependencies as they
+  are used within the already used tidyverse already.
+
+# naniar 0.6.1 (2021/05/13) "Incandescent lightbulbs killed the Arc lamps"
+
+## New features
+
+- naniar now provides `mcar_test()` for [Little's (1988)](https://doi.org/10.1080/01621459.1988.10478722) statistical test for missing completely at random (MCAR) data. The null hypothesis in this test is that the data is MCAR, and the test statistic is a chi-squared value. Given a high statistic value and low p-value, we can conclude data are not missing completely at random. Thanks to [Andrew Heiss](https://www.andrewheiss.com/) for the [PR](https://github.com/njtierney/naniar/pull/279/).
+- `common_na_strings` gains `"#N/A"`.
+
+## Bug fixes
+
+- Fix bug in `miss_var_span()` (#270) where the number of missings + number of
+ complete values added up to more than the number of rows in the data. This was
+ due to the remainder not being used when calculating the number of complete
+ values.
+- Fix bug in `recode_shadow()` (#272) where adding the same special missing value in two subsequent operations fails.
+
+# naniar 0.6.0 (2020/08/17) "Spur of the lamp post"
+
+- Provide warning for `replace_with_na` when columns provided that don't exist (see #160). Thank you to [michael-dewar](https://github.com/michael-dewar) for their help with this.
+
+## Breaking Changes
+
+- Drop the "nabular" and "shadow" classes (#268) used in `nabular()` and `bind_shadow()`. In doing so removes the functions, `as_shadow()`, `is_shadow()`, `is_nabular()`, `new_nabular()`, `new_shadow()`. These were mostly used internally and it is not expected that users would have used this functions. If these were used, please file an issue and I can implement them again.
+
+# naniar 0.5.2 (2020/06/28) "Silver Apple"
+
+## Minor Changes
+
+- Improvements to code in `miss_var_summary()`, `miss_var_table()`, and 
+ `prop_miss_var()`, resulting in a 3-10x speedup.
+
+# naniar 0.5.1 (2020/04/10) "Uncle Andrew's Applewood Wardrobe"
+
+## Minor Changes
+
+* Fixes warnings and errors from `tibble` and subsequent downstream impacts on `simputation`. 
+
+# naniar 0.5.0 (2020/02/20) "The End of this Story and the Beginning of all of the Others"
+
+## Breaking Changes
+
+- The following functions related to calculating the proportion/percentage of missingness were made Defunct and will no longer work: 
+  - `miss_var_prop()`
+  - `complete_var_prop()`
+  - `miss_var_pct()`
+  - `complete_var_pct()`
+  - `miss_case_prop()`
+  - `complete_case_prop()`
+  - `miss_case_pct()`
+  - `complete_case_pct()`
+
+Instead use: `prop_miss_var()`, `prop_complete_var()`, `pct_miss_var()`, `pct_complete_var()`, `prop_miss_case()`, `prop_complete_case()`, `pct_miss_case()`, `pct_complete_case()`. (see [242](https://github.com/njtierney/naniar/issues/242))
+
+- `replace_to_na()` was made defunct, please use `replace_with_na()` instead. (see [242](https://github.com/njtierney/naniar/issues/242))
+
+## Minor changes
+
+- `miss_var_cumsum` and `miss_case_cumsum` are now exported
+- use `map_dfc` instead of `map_df`
+- Fix various extra warnings and improve test coverage
+
+## Bug Fixes
+
+- Address bug where the number of missings in a row is not calculated properly - see [238](https://github.com/njtierney/naniar/issues/238) and [232](https://github.com/njtierney/naniar/issues/232). The solution involved using `rowSums(is.na(x))`, which was 3 times faster.
+- Resolve bug in `gg_miss_fct()` where warning is given for non explicit NA values - see [241](https://github.com/njtierney/naniar/issues/241).
+- skip vdiffr tests on github actions
+- use `tibble()` not `data_frame()`
+
+# naniar 0.4.2 (2019/02/15) "The Planting of The Tree"
+
+## Improvements
+
+* The `geom_miss_point()` **ggplot2** layer can now be converted into an interactive web-based version by the `ggplotly()` function in the **plotly** package. In order for this to work, **naniar** now exports the `geom2trace.GeomMissPoint()` function (users should never need to call `geom2trace.GeomMissPoint()` directly -- `ggplotly()` calls it for you).
+* adds `WORDLIST` for spelling thanks to `usethis::use_spell_check()`
+* fix documentation `@seealso` bug ([#228](https://github.com/njtierney/naniar/issues/228)) (@sfirke)
+
+## Dependency fixes
+
+* Thanks to a PR ([#223](https://github.com/njtierney/naniar/pull/223)) from @romainfrancois: 
+
+    * This fixes two problems that were identified as part of reverse dependency checks of dplyr 0.8.0 release candidate. https://github.com/tidyverse/dplyr/blob/revdep_dplyr_0_8_0_RC/revdep/problems.md#naniar
+
+    * n() must be imported or prefixed like any other function. In the PR, I've changed 1:n() to dplyr::row_number() as naniar seems to prefix all dplyr functions.
+
+    * update_shadow was only restoring the class attributes, changed so that it restores all attributes, this was causing problems when data was a grouped_df. This likely was a problem before too, but dplyr 0.8.0 is stricter about what is a grouped data frame.
+
+# naniar 0.4.1 (2018/12/14)
+
+## Minor Changes
+
+* pkgdown updates: update favicon and logo, set up for gh-pages deployment
+* use a scalar integer in `new_tibble`
+
+
+# naniar 0.4.1 (2018/11/20) "Aslan's Song"
+
+## Minor Change
+
+* Fixes to `new_tibble` [#220](https://github.com/njtierney/naniar/pull/220) - Thanks to [Kirill Müller](https://github.com/krlmlr).
+* Refactoring the capture of arguments from `rlang` [#218](https://github.com/njtierney/naniar/pull/218) - thanks for [Lionel Henry](https://github.com/lionel-).
+
+# naniar 0.4.0 (2018/09/10) "An Unexpected Meeting"
 
 ## New Feature
 
-* `impute_median` and scoped variants
-
-# naniar 0.3.10.9300 (2018/09/05)
-
-## Minor Improvement
-
-* `shadow_shift` gains a more informative error message when it doesn't know the class.
-
-# naniar 0.3.10.9200 (2018/09/04)
-
-## New Feature
-
-* `geom_miss_point()` now gains the arguments from `shadow_shift()`/`impute_below()` for altering the amount of `jitter` and proportion below (`prop_below`).
-
-# naniar 0.3.10.9100 (2018/09/03)
-
-## New Feature
-
+* Add custom label support for missings and not missings with functions `add_label_missings` and `add_label_shadow()` and `add_any_miss()`. So you can now do `add_label_missings(data, missing = "custom_missing_label", complete = "custom_complete_label")
+* `impute_median()` and scoped variants
 * `any_shade()` returns a logical TRUE or FALSE depending on if there are any `shade` values
 * `nabular()` an alias for `bind_shadow()` to tie the `nabular` term into the work.
 * `is_nabular()` checks if input is nabular.
 
-
-# naniar 0.3.10.9000 (2018/08/31)
-
-## New Feature
-
+* `geom_miss_point()` now gains the arguments from `shadow_shift()`/`impute_below()` for altering the amount of `jitter` and proportion below (`prop_below`).
 * Added two new vignettes, "Exploring Imputed Values", and  "Special Missing Values"
-
-# naniar 0.3.9.9100 (2018/08/20)
+* `miss_var_summary` and `miss_case_summary` now no longer provide the 
+cumulative sum of missingness in the summaries - this summary can be added back
+to the data with the option `add_cumsum = TRUE`. #186
+- Added `gg_miss_upset` to replace workflow of: 
+  ```
+  data %>% 
+    as_shadow_upset() %>%
+    UpSetR::upset()
+  ```
 
 ## Major Change
 
 * `recode_shadow` now works! This function allows you to recode your missing
 values into special missing values. These special missing values are stored in
 the shadow part of the dataframe, which ends in `_NA`.
-
-## Minor Change
-
 * implemented `shade` where appropriate throughout naniar, and also added 
 verifiers, `is_shade`, `are_shade`, `which_are_shade`, and removed `which_are_shadow`.
-
-# naniar 0.3.9.9000 (2018/06/14)
-
-## Major change
-
 - `as_shadow`  and `bind_shadow` now return data of class `shadow`. This will 
 feed into `recode_shadow` methods for flexibly adding new types of missing data.
 - Note that in the future `shadow` might be changed to `nabble` or something similar.
 
-# naniar 0.3.4.9600 (2018/08/15)
-
 ## Minor feature
 
 * Functions `add_label_shadow()` and `add_label_missings()` gain arguments so you can only label according to the missingness / shadowy-ness of given variables.
-
-# naniar 0.3.3.9500 (2018/08/13)
-
-## Minor feature
-
 * new function `which_are_shadow()`, to tell you which values are shadows.
 * new function `long_shadow()`, which converts data in shadow/nabular form into a long format suitable for plotting. Related to [#165](https://github.com/njtierney/naniar/issues/165)
-
-# naniar 0.3.3.9300 (2018/08/12)
-
-## Minor Breaking Change
-
-* `impute_below` has changed to be an alias of `shadow_shift` - that is it operates on a single vector. `impute_below_all` operates on all columns in a dataframe (as specified in [#159](https://github.com/njtierney/naniar/issues/159))
-
-# naniar 0.3.3.9200 (2018/08/01)
-
-## Minor feature
-
 * Added tests for `miss_scan_count`
 
-## Bug fix
+## Minor Changes
 
-* Ensured that `miss_scan_count` actually `return`'d something.
-
-# naniar 0.3.3.9100 (2018/07/31)
-
-## New feature
-
-* `miss_var_summary` and `miss_case_summary` now no longer provide the 
-cumulative sum of missingness in the summaries - this summary can be added back
-to the data with the option `add_cumsum = TRUE`. #186
-
-# naniar 0.3.3.9000 (2018/07/30)
+* `gg_miss_upset` gets a better default presentation by ordering by the largest
+intersections, and also an improved error message when data with only 1 or no
+variables have missing values.
+* `shadow_shift` gains a more informative error message when it doesn't know the class.
+* Changed `common_na_string` to include  escape characters for "?", "*", "." so
+that if they are used in replacement or searching functions they don't return
+the wildcard results from the characters "?", "*", and ".".
+* `miss_case_table` and `miss_var_table` now has final column names `pct_vars`,
+and `pct_cases` instead of `pct_miss` - fixes #178.
 
 ## Breaking Changes
 
@@ -109,38 +205,12 @@ consistent syntax [#171](https://github.com/njtierney/naniar/issues/171). The ol
 
 These old names will be made defunct in 0.5.0, and removed completely in 0.6.0.
 
-# naniar 0.3.2.9300 (2018/06/27)
+* `impute_below` has changed to be an alias of `shadow_shift` - that is it operates on a single vector. `impute_below_all` operates on all columns in a dataframe (as specified in [#159](https://github.com/njtierney/naniar/issues/159))
 
 ## Bug fix
 
+* Ensured that `miss_scan_count` actually `return`'d something.
 * `gg_miss_var(airquality)` now prints the ggplot - a typo meant that this did not print the plot
-
-# naniar 0.3.2.9100 (2018/06/25)
-
-## Minor update
-
-- Changed `common_na_string` to include  escape characters for "?", "*", "." so
-that if they are used in replacement or searching functions they don't return
-the wildcard results from the characters "?", "*", and ".".
-
-# naniar 0.3.2.9000 (2018/06/21)
-
-## New Feature
-
-- Added `gg_miss_upset` to replace workflow of: 
-  ```
-  data %>% 
-    as_shadow_upset() %>%
-    UpSetR::upset()
-  ```
-
-# naniar 0.3.1.9100 (2018/06/10)
-
-## Minor Change
-
-- `miss_case_table` and `miss_var_table` now has final column names `pct_vars`,
-and `pct_cases` instead of `pct_miss` - fixes #178.
->>>>>>> origin/master
 
 # naniar 0.3.1 (2018/06/10) "Strawberry's Adventure"
 
@@ -263,8 +333,8 @@ row, and the proportion of complete obserations in a row
 - `add_miss_cluster` is a new function that calculates a cluster of missingness 
   for each row, using `hclust`. This can be useful in exploratory modelling
   of missingness, similar to 
-  [Tierney et al 2015](http://bmjopen.bmj.com/content/5/6/e007450). and 
-  [Barnett et al. 2017](http://bmjopen.bmj.com/content/7/10/e017284)
+  Tierney et al 2015: "doi: 10.1136/bmjopen-2014-007450" and 
+  Barnett et al. 2017: "doi: 10.1136/bmjopen-2017-017284"
 
 - Now exported `where_na` - a function that returns the positions of NA values. 
   For a dataframe it returns a matrix of row and col positions of NAs, and for 
@@ -375,8 +445,7 @@ style.
 - `miss_var_summary` & `miss_case_summary` now have consistent output (one was 
   ordered by n_missing, not the other).
 - prevent error in `miss_case_pct`
-- `enquo_x` is now `x` (as adviced by 
-  [Hadley](https://twitter.com/hadleywickham/status/885993307968593920))
+- `enquo_x` is now `x`
 - Now has ByteCompile to TRUE
 - add Colin to auth
 
@@ -551,7 +620,7 @@ helps us make it easier to work with missing data
 - `add_n_miss` and `add_prop_miss` are helpers that add columns to a dataframe
 containing the number and proportion of missing values. An example has been
 provided to use decision trees to explore missing data structure as in 
-[Tierney et al](bmjopen.bmj.com/content/5/6/e007450.full)
+ "doi: 10.1136/bmjopen-2014-007450"
 
 - `geom_miss_point()` now supports transparency, thanks to @seasmith (Luke Smith)
  

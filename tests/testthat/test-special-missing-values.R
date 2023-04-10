@@ -1,5 +1,3 @@
-context("special-missings-single-recode")
-
 df <- tibble::tribble(
   ~wind, ~temp,
   -99,    45,
@@ -11,7 +9,7 @@ test_that("recode_shadow errors when regular dataframe passed",{
   expect_error(recode_shadow(df, temp = .where(wind == -99 ~ "bananas")))
 })
 
-dfs <- bind_shadow(df)
+dfs <- nabular(df)
 
 dfs_special <- dfs %>%
   recode_shadow(temp = .where(wind == -99 ~ "bananas"))
@@ -30,16 +28,15 @@ test_that("special missings are put in the right place", {
               c("NA_bananas", "NA", "!NA"))
 })
 
-context("special-missings-many-recode")
-
 df_many_recode <- df %>%
-  bind_shadow() %>%
+  nabular() %>%
   recode_shadow(temp = .where(temp == 25 ~ "broken_machine")) %>%
   recode_shadow(wind = .where(wind == -99 ~ "broken_temp"))
 
 new_shade_levels <- c("!NA", "NA", "NA_broken_machine", "NA_broken_temp")
 
 test_that("special missings levels are updated for many recodes", {
+  skip_on_cran()
   expect_equal(levels(df_many_recode$wind_NA),
                new_shade_levels)
   expect_equal(levels(df_many_recode$temp_NA),
@@ -47,6 +44,7 @@ test_that("special missings levels are updated for many recodes", {
 })
 
 test_that("special missings are put in the right place for many recodes", {
+  skip_on_cran()
   expect_equal(as.character(df_many_recode$wind_NA),
                c("NA_broken_temp", "!NA", "!NA"))
   expect_equal(as.character(df_many_recode$temp_NA),
@@ -75,15 +73,15 @@ test_that(".where captures the expressions into condition and suffix", {
 })
 
 test_that(".where is a list", {
-  expect_is(where_one, "list")
-  expect_is(where_two, "list")
-  expect_is(where_three, "list")
+  expect_type(where_one, "list")
+  expect_type(where_two, "list")
+  expect_type(where_three, "list")
 })
 
 test_that(".where is a list", {
-  expect_is(where_one, "list")
-  expect_is(where_two, "list")
-  expect_is(where_three, "list")
+  expect_type(where_one, "list")
+  expect_type(where_two, "list")
+  expect_type(where_three, "list")
 })
 
 class_nest <- function(obj, slot) {
@@ -103,7 +101,7 @@ test_that(".where returns chr class", {
 })
 
 df_mult_where <- df %>%
-  bind_shadow() %>%
+  nabular() %>%
   recode_shadow(temp = .where(temp == 25 ~ "broken_machine",
                               wind == 68 ~ "wat"))
 
@@ -121,70 +119,32 @@ test_that("recode_shadow returns right levels if .where is called many times", {
                c("!NA", "NA", "NA_broken_machine", "NA_wat"))
 })
 
-
-context("recode_shadow works on grouped data")
-
 aq_recoded <- airquality %>%
-  bind_shadow() %>%
+  nabular() %>%
   recode_shadow(Ozone = .where(Wind <= 5 ~ "broken_machine"))
 
 aq_grouped_recoded <- airquality %>%
-  bind_shadow() %>%
+  nabular() %>%
   dplyr::group_by(Month) %>%
   recode_shadow(Ozone = .where(Wind <= 5 ~ "broken_machine"))
 
 test_that("special missings are the same for grouped and ungrouped data", {
-  expect_equal(aq_grouped_recoded$Ozone_NA,
-               aq_recoded$Ozone_NA)
+  expect_equal(as.character(aq_grouped_recoded$Ozone_NA),
+               as.character(aq_recoded$Ozone_NA))
 })
 
+test_that("special missings class is maintained for grouped and ungrouped data", {
+  skip_on_cran()
+  skip_on_ci()
+  expect_equal(class(aq_grouped_recoded$Ozone_NA),
+               class(aq_recoded$Ozone_NA))
+  expect_true(is_shade(aq_grouped_recoded$Ozone_NA),
+              is_shade(aq_recoded$Ozone_NA))
+})
 
-# these are some old tests that explore how the `is_shadow` family work
-#
-
-#
-# test_that("special missings return shadow", {
-#   expect_true(is_shadow(dfs_special))
-# })
-#
-# test_that("special missings are shadows", {
-#   expect_true(is_shadow(dfs_special$wind_NA))
-#   expect_true(is_shadow(dfs_special$temp_NA))
-# })
-#
-# test_that("special missings return TRUE for any_shadow", {
-#   expect_true(any_shadow(dfs_special))
-# })
-#
-# are_dfs_special <- are_shadow(dfs_special)
-#
-# test_that("special missings return TRUE for are_shadow", {
-#   expect_false(are_dfs_special[["wind"]])
-#   expect_false(are_dfs_special[["temp"]])
-#   expect_true(are_dfs_special[["wind_NA"]])
-#   expect_true(are_dfs_special[["temp_NA"]])
-# })
-#
-# test_that("special missings are shadows", {
-#   expect_true(is_shadow(dfs_special$wind_NA))
-#   expect_true(is_shadow(dfs_special$temp_NA))
-# })
-#
-# test_shade <- dfs$wind_NA
-#
-# expanded_vec <- shadow_expand_relevel(test_shade, "weee")
-#
-# test_that("shadow_expand_relevel returns shadow type data",{
-#   expect_is(expanded_vec,
-#             "shadow")
-# })
-#
-# releveled_df <- dplyr::mutate(dfs,
-#                               temp_NA = shadow_expand_relevel(temp_NA, "weee"))
-#
-# test_that("shadow_expand_relevel returns shadows inside a data.frame", {
-#   expect_is(releveled_df$wind, "numeric")
-#   expect_is(releveled_df$temp, "numeric")
-#   expect_is(releveled_df$wind_NA, "shadow")
-#   expect_is(releveled_df$temp_NA, "shadow")
-# })
+test_that("shadow_expand_relevel returns shadows inside a data.frame", {
+  expect_type(dfs_special$wind, "double")
+  expect_type(dfs_special$temp, "double")
+  expect_s3_class(dfs_special$wind_NA, "shade")
+  expect_s3_class(dfs_special$temp_NA, "shade")
+})

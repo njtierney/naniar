@@ -11,14 +11,15 @@ unbind_shadow(data)
 unbind_data(data)
 }
 \arguments{
-\item{data}{a data.frame containing shadow columns (created by bind_shadow)}
+\item{data}{data.frame containing shadow columns (created by \code{\link[=bind_shadow]{bind_shadow()}})}
 }
 \value{
-dataframe without shadow columns if using unbind_shadow, or without
-the original data, if using unbind_data
+\code{data.frame} without shadow columns if using \code{\link[=unbind_shadow]{unbind_shadow()}}, or
+without the original data, if using \code{\link[=unbind_data]{unbind_data()}}.
 }
 \description{
-Remove the shadow variables (which end in _NA) from the data, or vice versa
+Remove the shadow variables (which end in \verb{_NA}) from the data, or vice versa.
+This will also remove the \code{nabular} class from the data.
 }
 \examples{
 

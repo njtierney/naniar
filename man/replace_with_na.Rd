@@ -33,14 +33,7 @@ replace_with_na(dat_ms,
                replace = list(x = -99))
 
 replace_with_na(dat_ms,
-             replace = list(x = -98))
-
-replace_with_na(dat_ms,
              replace = list(x = c(-99, -98)))
-
-replace_with_na(dat_ms,
-             replace = list(x = c(-99, -98),
-                          y = c("N/A")))
 
 replace_with_na(dat_ms,
              replace = list(x = c(-99, -98),
@@ -48,5 +41,5 @@ replace_with_na(dat_ms,
                           z = c(-101)))
 }
 \seealso{
-\url{replace_with_na} \url{replace_with_na_all} \url{replace_with_na_at} \url{replace_with_na_if}
+\code{\link[=replace_with_na]{replace_with_na()}} \code{\link[=replace_with_na_all]{replace_with_na_all()}} \code{\link[=replace_with_na_at]{replace_with_na_at()}} \code{\link[=replace_with_na_if]{replace_with_na_if()}}
 }

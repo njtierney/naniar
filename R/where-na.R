@@ -59,7 +59,7 @@ which_na <- function(x){
 
 #' miss_var_which(airquality)
 #'
-#' miss_var_which(iris)
+#' miss_var_which(mtcars)
 
 #'
 miss_var_which <- function(data){
@@ -79,7 +79,7 @@ miss_var_which <- function(data){
   }
 
   # else return variables that contain ANY missing values
-  na_vars <- names(which(purrr::map_lgl(data,anyNA) == TRUE))
+  na_vars <- names(which(colSums(is.na(data)) > 0))
 
   return(na_vars)
 

@@ -9,7 +9,6 @@
 #' @return a factor with expanded levels
 #'
 #' @examples
-#' \dontrun{
 #' df <- tibble::tribble(
 #'   ~wind, ~temp,
 #'   -99,    45,
@@ -21,21 +20,17 @@
 #'
 #' test_shade <- dfs$wind_NA
 #'
-#' shadow_expand_relevel(test_shade, "weee")
+#'#  shadow_expand_relevel(test_shade, "weee")
 #'
-#' dfs %>%
-#'   mutate(temp_NA = shadow_expand_relevel(temp_NA, "weee"))
+#'#  dfs %>%
+#'#    mutate(temp_NA = shadow_expand_relevel(temp_NA, "weee"))
 #'
 #'
 #' # test that this breaks
-#' shadow_expand_relevel(airquality, "weee")
-#'}
+#' # shadow_expand_relevel(airquality, "weee")
+#' @keywords internal
+#' @noRd
 shadow_expand_relevel <- function(.var, suffix){
-
-  # is it a shadow?
-  # test_if_shadow(.var)
-  # - no longer needed, as mutate_if tests the predicate
-  #  -asking "is this a shadow" with is_shadow
 
   # create level
   new_level <- glue::glue("NA_{suffix}")
@@ -45,9 +40,16 @@ shadow_expand_relevel <- function(.var, suffix){
                                  levels(.var),
                                  new_level)
 
+  # add check to see if relevelling needs to happen, in case the levels
+  # are the same
+  any_new_levels <- new_level %in% levels(.var) %>% are_any_false()
+  if (any_new_levels) {
+
   new_var <- forcats::fct_relevel(new_var,
                                       levels(.var),
                                       new_level)
+
+  }
 
   return(new_var)
 
@@ -75,14 +77,15 @@ shadow_expand_relevel <- function(.var, suffix){
 #'
 #' dfs <- bind_shadow(df)
 #'
-#' update_shadow(dfs, "weee")
-#' update_shadow(dfs, "weee") %>% what_levels()
+#'# update_shadow(dfs, "weee")
+#'# update_shadow(dfs, "weee") %>% what_levels()
 #' }
-#'
+#'@keywords internal
+#'@noRd
 update_shadow <- function(data, suffix) {
 
   class_of_cols <- purrr::map(data,class)
-  class_of_data <- class(data)
+  attributes_of_data <- attributes(data)
 
   updated_shadow <-
   dplyr::mutate_if(.tbl = data,
@@ -96,9 +99,9 @@ update_shadow <- function(data, suffix) {
                                     class_of_cols,
                                     `class<-`)
 
-  structure(updated_shadow,
-            class = class_of_data)
+  attributes(updated_shadow) <- attributes_of_data
 
+  updated_shadow
 
 }
 
@@ -152,10 +155,10 @@ update_shadow <- function(data, suffix) {
 #'
 #' @return a dataframe with altered shadows
 #' @export
+#' @rdname recode_shadow
 #'
 #' @examples
 #'
-#' \dontrun{
 #' df <- tibble::tribble(
 #' ~wind, ~temp,
 #' -99,    45,
@@ -169,19 +172,20 @@ update_shadow <- function(data, suffix) {
 #'
 #' recode_shadow(dfs, temp = .where(wind == -99 ~ "bananas"))
 #'
-#' # need to debug this
-#'
 #' recode_shadow(dfs,
 #'               temp = .where(wind == -99 ~ "bananas")) %>%
 #' recode_shadow(wind = .where(wind == -99 ~ "apples"))
-#' }
 #'
 recode_shadow <- function(data, ...){
 
   test_if_null(data)
   test_if_any_shade(data)
+  UseMethod("recode_shadow")
+}
 
-  quo_var <- rlang::quos(...)
+#' @name recode_shadow
+#' @export
+recode_shadow.data.frame <- function(data, ...){
 
   formulas <- rlang::dots_list(...)
 
@@ -191,7 +195,7 @@ recode_shadow <- function(data, ...){
 
   na_suffix <- purrr::map(suffix, ~ glue::glue("NA_{.x}"))
 
-  shadow_var <- rlang::syms(glue::glue("{names(quo_var)}_NA"))
+  shadow_var <- rlang::syms(glue::glue("{names(formulas)}_NA"))
 
   # build up the expressions to pass to case_when
   magic_shade_exprs <- purrr::pmap(
@@ -208,7 +212,7 @@ recode_shadow <- function(data, ...){
                  na_suffix){
           rlang::expr(
             !!condition ~ factor(!!na_suffix,
-                                 levels = levels(.[[!!expr_text(shadow_var)]]))
+                                 levels = levels(.[[!!as_string(shadow_var)]]))
                  )
               }
          )
@@ -226,17 +230,23 @@ recode_shadow <- function(data, ...){
             dplyr::case_when(
               !!!cases,
               TRUE ~ factor(!!shadow_var,
-                            levels = levels(.[[!!expr_text(shadow_var)]]))
+                            levels = levels(.[[!!as_string(shadow_var)]]))
               ),
             class = c("shade", "factor")
             )
           )
         }) %>%
-    rlang::set_names(purrr::map_chr(shadow_var, expr_text))
+    rlang::set_names(purrr::map_chr(shadow_var, as_string))
 
   shadow_recoded <- data %>%
     update_shadow(unlist(suffix, use.names = FALSE)) %>%
     dplyr::mutate(!!!magic_shade_case_when)
 
   shadow_recoded
+}
+
+#' @name recode_shadow
+#' @export
+recode_shadow.grouped_df <- function(data, ...){
+  group_by_fun(data, .fun = recode_shadow, ...)
 }

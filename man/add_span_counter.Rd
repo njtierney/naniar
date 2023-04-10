@@ -20,6 +20,6 @@ counting of missing values over a given span.
 }
 \examples{
 \dontrun{
-add_span_counter(pedestrian, span_size = 100)
+# add_span_counter(pedestrian, span_size = 100)
 }
 }

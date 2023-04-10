@@ -34,12 +34,6 @@
     <loc>http://naniar.njtierney.com//reference/all-is-miss-complete.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com//reference/all_row_complete.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/all_row_miss.html</loc>
-  </url>
-  <url>
     <loc>http://naniar.njtierney.com//reference/any-na.html</loc>
   </url>
   <url>
@@ -124,6 +118,9 @@
     <loc>http://naniar.njtierney.com//reference/impute_mean.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/impute_median.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/is_shade.html</loc>
   </url>
   <url>
@@ -142,16 +139,10 @@
     <loc>http://naniar.njtierney.com//reference/label_shadow.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com//reference/miss-complete-case-pct.html</loc>
+    <loc>http://naniar.njtierney.com//reference/miss-pct-prop-defunct.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com//reference/miss-complete-case-prop.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/miss-complete-var-pct.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/miss-complete-var-prop.html</loc>
+    <loc>http://naniar.njtierney.com//reference/miss_case_cumsum.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/miss_case_summary.html</loc>
@@ -167,6 +158,9 @@
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/miss_summary.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/miss_var_cumsum.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/miss_var_run.html</loc>
@@ -202,6 +196,9 @@
     <loc>http://naniar.njtierney.com//reference/n_miss_row.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/nabular.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/naniar-ggproto.html</loc>
   </url>
   <url>
@@ -233,6 +230,9 @@
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/pedestrian.html</loc>
+  </url>
+  <url>
+    <loc>http://naniar.njtierney.com//reference/plotly_helpers.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/prop-miss-complete-case.html</loc>
@@ -280,6 +280,9 @@
     <loc>http://naniar.njtierney.com//reference/scoped-impute_mean.html</loc>
   </url>
   <url>
+    <loc>http://naniar.njtierney.com//reference/scoped-impute_median.html</loc>
+  </url>
+  <url>
     <loc>http://naniar.njtierney.com//reference/shade.html</loc>
   </url>
   <url>
@@ -305,9 +308,6 @@
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/test_if_null.html</loc>
-  </url>
-  <url>
-    <loc>http://naniar.njtierney.com//reference/test_if_shadow.html</loc>
   </url>
   <url>
     <loc>http://naniar.njtierney.com//reference/unbinders.html</loc>

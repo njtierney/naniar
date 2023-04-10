@@ -4,7 +4,9 @@
 \name{common_na_strings}
 \alias{common_na_strings}
 \title{Common string values for NA}
-\format{An object of class \code{character} of length 24.}
+\format{
+An object of class \code{character} of length 26.
+}
 \usage{
 common_na_strings
 }
@@ -16,7 +18,7 @@ strings used can be found by printing out \code{common_na_strings}. It is a
 useful way to explore your data for possible missings, but I strongly warn
 against using this to replace NA values without very carefully looking at
 the incidence for each of the cases. Please note that \code{common_na_strings}
-uses \code{\\} around the "?", "." and "*" characters to protect against using
+uses \verb{\\\\} around the "?", "." and "*" characters to protect against using
 their wildcard features in grep. Common NA numbers are in the data object
 \code{common_na_numbers}.
 }
@@ -33,9 +35,9 @@ dat_ms <- tibble::tribble(~x,  ~y,    ~z,
                           -98, "F",   -1)
 
 miss_scan_count(dat_ms, -99)
-miss_scan_count(dat_ms, c(-99,-98))
 miss_scan_count(dat_ms, c("-99","-98","N/A"))
-common_na_numbers
+common_na_strings
 miss_scan_count(dat_ms, common_na_strings)
+replace_with_na(dat_ms, replace = list(y = common_na_strings))
 }
 \keyword{datasets}

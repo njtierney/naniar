@@ -6,7 +6,7 @@
 #'   adult population (18 years of age or older) living in households.
 #'
 #' @seealso the codebook:
-#' \url{http://ftp.cdc.gov/pub/data/brfss/codebook_09.rtf}
+#' \url{https://www.cdc.gov/brfss/annual_data/annual_2009.htm}
 #'
 #' Format: a data frame with 245 observations on the following 34
 #' variables.
@@ -147,9 +147,6 @@
 #' @seealso library(MissingDataGUI) (named brfss)
 #' @examples
 #'
-#' # explore the missingness with vis_miss
-#' library(naniar)
-#'
 #' vis_miss(riskfactors)
 #'
 #' # Look at the missingness in the variables
@@ -158,6 +155,7 @@
 #' # and now as a plot
 #' gg_miss_var(riskfactors)
 #'
+#' \dontrun{
 #' # Look at the missingness in bmi and poor health
 #' library(ggplot2)
 #' p <-
@@ -173,5 +171,5 @@
 
 #'  # for each education bracket?
 #'  p + facet_wrap(~education)
-#'
+#' }
 "riskfactors"

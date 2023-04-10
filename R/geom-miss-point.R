@@ -55,7 +55,7 @@
 #' @param colour the colour chosen for the aesthetic
 #'
 #' @examples
-#'
+#' \dontrun{
 #' library(ggplot2)
 #'
 #' # using regular geom_point()
@@ -77,7 +77,7 @@
 #'            y = Solar.R)) +
 #'  geom_miss_point() +
 #'  facet_wrap(~Month)
-#'
+#'}
 #' @export
  geom_miss_point <- function(mapping = NULL,
                              data = NULL,
@@ -118,10 +118,10 @@ GeomMissPoint <- ggproto(
   required_aes = c("x", "y"),
   default_aes = aes(shape = 19,
                     colour = ..missing..,
-                    size = 0.5,
+                    size = 1.5,
                     fill = NA,
                     alpha = NA,
-                    stroke = 1.5),
+                    stroke = 0.5),
   draw_key = draw_key_missing_point,
   handle_na = function(self, data, params) data,
   draw_panel = function(data,

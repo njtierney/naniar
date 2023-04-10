@@ -11,6 +11,8 @@
 #'   sum of missings to the data. This can be useful when exploring patterns
 #'   of nonresponse. These are calculated as the cumulative sum of the missings
 #'   in the variables as they are first presented to the function.
+#' @param digits how many digits to display in `pct_miss` column. Useful when
+#'   you are working with small amounts of missing data.
 #' @param ... extra arguments
 #'
 #' @note `n_miss_cumsum` is calculated as the cumulative sum of missings in the
@@ -19,7 +21,7 @@
 #'
 #' @return a tibble of the percent of missing data in each variable
 #'
-#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]() [n_complete]() [n_complete_row]() [n_miss]() [n_miss_row]() [pct_complete]() [pct_miss]() [prop_complete]() [prop_complete_row]() [prop_miss]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()] [n_complete()] [n_complete_row()] [n_miss()] [n_miss_row()] [pct_complete()] [pct_miss()] [prop_complete()] [prop_complete_row()] [prop_miss()]
 #'
 #' @export
 #'
@@ -28,16 +30,18 @@
 #' miss_var_summary(airquality)
 #' miss_var_summary(oceanbuoys, order = TRUE)
 #'
+#' \dontrun{
 #' # works with group_by from dplyr
 #' library(dplyr)
 #' airquality %>%
 #'   group_by(Month) %>%
 #'   miss_var_summary()
-#'
+#' }
 #' @export
 miss_var_summary <- function(data,
                              order = FALSE,
                              add_cumsum = FALSE,
+                             digits,
                              ...) {
 
   test_if_null(data)
@@ -51,11 +55,19 @@ miss_var_summary <- function(data,
 miss_var_summary.default <- function(data,
                                      order = TRUE,
                                      add_cumsum = FALSE,
+                                     digits = NULL,
                                      ...) {
 
-  res <- purrr::map_df(data, n_miss) %>%
-    tidyr::gather(key = "variable", value = "n_miss") %>%
-    dplyr::mutate(pct_miss = (n_miss / nrow(data) * 100))
+  col_n_miss <- colSums(is.na(data))
+  col_pct_miss <- as.numeric(colMeans(is.na(data)) * 100)
+
+  res <- tibble::tibble(variable = names(col_n_miss),
+                        n_miss = as.integer(col_n_miss),
+                        pct_miss = tibble::num(
+                          x = col_pct_miss,
+                          # control how rounding is presented
+                          digits = digits)
+                        )
 
   if (add_cumsum) {
    res <- res %>% dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
@@ -67,19 +79,20 @@ miss_var_summary.default <- function(data,
 
   return(res)
 
-
 }
 
 #' @export
 miss_var_summary.grouped_df <- function(data,
                                         order = TRUE,
                                         add_cumsum = FALSE,
+                                        digits = NULL,
                                         ...) {
 
   group_by_fun(data,
                .fun = miss_var_summary,
                order = order,
-               add_cumsum = add_cumsum)
+               add_cumsum = add_cumsum,
+               digits = digits)
 
 }
 
@@ -100,19 +113,21 @@ miss_var_summary.grouped_df <- function(data,
 #'
 #' @return a tibble of the percent of missing data in each case.
 #'
-#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]() [n_complete]() [n_complete_row]() [n_miss]() [n_miss_row]() [pct_complete]() [pct_miss]() [prop_complete]() [prop_complete_row]() [prop_miss]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()] [n_complete()] [n_complete_row()] [n_miss()] [n_miss_row()] [pct_complete()] [pct_miss()] [prop_complete()] [prop_complete_row()] [prop_miss()]
 #'
 #' @export
 #'
 #' @examples
 #'
+#' miss_case_summary(airquality)
+#'
+#' \dontrun{
 #' # works with group_by from dplyr
 #' library(dplyr)
 #' airquality %>%
 #'   group_by(Month) %>%
 #'   miss_case_summary()
-#'
-#' miss_case_summary(airquality)
+#'}
 #'
 miss_case_summary <- function(data,
                               order = TRUE,
@@ -187,11 +202,10 @@ miss_case_summary.grouped_df <- function(data,
 #'
 #' @param data a dataframe
 #' @param order whether or not to order the result by n_miss
-#' @param ... extra arguments
 #'
 #' @return a tibble of missing data summaries
 #'
-#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]() [n_complete]() [n_complete_row]() [n_miss]() [n_miss_row]() [pct_complete]() [pct_miss]() [prop_complete]() [prop_complete_row]() [prop_miss]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()] [n_complete()] [n_complete_row()] [n_miss()] [n_miss_row()] [pct_complete()] [pct_miss()] [prop_complete()] [prop_complete_row()] [prop_miss()]
 #'
 #' @export
 #'
@@ -203,12 +217,13 @@ miss_case_summary.grouped_df <- function(data,
 #' s_miss$miss_var_summary
 #' # etc, etc, etc.
 #'
+#' \dontrun{
 #' library(dplyr)
 #' s_miss_group <- group_by(airquality, Month) %>% miss_summary()
 #' s_miss_group$miss_df_prop
 #' s_miss_group$miss_case_table
 #' # etc, etc, etc.
-#'
+#' }
 #'
 miss_summary <- function(data, order = TRUE){
 
@@ -217,7 +232,7 @@ miss_summary <- function(data, order = TRUE){
   test_if_dataframe(data)
 
   return(
-    tibble::data_frame(
+    tibble::tibble(
         miss_df_prop = prop_miss(data),
         miss_var_prop = prop_miss_var(data),
         miss_case_prop = prop_miss_case(data),

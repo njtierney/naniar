@@ -4,7 +4,12 @@
 #'     calculate the number of missing values in a given time period.
 #'     `miss_var_span` takes a data.frame object, a variable, and a `span_every`
 #'     argument and returns a dataframe containing the number of missing values
-#'     within each span.
+#'     within each span. When the number of observations isn't a perfect
+#'     multiple of the span length, the final span is whatever the last
+#'     remainder is. For example, the `pedestrian` dataset has 37,700 rows. If
+#'     the span is set to 4000, then there will be 1700 rows remaining. This can
+#'     be provided using modulo (`%%`): `nrow(data) %% 4000`. This remainder
+#'     number is provided in `n_in_span`.
 #'
 #' @param data data.frame
 #' @param var bare unquoted variable name of interest.
@@ -12,11 +17,12 @@
 
 #' @return dataframe with variables `n_miss`, `n_complete`, `prop_miss`, and
 #'     `prop_complete`, which describe the number, or proportion of missing or
-#'     complete values within that given time span.
+#'     complete values within that given time span. The final variable,
+#'     `n_in_span` states how many observations are in the span.
 #'
 #' @export
 #'
-#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()]
 #'
 #' @examples
 #'
@@ -24,12 +30,13 @@
 #'              var = hourly_counts,
 #'              span_every = 168)
 #'
+#' \dontrun{
 #'  library(dplyr)
 #'  pedestrian %>%
 #'    group_by(month) %>%
 #'      miss_var_span(var = hourly_counts,
 #'                    span_every = 168)
-#'
+#' }
 miss_var_span <- function(data, var, span_every){
 
   test_if_null(data)
@@ -49,19 +56,24 @@ miss_var_span.default <- function(data,
                                   var,
                                   span_every){
 
-  var <- rlang::enquo(var)
+  dat_ts_summary <- dplyr::select(data, {{ var }} )
 
-  dat_ts_summary <- dplyr::select(data,!!var)
-
-  dat_ts_summary %>%
+  dat_ts_summary_span <- dat_ts_summary %>%
     # need to make add_span_counter respect grouping structure, somehow
-    add_span_counter(span_size = span_every) %>%
+    add_span_counter(span_size = span_every)
+
+  dat_ts_summary_span_count <- dat_ts_summary_span %>%
+    dplyr::count(span_counter, name = "n_in_span")
+
+  dat_ts_summary_span %>%
     dplyr::group_by(span_counter) %>%
-    dplyr::tally(is.na(!!var)) %>%
+    dplyr::tally(is.na( {{ var}} )) %>%
+    dplyr::left_join(dat_ts_summary_span_count, by = "span_counter") %>%
     dplyr::rename(n_miss = n) %>%
-    dplyr::mutate(n_complete = span_every - n_miss,
-                  prop_miss = n_miss / span_every,
-                  prop_complete = 1 - prop_miss)
+    dplyr::mutate(n_complete = n_in_span - n_miss,
+                  prop_miss = n_miss / n_in_span,
+                  prop_complete = 1 - prop_miss) %>%
+    dplyr::relocate(n_in_span, .after = prop_complete)
 
 }
 
@@ -75,7 +87,7 @@ miss_var_span.grouped_df <- function(data, var, span_every){
                                     .f = miss_var_span,
                                     var = !!var,
                                     span_every = span_every)) %>%
-    tidyr::unnest()
+    tidyr::unnest(cols = c(data))
 
 }
 

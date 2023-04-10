@@ -14,11 +14,10 @@
 #'
 #' @seealso [geom_miss_point()] [gg_miss_case_cumsum] [gg_miss_fct()] [gg_miss_span()] [gg_miss_var()] [gg_miss_var_cumsum()] [gg_miss_which()]
 #'
-#' @export
-#'
 #' @examples
 #'
 #' gg_miss_case(airquality)
+#' \dontrun{
 #' library(ggplot2)
 #' gg_miss_case(airquality) + labs(x = "Number of Cases")
 #' gg_miss_case(airquality, show_pct = TRUE)
@@ -26,7 +25,8 @@
 #' gg_miss_case(airquality, facet = Month)
 #' gg_miss_case(airquality, facet = Month, order_cases = FALSE)
 #' gg_miss_case(airquality, facet = Month, show_pct = TRUE)
-#'
+#'}
+#' @export
 gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
 
   if (!missing(facet)) {
@@ -41,7 +41,7 @@ gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
       x %>%
       miss_case_summary(order = TRUE) %>%
       # overwrite case
-      dplyr::mutate(case = 1:n()) %>%
+      dplyr::mutate(case = dplyr::row_number()) %>%
       gg_miss_case_create(show_pct = show_pct)
 
   }
@@ -60,7 +60,7 @@ gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
       dplyr::group_by(!!quo_group_by) %>%
       # overwrite case
       miss_case_summary(order = TRUE) %>%
-      dplyr::mutate(case = 1:n()) %>%
+      dplyr::mutate(case = dplyr::row_number()) %>%
       gg_miss_case_create(show_pct = show_pct) +
       facet_wrap(as.formula(paste("~", group_string)))
 
@@ -95,10 +95,10 @@ gg_miss_case_create <- function(data, show_pct){
   }
 
   ggplot(data = data,
-         aes_string(x = "case",
+         aes(x = case,
              # possibly include an if() statement here to change `n_miss` to
              # `pct_miss` when the appropriate indicator is passed through
-             y = aes_y)) +
+             y = .data[[aes_y]])) +
     geom_col(width = 1,
              colour = "#484878", # lorikeet purple
              fill = "#484878") + # lorikeet purple

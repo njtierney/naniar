@@ -12,7 +12,7 @@ gg_miss_fct(x, fct)
 \item{fct}{column containing the factor variable to visualise}
 }
 \value{
-ggplot object depicting the % missing of each factor level for
+ggplot object depicting the \% missing of each factor level for
 each variable.
 }
 \description{
@@ -23,9 +23,10 @@ theme is used, which can be customised as normal for ggplot.
 \examples{
 
 gg_miss_fct(x = riskfactors, fct = marital)
+\dontrun{
 library(ggplot2)
 gg_miss_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
-
+}
 
 }
 \seealso{

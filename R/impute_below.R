@@ -1,21 +1,21 @@
-#' Impute data with values shifted 10\% below range.
+#' Impute data with values shifted 10 percent below range.
 #'
 #' It can be useful in exploratory graphics to impute data outside the range of
-#'   the data. `impute_below` imputes all variables with missings to have
-#'   values 10% below the range for numeric values, and for character or factor
-#'   values adds a new string or label. It is powered by `shadow_shift`, so
-#'   please see the documentation for [shadow_shift()] to full details on the
-#'   different implementations.
+#'   the data. `impute_below` imputes all variables with missings to have values
+#'   10 percent below the range for numeric values, and for character or factor
+#'   values adds a new string or label. It is powered by `shadow_shift`, so please
+#'   see the documentation for [shadow_shift()] to full details on the different
+#'   implementations.
 #'
 #' @param ... extra arguments to pass - see [shadow_shift()] for discussion on this.
 #' @export
 impute_below <- function(...) shadow_shift(...)
 
-#' Impute data with values shifted 10\% below range.
+#' Impute data with values shifted 10 percent below range.
 #'
 #' It can be useful in exploratory graphics to impute data outside the range of
 #'   the data. `impute_below_all` imputes all variables with missings to have
-#'   values 10% below the range for numeric values, and for character or factor
+#'   values 10\% below the range for numeric values, and for character or factor
 #'   values adds a new string or label.
 #'
 #' @param .tbl a data.frame
@@ -90,17 +90,16 @@ impute_below_all <- function(.tbl,
 #'
 #' @examples
 #' # select variables starting with a particular string.
-#' library(dplyr)
 #' impute_below_at(airquality,
 #'                 .vars = c("Ozone", "Solar.R"))
 #'
-#' impute_below_at(airquality,
-#'                 .vars = 1:2)
-#'#'
+#' impute_below_at(airquality, .vars = 1:2)
+#'
+#' \dontrun{
+#' library(dplyr)
 #' impute_below_at(airquality,
 #'                 .vars = vars(Ozone))
 #'
-#' \dontrun{
 #' library(ggplot2)
 #' airquality %>%
 #'   bind_shadow() %>%

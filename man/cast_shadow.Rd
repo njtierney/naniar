@@ -13,11 +13,11 @@ cast_shadow(data, ...)
 respect the dplyr verbs \code{starts_with}, \code{contains}, \code{ends_with}, etc.}
 }
 \value{
-data with the added variable shifted and the suffix \code{_NA}
+data with the added variable shifted and the suffix \verb{_NA}
 }
 \description{
 Casting a shadow shifted column performs the equivalent pattern to
-data %>% select(var) %>% shadow_shift(). This is a convenience function
+data \%>\% select(var) \%>\% shadow_shift(). This is a convenience function
 that makes it easy to perform certain visualisations, in line with the
 principle that the user should have a way to flexibly return data formats
 containing information about the missing data. It forms the base building
@@ -27,8 +27,8 @@ to select variables.
 }
 \examples{
 
-airquality \%>\% cast_shadow(Ozone)
 airquality \%>\% cast_shadow(Ozone, Solar.R)
+\dontrun{
 library(ggplot2)
 library(magrittr)
 airquality  \%>\%
@@ -36,6 +36,7 @@ airquality  \%>\%
   ggplot(aes(x = Ozone,
              colour = Solar.R_NA)) +
         geom_density()
+}
 
 }
 \seealso{

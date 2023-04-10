@@ -8,17 +8,15 @@
 #' @return numeric the proportion of variables that contain missing or complete
 #'    data
 #'
-#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()]
 #'
 #' @export
 #' @name prop-miss-complete-var
 #'
 #' @examples
 #'
-#' prop_miss_var(riskfactors)
-#' prop_miss_var(oceanbuoys)
-#' prop_complete_var(riskfactors)
-#' prop_complete_var(oceanbuoys)
+#' prop_miss_var(airquality)
+#' prop_complete_var(airquality)
 #'
 prop_miss_var <- function(data){
   test_if_null(data)
@@ -26,7 +24,7 @@ prop_miss_var <- function(data){
   test_if_dataframe(data)
 
   # find the proportion of variables that contain (any) missing values
-  mean(purrr::map_lgl(data, anyNA))
+  mean(colSums(is.na(data)) > 0)
 
 } # end function
 
@@ -49,16 +47,14 @@ prop_complete_var <- function(data){
 #'
 #' @export
 #'
-#' @seealso [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#' @seealso [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()]
 #'
 #'
 #' @name pct-miss-complete-var
 #' @examples
 #'
-#' prop_miss_var(riskfactors)
-#' prop_miss_var(oceanbuoys)
-#' prop_complete_var(riskfactors)
-#' prop_complete_var(oceanbuoys)
+#' prop_miss_var(airquality)
+#' prop_complete_var(airquality)
 #'
 pct_miss_var <- function(data){
   # turn proportion into a percent
@@ -83,7 +79,7 @@ pct_complete_var <- function(data){
 #' @return numeric the proportion of cases that contain a missing or complete
 #'     value
 #'
-#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()]
 #'
 #' @export
 #' @name prop-miss-complete-case
@@ -95,30 +91,13 @@ pct_complete_var <- function(data){
 #'
 prop_miss_case <- function(data){
   test_if_null(data)
-
   test_if_dataframe(data)
 
-  temp <- data %>%
-    # which rows are complete?
-    stats::complete.cases() %>%
-    mean()
+  # How many missings in each row?
+  n_miss_in_rows <- rowSums(is.na(data))
 
-  # Return 1 if temp is 1
-  # Prevent error when all the rows contain a NA and then mean is 1
-  # so (1 -1)*100 = 0, whereas function should return 1
-  if (temp == 1) {
-    return(1)
-  }
-
-  if (temp == 0) {
-    # Return 0 if temp is 0
-    # Prevent error when no row contains a NA and then mean is 0
-    # so (1 -0)*1 = 1, whereas function should return 0.
-    return(0)
-  }
-
-  return((1 - temp))
-
+  # What is the proportion of rows with any missings?
+  mean(n_miss_in_rows > 0)
 }
 
 #' @export
@@ -137,7 +116,7 @@ prop_complete_case <- function(data){
 #' @return numeric the percentage of cases that contain a missing or complete
 #'      value
 #'
-#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()]
 #'
 #' @export
 #' @name pct-miss-complete-case

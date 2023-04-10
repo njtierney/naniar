@@ -17,7 +17,7 @@ See the examples for more details.}
 \item{...}{extra options to pass to \code{\link[=recode_shadow]{recode_shadow()}} - a work in progress.}
 }
 \value{
-data with the added variable shifted and the suffix \code{_NA}
+data with the added variable shifted and the suffix \verb{_NA}
 }
 \description{
 Binding a shadow matrix to a regular dataframe helps visualise and work with
@@ -32,6 +32,7 @@ bind_shadow(airquality, only_miss = TRUE)
 
 aq_shadow <- bind_shadow(airquality)
 
+\dontrun{
 # explore missing data visually
 library(ggplot2)
 
@@ -43,5 +44,6 @@ ggplot(data = aq_shadow,
        geom_histogram() +
        facet_wrap(~Solar.R_NA,
        ncol = 1)
+}
 
 }

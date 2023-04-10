@@ -12,7 +12,7 @@
 #' @return dataframe with column names "run_length" and "is_na", which describe
 #'     the length of the run, and whether that run describes a missing value.
 #'
-#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary]() [miss_case_table]() [miss_summary]() [miss_var_prop]() [miss_var_run]() [miss_var_span]() [miss_var_summary]() [miss_var_table]() [n_complete]() [n_complete_row]() [n_miss]() [n_miss_row]() [pct_complete]() [pct_miss]() [prop_complete]() [prop_complete_row]() [prop_miss]()
+#' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()] [n_complete()] [n_complete_row()] [n_miss()] [n_miss_row()] [pct_complete()] [pct_miss()] [prop_complete()] [prop_complete_row()] [prop_miss()]
 #'
 #' @export
 #'
@@ -20,9 +20,10 @@
 #'
 #' miss_var_run(pedestrian, hourly_counts)
 #'
+#' \dontrun{
+#' # find the number of runs missing/complete for each month
 #' library(dplyr)
 #'
-#' # find the number of runs missing/complete for each month
 #'
 #' pedestrian %>%
 #'   group_by(month) %>%
@@ -48,7 +49,7 @@
 #'  pedestrian %>%
 #'    group_by(month) %>%
 #'    miss_var_run(hourly_counts)
-#'
+#' }
 #'
 miss_var_run <- function(data, var){
 
@@ -89,7 +90,7 @@ miss_var_run.grouped_df <- function(data,var){
     dplyr::mutate(data = purrr::map(data,
                                     var = !!var,
                                     .f = miss_var_run)) %>%
-    tidyr::unnest()
+    tidyr::unnest(cols = c(data))
 
 }
 

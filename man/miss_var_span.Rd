@@ -16,14 +16,20 @@ miss_var_span(data, var, span_every)
 \value{
 dataframe with variables \code{n_miss}, \code{n_complete}, \code{prop_miss}, and
 \code{prop_complete}, which describe the number, or proportion of missing or
-complete values within that given time span.
+complete values within that given time span. The final variable,
+\code{n_in_span} states how many observations are in the span.
 }
 \description{
 To summarise the missing values in a time series object it can be useful to
 calculate the number of missing values in a given time period.
 \code{miss_var_span} takes a data.frame object, a variable, and a \code{span_every}
 argument and returns a dataframe containing the number of missing values
-within each span.
+within each span. When the number of observations isn't a perfect
+multiple of the span length, the final span is whatever the last
+remainder is. For example, the \code{pedestrian} dataset has 37,700 rows. If
+the span is set to 4000, then there will be 1700 rows remaining. This can
+be provided using modulo (\code{\%\%}): \code{nrow(data) \%\% 4000}. This remainder
+number is provided in \code{n_in_span}.
 }
 \examples{
 
@@ -31,13 +37,14 @@ miss_var_span(data = pedestrian,
              var = hourly_counts,
              span_every = 168)
 
+\dontrun{
  library(dplyr)
  pedestrian \%>\%
    group_by(month) \%>\%
      miss_var_span(var = hourly_counts,
                    span_every = 168)
-
+}
 }
 \seealso{
-\code{\link[=pct_miss_case]{pct_miss_case()}} \code{\link[=prop_miss_case]{prop_miss_case()}} \code{\link[=pct_miss_var]{pct_miss_var()}} \code{\link[=prop_miss_var]{prop_miss_var()}} \code{\link[=pct_complete_case]{pct_complete_case()}} \code{\link[=prop_complete_case]{prop_complete_case()}} \code{\link[=pct_complete_var]{pct_complete_var()}} \code{\link[=prop_complete_var]{prop_complete_var()}} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \url{miss_case_summary} \url{miss_case_table} \url{miss_summary} \url{miss_var_prop} \url{miss_var_run} \url{miss_var_span} \url{miss_var_summary} \url{miss_var_table}
+\code{\link[=pct_miss_case]{pct_miss_case()}} \code{\link[=prop_miss_case]{prop_miss_case()}} \code{\link[=pct_miss_var]{pct_miss_var()}} \code{\link[=prop_miss_var]{prop_miss_var()}} \code{\link[=pct_complete_case]{pct_complete_case()}} \code{\link[=prop_complete_case]{prop_complete_case()}} \code{\link[=pct_complete_var]{pct_complete_var()}} \code{\link[=prop_complete_var]{prop_complete_var()}} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \code{\link[=miss_case_summary]{miss_case_summary()}} \code{\link[=miss_case_table]{miss_case_table()}} \code{\link[=miss_summary]{miss_summary()}} \code{\link[=miss_var_prop]{miss_var_prop()}} \code{\link[=miss_var_run]{miss_var_run()}} \code{\link[=miss_var_span]{miss_var_span()}} \code{\link[=miss_var_summary]{miss_var_summary()}} \code{\link[=miss_var_table]{miss_var_table()}}
 }

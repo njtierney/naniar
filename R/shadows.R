@@ -1,5 +1,8 @@
 #' Create shadows
 #'
+#' Return a tibble in shadow matrix form, where the variables are the same but
+#' have a suffix _NA attached to distinguish them.
+#'
 #' Representing missing data structure is achieved using the shadow matrix,
 #' introduced in [Swayne and Buja](https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization). The shadow
 #' matrix is the same dimension as the data, and consists of binary indicators
@@ -11,6 +14,9 @@
 #' @param ... selected variables to use
 #'
 #' @return appended shadow with column names
+#' @examples
+#'
+#' as_shadow(airquality)
 #' @export
 
 as_shadow <- function(data, ...){
@@ -19,67 +25,13 @@ as_shadow <- function(data, ...){
 
   test_if_dataframe(data)
 
-  UseMethod("as_shadow")
-}
-
-#' Create shadow data
-#'
-#' Return a tibble in shadow matrix form, where the variables are the same but
-#' have a suffix _NA attached to distinguish them.
-#'
-#' @inheritParams as_shadow
-#'
-#' @examples
-#'
-#' as_shadow(airquality)
-#'
-#' @export
-as_shadow.data.frame <- function(data, ...){
-
-  data_shadow <- purrr::map_df(data, shade)
+  data_shadow <- purrr::map_dfc(data, shade)
 
   names(data_shadow) <- paste0(names(data),"_NA")
 
-
-  return(new_shadow(data_shadow))
-
-}
-
-
-#' Convert data into shadow format for doing an upset plot
-#'
-#' Upset plots are a way of visualising common sets, this function transforms
-#'     the data into a format that feeds directly into an upset plot
-#'
-#' @param data a data.frame
-#'
-#' @return a data.frame
-#'
-#' @examples
-#'
-#' \dontrun{
-#'
-#' library(UpSetR)
-#' airquality %>%
-#'   as_shadow_upset() %>%
-#'   upset()
-#' }
-#'
-#' @export
-as_shadow_upset <- function(data){
-
-  test_if_null(data)
-
-  test_if_dataframe(data)
-
-  data_shadow <- as.data.frame(is.na(data)*1)
-
-  names(data_shadow) <- paste0(names(data),"_NA")
-
-  dplyr::mutate_if(data_shadow, is.numeric, as.integer)
+  return(data_shadow)
 
 }
-
 
 #' Bind a shadow dataframe to original data
 #'
@@ -105,6 +57,7 @@ as_shadow_upset <- function(data){
 #'
 #' aq_shadow <- bind_shadow(airquality)
 #'
+#' \dontrun{
 #' # explore missing data visually
 #' library(ggplot2)
 #'
@@ -116,6 +69,7 @@ as_shadow_upset <- function(data){
 #'        geom_histogram() +
 #'        facet_wrap(~Solar.R_NA,
 #'        ncol = 1)
+#' }
 #'
 bind_shadow <- function(data, only_miss = FALSE, ...){
 
@@ -125,60 +79,40 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
     # I want to only select columns that contain a missing value.
     miss_vars <- rlang::syms(miss_var_which(data))
 
-    shadow_vars <- dplyr::select(data, !!!miss_vars) %>% as_shadow()
+    shadow_vars <- dplyr::as_tibble(as_shadow(dplyr::select(data,
+                                                            !!!miss_vars)))
+    data <- tibble::as_tibble(data)
+    shadow_data <- dplyr::bind_cols(data, shadow_vars)
 
-    shadow_data <- tibble::as_tibble(dplyr::bind_cols(data, shadow_vars))
+    return(shadow_data)
 
-    # class(shadow_data) <- c("shadow", class(shadow_data))
-
-    # return(new_shadow(shadow_data))
-    return(new_nabular(shadow_data))
-
-  # if you want All the values to be added (the default behaviour)
   }
 
   if (!only_miss) {
 
-    data_shadow <- as_shadow(data)
-
-    bound_shadow <- dplyr::bind_cols(data, data_shadow)
-
-    shadow_data <- tibble::as_tibble(bound_shadow)
+    data_shadow <- tibble::as_tibble(as_shadow(data))
+    data <- tibble::as_tibble(data)
+    shadow_data <- dplyr::bind_cols(data, data_shadow)
 
     if (!missing(...)) {
       shadow_data <- shadow_data %>% recode_shadow(...)
     }
 
-    # class(shadow_data) <- c("shadow", class(shadow_data))
-
-    # return(new_shadow(shadow_data))
-    return(new_nabular(shadow_data))
+    return(shadow_data)
 
   }
 
 }
 
-#' Create a new shadow
-#'
-#' @param x a data.frame
-#'
-#' @return object with class "shadow", inhereting from it's original class
-#' @export
-new_shadow <- function(x){
-    # structure(x,
-    #           class = c("shadow", class(x)))
-    tibble::new_tibble(x, subclass = "shadow")
-}
-
-
 #' Unbind (remove) shadow from data, and vice versa
 #'
-#' Remove the shadow variables (which end in _NA) from the data, or vice versa
+#' Remove the shadow variables (which end in `_NA`) from the data, or vice versa.
+#' This will also remove the `nabular` class from the data.
 #'
-#' @param data a data.frame containing shadow columns (created by bind_shadow)
+#' @param data data.frame containing shadow columns (created by [bind_shadow()])
 #'
-#' @return dataframe without shadow columns if using unbind_shadow, or without
-#'  the original data, if using unbind_data
+#' @return `data.frame` without shadow columns if using [unbind_shadow()], or
+#'   without the original data, if using [unbind_data()].
 #' @name unbinders
 #'
 #' @export
@@ -205,7 +139,8 @@ new_shadow <- function(x){
 #'
 unbind_shadow <- function(data){
   test_if_any_shade(data)
-  dplyr::select(data, -dplyr::ends_with("_NA"))
+  temp <- dplyr::select(data, -dplyr::ends_with("_NA"))
+  return(temp)
 }
 
 #' @rdname unbinders
@@ -236,94 +171,10 @@ gather_shadow <- function(data){
 
   as_shadow(data) %>%
     dplyr::mutate(rows = seq_len(nrow(.))) %>%
-    tidyr::gather(key = "variable",
-                  value = "missing",
-                  -rows) %>%
+    tidyr::pivot_longer(cols = -rows,
+                        names_to = "variable",
+                        values_to = "missing") %>%
     dplyr::rename(case = rows)
-}
-
-
-# #' Is this thing a shadow?
-# #'
-# #' Does this thing contain a shadow variable?
-# #'
-# #' @param x vector or data.frame
-# #'
-# #' @return logical - single value. TRUE if contains a variable with a column ending in "_NA"
-# #' @export
-# #'
-# #' @examples
-# #'
-# #' df_shadow <- bind_shadow(airquality)
-# #'
-# #' is_shadow(df_shadow)
-# #'
-# #' @export
-# is_shadow <- function(x){
-#   # any(grepl("_NA",names(x)))
-#   inherits(x, "shadow")
-# }
-#
-# #' Are these things shadows?
-# #'
-# #' Does this thing contain a shadow variable?
-# #'
-# #' @param x vector or data.frame
-# #'
-# #' @return logical vector - TRUE if contains a variable with a column ending in "_NA"
-# #' @export
-# #'
-# #' @examples
-# #'
-# #' df_shadow <- bind_shadow(airquality)
-# #'
-# #' are_shadow(df_shadow)
-# #'
-# #' @export
-# are_shadow <- function(x){
-#   grepl("_NA",names(x))
-#   purrr::map(x, class) %>%
-#     tibble::as_tibble() %>%
-# }
-
-# Are these things shadows?
-#
-# Does this thing contain a shadow variable?
-#
-# @param x vector or data.frame
-#
-# @return logical vector - TRUE if contains a variable with a column ending in "_NA"
-# @export
-#
-# @examples
-#
-# df_shadow <- bind_shadow(airquality)
-#
-# are_shadow(df_shadow)
-#
-#@export
-# are_shadow <- function(x) grepl("_NA",names(x))
-
-
-#' Which variables are shades?
-#'
-#' This function tells us which variables contain shade information
-#'
-#' @param .tbl a data.frame or tbl
-#'
-#' @return numeric - which column numbers contain shade information
-#'
-#' @examples
-#'
-#' df_shadow <- bind_shadow(airquality)
-#'
-#' which_are_shade(df_shadow)
-#'
-#' @export
-which_are_shade <- function(.tbl){
-  test_if_null(.tbl)
-  test_if_dataframe(.tbl)
-  which(are_shade(.tbl))
 }
 
 
@@ -351,32 +202,96 @@ which_are_shade <- function(.tbl){
 #' shadow_long(aq_shadow, Ozone, Solar.R)
 #'
 #'
-shadow_long <- function(shadow_data,
-                        ...,
-                        only_main_vars = TRUE){
+shadow_long <- function(
+  shadow_data,
+  ...,
+  only_main_vars = TRUE
+    ) {
 
   test_if_null(shadow_data)
   test_if_any_shade(shadow_data)
 
-  gathered_df <- shadow_data %>%
-    tidyr::gather(key = "variable",
-                  value = "value",
-                  -which_are_shade(.)) %>%
-    tidyr::gather(key = "variable_NA",
-                  value = "value_NA",
-                  which_are_shade(.))
+  shadow_data_names <- names(which_are_shade(shadow_data))
+  longer_one <- tidyr::pivot_longer(
+    shadow_data,
+    cols = -dplyr::one_of(shadow_data_names),
+    names_to = "variable",
+    values_to = "value"
+  )
+
+  longer_one_shade_names <- names(which_are_shade(longer_one))
+  gathered_df <- tidyr::pivot_longer(
+    longer_one,
+    cols = dplyr::one_of(longer_one_shade_names),
+    names_to = "variable_NA",
+    values_to = "value_NA"
+  )
 
   if (only_main_vars) {
-    gathered_df <- dplyr::filter(gathered_df,
-                                 variable_NA == paste0(variable,"_NA"))
+    gathered_df <- dplyr::filter(
+      gathered_df,
+      variable_NA == paste0(variable, "_NA")
+    )
   }
 
   if (!missing(...)) {
-    vars <- bare_to_chr(...)
+    vars <- purrr::map(ensyms(...), as_string)
     gathered_df <- gathered_df %>%
       dplyr::filter(variable %in% vars)
   }
 
-    return(gathered_df)
+  return(gathered_df)
+}
+
+#' Convert data into shadow format for doing an upset plot
+#'
+#' Upset plots are a way of visualising common sets, this function transforms
+#'     the data into a format that feeds directly into an upset plot
+#'
+#' @param data a data.frame
+#'
+#' @return a data.frame
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' library(UpSetR)
+#' airquality %>%
+#'   as_shadow_upset() %>%
+#'   upset()
+#' }
+#'
+#' @export
+as_shadow_upset <- function(data){
+
+  if (n_var_miss(data) <= 1 ) {
+
+    if (n_var_miss(data) == 1) {
+      glu_st <- glue::glue("upset plots for missing data requre at least two \\
+                         variables to have missing data, only one variable, \\
+                         '{miss_var_which(data)}' has missing values.")
+    }
+
+    if (n_var_miss(data) == 0) {
+
+      glu_st <- glue::glue("upset plots for missing data requre at least two \\
+                         variables to have missing data, there are no missing \\
+                         values in your data! This is probably a good thing.")
+    }
+
+    rlang::abort(message = glu_st)
+  }
+
+  test_if_null(data)
+
+  test_if_dataframe(data)
+
+  data_shadow <- as.data.frame(is.na(data)*1)
+
+  names(data_shadow) <- paste0(names(data),"_NA")
+
+  dplyr::mutate_if(data_shadow, is.numeric, as.integer)
 
 }
+

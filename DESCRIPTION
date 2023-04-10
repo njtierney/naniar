@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.3.10.9400
+Version: 1.0.0.9000
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -25,20 +25,26 @@ Authors@R: c(
          role = "ctb", 
          email = "james.f.hester@gmail.com"),
   person("Luke", "Smith", 
-         role = "ctb")
+         role = "ctb"),
+  person("Andrew", "Heiss", 
+         role = "ctb",
+         email = "andrew@andrewheiss.com", 
+         comment = c(ORCID = "https://orcid.org/0000-0002-3948-3914"))
   )
 Description: Missing values are ubiquitous in data and need to be explored and
-    handled in the initial stages of analysis. 'naniar' provides data structures 
-    and functions that facilitate the plotting of missing values and examination 
-    of imputations. This allows missing data dependencies to be explored with 
-    minimal deviation from the common work patterns of 'ggplot2' and tidy data. 
+    handled in the initial stages of analysis. 'naniar' provides data 
+    structures and functions that facilitate the plotting of missing values and 
+    examination of imputations. This allows missing data dependencies to be 
+    explored with minimal deviation from the common work patterns of 'ggplot2' 
+    and tidy data. The work is fully discussed at Tierney & Cook (2023) 
+    <doi:10.18637/jss.v105.i07>.
 License: MIT + file LICENSE
 LazyData: TRUE
 ByteCompile: TRUE
 Suggests:
     knitr,
     rmarkdown,
-    testthat,
+    testthat (>= 3.0.0),
     rpart,
     rpart.plot,
     covr,
@@ -48,7 +54,8 @@ Suggests:
     here,
     simputation,
     imputeTS,
-    gdtools
+    Hmisc,
+    spelling
 VignetteBuilder: knitr
 Depends:
     R (>= 3.1.2)
@@ -57,7 +64,8 @@ Imports:
     ggplot2,
     purrr,
     tidyr,
-    tibble,
+    tibble (>= 2.0.0),
+    norm,
     magrittr,
     stats,
     visdat,
@@ -65,7 +73,9 @@ Imports:
     forcats,
     viridis,
     glue,
-    UpSetR
+    UpSetR,
+    cli,
+    vctrs
 Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
@@ -77,6 +87,7 @@ Collate:
     'data-riskfactors.R'
     'legend-draw.R'
     'geom-miss-point.R'
+    'geom2plotly.R'
     'gg-miss-case-cumsum.R'
     'gg-miss-case.R'
     'gg-miss-fct.R'
@@ -86,11 +97,15 @@ Collate:
     'gg-miss-var.R'
     'gg-miss-which.R'
     'helpers.R'
+    'impute-factor.R'
+    'impute-fixed.R'
     'impute-median.R'
     'impute-mode.R'
+    'impute-zero.R'
     'impute_below.R'
     'impute_mean.R'
     'label-miss.R'
+    'mcar-test.R'
     'miss-complete-x-pct-prop.R'
     'miss-prop-pct-summary.R'
     'miss-scan-count.R'
@@ -109,10 +124,10 @@ Collate:
     'replace-to-na.R'
     'replace-with-na.R'
     'scoped-replace-with-na.R'
+    'set-n-prop-miss.R'
     'shade.R'
     'shadow-recode.R'
     'shadow-shifters.R'
-    'shadow-verifiers.R'
     'shadows.R'
     'stat-miss-point.R'
     'utils.R'
@@ -121,4 +136,6 @@ URL: https://github.com/njtierney/naniar
 BugReports: https://github.com/njtierney/naniar/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 7.2.3
+Language: en-US
+Config/testthat/edition: 3

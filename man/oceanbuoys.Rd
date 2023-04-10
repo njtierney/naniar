@@ -4,9 +4,11 @@
 \name{oceanbuoys}
 \alias{oceanbuoys}
 \title{West Pacific Tropical Atmosphere Ocean Data, 1993 & 1997.}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 736 rows and 8 columns.}
+\format{
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 736 rows and 8 columns.
+}
 \source{
-\url{http://www.pmel.noaa.gov/tao/data_deliv/deliv.html}
+\url{https://www.pmel.noaa.gov/tao/drupal/disdel/}
 }
 \usage{
 data(oceanbuoys)
@@ -15,7 +17,7 @@ data(oceanbuoys)
 Real-time data from moored ocean buoys for improved detection, understanding
 and prediction of El Ni'o and La Ni'a. The data is collected by the
 Tropical Atmosphere Ocean project
-(\url{http://www.pmel.noaa.gov/tao/index.shtml}).
+(\url{https://www.pmel.noaa.gov/gtmba/pmel-theme/pacific-ocean-tao}).
 }
 \details{
 Format: a data frame with 736 observations on the following 8
@@ -28,7 +30,7 @@ variables.
 by the TAO buoys at one meter below the surface.}
 \item{\code{air_temp_c}}{Air temperature(degree Celsius), measured by the
 TAO buoys three meters above the sea surface.}
-\item{\code{humidity}}{Relative humidity(%), measured by the TAO buoys 3
+\item{\code{humidity}}{Relative humidity(\%), measured by the TAO buoys 3
 meters above the sea surface.}
 \item{\code{wind_ew}}{The East-West wind vector components(M/s).  TAO buoys
 measure the wind speed and direction four meters above the sea surface.
@@ -42,14 +44,11 @@ towards the South.}}
 }
 \examples{
 
-# explore the missingness with vis_miss
-library(naniar)
-
 vis_miss(oceanbuoys)
 
 # Look at the missingness in the variables
 miss_var_summary(oceanbuoys)
-
+\dontrun{
 # Look at the missingness in air temperature and humidity
 library(ggplot2)
 p <-
@@ -66,21 +65,8 @@ ggplot(oceanbuoys,
  # this shows that there are more missing values in humidity in 1993, and
  # more air temperature missing values in 1997
 
- # what if we explore the value of air temperature and humidity based on
- # the missingness of each
-
- oceanbuoys \%>\%
-   bind_shadow() \%>\%
-   ggplot(aes(x = air_temp_c,
-              fill = humidity_NA)) +
-       geom_histogram()
-
- oceanbuoys \%>\%
-   bind_shadow() \%>\%
-   ggplot(aes(x = humidity,
-              fill = air_temp_c_NA)) +
-       geom_histogram()
-
+ # see more examples in the vignette, "getting started with naniar".
+}
 }
 \seealso{
 library(MissingDataGUI) (data named "tao")

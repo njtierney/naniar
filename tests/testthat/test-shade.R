@@ -1,5 +1,3 @@
-context("test-shade.R")
-
 test_that("shade errors with NULLs",{
   expect_error(shade(NULL))
 })
@@ -8,10 +6,14 @@ test_that("shade errors with objects of length 0",{
   expect_error(shade(numeric(0)))
 })
 
+test_that("shade errors with list of length 0",{
+  expect_error(shade(list()))
+})
+
 
 test_that("shade returns an object of class shade", {
-  expect_is(shade(c(1,2, NA)), "shade")
-  expect_is(shade(c(1,2, NA),
+  expect_s3_class(shade(c(1,2, NA)), "shade")
+  expect_s3_class(shade(c(1,2, NA),
                   broken_machine = 2), "shade")
 })
 
@@ -43,4 +45,15 @@ test_that("shade returns the correct values", {
   expect_equal(act_2, exp_2)
   expect_equal(act_3, exp_3)
 })
+
+sh_4 <- shade(list(3, list(1), c(2,3), list()))
+act_4 <- paste0(sh_4)
+exp_4 <- c("!NA", "!NA", "!NA", "NA")
+
+test_that("shade returns the correct values with list columns", {
+  expect_equal(act_4, exp_4)
+  expect_error(shade(list(3, list(1), c(2,3), list()), broken=3),
+               "additional levels of missing")
+})
+
 

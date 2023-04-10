@@ -17,20 +17,29 @@
 #' @examples
 #'
 #' gg_miss_fct(x = riskfactors, fct = marital)
+#' \dontrun{
 #' library(ggplot2)
 #' gg_miss_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
-#'
+#'}
 #'
 gg_miss_fct <- function(x, fct){
 
   fct <- rlang::enquo(fct)
 
-  ggobject <- x %>%
+  data <- x %>%
+    # protect against error where grouping by missing value leads to
+    # warning message from dplyr about explicit
+    dplyr::mutate_at(vars(!!fct), .funs = coerce_fct_na_explicit) %>%
     dplyr::group_by(!!fct) %>%
-    miss_var_summary() %>%
-    ggplot(aes_string(quo_name(fct),
-                      "variable",
-                      fill = "pct_miss")) +
+    miss_var_summary()
+
+  ggobject <-
+    ggplot(data,
+           aes(
+             x = .data[[fct]],
+             y = variable,
+             fill = pct_miss
+           )) +
     geom_tile() +
     viridis::scale_fill_viridis(name = "% Miss") +
     theme_minimal() +

@@ -2,9 +2,15 @@
 % Please edit documentation in R/shadow-recode.R
 \name{recode_shadow}
 \alias{recode_shadow}
+\alias{recode_shadow.data.frame}
+\alias{recode_shadow.grouped_df}
 \title{Add special missing values to the shadow matrix}
 \usage{
 recode_shadow(data, ...)
+
+\method{recode_shadow}{data.frame}(data, ...)
+
+\method{recode_shadow}{grouped_df}(data, ...)
 }
 \arguments{
 \item{data}{data.frame}
@@ -21,7 +27,6 @@ the \code{recode_shadow} function.
 }
 \examples{
 
-\dontrun{
 df <- tibble::tribble(
 ~wind, ~temp,
 -99,    45,
@@ -35,11 +40,8 @@ dfs
 
 recode_shadow(dfs, temp = .where(wind == -99 ~ "bananas"))
 
-# need to debug this
-
 recode_shadow(dfs,
               temp = .where(wind == -99 ~ "bananas")) \%>\%
 recode_shadow(wind = .where(wind == -99 ~ "apples"))
-}
 
 }

@@ -36,6 +36,28 @@ shadow_shift.default <- function(x, ...){
 
 }
 
+# function to perform the shifting/imputing, which is used by later function
+shift_values <- function(xmin,
+                         prop_below,
+                         seed_shift,
+                         jitter) {
+
+  # provide the amount of shift - default is 0.1
+  x_shift <- xmin - xmin * prop_below
+
+  # set the seed here
+  set.seed(seed_shift)
+  x_jitter <- (stats::runif(length(x)) - 0.50) * x_shift * jitter
+
+  # overwrite x
+  x <- ifelse(is.na(x),
+              yes = x_shift + x_jitter,
+              no = x)
+
+  return(x)
+
+}
+
 #' Shift (impute) numeric values for graphical exploration
 #'
 #' @param x a variable of interest to shift
@@ -49,28 +71,6 @@ shadow_shift.numeric <- function(x,
                                  jitter = 0.05,
                                  seed_shift = 2017-7-1-1850,
                                  ...){
-
-  # function to perform the shifting/imputing, which is used by later function
-  shift_values <- function(xmin,
-                           prop_below,
-                           seed_shift,
-                           jitter) {
-
-    # provide the amount of shift - default is 0.1
-    x_shift <- xmin - xmin * prop_below
-
-    # set the seed here
-    set.seed(seed_shift)
-    x_jitter <- (stats::runif(length(x)) - 0.50) * x_shift * jitter
-
-    # overwrite x
-    x <- ifelse(is.na(x),
-                yes = x_shift + x_jitter,
-                no = x)
-
-    return(x)
-
-  }
 
   # add an exception for cases with infinite values
   if (any(is.infinite(x))) {

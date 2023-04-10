@@ -18,6 +18,11 @@ NULL
 #' @export
 visdat::vis_miss
 
+## usethis namespace: start
+#' @importFrom lifecycle deprecated
+## usethis namespace: end
+NULL
+
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
 globalVariables(

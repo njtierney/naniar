@@ -29,8 +29,6 @@ impute_zero(vec)
 
 library(dplyr)
 
-library(dplyr)
-
 dat <- tibble(
   num = rnorm(10),
   int = rpois(10, 5),

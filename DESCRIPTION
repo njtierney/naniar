@@ -100,6 +100,7 @@ Collate:
     'impute-factor.R'
     'impute-fixed.R'
     'impute-median.R'
+    'impute-mode.R'
     'impute-zero.R'
     'impute_below.R'
     'impute_mean.R'

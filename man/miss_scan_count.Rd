@@ -20,21 +20,29 @@ you have values like -99 in your data, when they shouldn't be there,
 or they should be encoded as missing, it can be difficult to ascertain
 if they are there, and if so, where they are. \code{miss_scan_count} makes it
 easier for users to search for particular occurrences of these values
-across their variables.
+across their variables. Note that the searches are done with regular
+expressions, which are special ways of searching for text. See the
+example below to see how to look for characters like \verb{?}.
 }
 \examples{
 
-dat_ms <- tibble::tribble(~x,  ~y,    ~z,
-                         1,   "A",   -100,
-                         3,   "N/A", -99,
-                         NA,  NA,    -98,
-                         -99, "E",   -101,
-                         -98, "F",   -1)
+dat_ms <- tibble::tribble(~x,  ~y,    ~z,  ~specials,
+                         1,   "A",   -100, "?",
+                         3,   "N/A", -99,  "!",
+                         NA,  NA,    -98,  ".",
+                         -99, "E",   -101, "*",
+                         -98, "F",   -1,  "-")
 
 miss_scan_count(dat_ms,-99)
 miss_scan_count(dat_ms,c(-99,-98))
 miss_scan_count(dat_ms,c("-99","-98","N/A"))
+miss_scan_count(dat_ms, "\\\\?")
+miss_scan_count(dat_ms, "\\\\!")
+miss_scan_count(dat_ms, "\\\\.")
+miss_scan_count(dat_ms, "\\\\*")
+miss_scan_count(dat_ms, "-")
 miss_scan_count(dat_ms,common_na_strings)
+
 
 }
 \seealso{

@@ -2,7 +2,7 @@
 
 ## New
 
-- implement `impute_fixed` and `impute_zero`, notably these do not implement "scoped variants" which were previously implemented - for example, `impute_fixed_if` etc. This is in favour of using the new `across` workflow within `dplyr`, and it is easier to maintain.
+- implement `impute_fixed`, `impute_zero`, and `impute_factor`. notably these do not implement "scoped variants" which were previously implemented - for example, `impute_fixed_if` etc. This is in favour of using the new `across` workflow within `dplyr`, and it is easier to maintain. #261
 
 # naniar 1.0.0
 

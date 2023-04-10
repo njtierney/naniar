@@ -123,7 +123,7 @@ shadow_shift.numeric <- function(x,
 
 #' @export
 shadow_shift.factor <- function(x, ...){
-  forcats::fct_explicit_na(x, na_level = "missing")
+  forcats::fct_na_value_to_level(x, level = "missing")
 }
 
 #' @export

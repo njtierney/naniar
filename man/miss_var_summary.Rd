@@ -4,7 +4,7 @@
 \alias{miss_var_summary}
 \title{Summarise the missingness in each variable}
 \usage{
-miss_var_summary(data, order = FALSE, add_cumsum = FALSE, ...)
+miss_var_summary(data, order = FALSE, add_cumsum = FALSE, digits, ...)
 }
 \arguments{
 \item{data}{a data.frame}
@@ -16,6 +16,9 @@ Defaults to TRUE. If FALSE, order of variables is the order input.}
 sum of missings to the data. This can be useful when exploring patterns
 of nonresponse. These are calculated as the cumulative sum of the missings
 in the variables as they are first presented to the function.}
+
+\item{digits}{how many digits to display in \code{pct_miss} column. Useful when
+you are working with small amounts of missing data.}
 
 \item{...}{extra arguments}
 }

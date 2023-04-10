@@ -11,6 +11,8 @@
 #'   sum of missings to the data. This can be useful when exploring patterns
 #'   of nonresponse. These are calculated as the cumulative sum of the missings
 #'   in the variables as they are first presented to the function.
+#' @param digits how many digits to display in `pct_miss` column. Useful when
+#'   you are working with small amounts of missing data.
 #' @param ... extra arguments
 #'
 #' @note `n_miss_cumsum` is calculated as the cumulative sum of missings in the
@@ -39,6 +41,7 @@
 miss_var_summary <- function(data,
                              order = FALSE,
                              add_cumsum = FALSE,
+                             digits,
                              ...) {
 
   test_if_null(data)
@@ -52,14 +55,19 @@ miss_var_summary <- function(data,
 miss_var_summary.default <- function(data,
                                      order = TRUE,
                                      add_cumsum = FALSE,
+                                     digits = NULL,
                                      ...) {
 
   col_n_miss <- colSums(is.na(data))
-  col_pct_miss <- colMeans(is.na(data)) * 100
+  col_pct_miss <- as.numeric(colMeans(is.na(data)) * 100)
 
   res <- tibble::tibble(variable = names(col_n_miss),
                         n_miss = as.integer(col_n_miss),
-                        pct_miss = as.numeric(col_pct_miss))
+                        pct_miss = tibble::num(
+                          x = col_pct_miss,
+                          # control how rounding is presented
+                          digits = digits)
+                        )
 
   if (add_cumsum) {
    res <- res %>% dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
@@ -77,12 +85,14 @@ miss_var_summary.default <- function(data,
 miss_var_summary.grouped_df <- function(data,
                                         order = TRUE,
                                         add_cumsum = FALSE,
+                                        digits = NULL,
                                         ...) {
 
   group_by_fun(data,
                .fun = miss_var_summary,
                order = order,
-               add_cumsum = add_cumsum)
+               add_cumsum = add_cumsum,
+               digits = digits)
 
 }
 

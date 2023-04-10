@@ -2,7 +2,8 @@
 #'
 #' For imputing fixed factor levels. It adds the new imputed value to the end
 #'   of the levels of the vector. We generally recommend to impute using other
-#'   model based approaches. See [impute_lm()] and friends.
+#'   model based approaches. See the `simputation` package, for example
+#'   [simputation::impute_lm()].
 #'
 #' @param x vector
 #' @param value factor to impute

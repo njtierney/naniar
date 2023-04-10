@@ -20,7 +20,7 @@ vector with a fixed values replaced
 \description{
 This can be useful if you are imputing specific values, however we would
 generally recommend to impute using other model based approaches. See
-\code{\link[=impute_lm]{impute_lm()}} and friends.
+the \code{simputation} package, for example \code{\link[simputation:impute_lm]{simputation::impute_lm()}}.
 }
 \examples{
 

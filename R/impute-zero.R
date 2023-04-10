@@ -2,7 +2,7 @@
 #'
 #' This can be useful if you are imputing specific values, however we would
 #'   generally recommend to impute using other model based approaches. See
-#'   [impute_lm()] and friends.
+#'   the `simputation` package, for example [simputation::impute_lm()].
 #'
 #' @param x vector
 #'

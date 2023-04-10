@@ -15,14 +15,15 @@ the_mode <- function(x, na.rm = FALSE) {
 
 }
 
-
 #' Impute the mode value into a vector with missing values
 #'
 #' @param x vector
 #'
-#' This can be useful if you are imputing specific values, however we would
-#'   generally recommend to impute using other model based approaches. See
-#'   the `simputation` package, for example [simputation::impute_lm()].
+#' This approach adapts examples provided here https://stackoverflow.com/questions/2547402/how-to-find-the-statistical-mode, and for the integer
+#'   case, just rounds the value. While this can be useful if you are
+#'   imputing specific values, however we would generally recommend to impute
+#'   using other model based approaches. See the `simputation` package, for
+#'   example [simputation::impute_lm()].
 #'
 #' @return vector with mode values replaced
 #' @export
@@ -52,10 +53,13 @@ the_mode <- function(x, na.rm = FALSE) {
 #'
 #' dat
 #'
+#'
 #' dat %>%
 #'   nabular() %>%
 #'   mutate(
-#'     num = impute_mode(num)
+#'     num = impute_mode(num),
+#'     int = impute_mode(int),
+#'     fct = impute_mode(fct)
 #'   )
 #'
 #'
@@ -66,6 +70,15 @@ impute_mode <- function(x) UseMethod("impute_mode")
 impute_mode.default <- function(x){
 
   x[is.na(x)] <- the_mode(x, na.rm = TRUE)
+
+  x
+}
+
+#' @export
+#' @rdname impute_mode
+impute_mode.integer <- function(x){
+
+  x[is.na(x)] <- round(the_mode(x, na.rm = TRUE))
 
   x
 }

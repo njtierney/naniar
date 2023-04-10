@@ -3,6 +3,7 @@
 \name{impute_mode}
 \alias{impute_mode}
 \alias{impute_mode.default}
+\alias{impute_mode.integer}
 \alias{impute_mode.factor}
 \title{Impute the mode value into a vector with missing values}
 \usage{
@@ -10,14 +11,18 @@ impute_mode(x)
 
 \method{impute_mode}{default}(x)
 
+\method{impute_mode}{integer}(x)
+
 \method{impute_mode}{factor}(x)
 }
 \arguments{
 \item{x}{vector
 
-This can be useful if you are imputing specific values, however we would
-generally recommend to impute using other model based approaches. See
-the \code{simputation} package, for example \code{\link[simputation:impute_lm]{simputation::impute_lm()}}.}
+This approach adapts examples provided here https://stackoverflow.com/questions/2547402/how-to-find-the-statistical-mode, and for the integer
+case, just rounds the value. While this can be useful if you are
+imputing specific values, however we would generally recommend to impute
+using other model based approaches. See the \code{simputation} package, for
+example \code{\link[simputation:impute_lm]{simputation::impute_lm()}}.}
 }
 \value{
 vector with mode values replaced

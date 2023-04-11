@@ -14,6 +14,47 @@
 #'
 #' impute_median(vec)
 #'
+#' library(dplyr)
+#'
+#' dat <- tibble(
+#'   num = rnorm(10),
+#'   int = as.integer(rpois(10, 5)),
+#'   fct = factor(LETTERS[1:10])
+#' ) %>%
+#'   mutate(
+#'     across(
+#'       everything(),
+#'       \(x) set_prop_miss(x, prop = 0.25)
+#'     )
+#'   )
+#'
+#' dat
+#'
+#' dat %>%
+#'   nabular() %>%
+#'   mutate(
+#'     num = impute_median(num),
+#'     int = impute_median(int),
+#'   )
+#'
+#' dat %>%
+#'   nabular() %>%
+#'   mutate(
+#'     across(
+#'       where(is.numeric),
+#'       impute_median
+#'     )
+#'   )
+#'
+#' dat %>%
+#'   nabular() %>%
+#'   mutate(
+#'     across(
+#'       c("num", "int"),
+#'       impute_median
+#'     )
+#'  )
+#'
 impute_median <- function(x) UseMethod("impute_median")
 
 #' @export
@@ -77,7 +118,6 @@ impute_median.factor <- function(x){
 #'
 #' impute_median_at(airquality,
 #'                .vars = c("Ozone", "Solar.R"))
-#' \dontrun{
 #' library(dplyr)
 #' impute_median_at(airquality,
 #'                 .vars = vars(Ozone))
@@ -94,7 +134,6 @@ impute_median.factor <- function(x){
 #'              y = Solar.R,
 #'              colour = any_missing)) +
 #'          geom_point()
-#' }
 #'
 impute_median_all <- function(.tbl){
 

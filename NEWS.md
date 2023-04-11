@@ -6,6 +6,10 @@
 - add `digit` argument to `miss_var_summary` to help display %missing data correctly when there is a very small fraction of missingness. #284
 - implemented `impute_mode` - resolves #213.
 
+## Changes
+
+- soft deprecated `shadow_shift` - #193
+
 # naniar 1.0.0
 
 Version 1.0.0 of naniar is to signify that this release is associated with

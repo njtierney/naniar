@@ -79,11 +79,11 @@ StatMissPoint <- ggproto("StatMissPoint", Stat,
       #TODO: print warning if na.rm = T
       data$x_miss <- data$x
       data$y_miss <- data$y
-      data$x <- shadow_shift(data$x,
+      data$x <- impute_below(data$x,
                              prop_below = params$prop_below,
                              jitter = params$jitter)
 
-      data$y <- shadow_shift(data$y,
+      data$y <- impute_below(data$y,
                              prop_below = params$prop_below,
                              jitter = params$jitter)
       data

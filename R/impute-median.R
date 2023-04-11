@@ -98,7 +98,7 @@ impute_median.factor <- function(x){
 #'
 impute_median_all <- function(.tbl){
 
-  signal_stage("superceded", "impute_median_all()")
+  lifecycle::signal_stage("superseded", "impute_median_all()")
 
   test_if_dataframe(.tbl)
 
@@ -114,7 +114,7 @@ impute_median_all <- function(.tbl){
 impute_median_at <- function(.tbl,
                            .vars){
 
-  signal_stage("superceded", "impute_median_at()")
+  lifecycle::signal_stage("superseded", "impute_median_at()")
 
   test_if_dataframe(.tbl)
 
@@ -131,7 +131,7 @@ impute_median_at <- function(.tbl,
 impute_median_if <- function(.tbl,
                            .predicate){
 
-  signal_stage("superceded", "impute_median_if()")
+  lifecycle::signal_stage("superseded", "impute_median_if()")
 
   test_if_dataframe(.tbl)
 

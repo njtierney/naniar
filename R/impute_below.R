@@ -1,15 +1,135 @@
 #' Impute data with values shifted 10 percent below range.
 #'
 #' It can be useful in exploratory graphics to impute data outside the range of
-#'   the data. `impute_below` imputes all variables with missings to have values
-#'   10 percent below the range for numeric values, and for character or factor
-#'   values adds a new string or label. It is powered by `shadow_shift`, so please
-#'   see the documentation for [shadow_shift()] to full details on the different
-#'   implementations.
+#'   the data. `impute_below` imputes variables with missings to have values
+#'   10 percent below the range for numeric values, plus some jittered noise,
+#'   to separate repeated values, so that missing values can be visualised
+#'   along with the rest of the data. For character or factor
+#'   values, it adds a new string or label.
 #'
-#' @param ... extra arguments to pass - see [shadow_shift()] for discussion on this.
+#' @param x a variable of interest to shift
+#' @param ... extra arguments to pass
+#'
+#' @seealso [add_shadow_shift()] [cast_shadow_shift()] [cast_shadow_shift_label()]
+#'
 #' @export
-impute_below <- function(...) shadow_shift(...)
+#' @examples
+#'
+impute_below <- function(x, ...) UseMethod("impute_below")
+
+#' @export
+impute_below.NULL <- function(x, ...) NULL
+
+#' @export
+impute_below.default <- function(x, ...){
+  cli::cli_abort(
+    c(
+      "{.fun impute_below} does not know how to deal with data of class {.cls {class_glue(x)}}",
+      "Check if your input is more than length one, and that you are using the right function. Perhaps you meant to apply this to many variables in a data frame? See the examples dor details on doing this with {.fun across}"
+    )
+  )
+
+}
+
+# function to perform the shifting/imputing, which is used by later function
+shift_values <- function(x,
+                         xmin,
+                         prop_below,
+                         seed_shift,
+                         jitter) {
+
+  # provide the amount of shift - default is 0.1
+  x_shift <- xmin - xmin * prop_below
+
+  # set the seed here
+  set.seed(seed_shift)
+  x_jitter <- (stats::runif(length(x)) - 0.50) * x_shift * jitter
+
+  # overwrite x
+  x <- ifelse(is.na(x),
+              yes = x_shift + x_jitter,
+              no = x)
+
+  return(x)
+
+}
+
+#' Impute numeric values below a range for graphical exploration
+#'
+#' @param x a variable of interest to shift
+#' @param prop_below the degree to shift the values. default is
+#' @param jitter the amount of jitter to add. default is 0.05
+#' @param seed_shift a random seed to set, if you like
+#' @param ... extra arguments to pass
+#' @export
+impute_below.numeric <- function(x,
+                                 prop_below = 0.1,
+                                 jitter = 0.05,
+                                 seed_shift = 2017-7-1-1850,
+                                 ...){
+
+  # add an exception for cases with infinite values
+  if (any(is.infinite(x))) {
+
+    # use the minimum for the non infinite values
+    xmin <- min(x[!is.infinite(x)], na.rm = TRUE)
+
+    shifted_values <- shift_values(x,
+                                   xmin,
+                                   prop_below,
+                                   seed_shift,
+                                   jitter)
+
+    return(shifted_values)
+
+  }
+
+  # add an exception for when length x == 1 and variance is zero
+  if (n_complete(x) == 1 | stats::var(x, na.rm = TRUE) == 0) {
+
+    xmin <- min(x, na.rm = TRUE)
+
+    shifted_values <- shift_values(x,
+                                   xmin,
+                                   prop_below,
+                                   seed_shift,
+                                   jitter)
+
+    return(shifted_values)
+
+    # else, when there is more than 1 complete value
+  }
+
+  range_dist <- function(x) diff(range(x, na.rm = TRUE))
+
+  xrange <- range_dist(x)
+
+  xmin <- min(x, na.rm = TRUE)
+
+  # create the "jitter" to be added around the points.
+  set.seed(seed_shift)
+  x_jitter <- (stats::runif(length(x)) - 0.5) * xrange * jitter
+
+  x_shift <- xmin - xrange * prop_below
+
+  ifelse(is.na(x),
+         # add the jitter around the those values that are missing
+         yes = x_shift + x_jitter,
+         no = x)
+
+} # close function
+
+#' @export
+impute_below.factor <- function(x, ...){
+  forcats::fct_na_value_to_level(x, level = "missing")
+}
+
+#' @export
+impute_below.character <- function(x, ...){
+  dplyr::if_else(is.na(x),
+                 true = "missing",
+                 false = x)
+}
 
 #' Impute data with values shifted 10 percent below range.
 #'
@@ -61,11 +181,13 @@ impute_below_all <- function(.tbl,
                              jitter = 0.05,
                              ...){
 
+  lifecycle::signal_stage("superseded", "impute_below_all()")
+
   test_if_dataframe(.tbl)
   test_if_null(.tbl)
 
   dplyr::mutate_all(.tbl = .tbl,
-                    .funs = shadow_shift,
+                    .funs = impute_below,
                     prop_below = prop_below,
                     jitter = jitter)
 
@@ -73,11 +195,16 @@ impute_below_all <- function(.tbl,
 
 #' Scoped variants of `impute_below`
 #'
-#' `impute_below` operates on all variables. To only impute variables
+#'  `impute_below` imputes missing values to a set percentage below the range
+#'   of the data. To impute many variables at once, we recommend that you use the
+#'  `across` function workflow, shown in the examples for [impute_below()].
+#'  `impute_below_all` operates on all variables. To only impute variables
 #'   that satisfy a specific condition, use the scoped variants,
 #'   `impute_below_at`, and `impute_below_if`. To use `_at` effectively,
 #'   you must know that `_at`` affects variables selected with a character
 #'   vector, or with `vars()`.
+#'
+#' `r lifecycle::badge('superseded')`
 #'
 #' @param .tbl a data.frame
 #' @param .vars variables to impute
@@ -117,7 +244,7 @@ impute_below_at <- function(.tbl,
                             jitter = 0.05,
                             ...){
 
-  # .vars <- rlang::enquo(.vars)
+  lifecycle::signal_stage("superseded", "impute_below_at()")
 
   test_if_dataframe(.tbl)
 
@@ -125,7 +252,7 @@ impute_below_at <- function(.tbl,
 
   dplyr::mutate_at(.tbl = .tbl,
                    .vars = .vars,
-                   .funs = shadow_shift,
+                   .funs = impute_below,
                    prop_below = prop_below,
                    jitter = jitter)
 }
@@ -155,13 +282,15 @@ impute_below_if <- function(.tbl,
                             jitter = 0.05,
                             ...){
 
+  lifecycle::signal_stage("superseded", "impute_below_if()")
+
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
 
   dplyr::mutate_if(.tbl = .tbl,
                    .predicate = .predicate,
-                   .funs = shadow_shift,
+                   .funs = impute_below,
                    prop_below = prop_below,
                    jitter = jitter)
 }

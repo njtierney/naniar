@@ -4,16 +4,21 @@
 \alias{impute_below}
 \title{Impute data with values shifted 10 percent below range.}
 \usage{
-impute_below(...)
+impute_below(x, ...)
 }
 \arguments{
-\item{...}{extra arguments to pass - see \code{\link[=shadow_shift]{shadow_shift()}} for discussion on this.}
+\item{x}{a variable of interest to shift}
+
+\item{...}{extra arguments to pass}
 }
 \description{
 It can be useful in exploratory graphics to impute data outside the range of
-the data. \code{impute_below} imputes all variables with missings to have values
-10 percent below the range for numeric values, and for character or factor
-values adds a new string or label. It is powered by \code{shadow_shift}, so please
-see the documentation for \code{\link[=shadow_shift]{shadow_shift()}} to full details on the different
-implementations.
+the data. \code{impute_below} imputes variables with missings to have values
+10 percent below the range for numeric values, plus some jittered noise,
+to separate repeated values, so that missing values can be visualised
+along with the rest of the data. For character or factor
+values, it adds a new string or label.
+}
+\seealso{
+\code{\link[=add_shadow_shift]{add_shadow_shift()}} \code{\link[=cast_shadow_shift]{cast_shadow_shift()}} \code{\link[=cast_shadow_shift_label]{cast_shadow_shift_label()}}
 }

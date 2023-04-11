@@ -56,7 +56,7 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
   # if no variables are selected use all of the variables
   if (missing(...)) {
 
-    shadow_shifted_df <- purrr::map_dfc(data, shadow_shift)
+    shadow_shifted_df <- purrr::map_dfc(data, impute_below)
 
     # change names
     names(shadow_shifted_df) <- paste0(names(shadow_shifted_df), "_", suffix)
@@ -72,7 +72,7 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
 
   # shadow shift all (using purrr:map_df)
   # would be good to have a way of indicating that no shift was taken at all
-  shadow_shifted_df <- purrr::map_dfc(shadow_shifted_vars, shadow_shift)
+  shadow_shifted_df <- purrr::map_dfc(shadow_shifted_vars, impute_below)
 
   # change names
   names(shadow_shifted_df) <- paste0(names(shadow_shifted_df),"_",suffix)

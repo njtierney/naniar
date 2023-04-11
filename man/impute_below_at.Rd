@@ -21,10 +21,16 @@ impute_below_at(.tbl, .vars, prop_below = 0.1, jitter = 0.05, ...)
 an dataset with values imputed
 }
 \description{
-\code{impute_below} operates on all variables. To only impute variables
+\code{impute_below} imputes missing values to a set percentage below the range
+of the data. To impute many variables at once, we recommend that you use the
+\code{across} function workflow, shown in the examples for \code{\link[=impute_below]{impute_below()}}.
+\code{impute_below_all} operates on all variables. To only impute variables
 that satisfy a specific condition, use the scoped variants,
 \code{impute_below_at}, and \code{impute_below_if}. To use \verb{_at} effectively,
 you must know that \verb{_at`` affects variables selected with a character vector, or with }vars()`.
+}
+\details{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 }
 \examples{
 # select variables starting with a particular string.

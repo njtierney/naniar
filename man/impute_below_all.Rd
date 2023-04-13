@@ -24,6 +24,9 @@ the data. \code{impute_below_all} imputes all variables with missings to have
 values 10\\% below the range for numeric values, and for character or factor
 values adds a new string or label.
 }
+\details{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
+}
 \examples{
 
 # you can impute data like so:

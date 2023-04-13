@@ -189,6 +189,8 @@ impute_below.character <- function(x, ...){
 #'   values 10\% below the range for numeric values, and for character or factor
 #'   values adds a new string or label.
 #'
+#' `r lifecycle::badge('superseded')`
+#'
 #' @param .tbl a data.frame
 #' @param prop_below the degree to shift the values. default is
 #' @param jitter the amount of jitter to add. default is 0.05

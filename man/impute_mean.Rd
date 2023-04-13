@@ -19,7 +19,9 @@ impute_mean(x)
 vector with mean values replaced
 }
 \description{
-Impute the mean value into a vector with missing values
+This can be useful if you are imputing specific values, however we would
+generally recommend to impute using other model based approaches. See
+the \code{simputation} package, for example \code{\link[simputation:impute_lm]{simputation::impute_lm()}}.
 }
 \examples{
 

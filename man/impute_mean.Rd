@@ -23,10 +23,51 @@ Impute the mean value into a vector with missing values
 }
 \examples{
 
+library(dplyr)
 vec <- rnorm(10)
 
 vec[sample(1:10, 3)] <- NA
 
 impute_mean(vec)
+
+dat <- tibble(
+  num = rnorm(10),
+  int = as.integer(rpois(10, 5)),
+  fct = factor(LETTERS[1:10])
+) \%>\%
+  mutate(
+    across(
+      everything(),
+      \(x) set_prop_miss(x, prop = 0.25)
+    )
+  )
+
+dat
+
+dat \%>\%
+  nabular() \%>\%
+  mutate(
+    num = impute_mean(num),
+    int = impute_mean(int),
+    fct = impute_mean(fct),
+  )
+
+dat \%>\%
+  nabular() \%>\%
+  mutate(
+    across(
+      where(is.numeric),
+      impute_mean
+    )
+  )
+
+dat \%>\%
+  nabular() \%>\%
+  mutate(
+    across(
+      c("num", "int"),
+      impute_mean
+    )
+  )
 
 }

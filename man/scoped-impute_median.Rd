@@ -42,7 +42,6 @@ impute_median_all(airquality)
 
 impute_median_at(airquality,
                .vars = c("Ozone", "Solar.R"))
-\dontrun{
 library(dplyr)
 impute_median_at(airquality,
                 .vars = vars(Ozone))
@@ -59,6 +58,5 @@ airquality \%>\%
              y = Solar.R,
              colour = any_missing)) +
          geom_point()
-}
 
 }

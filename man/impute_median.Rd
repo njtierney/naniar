@@ -29,4 +29,45 @@ vec[sample(1:10, 3)] <- NA
 
 impute_median(vec)
 
+library(dplyr)
+
+dat <- tibble(
+  num = rnorm(10),
+  int = as.integer(rpois(10, 5)),
+  fct = factor(LETTERS[1:10])
+) \%>\%
+  mutate(
+    across(
+      everything(),
+      \(x) set_prop_miss(x, prop = 0.25)
+    )
+  )
+
+dat
+
+dat \%>\%
+  nabular() \%>\%
+  mutate(
+    num = impute_median(num),
+    int = impute_median(int),
+  )
+
+dat \%>\%
+  nabular() \%>\%
+  mutate(
+    across(
+      where(is.numeric),
+      impute_median
+    )
+  )
+
+dat \%>\%
+  nabular() \%>\%
+  mutate(
+    across(
+      c("num", "int"),
+      impute_median
+    )
+ )
+
 }

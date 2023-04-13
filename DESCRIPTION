@@ -1,7 +1,7 @@
 Package: naniar
 Type: Package
 Title: Data Structures, Summaries, and Visualisations for Missing Data
-Version: 0.6.1.9001
+Version: 1.0.0.9000
 Authors@R: c(
   person("Nicholas", "Tierney", 
          role = c("aut", "cre"),
@@ -73,7 +73,9 @@ Imports:
     forcats,
     viridis,
     glue,
-    UpSetR
+    UpSetR,
+    cli,
+    vctrs
 Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
@@ -95,7 +97,11 @@ Collate:
     'gg-miss-var.R'
     'gg-miss-which.R'
     'helpers.R'
+    'impute-factor.R'
+    'impute-fixed.R'
     'impute-median.R'
+    'impute-mode.R'
+    'impute-zero.R'
     'impute_below.R'
     'impute_mean.R'
     'label-miss.R'
@@ -118,6 +124,7 @@ Collate:
     'replace-to-na.R'
     'replace-with-na.R'
     'scoped-replace-with-na.R'
+    'set-n-prop-miss.R'
     'shade.R'
     'shadow-recode.R'
     'shadow-shifters.R'

@@ -19,7 +19,8 @@ rlang::are_na
 #' @param ... additional arguments to be passed to map
 #'
 #' @return a dataframe with the function applied to each group
-#'
+#' @keywords internal
+#' @noRd
 #' @examples
 #'
 #' \dontrun{
@@ -52,6 +53,8 @@ group_by_fun <- function(data,.fun, ...){
 #' my_test <- NULL
 #' test_if_null(my_test)
 #' }
+#' @keywords internal
+#' @noRd
 test_if_null <- function(x){
 
   # test for null
@@ -74,6 +77,8 @@ test_if_null <- function(x){
 #' #fail
 #' test_if_missing()
 #' }
+#' @keywords internal
+#' @noRd
 test_if_missing <- function(x){
 
   # test for null
@@ -97,6 +102,8 @@ test_if_missing <- function(x){
 #' test_if_dataframe(my_test)
 #' }
 #'
+#' @keywords internal
+#' @noRd
 test_if_dataframe <- function(x){
   # test for dataframe
   if (!inherits(x, "data.frame")) {
@@ -152,6 +159,8 @@ add_span_counter <- function(data, span_size) {
 #' @param x data.frame, usually
 #'
 #' @return a list containing the levels of everything
+#' @keywords internal
+#' @noRd
 what_levels <- function(x) purrr::map(x, levels)
 
 quo_to_shade <- function(...){
@@ -190,7 +199,7 @@ diag_na <- function(size = 5){
 
 coerce_fct_na_explicit <- function(x){
   if (is.factor(x) & anyNA(x)) {
-    forcats::fct_explicit_na(x, na_level = "NA")
+    forcats::fct_na_value_to_level(x, level = "NA")
   } else {
     x
   }
@@ -205,3 +214,37 @@ any_row_shade <- function(x){
 vecIsFALSE <- Vectorize(isFALSE)
 
 are_any_false <- function(x, ...) any(vecIsFALSE(x), ...)
+
+check_btn_0_1 <- function(prop){
+  if (prop < 0 || prop > 1) {
+    cli::cli_abort(
+      c(
+        "{.var prop} must be between 0 and 1",
+        "{.var prop} is {prop}"
+      )
+    )
+  }
+}
+
+check_is_integer <- function(x){
+  if (x < 0) {
+    cli::cli_abort(
+      c(
+        "{.var x} must be greater than 0",
+        "{.var x} is {x}"
+      )
+    )
+  }
+  vctrs::vec_cast(x, integer())
+}
+
+check_is_scalar <- function(x){
+  if (length(x) != 1) {
+    cli::cli_abort(
+      c(
+        "{.var x} must be length 1",
+        "{.var x} is {x}, and {.var x} has length: {length(x)}"
+      )
+    )
+  }
+}

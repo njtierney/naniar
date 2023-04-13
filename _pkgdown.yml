@@ -37,6 +37,7 @@ reference:
       Visualise missing data
     contents:
       - geom_miss_point
+      - stat_miss_point
       - starts_with("gg_miss_")
       - vis_miss
   - title: "Numerical Summaries"
@@ -64,18 +65,26 @@ reference:
       Add missing data summaries/tool columns
     contents:
       - starts_with("add_")
-  - title: "Replacing values with NA"
+  - title: "Replacing values with and to NA"
     desc: >
       Functions to help replace certain values with NA, which includes scoped
       variants (_at, _if, _all) that take formulas for flexible approachs
     contents:
       - starts_with("replace_with_na")
+      - replace_to_na
   - title: "Imputation helpers"
     desc: >
       Simple imputation methods for exploring visualisation and missingness
       structure
     contents:
       - starts_with("impute_")
+      - set-prop-n-miss
+  - title: "Package title details"
+    desc: >
+      Details of the package naniar
+    contents:
+      - naniar
+
   - title: "Cast Shadows"
     desc: >
       Add shadow information to the dataframe while reducing it to the
@@ -91,6 +100,25 @@ reference:
       - label_missings
       - where_na
       - which_na
+      - where
+  - title: "Data Sources"
+    desc: >
+      For practice and example usecases in naniar
+    contents:
+      - oceanbuoys
+      - pedestrian
+      - riskfactors
+  - title: "Little's MCAR test"
+    desc: >
+      For performing Little's MCAR test
+    contents:
+      - mcar_test
+  - title: "ggplot2 extensions"
+    desc: >
+      Custom ggplot geoms built to extend ggplot for missing values
+    contents:
+      - naniar-ggproto
+
 
 navbar:
   left:

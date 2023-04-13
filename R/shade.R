@@ -4,6 +4,8 @@
 #' @param extra_levels the extra levels to give to `shade` objects, such as "broken_machine" and so on, which get converted into "NA_broken_machine".
 #'
 #' @return a new shade, which is built upon a factor
+#' @keywords internal
+#' @noRd
 new_shade <- function(x, extra_levels = NULL){
 
   if (!is.factor(x)) {
@@ -89,6 +91,20 @@ shade <- function(x, ..., extra_levels = NULL){
   if (length(x) == 0) {
     rlang::abort(message = "input to shade must have length > 0")
   }
+
+  # is list column
+  if (missing(...) & is.list(x)) {
+    x <- factor(purrr::map_lgl(x, ~length(.x)==0),
+                labels = c("!NA", "NA"),
+                levels = c(FALSE, TRUE))
+
+    return(new_shade(x, extra_levels))
+  }
+
+  if (!missing(...) & is.list(x)) {
+    rlang::abort(message = "additional levels of missing are not available when shade-ing lists column")
+  }
+
 
   # if no other levels are specified
   if (missing(...)) {

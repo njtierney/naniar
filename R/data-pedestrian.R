@@ -4,7 +4,7 @@
 #'   Melbourne: Birrarung Marr, Bourke Street Mall, Flagstaff station, and
 #'   Spencer St-Collins St (south), recorded from January 1st 2016 at 00:00:00
 #'   to December 31st 2016 at 23:00:00. The data is made free and publicly
-#'   available from \url{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}
+#'   available from \url{https://data.melbourne.vic.gov.au/explore/dataset/pedestrian-counting-system-monthly-counts-per-hour/information/}
 #'
 #' @format A tibble with 37,700 rows and 9 variables:
 #' \describe{
@@ -24,7 +24,7 @@
 #' @name pedestrian
 #' @docType data
 #' @usage data(pedestrian)
-#' @source \url{https://data.melbourne.vic.gov.au/Transport-Movement/Pedestrian-volume-updated-monthly-/b2ak-trbp}
+#' @source \url{https://data.melbourne.vic.gov.au/explore/dataset/pedestrian-counting-system-monthly-counts-per-hour/information/}
 #' @keywords datasets
 #'
 #' @examples

@@ -2,9 +2,15 @@
 % Please edit documentation in R/shadow-recode.R
 \name{recode_shadow}
 \alias{recode_shadow}
+\alias{recode_shadow.data.frame}
+\alias{recode_shadow.grouped_df}
 \title{Add special missing values to the shadow matrix}
 \usage{
 recode_shadow(data, ...)
+
+\method{recode_shadow}{data.frame}(data, ...)
+
+\method{recode_shadow}{grouped_df}(data, ...)
 }
 \arguments{
 \item{data}{data.frame}

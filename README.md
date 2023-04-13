@@ -20,23 +20,23 @@ Month](https://cranlogs.r-pkg.org/badges/naniar)](https://CRAN.R-project.org/pac
 manipulate missing data with minimal deviations from the workflows in
 ggplot2 and tidy data. It does this by providing:
 
--   Shadow matrices, a tidy data structure for missing data:
-    -   `bind_shadow()` and `nabular()`
--   Shorthand summaries for missing data:
-    -   `n_miss()` and `n_complete()`
-    -   `pct_miss()`and `pct_complete()`
--   Numerical summaries of missing data in variables and cases:
-    -   `miss_var_summary()` and `miss_var_table()`
-    -   `miss_case_summary()`, `miss_case_table()`
--   Statistical tests of missingness:
-    -   `mcar_test()` for
-        [Little’s (1988)](https://doi.org/10.1080/01621459.1988.10478722)
-        missing completely at random (MCAR) test
--   Visualisation for missing data:
-    -   `geom_miss_point()`
-    -   `gg_miss_var()`
-    -   `gg_miss_case()`
-    -   `gg_miss_fct()`
+- Shadow matrices, a tidy data structure for missing data:
+  - `bind_shadow()` and `nabular()`
+- Shorthand summaries for missing data:
+  - `n_miss()` and `n_complete()`
+  - `pct_miss()`and `pct_complete()`
+- Numerical summaries of missing data in variables and cases:
+  - `miss_var_summary()` and `miss_var_table()`
+  - `miss_case_summary()`, `miss_case_table()`
+- Statistical tests of missingness:
+  - `mcar_test()` for [Little’s
+    (1988)](https://doi.org/10.1080/01621459.1988.10478722) missing
+    completely at random (MCAR) test
+- Visualisation for missing data:
+  - `geom_miss_point()`
+  - `gg_miss_var()`
+  - `gg_miss_case()`
+  - `gg_miss_fct()`
 
 For more details on the workflow and theory underpinning naniar, read
 the vignette [Getting started with
@@ -45,6 +45,8 @@ naniar](https://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 For a short primer on the data visualisation available in naniar, read
 the vignette [Gallery of Missing Data
 Visualisations](https://naniar.njtierney.com/articles/naniar-visualisation.html).
+
+For full details of the package, including
 
 # Installation
 
@@ -73,13 +75,14 @@ geom, which we illustrate by exploring the relationship between Ozone
 and Solar radiation from the airquality dataset.
 
 ``` r
+
 library(ggplot2)
 
 ggplot(data = airquality,
        aes(x = Ozone,
            y = Solar.R)) +
   geom_point()
-#> Warning: Removed 42 rows containing missing values (geom_point).
+#> Warning: Removed 42 rows containing missing values (`geom_point()`).
 ```
 
 ![](man/figures/README-regular-geom-point-1.png)<!-- -->
@@ -90,6 +93,7 @@ message about the missing values.
 We can instead use `geom_miss_point()` to display the missing data
 
 ``` r
+
 library(naniar)
 
 ggplot(data = airquality,
@@ -106,6 +110,7 @@ missingness becomes pre-attentive. As it is a ggplot2 geom, it supports
 features like faceting and other ggplot features.
 
 ``` r
+
 p1 <-
 ggplot(data = airquality,
        aes(x = Ozone,
@@ -127,10 +132,11 @@ shadow matrix [(Swayne and Buja,
 The shadow matrix is the same dimension as the data, and consists of
 binary indicators of missingness of data values, where missing is
 represented as “NA”, and not missing is represented as “!NA”, and
-variable names are kep the same, with the added suffix “\_NA" to the
+variable names are kep the same, with the added suffix “\_NA” to the
 variables.
 
 ``` r
+
 head(airquality)
 #>   Ozone Solar.R Wind Temp Month Day
 #> 1    41     190  7.4   67     5   1
@@ -141,7 +147,7 @@ head(airquality)
 #> 6    28      NA 14.9   66     5   6
 
 as_shadow(airquality)
-#> # A tibble: 153 x 6
+#> # A tibble: 153 × 6
 #>    Ozone_NA Solar.R_NA Wind_NA Temp_NA Month_NA Day_NA
 #>    <fct>    <fct>      <fct>   <fct>   <fct>    <fct> 
 #>  1 !NA      !NA        !NA     !NA     !NA      !NA   
@@ -164,35 +170,37 @@ or `nabular`:
 
 ``` r
 bind_shadow(airquality)
-#> # A tibble: 153 x 12
-#>    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA Solar.R_NA Wind_NA Temp_NA
-#>    <int>   <int> <dbl> <int> <int> <int> <fct>    <fct>      <fct>   <fct>  
-#>  1    41     190   7.4    67     5     1 !NA      !NA        !NA     !NA    
-#>  2    36     118   8      72     5     2 !NA      !NA        !NA     !NA    
-#>  3    12     149  12.6    74     5     3 !NA      !NA        !NA     !NA    
-#>  4    18     313  11.5    62     5     4 !NA      !NA        !NA     !NA    
-#>  5    NA      NA  14.3    56     5     5 NA       NA         !NA     !NA    
-#>  6    28      NA  14.9    66     5     6 !NA      NA         !NA     !NA    
-#>  7    23     299   8.6    65     5     7 !NA      !NA        !NA     !NA    
-#>  8    19      99  13.8    59     5     8 !NA      !NA        !NA     !NA    
-#>  9     8      19  20.1    61     5     9 !NA      !NA        !NA     !NA    
-#> 10    NA     194   8.6    69     5    10 NA       !NA        !NA     !NA    
-#> # … with 143 more rows, and 2 more variables: Month_NA <fct>, Day_NA <fct>
+#> # A tibble: 153 × 12
+#>    Ozone Solar.R  Wind  Temp Month   Day Ozone…¹ Solar…² Wind_NA Temp_NA Month…³
+#>    <int>   <int> <dbl> <int> <int> <int> <fct>   <fct>   <fct>   <fct>   <fct>  
+#>  1    41     190   7.4    67     5     1 !NA     !NA     !NA     !NA     !NA    
+#>  2    36     118   8      72     5     2 !NA     !NA     !NA     !NA     !NA    
+#>  3    12     149  12.6    74     5     3 !NA     !NA     !NA     !NA     !NA    
+#>  4    18     313  11.5    62     5     4 !NA     !NA     !NA     !NA     !NA    
+#>  5    NA      NA  14.3    56     5     5 NA      NA      !NA     !NA     !NA    
+#>  6    28      NA  14.9    66     5     6 !NA     NA      !NA     !NA     !NA    
+#>  7    23     299   8.6    65     5     7 !NA     !NA     !NA     !NA     !NA    
+#>  8    19      99  13.8    59     5     8 !NA     !NA     !NA     !NA     !NA    
+#>  9     8      19  20.1    61     5     9 !NA     !NA     !NA     !NA     !NA    
+#> 10    NA     194   8.6    69     5    10 NA      !NA     !NA     !NA     !NA    
+#> # … with 143 more rows, 1 more variable: Day_NA <fct>, and abbreviated variable
+#> #   names ¹​Ozone_NA, ²​Solar.R_NA, ³​Month_NA
 nabular(airquality)
-#> # A tibble: 153 x 12
-#>    Ozone Solar.R  Wind  Temp Month   Day Ozone_NA Solar.R_NA Wind_NA Temp_NA
-#>    <int>   <int> <dbl> <int> <int> <int> <fct>    <fct>      <fct>   <fct>  
-#>  1    41     190   7.4    67     5     1 !NA      !NA        !NA     !NA    
-#>  2    36     118   8      72     5     2 !NA      !NA        !NA     !NA    
-#>  3    12     149  12.6    74     5     3 !NA      !NA        !NA     !NA    
-#>  4    18     313  11.5    62     5     4 !NA      !NA        !NA     !NA    
-#>  5    NA      NA  14.3    56     5     5 NA       NA         !NA     !NA    
-#>  6    28      NA  14.9    66     5     6 !NA      NA         !NA     !NA    
-#>  7    23     299   8.6    65     5     7 !NA      !NA        !NA     !NA    
-#>  8    19      99  13.8    59     5     8 !NA      !NA        !NA     !NA    
-#>  9     8      19  20.1    61     5     9 !NA      !NA        !NA     !NA    
-#> 10    NA     194   8.6    69     5    10 NA       !NA        !NA     !NA    
-#> # … with 143 more rows, and 2 more variables: Month_NA <fct>, Day_NA <fct>
+#> # A tibble: 153 × 12
+#>    Ozone Solar.R  Wind  Temp Month   Day Ozone…¹ Solar…² Wind_NA Temp_NA Month…³
+#>    <int>   <int> <dbl> <int> <int> <int> <fct>   <fct>   <fct>   <fct>   <fct>  
+#>  1    41     190   7.4    67     5     1 !NA     !NA     !NA     !NA     !NA    
+#>  2    36     118   8      72     5     2 !NA     !NA     !NA     !NA     !NA    
+#>  3    12     149  12.6    74     5     3 !NA     !NA     !NA     !NA     !NA    
+#>  4    18     313  11.5    62     5     4 !NA     !NA     !NA     !NA     !NA    
+#>  5    NA      NA  14.3    56     5     5 NA      NA      !NA     !NA     !NA    
+#>  6    28      NA  14.9    66     5     6 !NA     NA      !NA     !NA     !NA    
+#>  7    23     299   8.6    65     5     7 !NA     !NA     !NA     !NA     !NA    
+#>  8    19      99  13.8    59     5     8 !NA     !NA     !NA     !NA     !NA    
+#>  9     8      19  20.1    61     5     9 !NA     !NA     !NA     !NA     !NA    
+#> 10    NA     194   8.6    69     5    10 NA      !NA     !NA     !NA     !NA    
+#> # … with 143 more rows, 1 more variable: Day_NA <fct>, and abbreviated variable
+#> #   names ¹​Ozone_NA, ²​Solar.R_NA, ³​Month_NA
 ```
 
 Using the nabular format helps you manage where missing values are in
@@ -200,6 +208,7 @@ your dataset and make it easy to do visualisations where you split by
 missingness:
 
 ``` r
+
 airquality %>%
   bind_shadow() %>%
   ggplot(aes(x = Temp,
@@ -212,6 +221,7 @@ airquality %>%
 And even visualise imputations
 
 ``` r
+
 airquality %>%
   bind_shadow() %>%
   as.data.frame() %>% 
@@ -220,7 +230,7 @@ airquality %>%
              y = Ozone,
              colour = Ozone_NA)) + 
   geom_point()
-#> Warning: Removed 7 rows containing missing values (geom_point).
+#> Warning: Removed 7 rows containing missing values (`geom_point()`).
 ```
 
 ![](man/figures/README-shadow-impute-1.png)<!-- -->
@@ -230,6 +240,7 @@ to plot of the combinations of missingness across cases, using the
 `gg_miss_upset` function
 
 ``` r
+
 gg_miss_upset(airquality)
 ```
 
@@ -241,6 +252,7 @@ read, thanks to the tools of the tidyverse.
 naniar also provides handy visualations for each variable:
 
 ``` r
+
 gg_miss_var(airquality)
 ```
 
@@ -292,8 +304,9 @@ case and variable with `miss_var_summary()`, and `miss_case_summary()`,
 which both return output ordered by the number of missing values.
 
 ``` r
+
 miss_var_summary(airquality)
-#> # A tibble: 6 x 3
+#> # A tibble: 6 × 3
 #>   variable n_miss pct_miss
 #>   <chr>     <int>    <dbl>
 #> 1 Ozone        37    24.2 
@@ -303,7 +316,7 @@ miss_var_summary(airquality)
 #> 5 Month         0     0   
 #> 6 Day           0     0
 miss_case_summary(airquality)
-#> # A tibble: 153 x 3
+#> # A tibble: 153 × 3
 #>     case n_miss pct_miss
 #>    <int>  <int>    <dbl>
 #>  1     5      2     33.3
@@ -323,6 +336,7 @@ You could also `group_by()` to work out the number of missings in each
 variable across the levels within it.
 
 ``` r
+
 library(dplyr)
 #> 
 #> Attaching package: 'dplyr'
@@ -335,7 +349,7 @@ library(dplyr)
 airquality %>%
   group_by(Month) %>%
   miss_var_summary()
-#> # A tibble: 25 x 4
+#> # A tibble: 25 × 4
 #> # Groups:   Month [5]
 #>    Month variable n_miss pct_miss
 #>    <int> <chr>     <int>    <dbl>
@@ -368,7 +382,7 @@ random:
 
 ``` r
 mcar_test(airquality)
-#> # A tibble: 1 x 4
+#> # A tibble: 1 × 4
 #>   statistic    df p.value missing.patterns
 #>       <dbl> <dbl>   <dbl>            <int>
 #> 1      35.1    14 0.00142                4
@@ -382,13 +396,13 @@ this project you agree to abide by its terms.
 
 # Future Work
 
--   Extend the `geom_miss_*` family to include categorical variables,
-    Bivariate plots: scatterplots, density overlays
--   SQL translation for databases
--   Big Data tools (sparklyr, sparklingwater)
--   Work well with other imputation engines / processes
--   Provide tools for assessing goodness of fit for classical approaches
-    of MCAR, MAR, and MNAR (graphical inference from `nullabor` package)
+- Extend the `geom_miss_*` family to include categorical variables,
+  Bivariate plots: scatterplots, density overlays
+- SQL translation for databases
+- Big Data tools (sparklyr, sparklingwater)
+- Work well with other imputation engines / processes
+- Provide tools for assessing goodness of fit for classical approaches
+  of MCAR, MAR, and MNAR (graphical inference from `nullabor` package)
 
 ## Acknowledgements
 

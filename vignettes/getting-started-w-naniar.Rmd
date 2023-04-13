@@ -20,7 +20,7 @@ knitr::opts_chunk$set(fig.align = "center",
 
 # Introduction
 
-Missing values are ubiquitous in data and need to be carefully explored and handled in the initial stages of analysis. In this vignette we describe the tools in the package `naniar` for exploring missing data structures with minimal deviation from the common workflows of ggplot and tidy data ([Wickham, 2014](https://www.jstatsoft.org/article/view/v059i10), [Wickham, 2009](https://www.springer.com/gp/book/9780387981413)).
+Missing values are ubiquitous in data and need to be carefully explored and handled in the initial stages of analysis. In this vignette we describe the tools in the package `naniar` for exploring missing data structures with minimal deviation from the common workflows of ggplot and tidy data ([Wickham, 2014](https://www.jstatsoft.org/article/view/v059i10), [Wickham, 2009](https://link.springer.com/book/10.1007/978-0-387-98141-3)).
 
 Sometimes researchers or analysts will introduce or describe a mechanism for missingness. For example, they might explain that data from a weather station might have a malfunction when there are extreme weather events, and does not record temperature data when gusts speeds are high. This seems like a nice simple, logical explanation. However, like all good explanations, this one is simple, but the process to get there was probably not, and likely involved more time than you would have liked developing exploratory data analyses and models. 
 

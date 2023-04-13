@@ -1,14 +1,30 @@
-# naniar 0.6.1.9001
+# naniar (development version)
 
-## Bug Fixes
+## New
 
-- Fix bug in `geom_miss_point()` where passing a shape in the mapping would result in error [#290](https://github.com/njtierney/naniar/issues/290).
+- implement `impute_fixed`, `impute_zero`, and `impute_factor`. notably these do not implement "scoped variants" which were previously implemented - for example, `impute_fixed_if` etc. This is in favour of using the new `across` workflow within `dplyr`, and it is easier to maintain. #261
+- add `digit` argument to `miss_var_summary` to help display %missing data correctly when there is a very small fraction of missingness. #284
+- implemented `impute_mode` - resolves #213.
 
-## Minor Improvements
+# naniar 1.0.0
 
-- Make `label_miss_1d()` and `label_miss_2d()` return a factor with levels `"Not Missing"` and `"Missing"` instead of just character vector. Thanks to that each level will always have the same color regardless of the input data.
+Version 1.0.0 of naniar is to signify that this release is associated with
+the publication of the associated JSS paper, <doi:10.18637/jss.v105.i07>.
+There are also a few small changes that have been implemented in this release, 
+which are described below.
 
-# naniar 0.6.1.9000
+There is still a lot to do in naniar, and this release does not signify that
+there are no changes upcoming, more so to establish that this is a stable
+release, and that any changes upcoming will go through a more formal deprecation
+process and so on.
+
+## New
+
+- The DOI in the CITATION is for a new JSS publication that will be registered 
+  after publication on CRAN.
+- Replaced `tidyr::gather` with `tidyr::pivot_longer` - resolves #301
+- added `set_n_miss` and `set_prop_miss` functions - resolved #298
+
 
 ## Bug Fixes
 
@@ -18,8 +34,8 @@ remove legend [#288](https://github.com/njtierney/naniar/issues/288).
 ## Misc
 
 - Removed gdtools from naniar as no longer needed [302](https://github.com/njtierney/naniar/issues/302).
-- The DOI in the CITATION is for a new JSS publication that will be registered 
-  after publication on CRAN.
+- added imports, `vctrs` and `cli` - which are both free dependencies as they
+  are used within the already used tidyverse already.
 
 # naniar 0.6.1 (2021/05/13) "Incandescent lightbulbs killed the Arc lamps"
 

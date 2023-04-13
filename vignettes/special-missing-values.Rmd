@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-Data sometimes have special missing values to indicate specific reasons for missingness. For example, "9999" is sometimes used in weather data, say for for example, the [Global Historical Climate Network (GHCN) data](https://www.ncdc.noaa.gov/ghcn-daily-description)), to indicate specific types of missingness, such as instrument failure.
+Data sometimes have special missing values to indicate specific reasons for missingness. For example, "9999" is sometimes used in weather data, say for for example, the [Global Historical Climate Network (GHCN) data](https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily), to indicate specific types of missingness, such as instrument failure.
 
 You might be interested in creating your own special missing values so that you can mark specific, known reasons for missingness. For example, an individual dropping out of a study, known instrument failure in weather instruments, or for values being censored in analysis. In these cases, the data is missing, but we have information about _why_ it is missing. Coding these cases as `NA` would cause us to lose this valuable information. Other stats programming languages like STATA, SAS, and SPSS have this capacity, but currently `R` does not. So, we need a way to create these special missing values.
 

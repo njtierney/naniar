@@ -133,7 +133,6 @@ test_that("special missings are the same for grouped and ungrouped data", {
                as.character(aq_recoded$Ozone_NA))
 })
 
-
 test_that("special missings class is maintained for grouped and ungrouped data", {
   skip_on_cran()
   skip_on_ci()

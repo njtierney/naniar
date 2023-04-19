@@ -34,12 +34,13 @@ label_miss_1d <- function(x1){
 
 as_missing_factor <- function(x){
   # factor assures that Missing and Not Missing will always have same colour
-  factor(
+  fct <- factor(
     x = ifelse(x == 0, # 0 means not missing, 1 means missing
                "Not Missing", # not missing
                "Missing"), # missing
     levels = c("Not Missing", "Missing")
   )
+  relevel(fct, "Missing")
 }
 
 #' label_miss_2d

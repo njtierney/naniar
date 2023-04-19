@@ -54,10 +54,13 @@ dat <- tibble(
 
 dat
 
+
 dat \%>\%
   nabular() \%>\%
   mutate(
-    num = impute_mode(num)
+    num = impute_mode(num),
+    int = impute_mode(int),
+    fct = impute_mode(fct)
   )
 
 

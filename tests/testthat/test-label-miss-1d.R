@@ -3,7 +3,10 @@ test_df <- data.frame(x = c(NA,2,3),
                       z = c(1,2,3))
 
 test_that("label_miss_1d errors on a NULL entry",{
-  expect_error(label_miss_1d(NULL))
+  expect_snapshot(
+    error = TRUE,
+    label_miss_1d(NULL)
+    )
 })
 
 test_that("label_miss_1d returns a vector of the same length as the input",{

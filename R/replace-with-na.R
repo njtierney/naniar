@@ -42,11 +42,14 @@ replace_with_na <- function(data, replace = list(), ...){
 replace_with_na.data.frame <- function(data, replace = list(), ...){
 
   if (!is.list(replace)) {
-    stop("`replace` must be a list, I see that replace has ",
-         class(replace),
-         " and typeof ",
-         typeof(replace),
-         "see ?replace_with_na for more details")
+    cli::cli_abort(
+      c(
+        "{.arg replace} must be a list",
+        "I see that replace has class {.cls {class(replace)}}",
+        " and {.code typeof} {typeof(replace)}",
+        "see {.code ?replace_with_na} for more details"
+      )
+    )
   }
 
   new_replace <- replace[names(replace) %in% names(data)]
@@ -54,7 +57,11 @@ replace_with_na.data.frame <- function(data, replace = list(), ...){
   missing <- setdiff(names(replace), names(new_replace))
 
     if (length(missing) >0) {
-      warning(paste("Missing from data:", paste(missing, collapse = ", ")))
+      cli::cli_warn(
+        c(
+          "Missing from data: {.arg {missing}}"
+        )
+      )
     }
 
   for (var in names(new_replace)) {

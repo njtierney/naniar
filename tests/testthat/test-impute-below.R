@@ -9,7 +9,10 @@ test_that("impute_below_all returns NULL when given NULL",{
 })
 
 test_that("impute_below_all errors when given wrong object",{
-  expect_error(impute_below_all(as.POSIXct(111, origin = "1970-01-01")))
+  expect_snapshot(
+    error = TRUE,
+    impute_below_all(as.POSIXct(111, origin = "1970-01-01"))
+    )
 })
 
 miss_vec_5 <- c(10,10,9,NA,3)

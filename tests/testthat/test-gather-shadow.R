@@ -7,9 +7,18 @@ test_that("gather_shadow returns a tibble or data.frame",{
 })
 
 test_that("gather_shadow errors when given non dataframe or 0 entry",{
-  expect_error(gather_shadow(0))
-  expect_error(gather_shadow(matrix(0)))
-  expect_error(gather_shadow(NULL))
+  expect_snapshot(
+    error = TRUE,
+    gather_shadow(0)
+    )
+  expect_snapshot(
+    error = TRUE,
+    gather_shadow(matrix(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    gather_shadow(NULL)
+    )
 })
 
 test_that("The number of rows are the same after using gather_shadow",{

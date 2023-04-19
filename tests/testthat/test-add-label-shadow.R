@@ -28,7 +28,10 @@ test_that("add_label_shadow adds a column with suffix 'any_missing'",{
 })
 
 test_that("add_label_shadow errors when using a dataframe with no shadow", {
-  expect_error(add_label_shadow(dat))
+  expect_snapshot(
+    error = TRUE,
+    add_label_shadow(dat)
+    )
 })
 
 dat_sh_add <- add_label_shadow(dat_sh)

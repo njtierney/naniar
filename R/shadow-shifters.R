@@ -27,11 +27,13 @@ shadow_shift.NULL <- function(x, ...) NULL
 
 #' @export
 shadow_shift.default <- function(x, ...){
-  stop(
-    "shadow_shift does not know how to deal with data of class ",
-    class_glue(x),
-    ". Please check if your input is more than length one, and that you are using the right function. Perhaps you need to use a scoped variant such as `impute_below_all`?",
-    call. = FALSE
+  cli::cli_abort(
+    c(
+      "Unsupported class provided to {.fun shadow_shift}:",
+      "{.cls class(x)}",
+      "Check if your input is more than length one, and that you are using ",
+      "the right function."
+    )
   )
 
 }

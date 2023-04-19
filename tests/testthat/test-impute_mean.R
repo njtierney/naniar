@@ -12,13 +12,30 @@ aq_shadow <- nabular(airquality)
 
 
 test_that("impute_mean and scoped variants fail when given wrong input", {
-  expect_error(impute_mean_if(numeric(0)))
-  expect_error(impute_mean_at(numeric(0)))
-  expect_error(impute_mean_all(numeric(0)))
-
-  expect_error(impute_mean_if(NULL))
-  expect_error(impute_mean_at(NULL))
-  expect_error(impute_mean_all(NULL))
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_if(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_at(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_all(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_if(NULL)
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_at(NULL)
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_all(NULL)
+    )
 })
 
 
@@ -28,13 +45,30 @@ test_that("impute_mean works", {
 
 ### Scoped variants
 test_that("impute_mean and scoped variants fail when given wrong input", {
-  expect_error(impute_mean_if(numeric(0)))
-  expect_error(impute_mean_at(numeric(0)))
-  expect_error(impute_mean_all(numeric(0)))
-
-  expect_error(impute_mean_if(NULL))
-  expect_error(impute_mean_at(NULL))
-  expect_error(impute_mean_all(NULL))
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_if(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_at(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_all(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_if(NULL)
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_at(NULL)
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_all(NULL)
+    )
 })
 
 ## impute_mean_if -------------------------------------------------------------

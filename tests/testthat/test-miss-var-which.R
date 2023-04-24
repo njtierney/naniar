@@ -4,7 +4,10 @@ test_that("miss-var-which returns the right variables", {
 })
 
 test_that("miss-var-which errors on NULL", {
-  expect_error(miss_var_which(NULL))
+  expect_snapshot(
+    error = TRUE,
+    miss_var_which(NULL)
+    )
 })
 
 test_that("miss-var-which returns null when no missings", {

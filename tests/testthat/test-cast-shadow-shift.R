@@ -23,5 +23,8 @@ test_that("cast_shadow_shift adds a column with suffix '_NA' AND '_shift'",{
 
 test_that(
   "cast_shadow_shift returns nice error when variables aren't included",{
-  expect_error(cast_shadow_shift(airquality))
+  expect_snapshot(
+    error = TRUE,
+    cast_shadow_shift(airquality)
+    )
 })

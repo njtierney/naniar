@@ -9,10 +9,22 @@ test_that("miss_prop_summary returns a tibble",{
 })
 
 test_that("miss_prop_summary errors when given non dataframe or 0 entry",{
-  expect_error(miss_prop_summary(0))
-  expect_error(miss_prop_summary("a"))
-  expect_error(miss_prop_summary(matrix(airquality)))
-  expect_error(miss_prop_summary(NULL))
+  expect_snapshot(
+    error = TRUE,
+    miss_prop_summary(0)
+    )
+  expect_snapshot(
+    error = TRUE,
+    miss_prop_summary("a")
+    )
+  expect_snapshot(
+    error = TRUE,
+    miss_prop_summary(matrix(airquality))
+    )
+  expect_snapshot(
+    error = TRUE,
+    miss_prop_summary(NULL)
+    )
 })
 
 test_that("There are 3 columns",{

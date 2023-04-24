@@ -59,8 +59,13 @@ test_if_null <- function(x){
 
   # test for null
   if (is.null(x)) {
-    stop("Input must not be NULL", call. = FALSE)
-    }
+    cli::cli_abort(
+      c(
+        "Input must not be NULL",
+        "Input is {.cls {class(x)}}"
+      )
+    )
+  }
 }
 
 #' Test if the input is Missing
@@ -79,12 +84,32 @@ test_if_null <- function(x){
 #' }
 #' @keywords internal
 #' @noRd
-test_if_missing <- function(x){
+test_if_missing <- function(x, msg = NULL){
 
   # test for null
   if (missing(x)) {
-    stop("argument must be specified", call. = FALSE)
-    }
+    cli::cli_abort(
+      c(
+        "argument must be specified",
+        "{msg}"
+      )
+    )
+      }
+  }
+
+#' @keywords internal
+#' @noRd
+test_if_dots_missing <- function(..., msg = NULL){
+
+  # test for null
+  if (missing(...)) {
+    cli::cli_abort(
+      c(
+        "argument must be specified",
+        "{msg}"
+      )
+    )
+  }
 }
 
 #' Test if input is a data.frame
@@ -107,17 +132,26 @@ test_if_missing <- function(x){
 test_if_dataframe <- function(x){
   # test for dataframe
   if (!inherits(x, "data.frame")) {
-    stop("Input must inherit from data.frame", call. = FALSE)
-    }
+    cli::cli_abort(
+      c(
+        "Input must inherit from {.cls data.frame}",
+        "We see class: {.cls {class(x)}}"
+      )
+    )
+  }
 }
 
 test_if_any_shade <- function(x){
   # test for dataframe
   test_if_dataframe(x)
   if (!any_shade(x)) {
-    stop("Input must contain shade column. See ?shade, ?shade and ?bind_shadow",
-         call. = FALSE)
-    }
+    cli::format_error(
+      c(
+        "Input must contain a shade column.",
+        "See {.code ?shade}, {.code ?shade}, and {.code ?bind_shadow}"
+      )
+    )
+  }
 }
 
 #' Helper function to determine whether there are any missings
@@ -192,8 +226,8 @@ diag_na <- function(size = 5){
               nrow = size,
               ncol = size)
   suppressMessages(
-  tibble::as_tibble(dna,
-                    .name_repair = "unique")) %>%
+    tibble::as_tibble(dna,
+                      .name_repair = "unique")) %>%
     set_names(paste0("x",seq_len(ncol(.))))
 }
 
@@ -231,7 +265,7 @@ check_is_integer <- function(x){
     cli::cli_abort(
       c(
         "{.var x} must be greater than 0",
-        "{.var x} is {x}"
+        "{.var x} is {.val {x}}"
       )
     )
   }

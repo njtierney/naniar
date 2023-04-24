@@ -30,10 +30,22 @@ test_that("as_shadow returns correct levels",{
 })
 
 test_that("as_shadow errors when given non dataframe or 0 entry",{
-  expect_error(as_shadow(0))
-  expect_error(as_shadow("a"))
-  expect_error(as_shadow(matrix(airquality)))
-  expect_error(as_shadow(NULL))
+  expect_snapshot(
+    error = TRUE,
+    as_shadow(0)
+    )
+  expect_snapshot(
+    error = TRUE,
+    as_shadow("a")
+    )
+  expect_snapshot(
+    error = TRUE,
+    as_shadow(matrix(airquality))
+    )
+  expect_snapshot(
+    error = TRUE,
+    as_shadow(NULL)
+    )
 })
 
 test_that("The dimensions are the same after using as_shadow",{

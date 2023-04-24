@@ -1,13 +1,22 @@
 test_that("shade errors with NULLs",{
-  expect_error(shade(NULL))
+  expect_snapshot(
+    error = TRUE,
+    shade(NULL)
+    )
 })
 
 test_that("shade errors with objects of length 0",{
-  expect_error(shade(numeric(0)))
+  expect_snapshot(
+    error = TRUE,
+    shade(numeric(0))
+    )
 })
 
 test_that("shade errors with list of length 0",{
-  expect_error(shade(list()))
+  expect_snapshot(
+    error = TRUE,
+    shade(list())
+    )
 })
 
 
@@ -52,8 +61,10 @@ exp_4 <- c("!NA", "!NA", "!NA", "NA")
 
 test_that("shade returns the correct values with list columns", {
   expect_equal(act_4, exp_4)
-  expect_error(shade(list(3, list(1), c(2,3), list()), broken=3),
-               "additional levels of missing")
+  expect_snapshot(
+    error = TRUE,
+    shade(list(3, list(1), c(2,3), list()), broken=3)
+  )
 })
 
 

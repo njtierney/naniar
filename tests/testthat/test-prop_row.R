@@ -1,16 +1,37 @@
 # is there a more general way to write these kinds of tests?
 test_that("rowwise errors for non data frames",{
-  expect_error(n_miss_row(numeric(0)))
-  expect_error(n_miss_row(NULL))
-
-  expect_error(n_complete_row(numeric(0)))
-  expect_error(n_complete_row(NULL))
-
-  expect_error(prop_miss_row(numeric(0)))
-  expect_error(prop_miss_row(NULL))
-
-  expect_error(prop_complete_row(numeric(0)))
-  expect_error(prop_complete_row(NULL))
+  expect_snapshot(
+    error = TRUE,
+    n_miss_row(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    n_miss_row(NULL)
+    )
+  expect_snapshot(
+    error = TRUE,
+    n_complete_row(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    n_complete_row(NULL)
+    )
+  expect_snapshot(
+    error = TRUE,
+    prop_miss_row(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    prop_miss_row(NULL)
+    )
+  expect_snapshot(
+    error = TRUE,
+    prop_complete_row(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    prop_complete_row(NULL)
+    )
 
 })
 

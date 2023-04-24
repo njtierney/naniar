@@ -40,7 +40,7 @@ as_missing_factor <- function(x){
                "Missing"), # missing
     levels = c("Not Missing", "Missing")
   )
-  relevel(fct, "Missing")
+  stats::relevel(fct, "Missing")
 }
 
 #' label_miss_2d

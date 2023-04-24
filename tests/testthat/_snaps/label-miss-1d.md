@@ -28,4 +28,3 @@
     Output
       [1] Not Missing Not Missing Not Missing
       Levels: Missing Not Missing
-

@@ -3,7 +3,10 @@ test_that("shadow_shift returns NULL when given NULL",{
 })
 
 test_that("shadow_shift returns an error when given the wrong kind of object",{
-  expect_error(shadow_shift(as.POSIXct(111, origin = "1970-01-01")))
+  expect_snapshot(
+    error = TRUE,
+    shadow_shift(as.POSIXct(111, origin = "1970-01-01"))
+    )
 })
 
 

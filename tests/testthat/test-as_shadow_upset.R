@@ -1,7 +1,16 @@
 test_that("as_shadow_upset errors when given datasets with <= 1 variables", {
-  expect_error(as_shadow_upset(diag_na(1)))
-  expect_error(as_shadow_upset(data.frame(x = NA)))
-  expect_error(as_shadow_upset(data.frame(numeric(0))))
+  expect_snapshot(
+    error = TRUE,
+    as_shadow_upset(diag_na(1))
+    )
+  expect_snapshot(
+    error = TRUE,
+    as_shadow_upset(data.frame(x = NA))
+    )
+  expect_snapshot(
+    error = TRUE,
+    as_shadow_upset(data.frame(numeric(0)))
+    )
 })
 
 test_that("as_shadow_upset returns a data.frame",{
@@ -9,10 +18,22 @@ test_that("as_shadow_upset returns a data.frame",{
 })
 
 test_that("as_shadow_upset errors when given non dataframe or 0 entry",{
-  expect_error(as_shadow_upset(0))
-  expect_error(as_shadow_upset("a"))
-  expect_error(as_shadow_upset(matrix(airquality)))
-  expect_error(as_shadow_upset(NULL))
+  expect_snapshot(
+    error = TRUE,
+    as_shadow_upset(0)
+    )
+  expect_snapshot(
+    error = TRUE,
+    as_shadow_upset("a")
+    )
+  expect_snapshot(
+    error = TRUE,
+    as_shadow_upset(matrix(airquality))
+    )
+  expect_snapshot(
+    error = TRUE,
+    as_shadow_upset(NULL)
+    )
 })
 
 test_that("The number of rows are the same after using as_shadow_upset",{

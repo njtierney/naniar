@@ -6,7 +6,10 @@ df <- tibble::tribble(
 )
 
 test_that("recode_shadow errors when regular dataframe passed",{
-  expect_error(recode_shadow(df, temp = .where(wind == -99 ~ "bananas")))
+  expect_snapshot(
+    error = TRUE,
+    recode_shadow(df, temp = .where(wind == -99 ~ "bananas"))
+    )
 })
 
 dfs <- nabular(df)

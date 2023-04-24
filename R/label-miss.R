@@ -60,7 +60,15 @@ as_missing_factor <- function(x){
 label_miss_2d <- function(x1, x2){
 
   # Catch NULL entries
-  if(is.null(x1) | is.null(x2)) stop("Input cannot be NULL", call. = FALSE)
+  if(is.null(x1) | is.null(x2)){
+    cli::cli_abort(
+      c(
+        "Input cannot be NULL",
+        "We see the first argument, {.arg x1} is: {.cls {class(x1)}",
+        "We see the second argument, {.arg x2} is: {.cls {class(x2)}"
+      )
+    )
+  }
   # find which are missing and which are not.
   # Were all values in x1/x2 originally NA, they would be cast to factor of 1
   # and assigned mapped_discrete class. Lets cast it back to NA

@@ -6,6 +6,11 @@
 - add `digit` argument to `miss_var_summary` to help display %missing data correctly when there is a very small fraction of missingness. #284
 - implemented `impute_mode` - resolves #213.
 
+## Misc
+
+- use `cli::cli_abort` and `cli::cli_warn` instead of `stop` and `warn` (#326)
+- use `expect_snapshot` instead of `expect_error` (#326)
+
 # naniar 1.0.0
 
 Version 1.0.0 of naniar is to signify that this release is associated with

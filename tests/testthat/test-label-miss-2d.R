@@ -23,9 +23,11 @@ test_that("label_miss_2d errors when both are NULL",{
     )
 })
 
-test_that("label_miss_2d returns a vector of the same length as the input",{
-  expect_length(label_miss_2d(test_df$x, test_df$y),
-                nrow(test_df))
+test_that("label_miss_2d returns a vector of the same length as the input", {
+  expect_length(
+    label_miss_2d(test_df$x, test_df$y),
+    nrow(test_df)
+  )
 })
 
 test_that("label_miss_2d returns factor vector",{
@@ -46,4 +48,3 @@ test_that("label_miss_2d identifies the correct location of missingness",{
     label_miss_2d(test_df$x, test_df$z)
                )
 })
-

@@ -4,22 +4,29 @@ dat_ms <- tibble::tribble(~x,  ~y,    ~z,
                          NA,  NA,    -98,
                          -99, "E",   -101,
                          -98, "F",   -1)
-
 test_that("miss_scan_count returns a data.frame", {
-  expect_s3_class(miss_scan_count(dat_ms,-99), "data.frame")
+  expect_s3_class(miss_scan_count(dat_ms, -99), "data.frame")
 })
 
 test_that("miss_scan_count returns an error when no search is provided", {
-  expect_error(miss_scan_count(dat_ms))
+  expect_snapshot(
+    error = TRUE,
+    miss_scan_count(dat_ms)
+  )
 })
 
 test_that("miss_scan_count returns an error when no data is provided", {
-  expect_error(miss_scan_count(search = -99))
+  expect_snapshot(
+    error = TRUE,
+    miss_scan_count(search = -99)
+  )
 })
 
 test_that("miss_scan_count returns a data.frame of the right size", {
-  expect_equal(dim(miss_scan_count(dat_ms,-99)),
-                c(3,2))
+  expect_equal(
+    dim(miss_scan_count(dat_ms, -99)),
+    c(3, 2)
+  )
 })
 
 correct_answer_1 <- tibble::tribble(

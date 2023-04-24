@@ -8,10 +8,22 @@ test_that("nabular returns a data.frame or tbl",{
 })
 
 test_that("nabular errors when given non dataframe or 0 entry",{
-  expect_error(nabular(0))
-  expect_error(nabular("a"))
-  expect_error(nabular(matrix(0)))
-  expect_error(nabular(NULL))
+  expect_snapshot(
+    error = TRUE,
+    nabular(0)
+    )
+  expect_snapshot(
+    error = TRUE,
+    nabular("a")
+    )
+  expect_snapshot(
+    error = TRUE,
+    nabular(matrix(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    nabular(NULL)
+    )
 })
 
 test_that("The number of rows are the same after using bind_shadow",{

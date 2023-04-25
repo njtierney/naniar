@@ -5,6 +5,6 @@
     Error <purrr_error_indexed>
       i In index: 1.
       i With name: x.
-      Caused by error in `is_quosure()`:
+      Caused by error in `.f()`:
       ! argument "condition" is missing, with no default
 

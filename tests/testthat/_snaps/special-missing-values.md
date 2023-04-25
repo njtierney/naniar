@@ -6,6 +6,6 @@
       i In argument: `temp_NA = structure(...)`.
       Caused by error in `dplyr::case_when()`:
       ! Failed to evaluate the right-hand side of formula 2.
-      Caused by error in `factor()`:
+      Caused by error:
       ! object 'temp_NA' not found
 

@@ -22,10 +22,25 @@ label_miss_1d <- function(x1){
   test_if_null(x1)
   # find which are missing and which are not.
   temp <- data.frame(x1) %>% is.na %>% rowSums()
-  ifelse(temp == 0, # 0 means not missing
-         "Not Missing", # not missing
-         "Missing") # missing
+  # Were all values in x1 originally NA, they would be cast to factor of 1
+  # and assigned mapped_discrete class. Lets cast it back to NA
+  if (all(x1 == 1) && inherits(x1, "mapped_discrete")) {
+    x1[] <- NA
+  }
 
+  as_missing_factor(temp)
+
+}
+
+as_missing_factor <- function(x){
+  # factor assures that Missing and Not Missing will always have same colour
+  fct <- factor(
+    x = ifelse(x == 0, # 0 means not missing, 1 means missing
+               "Not Missing", # not missing
+               "Missing"), # missing
+    levels = c("Not Missing", "Missing")
+  )
+  stats::relevel(fct, "Missing")
 }
 
 #' label_miss_2d
@@ -49,16 +64,25 @@ label_miss_2d <- function(x1, x2){
     cli::cli_abort(
       c(
         "Input cannot be NULL",
-        "We see the first argument, {.arg x1} is: {.cls {class(x1)}",
-        "We see the second argument, {.arg x2} is: {.cls {class(x2)}"
+        "We see the first argument, {.arg x1} is: {.cls {class(x1)}}",
+        "We see the second argument, {.arg x2} is: {.cls {class(x2)}}"
       )
     )
   }
   # find which are missing and which are not.
+  # Were all values in x1/x2 originally NA, they would be cast to factor of 1
+  # and assigned mapped_discrete class. Lets cast it back to NA
+  if (all(x1 == 1) && inherits(x1, "mapped_discrete")) {
+    x1[] <- NA
+  }
+
+  if (all(x2 == 1) && inherits(x2, "mapped_discrete")) {
+    x2[] <- NA
+  }
+
   temp <- data.frame(x1,x2) %>% is.na %>% rowSums()
-  ifelse(temp == 0, # 0 means not missing
-         "Not Missing", # not missing
-         "Missing") # missing
+
+  as_missing_factor(temp)
 
 }
 

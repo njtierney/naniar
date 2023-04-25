@@ -31,7 +31,12 @@ gg_miss_fct <- function(x, fct){
     # warning message from dplyr about explicit
     dplyr::mutate_at(vars(!!fct), .funs = coerce_fct_na_explicit) %>%
     dplyr::group_by(!!fct) %>%
-    miss_var_summary()
+    miss_var_summary() %>%
+    # coerce to numeric due to num error
+    # reported in https://github.com/tidyverse/ggplot2/issues/5284
+    dplyr::mutate(
+      pct_miss = as.numeric(pct_miss)
+    )
 
   ggobject <-
     ggplot(data,

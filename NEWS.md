@@ -30,6 +30,7 @@ process and so on.
 - Replaced `tidyr::gather` with `tidyr::pivot_longer` - resolves #301
 - added `set_n_miss` and `set_prop_miss` functions - resolved #298
 
+
 ## Bug Fixes
 
 - Fix bug in `gg_miss_var()` where a warning appears to due change in how to 

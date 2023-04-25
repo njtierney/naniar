@@ -2,8 +2,9 @@
 
     Code
       label_miss_1d(NULL)
-    Error <simpleError>
+    Error <rlang_error>
       Input must not be NULL
+      Input is <NULL>
 
 # label_miss_1d identifies the correct location of missingness
 
@@ -28,3 +29,4 @@
     Output
       [1] Not Missing Not Missing Not Missing
       Levels: Missing Not Missing
+

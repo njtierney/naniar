@@ -64,8 +64,8 @@ label_miss_2d <- function(x1, x2){
     cli::cli_abort(
       c(
         "Input cannot be NULL",
-        "We see the first argument, {.arg x1} is: {.cls {class(x1)}",
-        "We see the second argument, {.arg x2} is: {.cls {class(x2)}"
+        "We see the first argument, {.arg x1} is: {.cls {class(x1)}}",
+        "We see the second argument, {.arg x2} is: {.cls {class(x2)}}"
       )
     )
   }

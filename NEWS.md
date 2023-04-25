@@ -5,6 +5,12 @@
 - implement `impute_fixed`, `impute_zero`, and `impute_factor`. notably these do not implement "scoped variants" which were previously implemented - for example, `impute_fixed_if` etc. This is in favour of using the new `across` workflow within `dplyr`, and it is easier to maintain. #261
 - add `digit` argument to `miss_var_summary` to help display %missing data correctly when there is a very small fraction of missingness. #284
 - implemented `impute_mode` - resolves #213.
+- `geom_miss_point()` works with `shape` argument #290
+
+## Misc
+
+- use `cli::cli_abort` and `cli::cli_warn` instead of `stop` and `warn` (#326)
+- use `expect_snapshot` instead of `expect_error` (#326)
 
 ## Changes
 
@@ -28,6 +34,7 @@ process and so on.
   after publication on CRAN.
 - Replaced `tidyr::gather` with `tidyr::pivot_longer` - resolves #301
 - added `set_n_miss` and `set_prop_miss` functions - resolved #298
+
 
 ## Bug Fixes
 

@@ -10,6 +10,7 @@
 
     Code
       impute_below_all(as.POSIXct(111, origin = "1970-01-01"))
-    Error <simpleError>
-      Input must inherit from data.frame
+    Error <rlang_error>
+      Input must inherit from <data.frame>
+      We see class: <POSIXct/POSIXt>
 

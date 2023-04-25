@@ -3,7 +3,10 @@ test_df <- data.frame(x = c(NA,2,3),
                       z = c(1,2,3))
 
 test_that("label_miss_1d errors on a NULL entry",{
-  expect_error(label_miss_1d(NULL))
+  expect_snapshot(
+    error = TRUE,
+    label_miss_1d(NULL)
+    )
 })
 
 test_that("label_miss_1d returns a vector of the same length as the input",{
@@ -11,18 +14,22 @@ test_that("label_miss_1d returns a vector of the same length as the input",{
                 nrow(test_df))
 })
 
-test_that("label_miss_1d returns character vector",{
+test_that("label_miss_1d returns factor vector",{
   expect_type(label_miss_1d(test_df$x),
-              "character")
+              # typeof(factor()) is "integer"
+              "integer")
 })
 
 test_that("label_miss_1d identifies the correct location of missingness",{
-  expect_equal(label_miss_1d(test_df$x),
-               c("Missing", "Not Missing", "Not Missing"))
-  expect_equal(label_miss_1d(test_df$y),
-               c("Not Missing", "Missing", "Not Missing"))
-  expect_equal(label_miss_1d(test_df$z),
-               c("Not Missing", "Not Missing", "Not Missing"))
+  expect_snapshot(
+    label_miss_1d(test_df$x)
+  )
+  expect_snapshot(
+    label_miss_1d(test_df$y)
+  )
+  expect_snapshot(
+    label_miss_1d(test_df$z)
+  )
 })
 
 

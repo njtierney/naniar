@@ -18,7 +18,7 @@ impute_mode(x)
 \arguments{
 \item{x}{vector
 
-This approach adapts examples provided here https://stackoverflow.com/questions/2547402/how-to-find-the-statistical-mode, and for the integer
+This approach adapts examples provided \href{https://stackoverflow.com/questions/2547402/how-to-find-the-statistical-mode}{from stack overflow}, and for the integer
 case, just rounds the value. While this can be useful if you are
 imputing specific values, however we would generally recommend to impute
 using other model based approaches. See the \code{simputation} package, for

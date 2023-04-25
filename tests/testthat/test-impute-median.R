@@ -17,13 +17,30 @@ test_that("impute_median works", {
 
 ## Scoped variants -------------------------------------------------------------
 test_that("impute_median and scoped variants fail when given wrong input", {
-  expect_error(impute_median_if(numeric(0)))
-  expect_error(impute_median_at(numeric(0)))
-  expect_error(impute_median_all(numeric(0)))
-
-  expect_error(impute_median_if(NULL))
-  expect_error(impute_median_at(NULL))
-  expect_error(impute_mean_all(NULL))
+  expect_snapshot(
+    error = TRUE,
+    impute_median_if(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_median_at(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_median_all(numeric(0))
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_median_if(NULL)
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_median_at(NULL)
+    )
+  expect_snapshot(
+    error = TRUE,
+    impute_mean_all(NULL)
+    )
 })
 
 ## impute_median_if -------------------------------------------------------------

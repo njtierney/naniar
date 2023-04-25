@@ -8,13 +8,24 @@ dat <- tibble::tribble(
 )
 
 test_that("miss_var_table errors on NULL",{
-  expect_error(miss_var_table(NULL))
+  expect_snapshot(
+    error = TRUE,
+    miss_var_table(NULL)
+    )
 })
-
-test_that("miss_var_table errors when a non-dataframe given",{
-  expect_error(miss_var_table(1))
-  expect_error(miss_var_table("a"))
-  expect_error(miss_var_table(matrix(0)))
+test_that("miss_var_table errors when a non-dataframe given", {
+  expect_snapshot(
+    error = TRUE,
+    miss_var_table(1)
+  )
+  expect_snapshot(
+    error = TRUE,
+    miss_var_table("a")
+  )
+  expect_snapshot(
+    error = TRUE,
+    miss_var_table(matrix(0))
+  )
 })
 
 test_that("miss_var_table produces a tibble", {

@@ -8,8 +8,14 @@ dat <- tibble::tribble(
 )
 
 test_that("miss_var_summary errors when a non-dataframe given",{
-  expect_error(miss_var_summary(NULL))
-  expect_error(miss_var_summary(matrix(0)))
+  expect_snapshot(
+    error = TRUE,
+    miss_var_summary(NULL)
+    )
+  expect_snapshot(
+    error = TRUE,
+    miss_var_summary(matrix(0))
+    )
 })
 
 test_that("miss_var_summary produces a tibble", {

@@ -30,6 +30,9 @@ that satisfy a specific condition, use the scoped variants,
 \code{impute_below_at}, and \code{impute_below_if}. To use \verb{_at} effectively,
 you must know that \verb{_at`` affects variables selected with a character vector, or with }vars()`.
 }
+\details{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
+}
 \examples{
 # select variables starting with a particular string.
 impute_mean_all(airquality)

@@ -14,6 +14,47 @@
 #'
 #' impute_median(vec)
 #'
+#' library(dplyr)
+#'
+#' dat <- tibble(
+#'   num = rnorm(10),
+#'   int = as.integer(rpois(10, 5)),
+#'   fct = factor(LETTERS[1:10])
+#' ) %>%
+#'   mutate(
+#'     across(
+#'       everything(),
+#'       \(x) set_prop_miss(x, prop = 0.25)
+#'     )
+#'   )
+#'
+#' dat
+#'
+#' dat %>%
+#'   nabular() %>%
+#'   mutate(
+#'     num = impute_median(num),
+#'     int = impute_median(int),
+#'   )
+#'
+#' dat %>%
+#'   nabular() %>%
+#'   mutate(
+#'     across(
+#'       where(is.numeric),
+#'       impute_median
+#'     )
+#'   )
+#'
+#' dat %>%
+#'   nabular() %>%
+#'   mutate(
+#'     across(
+#'       c("num", "int"),
+#'       impute_median
+#'     )
+#'  )
+#'
 impute_median <- function(x) UseMethod("impute_median")
 
 #' @export
@@ -52,12 +93,16 @@ impute_median.factor <- function(x){
 
 #' Scoped variants of `impute_median`
 #'
-#' `impute_median` imputes the median for a vector. To get it to work on all
-#'   variables, use `impute_median_all`. To only impute variables
-#'   that satisfy a specific condition, use the scoped variants,
-#'   `impute_below_at`, and `impute_below_if`. To use `_at` effectively,
-#'   you must know that `_at`` affects variables selected with a character
-#'   vector, or with `vars()`.
+#' `impute_median` imputes the median for a vector. To only impute many
+#'   variables at once, we recommend that you use the  `across` function
+#'   workflow, shown in the examples for [impute_median()]. You can use the
+#'   scoped variants, `impute_median_all`.`impute_below_at`, and
+#'   `impute_below_if` to impute all, some, or just those variables meeting
+#'   some condition, respectively. To use `_at` effectively, you must know
+#'   that `_at` affects variables selected with a character vector, or with
+#'   `vars()`.
+#'
+#' `r lifecycle::badge('superseded')`
 #'
 #' @param .tbl a data.frame
 #' @param .vars variables to impute
@@ -73,7 +118,6 @@ impute_median.factor <- function(x){
 #'
 #' impute_median_at(airquality,
 #'                .vars = c("Ozone", "Solar.R"))
-#' \dontrun{
 #' library(dplyr)
 #' impute_median_at(airquality,
 #'                 .vars = vars(Ozone))
@@ -90,9 +134,10 @@ impute_median.factor <- function(x){
 #'              y = Solar.R,
 #'              colour = any_missing)) +
 #'          geom_point()
-#' }
 #'
 impute_median_all <- function(.tbl){
+
+  lifecycle::signal_stage("superseded", "impute_median_all()")
 
   test_if_dataframe(.tbl)
 
@@ -108,6 +153,8 @@ impute_median_all <- function(.tbl){
 impute_median_at <- function(.tbl,
                            .vars){
 
+  lifecycle::signal_stage("superseded", "impute_median_at()")
+
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
@@ -122,6 +169,8 @@ impute_median_at <- function(.tbl,
 #' @rdname scoped-impute_median
 impute_median_if <- function(.tbl,
                            .predicate){
+
+  lifecycle::signal_stage("superseded", "impute_median_if()")
 
   test_if_dataframe(.tbl)
 

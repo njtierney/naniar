@@ -1,5 +1,10 @@
 #' Impute the mean value into a vector with missing values
 #'
+#' This can be useful if you are imputing specific values, however we would
+#'   generally recommend to impute using other model based approaches. See
+#'   the `simputation` package, for example [simputation::impute_lm()].
+#'
+#'
 #' @param x vector
 #'
 #' @return vector with mean values replaced
@@ -8,11 +13,52 @@
 #'
 #' @examples
 #'
+#' library(dplyr)
 #' vec <- rnorm(10)
 #'
 #' vec[sample(1:10, 3)] <- NA
 #'
 #' impute_mean(vec)
+#'
+#' dat <- tibble(
+#'   num = rnorm(10),
+#'   int = as.integer(rpois(10, 5)),
+#'   fct = factor(LETTERS[1:10])
+#' ) %>%
+#'   mutate(
+#'     across(
+#'       everything(),
+#'       \(x) set_prop_miss(x, prop = 0.25)
+#'     )
+#'   )
+#'
+#' dat
+#'
+#' dat %>%
+#'   nabular() %>%
+#'   mutate(
+#'     num = impute_mean(num),
+#'     int = impute_mean(int),
+#'     fct = impute_mean(fct),
+#'   )
+#'
+#' dat %>%
+#'   nabular() %>%
+#'   mutate(
+#'     across(
+#'       where(is.numeric),
+#'       impute_mean
+#'     )
+#'   )
+#'
+#' dat %>%
+#'   nabular() %>%
+#'   mutate(
+#'     across(
+#'       c("num", "int"),
+#'       impute_mean
+#'     )
+#'   )
 #'
 impute_mean <- function(x) UseMethod("impute_mean")
 
@@ -59,6 +105,8 @@ impute_mean.factor <- function(x){
 #'   you must know that `_at`` affects variables selected with a character
 #'   vector, or with `vars()`.
 #'
+#' `r lifecycle::badge('superseded')`
+#'
 #' @param .tbl a data.frame
 #' @param .vars variables to impute
 #' @param .predicate variables to impute
@@ -95,6 +143,8 @@ impute_mean.factor <- function(x){
 #'
 impute_mean_all <- function(.tbl){
 
+  lifecycle::signal_stage("superseded", "impute_below_all()")
+
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
@@ -108,6 +158,8 @@ impute_mean_all <- function(.tbl){
 #' @rdname scoped-impute_mean
 impute_mean_at <- function(.tbl,
                            .vars){
+
+  lifecycle::signal_stage("superseded", "impute_below_all()")
 
   test_if_dataframe(.tbl)
 
@@ -123,6 +175,8 @@ impute_mean_at <- function(.tbl,
 #' @rdname scoped-impute_mean
 impute_mean_if <- function(.tbl,
                            .predicate){
+
+  lifecycle::signal_stage("superseded", "impute_below_all()")
 
   test_if_dataframe(.tbl)
 

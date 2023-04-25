@@ -4,16 +4,75 @@
 \alias{impute_below}
 \title{Impute data with values shifted 10 percent below range.}
 \usage{
-impute_below(...)
+impute_below(x, ...)
 }
 \arguments{
-\item{...}{extra arguments to pass - see \code{\link[=shadow_shift]{shadow_shift()}} for discussion on this.}
+\item{x}{a variable of interest to shift}
+
+\item{...}{extra arguments to pass}
 }
 \description{
 It can be useful in exploratory graphics to impute data outside the range of
-the data. \code{impute_below} imputes all variables with missings to have values
-10 percent below the range for numeric values, and for character or factor
-values adds a new string or label. It is powered by \code{shadow_shift}, so please
-see the documentation for \code{\link[=shadow_shift]{shadow_shift()}} to full details on the different
-implementations.
+the data. \code{impute_below} imputes variables with missings to have values
+10 percent below the range for numeric values, plus some jittered noise,
+to separate repeated values, so that missing values can be visualised
+along with the rest of the data. For character or factor
+values, it adds a new string or label.
+}
+\examples{
+library(dplyr)
+vec <- rnorm(10)
+
+vec[sample(1:10, 3)] <- NA
+
+impute_below(vec)
+impute_below(vec, prop_below = 0.25)
+impute_below(vec,
+            prop_below = 0.25,
+            jitter = 0.2)
+
+dat <- tibble(
+ num = rnorm(10),
+ int = as.integer(rpois(10, 5)),
+ fct = factor(LETTERS[1:10])
+) \%>\%
+ mutate(
+   across(
+     everything(),
+     \(x) set_prop_miss(x, prop = 0.25)
+   )
+ )
+
+dat
+
+dat \%>\%
+ nabular() \%>\%
+ mutate(
+   num = impute_below(num),
+   int = impute_below(int),
+   fct = impute_below(fct),
+ )
+
+dat \%>\%
+ nabular() \%>\%
+ mutate(
+   across(
+     where(is.numeric),
+     impute_below
+   )
+ )
+
+dat \%>\%
+ nabular() \%>\%
+ mutate(
+   across(
+     c("num", "int"),
+     impute_below
+   )
+ )
+
+
+}
+\seealso{
+\code{\link[=add_shadow_shift]{add_shadow_shift()}} \code{\link[=cast_shadow_shift]{cast_shadow_shift()}} \code{\link[=cast_shadow_shift_label]{cast_shadow_shift_label()}}
 }

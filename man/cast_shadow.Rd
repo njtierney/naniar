@@ -17,7 +17,7 @@ data with the added variable shifted and the suffix \verb{_NA}
 }
 \description{
 Casting a shadow shifted column performs the equivalent pattern to
-data \%>\% select(var) \%>\% shadow_shift(). This is a convenience function
+data \%>\% select(var) \%>\% impute_below(). This is a convenience function
 that makes it easy to perform certain visualisations, in line with the
 principle that the user should have a way to flexibly return data formats
 containing information about the missing data. It forms the base building

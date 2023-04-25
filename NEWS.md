@@ -12,6 +12,10 @@
 - use `cli::cli_abort` and `cli::cli_warn` instead of `stop` and `warn` (#326)
 - use `expect_snapshot` instead of `expect_error` (#326)
 
+## Changes
+
+- soft deprecated `shadow_shift` - #193
+
 # naniar 1.0.0
 
 Version 1.0.0 of naniar is to signify that this release is associated with

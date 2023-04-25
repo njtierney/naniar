@@ -75,7 +75,8 @@ Imports:
     glue,
     UpSetR,
     cli,
-    vctrs
+    vctrs,
+    lifecycle
 Collate:
     'add-cols.R'
     'add-n-prop-miss.R'

@@ -80,6 +80,7 @@ Imports:
 Collate:
     'add-cols.R'
     'add-n-prop-miss.R'
+    'any-na-complete.R'
     'cast-shadows.R'
     'data-common-na-numbers.R'
     'data-common-na-strings.R'
@@ -97,7 +98,6 @@ Collate:
     'gg-miss-var-cumsum.R'
     'gg-miss-var.R'
     'gg-miss-which.R'
-    'helpers.R'
     'impute-factor.R'
     'impute-fixed.R'
     'impute-median.R'

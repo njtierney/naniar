@@ -6,6 +6,8 @@
 - add `digit` argument to `miss_var_summary` to help display %missing data correctly when there is a very small fraction of missingness. #284
 - implemented `impute_mode` - resolves #213.
 - `geom_miss_point()` works with `shape` argument #290
+- fix bug with `all_complete`, which was implemented as `!anyNA(x)` but should be `all(complete.cases(x))`.
+- correctly implement `any_na()` (and `any_miss()`) and `any_complete()`. Rework examples to demonstrate workflow for finding complete variables.
 
 ## Misc
 

@@ -216,7 +216,8 @@ shadow_long <- function(
     shadow_data,
     cols = -dplyr::one_of(shadow_data_names),
     names_to = "variable",
-    values_to = "value"
+    values_to = "value",
+    values_transform = list(value = as.character)
   )
 
   longer_one_shade_names <- names(which_are_shade(longer_one))

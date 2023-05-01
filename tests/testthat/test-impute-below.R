@@ -6,7 +6,7 @@ test_that("impute_below returns NULL when given NULL",{
 test_that("impute_below returns an error when given the wrong kind of object",{
   expect_snapshot(
     error = TRUE,
-    impute_below(as.POSIXct(111, origin = "1970-01-01"))
+    impute_below(3i)
     )
 })
 
@@ -89,6 +89,22 @@ test_that("missing values are replaced in shadow shift",{
 
 test_that("infinite values are maintained in shadow shift",{
   expect_equal(sum(is.infinite(impute_below(df_inf$x))), 2)
+})
+
+library(dplyr)
+
+dat_date <- tibble::tibble(
+  values = 1:7,
+  number = c(111, 112, NA, NA, 108, 150, 160),
+  posixct = as.POSIXct(number, origin = "1970-01-01"),
+  posixlt = as.POSIXlt(number, origin = "1970-01-01"),
+  date = as.Date(number)
+)
+
+test_that("dates are imputed",{
+  expect_false(anyNA(impute_below(dat_date$posixct)))
+  expect_false(anyNA(impute_below(dat_date$posixlt)))
+  expect_false(anyNA(impute_below(dat_date$date)))
 })
 
 

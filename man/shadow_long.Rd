@@ -4,12 +4,17 @@
 \alias{shadow_long}
 \title{Reshape shadow data into a long format}
 \usage{
-shadow_long(shadow_data, ..., only_main_vars = TRUE)
+shadow_long(shadow_data, ..., fn_value_transform = NULL, only_main_vars = TRUE)
 }
 \arguments{
 \item{shadow_data}{a data.frame}
 
 \item{...}{bare name of variables that you want to focus on}
+
+\item{fn_value_transform}{function to transform the "value" column. Default
+is NULL, which defaults to \code{as.character}. Be aware that \code{as.numeric} may
+fail for some instances if it cannot coerce the value into numeric. See
+the examples.}
 
 \item{only_main_vars}{logical - do you want to filter down to main variables?}
 }
@@ -18,11 +23,13 @@ data in long format, with columns \code{variable}, \code{value}, \code{variable_
 }
 \description{
 Once data is in \code{nabular} form, where the shadow is bound to the data, it
-can be useful to reshape it into a long format with the columns
+can be useful to reshape it into a long format with the shadow columns
+in a separate grouping - so you have \code{variable}, \code{value}, and
+\code{variable_NA} and \code{value_NA}.
 }
 \examples{
 
-aq_shadow <- bind_shadow(airquality)
+aq_shadow <- nabular(airquality)
 
 shadow_long(aq_shadow)
 
@@ -30,6 +37,9 @@ shadow_long(aq_shadow)
 shadow_long(aq_shadow, Ozone)
 
 shadow_long(aq_shadow, Ozone, Solar.R)
+
+# ensure `value` is numeric
+shadow_long(aq_shadow, Ozone, Solar.R, fn_value_transform = as.numeric)
 
 
 }

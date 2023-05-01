@@ -181,10 +181,16 @@ gather_shadow <- function(data){
 #' Reshape shadow data into a long format
 #'
 #' Once data is in `nabular` form, where the shadow is bound to the data, it
-#'     can be useful to reshape it into a long format with the columns
+#'     can be useful to reshape it into a long format with the shadow columns
+#'     in a separate grouping - so you have `variable`, `value`, and
+#'     `variable_NA` and `value_NA`.
 #'
 #' @param shadow_data a data.frame
 #' @param ... bare name of variables that you want to focus on
+#' @param fn_value_transform function to transform the "value" column. Default
+#'   is NULL, which defaults to `as.character`. Be aware that `as.numeric` may
+#'   fail for some instances if it cannot coerce the value into numeric. See
+#'   the examples.
 #' @param only_main_vars logical - do you want to filter down to main variables?
 #'
 #' @return data in long format, with columns `variable`, `value`, `variable_NA`, and `value_NA`.
@@ -192,7 +198,7 @@ gather_shadow <- function(data){
 #'
 #' @examples
 #'
-#' aq_shadow <- bind_shadow(airquality)
+#' aq_shadow <- nabular(airquality)
 #'
 #' shadow_long(aq_shadow)
 #'
@@ -201,15 +207,23 @@ gather_shadow <- function(data){
 #'
 #' shadow_long(aq_shadow, Ozone, Solar.R)
 #'
+#' # ensure `value` is numeric
+#' shadow_long(aq_shadow, Ozone, Solar.R, fn_value_transform = as.numeric)
+#'
 #'
 shadow_long <- function(
   shadow_data,
   ...,
+  fn_value_transform = NULL,
   only_main_vars = TRUE
     ) {
 
   test_if_null(shadow_data)
   test_if_any_shade(shadow_data)
+
+  if (is.null(fn_value_transform)) {
+    fn_value_transform <- as.character
+  }
 
   shadow_data_names <- names(which_are_shade(shadow_data))
   longer_one <- tidyr::pivot_longer(
@@ -217,7 +231,7 @@ shadow_long <- function(
     cols = -dplyr::one_of(shadow_data_names),
     names_to = "variable",
     values_to = "value",
-    values_transform = list(value = as.character)
+    values_transform = list(value = fn_value_transform)
   )
 
   longer_one_shade_names <- names(which_are_shade(longer_one))
@@ -236,9 +250,9 @@ shadow_long <- function(
   }
 
   if (!missing(...)) {
-    vars <- purrr::map(ensyms(...), as_string)
+    df_vars <- purrr::map_chr(ensyms(...), as_string)
     gathered_df <- gathered_df %>%
-      dplyr::filter(variable %in% vars)
+      dplyr::filter(variable %in% df_vars)
   }
 
   return(gathered_df)

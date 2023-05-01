@@ -1,16 +1,25 @@
 url: http://naniar.njtierney.com/
 
 template:
-  params:
-    bootswatch: flatly
-    docsearch:
-      api_key: 48bc42eefc5234a6463c3b99e53dfda1
-      index_name:  naniar
+  bootstrap: 5
+  bootswatch: flatly
 
 home:
+  title: Data Structures, Summaries, and Visualisations for Missing Data
   links:
   - text: Learn more
     href: https://github.com/njtierney/naniar
+
+authors:
+  Nick Tierney:
+    href: https://njtierney.com/
+  Di Cook:
+    href: http://www.dicook.org/
+  Miles McBain:
+    href: https://milesmcbain.xyz/
+  Colin Fay:
+    href: https://colinfay.me/
+
 
 reference:
   - title: "Data structures for missing data"

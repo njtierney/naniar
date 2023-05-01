@@ -4,7 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="naniar">
 <title>Getting Started with naniar • naniar</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -12,171 +13,193 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
-<link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Getting Started with naniar">
-<meta property="og:description" content="">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Getting Started with naniar">
+<meta property="og:description" content="naniar">
 <meta property="og:image" content="http://naniar.njtierney.com/logo.png">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
-      </span>
-    </div>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../articles/getting-started-w-naniar.html">Getting Started</a>
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">naniar</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="active nav-item">
+  <a class="nav-link" href="../articles/getting-started-w-naniar.html">Getting Started</a>
 </li>
-<li>
-  <a href="../articles/naniar-visualisation.html">Gallery</a>
+<li class="nav-item">
+  <a class="nav-link" href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/replace-with-na.html">Replace with NA</a>
-    </li>
-    <li>
-      <a href="../articles/special-missing-values.html">Special Missings</a>
-    </li>
-    <li>
-      <a href="../articles/exploring-imputed-values.html">Exploring Imputations</a>
-    </li>
-  </ul>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/replace-with-na.html">Replace with NA</a>
+    <a class="dropdown-item" href="../articles/special-missing-values.html">Special Missings</a>
+    <a class="dropdown-item" href="../articles/exploring-imputed-values.html">Exploring Imputations</a>
+  </div>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../news/index.html">News</a>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">News</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/njtierney/naniar">
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/njtierney/naniar/" aria-label="github">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
-        <div class="form-group">
-          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
-      </form>
-      
-    </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
+</nav><div class="container template-article">
 
-      
 
-      </header><script src="getting-started-w-naniar_files/header-attrs-2.1/header-attrs.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1>Getting Started with naniar</h1>
-                        <h4 class="author">Nicholas Tierney</h4>
+
+
+<div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
+      <img src="../logo.png" class="logo" alt=""><h1>Getting Started with naniar</h1>
+                        <h4 data-toc-skip class="author">Nicholas
+Tierney</h4>
             
-            <h4 class="date">2020-02-25</h4>
+            <h4 data-toc-skip class="date">2023-05-01</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/getting-started-w-naniar.Rmd"><code>vignettes/getting-started-w-naniar.Rmd</code></a></small>
-      <div class="hidden name"><code>getting-started-w-naniar.Rmd</code></div>
-
+      <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/HEAD/vignettes/getting-started-w-naniar.Rmd" class="external-link"><code>vignettes/getting-started-w-naniar.Rmd</code></a></small>
+      <div class="d-none name"><code>getting-started-w-naniar.Rmd</code></div>
     </div>
 
     
     
-<div id="introduction" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>Missing values are ubiquitous in data and need to be carefully explored and handled in the initial stages of analysis. In this vignette we describe the tools in the package <code>naniar</code> for exploring missing data structures with minimal deviation from the common workflows of ggplot and tidy data (<a href="https://www.jstatsoft.org/article/view/v059i10">Wickham, 2014</a>, <a href="https://www.springer.com/gp/book/9780387981413">Wickham, 2009</a>).</p>
-<p>Sometimes researchers or analysts will introduce or describe a mechanism for missingness. For example, they might explain that data from a weather station might have a malfunction when there are extreme weather events, and does not record temperature data when gusts speeds are high. This seems like a nice simple, logical explanation. However, like all good explanations, this one is simple, but the process to get there was probably not, and likely involved more time than you would have liked developing exploratory data analyses and models.</p>
-<p>So when someone presents a really nice plot and a nice sensible explanation, the initial thought might be:</p>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>Missing values are ubiquitous in data and need to be carefully
+explored and handled in the initial stages of analysis. In this vignette
+we describe the tools in the package <code>naniar</code> for exploring
+missing data structures with minimal deviation from the common workflows
+of ggplot and tidy data (<a href="https://www.jstatsoft.org/article/view/v059i10" class="external-link">Wickham, 2014</a>,
+<a href="https://link.springer.com/book/10.1007/978-0-387-98141-3" class="external-link">Wickham,
+2009</a>).</p>
+<p>Sometimes researchers or analysts will introduce or describe a
+mechanism for missingness. For example, they might explain that data
+from a weather station might have a malfunction when there are extreme
+weather events, and does not record temperature data when gusts speeds
+are high. This seems like a nice simple, logical explanation. However,
+like all good explanations, this one is simple, but the process to get
+there was probably not, and likely involved more time than you would
+have liked developing exploratory data analyses and models.</p>
+<p>So when someone presents a really nice plot and a nice sensible
+explanation, the initial thought might be:</p>
 <blockquote>
 <p>They worked it out themselves so quickly, so easy!</p>
 </blockquote>
-<p>As if the problem was so easy to solve, they could <em>accidentally</em> solve it - they couldn’t not solve it.</p>
-<p>However, I think that if you manage to get that on the first go, that is more like turning around and throwing a rock into a lake and it landing in a cup in a boat. Unlikely.</p>
-<p>With that thought in mind, this vignette aims to work with the following three questions, using the tools developed in <code>naniar</code> and another package, <code>visdat</code>. Namely, how do we:</p>
+<p>As if the problem was so easy to solve, they could
+<em>accidentally</em> solve it - they couldn’t not solve it.</p>
+<p>However, I think that if you manage to get that on the first go, that
+is more like turning around and throwing a rock into a lake and it
+landing in a cup in a boat. Unlikely.</p>
+<p>With that thought in mind, this vignette aims to work with the
+following three questions, using the tools developed in
+<code>naniar</code> and another package, <code>visdat</code>. Namely,
+how do we:</p>
 <ol style="list-style-type: decimal">
 <li>Start looking at missing data?</li>
 <li>Explore missingness mechanisms?</li>
 <li>Model missingness?</li>
 </ol>
 </div>
-<div id="how-do-we-start-looking-at-missing-data" class="section level1">
-<h1 class="hasAnchor">
-<a href="#how-do-we-start-looking-at-missing-data" class="anchor"></a>How do we start looking at missing data?</h1>
-<p>When you start with a dataset, you might do something where you look at the general summary, using functions such as:</p>
+<div class="section level2">
+<h2 id="how-do-we-start-looking-at-missing-data">How do we start looking at missing data?<a class="anchor" aria-label="anchor" href="#how-do-we-start-looking-at-missing-data"></a>
+</h2>
+<p>When you start with a dataset, you might do something where you look
+at the general summary, using functions such as:</p>
 <ul>
-<li><code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code></li>
-<li><code><a href="https://rdrr.io/r/utils/str.html">str()</a></code></li>
+<li><code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code></li>
+<li><code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code></li>
 <li>
-<a href="https://github.com/ropenscilabs/skimr"><code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skimr::skim</a></code></a>, or</li>
-<li><code><a href="https://dplyr.tidyverse.org/reference/reexports.html">dplyr::glimpse()</a></code></li>
+<a href="https://github.com/ropensci/skimr" class="external-link"><code>skimr::skim</code></a>,
+or</li>
+<li><code><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">dplyr::glimpse()</a></code></li>
 </ul>
-<p>These works really well when you’ve got a small amount of data, but when you have more data, you are generally limited by how much you can read.</p>
-<p>So before you start looking at missing data, you’ll need to look at the data, but what does that even mean?</p>
-<p>The package <code>visdat</code> helps you get a handle on this. <code>visdat</code> provides a visualisation of an entire data frame at once, and was heavily inspired by <a href="http://setosa.io/blog/2014/08/03/csv-fingerprints/"><code>csv-fingerprint</code></a>, and functions like <code>missmap</code>, from <code>Amelia</code>.</p>
+<p>These works really well when you’ve got a small amount of data, but
+when you have more data, you are generally limited by how much you can
+read.</p>
+<p>So before you start looking at missing data, you’ll need to look at
+the data, but what does that even mean?</p>
+<p>The package <code>visdat</code> helps you get a handle on this.
+<code>visdat</code> provides a visualisation of an entire data frame at
+once, and was heavily inspired by <a href="https://setosa.io/blog/2014/08/03/csv-fingerprints/" class="external-link"><code>csv-fingerprint</code></a>,
+and functions like <code>missmap</code>, from <code>Amelia</code>.</p>
 <p>There are two main functions in the <code>visdat</code> package:</p>
 <ul>
 <li>
 <code>vis_dat</code>, and</li>
 <li><code>vis_miss</code></li>
 </ul>
-<div id="vis_dat" class="section level2">
-<h2 class="hasAnchor">
-<a href="#vis_dat" class="anchor"></a><code>vis_dat</code>
-</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(visdat)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw"><a href="http://visdat.njtierney.com//reference/vis_dat.html">vis_dat</a></span>(airquality)</span></code></pre></div>
-<p><img src="getting-started-w-naniar_files/figure-html/vis-dat-1.png" width="500" style="display: block; margin: auto;"></p>
-<p><code>vis_dat</code> visualises the whole dataframe at once, and provides information about the class of the data input into R, as well as whether the data is missing or not.</p>
-<div id="vis_miss" class="section level3">
-<h3 class="hasAnchor">
-<a href="#vis_miss" class="anchor"></a><code>vis_miss</code>
+<div class="section level3">
+<h3 id="vis_dat">
+<code>vis_dat</code><a class="anchor" aria-label="anchor" href="#vis_dat"></a>
 </h3>
-<p>The function <code>vis_miss</code> provides a summary of whether the data is missing or not. It also provides the amount of missings in each columns.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="http://visdat.njtierney.com//reference/vis_miss.html">vis_miss</a></span>(airquality)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/visdat/" class="external-link">visdat</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://docs.ropensci.org/visdat/reference/vis_dat.html" class="external-link">vis_dat</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<p><img src="getting-started-w-naniar_files/figure-html/vis-dat-1.png" width="500" style="display: block; margin: auto;"></p>
+<p><code>vis_dat</code> visualises the whole dataframe at once, and
+provides information about the class of the data input into R, as well
+as whether the data is missing or not.</p>
+<div class="section level4">
+<h4 id="vis_miss">
+<code>vis_miss</code><a class="anchor" aria-label="anchor" href="#vis_miss"></a>
+</h4>
+<p>The function <code>vis_miss</code> provides a summary of whether the
+data is missing or not. It also provides the amount of missings in each
+columns.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/visdat/reference/vis_miss.html" class="external-link">vis_miss</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/vis-miss-cluster-vanilla-1.png" width="500" style="display: block; margin: auto;"></p>
-<p>So here, Ozone and Solar.R have the most missing data, with Ozone having 24.2% missing data and Solar.R have 4.6%. The other variables do not have any missing data.</p>
-<p>To read more about the functions available in <code>visdat</code> see the vignette <a href="https://CRAN.R-project.org/package=visdat/vignettes/using_visdat.html">“Using visdat”</a></p>
+<p>So here, Ozone and Solar.R have the most missing data, with Ozone
+having 24.2% missing data and Solar.R have 4.6%. The other variables do
+not have any missing data.</p>
+<p>To read more about the functions available in <code>visdat</code> see
+the vignette <a href="https://CRAN.R-project.org/package=visdat/vignettes/using_visdat.html" class="external-link">“Using
+visdat”</a></p>
 </div>
 </div>
 </div>
-<div id="exploring-missingness-relationships" class="section level1">
-<h1 class="hasAnchor">
-<a href="#exploring-missingness-relationships" class="anchor"></a>Exploring missingness relationships</h1>
-<p>We can identify key variables that are missing using <code>vis_miss</code>, but for further exploration, we need to explore the relationship amongst the variables in this data:</p>
+<div class="section level2">
+<h2 id="exploring-missingness-relationships">Exploring missingness relationships<a class="anchor" aria-label="anchor" href="#exploring-missingness-relationships"></a>
+</h2>
+<p>We can identify key variables that are missing using
+<code>vis_miss</code>, but for further exploration, we need to explore
+the relationship amongst the variables in this data:</p>
 <ul>
 <li>Ozone,</li>
 <li>Solar.R</li>
@@ -185,489 +208,647 @@
 <li>Month</li>
 <li>Day</li>
 </ul>
-<p>Typically, when exploring this data, you might want to explore the variables Solar.R and Ozone, and so plot a scatterplot of solar radiation and ozone, doing something like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality, </span>
-<span id="cb3-3"><a href="#cb3-3"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Solar.R, </span>
-<span id="cb3-4"><a href="#cb3-4"></a>           <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</span></code></pre></div>
-<pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
+<p>Typically, when exploring this data, you might want to explore the
+variables Solar.R and Ozone, and so plot a scatterplot of solar
+radiation and ozone, doing something like this:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">airquality</span>, </span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Solar.R</span>, </span>
+<span>           y <span class="op">=</span> <span class="va">Ozone</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Warning: Removed 42 rows containing missing values (`geom_point()`).</span></span></code></pre>
 <p><img src="getting-started-w-naniar_files/figure-html/example-geom-point-1.png" width="500" style="display: block; margin: auto;"></p>
-<p>The problem with this is that ggplot does not handle missings be default, and removes the missing values. This makes them hard to explore. It also presents the strange question of “how do you visualise something that is not there?”. One approach to visualising missing data comes from <a href="https://en.wikipedia.org/wiki/GGobi"><code>ggobi</code></a> and <a href="http://www.rosuda.org/MANET/"><code>manet</code></a>, where we replace “NA” values with values 10% lower than the minimum value in that variable.</p>
-<p>This process is performed and visualised for you with the <code><a href="../reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom. Here, we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality, </span>
-<span id="cb5-2"><a href="#cb5-2"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Solar.R, </span>
-<span id="cb5-3"><a href="#cb5-3"></a>           <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</span></code></pre></div>
-<pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(naniar)</span>
-<span id="cb7-2"><a href="#cb7-2"></a></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality, </span>
-<span id="cb7-4"><a href="#cb7-4"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Solar.R, </span>
-<span id="cb7-5"><a href="#cb7-5"></a>           <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="st">  </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>()</span></code></pre></div>
+<p>The problem with this is that ggplot does not handle missings be
+default, and removes the missing values. This makes them hard to
+explore. It also presents the strange question of “how do you visualise
+something that is not there?”. One approach to visualising missing data
+comes from <a href="https://en.wikipedia.org/wiki/GGobi" class="external-link"><code>ggobi</code></a> and <a href="http://www.rosuda.org/MANET/" class="external-link"><code>manet</code></a>, where we
+replace “NA” values with values 10% lower than the minimum value in that
+variable.</p>
+<p>This process is performed and visualised for you with the
+<code><a href="../reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom. Here, we illustrate by
+exploring the relationship between Ozone and Solar radiation from the
+airquality dataset.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">airquality</span>, </span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Solar.R</span>, </span>
+<span>           y <span class="op">=</span> <span class="va">Ozone</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Warning: Removed 42 rows containing missing values (`geom_point()`).</span></span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/njtierney/naniar" class="external-link">naniar</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">airquality</span>, </span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Solar.R</span>, </span>
+<span>           y <span class="op">=</span> <span class="va">Ozone</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/geom-miss-point-1.png" width="50%" style="display: block; margin: auto;"><img src="getting-started-w-naniar_files/figure-html/geom-miss-point-2.png" width="50%" style="display: block; margin: auto;"></p>
-<p>Being a proper ggplot geom, it supports all of the standard features of ggplot2, such as <strong>facets</strong>,</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality, </span>
-<span id="cb8-2"><a href="#cb8-2"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Solar.R, </span>
-<span id="cb8-3"><a href="#cb8-3"></a>           <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="st">  </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span>Month)</span></code></pre></div>
+<p>Being a proper ggplot geom, it supports all of the standard features
+of ggplot2, such as <strong>facets</strong>,</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">airquality</span>, </span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Solar.R</span>, </span>
+<span>           y <span class="op">=</span> <span class="va">Ozone</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">Month</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/ggmissing-facet-1.png" width="70%" style="display: block; margin: auto;"></p>
 <p>And different <strong>themes</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(airquality, </span>
-<span id="cb9-2"><a href="#cb9-2"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Solar.R, </span>
-<span id="cb9-3"><a href="#cb9-3"></a>           <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="st">  </span><span class="kw"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span>Month) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_dark</a></span>()</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">airquality</span>, </span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Solar.R</span>, </span>
+<span>           y <span class="op">=</span> <span class="va">Ozone</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="../reference/geom_miss_point.html">geom_miss_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">Month</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_dark</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/ggmissing-theme-1.png" width="70%" style="display: block; margin: auto;"></p>
-<div id="visualising-missings-in-variables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#visualising-missings-in-variables" class="anchor"></a>Visualising missings in variables</h2>
-<p>Another approach to visualising the missings in a dataset is to use the <code>gg_miss_var</code> plot:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality)</span></code></pre></div>
+<div class="section level3">
+<h3 id="visualising-missings-in-variables">Visualising missings in variables<a class="anchor" aria-label="anchor" href="#visualising-missings-in-variables"></a>
+</h3>
+<p>Another approach to visualising the missings in a dataset is to use
+the <code>gg_miss_var</code> plot:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-1.png" width="500" style="display: block; margin: auto;"></p>
-<p>The plots created with the <code>gg_miss</code> family all have a basic theme, but you can customise them, and add arguments like so:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>() </span></code></pre></div>
+<p>The plots created with the <code>gg_miss</code> family all have a
+basic theme, but you can customise them, and add arguments like so:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-theme-1.png" width="500" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">y =</span> <span class="st">"Look at all the missing ones"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Look at all the missing ones"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-theme-2.png" width="500" style="display: block; margin: auto;"></p>
-<p>To add facets in these plots, you can use the <code>facet</code> argument:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span>(airquality, <span class="dt">facet =</span> Month)</span></code></pre></div>
+<p>To add facets in these plots, you can use the <code>facet</code>
+argument:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/gg_miss_var.html">gg_miss_var</a></span><span class="op">(</span><span class="va">airquality</span>, facet <span class="op">=</span> <span class="va">Month</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/gg-miss-var-facet-1.png" width="500" style="display: block; margin: auto;"></p>
-<p>There are more visualisations available in <code>naniar</code> (each starting with <code>gg_miss_</code>) - you can see these in the <a href="https://cran.r-project.org/package=naniar/vignettes/naniar-visualisation.html">“Gallery of Missing Data Visualisations” vignette.</a>.</p>
-<p>It is important to note that for every visualisation of missing data in <code>naniar</code>, there is an accompanying function to get the dataframe of the plot out. This is important as the plot should not return a dataframe - but we also need to make the data available for use by the user so that it isn’t locked into a plot. You can find these summary plots below, with <code>miss_var_summary</code> providing the dataframe that <code><a href="../reference/gg_miss_var.html">gg_miss_var()</a></code> is based on.</p>
+<p>There are more visualisations available in <code>naniar</code> (each
+starting with <code>gg_miss_</code>) - you can see these in the <a href="https://cran.r-project.org/package=naniar/vignettes/naniar-visualisation.html" class="external-link">“Gallery
+of Missing Data Visualisations” vignette.</a>.</p>
+<p>It is important to note that for every visualisation of missing data
+in <code>naniar</code>, there is an accompanying function to get the
+dataframe of the plot out. This is important as the plot should not
+return a dataframe - but we also need to make the data available for use
+by the user so that it isn’t locked into a plot. You can find these
+summary plots below, with <code>miss_var_summary</code> providing the
+dataframe that <code><a href="../reference/gg_miss_var.html">gg_miss_var()</a></code> is based on.</p>
 </div>
 </div>
-<div id="replacing-existing-values-with-na" class="section level1">
-<h1 class="hasAnchor">
-<a href="#replacing-existing-values-with-na" class="anchor"></a>Replacing existing values with NA</h1>
-<p>When you are dealing with missing values, you might want to replace values with a missing values (NA). This is useful in cases when you know the origin of the data and can be certain which values should be missing. For example, you might know that all values of “N/A”, “N A”, and “Not Available”, or -99, or -1 are supposed to be missing.</p>
-<p><code>naniar</code> provides functions to specifically work on this type of problem using the function <code>replace_with_na</code>. This function is the compliment to <code><a href="https://tidyr.tidyverse.org/reference/replace_na.html">tidyr::replace_na</a></code>, which replaces an NA value with a specified value, whereas <code><a href="../reference/replace_with_na.html">naniar::replace_with_na</a></code> replaces a value with an NA:</p>
+<div class="section level2">
+<h2 id="replacing-existing-values-with-na">Replacing existing values with NA<a class="anchor" aria-label="anchor" href="#replacing-existing-values-with-na"></a>
+</h2>
+<p>When you are dealing with missing values, you might want to replace
+values with a missing values (NA). This is useful in cases when you know
+the origin of the data and can be certain which values should be
+missing. For example, you might know that all values of “N/A”, “N A”,
+and “Not Available”, or -99, or -1 are supposed to be missing.</p>
+<p><code>naniar</code> provides functions to specifically work on this
+type of problem using the function <code>replace_with_na</code>. This
+function is the compliment to <code><a href="https://tidyr.tidyverse.org/reference/replace_na.html" class="external-link">tidyr::replace_na</a></code>, which
+replaces an NA value with a specified value, whereas
+<code><a href="../reference/replace_with_na.html">naniar::replace_with_na</a></code> replaces a value with an NA:</p>
 <ul>
 <li>
-<code><a href="https://tidyr.tidyverse.org/reference/replace_na.html">tidyr::replace_na</a></code>: Missing values turns into a value (NA –&gt; -99)</li>
+<code><a href="https://tidyr.tidyverse.org/reference/replace_na.html" class="external-link">tidyr::replace_na</a></code>: Missing values turns into a value
+(NA –&gt; -99)</li>
 <li>
-<code><a href="../reference/replace_with_na.html">naniar::replace_with_na</a></code>: Value becomes a missing value (-99 –&gt; NA)</li>
+<code><a href="../reference/replace_with_na.html">naniar::replace_with_na</a></code>: Value becomes a missing value
+(-99 –&gt; NA)</li>
 </ul>
-<p>You can read more about this in the vignette <a href="http://naniar.njtierney.com/articles/replace-with-na.html">“Replacing values with NA”</a></p>
+<p>You can read more about this in the vignette <a href="http://naniar.njtierney.com/articles/replace-with-na.html">“Replacing
+values with NA”</a></p>
 </div>
-<div id="tidy-missing-data-the-shadow-matrix" class="section level1">
-<h1 class="hasAnchor">
-<a href="#tidy-missing-data-the-shadow-matrix" class="anchor"></a>Tidy Missing Data: The Shadow Matrix</h1>
-<p>Representing missing data structure in a tidy format is achieved using the shadow matrix, introduced in <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization">Swayne and Buja</a>. The shadow matrix is the same dimension as the data, and consists of binary indicators of missingness of data values, where missing is represented as “NA”, and not missing is represented as “!NA”. Although these may be represented as 1 and 0, respectively. This representation can be seen in the figure below, adding the suffix "_NA" to the variables. This structure can also be extended to allow for additional factor levels to be created. For example 0 indicates data presence, 1 indicates missing values, 2 indicates imputed value, and 3 might indicate a particular type or class of missingness, where reasons for missingness might be known or inferred. The data matrix can also be augmented to include the shadow matrix, which facilitates visualisation of univariate and bivariate missing data visualisations. Another format is to display it in long form, which facilitates heatmap style visualisations. This approach can be very helpful for giving an overview of which variables contain the most missingness. Methods can also be applied to rearrange rows and columns to find clusters, and identify other interesting features of the data that may have previously been hidden or unclear.</p>
+<div class="section level2">
+<h2 id="tidy-missing-data-the-shadow-matrix">Tidy Missing Data: The Shadow Matrix<a class="anchor" aria-label="anchor" href="#tidy-missing-data-the-shadow-matrix"></a>
+</h2>
+<p>Representing missing data structure in a tidy format is achieved
+using the shadow matrix, introduced in <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization" class="external-link">Swayne
+and Buja</a>. The shadow matrix is the same dimension as the data, and
+consists of binary indicators of missingness of data values, where
+missing is represented as “NA”, and not missing is represented as “!NA”.
+Although these may be represented as 1 and 0, respectively. This
+representation can be seen in the figure below, adding the suffix “_NA”
+to the variables. This structure can also be extended to allow for
+additional factor levels to be created. For example 0 indicates data
+presence, 1 indicates missing values, 2 indicates imputed value, and 3
+might indicate a particular type or class of missingness, where reasons
+for missingness might be known or inferred. The data matrix can also be
+augmented to include the shadow matrix, which facilitates visualisation
+of univariate and bivariate missing data visualisations. Another format
+is to display it in long form, which facilitates heatmap style
+visualisations. This approach can be very helpful for giving an overview
+of which variables contain the most missingness. Methods can also be
+applied to rearrange rows and columns to find clusters, and identify
+other interesting features of the data that may have previously been
+hidden or unclear.</p>
 <p><img src="missingness-data-structures.png" width="800px" style="display: block; margin: auto;"></p>
-<p><strong>Illustration of data structures for facilitating visualisation of missings and not missings</strong></p>
-<p>The <code>shadow</code> functions provide a way to keep track of missing values. The <code>as_shadow</code> function creates a dataframe with the same set of columns, but with the column names added a suffix <code>_NA</code></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw"><a href="../reference/as_shadow.html">as_shadow</a></span>(airquality)</span></code></pre></div>
-<pre><code>## # A tibble: 153 x 6
-##    Ozone_NA Solar.R_NA Wind_NA Temp_NA Month_NA Day_NA
-##    &lt;fct&gt;    &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;   &lt;fct&gt;    &lt;fct&gt; 
-##  1 !NA      !NA        !NA     !NA     !NA      !NA   
-##  2 !NA      !NA        !NA     !NA     !NA      !NA   
-##  3 !NA      !NA        !NA     !NA     !NA      !NA   
-##  4 !NA      !NA        !NA     !NA     !NA      !NA   
-##  5 NA       NA         !NA     !NA     !NA      !NA   
-##  6 !NA      NA         !NA     !NA     !NA      !NA   
-##  7 !NA      !NA        !NA     !NA     !NA      !NA   
-##  8 !NA      !NA        !NA     !NA     !NA      !NA   
-##  9 !NA      !NA        !NA     !NA     !NA      !NA   
-## 10 NA       !NA        !NA     !NA     !NA      !NA   
-## # … with 143 more rows</code></pre>
-<p><code>bind_shadow</code> attaches a shadow to the current dataframe, a format we call “nabular”, a portmanteau of <code>NA</code> a <code>tabular</code>. You can also use <code>nabular</code> to do the same thing:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>aq_shadow &lt;-<span class="st"> </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>(airquality)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>aq_nab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nabular.html">nabular</a></span>(airquality)</span>
-<span id="cb16-3"><a href="#cb16-3"></a></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: 'dplyr'</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(aq_shadow)</span></code></pre></div>
-<pre><code>## Observations: 153
-## Variables: 12
-## $ Ozone      &lt;int&gt; 41, 36, 12, 18, NA, 28, 23, 19, 8, NA, 7, 16, 11, 14, 18, …
-## $ Solar.R    &lt;int&gt; 190, 118, 149, 313, NA, NA, 299, 99, 19, 194, NA, 256, 290…
-## $ Wind       &lt;dbl&gt; 7.4, 8.0, 12.6, 11.5, 14.3, 14.9, 8.6, 13.8, 20.1, 8.6, 6.…
-## $ Temp       &lt;int&gt; 67, 72, 74, 62, 56, 66, 65, 59, 61, 69, 74, 69, 66, 68, 58…
-## $ Month      &lt;int&gt; 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5…
-## $ Day        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
-## $ Ozone_NA   &lt;fct&gt; !NA, !NA, !NA, !NA, NA, !NA, !NA, !NA, !NA, NA, !NA, !NA, …
-## $ Solar.R_NA &lt;fct&gt; !NA, !NA, !NA, !NA, NA, NA, !NA, !NA, !NA, !NA, NA, !NA, !…
-## $ Wind_NA    &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA…
-## $ Temp_NA    &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA…
-## $ Month_NA   &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA…
-## $ Day_NA     &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA…</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(aq_nab)</span></code></pre></div>
-<pre><code>## Observations: 153
-## Variables: 12
-## $ Ozone      &lt;int&gt; 41, 36, 12, 18, NA, 28, 23, 19, 8, NA, 7, 16, 11, 14, 18, …
-## $ Solar.R    &lt;int&gt; 190, 118, 149, 313, NA, NA, 299, 99, 19, 194, NA, 256, 290…
-## $ Wind       &lt;dbl&gt; 7.4, 8.0, 12.6, 11.5, 14.3, 14.9, 8.6, 13.8, 20.1, 8.6, 6.…
-## $ Temp       &lt;int&gt; 67, 72, 74, 62, 56, 66, 65, 59, 61, 69, 74, 69, 66, 68, 58…
-## $ Month      &lt;int&gt; 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5…
-## $ Day        &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…
-## $ Ozone_NA   &lt;fct&gt; !NA, !NA, !NA, !NA, NA, !NA, !NA, !NA, !NA, NA, !NA, !NA, …
-## $ Solar.R_NA &lt;fct&gt; !NA, !NA, !NA, !NA, NA, NA, !NA, !NA, !NA, !NA, NA, !NA, !…
-## $ Wind_NA    &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA…
-## $ Temp_NA    &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA…
-## $ Month_NA   &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA…
-## $ Day_NA     &lt;fct&gt; !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA…</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw"><a href="https://rdrr.io/r/base/all.equal.html">all.equal</a></span>(aq_shadow, aq_nab)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<p>Doing this provides a consistent syntax for referring to variables with missing values.</p>
-<p><em>Nabular</em> data provides a useful pattern to explore missing values, grouping by the missing/complete of one variable and looking at the mean and other summary values. Below we show the mean, sd, variance, and min and max values of Solar.R for when Ozone is present, and when it is missing.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>airquality <span class="op">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="st">  </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>() <span class="op">%&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Ozone_NA) <span class="op">%&gt;%</span></span>
-<span id="cb26-4"><a href="#cb26-4"></a><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_at</a></span>(<span class="dt">.vars =</span> <span class="st">"Solar.R"</span>,</span>
-<span id="cb26-5"><a href="#cb26-5"></a>               <span class="dt">.funs =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"var"</span>, <span class="st">"min"</span>, <span class="st">"max"</span>),</span>
-<span id="cb26-6"><a href="#cb26-6"></a>               <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 6
-##   Ozone_NA  mean    sd   var   min   max
-##   &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
-## 1 !NA       185.  91.2 8309.     7   334
-## 2 NA        190.  87.7 7690.    31   332</code></pre>
-<p>Below, we can plot the distribution of Temperature, plotting for values of temperature when Ozone is missing, and when it is not missing.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(aq_shadow,</span>
-<span id="cb28-2"><a href="#cb28-2"></a>       <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Temp,</span>
-<span id="cb28-3"><a href="#cb28-3"></a>           <span class="dt">colour =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb28-4"><a href="#cb28-4"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span>()</span></code></pre></div>
+<p><strong>Illustration of data structures for facilitating
+visualisation of missings and not missings</strong></p>
+<p>The <code>shadow</code> functions provide a way to keep track of
+missing values. The <code>as_shadow</code> function creates a dataframe
+with the same set of columns, but with the column names added a suffix
+<code>_NA</code></p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/as_shadow.html">as_shadow</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 153 × 6</span></span></span>
+<span><span class="co">##    Ozone_NA Solar.R_NA Wind_NA Temp_NA Month_NA Day_NA</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> !NA      !NA        !NA     !NA     !NA      !NA   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> !NA      !NA        !NA     !NA     !NA      !NA   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> !NA      !NA        !NA     !NA     !NA      !NA   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> !NA      !NA        !NA     !NA     !NA      !NA   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> NA       NA         !NA     !NA     !NA      !NA   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> !NA      NA         !NA     !NA     !NA      !NA   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> !NA      !NA        !NA     !NA     !NA      !NA   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> !NA      !NA        !NA     !NA     !NA      !NA   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> !NA      !NA        !NA     !NA     !NA      !NA   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> NA       !NA        !NA     !NA     !NA      !NA   </span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 143 more rows</span></span></span></code></pre>
+<p><code>bind_shadow</code> attaches a shadow to the current dataframe,
+a format we call “nabular”, a portmanteau of <code>NA</code> a
+<code>tabular</code>. You can also use <code>nabular</code> to do the
+same thing:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aq_shadow</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bind_shadow.html">bind_shadow</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
+<span><span class="va">aq_nab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nabular.html">nabular</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Attaching package: 'dplyr'</span></span></code></pre>
+<pre><code><span><span class="co">## The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     filter, lag</span></span></code></pre>
+<pre><code><span><span class="co">## The following objects are masked from 'package:base':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     intersect, setdiff, setequal, union</span></span></code></pre>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">aq_shadow</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Rows: 153</span></span>
+<span><span class="co">## Columns: 12</span></span>
+<span><span class="co">## $ Ozone      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 41, 36, 12, 18, NA, 28, 23, 19, 8, NA, 7, 16, 11, 14, 18, 1…</span></span>
+<span><span class="co">## $ Solar.R    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 190, 118, 149, 313, NA, NA, 299, 99, 19, 194, NA, 256, 290,…</span></span>
+<span><span class="co">## $ Wind       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 7.4, 8.0, 12.6, 11.5, 14.3, 14.9, 8.6, 13.8, 20.1, 8.6, 6.9…</span></span>
+<span><span class="co">## $ Temp       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 67, 72, 74, 62, 56, 66, 65, 59, 61, 69, 74, 69, 66, 68, 58,…</span></span>
+<span><span class="co">## $ Month      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,…</span></span>
+<span><span class="co">## $ Day        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …</span></span>
+<span><span class="co">## $ Ozone_NA   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, NA, !NA, !NA, !NA, !NA, NA, !NA, !NA, !…</span></span>
+<span><span class="co">## $ Solar.R_NA <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, NA, NA, !NA, !NA, !NA, !NA, NA, !NA, !N…</span></span>
+<span><span class="co">## $ Wind_NA    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA,…</span></span>
+<span><span class="co">## $ Temp_NA    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA,…</span></span>
+<span><span class="co">## $ Month_NA   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA,…</span></span>
+<span><span class="co">## $ Day_NA     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA,…</span></span></code></pre>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">aq_nab</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Rows: 153</span></span>
+<span><span class="co">## Columns: 12</span></span>
+<span><span class="co">## $ Ozone      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 41, 36, 12, 18, NA, 28, 23, 19, 8, NA, 7, 16, 11, 14, 18, 1…</span></span>
+<span><span class="co">## $ Solar.R    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 190, 118, 149, 313, NA, NA, 299, 99, 19, 194, NA, 256, 290,…</span></span>
+<span><span class="co">## $ Wind       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 7.4, 8.0, 12.6, 11.5, 14.3, 14.9, 8.6, 13.8, 20.1, 8.6, 6.9…</span></span>
+<span><span class="co">## $ Temp       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 67, 72, 74, 62, 56, 66, 65, 59, 61, 69, 74, 69, 66, 68, 58,…</span></span>
+<span><span class="co">## $ Month      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,…</span></span>
+<span><span class="co">## $ Day        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, …</span></span>
+<span><span class="co">## $ Ozone_NA   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, NA, !NA, !NA, !NA, !NA, NA, !NA, !NA, !…</span></span>
+<span><span class="co">## $ Solar.R_NA <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, NA, NA, !NA, !NA, !NA, !NA, NA, !NA, !N…</span></span>
+<span><span class="co">## $ Wind_NA    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA,…</span></span>
+<span><span class="co">## $ Temp_NA    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA,…</span></span>
+<span><span class="co">## $ Month_NA   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA,…</span></span>
+<span><span class="co">## $ Day_NA     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA, !NA,…</span></span></code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="va">aq_shadow</span>, <span class="va">aq_nab</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
+<p>Doing this provides a consistent syntax for referring to variables
+with missing values.</p>
+<p><em>Nabular</em> data provides a useful pattern to explore missing
+values, grouping by the missing/complete of one variable and looking at
+the mean and other summary values. Below we show the mean, sd, variance,
+and min and max values of Solar.R for when Ozone is present, and when it
+is missing.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">airquality</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/bind_shadow.html">bind_shadow</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Ozone_NA</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html" class="external-link">summarise_at</a></span><span class="op">(</span>.vars <span class="op">=</span> <span class="st">"Solar.R"</span>,</span>
+<span>               .funs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"var"</span>, <span class="st">"min"</span>, <span class="st">"max"</span><span class="op">)</span>,</span>
+<span>               na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 2 × 6</span></span></span>
+<span><span class="co">##   Ozone_NA  mean    sd   var   min   max</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> !NA       185.  91.2 <span style="text-decoration: underline;">8</span>309.     7   334</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> NA        190.  87.7 <span style="text-decoration: underline;">7</span>690.    31   332</span></span></code></pre>
+<p>Below, we can plot the distribution of Temperature, plotting for
+values of temperature when Ozone is missing, and when it is not
+missing.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">aq_shadow</span>,</span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Temp</span>,</span>
+<span>           colour <span class="op">=</span> <span class="va">Ozone_NA</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html" class="external-link">geom_density</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/shadow-plot-1.png" width="60%" style="display: block; margin: auto;"></p>
-<p>Binding the shadow here also has great benefits when combined with imputation.</p>
+<p>We can also explore the value of air temperature and humidity based
+on missingness of each.</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># what if we explore the value of air temperature and humidity based on</span></span>
+<span><span class="co"># the missingness of each</span></span>
+<span>  <span class="va">oceanbuoys</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="../reference/bind_shadow.html">bind_shadow</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">air_temp_c</span>,</span>
+<span>               fill <span class="op">=</span> <span class="va">humidity_NA</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: Removed 81 rows containing non-finite values (`stat_bin()`).</span></span></code></pre>
+<p><img src="getting-started-w-naniar_files/figure-html/temp-humidity-explore-1.png" width="500" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>  <span class="va">oceanbuoys</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="../reference/bind_shadow.html">bind_shadow</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">humidity</span>,</span>
+<span>               fill <span class="op">=</span> <span class="va">air_temp_c_NA</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: Removed 93 rows containing non-finite values (`stat_bin()`).</span></span></code></pre>
+<p><img src="getting-started-w-naniar_files/figure-html/temp-humidity-explore-2.png" width="500" style="display: block; margin: auto;"></p>
+<p>Binding the shadow here also has great benefits when combined with
+imputation.</p>
 </div>
-<div id="visualising-imputed-values" class="section level1">
-<h1 class="hasAnchor">
-<a href="#visualising-imputed-values" class="anchor"></a>Visualising imputed values</h1>
-<p>With the easy-to-use <a href="https://cran.r-project.org/package=simputation"><code>simputation</code></a> package, we impute values for Ozone, then visualise the data:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(simputation)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: 'simputation'</code></pre>
-<pre><code>## The following object is masked from 'package:naniar':
-## 
-##     impute_median</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</span>
-<span id="cb32-2"><a href="#cb32-2"></a></span>
-<span id="cb32-3"><a href="#cb32-3"></a>airquality <span class="op">%&gt;%</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(Ozone <span class="op">~</span><span class="st"> </span>Temp <span class="op">+</span><span class="st"> </span>Wind) <span class="op">%&gt;%</span></span>
-<span id="cb32-5"><a href="#cb32-5"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Temp,</span>
-<span id="cb32-6"><a href="#cb32-6"></a>             <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb32-7"><a href="#cb32-7"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</span></code></pre></div>
+<div class="section level2">
+<h2 id="visualising-imputed-values">Visualising imputed values<a class="anchor" aria-label="anchor" href="#visualising-imputed-values"></a>
+</h2>
+<p>With the easy-to-use <a href="https://cran.r-project.org/package=simputation" class="external-link"><code>simputation</code></a>
+package, we impute values for Ozone, then visualise the data:</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/markvanderloo/simputation" class="external-link">simputation</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Attaching package: 'simputation'</span></span></code></pre>
+<pre><code><span><span class="co">## The following object is masked from 'package:naniar':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     impute_median</span></span></code></pre>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">airquality</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html" class="external-link">impute_lm</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Temp</span> <span class="op">+</span> <span class="va">Wind</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Temp</span>,</span>
+<span>             y <span class="op">=</span> <span class="va">Ozone</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/simpute-invisible-1.png" width="500" style="display: block; margin: auto;"></p>
-<p>Note that we no longer get any errors regarding missing observations - because they are all imputed! But this comes at a cost: we also no longer have information about where the imputations are - they are now sort of invisible.</p>
-<p>Using the shadow matrix to keep track of where the missings are, you can actually keep track of the imputations, by colouring by what was previously missing in Ozone.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>aq_shadow <span class="op">%&gt;%</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html">impute_lm</a></span>(Ozone <span class="op">~</span><span class="st"> </span>Temp <span class="op">+</span><span class="st"> </span>Wind) <span class="op">%&gt;%</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Temp,</span>
-<span id="cb33-4"><a href="#cb33-4"></a>             <span class="dt">y =</span> Ozone,</span>
-<span id="cb33-5"><a href="#cb33-5"></a>             <span class="dt">colour =</span> Ozone_NA)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb33-6"><a href="#cb33-6"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>()</span></code></pre></div>
+<p>Note that we no longer get any errors regarding missing observations
+- because they are all imputed! But this comes at a cost: we also no
+longer have information about where the imputations are - they are now
+sort of invisible.</p>
+<p>Using the shadow matrix to keep track of where the missings are, you
+can actually keep track of the imputations, by colouring by what was
+previously missing in Ozone.</p>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">aq_shadow</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/simputation/man/impute_lm.html" class="external-link">impute_lm</a></span><span class="op">(</span><span class="va">Ozone</span> <span class="op">~</span> <span class="va">Temp</span> <span class="op">+</span> <span class="va">Wind</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Temp</span>,</span>
+<span>             y <span class="op">=</span> <span class="va">Ozone</span>,</span>
+<span>             colour <span class="op">=</span> <span class="va">Ozone_NA</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-started-w-naniar_files/figure-html/simpute-visible-1.png" width="500" style="display: block; margin: auto;"></p>
-<div id="numerical-summaries-of-missing-values" class="section level2">
-<h2 class="hasAnchor">
-<a href="#numerical-summaries-of-missing-values" class="anchor"></a>Numerical summaries of missing values</h2>
-<p><code>naniar</code> also provide numerical summaries for missing data. Two convenient counters of complete values and missings are <code><a href="../reference/n_miss.html">n_miss()</a></code> and <code><a href="../reference/n_complete.html">n_complete()</a></code>. These work on both dataframes and vectors, similar to <code><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">dplyr::n_distinct()</a></code></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span>(airquality)</span></code></pre></div>
-<pre><code>## [1] 153</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span>(airquality<span class="op">$</span>Ozone)</span></code></pre></div>
-<pre><code>## [1] 68</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="kw"><a href="../reference/n_miss.html">n_miss</a></span>(airquality)</span></code></pre></div>
-<pre><code>## [1] 44</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="kw"><a href="../reference/n_miss.html">n_miss</a></span>(airquality<span class="op">$</span>Ozone)</span></code></pre></div>
-<pre><code>## [1] 37</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="kw"><a href="../reference/n_complete.html">n_complete</a></span>(airquality)</span></code></pre></div>
-<pre><code>## [1] 874</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="kw"><a href="../reference/n_complete.html">n_complete</a></span>(airquality<span class="op">$</span>Ozone)</span></code></pre></div>
-<pre><code>## [1] 116</code></pre>
-<p>The syntax for the other numerical sumamries in <code>naniar</code> are <code>miss_</code>, and then <code>case</code>, or <code>var</code> to refer to cases or variables. There are then <code>summary</code>, <code>table</code>, <code>run</code>, <code>span</code>, and <code>cumsum</code> options to explore missing data.</p>
-<p><code>prop_miss_case</code> and <code>pct_miss_case</code> return numeric value describing the proportion or percent of missing values in the dataframe.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="kw"><a href="../reference/prop-miss-complete-case.html">prop_miss_case</a></span>(airquality)</span></code></pre></div>
-<pre><code>## [1] 0.2745098</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="kw"><a href="../reference/pct-miss-complete-case.html">pct_miss_case</a></span>(airquality)</span></code></pre></div>
-<pre><code>## [1] 27.45098</code></pre>
-<p><code><a href="../reference/miss_case_summary.html">miss_case_summary()</a></code> returns a numeric value that describes the number of missings in a given case (aka row), the percent of missings in that row.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="kw"><a href="../reference/miss_case_summary.html">miss_case_summary</a></span>(airquality)</span></code></pre></div>
-<pre><code>## # A tibble: 153 x 3
-##     case n_miss pct_miss
-##    &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
-##  1     5      2     33.3
-##  2    27      2     33.3
-##  3     6      1     16.7
-##  4    10      1     16.7
-##  5    11      1     16.7
-##  6    25      1     16.7
-##  7    26      1     16.7
-##  8    32      1     16.7
-##  9    33      1     16.7
-## 10    34      1     16.7
-## # … with 143 more rows</code></pre>
-<p><code><a href="../reference/miss_case_table.html">miss_case_table()</a></code> tabulates the number of missing values in a case / row. Below, this shows the number of missings in a case:</p>
+<div class="section level3">
+<h3 id="numerical-summaries-of-missing-values">Numerical summaries of missing values<a class="anchor" aria-label="anchor" href="#numerical-summaries-of-missing-values"></a>
+</h3>
+<p><code>naniar</code> also provide numerical summaries for missing
+data. Two convenient counters of complete values and missings are
+<code><a href="../reference/n_miss.html">n_miss()</a></code> and <code><a href="../reference/n_complete.html">n_complete()</a></code>. These work on both
+dataframes and vectors, similar to <code><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">dplyr::n_distinct()</a></code></p>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 153</span></span></code></pre>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">$</span><span class="va">Ozone</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 68</span></span></code></pre>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/n_miss.html">n_miss</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 44</span></span></code></pre>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/n_miss.html">n_miss</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">$</span><span class="va">Ozone</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 37</span></span></code></pre>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/n_complete.html">n_complete</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 874</span></span></code></pre>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/n_complete.html">n_complete</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">$</span><span class="va">Ozone</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 116</span></span></code></pre>
+<p>The syntax for the other numerical sumamries in <code>naniar</code>
+are <code>miss_</code>, and then <code>case</code>, or <code>var</code>
+to refer to cases or variables. There are then <code>summary</code>,
+<code>table</code>, <code>run</code>, <code>span</code>, and
+<code>cumsum</code> options to explore missing data.</p>
+<p><code>prop_miss_case</code> and <code>pct_miss_case</code> return
+numeric value describing the proportion or percent of missing values in
+the dataframe.</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/prop-miss-complete-case.html">prop_miss_case</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.2745098</span></span></code></pre>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pct-miss-complete-case.html">pct_miss_case</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 27.45098</span></span></code></pre>
+<p><code><a href="../reference/miss_case_summary.html">miss_case_summary()</a></code> returns a numeric value that
+describes the number of missings in a given case (aka row), the percent
+of missings in that row.</p>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/miss_case_summary.html">miss_case_summary</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 153 × 3</span></span></span>
+<span><span class="co">##     case n_miss pct_miss</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     5      2     33.3</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>    27      2     33.3</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     6      1     16.7</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>    10      1     16.7</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>    11      1     16.7</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>    25      1     16.7</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>    26      1     16.7</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>    32      1     16.7</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>    33      1     16.7</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>    34      1     16.7</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 143 more rows</span></span></span></code></pre>
+<p><code><a href="../reference/miss_case_table.html">miss_case_table()</a></code> tabulates the number of missing values
+in a case / row. Below, this shows the number of missings in a case:</p>
 <ul>
-<li>There are 111 cases with 0 missings, which comprises about 72% of the data.</li>
-<li>There are then 40 cases with 1 missing, these make up 26% of the data.</li>
-<li>There are then 2 cases with 2 missing - these make up 1% of the data.</li>
+<li>There are 111 cases with 0 missings, which comprises about 72% of
+the data.</li>
+<li>There are then 40 cases with 1 missing, these make up 26% of the
+data.</li>
+<li>There are then 2 cases with 2 missing - these make up 1% of the
+data.</li>
 </ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="kw"><a href="../reference/miss_case_table.html">miss_case_table</a></span>(airquality)</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 3
-##   n_miss_in_case n_cases pct_cases
-##            &lt;int&gt;   &lt;int&gt;     &lt;dbl&gt;
-## 1              0     111     72.5 
-## 2              1      40     26.1 
-## 3              2       2      1.31</code></pre>
-<p>Similar to <code><a href="../reference/pct-miss-complete-case.html">pct_miss_case()</a></code>, <code><a href="../reference/prop-miss-complete-case.html">prop_miss_case()</a></code>, <code><a href="../reference/pct-miss-complete-var.html">pct_miss_var()</a></code> and <code><a href="../reference/prop-miss-complete-var.html">prop_miss_var()</a></code> returns the percent and proportion of variables that contain a missing value.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="kw"><a href="../reference/prop-miss-complete-var.html">prop_miss_var</a></span>(airquality)</span></code></pre></div>
-<pre><code>## [1] 0.3333333</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="kw"><a href="../reference/pct-miss-complete-var.html">pct_miss_var</a></span>(airquality)</span></code></pre></div>
-<pre><code>## [1] 33.33333</code></pre>
-<p><code><a href="../reference/miss_var_summary.html">miss_var_summary()</a></code> then returns the number of missing values in a variable, and the percent missing in that variable.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>(airquality)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##   variable n_miss pct_miss
-##   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;
-## 1 Ozone        37    24.2 
-## 2 Solar.R       7     4.58
-## 3 Wind          0     0   
-## 4 Temp          0     0   
-## 5 Month         0     0   
-## 6 Day           0     0</code></pre>
-<p>Finally, <code><a href="../reference/miss_var_table.html">miss_var_table()</a></code>. This describes the number of missings in a variable.</p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/miss_case_table.html">miss_case_table</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 3 × 3</span></span></span>
+<span><span class="co">##   n_miss_in_case n_cases pct_cases</span></span>
+<span><span class="co">##            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span>              0     111     72.5 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span>              1      40     26.1 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span>              2       2      1.31</span></span></code></pre>
+<p>Similar to <code><a href="../reference/pct-miss-complete-case.html">pct_miss_case()</a></code>,
+<code><a href="../reference/prop-miss-complete-case.html">prop_miss_case()</a></code>, <code><a href="../reference/pct-miss-complete-var.html">pct_miss_var()</a></code> and
+<code><a href="../reference/prop-miss-complete-var.html">prop_miss_var()</a></code> returns the percent and proportion of
+variables that contain a missing value.</p>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/prop-miss-complete-var.html">prop_miss_var</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.3333333</span></span></code></pre>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pct-miss-complete-var.html">pct_miss_var</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 33.33333</span></span></code></pre>
+<p><code><a href="../reference/miss_var_summary.html">miss_var_summary()</a></code> then returns the number of missing
+values in a variable, and the percent missing in that variable.</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
+<span><span class="co">##   variable n_miss pct_miss</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> Ozone        37    24.2 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> Solar.R       7     4.58</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> Wind          0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> Temp          0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> Month         0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> Day           0     0</span></span></code></pre>
+<p>Finally, <code><a href="../reference/miss_var_table.html">miss_var_table()</a></code>. This describes the number of
+missings in a variable.</p>
 <ul>
-<li>There are 4 variables with 0 missings, comprising 66.67% of variables in the dataset.</li>
+<li>There are 4 variables with 0 missings, comprising 66.67% of
+variables in the dataset.</li>
 <li>There is 1 variable with 7 missings</li>
 <li>There is 1 variable with 37 missings</li>
 </ul>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="kw"><a href="../reference/miss_var_table.html">miss_var_table</a></span>(airquality)</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 3
-##   n_miss_in_var n_vars pct_vars
-##           &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt;
-## 1             0      4     66.7
-## 2             7      1     16.7
-## 3            37      1     16.7</code></pre>
-<p>There are also summary functions for exploring missings that occur over a particular span or period of the dataset, or the number of missings in a single run:</p>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/miss_var_table.html">miss_var_table</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 3 × 3</span></span></span>
+<span><span class="co">##   n_miss_in_var n_vars pct_vars</span></span>
+<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span>             0      4     66.7</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span>             7      1     16.7</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span>            37      1     16.7</span></span></code></pre>
+<p>There are also summary functions for exploring missings that occur
+over a particular span or period of the dataset, or the number of
+missings in a single run:</p>
 <ul>
 <li>
 <code><a href="../reference/miss_var_run.html">miss_var_run()</a></code>, and</li>
 <li><code><a href="../reference/miss_var_span.html">miss_var_span()</a></code></li>
 </ul>
-<p><code><a href="../reference/miss_var_run.html">miss_var_run()</a></code> can be particularly useful in time series data, as it allows you to provide summaries for the number of missings or complete values in a single run. The function <code><a href="../reference/miss_var_run.html">miss_var_run()</a></code> provides a data.frame of the run length of missings and complete values. To explore this function we will use the built-in dataset, <code>pedestrian</code>, which contains hourly counts of pedestrians from four locations around Melbourne, Australia, from 2016.</p>
-<p>To use <code><a href="../reference/miss_var_run.html">miss_var_run()</a></code>, you specify the variable that you want to explore the runs of missingness for, in this case, <code>hourly_counts</code>:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="kw"><a href="../reference/miss_var_run.html">miss_var_run</a></span>(pedestrian,</span>
-<span id="cb62-2"><a href="#cb62-2"></a>             hourly_counts)</span></code></pre></div>
-<pre><code>## # A tibble: 35 x 2
-##    run_length is_na   
-##         &lt;int&gt; &lt;chr&gt;   
-##  1       6628 complete
-##  2          1 missing 
-##  3       5250 complete
-##  4        624 missing 
-##  5       3652 complete
-##  6          1 missing 
-##  7       1290 complete
-##  8        744 missing 
-##  9       7420 complete
-## 10          1 missing 
-## # … with 25 more rows</code></pre>
-<p><code><a href="../reference/miss_var_span.html">miss_var_span()</a></code> is used to determine the number of missings over a specified repeating span of rows in variable of a dataframe. Similar to <code><a href="../reference/miss_var_run.html">miss_var_run()</a></code>, you specify the variable that you wish to explore, you then also specify the size of the span with the <code>span_every</code> argument.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="kw"><a href="../reference/miss_var_span.html">miss_var_span</a></span>(pedestrian,</span>
-<span id="cb64-2"><a href="#cb64-2"></a>              hourly_counts,</span>
-<span id="cb64-3"><a href="#cb64-3"></a>              <span class="dt">span_every =</span> <span class="dv">100</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 377 x 5
-##    span_counter n_miss n_complete prop_miss prop_complete
-##           &lt;int&gt;  &lt;int&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
-##  1            1      0        100         0             1
-##  2            2      0        100         0             1
-##  3            3      0        100         0             1
-##  4            4      0        100         0             1
-##  5            5      0        100         0             1
-##  6            6      0        100         0             1
-##  7            7      0        100         0             1
-##  8            8      0        100         0             1
-##  9            9      0        100         0             1
-## 10           10      0        100         0             1
-## # … with 367 more rows</code></pre>
+<p><code><a href="../reference/miss_var_run.html">miss_var_run()</a></code> can be particularly useful in time series
+data, as it allows you to provide summaries for the number of missings
+or complete values in a single run. The function
+<code><a href="../reference/miss_var_run.html">miss_var_run()</a></code> provides a data.frame of the run length of
+missings and complete values. To explore this function we will use the
+built-in dataset, <code>pedestrian</code>, which contains hourly counts
+of pedestrians from four locations around Melbourne, Australia, from
+2016.</p>
+<p>To use <code><a href="../reference/miss_var_run.html">miss_var_run()</a></code>, you specify the variable that you
+want to explore the runs of missingness for, in this case,
+<code>hourly_counts</code>:</p>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/miss_var_run.html">miss_var_run</a></span><span class="op">(</span><span class="va">pedestrian</span>,</span>
+<span>             <span class="va">hourly_counts</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 35 × 2</span></span></span>
+<span><span class="co">##    run_length is_na   </span></span>
+<span><span class="co">##         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>       <span style="text-decoration: underline;">6</span>628 complete</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>          1 missing </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>       <span style="text-decoration: underline;">5</span>250 complete</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>        624 missing </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>       <span style="text-decoration: underline;">3</span>652 complete</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>          1 missing </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>       <span style="text-decoration: underline;">1</span>290 complete</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>        744 missing </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>       <span style="text-decoration: underline;">7</span>420 complete</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>          1 missing </span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 25 more rows</span></span></span></code></pre>
+<p><code><a href="../reference/miss_var_span.html">miss_var_span()</a></code> is used to determine the number of
+missings over a specified repeating span of rows in variable of a
+dataframe. Similar to <code><a href="../reference/miss_var_run.html">miss_var_run()</a></code>, you specify the
+variable that you wish to explore, you then also specify the size of the
+span with the <code>span_every</code> argument.</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/miss_var_span.html">miss_var_span</a></span><span class="op">(</span><span class="va">pedestrian</span>,</span>
+<span>              <span class="va">hourly_counts</span>,</span>
+<span>              span_every <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 377 × 6</span></span></span>
+<span><span class="co">##    span_counter n_miss n_complete prop_miss prop_complete n_in_span</span></span>
+<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>            1      0        100         0             1       100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>            2      0        100         0             1       100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>            3      0        100         0             1       100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>            4      0        100         0             1       100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>            5      0        100         0             1       100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>            6      0        100         0             1       100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>            7      0        100         0             1       100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>            8      0        100         0             1       100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>            9      0        100         0             1       100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>           10      0        100         0             1       100</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 367 more rows</span></span></span></code></pre>
 </div>
 </div>
-<div id="using-group_by-with-naniar" class="section level1">
-<h1 class="hasAnchor">
-<a href="#using-group_by-with-naniar" class="anchor"></a>Using <code>group_by</code> with naniar</h1>
-<p>Every <code>miss_*</code> summary function that returns a dataframe can be used with dplyr <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>. For example, if you would like to look at the number of missing values for all variables of pedestrian data.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>pedestrian <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>()</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 3
-##   variable      n_miss pct_miss
-##   &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;
-## 1 hourly_counts   2548     6.76
-## 2 date_time          0     0   
-## 3 year               0     0   
-## 4 month              0     0   
-## 5 month_day          0     0   
-## 6 week_day           0     0   
-## 7 hour               0     0   
-## 8 sensor_id          0     0   
-## 9 sensor_name        0     0</code></pre>
-<p>We see that this is in <code>hourly_counts</code>. We can then explore this by month, and filder by the variable being <code>hourly_counts</code>, since it is the only one with missing values.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>pedestrian <span class="op">%&gt;%</span></span>
-<span id="cb68-2"><a href="#cb68-2"></a><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(month) <span class="op">%&gt;%</span></span>
-<span id="cb68-3"><a href="#cb68-3"></a><span class="st"> </span><span class="kw"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span>() <span class="op">%&gt;%</span></span>
-<span id="cb68-4"><a href="#cb68-4"></a><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(variable <span class="op">==</span><span class="st"> "hourly_counts"</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 12 x 4
-## # Groups:   month [12]
-##    month     variable      n_miss pct_miss
-##    &lt;ord&gt;     &lt;chr&gt;          &lt;int&gt;    &lt;dbl&gt;
-##  1 January   hourly_counts      0     0   
-##  2 February  hourly_counts      0     0   
-##  3 March     hourly_counts      0     0   
-##  4 April     hourly_counts    552    19.2 
-##  5 May       hourly_counts     72     2.42
-##  6 June      hourly_counts      0     0   
-##  7 July      hourly_counts      0     0   
-##  8 August    hourly_counts    408    13.7 
-##  9 September hourly_counts      0     0   
-## 10 October   hourly_counts    412     7.44
-## 11 November  hourly_counts    888    30.8 
-## 12 December  hourly_counts    216     7.26</code></pre>
+<div class="section level2">
+<h2 id="using-group_by-with-naniar">Using <code>group_by</code> with naniar<a class="anchor" aria-label="anchor" href="#using-group_by-with-naniar"></a>
+</h2>
+<p>Every <code>miss_*</code> summary function that returns a dataframe
+can be used with dplyr <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code>. For example, if you
+would like to look at the number of missing values for all variables of
+pedestrian data.</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pedestrian</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 9 × 3</span></span></span>
+<span><span class="co">##   variable      n_miss pct_miss</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> hourly_counts   <span style="text-decoration: underline;">2</span>548     6.76</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> date_time          0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> year               0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> month              0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> month_day          0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> week_day           0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">7</span> hour               0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">8</span> sensor_id          0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">9</span> sensor_name        0     0</span></span></code></pre>
+<p>We see that this is in <code>hourly_counts</code>. We can then
+explore this by month, and filder by the variable being
+<code>hourly_counts</code>, since it is the only one with missing
+values.</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pedestrian</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">month</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="../reference/miss_var_summary.html">miss_var_summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">variable</span> <span class="op">==</span> <span class="st">"hourly_counts"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 12 × 4</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># Groups:   month [12]</span></span></span>
+<span><span class="co">##    month     variable      n_miss pct_miss</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;ord&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> January   hourly_counts      0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> February  hourly_counts      0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> March     hourly_counts      0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> April     hourly_counts    552    19.2 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> May       hourly_counts     72     2.42</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> June      hourly_counts      0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> July      hourly_counts      0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> August    hourly_counts    408    13.7 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> September hourly_counts      0     0   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> October   hourly_counts    412     7.44</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">11</span> November  hourly_counts    888    30.8 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">12</span> December  hourly_counts    216     7.26</span></span></code></pre>
 </div>
-<div id="modelling-missingness" class="section level1">
-<h1 class="hasAnchor">
-<a href="#modelling-missingness" class="anchor"></a>Modelling missingness</h1>
+<div class="section level2">
+<h2 id="modelling-missingness">Modelling missingness<a class="anchor" aria-label="anchor" href="#modelling-missingness"></a>
+</h2>
 <p>The final question we proposed in this vignette was:</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Can we model missingness?</li>
 </ol>
-<p>Sometimes it can be impractical to explore all of the variables that have missing data. One approach, however, is to model missing data using methods from Tierney et el. (2015).</p>
-<p>Here, the approach is to predict the proportion of missingness in a given case, using all variables. There is a little helper function to add a column with the proportion of cases or rows missing - <code><a href="../reference/add_prop_miss.html">add_prop_miss()</a></code>. This created a column named “prop_miss”, which is the proportion of missing values in that row.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>airquality <span class="op">%&gt;%</span></span>
-<span id="cb70-2"><a href="#cb70-2"></a><span class="st">  </span><span class="kw"><a href="../reference/add_prop_miss.html">add_prop_miss</a></span>() <span class="op">%&gt;%</span></span>
-<span id="cb70-3"><a href="#cb70-3"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</span></code></pre></div>
-<pre><code>##   Ozone Solar.R Wind Temp Month Day prop_miss_all
-## 1    41     190  7.4   67     5   1     0.0000000
-## 2    36     118  8.0   72     5   2     0.0000000
-## 3    12     149 12.6   74     5   3     0.0000000
-## 4    18     313 11.5   62     5   4     0.0000000
-## 5    NA      NA 14.3   56     5   5     0.3333333
-## 6    28      NA 14.9   66     5   6     0.1666667</code></pre>
-<p>We can then use a model like decision trees to predict which variables and their values are important for predicting the proportion of missingness:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rpart)</span>
-<span id="cb72-2"><a href="#cb72-2"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rpart.plot)</span>
-<span id="cb72-3"><a href="#cb72-3"></a></span>
-<span id="cb72-4"><a href="#cb72-4"></a>airquality <span class="op">%&gt;%</span></span>
-<span id="cb72-5"><a href="#cb72-5"></a><span class="st">  </span><span class="kw"><a href="../reference/add_prop_miss.html">add_prop_miss</a></span>() <span class="op">%&gt;%</span></span>
-<span id="cb72-6"><a href="#cb72-6"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/rpart/man/rpart.html">rpart</a></span>(prop_miss_all <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> .) <span class="op">%&gt;%</span></span>
-<span id="cb72-7"><a href="#cb72-7"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/rpart.plot/man/prp.html">prp</a></span>(<span class="dt">type =</span> <span class="dv">4</span>, <span class="dt">extra =</span> <span class="dv">101</span>, <span class="dt">prefix =</span> <span class="st">"Prop. Miss = "</span>)</span></code></pre></div>
-<pre><code>## Warning: Cannot retrieve the data used to build the model (so cannot determine roundint and is.binary for the variables).
-## To silence this warning:
-##     Call prp with roundint=FALSE,
-##     or rebuild the rpart model with model=TRUE.</code></pre>
+<p>Sometimes it can be impractical to explore all of the variables that
+have missing data. One approach, however, is to model missing data using
+methods from Tierney et el. (2015).</p>
+<p>Here, the approach is to predict the proportion of missingness in a
+given case, using all variables. There is a little helper function to
+add a column with the proportion of cases or rows missing -
+<code><a href="../reference/add_prop_miss.html">add_prop_miss()</a></code>. This created a column named “prop_miss”,
+which is the proportion of missing values in that row.</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">airquality</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_prop_miss.html">add_prop_miss</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   Ozone Solar.R Wind Temp Month Day prop_miss_all</span></span>
+<span><span class="co">## 1    41     190  7.4   67     5   1     0.0000000</span></span>
+<span><span class="co">## 2    36     118  8.0   72     5   2     0.0000000</span></span>
+<span><span class="co">## 3    12     149 12.6   74     5   3     0.0000000</span></span>
+<span><span class="co">## 4    18     313 11.5   62     5   4     0.0000000</span></span>
+<span><span class="co">## 5    NA      NA 14.3   56     5   5     0.3333333</span></span>
+<span><span class="co">## 6    28      NA 14.9   66     5   6     0.1666667</span></span></code></pre>
+<p>We can then use a model like decision trees to predict which
+variables and their values are important for predicting the proportion
+of missingness:</p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bethatkinson/rpart" class="external-link">rpart</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.milbo.org/rpart-plot/index.html" class="external-link">rpart.plot</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">airquality</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/add_prop_miss.html">add_prop_miss</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/rpart/man/rpart.html" class="external-link">rpart</a></span><span class="op">(</span><span class="va">prop_miss_all</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">.</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/rpart.plot/man/prp.html" class="external-link">prp</a></span><span class="op">(</span>type <span class="op">=</span> <span class="fl">4</span>, extra <span class="op">=</span> <span class="fl">101</span>, prefix <span class="op">=</span> <span class="st">"Prop. Miss = "</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Warning: Cannot retrieve the data used to build the model (so cannot determine roundint and is.binary for the variables).</span></span>
+<span><span class="co">## To silence this warning:</span></span>
+<span><span class="co">##     Call prp with roundint=FALSE,</span></span>
+<span><span class="co">##     or rebuild the rpart model with model=TRUE.</span></span></code></pre>
 <p><img src="getting-started-w-naniar_files/figure-html/rpart-miss-1.png" width="500" style="display: block; margin: auto;"></p>
-<p>Here we can see that this produces quite a complex tree - this can be pruned back and the depth of the decision tree controlled.</p>
+<p>Here we can see that this produces quite a complex tree - this can be
+pruned back and the depth of the decision tree controlled.</p>
 </div>
-<div id="summary" class="section level1">
-<h1 class="hasAnchor">
-<a href="#summary" class="anchor"></a>Summary</h1>
-<p>The tools in <code>naniar</code> help us identify where missingness is, while maintaining a tidy workflow. We care about these mechanisms or these patterns because they can help us understand potential mechanisms, such as equipment failures, and then identify possible solutions based upon this evidence.</p>
+<div class="section level2">
+<h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
+</h2>
+<p>The tools in <code>naniar</code> help us identify where missingness
+is, while maintaining a tidy workflow. We care about these mechanisms or
+these patterns because they can help us understand potential mechanisms,
+such as equipment failures, and then identify possible solutions based
+upon this evidence.</p>
 </div>
-<div id="future-development" class="section level1">
-<h1 class="hasAnchor">
-<a href="#future-development" class="anchor"></a>Future development</h1>
+<div class="section level2">
+<h2 id="future-development">Future development<a class="anchor" aria-label="anchor" href="#future-development"></a>
+</h2>
 <ul>
-<li>Make <code>naniar</code> work with big data tools like <code>sparklyr</code>, and <code>sparklingwater</code>.</li>
-<li>Further develop methods for handling and visualising imputations, and multiple imputation. Other plans to extend the <code>geom_miss_</code> family to include:</li>
+<li>Make <code>naniar</code> work with big data tools like
+<code>sparklyr</code>, and <code>sparklingwater</code>.</li>
+<li>Further develop methods for handling and visualising imputations,
+and multiple imputation. Other plans to extend the
+<code>geom_miss_</code> family to include:</li>
 <li>Categorical variables</li>
 <li>Bivariate plots: scatterplots, density overlays</li>
-<li>Provide tools for assessing goodness of fit for classical approaches of MCAR, MAR, and MNAR (graphical inference from <code>nullabor</code> package)</li>
+<li>Provide tools for assessing goodness of fit for classical approaches
+of MCAR, MAR, and MNAR (graphical inference from <code>nullabor</code>
+package)</li>
 </ul>
 </div>
-<div id="thank-you" class="section level1">
-<h1 class="hasAnchor">
-<a href="#thank-you" class="anchor"></a>Thank you</h1>
-<p>Firstly, thanks to Di Cook for giving the initial inspiration for the package and laying down the rich theory and literature that the work in <code>naniar</code> is built upon. Naming credit (once again!) goes to Miles McBain. Among various other things, Miles also worked out how to overload the missing data and make it work as a geom. Thanks also to Colin Fay for helping me understand tidy evaluation and for features such as <code>replace_with_na</code>, <code>miss_*_cumsum</code>, and more.</p>
+<div class="section level2">
+<h2 id="thank-you">Thank you<a class="anchor" aria-label="anchor" href="#thank-you"></a>
+</h2>
+<p>Firstly, thanks to Di Cook for giving the initial inspiration for the
+package and laying down the rich theory and literature that the work in
+<code>naniar</code> is built upon. Naming credit (once again!) goes to
+Miles McBain. Among various other things, Miles also worked out how to
+overload the missing data and make it work as a geom. Thanks also to
+Colin Fay for helping me understand tidy evaluation and for features
+such as <code>replace_with_na</code>, <code>miss_*_cumsum</code>, and
+more.</p>
 </div>
-<div id="references" class="section level1">
-<h1 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h1>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <ul>
-<li>MANET: <a href="http://www.rosuda.org/MANET/" class="uri">http://www.rosuda.org/MANET/</a>
+<li>MANET: <a href="http://www.rosuda.org/MANET/" class="external-link uri">http://www.rosuda.org/MANET/</a>
 </li>
-<li>ggobi: <a href="https://en.wikipedia.org/wiki/GGobi" class="uri">https://en.wikipedia.org/wiki/GGobi</a>
+<li>ggobi: <a href="https://en.wikipedia.org/wiki/GGobi" class="external-link uri">https://en.wikipedia.org/wiki/GGobi</a>
 </li>
-<li>visdat: <a href="https://www.github.com/ropensci/visdat" class="uri">https://www.github.com/ropensci/visdat</a>
+<li>visdat: <a href="https://github.com/ropensci/visdat" class="external-link uri">https://github.com/ropensci/visdat</a>
 </li>
-<li>Tierney NJ, Harden FA, Harden MJ, Mengersen, KA, Using decision trees to understand structure in missing data BMJ Open 2015;5:e007450. doi: 10.1136/bmjopen-2014-007450</li>
+<li>Tierney NJ, Harden FA, Harden MJ, Mengersen, KA, Using decision
+trees to understand structure in missing data BMJ Open 2015;5:e007450.
+doi: 10.1136/bmjopen-2014-007450</li>
 </ul>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#introduction">Introduction</a></li>
-      <li>
-<a href="#how-do-we-start-looking-at-missing-data">How do we start looking at missing data?</a>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#vis_dat"><code>vis_dat</code></a></li>
-      </ul>
-</li>
-      <li>
-<a href="#exploring-missingness-relationships">Exploring missingness relationships</a>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#visualising-missings-in-variables">Visualising missings in variables</a></li>
-      </ul>
-</li>
-      <li><a href="#replacing-existing-values-with-na">Replacing existing values with NA</a></li>
-      <li><a href="#tidy-missing-data-the-shadow-matrix">Tidy Missing Data: The Shadow Matrix</a></li>
-      <li>
-<a href="#visualising-imputed-values">Visualising imputed values</a>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#numerical-summaries-of-missing-values">Numerical summaries of missing values</a></li>
-      </ul>
-</li>
-      <li><a href="#using-group_by-with-naniar">Using <code>group_by</code> with naniar</a></li>
-      <li><a href="#modelling-missingness">Modelling missingness</a></li>
-      <li><a href="#summary">Summary</a></li>
-      <li><a href="#future-development">Future development</a></li>
-      <li><a href="#thank-you">Thank you</a></li>
-      <li><a href="#references">References</a></li>
-      </ul>
-</div>
-      </div>
-
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Nicholas Tierney, <a href="http://www.dicook.org/" class="external-link">Di Cook</a>, <a href="https://milesmcbain.xyz/" class="external-link">Miles McBain</a>, <a href="https://colinfay.me/" class="external-link">Colin Fay</a>.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
-  docsearch({
-    
-    
-    apiKey: '48bc42eefc5234a6463c3b99e53dfda1',
-    indexName: 'naniar',
-    inputSelector: 'input#search-input.form-control',
-    transformData: function(hits) {
-      return hits.map(function (hit) {
-        hit.url = updateHitURL(hit);
-        return hit;
-      });
-    }
-  });
-</script>
-</body>
+
+  
+
+  </body>
 </html>

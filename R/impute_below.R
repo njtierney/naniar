@@ -171,6 +171,60 @@ impute_below.numeric <- function(x,
 } # close function
 
 #' @export
+impute_below.POSIXct <- function(x,
+                                 prop_below = 0.1,
+                                 jitter = 0.05,
+                                 seed_shift = 2017-7-1-1850,
+                                 ...){
+
+  dates <- as.numeric(x)
+
+  imputed_vals <- impute_below(x = dates,
+                               prop_below = prop_below,
+                               jitter = jitter,
+                               seed_shift = seed_shift,
+                       ...)
+  as.POSIXct(imputed_vals)
+
+}
+
+#' @export
+impute_below.POSIXlt <- function(x,
+                                 prop_below = 0.1,
+                                 jitter = 0.05,
+                                 seed_shift = 2017-7-1-1850,
+                                 ...){
+
+  dates <- as.numeric(x)
+
+  imputed_vals <- impute_below(x = dates,
+                               prop_below = prop_below,
+                               jitter = jitter,
+                               seed_shift = seed_shift,
+                       ...)
+  as.POSIXlt(imputed_vals)
+
+}
+
+#' @export
+impute_below.Date <- function(x,
+                                 prop_below = 0.1,
+                                 jitter = 0.05,
+                                 seed_shift = 2017-7-1-1850,
+                                 ...){
+
+  dates <- as.numeric(x)
+
+  imputed_vals <- impute_below(x = dates,
+                               prop_below = prop_below,
+                               jitter = jitter,
+                               seed_shift = seed_shift,
+                       ...)
+  as.Date(imputed_vals)
+
+}
+
+#' @export
 impute_below.factor <- function(x, ...){
   forcats::fct_na_value_to_level(x, level = "missing")
 }

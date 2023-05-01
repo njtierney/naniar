@@ -10,7 +10,7 @@ test_that("shadow_shift returns soft deprecation warning", {
   )
   expect_snapshot(
     error = TRUE,
-    shadow_shift(as.POSIXct(111, origin = "1970-01-01"))
+    shadow_shift(3i)
   )
   expect_snapshot_warning(
     shadow_shift(miss_vec_5)
@@ -24,7 +24,7 @@ test_that("shadow_shift still works", {
   )
   expect_snapshot(
     error = TRUE,
-    shadow_shift(as.POSIXct(111, origin = "1970-01-01"))
+    shadow_shift(3i)
   )
   expect_snapshot(
     shadow_shift(miss_vec_5)

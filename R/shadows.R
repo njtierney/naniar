@@ -208,6 +208,7 @@ gather_shadow <- function(data){
 #' shadow_long(aq_shadow, Ozone, Solar.R)
 #'
 #' # ensure `value` is numeric
+#' shadow_long(aq_shadow, fn_value_transform = as.numeric)
 #' shadow_long(aq_shadow, Ozone, Solar.R, fn_value_transform = as.numeric)
 #'
 #'

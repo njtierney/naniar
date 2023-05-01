@@ -1,15 +1,12 @@
 url: http://naniar.njtierney.com/
-
 template:
   bootstrap: 5
   bootswatch: flatly
-
 home:
   title: Data Structures, Summaries, and Visualisations for Missing Data
   links:
   - text: Learn more
     href: https://github.com/njtierney/naniar
-
 authors:
   Nick Tierney:
     href: https://njtierney.com/
@@ -19,131 +16,116 @@ authors:
     href: https://milesmcbain.xyz/
   Colin Fay:
     href: https://colinfay.me/
-
-
 reference:
-  - title: "Data structures for missing data"
-    desc: >
-      Creation and Manipulation of Shadow Matrices
-    contents:
-      - starts_with("as_shadow")
-      - bind_shadow
-      - nabular
-      - gather_shadow
-      - shade
-      - shadow_long
-      - unbind_shadow
-      - unbind_data
-      - starts_with("shadow_shift")
-  - title: "Create special missing values"
-    desc: >
-      Create special missing values so that they don't get lost!
-    contents:
-      - recode_shadow
-
-  - title: "Visualisation"
-    desc: >
-      Visualise missing data
-    contents:
-      - geom_miss_point
-      - stat_miss_point
-      - starts_with("gg_miss_")
-      - vis_miss
-  - title: "Numerical Summaries"
-    desc: >
-      Provide tidy data frame summaries of missingness
-    contents:
-      - starts_with("miss_")
-  - title: "Handy helpers"
-    desc: >
-      Handy helpers
-    contents:
-      - starts_with("n_")
-      - starts_with("prop_")
-      - starts_with("pct_")
-      - starts_with("all_")
-      - starts_with("any_")
-      - starts_with("any_")
-      - starts_with("is_")
-      - starts_with("are_")
-      - which_are_shade
-      - common_na_numbers
-      - common_na_strings
-  - title: "Add columns"
-    desc: >
-      Add missing data summaries/tool columns
-    contents:
-      - starts_with("add_")
-  - title: "Replacing values with and to NA"
-    desc: >
-      Functions to help replace certain values with NA, which includes scoped
-      variants (_at, _if, _all) that take formulas for flexible approachs
-    contents:
-      - starts_with("replace_with_na")
-      - replace_to_na
-  - title: "Imputation helpers"
-    desc: >
-      Simple imputation methods for exploring visualisation and missingness
-      structure
-    contents:
-      - starts_with("impute_")
-      - set-prop-n-miss
-  - title: "Package title details"
-    desc: >
-      Details of the package naniar
-    contents:
-      - naniar
-
-  - title: "Cast Shadows"
-    desc: >
-      Add shadow information to the dataframe while reducing it to the
-      variables of interest
-    contents:
-      - starts_with("cast_")
-  - title: "Misc helpers"
-    desc: >
-      Misc helpers
-    contents:
-      - label_miss_1d
-      - label_miss_2d
-      - label_missings
-      - where_na
-      - which_na
-      - where
-  - title: "Data Sources"
-    desc: >
-      For practice and example usecases in naniar
-    contents:
-      - oceanbuoys
-      - pedestrian
-      - riskfactors
-  - title: "Little's MCAR test"
-    desc: >
-      For performing Little's MCAR test
-    contents:
-      - mcar_test
-  - title: "ggplot2 extensions"
-    desc: >
-      Custom ggplot geoms built to extend ggplot for missing values
-    contents:
-      - naniar-ggproto
-
-
+- title: Data structures for missing data
+  desc: |
+    Creation and Manipulation of Shadow Matrices
+  contents:
+  - starts_with("as_shadow")
+  - bind_shadow
+  - nabular
+  - gather_shadow
+  - shade
+  - shadow_long
+  - unbind_shadow
+  - unbind_data
+  - starts_with("shadow_shift")
+- title: Create special missing values
+  desc: |
+    Create special missing values so that they don't get lost!
+  contents: recode_shadow
+- title: Visualisation
+  desc: |
+    Visualise missing data
+  contents:
+  - geom_miss_point
+  - stat_miss_point
+  - starts_with("gg_miss_")
+  - vis_miss
+- title: Numerical Summaries
+  desc: |
+    Provide tidy data frame summaries of missingness
+  contents: starts_with("miss_")
+- title: Handy helpers
+  desc: |
+    Handy helpers
+  contents:
+  - starts_with("n_")
+  - starts_with("prop_")
+  - starts_with("pct_")
+  - starts_with("all_")
+  - starts_with("any_")
+  - starts_with("any_")
+  - starts_with("is_")
+  - starts_with("are_")
+  - which_are_shade
+  - common_na_numbers
+  - common_na_strings
+- title: Add columns
+  desc: |
+    Add missing data summaries/tool columns
+  contents: starts_with("add_")
+- title: Replacing values with and to NA
+  desc: |
+    Functions to help replace certain values with NA, which includes scoped variants (_at, _if, _all) that take formulas for flexible approachs
+  contents:
+  - starts_with("replace_with_na")
+  - replace_to_na
+- title: Imputation helpers
+  desc: |
+    Simple imputation methods for exploring visualisation and missingness structure
+  contents:
+  - starts_with("impute_")
+  - set-prop-n-miss
+- title: Package title details
+  desc: |
+    Details of the package naniar
+  contents: naniar
+- title: Cast Shadows
+  desc: |
+    Add shadow information to the dataframe while reducing it to the variables of interest
+  contents: starts_with("cast_")
+- title: Misc helpers
+  desc: |
+    Misc helpers
+  contents:
+  - label_miss_1d
+  - label_miss_2d
+  - label_missings
+  - where_na
+  - which_na
+  - where
+- title: Data Sources
+  desc: |
+    For practice and example usecases in naniar
+  contents:
+  - oceanbuoys
+  - pedestrian
+  - riskfactors
+- title: Little's MCAR test
+  desc: |
+    For performing Little's MCAR test
+  contents: mcar_test
+- title: ggplot2 extensions
+  desc: |
+    Custom ggplot geoms built to extend ggplot for missing values
+  contents: naniar-ggproto
 navbar:
   left:
   - text: Getting Started
     href: articles/getting-started-w-naniar.html
   - text: Gallery
     href: articles/naniar-visualisation.html
-  - text: "Articles"
+  - text: Articles
     menu:
-      - text: Replace with NA
-        href: articles/replace-with-na.html
-      - text: Special Missings
-        href: articles/special-missing-values.html
-      - text: Exploring Imputations
-        href: articles/exploring-imputed-values.html
+    - text: Replace with NA
+      href: articles/replace-with-na.html
+    - text: Special Missings
+      href: articles/special-missing-values.html
+    - text: Exploring Imputations
+      href: articles/exploring-imputed-values.html
   - text: Reference
     href: reference/index.html
   - text: News
     href: news/index.html
+

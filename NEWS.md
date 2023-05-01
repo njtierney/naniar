@@ -8,7 +8,7 @@
 - `geom_miss_point()` works with `shape` argument #290
 - fix bug with `all_complete`, which was implemented as `!anyNA(x)` but should be `all(complete.cases(x))`.
 - correctly implement `any_na()` (and `any_miss()`) and `any_complete()`. Rework examples to demonstrate workflow for finding complete variables.
-- Fix bug with `shadow_long` not working when gathering variables of mixed type. Fix involves specifying a value transform, which defaults to character.
+- Fix bug with `shadow_long` not working when gathering variables of mixed type. Fix involves specifying a value transform, which defaults to character. #314
 
 ## Misc
 

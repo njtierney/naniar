@@ -11,6 +11,8 @@ miss_var_cumsum(data)
 }
 \value{
 a tibble of the cumulative sum of missing data in each variable
+
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 }
 \description{
 Calculate the cumulative sum of number & percentage of

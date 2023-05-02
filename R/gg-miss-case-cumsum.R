@@ -19,7 +19,7 @@
 gg_miss_case_cumsum <- function(x, breaks = 20){
 
   ggobject <- x %>%
-    miss_case_cumsum() %>%
+    miss_case_summary(add_cumsum = TRUE) %>%
     ggplot(aes(x = stats::reorder(case, n_miss_cumsum),
                y = n_miss_cumsum,
                group = 1)) +

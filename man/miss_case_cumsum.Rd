@@ -12,6 +12,8 @@ miss_case_cumsum(data)
 \value{
 a tibble containing the number and percent of missing data in each
 case
+
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 }
 \description{
 Provide a data.frame containing each case (row), the number and percent of

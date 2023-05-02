@@ -4,7 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="naniar">
 <title>Special Missing Values • naniar</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -12,258 +13,280 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
-<link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Special Missing Values">
-<meta property="og:description" content="">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Special Missing Values">
+<meta property="og:description" content="naniar">
 <meta property="og:image" content="http://naniar.njtierney.com/logo.png">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">naniar</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1</span>
-      </span>
-    </div>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../articles/getting-started-w-naniar.html">Getting Started</a>
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">naniar</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="../articles/getting-started-w-naniar.html">Getting Started</a>
 </li>
-<li>
-  <a href="../articles/naniar-visualisation.html">Gallery</a>
+<li class="nav-item">
+  <a class="nav-link" href="../articles/naniar-visualisation.html">Gallery</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/replace-with-na.html">Replace with NA</a>
-    </li>
-    <li>
-      <a href="../articles/special-missing-values.html">Special Missings</a>
-    </li>
-    <li>
-      <a href="../articles/exploring-imputed-values.html">Exploring Imputations</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../news/index.html">News</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/njtierney/naniar">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
-<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
-        <div class="form-group">
-          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
-</div>
-      </form>
-      
-    </div>
-<!--/.nav-collapse -->
+<li class="active nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/replace-with-na.html">Replace with NA</a>
+    <a class="dropdown-item" href="../articles/special-missing-values.html">Special Missings</a>
+    <a class="dropdown-item" href="../articles/exploring-imputed-values.html">Exploring Imputations</a>
   </div>
-<!--/.container -->
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">News</a>
+</li>
+      </ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/njtierney/naniar/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
-<!--/.navbar -->
 
-      
+    
+  </div>
+</nav><div class="container template-article">
 
-      </header><script src="special-missing-values_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1>Special Missing Values</h1>
-                        <h4 class="author">Nicholas Tierney</h4>
+
+
+
+<div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
+      <img src="../logo.png" class="logo" alt=""><h1>Special Missing Values</h1>
+                        <h4 data-toc-skip class="author">Nicholas
+Tierney</h4>
             
-            <h4 class="date">2021-05-14</h4>
+            <h4 data-toc-skip class="date">2023-05-02</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/master/vignettes/special-missing-values.Rmd"><code>vignettes/special-missing-values.Rmd</code></a></small>
-      <div class="hidden name"><code>special-missing-values.Rmd</code></div>
-
+      <small class="dont-index">Source: <a href="https://github.com/njtierney/naniar/blob/HEAD/vignettes/special-missing-values.Rmd" class="external-link"><code>vignettes/special-missing-values.Rmd</code></a></small>
+      <div class="d-none name"><code>special-missing-values.Rmd</code></div>
     </div>
 
     
     
-<p>Data sometimes have special missing values to indicate specific reasons for missingness. For example, “9999” is sometimes used in weather data, say for for example, the <a href="https://www.ncdc.noaa.gov/ghcn-daily-description">Global Historical Climate Network (GHCN) data</a>), to indicate specific types of missingness, such as instrument failure.</p>
-<p>You might be interested in creating your own special missing values so that you can mark specific, known reasons for missingness. For example, an individual dropping out of a study, known instrument failure in weather instruments, or for values being censored in analysis. In these cases, the data is missing, but we have information about <em>why</em> it is missing. Coding these cases as <code>NA</code> would cause us to lose this valuable information. Other stats programming languages like STATA, SAS, and SPSS have this capacity, but currently <code>R</code> does not. So, we need a way to create these special missing values.</p>
-<p>We can use <code>recode_shadow</code> to recode missingness by recoding the special missing value as something like <code>NA_reason</code>. <code>naniar</code> records these values in the <code>shadow</code> part of <code>nabular</code> data, which is a special dataframe that contains missingness information.</p>
-<p>This vignette describes how to add special missing values using the <code><a href="../reference/recode_shadow.html">recode_shadow()</a></code> function. First we consider some terminology to explain these ideas, if you are not familiar with the workflows in <code>naniar</code>.</p>
-<div id="terminology" class="section level1">
-<h1 class="hasAnchor">
-<a href="#terminology" class="anchor"></a>Terminology</h1>
-<p>Missing data can be represented as a binary matrix of “missing” or “not missing”, which in <code>naniar</code> we call a “shadow matrix”, a term borrowed from <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization">Swayne and Buja, 1998</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(naniar)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw"><a href="../reference/as_shadow.html">as_shadow</a></span>(oceanbuoys)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#&gt; # A tibble: 736 x 8</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#&gt;    year_NA latitude_NA longitude_NA sea_temp_c_NA air_temp_c_NA humidity_NA</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#&gt;    &lt;fct&gt;   &lt;fct&gt;       &lt;fct&gt;        &lt;fct&gt;         &lt;fct&gt;         &lt;fct&gt;      </span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#&gt;  1 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#&gt;  2 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt;  3 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#&gt;  4 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#&gt;  5 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#&gt;  6 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt;  7 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#&gt;  8 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co">#&gt;  9 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#&gt; 10 !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#&gt; # … with 726 more rows, and 2 more variables: wind_ew_NA &lt;fct&gt;,</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#&gt; #   wind_ns_NA &lt;fct&gt;</span></span></code></pre></div>
-<p>The <code>shadow matrix</code> has three key features to facilitate analysis</p>
+<p>Data sometimes have special missing values to indicate specific
+reasons for missingness. For example, “9999” is sometimes used in
+weather data, say for for example, the <a href="https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily" class="external-link">Global
+Historical Climate Network (GHCN) data</a>, to indicate specific types
+of missingness, such as instrument failure.</p>
+<p>You might be interested in creating your own special missing values
+so that you can mark specific, known reasons for missingness. For
+example, an individual dropping out of a study, known instrument failure
+in weather instruments, or for values being censored in analysis. In
+these cases, the data is missing, but we have information about
+<em>why</em> it is missing. Coding these cases as <code>NA</code> would
+cause us to lose this valuable information. Other stats programming
+languages like STATA, SAS, and SPSS have this capacity, but currently
+<code>R</code> does not. So, we need a way to create these special
+missing values.</p>
+<p>We can use <code>recode_shadow</code> to recode missingness by
+recoding the special missing value as something like
+<code>NA_reason</code>. <code>naniar</code> records these values in the
+<code>shadow</code> part of <code>nabular</code> data, which is a
+special dataframe that contains missingness information.</p>
+<p>This vignette describes how to add special missing values using the
+<code><a href="../reference/recode_shadow.html">recode_shadow()</a></code> function. First we consider some
+terminology to explain these ideas, if you are not familiar with the
+workflows in <code>naniar</code>.</p>
+<div class="section level2">
+<h2 id="terminology">Terminology<a class="anchor" aria-label="anchor" href="#terminology"></a>
+</h2>
+<p>Missing data can be represented as a binary matrix of “missing” or
+“not missing”, which in <code>naniar</code> we call a “shadow matrix”, a
+term borrowed from <a href="https://www.researchgate.net/publication/2758672_Missing_Data_in_Interactive_High-Dimensional_Data_Visualization" class="external-link">Swayne
+and Buja, 1998</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/njtierney/naniar" class="external-link">naniar</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/as_shadow.html">as_shadow</a></span><span class="op">(</span><span class="va">oceanbuoys</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 736 × 8</span></span></span>
+<span><span class="co">#&gt;    year_NA latitude_NA longitude_NA sea_temp_c_NA air_temp_c_NA humidity_NA</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> !NA     !NA         !NA          !NA           !NA           !NA        </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 726 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: wind_ew_NA &lt;fct&gt;, wind_ns_NA &lt;fct&gt;</span></span></span></code></pre></div>
+<p>The <code>shadow matrix</code> has three key features to facilitate
+analysis</p>
 <ol style="list-style-type: decimal">
-<li><p>Coordinated names: Variables in the shadow matrix gain the same name as in the data, with the suffix "_NA".</p></li>
-<li><p>Special missing values: Values in the shadow matrix can be “special” missing values, indicated as <code>NA_suffix</code>, where “suffix” is a very short message of the type of missings.</p></li>
-<li><p>Cohesiveness: Binding the shadow matrix column-wise to the original data creates a cohesive “nabular” data form, useful for visualization and summaries.</p></li>
+<li><p>Coordinated names: Variables in the shadow matrix gain the same
+name as in the data, with the suffix “_NA”.</p></li>
+<li><p>Special missing values: Values in the shadow matrix can be
+“special” missing values, indicated as <code>NA_suffix</code>, where
+“suffix” is a very short message of the type of missings.</p></li>
+<li><p>Cohesiveness: Binding the shadow matrix column-wise to the
+original data creates a cohesive “nabular” data form, useful for
+visualization and summaries.</p></li>
 </ol>
-<p>We create <code>nabular</code> data by <code>bind</code>ing the shadow to the data:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>(oceanbuoys)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#&gt; # A tibble: 736 x 16</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt;     year latitude longitude sea_temp_c air_temp_c humidity wind_ew wind_ns</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt;  1  1997        0      -110       27.6       27.1     79.6   -6.40    5.40</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt;  2  1997        0      -110       27.5       27.0     75.8   -5.30    5.30</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;  3  1997        0      -110       27.6       27       76.5   -5.10    4.5 </span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt;  4  1997        0      -110       27.6       26.9     76.2   -4.90    2.5 </span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt;  5  1997        0      -110       27.6       26.8     76.4   -3.5     4.10</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt;  6  1997        0      -110       27.8       26.9     76.7   -4.40    1.60</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt;  7  1997        0      -110       28.0       27.0     76.5   -2       3.5 </span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt;  8  1997        0      -110       28.0       27.1     78.3   -3.70    4.5 </span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt;  9  1997        0      -110       28.0       27.2     78.6   -4.20    5   </span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt; 10  1997        0      -110       28.0       27.2     76.9   -3.60    3.5 </span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; # … with 726 more rows, and 8 more variables: year_NA &lt;fct&gt;, latitude_NA &lt;fct&gt;,</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; #   longitude_NA &lt;fct&gt;, sea_temp_c_NA &lt;fct&gt;, air_temp_c_NA &lt;fct&gt;,</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt; #   humidity_NA &lt;fct&gt;, wind_ew_NA &lt;fct&gt;, wind_ns_NA &lt;fct&gt;</span></span></code></pre></div>
-<p>This keeps the data values tied to their missingness, and has great benefits for exploring missing and imputed values in data. See the vignettes <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">Getting Started with naniar</a> and <a href="http://naniar.njtierney.com/articles/exploring-imputed-values.html">Exploring Imputations with naniar</a> for more details.</p>
+<p>We create <code>nabular</code> data by <code>bind</code>ing the
+shadow to the data:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/bind_shadow.html">bind_shadow</a></span><span class="op">(</span><span class="va">oceanbuoys</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 736 × 16</span></span></span>
+<span><span class="co">#&gt;     year latitude longitude sea_temp_c air_temp_c humidity wind_ew wind_ns</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">1</span>997        0      -<span style="color: #BB0000;">110</span>       27.6       27.1     79.6   -<span style="color: #BB0000;">6.40</span>    5.40</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  <span style="text-decoration: underline;">1</span>997        0      -<span style="color: #BB0000;">110</span>       27.5       27.0     75.8   -<span style="color: #BB0000;">5.30</span>    5.30</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  <span style="text-decoration: underline;">1</span>997        0      -<span style="color: #BB0000;">110</span>       27.6       27       76.5   -<span style="color: #BB0000;">5.10</span>    4.5 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  <span style="text-decoration: underline;">1</span>997        0      -<span style="color: #BB0000;">110</span>       27.6       26.9     76.2   -<span style="color: #BB0000;">4.90</span>    2.5 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  <span style="text-decoration: underline;">1</span>997        0      -<span style="color: #BB0000;">110</span>       27.6       26.8     76.4   -<span style="color: #BB0000;">3.5</span>     4.10</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  <span style="text-decoration: underline;">1</span>997        0      -<span style="color: #BB0000;">110</span>       27.8       26.9     76.7   -<span style="color: #BB0000;">4.40</span>    1.60</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  <span style="text-decoration: underline;">1</span>997        0      -<span style="color: #BB0000;">110</span>       28.0       27.0     76.5   -<span style="color: #BB0000;">2</span>       3.5 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">1</span>997        0      -<span style="color: #BB0000;">110</span>       28.0       27.1     78.3   -<span style="color: #BB0000;">3.70</span>    4.5 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">1</span>997        0      -<span style="color: #BB0000;">110</span>       28.0       27.2     78.6   -<span style="color: #BB0000;">4.20</span>    5   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">1</span>997        0      -<span style="color: #BB0000;">110</span>       28.0       27.2     76.9   -<span style="color: #BB0000;">3.60</span>    3.5 </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 726 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 8 more variables: year_NA &lt;fct&gt;, latitude_NA &lt;fct&gt;, longitude_NA &lt;fct&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   sea_temp_c_NA &lt;fct&gt;, air_temp_c_NA &lt;fct&gt;, humidity_NA &lt;fct&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   wind_ew_NA &lt;fct&gt;, wind_ns_NA &lt;fct&gt;</span></span></span></code></pre></div>
+<p>This keeps the data values tied to their missingness, and has great
+benefits for exploring missing and imputed values in data. See the
+vignettes <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">Getting
+Started with naniar</a> and <a href="http://naniar.njtierney.com/articles/exploring-imputed-values.html">Exploring
+Imputations with naniar</a> for more details.</p>
 </div>
-<div id="recoding-missing-values" class="section level1">
-<h1 class="hasAnchor">
-<a href="#recoding-missing-values" class="anchor"></a>Recoding missing values</h1>
-<p>To demonstrate recoding of missing values, we use a toy dataset, <code>dat</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="op">~</span>wind, <span class="op">~</span>temp,</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="dv">-99</span>,    <span class="dv">45</span>,</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="dv">68</span>,    <span class="ot">NA</span>,</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="dv">72</span>,    <span class="dv">25</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>)</span>
-<span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a>df</span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt; # A tibble: 3 x 2</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;    wind  temp</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt; 1   -99    45</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 2    68    NA</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; 3    72    25</span></span></code></pre></div>
-<p>To recode the value -99 as a missing value “broken_machine”, we first create nabular data with <code>bind_shadow</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2"></a>dfs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/bind_shadow.html">bind_shadow</a></span>(df)</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a>dfs</span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt; # A tibble: 3 x 4</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;    wind  temp wind_NA temp_NA</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;  </span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt; 1   -99    45 !NA     !NA    </span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt; 2    68    NA !NA     NA     </span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt; 3    72    25 !NA     !NA</span></span></code></pre></div>
-<p>Special types of missingness are encoded in the shadow part nabular data, using the <code>recode_shadow</code> function, we can recode the missing values like so:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>dfs_recode &lt;-<span class="st"> </span>dfs <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="st">  </span><span class="kw"><a href="../reference/recode_shadow.html">recode_shadow</a></span>(<span class="dt">wind =</span> <span class="kw"><a href="../reference/where.html">.where</a></span>(wind <span class="op">==</span><span class="st"> </span><span class="dv">-99</span> <span class="op">~</span><span class="st"> "broken_machine"</span>))</span></code></pre></div>
-<p>This reads as “recode shadow for wind where wind is equal to -99, and give it the label”broken_machine". The <code>.where</code> function is used to help make our intent clearer, and reads very much like the <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when()</a></code> function, but takes care of encoding extra factor levels into the missing data.</p>
-<p>The extra types of missingness are recoded in the shadow part of the nabular data as additional factor levels:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(dfs_recode<span class="op">$</span>wind_NA)</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt; [1] "!NA"               "NA"                "NA_broken_machine"</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(dfs_recode<span class="op">$</span>temp_NA)</span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt; [1] "!NA"               "NA"                "NA_broken_machine"</span></span></code></pre></div>
-<p>All additional types of missingness are recorded across all shadow variables, even if those variables don’t contain that special missing value. This ensures all flavours of missingness are known.</p>
-<p>To summarise, to use <code>recode_shadow</code>, the user provides the following information:</p>
+<div class="section level2">
+<h2 id="recoding-missing-values">Recoding missing values<a class="anchor" aria-label="anchor" href="#recoding-missing-values"></a>
+</h2>
+<p>To demonstrate recoding of missing values, we use a toy dataset,
+<code>dat</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span></span>
+<span><span class="op">~</span><span class="va">wind</span>, <span class="op">~</span><span class="va">temp</span>,</span>
+<span><span class="op">-</span><span class="fl">99</span>,    <span class="fl">45</span>,</span>
+<span><span class="fl">68</span>,    <span class="cn">NA</span>,</span>
+<span><span class="fl">72</span>,    <span class="fl">25</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 2</span></span></span>
+<span><span class="co">#&gt;    wind  temp</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>   -<span style="color: #BB0000;">99</span>    45</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>    68    <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>    72    25</span></span></code></pre></div>
+<p>To recode the value -99 as a missing value “broken_machine”, we first
+create nabular data with <code>bind_shadow</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">dfs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bind_shadow.html">bind_shadow</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dfs</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 4</span></span></span>
+<span><span class="co">#&gt;    wind  temp wind_NA temp_NA</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>   -<span style="color: #BB0000;">99</span>    45 !NA     !NA    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>    68    <span style="color: #BB0000;">NA</span> !NA     NA     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>    72    25 !NA     !NA</span></span></code></pre></div>
+<p>Special types of missingness are encoded in the shadow part nabular
+data, using the <code>recode_shadow</code> function, we can recode the
+missing values like so:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dfs_recode</span> <span class="op">&lt;-</span> <span class="va">dfs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/recode_shadow.html">recode_shadow</a></span><span class="op">(</span>wind <span class="op">=</span> <span class="fu"><a href="../reference/where.html">.where</a></span><span class="op">(</span><span class="va">wind</span> <span class="op">==</span> <span class="op">-</span><span class="fl">99</span> <span class="op">~</span> <span class="st">"broken_machine"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>This reads as “recode shadow for wind where wind is equal to -99, and
+give it the label”broken_machine”. The <code>.where</code> function is
+used to help make our intent clearer, and reads very much like the
+<code><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">dplyr::case_when()</a></code> function, but takes care of encoding
+extra factor levels into the missing data.</p>
+<p>The extra types of missingness are recoded in the shadow part of the
+nabular data as additional factor levels:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">dfs_recode</span><span class="op">$</span><span class="va">wind_NA</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "!NA"               "NA"                "NA_broken_machine"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">dfs_recode</span><span class="op">$</span><span class="va">temp_NA</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "!NA"               "NA"                "NA_broken_machine"</span></span></code></pre></div>
+<p>All additional types of missingness are recorded across all shadow
+variables, even if those variables don’t contain that special missing
+value. This ensures all flavours of missingness are known.</p>
+<p>To summarise, to use <code>recode_shadow</code>, the user provides
+the following information:</p>
 <ul>
-<li>A variable that they want to effect (<code><a href="../reference/recode_shadow.html">recode_shadow(var = ...)</a></code>)</li>
-<li>A condition that they want to implement (<code><a href="../reference/where.html">.where(condition ~ ...)</a></code>)</li>
-<li>A suffix for the new type of missing value (<code><a href="../reference/where.html">.where(condition ~ suffix)</a></code>)</li>
+<li>A variable that they want to effect
+(<code>recode_shadow(var = ...)</code>)</li>
+<li>A condition that they want to implement
+(<code>.where(condition ~ ...)</code>)</li>
+<li>A suffix for the new type of missing value
+(<code>.where(condition ~ suffix)</code>)</li>
 </ul>
-<p>Under the hood, this special missing value is recoded as a new factor level in the shadow matrix, so that every column is aware of all possible new values of missingness.</p>
-<p>Some examples of using <code>recode_shadow</code> in a workflow will be discussed in more detail in the near future, for the moment, here is a recommended workflow:</p>
+<p>Under the hood, this special missing value is recoded as a new factor
+level in the shadow matrix, so that every column is aware of all
+possible new values of missingness.</p>
+<p>Some examples of using <code>recode_shadow</code> in a workflow will
+be discussed in more detail in the near future, for the moment, here is
+a recommended workflow:</p>
 <ul>
 <li>Use <code><a href="../reference/recode_shadow.html">recode_shadow()</a></code> with actual data</li>
-<li>Replacing the previous actual values using <code><a href="../reference/replace_with_na.html">replace_with_na()</a></code> (see the vignette on <a href="http://naniar.njtierney.com/articles/replace-with-na.html">replacing values with NA</a>)</li>
+<li>Replacing the previous actual values using
+<code><a href="../reference/replace_with_na.html">replace_with_na()</a></code> (see the vignette on <a href="http://naniar.njtierney.com/articles/replace-with-na.html">replacing
+values with NA</a>)</li>
 <li>Explore missings where special cases are considered</li>
 <li>Explore imputed values, looking at these special cases</li>
 </ul>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#terminology">Terminology</a></li>
-      <li><a href="#recoding-missing-values">Recoding missing values</a></li>
-      </ul>
-</div>
-      </div>
-
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p>Developed by Nicholas Tierney, Di Cook, Miles McBain, Colin Fay.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Nicholas Tierney, <a href="http://www.dicook.org/" class="external-link">Di Cook</a>, <a href="https://milesmcbain.xyz/" class="external-link">Miles McBain</a>, <a href="https://colinfay.me/" class="external-link">Colin Fay</a>.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
-  docsearch({
-    
-    
-    apiKey: '48bc42eefc5234a6463c3b99e53dfda1',
-    indexName: 'naniar',
-    inputSelector: 'input#search-input.form-control',
-    transformData: function(hits) {
-      return hits.map(function (hit) {
-        hit.url = updateHitURL(hit);
-        return hit;
-      });
-    }
-  });
-</script>
-</body>
+
+  
+
+  </body>
 </html>

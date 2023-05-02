@@ -19,6 +19,7 @@
 ## Changes
 
 - soft deprecated `shadow_shift` - #193
+- soft deprecate miss_case_cumsum and miss_var_cumsum - #257
 
 # naniar 1.0.0
 

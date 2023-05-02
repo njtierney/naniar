@@ -7,6 +7,8 @@
 #'
 #' @return a tibble of the cumulative sum of missing data in each variable
 #'
+#' `r lifecycle::badge('deprecated')`
+#'
 #' @seealso  [pct_miss_case()] [prop_miss_case()] [pct_miss_var()] [prop_miss_var()] [pct_complete_case()] [prop_complete_case()] [pct_complete_var()] [prop_complete_var()] [miss_prop_summary()] [miss_case_summary()] [miss_case_table()] [miss_summary()] [miss_var_prop()] [miss_var_run()] [miss_var_span()] [miss_var_summary()] [miss_var_table()]
 #'
 #' @examples
@@ -23,6 +25,12 @@
 #'}
 #' @export
 miss_var_cumsum <- function(data){
+
+  lifecycle::deprecate_soft(
+    when = "1.1.0",
+    what = "miss_var_cumsum()",
+    details = "Please use `miss_var_summary(data, add_cumsum = TRUE)`"
+    )
 
   test_if_null(data)
 
@@ -63,6 +71,8 @@ miss_var_cumsum.grouped_df <- function(data){
 #' @return a tibble containing the number and percent of missing data in each
 #'   case
 #'
+#' `r lifecycle::badge('deprecated')`
+#'
 #' @examples
 #'
 #' miss_case_cumsum(airquality)
@@ -76,6 +86,12 @@ miss_var_cumsum.grouped_df <- function(data){
 #'}
 #' @export
 miss_case_cumsum <- function(data){
+
+  lifecycle::deprecate_soft(
+    when = "1.1.0",
+    what = "miss_case_cumsum()",
+    details = "Please use `miss_var_summary(data, add_cumsum = TRUE)`"
+  )
 
   test_if_null(data)
 

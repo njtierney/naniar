@@ -2,10 +2,11 @@
 #'
 #' This function helps you replace NA values with a single provided value.
 #'   This can be classed as a kind of imputation, and is powered by
-#'   [impute_fixed()]. See [dplyr::coalesce()] and [dplyr::na_if()] for
-#'   different approaches to this problem.
+#'   [impute_fixed()]. See [tidyr::replace_na()] for a slightly different
+#'   approach, [dplyr::coalesce()] for replacing NAs with values from other
+#'   vectors, and [dplyr::na_if()] to replace specified values with NA.
 #'
-#' @return
+#' @return vector with replaced values
 #' @export
 #'
 #' @examples

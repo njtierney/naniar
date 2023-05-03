@@ -4,30 +4,22 @@
 \alias{replace_na_with}
 \title{Replace NA value with provided value}
 \usage{
-replace_na_with(..., .pytype = NULL, .size = NULL)
+replace_na_with(x, value)
 }
-\arguments{
-\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}>
-
-One or more vectors. These will be
-\link[vctrs:vector_recycling_rules]{recycled} against each other, and will be
-cast to their common type.}
-
-\item{.size}{An optional size declaring the desired output size. If supplied,
-this overrides the common size of the vectors in \code{...}.}
+\value{
+vector with replaced values
 }
 \description{
 This function helps you replace NA values with a single provided value.
-This can be classed as a kind of imputation, and so is similar to
-\code{\link[=impute_fixed]{impute_fixed()}}. This function is actually a wrapper around
-\code{\link[dplyr:coalesce]{dplyr::coalesce()}}. We renamed it to better evoke the use of replacing NA
-values with a provided value, and expand the documentation to demonstrate
-more use cases.
+This can be classed as a kind of imputation, and is powered by
+\code{\link[=impute_fixed]{impute_fixed()}}. See \code{\link[tidyr:replace_na]{tidyr::replace_na()}} for a slightly different
+approach, \code{\link[dplyr:coalesce]{dplyr::coalesce()}} for replacing NAs with values from other
+vectors, and \code{\link[dplyr:na_if]{dplyr::na_if()}} to replace specified values with NA.
 }
 \examples{
 
 library(naniar)
-x <- sample(c(1:5, NA, NA, NA))
+x <- c(1:5, NA, NA, NA)
 x
 replace_na_with(x, 0L)
 

@@ -19,7 +19,7 @@
 gg_miss_var_cumsum <- function(x){
 
   ggobject <- x %>%
-    miss_var_cumsum() %>%
+    miss_var_summary(add_cumsum = TRUE) %>%
     ggplot(aes(x = stats::reorder(variable, n_miss_cumsum),
                y = n_miss_cumsum,
                group = 1)) +

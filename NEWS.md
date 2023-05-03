@@ -10,6 +10,7 @@
 - correctly implement `any_na()` (and `any_miss()`) and `any_complete()`. Rework examples to demonstrate workflow for finding complete variables.
 - Fix bug with `shadow_long` not working when gathering variables of mixed type. Fix involves specifying a value transform, which defaults to character. #314
 - implement `Date`, `POSIXct` and `POSIXlt` methods for `impute_below()` - #158
+- provide replace_na_with, a complement to replace_with_na - #129
 
 ## Misc
 

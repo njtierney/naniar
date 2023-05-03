@@ -71,6 +71,7 @@ reference:
   contents:
   - starts_with("replace_with_na")
   - replace_to_na
+  - replace_na_with
 - title: Imputation helpers
   desc: |
     Simple imputation methods for exploring visualisation and missingness structure

@@ -124,6 +124,7 @@ Collate:
     'prop-pct-var-case-miss-complete.R'
     'replace-to-na.R'
     'replace-with-na.R'
+    'replace_na_with.R'
     'scoped-replace-with-na.R'
     'set-n-prop-miss.R'
     'shade.R'

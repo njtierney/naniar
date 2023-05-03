@@ -6,6 +6,11 @@
 \usage{
 replace_na_with(x, value)
 }
+\arguments{
+\item{x}{vector}
+
+\item{value}{value to replace}
+}
 \value{
 vector with replaced values
 }

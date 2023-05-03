@@ -8,6 +8,9 @@
 #'   different approach, [dplyr::coalesce()] for replacing NAs with values from
 #'   other vectors, and [dplyr::na_if()] to replace specified values with NA.
 #'
+#' @param x vector
+#' @param value value to replace
+#'
 #' @return vector with replaced values
 #' @export
 #'

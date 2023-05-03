@@ -12,9 +12,11 @@ vector with replaced values
 \description{
 This function helps you replace NA values with a single provided value.
 This can be classed as a kind of imputation, and is powered by
-\code{\link[=impute_fixed]{impute_fixed()}}. See \code{\link[tidyr:replace_na]{tidyr::replace_na()}} for a slightly different
-approach, \code{\link[dplyr:coalesce]{dplyr::coalesce()}} for replacing NAs with values from other
-vectors, and \code{\link[dplyr:na_if]{dplyr::na_if()}} to replace specified values with NA.
+\code{\link[=impute_fixed]{impute_fixed()}}. However, we would generally recommend to impute using
+other model based approaches. See the \code{simputation} package, for example
+\code{\link[simputation:impute_lm]{simputation::impute_lm()}}. See \code{\link[tidyr:replace_na]{tidyr::replace_na()}} for a slightly
+different approach, \code{\link[dplyr:coalesce]{dplyr::coalesce()}} for replacing NAs with values from
+other vectors, and \code{\link[dplyr:na_if]{dplyr::na_if()}} to replace specified values with NA.
 }
 \examples{
 
@@ -22,6 +24,7 @@ library(naniar)
 x <- c(1:5, NA, NA, NA)
 x
 replace_na_with(x, 0L)
+replace_na_with(x, "unknown")
 
 library(dplyr)
 dat <- tibble(
@@ -35,8 +38,8 @@ dat
 dat \%>\%
   mutate(
     ones = replace_na_with(ones, 0),
-    twos = replace_na_with(twos, -2),
-    threes = replace_na_with(threes, -3)
+    twos = replace_na_with(twos, -99),
+    threes = replace_na_with(threes, "unknowns")
   )
 
 dat \%>\%

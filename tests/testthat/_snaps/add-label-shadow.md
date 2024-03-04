@@ -2,7 +2,8 @@
 
     Code
       add_label_shadow(dat)
-    Error <rlang_error>
-      add_label_shadow works with shadow data, which has columns
+    Condition
+      Error in `add_label_shadow()`:
+      ! add_label_shadow works with shadow data, which has columns
                        created by `shade()`, `as_shadow()`, or `bind_shadow()`
 

@@ -69,7 +69,7 @@ Imports:
     magrittr,
     stats,
     visdat,
-    rlang,
+    rlang (>= 1.1.0),
     forcats,
     viridis,
     glue,
@@ -139,6 +139,6 @@ URL: https://github.com/njtierney/naniar,
 BugReports: https://github.com/njtierney/naniar/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.0
 Language: en-US
 Config/testthat/edition: 3

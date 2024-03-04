@@ -22,17 +22,16 @@ rlang::are_na
 #' @keywords internal
 #' @noRd
 #' @examples
-#'
 #' \dontrun{
-#' miss_case_table.grouped_df <- function(data){
-#' group_by_fun(data,.fun = miss_case_table)
+#' miss_case_table.grouped_df <- function(data) {
+#'   group_by_fun(data, .fun = miss_case_table)
 #' }
 #' airquality %>%
-#' group_by(Month) %>%
-#' miss_case_table()
+#'   group_by(Month) %>%
+#'   miss_case_table()
 #' }
 #'
-group_by_fun <- function(data,.fun, ...){
+group_by_fun <- function(data, .fun, ...) {
   tidyr::nest(data) %>%
     dplyr::mutate(data = purrr::map(data, .fun, ...)) %>%
     tidyr::unnest(cols = c(data))
@@ -49,14 +48,13 @@ group_by_fun <- function(data,.fun, ...){
 #' \dontrun{
 #' # success
 #' test_if_null(airquality)
-#' #fail
+#' # fail
 #' my_test <- NULL
 #' test_if_null(my_test)
 #' }
 #' @keywords internal
 #' @noRd
-test_if_null <- function(x){
-
+test_if_null <- function(x) {
   # test for null
   if (is.null(x)) {
     cli::cli_abort(
@@ -79,13 +77,12 @@ test_if_null <- function(x){
 #' # success
 #' my_test <- x
 #' test_if_null(my_test)
-#' #fail
+#' # fail
 #' test_if_missing()
 #' }
 #' @keywords internal
 #' @noRd
-test_if_missing <- function(x, msg = NULL){
-
+test_if_missing <- function(x, msg = NULL) {
   # test for null
   if (missing(x)) {
     cli::cli_abort(
@@ -94,20 +91,22 @@ test_if_missing <- function(x, msg = NULL){
         "{msg}"
       )
     )
-      }
   }
+}
 
 #' @keywords internal
 #' @noRd
-test_if_dots_missing <- function(..., msg = NULL){
-
+test_if_dots_missing <- function(dots_empty,
+                                 msg = NULL,
+                                 call = rlang::caller_env()) {
   # test for null
-  if (missing(...)) {
+  if (dots_empty) {
     cli::cli_abort(
       c(
         "argument must be specified",
         "{msg}"
-      )
+      ),
+      call = call
     )
   }
 }
@@ -122,14 +121,14 @@ test_if_dots_missing <- function(..., msg = NULL){
 #' \dontrun{
 #' # success
 #' test_if_dataframe(airquality)
-#' #fail
+#' # fail
 #' my_test <- matrix(10)
 #' test_if_dataframe(my_test)
 #' }
 #'
 #' @keywords internal
 #' @noRd
-test_if_dataframe <- function(x){
+test_if_dataframe <- function(x) {
   # test for dataframe
   if (!inherits(x, "data.frame")) {
     cli::cli_abort(
@@ -141,7 +140,7 @@ test_if_dataframe <- function(x){
   }
 }
 
-test_if_any_shade <- function(x){
+test_if_any_shade <- function(x) {
   # test for dataframe
   test_if_dataframe(x)
   if (!any_shade(x)) {
@@ -160,7 +159,7 @@ test_if_any_shade <- function(x){
 #'
 #' @return logical vector TRUE = missing FALSE = complete
 #'
-any_row_miss <- function(x){
+any_row_miss <- function(x) {
   apply(data.frame(x), MARGIN = 1, FUN = function(x) anyNA(x))
 }
 
@@ -179,11 +178,13 @@ any_row_miss <- function(x){
 #' # add_span_counter(pedestrian, span_size = 100)
 #' }
 add_span_counter <- function(data, span_size) {
-
   dplyr::mutate(data,
-                span_counter = rep(x = 1:ceiling(nrow(data)),
-                                   each = span_size,
-                                   length.out = nrow(data)))
+    span_counter = rep(
+      x = 1:ceiling(nrow(data)),
+      each = span_size,
+      length.out = nrow(data)
+    )
+  )
 }
 
 #' check the levels of many things
@@ -197,8 +198,7 @@ add_span_counter <- function(data, span_size) {
 #' @noRd
 what_levels <- function(x) purrr::map(x, levels)
 
-quo_to_shade <- function(...){
-
+quo_to_shade <- function(...) {
   # Use ensyms() rather than quos() because the latter allows
   # arbitrary expressions. These variables are forwarded to select(),
   # so potential expressions are `starts_with()`, `one_of()`, etc.
@@ -213,25 +213,27 @@ quo_to_shade <- function(...){
   shadow_vars <- rlang::syms(shadow_chr)
 
   return(shadow_vars)
-
 }
 
-class_glue <- function(x){
+class_glue <- function(x) {
   class(x) %>% glue::glue_collapse(sep = ", ", last = ", or ")
 }
 
-diag_na <- function(size = 5){
-
-  dna <- diag(x = NA,
-              nrow = size,
-              ncol = size)
+diag_na <- function(size = 5) {
+  dna <- diag(
+    x = NA,
+    nrow = size,
+    ncol = size
+  )
   suppressMessages(
     tibble::as_tibble(dna,
-                      .name_repair = "unique")) %>%
-    set_names(paste0("x",seq_len(ncol(.))))
+      .name_repair = "unique"
+    )
+  ) %>%
+    set_names(paste0("x", seq_len(ncol(.))))
 }
 
-coerce_fct_na_explicit <- function(x){
+coerce_fct_na_explicit <- function(x) {
   if (is.factor(x) & anyNA(x)) {
     forcats::fct_na_value_to_level(x, level = "NA")
   } else {
@@ -241,7 +243,7 @@ coerce_fct_na_explicit <- function(x){
 
 # any_shade <- function(x) any(grepl("^NA|^NA_", x))
 
-any_row_shade <- function(x){
+any_row_shade <- function(x) {
   apply(data.frame(x), MARGIN = 1, FUN = function(x) any(grepl("^NA|^NA_", x)))
 }
 
@@ -249,7 +251,7 @@ vecIsFALSE <- Vectorize(isFALSE)
 
 are_any_false <- function(x, ...) any(vecIsFALSE(x), ...)
 
-check_btn_0_1 <- function(prop){
+check_btn_0_1 <- function(prop) {
   if (prop < 0 || prop > 1) {
     cli::cli_abort(
       c(
@@ -260,7 +262,7 @@ check_btn_0_1 <- function(prop){
   }
 }
 
-check_is_integer <- function(x){
+check_is_integer <- function(x) {
   if (x < 0) {
     cli::cli_abort(
       c(
@@ -272,7 +274,7 @@ check_is_integer <- function(x){
   vctrs::vec_cast(x, integer())
 }
 
-check_is_scalar <- function(x){
+check_is_scalar <- function(x) {
   if (length(x) != 1) {
     cli::cli_abort(
       c(

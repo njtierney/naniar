@@ -2,9 +2,6 @@
 
     Code
       replace_with_na_all(df)
-    Error <purrr_error_indexed>
-      i In index: 1.
-      i With name: x.
-      Caused by error in `.f()`:
-      ! argument "condition" is missing, with no default
+    Error <simpleError>
+      argument "condition" is missing, with no default
 

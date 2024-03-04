@@ -21,7 +21,7 @@
 add_shadow <- function(data, ...){
 
   test_if_dots_missing(
-    ...,
+    missing(...),
     "{.fun add_shadow} requires variables to be selected"
     )
   shadow_df <- dplyr::select(data, ...) %>% as_shadow()

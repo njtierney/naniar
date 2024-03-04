@@ -1,4 +1,4 @@
-# naniar 1.1.0
+# naniar 1.1.0 "Prince Caspian"
 
 ## New
 

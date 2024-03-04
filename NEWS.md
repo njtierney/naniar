@@ -11,6 +11,7 @@
 - Fix bug with `shadow_long` not working when gathering variables of mixed type. Fix involves specifying a value transform, which defaults to character. #314
 - implement `Date`, `POSIXct` and `POSIXlt` methods for `impute_below()` - #158
 - provide replace_na_with, a complement to replace_with_na - #129
+- fix bug with `gg_miss_fct` where it used a deprecated function from forcats - #342 
 
 ## Misc
 
@@ -21,6 +22,7 @@
 
 - soft deprecated `shadow_shift` - #193
 - soft deprecate miss_case_cumsum and miss_var_cumsum - #257
+
 
 # naniar 1.0.0
 

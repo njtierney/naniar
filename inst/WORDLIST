@@ -36,6 +36,7 @@ NewMexico
 Ni'a
 Ni'o
 O'hara
+ORCID
 POSIXct
 POSIXt
 Perfoms
@@ -72,7 +73,6 @@ codebook
 colour
 colouring
 colours
-cran
 cumsum
 customise
 customised
@@ -92,6 +92,7 @@ filder
 finalised
 flavours
 focussing
+forcats
 gdtools
 generalise
 geoms
@@ -103,9 +104,7 @@ ggproto
 gh
 github
 helpfile
-https
 ing
-io
 jitter
 jss
 kep
@@ -132,14 +131,11 @@ overriden
 pkgdown
 plotly
 pre
-rdrr
 readme
 realised
 recode
 recoded
 recoding
-relevel
-releveling
 riskfactors
 rlang's
 roxygen

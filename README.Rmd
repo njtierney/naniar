@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 # naniar <a href="http://naniar.njtierney.com/"><img src="man/figures/logo.png" align="right" height="138" /></a>
 
 <!-- badges: start -->
-[![R build status](https://github.com/njtierney/naniar/workflows/R-CMD-check/badge.svg)](https://github.com/njtierney/naniar) [![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://codecov.io/github/njtierney/naniar?branch=master) [![CRAN Status Badge](https://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar) [![CRAN Downloads Each Month](https://cranlogs.r-pkg.org/badges/naniar)](https://CRAN.R-project.org/package=naniar) [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![R build status](https://github.com/njtierney/naniar/workflows/R-CMD-check/badge.svg)](https://github.com/njtierney/naniar) [![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://app.codecov.io/github/njtierney/naniar?branch=master) [![CRAN Status Badge](https://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar) [![CRAN Downloads Each Month](https://cranlogs.r-pkg.org/badges/naniar)](https://CRAN.R-project.org/package=naniar) [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
   <!-- badges: end -->
 
 `naniar` provides principled, tidy ways to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data. It does this by providing:
@@ -29,7 +29,7 @@ knitr::opts_chunk$set(
     - `miss_var_summary()` and `miss_var_table()`
     - `miss_case_summary()`, `miss_case_table()`
 - Statistical tests of missingness:
-    - `mcar_test()` for [Little's (1988)](https://doi.org/10.1080/01621459.1988.10478722) missing completely at random (MCAR) test
+    - `mcar_test()` for [Little's (1988)](https://www.tandfonline.com/doi/abs/10.1080/01621459.1988.10478722) missing completely at random (MCAR) test
 - Visualisation for missing data:
     - `geom_miss_point()`
     - `gg_miss_var()`
@@ -59,7 +59,7 @@ remotes::install_github("njtierney/naniar")
 
 # A short overview of naniar
 
-Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from [ggobi](http://ggobi.org/) and [manet](https://www.swmath.org/software/3067), which replaces `NA` values with values 10% lower than the minimum value in that variable. This visualisation is provided with the `geom_miss_point()` ggplot2 geom, which we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
+Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from [ggobi](http://ggobi.org/) and [manet](https://zbmath.org/software/3067), which replaces `NA` values with values 10% lower than the minimum value in that variable. This visualisation is provided with the `geom_miss_point()` ggplot2 geom, which we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.
 
 ```{r regular-geom-point}
 
@@ -217,7 +217,7 @@ You can read more about all of these functions in the vignette ["Getting Started
 
 # Statistical tests of missingness
 
-naniar provides `mcar_test()` for [Little's (1988)](https://doi.org/10.1080/01621459.1988.10478722) statistical test for missing completely at random (MCAR) data. The null hypothesis in this test is that the data is MCAR, and the test statistic is a chi-squared value. Given the high statistic value and low p-value, we can conclude that the `airquality` data is not missing completely at random:
+naniar provides `mcar_test()` for [Little's (1988)](https://www.tandfonline.com/doi/abs/10.1080/01621459.1988.10478722) statistical test for missing completely at random (MCAR) data. The null hypothesis in this test is that the data is MCAR, and the test statistic is a chi-squared value. Given the high statistic value and low p-value, we can conclude that the `airquality` data is not missing completely at random:
 
 ```{r mcar-test}
 mcar_test(airquality)

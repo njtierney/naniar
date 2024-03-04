@@ -25,10 +25,10 @@ value and low p-value, we can conclude the \code{airquality} data is not
 missing completely at random.
 }
 \note{
-Code is adapted from LittleMCAR() in the now-orphaned {BaylorEdPsych}
+Code is adapted from LittleMCAR() in the now-orphaned \code{BaylorEdPsych}
 package: \url{https://rdrr.io/cran/BaylorEdPsych/man/LittleMCAR.html}. Some of
 code is adapted from Eric Stemmler: \url{https://web.archive.org/web/20201120030409/https://stats-bayes.com/post/2020/08/14/r-function-for-little-s-test-for-data-missing-completely-at-random/}
-using Maximum likelihood estimation from {norm}.
+using Maximum likelihood estimation from \code{norm}.
 }
 \examples{
 mcar_test(airquality)

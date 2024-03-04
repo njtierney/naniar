@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">naniar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,30 +59,33 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="naniar-development-version">naniar (development version)<a class="anchor" aria-label="anchor" href="#naniar-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.1.0" id="naniar-110">naniar 1.1.0<a class="anchor" aria-label="anchor" href="#naniar-110"></a></h2>
 <div class="section level3">
-<h3 id="new-development-version">New<a class="anchor" aria-label="anchor" href="#new-development-version"></a></h3>
-<ul><li>implement <code>impute_fixed</code>, <code>impute_zero</code>, and <code>impute_factor</code>. notably these do not implement “scoped variants” which were previously implemented - for example, <code>impute_fixed_if</code> etc. This is in favour of using the new <code>across</code> workflow within <code>dplyr</code>, and it is easier to maintain. <a href="https://github.com/njtierney/naniar/issues/261" class="external-link">#261</a></li>
-<li>add <code>digit</code> argument to <code>miss_var_summary</code> to help display %missing data correctly when there is a very small fraction of missingness. <a href="https://github.com/njtierney/naniar/issues/284" class="external-link">#284</a></li>
-<li>implemented <code>impute_mode</code> - resolves <a href="https://github.com/njtierney/naniar/issues/213" class="external-link">#213</a>.</li>
+<h3 id="new-1-1-0">New<a class="anchor" aria-label="anchor" href="#new-1-1-0"></a></h3>
+<ul><li>Implement <code>impute_fixed</code>, <code>impute_zero</code>, and <code>impute_factor</code>. notably these do not implement “scoped variants” which were previously implemented - for example, <code>impute_fixed_if</code> etc. This is in favour of using the new <code>across</code> workflow within <code>dplyr</code>, and it is easier to maintain. <a href="https://github.com/njtierney/naniar/issues/261" class="external-link">#261</a></li>
+<li>Add <code>digit</code> argument to <code>miss_var_summary</code> to help display %missing data correctly when there is a very small fraction of missingness. <a href="https://github.com/njtierney/naniar/issues/284" class="external-link">#284</a></li>
+<li>Implemented <code>impute_mode</code> - resolves <a href="https://github.com/njtierney/naniar/issues/213" class="external-link">#213</a>.</li>
 <li>
 <code><a href="../reference/geom_miss_point.html">geom_miss_point()</a></code> works with <code>shape</code> argument <a href="https://github.com/njtierney/naniar/issues/290" class="external-link">#290</a></li>
-<li>fix bug with <code>all_complete</code>, which was implemented as <code>!anyNA(x)</code> but should be <code>all(complete.cases(x))</code>.</li>
-<li>correctly implement <code><a href="../reference/any-all-na-complete.html">any_na()</a></code> (and <code><a href="../reference/any-all-na-complete.html">any_miss()</a></code>) and <code><a href="../reference/any-all-na-complete.html">any_complete()</a></code>. Rework examples to demonstrate workflow for finding complete variables.</li>
-<li>Fix bug with <code>shadow_long</code> not working when gathering variables of mixed type. Fix involves specifying a value transform, which defaults to character. <a href="https://github.com/njtierney/naniar/issues/314" class="external-link">#314</a></li>
-<li>implement <code>Date</code>, <code>POSIXct</code> and <code>POSIXlt</code> methods for <code><a href="../reference/impute_below.html">impute_below()</a></code> - <a href="https://github.com/njtierney/naniar/issues/158" class="external-link">#158</a></li>
-<li>provide replace_na_with, a complement to replace_with_na - <a href="https://github.com/njtierney/naniar/issues/129" class="external-link">#129</a></li>
-<li>fix bug with <code>gg_miss_fct</code> where it used a deprecated function from forcats - <a href="https://github.com/njtierney/naniar/issues/342" class="external-link">#342</a></li>
+<li>Fix bug with <code>all_complete</code>, which was implemented as <code>!anyNA(x)</code> but should be <code>all(complete.cases(x))</code>.</li>
+<li>Correctly implement <code><a href="../reference/any-all-na-complete.html">any_na()</a></code> (and <code><a href="../reference/any-all-na-complete.html">any_miss()</a></code>) and <code><a href="../reference/any-all-na-complete.html">any_complete()</a></code>. Rework examples to demonstrate workflow for finding complete variables.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="misc-development-version">Misc<a class="anchor" aria-label="anchor" href="#misc-development-version"></a></h3>
-<ul><li>use <code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_abort</a></code> and <code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_warn</a></code> instead of <code>stop</code> and <code>warn</code> (<a href="https://github.com/njtierney/naniar/issues/326" class="external-link">#326</a>)</li>
-<li>use <code>expect_snapshot</code> instead of <code>expect_error</code> (<a href="https://github.com/njtierney/naniar/issues/326" class="external-link">#326</a>)</li>
+<h3 id="bug-fixes-1-1-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-1-0"></a></h3>
+<ul><li>Fix bug with <code>shadow_long</code> not working when gathering variables of mixed type. Fix involves specifying a value transform, which defaults to character. <a href="https://github.com/njtierney/naniar/issues/314" class="external-link">#314</a></li>
+<li>Implement <code>Date</code>, <code>POSIXct</code> and <code>POSIXlt</code> methods for <code><a href="../reference/impute_below.html">impute_below()</a></code> - <a href="https://github.com/njtierney/naniar/issues/158" class="external-link">#158</a></li>
+<li>Provide replace_na_with, a complement to replace_with_na - <a href="https://github.com/njtierney/naniar/issues/129" class="external-link">#129</a></li>
+<li>Fix bug with <code>gg_miss_fct</code> where it used a deprecated function from forcats - <a href="https://github.com/njtierney/naniar/issues/342" class="external-link">#342</a></li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-development-version">Changes<a class="anchor" aria-label="anchor" href="#changes-development-version"></a></h3>
-<ul><li>soft deprecated <code>shadow_shift</code> - <a href="https://github.com/njtierney/naniar/issues/193" class="external-link">#193</a></li>
-<li>soft deprecate miss_case_cumsum and miss_var_cumsum - <a href="https://github.com/njtierney/naniar/issues/257" class="external-link">#257</a></li>
+<h3 id="misc-1-1-0">Misc<a class="anchor" aria-label="anchor" href="#misc-1-1-0"></a></h3>
+<ul><li>Use <code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_abort</a></code> and <code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_warn</a></code> instead of <code>stop</code> and <code>warn</code> (<a href="https://github.com/njtierney/naniar/issues/326" class="external-link">#326</a>)</li>
+<li>Use <code>expect_snapshot</code> instead of <code>expect_error</code> (<a href="https://github.com/njtierney/naniar/issues/326" class="external-link">#326</a>)</li>
+</ul></div>
+<div class="section level3">
+<h3 id="changes-1-1-0">Changes<a class="anchor" aria-label="anchor" href="#changes-1-1-0"></a></h3>
+<ul><li>Soft deprecated <code>shadow_shift</code> - <a href="https://github.com/njtierney/naniar/issues/193" class="external-link">#193</a></li>
+<li>Soft deprecate <code><a href="../reference/miss_case_cumsum.html">miss_case_cumsum()</a></code> and <code><a href="../reference/miss_var_cumsum.html">miss_var_cumsum()</a></code> - <a href="https://github.com/njtierney/naniar/issues/257" class="external-link">#257</a></li>
 </ul></div>
 </div>
     <div class="section level2">

@@ -45,7 +45,7 @@
     
     <a class="navbar-brand me-2" href="index.html">naniar</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -133,7 +133,7 @@
 <li>Statistical tests of missingness:
 <ul>
 <li>
-<code><a href="reference/mcar_test.html">mcar_test()</a></code> for <a href="https://doi.org/10.1080/01621459.1988.10478722" class="external-link">Little’s (1988)</a> missing completely at random (MCAR) test</li>
+<code><a href="reference/mcar_test.html">mcar_test()</a></code> for <a href="https://www.tandfonline.com/doi/abs/10.1080/01621459.1988.10478722" class="external-link">Little’s (1988)</a> missing completely at random (MCAR) test</li>
 </ul>
 </li>
 <li>Visualisation for missing data:
@@ -163,7 +163,7 @@
 <div class="section level1">
 <h1 id="a-short-overview-of-naniar">A short overview of naniar<a class="anchor" aria-label="anchor" href="#a-short-overview-of-naniar"></a>
 </h1>
-<p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from <a href="http://ggobi.org/" class="external-link">ggobi</a> and <a href="https://www.swmath.org/software/3067" class="external-link">manet</a>, which replaces <code>NA</code> values with values 10% lower than the minimum value in that variable. This visualisation is provided with the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom, which we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
+<p>Visualising missing data might sound a little strange - how do you visualise something that is not there? One approach to visualising missing data comes from <a href="http://ggobi.org/" class="external-link">ggobi</a> and <a href="https://zbmath.org/software/3067" class="external-link">manet</a>, which replaces <code>NA</code> values with values 10% lower than the minimum value in that variable. This visualisation is provided with the <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> ggplot2 geom, which we illustrate by exploring the relationship between Ozone and Solar radiation from the airquality dataset.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -172,7 +172,8 @@
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Ozone</span>,</span>
 <span>           y <span class="op">=</span> <span class="va">Solar.R</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Removed 42 rows containing missing values (`geom_point()`).</span></span></code></pre></div>
+<span><span class="co">#&gt; Warning: Removed 42 rows containing missing values or values outside the scale range</span></span>
+<span><span class="co">#&gt; (`geom_point()`).</span></span></code></pre></div>
 <p><img src="reference/figures/README-regular-geom-point-1.png"><!-- --></p>
 <p>ggplot2 does not handle these missing values, and we get a warning message about the missing values.</p>
 <p>We can instead use <code><a href="reference/geom_miss_point.html">geom_miss_point()</a></code> to display the missing data</p>
@@ -283,7 +284,8 @@
 <span>             y <span class="op">=</span> <span class="va">Ozone</span>,</span>
 <span>             colour <span class="op">=</span> <span class="va">Ozone_NA</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Removed 7 rows containing missing values (`geom_point()`).</span></span></code></pre></div>
+<span><span class="co">#&gt; Warning: Removed 7 rows containing missing values or values outside the scale range</span></span>
+<span><span class="co">#&gt; (`geom_point()`).</span></span></code></pre></div>
 <p><img src="reference/figures/README-shadow-impute-1.png"><!-- --></p>
 <p>Or perform an <a href="https://www.nature.com/articles/nmeth.3033" class="external-link">upset</a> plot - to plot of the combinations of missingness across cases, using the <code>gg_miss_upset</code> function</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -328,7 +330,7 @@
 <span><span class="fu"><a href="reference/miss_var_summary.html">miss_var_summary</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
 <span><span class="co">#&gt;   variable n_miss pct_miss</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;num&gt;</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 Ozone        37    24.2 </span></span>
 <span><span class="co">#&gt; 2 Solar.R       7     4.58</span></span>
 <span><span class="co">#&gt; 3 Wind          0     0   </span></span>
@@ -368,7 +370,7 @@
 <span><span class="co">#&gt; # A tibble: 25 × 4</span></span>
 <span><span class="co">#&gt; # Groups:   Month [5]</span></span>
 <span><span class="co">#&gt;    Month variable n_miss pct_miss</span></span>
-<span><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;     &lt;int&gt;    &lt;num&gt;</span></span>
+<span><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt;  1     5 Ozone         5     16.1</span></span>
 <span><span class="co">#&gt;  2     5 Solar.R       4     12.9</span></span>
 <span><span class="co">#&gt;  3     5 Wind          0      0  </span></span>
@@ -385,7 +387,7 @@
 <div class="section level1">
 <h1 id="statistical-tests-of-missingness">Statistical tests of missingness<a class="anchor" aria-label="anchor" href="#statistical-tests-of-missingness"></a>
 </h1>
-<p>naniar provides <code><a href="reference/mcar_test.html">mcar_test()</a></code> for <a href="https://doi.org/10.1080/01621459.1988.10478722" class="external-link">Little’s (1988)</a> statistical test for missing completely at random (MCAR) data. The null hypothesis in this test is that the data is MCAR, and the test statistic is a chi-squared value. Given the high statistic value and low p-value, we can conclude that the <code>airquality</code> data is not missing completely at random:</p>
+<p>naniar provides <code><a href="reference/mcar_test.html">mcar_test()</a></code> for <a href="https://www.tandfonline.com/doi/abs/10.1080/01621459.1988.10478722" class="external-link">Little’s (1988)</a> statistical test for missing completely at random (MCAR) data. The null hypothesis in this test is that the data is MCAR, and the test statistic is a chi-squared value. Given the high statistic value and low p-value, we can conclude that the <code>airquality</code> data is not missing completely at random:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/mcar_test.html">mcar_test</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 4</span></span>
@@ -475,7 +477,7 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://github.com/njtierney/naniar" class="external-link"><img src="https://github.com/njtierney/naniar/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/github/njtierney/naniar?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://app.codecov.io/github/njtierney/naniar?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg" alt="Coverage Status"></a></li>
 <li><a href="https://cran.r-project.org/package=naniar" class="external-link"><img src="https://www.r-pkg.org/badges/version/naniar" alt="CRAN Status Badge"></a></li>
 <li><a href="https://CRAN.R-project.org/package=naniar" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/naniar" alt="CRAN Downloads Each Month"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>

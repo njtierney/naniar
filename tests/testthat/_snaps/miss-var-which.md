@@ -2,7 +2,8 @@
 
     Code
       miss_var_which(NULL)
-    Error <rlang_error>
-      Input must inherit from <data.frame>
+    Condition
+      Error in `miss_var_which()`:
+      ! Input must inherit from <data.frame>
       We see class: <NULL>
 

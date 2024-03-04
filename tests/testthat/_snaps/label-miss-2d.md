@@ -2,8 +2,9 @@
 
     Code
       label_miss_2d(NULL, 3)
-    Error <rlang_error>
-      Input cannot be NULL
+    Condition
+      Error in `label_miss_2d()`:
+      ! Input cannot be NULL
       We see the first argument, `x1` is: <NULL>
       We see the second argument, `x2` is: <numeric>
 
@@ -11,8 +12,9 @@
 
     Code
       label_miss_2d(3, NULL)
-    Error <rlang_error>
-      Input cannot be NULL
+    Condition
+      Error in `label_miss_2d()`:
+      ! Input cannot be NULL
       We see the first argument, `x1` is: <numeric>
       We see the second argument, `x2` is: <NULL>
 
@@ -20,8 +22,9 @@
 
     Code
       label_miss_2d(NULL, NULL)
-    Error <rlang_error>
-      Input cannot be NULL
+    Condition
+      Error in `label_miss_2d()`:
+      ! Input cannot be NULL
       We see the first argument, `x1` is: <NULL>
       We see the second argument, `x2` is: <NULL>
 

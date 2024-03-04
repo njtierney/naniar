@@ -54,14 +54,16 @@ group_by_fun <- function(data, .fun, ...) {
 #' }
 #' @keywords internal
 #' @noRd
-test_if_null <- function(x) {
+test_if_null <- function(x,
+                         call = rlang::caller_env()) {
   # test for null
   if (is.null(x)) {
     cli::cli_abort(
-      c(
+      message = c(
         "Input must not be NULL",
         "Input is {.cls {class(x)}}"
-      )
+      ),
+      call = call
     )
   }
 }
@@ -128,27 +130,32 @@ test_if_dots_missing <- function(dots_empty,
 #'
 #' @keywords internal
 #' @noRd
-test_if_dataframe <- function(x) {
+test_if_dataframe <- function(x,
+                              arg = rlang::caller_arg(x),
+                              call = rlang::caller_env()) {
   # test for dataframe
   if (!inherits(x, "data.frame")) {
     cli::cli_abort(
-      c(
+      message = c(
         "Input must inherit from {.cls data.frame}",
         "We see class: {.cls {class(x)}}"
-      )
+      ),
+      call = call
     )
   }
 }
 
-test_if_any_shade <- function(x) {
+test_if_any_shade <- function(x,
+                              call = rlang::caller_env()) {
   # test for dataframe
   test_if_dataframe(x)
   if (!any_shade(x)) {
-    cli::format_error(
-      c(
+    cli::cli_abort(
+      message = c(
         "Input must contain a shade column.",
         "See {.code ?shade}, {.code ?shade}, and {.code ?bind_shadow}"
-      )
+      ),
+      call = call
     )
   }
 }
@@ -251,36 +258,42 @@ vecIsFALSE <- Vectorize(isFALSE)
 
 are_any_false <- function(x, ...) any(vecIsFALSE(x), ...)
 
-check_btn_0_1 <- function(prop) {
+check_btn_0_1 <- function(prop,
+                          call = rlang::caller_env()) {
   if (prop < 0 || prop > 1) {
     cli::cli_abort(
-      c(
+      message = c(
         "{.var prop} must be between 0 and 1",
         "{.var prop} is {prop}"
-      )
+      ),
+      call = call
     )
   }
 }
 
-check_is_integer <- function(x) {
+check_is_integer <- function(x,
+                             call = rlang::caller_env()) {
   if (x < 0) {
     cli::cli_abort(
-      c(
+      message = c(
         "{.var x} must be greater than 0",
         "{.var x} is {.val {x}}"
-      )
+      ),
+      call = call
     )
   }
   vctrs::vec_cast(x, integer())
 }
 
-check_is_scalar <- function(x) {
+check_is_scalar <- function(x,
+                            call = rlang::caller_env()) {
   if (length(x) != 1) {
     cli::cli_abort(
-      c(
+      message = c(
         "{.var x} must be length 1",
         "{.var x} is {x}, and {.var x} has length: {length(x)}"
-      )
+      ),
+      call = call
     )
   }
 }

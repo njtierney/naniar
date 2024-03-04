@@ -1,27 +1,30 @@
-# naniar (development version)
+# naniar 1.1.0
 
 ## New
 
-- implement `impute_fixed`, `impute_zero`, and `impute_factor`. notably these do not implement "scoped variants" which were previously implemented - for example, `impute_fixed_if` etc. This is in favour of using the new `across` workflow within `dplyr`, and it is easier to maintain. #261
-- add `digit` argument to `miss_var_summary` to help display %missing data correctly when there is a very small fraction of missingness. #284
-- implemented `impute_mode` - resolves #213.
+- Implement `impute_fixed`, `impute_zero`, and `impute_factor`. notably these do not implement "scoped variants" which were previously implemented - for example, `impute_fixed_if` etc. This is in favour of using the new `across` workflow within `dplyr`, and it is easier to maintain. #261
+- Add `digit` argument to `miss_var_summary` to help display %missing data correctly when there is a very small fraction of missingness. #284
+- Implemented `impute_mode` - resolves #213.
 - `geom_miss_point()` works with `shape` argument #290
-- fix bug with `all_complete`, which was implemented as `!anyNA(x)` but should be `all(complete.cases(x))`.
-- correctly implement `any_na()` (and `any_miss()`) and `any_complete()`. Rework examples to demonstrate workflow for finding complete variables.
+- Fix bug with `all_complete`, which was implemented as `!anyNA(x)` but should be `all(complete.cases(x))`.
+- Correctly implement `any_na()` (and `any_miss()`) and `any_complete()`. Rework examples to demonstrate workflow for finding complete variables.
+
+## Bug fixes
+
 - Fix bug with `shadow_long` not working when gathering variables of mixed type. Fix involves specifying a value transform, which defaults to character. #314
-- implement `Date`, `POSIXct` and `POSIXlt` methods for `impute_below()` - #158
-- provide replace_na_with, a complement to replace_with_na - #129
-- fix bug with `gg_miss_fct` where it used a deprecated function from forcats - #342 
+- Implement `Date`, `POSIXct` and `POSIXlt` methods for `impute_below()` - #158
+- Provide replace_na_with, a complement to replace_with_na - #129
+- Fix bug with `gg_miss_fct` where it used a deprecated function from forcats - #342 
 
 ## Misc
 
-- use `cli::cli_abort` and `cli::cli_warn` instead of `stop` and `warn` (#326)
-- use `expect_snapshot` instead of `expect_error` (#326)
+- Use `cli::cli_abort` and `cli::cli_warn` instead of `stop` and `warn` (#326)
+- Use `expect_snapshot` instead of `expect_error` (#326)
 
 ## Changes
 
-- soft deprecated `shadow_shift` - #193
-- soft deprecate miss_case_cumsum and miss_var_cumsum - #257
+- Soft deprecated `shadow_shift` - #193
+- Soft deprecate `miss_case_cumsum()` and `miss_var_cumsum()` - #257
 
 
 # naniar 1.0.0

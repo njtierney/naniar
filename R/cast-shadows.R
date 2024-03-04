@@ -36,8 +36,8 @@
 cast_shadow <- function(data, ...){
 
   test_if_dots_missing(
-    ...,
-    "{.fun cast_shadow} requires variables to be selected after the data"
+    dots_empty = missing(...),
+    msg = "{.fun cast_shadow} requires variables to be selected after the data"
     )
 
     shadow_vars <- tibble::as_tibble(as_shadow(dplyr::select(data, ...)))
@@ -108,8 +108,8 @@ cast_shadow_shift <- function(data, ...){
 cast_shadow_shift_label <- function(data, ...){
 
   test_if_dots_missing(
-    ...,
-    "{.fun cast_shadow_shift_label} requires variables to be selected after the data"
+    dots_empty = missing(...),
+    msg = "{.fun cast_shadow_shift_label} requires variables to be selected after the data"
     )
 
   shadow_vars <- dplyr::select(data, ...) %>% cast_shadow(...)

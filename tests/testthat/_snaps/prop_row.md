@@ -2,63 +2,71 @@
 
     Code
       n_miss_row(numeric(0))
-    Error <rlang_error>
-      Input must inherit from <data.frame>
+    Condition
+      Error in `n_miss_row()`:
+      ! Input must inherit from <data.frame>
       We see class: <numeric>
 
 ---
 
     Code
       n_miss_row(NULL)
-    Error <rlang_error>
-      Input must not be NULL
+    Condition
+      Error in `n_miss_row()`:
+      ! Input must not be NULL
       Input is <NULL>
 
 ---
 
     Code
       n_complete_row(numeric(0))
-    Error <rlang_error>
-      Input must inherit from <data.frame>
+    Condition
+      Error in `n_complete_row()`:
+      ! Input must inherit from <data.frame>
       We see class: <numeric>
 
 ---
 
     Code
       n_complete_row(NULL)
-    Error <rlang_error>
-      Input must not be NULL
+    Condition
+      Error in `n_complete_row()`:
+      ! Input must not be NULL
       Input is <NULL>
 
 ---
 
     Code
       prop_miss_row(numeric(0))
-    Error <rlang_error>
-      Input must inherit from <data.frame>
+    Condition
+      Error in `prop_miss_row()`:
+      ! Input must inherit from <data.frame>
       We see class: <numeric>
 
 ---
 
     Code
       prop_miss_row(NULL)
-    Error <rlang_error>
-      Input must not be NULL
+    Condition
+      Error in `prop_miss_row()`:
+      ! Input must not be NULL
       Input is <NULL>
 
 ---
 
     Code
       prop_complete_row(numeric(0))
-    Error <rlang_error>
-      Input must inherit from <data.frame>
+    Condition
+      Error in `prop_complete_row()`:
+      ! Input must inherit from <data.frame>
       We see class: <numeric>
 
 ---
 
     Code
       prop_complete_row(NULL)
-    Error <rlang_error>
-      Input must not be NULL
+    Condition
+      Error in `prop_complete_row()`:
+      ! Input must not be NULL
       Input is <NULL>
 

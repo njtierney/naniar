@@ -2,8 +2,9 @@
 
     Code
       label_miss_1d(NULL)
-    Error <rlang_error>
-      Input must not be NULL
+    Condition
+      Error in `label_miss_1d()`:
+      ! Input must not be NULL
       Input is <NULL>
 
 # label_miss_1d identifies the correct location of missingness

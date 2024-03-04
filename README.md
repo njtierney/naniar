@@ -310,7 +310,7 @@ which both return output ordered by the number of missing values.
 miss_var_summary(airquality)
 #> # A tibble: 6 × 3
 #>   variable n_miss pct_miss
-#>   <chr>     <int>    <dbl>
+#>   <chr>     <int>    <num>
 #> 1 Ozone        37    24.2 
 #> 2 Solar.R       7     4.58
 #> 3 Wind          0     0   
@@ -354,7 +354,7 @@ airquality %>%
 #> # A tibble: 25 × 4
 #> # Groups:   Month [5]
 #>    Month variable n_miss pct_miss
-#>    <int> <chr>     <int>    <dbl>
+#>    <int> <chr>     <int>    <num>
 #>  1     5 Ozone         5     16.1
 #>  2     5 Solar.R       4     12.9
 #>  3     5 Wind          0      0  

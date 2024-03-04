@@ -2,8 +2,8 @@
 
     Code
       add_shadow(dat)
-    Warning <lifecycle_warning_deprecated>
-      The `value` argument of `names<-` must have the same length as `x` as of tibble 3.0.0.
-    Error <vctrs_error_incompatible_size>
-      Can't recycle `..1` (size 5) to match `..2` (size 0).
+    Condition
+      Error in `add_shadow()`:
+      ! argument must be specified
+      {.fun add_shadow} requires variables to be selected
 

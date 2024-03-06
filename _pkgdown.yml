@@ -128,5 +128,7 @@ navbar:
   - text: Reference
     href: reference/index.html
   - text: News
-    href: news/index.html
+    releases:
+    - text: "Version 1.1.0"
+      href: https://www.njtierney.com/post/2024/03/04/naniar-version-1-1-0-prince-caspian/
 

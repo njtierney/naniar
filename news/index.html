@@ -35,9 +35,7 @@
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li class="active nav-item">
-  <a class="nav-link" href="../news/index.html">News</a>
-</li>
+<h6 class="dropdown-header" data-toc-skip>News</h6>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -59,7 +57,7 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.1.0" id="naniar-110-prince-caspian">naniar 1.1.0 “Prince Caspian”<a class="anchor" aria-label="anchor" href="#naniar-110-prince-caspian"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.1.0" id="naniar-110-prince-caspian">naniar 1.1.0 “Prince Caspian”<a class="anchor" aria-label="anchor" href="#naniar-110-prince-caspian"></a></h2><p class="text-muted">CRAN release: 2024-03-05</p>
 <div class="section level3">
 <h3 id="new-1-1-0">New<a class="anchor" aria-label="anchor" href="#new-1-1-0"></a></h3>
 <ul><li>Implement <code>impute_fixed</code>, <code>impute_zero</code>, and <code>impute_factor</code>. notably these do not implement “scoped variants” which were previously implemented - for example, <code>impute_fixed_if</code> etc. This is in favour of using the new <code>across</code> workflow within <code>dplyr</code>, and it is easier to maintain. <a href="https://github.com/njtierney/naniar/issues/261" class="external-link">#261</a></li>

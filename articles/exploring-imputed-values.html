@@ -327,54 +327,52 @@ variables year and latitude and longitude:</p>
 with bootstrapping, additive regression, and predictive mean matching.
 We are going to explore predicting mean matching, and single
 imputation.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#&gt; Attaching package: 'Hmisc'</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#&gt; The following object is masked from 'package:simputation':</span></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#&gt;     impute</span></span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from 'package:dplyr':</span></span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co">#&gt;     src, summarize</span></span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co">#&gt;     format.pval, units</span></span>
-<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>aq_imp <span class="ot">&lt;-</span> <span class="fu">aregImpute</span>(<span class="sc">~</span>Ozone <span class="sc">+</span> Temp <span class="sc">+</span> Wind <span class="sc">+</span> Solar.R,</span>
-<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>                     <span class="at">n.impute =</span> <span class="dv">1</span>,</span>
-<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>                     <span class="at">type =</span> <span class="st">"pmm"</span>,</span>
-<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>                     <span class="at">data =</span> airquality)</span>
-<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="co">#&gt; Iteration 1 </span></span>
-<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a>Iteration <span class="dv">2</span> </span>
-<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a>Iteration <span class="dv">3</span> </span>
-<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a>Iteration <span class="dv">4</span> </span>
-<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a></span>
-<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a>aq_imp</span>
-<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a><span class="co">#&gt; Multiple Imputation using Bootstrap and PMM</span></span>
-<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-28"><a href="#cb9-28" tabindex="-1"></a><span class="co">#&gt; aregImpute(formula = ~Ozone + Temp + Wind + Solar.R, data = airquality, </span></span>
-<span id="cb9-29"><a href="#cb9-29" tabindex="-1"></a><span class="co">#&gt;     n.impute = 1, type = "pmm")</span></span>
-<span id="cb9-30"><a href="#cb9-30" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-31"><a href="#cb9-31" tabindex="-1"></a><span class="co">#&gt; n: 153   p: 4    Imputations: 1      nk: 3 </span></span>
-<span id="cb9-32"><a href="#cb9-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-33"><a href="#cb9-33" tabindex="-1"></a><span class="co">#&gt; Number of NAs:</span></span>
-<span id="cb9-34"><a href="#cb9-34" tabindex="-1"></a><span class="co">#&gt;   Ozone    Temp    Wind Solar.R </span></span>
-<span id="cb9-35"><a href="#cb9-35" tabindex="-1"></a><span class="co">#&gt;      37       0       0       7 </span></span>
-<span id="cb9-36"><a href="#cb9-36" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-37"><a href="#cb9-37" tabindex="-1"></a><span class="co">#&gt;         type d.f.</span></span>
-<span id="cb9-38"><a href="#cb9-38" tabindex="-1"></a><span class="co">#&gt; Ozone      s    2</span></span>
-<span id="cb9-39"><a href="#cb9-39" tabindex="-1"></a><span class="co">#&gt; Temp       s    2</span></span>
-<span id="cb9-40"><a href="#cb9-40" tabindex="-1"></a><span class="co">#&gt; Wind       s    2</span></span>
-<span id="cb9-41"><a href="#cb9-41" tabindex="-1"></a><span class="co">#&gt; Solar.R    s    1</span></span>
-<span id="cb9-42"><a href="#cb9-42" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-43"><a href="#cb9-43" tabindex="-1"></a><span class="co">#&gt; Transformation of Target Variables Forced to be Linear</span></span>
-<span id="cb9-44"><a href="#cb9-44" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-45"><a href="#cb9-45" tabindex="-1"></a><span class="co">#&gt; R-squares for Predicting Non-Missing Values for Each Variable</span></span>
-<span id="cb9-46"><a href="#cb9-46" tabindex="-1"></a><span class="co">#&gt; Using Last Imputations of Predictors</span></span>
-<span id="cb9-47"><a href="#cb9-47" tabindex="-1"></a><span class="co">#&gt;   Ozone Solar.R </span></span>
-<span id="cb9-48"><a href="#cb9-48" tabindex="-1"></a><span class="co">#&gt;   0.667   0.224</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://hbiostat.org/R/Hmisc/" class="external-link">Hmisc</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'Hmisc'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:simputation':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     impute</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:dplyr':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     src, summarize</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     format.pval, units</span></span>
+<span></span>
+<span><span class="va">aq_imp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/aregImpute.html" class="external-link">aregImpute</a></span><span class="op">(</span><span class="op">~</span><span class="va">Ozone</span> <span class="op">+</span> <span class="va">Temp</span> <span class="op">+</span> <span class="va">Wind</span> <span class="op">+</span> <span class="va">Solar.R</span>,</span>
+<span>                     n.impute <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                     type <span class="op">=</span> <span class="st">"pmm"</span>,</span>
+<span>                     data <span class="op">=</span> <span class="va">airquality</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Iteration 1 Iteration 2 Iteration 3 Iteration 4 </span></span>
+<span></span>
+<span><span class="va">aq_imp</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Multiple Imputation using Bootstrap and PMM</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; aregImpute(formula = ~Ozone + Temp + Wind + Solar.R, data = airquality, </span></span>
+<span><span class="co">#&gt;     n.impute = 1, type = "pmm")</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; n: 153   p: 4    Imputations: 1      nk: 3 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Number of NAs:</span></span>
+<span><span class="co">#&gt;   Ozone    Temp    Wind Solar.R </span></span>
+<span><span class="co">#&gt;      37       0       0       7 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;         type d.f.</span></span>
+<span><span class="co">#&gt; Ozone      s    2</span></span>
+<span><span class="co">#&gt; Temp       s    2</span></span>
+<span><span class="co">#&gt; Wind       s    2</span></span>
+<span><span class="co">#&gt; Solar.R    s    1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Transformation of Target Variables Forced to be Linear</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; R-squares for Predicting Non-Missing Values for Each Variable</span></span>
+<span><span class="co">#&gt; Using Last Imputations of Predictors</span></span>
+<span><span class="co">#&gt;   Ozone Solar.R </span></span>
+<span><span class="co">#&gt;   0.667   0.224</span></span></code></pre></div>
 <p>We are now going to get our data into <code>nabular</code> form, and
 then insert the imputed values:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">

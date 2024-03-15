@@ -33,6 +33,7 @@ reference:
 - title: Create special missing values
   desc: |
     Create special missing values so that they don't get lost!
+    See `vignette("special-missing")`.
   contents: recode_shadow
 - title: Visualisation
   desc: |
@@ -67,14 +68,16 @@ reference:
   contents: starts_with("add_")
 - title: Replacing values with and to NA
   desc: |
-    Functions to help replace certain values with NA, which includes scoped variants (_at, _if, _all) that take formulas for flexible approachs
+    Functions to help replace certain values with NA, which includes scoped variants
+    (_at, _if, _all) that take formulas for flexible approachs. `vignette("replace-with-na")`
   contents:
   - starts_with("replace_with_na")
   - replace_to_na
   - replace_na_with
 - title: Imputation helpers
   desc: |
-    Simple imputation methods for exploring visualisation and missingness structure
+    Simple imputation methods for exploring visualisation and missingness structure.
+    See `vignette("exploring-imputed-values")` for more details.
   contents:
   - starts_with("impute_")
   - set-prop-n-miss
@@ -111,6 +114,7 @@ reference:
   desc: |
     Custom ggplot geoms built to extend ggplot for missing values
   contents: naniar-ggproto
+
 navbar:
   left:
   - text: Getting Started

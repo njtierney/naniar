@@ -139,10 +139,11 @@ test_that("special missings are the same for grouped and ungrouped data", {
 test_that("special missings class is maintained for grouped and ungrouped data", {
   skip_on_cran()
   skip_on_ci()
+  # FIXME failing test?
   expect_equal(class(aq_grouped_recoded$Ozone_NA),
                class(aq_recoded$Ozone_NA))
-  expect_true(is_shade(aq_grouped_recoded$Ozone_NA),
-              is_shade(aq_recoded$Ozone_NA))
+  expect_true(is_shade(aq_grouped_recoded$Ozone_NA))
+  expect_true(is_shade(aq_recoded$Ozone_NA))
 })
 
 test_that("shadow_expand_relevel returns shadows inside a data.frame", {

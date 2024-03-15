@@ -47,7 +47,6 @@ Suggests:
     testthat (>= 3.0.0),
     rpart,
     rpart.plot,
-    covr,
     gridExtra,
     wakefield,
     vdiffr,

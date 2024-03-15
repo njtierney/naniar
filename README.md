@@ -1,12 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# naniar <a href="http://naniar.njtierney.com/"><img src="man/figures/logo.png" align="right" height="138" /></a>
+# naniar <a href="https://naniar.njtierney.com/"><img src="man/figures/logo.png" align="right" height="138" /></a>
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/njtierney/naniar/workflows/R-CMD-check/badge.svg)](https://github.com/njtierney/naniar)
+[![R-CMD-check](https://github.com/njtierney/naniar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/njtierney/naniar/actions/workflows/R-CMD-check.yaml)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://app.codecov.io/github/njtierney/naniar?branch=master)
 [![CRAN Status

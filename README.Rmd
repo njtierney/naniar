@@ -12,15 +12,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-# naniar <a href="http://naniar.njtierney.com/"><img src="man/figures/logo.png" align="right" height="138" /></a>
+# naniar <a href="https://naniar.njtierney.com/"><img src="man/figures/logo.png" align="right" height="138" /></a>
 
 <!-- badges: start -->
-[![R build status](https://github.com/njtierney/naniar/workflows/R-CMD-check/badge.svg)](https://github.com/njtierney/naniar)
+[![R-CMD-check](https://github.com/njtierney/naniar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/njtierney/naniar/actions/workflows/R-CMD-check.yaml)
 [![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://app.codecov.io/github/njtierney/naniar?branch=master)
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version/naniar)](https://cran.r-project.org/package=naniar)
 [![CRAN Downloads Each Month](https://cranlogs.r-pkg.org/badges/naniar)](https://CRAN.R-project.org/package=naniar)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-  <!-- badges: end -->
+<!-- badges: end -->
 
 `naniar` provides principled, tidy ways to summarise, visualise, and manipulate missing data with minimal deviations from the workflows in ggplot2 and tidy data. It does this by providing:
 

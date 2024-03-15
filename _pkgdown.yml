@@ -1,4 +1,4 @@
-url: http://naniar.njtierney.com/
+url: https://naniar.njtierney.com/
 template:
   bootstrap: 5
   bootswatch: flatly
@@ -11,7 +11,7 @@ authors:
   Nick Tierney:
     href: https://njtierney.com/
   Di Cook:
-    href: http://www.dicook.org/
+    href: https://www.dicook.org/
   Miles McBain:
     href: https://milesmcbain.xyz/
   Colin Fay:
@@ -134,3 +134,5 @@ navbar:
   - text: News
     href: news/index.html
 
+redirects:
+ - ["articles/getting-started-w-naniar.html", "articles/naniar.html"]

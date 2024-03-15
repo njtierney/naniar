@@ -135,7 +135,7 @@ Collate:
     'utils.R'
     'where-na.R'
 URL: https://github.com/njtierney/naniar,
-    http://naniar.njtierney.com/
+    https://naniar.njtierney.com/
 BugReports: https://github.com/njtierney/naniar/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

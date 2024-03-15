@@ -48,7 +48,7 @@ We create `nabular` data by `bind`ing the shadow to the data:
 bind_shadow(oceanbuoys)
 ```
 
-This keeps the data values tied to their missingness, and has great benefits for exploring missing and imputed values in data. See the vignettes [Getting Started with naniar](http://naniar.njtierney.com/articles/getting-started-w-naniar.html) and [Exploring Imputations with naniar](http://naniar.njtierney.com/articles/exploring-imputed-values.html) for more details.
+This keeps the data values tied to their missingness, and has great benefits for exploring missing and imputed values in data. See the vignettes [Getting Started with naniar](https://naniar.njtierney.com/articles/naniar.html) and [Exploring Imputations with naniar](http://naniar.njtierney.com/articles/exploring-imputed-values.html) for more details.
 
 # Recoding missing values
 
@@ -103,6 +103,6 @@ Under the hood, this special missing value is recoded as a new factor level in t
 Some examples of using `recode_shadow` in a workflow will be discussed in more detail in the near future, for the moment, here is a recommended workflow:
 
 * Use `recode_shadow()` with actual data
-* Replacing the previous actual values using `replace_with_na()` (see the vignette on [replacing values with NA](http://naniar.njtierney.com/articles/replace-with-na.html))
+* Replacing the previous actual values using `replace_with_na()` (see the vignette on [replacing values with NA](https://naniar.njtierney.com/articles/replace-with-na.html))
 * Explore missings where special cases are considered
 * Explore imputed values, looking at these special cases

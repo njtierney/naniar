@@ -39,7 +39,7 @@ ggplot2 and tidy data. It does this by providing:
 
 For more details on the workflow and theory underpinning naniar, read
 the vignette [Getting started with
-naniar](https://naniar.njtierney.com/articles/getting-started-w-naniar.html).
+naniar](https://naniar.njtierney.com/articles/naniar.html).
 
 For a short primer on the data visualisation available in naniar, read
 the vignette [Gallery of Missing Data
@@ -369,7 +369,7 @@ airquality %>%
 
 You can read more about all of these functions in the vignette [“Getting
 Started with
-naniar”](https://naniar.njtierney.com/articles/getting-started-w-naniar.html).
+naniar”](https://naniar.njtierney.com/articles/naniar.html).
 
 # Statistical tests of missingness
 

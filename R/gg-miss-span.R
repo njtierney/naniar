@@ -10,7 +10,7 @@
 #' @param span_every integer describing the length of the span to be explored
 #' @param facet (optional) a single bare variable name, if you want to create a faceted plot.
 #'
-#' @seealso [geom_miss_point()] [gg_miss_case()] [gg_miss_case_cumsum] [gg_miss_fct()] [gg_miss_var()] [gg_miss_var_cumsum()] [gg_miss_which()]
+#' @seealso [geom_miss_point()] [gg_miss_case()] [gg_miss_case_cumsum()] [gg_miss_fct()] [gg_miss_var()] [gg_miss_var_cumsum()] [gg_miss_which()]
 
 #' @return ggplot2 showing the number of missings in a span (window, or breaksize)
 #' @export

@@ -2,7 +2,7 @@
 % Please edit documentation in R/geom-miss-point.R
 \name{geom_miss_point}
 \alias{geom_miss_point}
-\title{geom_miss_point}
+\title{Plot Missing Data Points}
 \usage{
 geom_miss_point(
   mapping = NULL,
@@ -67,11 +67,8 @@ values in ggplot2. To do so it uses methods from ggobi to display missing
 data points 10\\% below the minimum value, so that the values can be seen on
 the same axis.
 }
-\details{
-Plot Missing Data Points
-}
 \note{
-Warning message if na.rm = T is supplied.
+Warning message if \code{na.rm = T} is supplied.
 }
 \examples{
 \dontrun{
@@ -99,5 +96,6 @@ ggplot(airquality,
 }
 }
 \seealso{
-[gg_miss_case()][gg_miss_case_cumsum()][gg_miss_fct()][gg_miss_span()][gg_miss_var()][gg_miss_var_cumsum()][gg_miss_which()]
+\code{\link[=gg_miss_case]{gg_miss_case()}} \code{\link[=gg_miss_case_cumsum]{gg_miss_case_cumsum()}} \code{\link[=gg_miss_fct]{gg_miss_fct()}}
+\code{\link[=gg_miss_span]{gg_miss_span()}} \code{\link[=gg_miss_var]{gg_miss_var()}} \code{\link[=gg_miss_var_cumsum]{gg_miss_var_cumsum()}} \code{\link[=gg_miss_which]{gg_miss_which()}}
 }

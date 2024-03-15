@@ -6,11 +6,11 @@
 #'   the same axis.
 #'
 #' @include legend-draw.R
-#' @name  geom_miss_point
-#' @title  geom_miss_point
-#' @note Warning message if na.rm = T is supplied.
+#' @name geom_miss_point
+#' @note Warning message if `na.rm = T` is supplied.
 #'
-#' @seealso [gg_miss_case()][gg_miss_case_cumsum()][gg_miss_fct()][gg_miss_span()][gg_miss_var()][gg_miss_var_cumsum()][gg_miss_which()]
+#' @seealso [gg_miss_case()] [gg_miss_case_cumsum()] [gg_miss_fct()]
+#'   [gg_miss_span()] [gg_miss_var()] [gg_miss_var_cumsum()] [gg_miss_which()]
 #'
 #' @param mapping Set of aesthetic mappings created by [ggplot2::aes()]
 #' or [ggplot2::aes_()]. If specified and `inherit.aes = TRUE`
@@ -79,17 +79,17 @@
 #'  facet_wrap(~Month)
 #'}
 #' @export
- geom_miss_point <- function(mapping = NULL,
-                             data = NULL,
-                             prop_below = 0.1,
-                             jitter = 0.05,
-                             stat = "miss_point",
-                             position = "identity",
-                             colour = ..missing..,
-                             na.rm = FALSE,
-                             show.legend = NA,
-                             inherit.aes = TRUE,
-                             ...) {
+geom_miss_point <- function(mapping = NULL,
+                            data = NULL,
+                            prop_below = 0.1,
+                            jitter = 0.05,
+                            stat = "miss_point",
+                            position = "identity",
+                            colour = ..missing..,
+                            na.rm = FALSE,
+                            show.legend = NA,
+                            inherit.aes = TRUE,
+                            ...) {
   layer(
     data = data,
     mapping = mapping,

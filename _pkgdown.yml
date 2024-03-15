@@ -116,27 +116,28 @@ reference:
   contents: naniar-ggproto
 
 navbar:
-  left:
-  - text: Getting Started
-    href: articles/getting-started-w-naniar.html
-  - text: Gallery
-    href: articles/naniar-visualisation.html
-  - text: Articles
-    menu:
-    - text: Replace with NA
-      href: articles/replace-with-na.html
-    - text: Special Missings
-      href: articles/special-missing-values.html
-    - text: Exploring Imputations
-      href: articles/exploring-imputed-values.html
-  - text: Reference
-    href: reference/index.html
-  - text: News
-    releases:
-  - text: "Version 1.1.0"
+  structure:
+    left: [intro, gallery, articles, reference, news]
+  components:
+    gallery:
+      text: Gallery
+      href: articles/naniar-visualisation.html
+    articles:
+      text: Articles
+      menu:
+      - text: Replace with NA
+        href: articles/replace-with-na.html
+      - text: Special Missings
+        href: articles/special-missing-values.html
+      - text: Exploring Imputations
+        href: articles/exploring-imputed-values.html
+
+news:
+  releases:
+  - text: Version 1.1.0
     href: https://www.njtierney.com/post/2024/03/04/naniar-version-1-1-0-prince-caspian/
-  - text: News
-    href: news/index.html
+  - text: Version 1.0.0
+    href: https://www.njtierney.com/post/2023/02/07/naniar-version-1/
 
 redirects:
  - ["articles/getting-started-w-naniar.html", "articles/naniar.html"]

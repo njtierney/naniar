@@ -31,7 +31,7 @@
     explored with minimal deviation from the common work patterns of ggplot2 
     and tidy data. The work is fully discussed at Tierney &amp; Cook (2023) 
     &lt;doi:10.18637/jss.v105.i07&gt;.">
-<meta property="og:image" content="http://naniar.njtierney.com/logo.png">
+<meta property="og:image" content="https://naniar.njtierney.com/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -55,7 +55,7 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
-  <a class="nav-link" href="articles/getting-started-w-naniar.html">Getting Started</a>
+  <a class="nav-link" href="articles/naniar.html">Get started</a>
 </li>
 <li class="nav-item">
   <a class="nav-link" href="articles/naniar-visualisation.html">Gallery</a>
@@ -71,12 +71,15 @@
 <li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
-<h6 class="dropdown-header" data-toc-skip>News</h6>
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://www.njtierney.com/post/2024/03/04/naniar-version-1-1-0-prince-caspian/">Version 1.1.0</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="news/index.html">News</a>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-news">
+    <h6 class="dropdown-header" data-toc-skip>Releases</h6>
+    <a class="external-link dropdown-item" href="https://www.njtierney.com/post/2024/03/04/naniar-version-1-1-0-prince-caspian/">Version 1.1.0</a>
+    <a class="external-link dropdown-item" href="https://www.njtierney.com/post/2023/02/07/naniar-version-1/">Version 1.0.0</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="news/index.html">Changelog</a>
+  </div>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -149,8 +152,8 @@
 </ul>
 </li>
 </ul>
-<p>For more details on the workflow and theory underpinning naniar, read the vignette <a href="https://naniar.njtierney.com/articles/getting-started-w-naniar.html" class="external-link">Getting started with naniar</a>.</p>
-<p>For a short primer on the data visualisation available in naniar, read the vignette <a href="https://naniar.njtierney.com/articles/naniar-visualisation.html" class="external-link">Gallery of Missing Data Visualisations</a>.</p>
+<p>For more details on the workflow and theory underpinning naniar, read the vignette <a href="https://naniar.njtierney.com/articles/naniar.html">Getting started with naniar</a>.</p>
+<p>For a short primer on the data visualisation available in naniar, read the vignette <a href="https://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of Missing Data Visualisations</a>.</p>
 <p>For full details of the package, including</p>
 </div>
 <div class="section level1">
@@ -308,7 +311,7 @@
 <span>             var <span class="op">=</span> <span class="va">hourly_counts</span>,</span>
 <span>             span_every <span class="op">=</span> <span class="fl">1500</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-gg-miss-span-1.png"><!-- --></p>
-<p>You can read about all of the visualisations in naniar in the vignette <a href="https://naniar.njtierney.com/articles/naniar-visualisation.html" class="external-link">Gallery of missing data visualisations using naniar</a>.</p>
+<p>You can read about all of the visualisations in naniar in the vignette <a href="https://naniar.njtierney.com/articles/naniar-visualisation.html">Gallery of missing data visualisations using naniar</a>.</p>
 <p>naniar also provides handy helpers for calculating the number, proportion, and percentage of missing and complete observations:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/n_miss.html">n_miss</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
@@ -386,7 +389,7 @@
 <span><span class="co">#&gt;  9     6 Temp          0      0  </span></span>
 <span><span class="co">#&gt; 10     6 Day           0      0  </span></span>
 <span><span class="co">#&gt; # ℹ 15 more rows</span></span></code></pre></div>
-<p>You can read more about all of these functions in the vignette <a href="https://naniar.njtierney.com/articles/getting-started-w-naniar.html" class="external-link">“Getting Started with naniar”</a>.</p>
+<p>You can read more about all of these functions in the vignette <a href="https://naniar.njtierney.com/articles/naniar.html">“Getting Started with naniar”</a>.</p>
 </div>
 <div class="section level1">
 <h1 id="statistical-tests-of-missingness">Statistical tests of missingness<a class="anchor" aria-label="anchor" href="#statistical-tests-of-missingness"></a>
@@ -402,7 +405,7 @@
 <div class="section level1">
 <h1 id="contributions">Contributions<a class="anchor" aria-label="anchor" href="#contributions"></a>
 </h1>
-<p>Please note that this project is released with a <a href="https://naniar.njtierney.com/CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<p>Please note that this project is released with a <a href="https://naniar.njtierney.com/CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 <div class="section level1">
 <h1 id="future-work">Future Work<a class="anchor" aria-label="anchor" href="#future-work"></a>
@@ -466,9 +469,10 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Nicholas Tierney <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/https://orcid.org/0000-0003-1460-8722" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
-<a href="http://www.dicook.org/" class="external-link">Di Cook</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/https://orcid.org/0000-0002-3813-7155" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<a href="https://njtierney.com/" class="external-link">Nicholas Tierney</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/https://orcid.org/0000-0003-1460-8722" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>
+<a href="https://www.dicook.org/" class="external-link">Di Cook</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/https://orcid.org/0000-0002-3813-7155" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
 <a href="https://milesmcbain.xyz/" class="external-link">Miles McBain</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/https://orcid.org/0000-0003-2865-2548" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
@@ -480,7 +484,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/njtierney/naniar" class="external-link"><img src="https://github.com/njtierney/naniar/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://github.com/njtierney/naniar/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/njtierney/naniar/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://app.codecov.io/github/njtierney/naniar?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg" alt="Coverage Status"></a></li>
 <li><a href="https://cran.r-project.org/package=naniar" class="external-link"><img src="https://www.r-pkg.org/badges/version/naniar" alt="CRAN Status Badge"></a></li>
 <li><a href="https://CRAN.R-project.org/package=naniar" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/naniar" alt="CRAN Downloads Each Month"></a></li>
@@ -494,7 +498,7 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Nicholas Tierney, <a href="http://www.dicook.org/" class="external-link">Di Cook</a>, <a href="https://milesmcbain.xyz/" class="external-link">Miles McBain</a>, <a href="https://colinfay.me/" class="external-link">Colin Fay</a>.</p>
+<p>Developed by <a href="https://njtierney.com/" class="external-link">Nicholas Tierney</a>, <a href="https://www.dicook.org/" class="external-link">Di Cook</a>, <a href="https://milesmcbain.xyz/" class="external-link">Miles McBain</a>, <a href="https://colinfay.me/" class="external-link">Colin Fay</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">

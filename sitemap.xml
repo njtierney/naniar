@@ -1,357 +1,357 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://naniar.njtierney.com/404.html</loc>
+    <loc>https://naniar.njtierney.com/404.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/CONDUCT.html</loc>
+    <loc>https://naniar.njtierney.com/CONDUCT.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/CONTRIBUTING.html</loc>
+    <loc>https://naniar.njtierney.com/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/LICENSE-text.html</loc>
+    <loc>https://naniar.njtierney.com/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/articles/exploring-imputed-values.html</loc>
+    <loc>https://naniar.njtierney.com/articles/exploring-imputed-values.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/articles/getting-started-w-naniar.html</loc>
+    <loc>https://naniar.njtierney.com/articles/index.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/articles/index.html</loc>
+    <loc>https://naniar.njtierney.com/articles/naniar-visualisation.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/articles/naniar-visualisation.html</loc>
+    <loc>https://naniar.njtierney.com/articles/naniar.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/articles/replace-with-na.html</loc>
+    <loc>https://naniar.njtierney.com/articles/replace-with-na.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/articles/special-missing-values.html</loc>
+    <loc>https://naniar.njtierney.com/articles/special-missing-values.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/authors.html</loc>
+    <loc>https://naniar.njtierney.com/authors.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/index.html</loc>
+    <loc>https://naniar.njtierney.com/index.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/issue_template.html</loc>
+    <loc>https://naniar.njtierney.com/issue_template.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/news/index.html</loc>
+    <loc>https://naniar.njtierney.com/news/index.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/pull_request_template.html</loc>
+    <loc>https://naniar.njtierney.com/pull_request_template.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/add_any_miss.html</loc>
+    <loc>https://naniar.njtierney.com/reference/add_any_miss.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/add_label_missings.html</loc>
+    <loc>https://naniar.njtierney.com/reference/add_label_missings.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/add_label_shadow.html</loc>
+    <loc>https://naniar.njtierney.com/reference/add_label_shadow.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/add_miss_cluster.html</loc>
+    <loc>https://naniar.njtierney.com/reference/add_miss_cluster.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/add_n_miss.html</loc>
+    <loc>https://naniar.njtierney.com/reference/add_n_miss.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/add_prop_miss.html</loc>
+    <loc>https://naniar.njtierney.com/reference/add_prop_miss.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/add_shadow.html</loc>
+    <loc>https://naniar.njtierney.com/reference/add_shadow.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/add_shadow_shift.html</loc>
+    <loc>https://naniar.njtierney.com/reference/add_shadow_shift.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/add_span_counter.html</loc>
+    <loc>https://naniar.njtierney.com/reference/add_span_counter.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/any-all-na-complete.html</loc>
+    <loc>https://naniar.njtierney.com/reference/any-all-na-complete.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/any_row_miss.html</loc>
+    <loc>https://naniar.njtierney.com/reference/any_row_miss.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/as_shadow.html</loc>
+    <loc>https://naniar.njtierney.com/reference/as_shadow.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/as_shadow_upset.html</loc>
+    <loc>https://naniar.njtierney.com/reference/as_shadow_upset.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/bind_shadow.html</loc>
+    <loc>https://naniar.njtierney.com/reference/bind_shadow.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/cast_shadow.html</loc>
+    <loc>https://naniar.njtierney.com/reference/cast_shadow.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/cast_shadow_shift.html</loc>
+    <loc>https://naniar.njtierney.com/reference/cast_shadow_shift.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/cast_shadow_shift_label.html</loc>
+    <loc>https://naniar.njtierney.com/reference/cast_shadow_shift_label.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/common_na_numbers.html</loc>
+    <loc>https://naniar.njtierney.com/reference/common_na_numbers.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/common_na_strings.html</loc>
+    <loc>https://naniar.njtierney.com/reference/common_na_strings.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/draw_key.html</loc>
+    <loc>https://naniar.njtierney.com/reference/draw_key.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/gather_shadow.html</loc>
+    <loc>https://naniar.njtierney.com/reference/gather_shadow.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/geom_miss_point.html</loc>
+    <loc>https://naniar.njtierney.com/reference/geom_miss_point.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/gg_miss_case.html</loc>
+    <loc>https://naniar.njtierney.com/reference/gg_miss_case.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/gg_miss_case_cumsum.html</loc>
+    <loc>https://naniar.njtierney.com/reference/gg_miss_case_cumsum.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/gg_miss_fct.html</loc>
+    <loc>https://naniar.njtierney.com/reference/gg_miss_fct.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/gg_miss_span.html</loc>
+    <loc>https://naniar.njtierney.com/reference/gg_miss_span.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/gg_miss_upset.html</loc>
+    <loc>https://naniar.njtierney.com/reference/gg_miss_upset.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/gg_miss_var.html</loc>
+    <loc>https://naniar.njtierney.com/reference/gg_miss_var.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/gg_miss_var_cumsum.html</loc>
+    <loc>https://naniar.njtierney.com/reference/gg_miss_var_cumsum.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/gg_miss_which.html</loc>
+    <loc>https://naniar.njtierney.com/reference/gg_miss_which.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/impute_below.html</loc>
+    <loc>https://naniar.njtierney.com/reference/impute_below.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/impute_below.numeric.html</loc>
+    <loc>https://naniar.njtierney.com/reference/impute_below.numeric.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/impute_below_all.html</loc>
+    <loc>https://naniar.njtierney.com/reference/impute_below_all.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/impute_below_at.html</loc>
+    <loc>https://naniar.njtierney.com/reference/impute_below_at.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/impute_below_if.html</loc>
+    <loc>https://naniar.njtierney.com/reference/impute_below_if.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/impute_factor.html</loc>
+    <loc>https://naniar.njtierney.com/reference/impute_factor.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/impute_fixed.html</loc>
+    <loc>https://naniar.njtierney.com/reference/impute_fixed.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/impute_mean.html</loc>
+    <loc>https://naniar.njtierney.com/reference/impute_mean.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/impute_median.html</loc>
+    <loc>https://naniar.njtierney.com/reference/impute_median.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/impute_mode.html</loc>
+    <loc>https://naniar.njtierney.com/reference/impute_mode.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/impute_zero.html</loc>
+    <loc>https://naniar.njtierney.com/reference/impute_zero.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/index.html</loc>
+    <loc>https://naniar.njtierney.com/reference/index.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/is_shade.html</loc>
+    <loc>https://naniar.njtierney.com/reference/is_shade.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/label_miss_1d.html</loc>
+    <loc>https://naniar.njtierney.com/reference/label_miss_1d.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/label_miss_2d.html</loc>
+    <loc>https://naniar.njtierney.com/reference/label_miss_2d.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/label_missings.html</loc>
+    <loc>https://naniar.njtierney.com/reference/label_missings.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/mcar_test.html</loc>
+    <loc>https://naniar.njtierney.com/reference/mcar_test.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss-pct-prop-defunct.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss-pct-prop-defunct.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_case_cumsum.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_case_cumsum.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_case_summary.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_case_summary.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_case_table.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_case_table.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_prop_summary.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_prop_summary.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_scan_count.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_scan_count.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_summary.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_summary.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_var_cumsum.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_var_cumsum.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_var_run.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_var_run.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_var_span.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_var_span.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_var_summary.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_var_summary.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_var_table.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_var_table.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/miss_var_which.html</loc>
+    <loc>https://naniar.njtierney.com/reference/miss_var_which.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/n-var-case-complete.html</loc>
+    <loc>https://naniar.njtierney.com/reference/n-var-case-complete.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/n-var-case-miss.html</loc>
+    <loc>https://naniar.njtierney.com/reference/n-var-case-miss.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/n_complete.html</loc>
+    <loc>https://naniar.njtierney.com/reference/n_complete.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/n_complete_row.html</loc>
+    <loc>https://naniar.njtierney.com/reference/n_complete_row.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/n_miss.html</loc>
+    <loc>https://naniar.njtierney.com/reference/n_miss.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/n_miss_row.html</loc>
+    <loc>https://naniar.njtierney.com/reference/n_miss_row.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/nabular.html</loc>
+    <loc>https://naniar.njtierney.com/reference/nabular.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/naniar-ggproto.html</loc>
+    <loc>https://naniar.njtierney.com/reference/naniar-ggproto.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/naniar.html</loc>
+    <loc>https://naniar.njtierney.com/reference/naniar.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/oceanbuoys.html</loc>
+    <loc>https://naniar.njtierney.com/reference/oceanbuoys.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/pct-miss-complete-case.html</loc>
+    <loc>https://naniar.njtierney.com/reference/pct-miss-complete-case.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/pct-miss-complete-var.html</loc>
+    <loc>https://naniar.njtierney.com/reference/pct-miss-complete-var.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/pct_complete.html</loc>
+    <loc>https://naniar.njtierney.com/reference/pct_complete.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/pct_miss.html</loc>
+    <loc>https://naniar.njtierney.com/reference/pct_miss.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/pedestrian.html</loc>
+    <loc>https://naniar.njtierney.com/reference/pedestrian.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/plotly_helpers.html</loc>
+    <loc>https://naniar.njtierney.com/reference/plotly_helpers.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/prop-miss-complete-case.html</loc>
+    <loc>https://naniar.njtierney.com/reference/prop-miss-complete-case.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/prop-miss-complete-var.html</loc>
+    <loc>https://naniar.njtierney.com/reference/prop-miss-complete-var.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/prop_complete.html</loc>
+    <loc>https://naniar.njtierney.com/reference/prop_complete.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/prop_complete_row.html</loc>
+    <loc>https://naniar.njtierney.com/reference/prop_complete_row.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/prop_miss.html</loc>
+    <loc>https://naniar.njtierney.com/reference/prop_miss.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/prop_miss_row.html</loc>
+    <loc>https://naniar.njtierney.com/reference/prop_miss_row.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/recode_shadow.html</loc>
+    <loc>https://naniar.njtierney.com/reference/recode_shadow.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/reexports.html</loc>
+    <loc>https://naniar.njtierney.com/reference/reexports.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/replace_na_with.html</loc>
+    <loc>https://naniar.njtierney.com/reference/replace_na_with.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/replace_to_na.html</loc>
+    <loc>https://naniar.njtierney.com/reference/replace_to_na.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/replace_with_na.html</loc>
+    <loc>https://naniar.njtierney.com/reference/replace_with_na.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/replace_with_na_all.html</loc>
+    <loc>https://naniar.njtierney.com/reference/replace_with_na_all.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/replace_with_na_at.html</loc>
+    <loc>https://naniar.njtierney.com/reference/replace_with_na_at.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/replace_with_na_if.html</loc>
+    <loc>https://naniar.njtierney.com/reference/replace_with_na_if.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/riskfactors.html</loc>
+    <loc>https://naniar.njtierney.com/reference/riskfactors.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/scoped-impute_mean.html</loc>
+    <loc>https://naniar.njtierney.com/reference/scoped-impute_mean.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/scoped-impute_median.html</loc>
+    <loc>https://naniar.njtierney.com/reference/scoped-impute_median.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/set-prop-n-miss.html</loc>
+    <loc>https://naniar.njtierney.com/reference/set-prop-n-miss.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/shade.html</loc>
+    <loc>https://naniar.njtierney.com/reference/shade.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/shadow_long.html</loc>
+    <loc>https://naniar.njtierney.com/reference/shadow_long.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/shadow_shift.html</loc>
+    <loc>https://naniar.njtierney.com/reference/shadow_shift.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/stat_miss_point.html</loc>
+    <loc>https://naniar.njtierney.com/reference/stat_miss_point.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/unbinders.html</loc>
+    <loc>https://naniar.njtierney.com/reference/unbinders.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/where.html</loc>
+    <loc>https://naniar.njtierney.com/reference/where.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/where_na.html</loc>
+    <loc>https://naniar.njtierney.com/reference/where_na.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/which_are_shade.html</loc>
+    <loc>https://naniar.njtierney.com/reference/which_are_shade.html</loc>
   </url>
   <url>
-    <loc>http://naniar.njtierney.com/reference/which_na.html</loc>
+    <loc>https://naniar.njtierney.com/reference/which_na.html</loc>
   </url>
 </urlset>

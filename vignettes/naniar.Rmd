@@ -195,7 +195,7 @@ the function `replace_with_na`. This function is the compliment to
 - `tidyr::replace_na`: Missing values turns into a value (NA --> -99)
 - `naniar::replace_with_na`: Value becomes a missing value (-99 --> NA)
 
-You can read more about this in the vignette ["Replacing values with NA"](http://naniar.njtierney.com/articles/replace-with-na.html)
+You can read more about this in the vignette ["Replacing values with NA"](https://naniar.njtierney.com/articles/replace-with-na.html)
 
 # Tidy Missing Data: The Shadow Matrix
 

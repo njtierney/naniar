@@ -4,7 +4,7 @@
 \name{naniar}
 \alias{naniar-package}
 \alias{naniar}
-\title{naniar}
+\title{naniar: Data Structures, Summaries, and Visualisations for Missing Data}
 \description{
 naniar is a package to make it easier to summarise and handle missing values
 in R. It strives to do this in a way that is as consistent with tidyverse
@@ -12,7 +12,13 @@ principles as possible.  The work is fully discussed at Tierney & Cook (2023)
 \url{doi:10.18637/jss.v105.i07}.
 }
 \seealso{
-\code{\link[=add_any_miss]{add_any_miss()}} \code{\link[=add_label_missings]{add_label_missings()}} \code{\link[=add_label_shadow]{add_label_shadow()}} \code{\link[=add_miss_cluster]{add_miss_cluster()}} \code{\link[=add_n_miss]{add_n_miss()}} \code{\link[=add_prop_miss]{add_prop_miss()}} \code{\link[=add_shadow]{add_shadow()}} \code{\link[=add_shadow_shift]{add_shadow_shift()}} \code{\link[=as_shadow]{as_shadow()}} \code{\link[=bind_shadow]{bind_shadow()}} \code{\link[=cast_shadow]{cast_shadow()}} \code{\link[=cast_shadow_shift]{cast_shadow_shift()}} \code{\link[=cast_shadow_shift_label]{cast_shadow_shift_label()}} \code{\link[=draw_key_missing_point]{draw_key_missing_point()}} \code{\link[=gather_shadow]{gather_shadow()}} \code{\link[=geom_miss_point]{geom_miss_point()}} \code{\link[=gg_miss_case]{gg_miss_case()}} \code{\link[=gg_miss_case_cumsum]{gg_miss_case_cumsum()}} \code{\link[=gg_miss_fct]{gg_miss_fct()}} \code{\link[=gg_miss_span]{gg_miss_span()}} \code{\link[=gg_miss_var]{gg_miss_var()}} \code{\link[=gg_miss_var_cumsum]{gg_miss_var_cumsum()}} \code{\link[=gg_miss_which]{gg_miss_which()}} \code{\link[=label_miss_1d]{label_miss_1d()}} \code{\link[=label_miss_2d]{label_miss_2d()}} \code{\link[=label_missings]{label_missings()}} \code{\link[=pct_miss_case]{pct_miss_case()}} \code{\link[=prop_miss_case]{prop_miss_case()}} \code{\link[=pct_miss_var]{pct_miss_var()}} \code{\link[=prop_miss_var]{prop_miss_var()}} \code{\link[=pct_complete_case]{pct_complete_case()}} \code{\link[=prop_complete_case]{prop_complete_case()}} \code{\link[=pct_complete_var]{pct_complete_var()}} \code{\link[=prop_complete_var]{prop_complete_var()}} \code{\link[=miss_prop_summary]{miss_prop_summary()}} \code{\link[=miss_case_summary]{miss_case_summary()}} \code{\link[=miss_case_table]{miss_case_table()}} \code{\link[=miss_summary]{miss_summary()}} \code{\link[=miss_var_prop]{miss_var_prop()}} \code{\link[=miss_var_run]{miss_var_run()}} \code{\link[=miss_var_span]{miss_var_span()}} \code{\link[=miss_var_summary]{miss_var_summary()}} \code{\link[=miss_var_table]{miss_var_table()}} \code{\link[=n_complete]{n_complete()}} \code{\link[=n_complete_row]{n_complete_row()}} \code{\link[=n_miss]{n_miss()}} \code{\link[=n_miss_row]{n_miss_row()}} \code{\link[=pct_complete]{pct_complete()}} \code{\link[=pct_miss]{pct_miss()}} \code{\link[=prop_complete]{prop_complete()}} \code{\link[=prop_complete_row]{prop_complete_row()}} \code{\link[=prop_miss]{prop_miss()}} \code{\link[=prop_miss_row]{prop_miss_row()}} \code{\link[=replace_to_na]{replace_to_na()}} \code{\link[=replace_with_na]{replace_with_na()}} \code{\link[=replace_with_na_all]{replace_with_na_all()}} \code{\link[=replace_with_na_at]{replace_with_na_at()}} \code{\link[=replace_with_na_if]{replace_with_na_if()}} \code{\link[=shadow_shift]{shadow_shift()}} \code{\link[=stat_miss_point]{stat_miss_point()}} \code{\link[=vis_miss]{vis_miss()}} \code{\link[=where_na]{where_na()}}
+Useful links:
+\itemize{
+  \item \url{https://github.com/njtierney/naniar}
+  \item \url{https://naniar.njtierney.com/}
+  \item Report bugs at \url{https://github.com/njtierney/naniar/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Nicholas Tierney \email{nicholas.tierney@gmail.com} (\href{https://orcid.org/0000-0003-1460-8722}{ORCID})

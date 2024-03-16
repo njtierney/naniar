@@ -17,7 +17,7 @@ knitr::opts_chunk$set(fig.align = "center",
 
 ```
 
-There are a variety of different plots to explore missing data available in the naniar package. This vignette simply showcases all of the visualisations. If you would like to know more about the philosophy of the `naniar` package, you should read the vignette [Getting Started with naniar](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
+There are a variety of different plots to explore missing data available in the naniar package. This vignette simply showcases all of the visualisations. If you would like to know more about the philosophy of the `naniar` package, you should read `vignette("naniar")`.
 
 A key point to remember with the visualisation tools in `naniar` is that there is a way to get the data from the plot out from the visualisation.
 

@@ -10,6 +10,10 @@ rlang::is_na
 #' @export
 rlang::are_na
 
+#' @importFrom visdat vis_miss
+#' @export
+visdat::vis_miss
+
 #' Group By Helper
 #'
 #' This is a wrapper to facilitate the `grouped_df` S3 method.

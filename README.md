@@ -1,12 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# naniar <a href="http://naniar.njtierney.com/"><img src="man/figures/logo.png" align="right" height="138" /></a>
+# naniar <a href="https://naniar.njtierney.com/"><img src="man/figures/logo.png" align="right" height="138" /></a>
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/njtierney/naniar/workflows/R-CMD-check/badge.svg)](https://github.com/njtierney/naniar)
+[![R-CMD-check](https://github.com/njtierney/naniar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/njtierney/naniar/actions/workflows/R-CMD-check.yaml)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/njtierney/naniar/master.svg)](https://app.codecov.io/github/njtierney/naniar?branch=master)
 [![CRAN Status
@@ -40,7 +39,7 @@ ggplot2 and tidy data. It does this by providing:
 
 For more details on the workflow and theory underpinning naniar, read
 the vignette [Getting started with
-naniar](https://naniar.njtierney.com/articles/getting-started-w-naniar.html).
+naniar](https://naniar.njtierney.com/articles/naniar.html).
 
 For a short primer on the data visualisation available in naniar, read
 the vignette [Gallery of Missing Data
@@ -370,7 +369,7 @@ airquality %>%
 
 You can read more about all of these functions in the vignette [“Getting
 Started with
-naniar”](https://naniar.njtierney.com/articles/getting-started-w-naniar.html).
+naniar”](https://naniar.njtierney.com/articles/naniar.html).
 
 # Statistical tests of missingness
 

@@ -1,4 +1,4 @@
-url: http://naniar.njtierney.com/
+url: https://naniar.njtierney.com/
 template:
   bootstrap: 5
   bootswatch: flatly
@@ -8,10 +8,10 @@ home:
   - text: Learn more
     href: https://github.com/njtierney/naniar
 authors:
-  Nick Tierney:
+  Nicholas Tierney:
     href: https://njtierney.com/
   Di Cook:
-    href: http://www.dicook.org/
+    href: https://www.dicook.org/
   Miles McBain:
     href: https://milesmcbain.xyz/
   Colin Fay:
@@ -33,6 +33,7 @@ reference:
 - title: Create special missing values
   desc: |
     Create special missing values so that they don't get lost!
+    See `vignette("special-missing")`.
   contents: recode_shadow
 - title: Visualisation
   desc: |
@@ -67,14 +68,16 @@ reference:
   contents: starts_with("add_")
 - title: Replacing values with and to NA
   desc: |
-    Functions to help replace certain values with NA, which includes scoped variants (_at, _if, _all) that take formulas for flexible approachs
+    Functions to help replace certain values with NA, which includes scoped variants
+    (_at, _if, _all) that take formulas for flexible approachs. `vignette("replace-with-na")`
   contents:
   - starts_with("replace_with_na")
   - replace_to_na
   - replace_na_with
 - title: Imputation helpers
   desc: |
-    Simple imputation methods for exploring visualisation and missingness structure
+    Simple imputation methods for exploring visualisation and missingness structure.
+    See `vignette("exploring-imputed-values")` for more details.
   contents:
   - starts_with("impute_")
   - set-prop-n-miss
@@ -111,26 +114,30 @@ reference:
   desc: |
     Custom ggplot geoms built to extend ggplot for missing values
   contents: naniar-ggproto
-navbar:
-  left:
-  - text: Getting Started
-    href: articles/getting-started-w-naniar.html
-  - text: Gallery
-    href: articles/naniar-visualisation.html
-  - text: Articles
-    menu:
-    - text: Replace with NA
-      href: articles/replace-with-na.html
-    - text: Special Missings
-      href: articles/special-missing-values.html
-    - text: Exploring Imputations
-      href: articles/exploring-imputed-values.html
-  - text: Reference
-    href: reference/index.html
-  - text: News
-    releases:
-  - text: "Version 1.1.0"
-    href: https://www.njtierney.com/post/2024/03/04/naniar-version-1-1-0-prince-caspian/
-  - text: News
-    href: news/index.html
 
+navbar:
+  structure:
+    left: [intro, gallery, articles, reference, news]
+  components:
+    gallery:
+      text: Gallery
+      href: articles/naniar-visualisation.html
+    articles:
+      text: Articles
+      menu:
+      - text: Replace with NA
+        href: articles/replace-with-na.html
+      - text: Special Missings
+        href: articles/special-missing-values.html
+      - text: Exploring Imputations
+        href: articles/exploring-imputed-values.html
+
+news:
+  releases:
+  - text: Version 1.1.0
+    href: https://www.njtierney.com/post/2024/03/04/naniar-version-1-1-0-prince-caspian/
+  - text: Version 1.0.0
+    href: https://www.njtierney.com/post/2023/02/07/naniar-version-1/
+
+redirects:
+ - ["articles/getting-started-w-naniar.html", "articles/naniar.html"]

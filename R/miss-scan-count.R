@@ -39,28 +39,20 @@
 #'
 #'
 miss_scan_count <- function(data,search){
-  # if there is only one value to search
-  if (length(search) == 1) {
-    res <- purrr::map_dfc(data,
-                         ~length(grep(search,
-                                      x = .))) %>%
-      # return the dataframe with the columns "
-      tidyr::pivot_longer(cols = dplyr::everything(),
-                          names_to = "Variable",
-                          values_to = "n")
-    # but if there are more than one, we need to combine the search terms
-  }
 
-  if (length(search) > 1) {
-    res <- purrr::map_dfc(data,
-                         ~length(grep(paste0(search,
-                                             collapse ="|"),
-                                      x = .))) %>%
-      tidyr::pivot_longer(cols = dplyr::everything(),
-                          names_to = "Variable",
-                          values_to = "n") %>%
-      tidyr::arrange(desc(n))
-  }
+  pattern <- paste0(search, collapse = "|")
+
+  res <- data %>%
+    # if the value is in the search terms, return TRUE
+    dplyr::mutate(dplyr::across(dplyr::everything(), ~grepl(pattern, .x, perl = TRUE))) %>%
+    # sum the number of times the value is found
+    dplyr::summarise(dplyr::across(dplyr::everything(), sum)) %>%
+    # present the data in a long format
+    tidyr::pivot_longer(cols = dplyr::everything(), names_to = "Variable", values_to = "n") %>%
+    # calculate the percentage
+    dplyr::mutate(pct = (n/nrow(data))*100) %>%
+    # order the data in descending order
+    dplyr::arrange(-n)
 
   return(res)
 }

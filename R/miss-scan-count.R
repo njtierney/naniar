@@ -58,7 +58,8 @@ miss_scan_count <- function(data,search){
                                       x = .))) %>%
       tidyr::pivot_longer(cols = dplyr::everything(),
                           names_to = "Variable",
-                          values_to = "n")
+                          values_to = "n") %>%
+      tidyr::arrange(desc(n))
   }
 
   return(res)

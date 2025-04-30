@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.1.1
+pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   exploring-imputed-values: exploring-imputed-values.html
@@ -7,7 +7,7 @@ articles:
   naniar: naniar.html
   replace-with-na: replace-with-na.html
   special-missing-values: special-missing-values.html
-last_built: 2025-03-13T05:06Z
+last_built: 2025-04-30T01:13Z
 urls:
   reference: https://naniar.njtierney.com/reference
   article: https://naniar.njtierney.com/articles

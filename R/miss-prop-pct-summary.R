@@ -22,29 +22,25 @@
 #' airquality %>% group_by(Month) %>% miss_prop_summary()
 #' }
 #'
-miss_prop_summary <- function(data){
-
+miss_prop_summary <- function(data) {
   test_if_null(data)
 
   test_if_dataframe(data)
 
   UseMethod("miss_prop_summary")
-
 }
 
 
 #' @export
-miss_prop_summary.default <- function(data){
-
-  tibble::tibble(df = prop_miss(data),
-                 var = prop_miss_var(data),
-                 case = prop_miss_case(data))
-
+miss_prop_summary.default <- function(data) {
+  tibble::tibble(
+    df = prop_miss(data),
+    var = prop_miss_var(data),
+    case = prop_miss_case(data)
+  )
 }
 
 #' @export
-miss_prop_summary.grouped_df <- function(data){
-
+miss_prop_summary.grouped_df <- function(data) {
   group_by_fun(data, .fun = miss_prop_summary)
-
 }

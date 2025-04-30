@@ -37,8 +37,7 @@
 #'      miss_var_span(var = hourly_counts,
 #'                    span_every = 168)
 #' }
-miss_var_span <- function(data, var, span_every){
-
+miss_var_span <- function(data, var, span_every) {
   test_if_null(data)
 
   test_if_dataframe(data)
@@ -48,15 +47,11 @@ miss_var_span <- function(data, var, span_every){
   test_if_missing(span_every)
 
   UseMethod("miss_var_span")
-
 }
 
 #' @export
-miss_var_span.default <- function(data,
-                                  var,
-                                  span_every){
-
-  dat_ts_summary <- dplyr::select(data, {{ var }} )
+miss_var_span.default <- function(data, var, span_every) {
+  dat_ts_summary <- dplyr::select(data, {{ var }})
 
   dat_ts_summary_span <- dat_ts_summary %>%
     # need to make add_span_counter respect grouping structure, somehow
@@ -67,28 +62,31 @@ miss_var_span.default <- function(data,
 
   dat_ts_summary_span %>%
     dplyr::group_by(span_counter) %>%
-    dplyr::tally(is.na( {{ var}} )) %>%
+    dplyr::tally(is.na({{ var }})) %>%
     dplyr::left_join(dat_ts_summary_span_count, by = "span_counter") %>%
     dplyr::rename(n_miss = n) %>%
-    dplyr::mutate(n_complete = n_in_span - n_miss,
-                  prop_miss = n_miss / n_in_span,
-                  prop_complete = 1 - prop_miss) %>%
+    dplyr::mutate(
+      n_complete = n_in_span - n_miss,
+      prop_miss = n_miss / n_in_span,
+      prop_complete = 1 - prop_miss
+    ) %>%
     dplyr::relocate(n_in_span, .after = prop_complete)
-
 }
 
 #' @export
-miss_var_span.grouped_df <- function(data, var, span_every){
-
+miss_var_span.grouped_df <- function(data, var, span_every) {
   var <- rlang::enquo(var)
 
   tidyr::nest(data) %>%
-    dplyr::mutate(data = purrr::map(.x = data,
-                                    .f = miss_var_span,
-                                    var = !!var,
-                                    span_every = span_every)) %>%
+    dplyr::mutate(
+      data = purrr::map(
+        .x = data,
+        .f = miss_var_span,
+        var = !!var,
+        span_every = span_every
+      )
+    ) %>%
     tidyr::unnest(cols = c(data))
-
 }
 
 # some alternative names

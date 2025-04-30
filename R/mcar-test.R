@@ -38,7 +38,6 @@
 #'
 #' @export
 mcar_test <- function(data) {
-
   test_if_dataframe(data)
 
   # norm::prelim.norm needs to work with a data.matrix
@@ -82,43 +81,56 @@ mcar_test <- function(data) {
     tidyr::nest() %>%
     # kj terms for degrees of freedom
     dplyr::mutate(
-      kj = purrr::map_dbl(.data$data,
-                          ~colSums(as.matrix(1 * !is.na(colSums(.x)))))
+      kj = purrr::map_dbl(
+        .data$data,
+        ~ colSums(as.matrix(1 * !is.na(colSums(.x))))
+      )
     ) %>%
     # Calculate column averages
     dplyr::mutate(
-      mu = purrr::map(.data$data, ~colMeans(.x) - grand_mean),
-      mu = purrr::map(.data$mu, ~.x[!is.na(.x)])
+      mu = purrr::map(.data$data, ~ colMeans(.x) - grand_mean),
+      mu = purrr::map(.data$mu, ~ .x[!is.na(.x)])
     ) %>%
     # Binary 0/1 indicating if column should be kept
     dplyr::mutate(
-      keep = purrr::map(.data$data, ~1 * !is.na(colSums(.x))),
-      keep = purrr::map(.data$keep, ~.x[which(.x[1:n_var] != 0)])
+      keep = purrr::map(.data$data, ~ 1 * !is.na(colSums(.x))),
+      keep = purrr::map(.data$keep, ~ .x[which(.x[1:n_var] != 0)])
     ) %>%
     # Drop rows and columns from global covariance matrix so that the matrix
     # only contains rows and columns that exist in current missing pattern
     dplyr::mutate(
-      sigma = purrr::map(.data$keep,
-                         ~grand_cov[which(rownames(grand_cov) %in% names(.x)),
-                                    which(colnames(grand_cov) %in% names(.x))])
+      sigma = purrr::map(
+        .data$keep,
+        ~ grand_cov[
+          which(rownames(grand_cov) %in% names(.x)),
+          which(colnames(grand_cov) %in% names(.x))
+        ]
+      )
     ) %>%
     # Finally calculate Little's statistic using the number of rows in missing
     # pattern, average, and covariance
     dplyr::mutate(
       d2 = purrr::pmap_dbl(
         list(.data$data, .data$mu, .data$sigma, .data$kj),
-        ~ifelse(..4 == 0,
-                0,  # If the pattern is all NA, use 0
-                nrow(..1) * (t(..2) %*% solve(..3) %*% ..2))
-      )) %>%
+        ~ ifelse(
+          ..4 == 0,
+          0, # If the pattern is all NA, use 0
+          nrow(..1) * (t(..2) %*% solve(..3) %*% ..2)
+        )
+      )
+    ) %>%
     dplyr::ungroup()
 
   # Main calculations
-  d2 <- sum(little_calculations$d2)  # Little's d2
-  df <- sum(little_calculations$kj) - n_var  # Degrees of freedom
-  p_value <- 1 - stats::pchisq(d2, df)  # p-value
+  d2 <- sum(little_calculations$d2) # Little's d2
+  df <- sum(little_calculations$kj) - n_var # Degrees of freedom
+  p_value <- 1 - stats::pchisq(d2, df) # p-value
 
   # Return everything as a glance-like tibble
-  tibble::tibble(statistic = d2, df = df, p.value = p_value,
-                 missing.patterns = n_miss_pattern)
+  tibble::tibble(
+    statistic = d2,
+    df = df,
+    p.value = p_value,
+    missing.patterns = n_miss_pattern
+  )
 }

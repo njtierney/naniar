@@ -1,15 +1,19 @@
 df <- tibble::tribble(
-  ~wind, ~temp,
-  -99,    45,
-  68,    NA,
-  72,    25
+  ~wind,
+  ~temp,
+  -99,
+  45,
+  68,
+  NA,
+  72,
+  25
 )
 
-test_that("recode_shadow errors when regular dataframe passed",{
+test_that("recode_shadow errors when regular dataframe passed", {
   expect_snapshot(
     error = TRUE,
     recode_shadow(df, temp = .where(wind == -99 ~ "bananas"))
-    )
+  )
 })
 
 dfs <- nabular(df)
@@ -18,17 +22,13 @@ dfs_special <- dfs %>%
   recode_shadow(temp = .where(wind == -99 ~ "bananas"))
 
 test_that("special missings levels are updated", {
-  expect_equal(levels(dfs_special$wind_NA),
-               c("!NA", "NA", "NA_bananas"))
-  expect_equal(levels(dfs_special$temp_NA),
-              c("!NA", "NA", "NA_bananas"))
+  expect_equal(levels(dfs_special$wind_NA), c("!NA", "NA", "NA_bananas"))
+  expect_equal(levels(dfs_special$temp_NA), c("!NA", "NA", "NA_bananas"))
 })
 
 test_that("special missings are put in the right place", {
-  expect_equal(as.character(dfs_special$wind_NA),
-               c("!NA", "!NA", "!NA"))
-  expect_equal(as.character(dfs_special$temp_NA),
-              c("NA_bananas", "NA", "!NA"))
+  expect_equal(as.character(dfs_special$wind_NA), c("!NA", "!NA", "!NA"))
+  expect_equal(as.character(dfs_special$temp_NA), c("NA_bananas", "NA", "!NA"))
 })
 
 df_many_recode <- df %>%
@@ -40,28 +40,31 @@ new_shade_levels <- c("!NA", "NA", "NA_broken_machine", "NA_broken_temp")
 
 test_that("special missings levels are updated for many recodes", {
   skip_on_cran()
-  expect_equal(levels(df_many_recode$wind_NA),
-               new_shade_levels)
-  expect_equal(levels(df_many_recode$temp_NA),
-               new_shade_levels)
+  expect_equal(levels(df_many_recode$wind_NA), new_shade_levels)
+  expect_equal(levels(df_many_recode$temp_NA), new_shade_levels)
 })
 
 test_that("special missings are put in the right place for many recodes", {
   skip_on_cran()
-  expect_equal(as.character(df_many_recode$wind_NA),
-               c("NA_broken_temp", "!NA", "!NA"))
-  expect_equal(as.character(df_many_recode$temp_NA),
-               c("!NA", "NA", "NA_broken_machine"))
+  expect_equal(
+    as.character(df_many_recode$wind_NA),
+    c("NA_broken_temp", "!NA", "!NA")
+  )
+  expect_equal(
+    as.character(df_many_recode$temp_NA),
+    c("!NA", "NA", "NA_broken_machine")
+  )
 })
 
 where_one <- .where(temp == 25 ~ "broken_machine")
 
-where_two <- .where(temp == 25 ~ "broken_machine",
-                    wind == 26 ~ "broken_wind")
+where_two <- .where(temp == 25 ~ "broken_machine", wind == 26 ~ "broken_wind")
 
-where_three <- .where(temp == 25 ~ "broken_machine",
-                      wind == 26 ~ "broken_wind",
-                      arbitrary == "values" ~ "are_possible")
+where_three <- .where(
+  temp == 25 ~ "broken_machine",
+  wind == 26 ~ "broken_wind",
+  arbitrary == "values" ~ "are_possible"
+)
 
 test_that(".where captures the right number of expressions", {
   expect_equal(sum(lengths(where_one)), 2)
@@ -105,21 +108,27 @@ test_that(".where returns chr class", {
 
 df_mult_where <- df %>%
   nabular() %>%
-  recode_shadow(temp = .where(temp == 25 ~ "broken_machine",
-                              wind == 68 ~ "wat"))
+  recode_shadow(
+    temp = .where(temp == 25 ~ "broken_machine", wind == 68 ~ "wat")
+  )
 
 test_that("recode_shadow returns right values if .where is called many times", {
-  expect_equal(as.character(df_mult_where$wind_NA),
-               c("!NA", "!NA", "!NA"))
-  expect_equal(as.character(df_mult_where$temp_NA),
-               c("!NA", "NA_wat", "NA_broken_machine"))
+  expect_equal(as.character(df_mult_where$wind_NA), c("!NA", "!NA", "!NA"))
+  expect_equal(
+    as.character(df_mult_where$temp_NA),
+    c("!NA", "NA_wat", "NA_broken_machine")
+  )
 })
 
 test_that("recode_shadow returns right levels if .where is called many times", {
-  expect_equal(levels(df_mult_where$wind_NA),
-               c("!NA", "NA", "NA_broken_machine", "NA_wat"))
-  expect_equal(levels(df_mult_where$temp_NA),
-               c("!NA", "NA", "NA_broken_machine", "NA_wat"))
+  expect_equal(
+    levels(df_mult_where$wind_NA),
+    c("!NA", "NA", "NA_broken_machine", "NA_wat")
+  )
+  expect_equal(
+    levels(df_mult_where$temp_NA),
+    c("!NA", "NA", "NA_broken_machine", "NA_wat")
+  )
 })
 
 aq_recoded <- airquality %>%
@@ -132,16 +141,17 @@ aq_grouped_recoded <- airquality %>%
   recode_shadow(Ozone = .where(Wind <= 5 ~ "broken_machine"))
 
 test_that("special missings are the same for grouped and ungrouped data", {
-  expect_equal(as.character(aq_grouped_recoded$Ozone_NA),
-               as.character(aq_recoded$Ozone_NA))
+  expect_equal(
+    as.character(aq_grouped_recoded$Ozone_NA),
+    as.character(aq_recoded$Ozone_NA)
+  )
 })
 
 test_that("special missings class is maintained for grouped and ungrouped data", {
   skip_on_cran()
   skip_on_ci()
   # FIXME failing test?
-  expect_equal(class(aq_grouped_recoded$Ozone_NA),
-               class(aq_recoded$Ozone_NA))
+  expect_equal(class(aq_grouped_recoded$Ozone_NA), class(aq_recoded$Ozone_NA))
   expect_true(is_shade(aq_grouped_recoded$Ozone_NA))
   expect_true(is_shade(aq_recoded$Ozone_NA))
 })

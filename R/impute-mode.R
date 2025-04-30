@@ -1,5 +1,4 @@
 the_mode <- function(x, na.rm = FALSE) {
-
   if (na.rm) {
     x <- x[!is.na(x)]
   }
@@ -12,7 +11,6 @@ the_mode <- function(x, na.rm = FALSE) {
     d <- stats::density(x)
     d$x[which.max(d$y)]
   }
-
 }
 
 #' Impute the mode value into a vector with missing values
@@ -67,8 +65,7 @@ impute_mode <- function(x) UseMethod("impute_mode")
 
 #' @export
 #' @rdname impute_mode
-impute_mode.default <- function(x){
-
+impute_mode.default <- function(x) {
   x[is.na(x)] <- the_mode(x, na.rm = TRUE)
 
   x
@@ -76,8 +73,7 @@ impute_mode.default <- function(x){
 
 #' @export
 #' @rdname impute_mode
-impute_mode.integer <- function(x){
-
+impute_mode.integer <- function(x) {
   x[is.na(x)] <- round(the_mode(x, na.rm = TRUE))
 
   x
@@ -85,13 +81,13 @@ impute_mode.integer <- function(x){
 
 #' @export
 #' @rdname impute_mode
-impute_mode.factor <- function(x){
-
-  i_mode <- function(x){
-
+impute_mode.factor <- function(x) {
+  i_mode <- function(x) {
     tab <- table(x)
     max_tab <- max(tab)
-    if (all(tab == max_tab)) {mod = NA}
+    if (all(tab == max_tab)) {
+      mod = NA
+    }
 
     if (is.numeric(x)) {
       mod <- as.numeric(names(tab)[tab == max_tab])

@@ -24,40 +24,38 @@
 #'   miss_var_cumsum()
 #'}
 #' @export
-miss_var_cumsum <- function(data){
-
+miss_var_cumsum <- function(data) {
   lifecycle::deprecate_soft(
     when = "1.1.0",
     what = "miss_var_cumsum()",
     details = "Please use `miss_var_summary(data, add_cumsum = TRUE)`"
-    )
+  )
 
   test_if_null(data)
 
   test_if_dataframe(data)
 
   UseMethod("miss_var_cumsum")
-
 }
 
 #' @export
-miss_var_cumsum.default <- function(data){
-
-  purrr::map_dfc(data,
-                # how many are missing in each variable?
-                function(x) n_miss(x)) %>%
-    tidyr::pivot_longer(cols = dplyr::everything(),
-                        names_to = "variable",
-                        values_to = "n_miss") %>%
+miss_var_cumsum.default <- function(data) {
+  purrr::map_dfc(
+    data,
+    # how many are missing in each variable?
+    function(x) n_miss(x)
+  ) %>%
+    tidyr::pivot_longer(
+      cols = dplyr::everything(),
+      names_to = "variable",
+      values_to = "n_miss"
+    ) %>%
     dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
-
 }
 
 #' @export
-miss_var_cumsum.grouped_df <- function(data){
-
+miss_var_cumsum.grouped_df <- function(data) {
   group_by_fun(data, .fun = miss_var_cumsum)
-
 }
 
 
@@ -85,8 +83,7 @@ miss_var_cumsum.grouped_df <- function(data){
 #'   miss_case_cumsum()
 #'}
 #' @export
-miss_case_cumsum <- function(data){
-
+miss_case_cumsum <- function(data) {
   lifecycle::deprecate_soft(
     when = "1.1.0",
     what = "miss_case_cumsum()",
@@ -101,18 +98,14 @@ miss_case_cumsum <- function(data){
 }
 
 #' @export
-miss_case_cumsum.default <- function(data){
-
+miss_case_cumsum.default <- function(data) {
   miss_case_summary(data) %>%
     dplyr::arrange(case) %>%
-    dplyr::select(case,
-                  n_miss) %>%
+    dplyr::select(case, n_miss) %>%
     dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
 }
 
 #' @export
-miss_case_cumsum.grouped_df <- function(data){
-
+miss_case_cumsum.grouped_df <- function(data) {
   group_by_fun(data, .fun = miss_case_cumsum)
-
 }

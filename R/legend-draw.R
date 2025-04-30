@@ -15,7 +15,9 @@ NULL
 #' @export
 #' @rdname draw_key
 draw_key_missing_point <- function(data, params, size) {
-  grid::pointsGrob(0.5, 0.5,
+  grid::pointsGrob(
+    0.5,
+    0.5,
     pch = data$shape,
     gp = grid::gpar(
       col = data$colour,

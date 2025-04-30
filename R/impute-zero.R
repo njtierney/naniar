@@ -44,8 +44,6 @@
 #'   )
 #'
 #' @rdname impute_zero
-impute_zero <- function(x){
-
+impute_zero <- function(x) {
   impute_fixed(x = x, value = 0)
-
 }

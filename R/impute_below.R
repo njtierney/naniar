@@ -72,23 +72,17 @@ impute_below <- function(x, ...) UseMethod("impute_below")
 impute_below.NULL <- function(x, ...) NULL
 
 #' @export
-impute_below.default <- function(x, ...){
+impute_below.default <- function(x, ...) {
   cli::cli_abort(
     c(
       "{.fun impute_below} does not know how to deal with data of class {.cls {class_glue(x)}}",
       "Check if your input is more than length one, and that you are using the right function. Perhaps you meant to apply this to many variables in a data frame? See the examples dor details on doing this with {.fun across}"
     )
   )
-
 }
 
 # function to perform the shifting/imputing, which is used by later function
-shift_values <- function(x,
-                         xmin,
-                         prop_below,
-                         seed_shift,
-                         jitter) {
-
+shift_values <- function(x, xmin, prop_below, seed_shift, jitter) {
   # provide the amount of shift - default is 0.1
   x_shift <- xmin - xmin * prop_below
 
@@ -97,12 +91,9 @@ shift_values <- function(x,
   x_jitter <- (stats::runif(length(x)) - 0.50) * x_shift * jitter
 
   # overwrite x
-  x <- ifelse(is.na(x),
-              yes = x_shift + x_jitter,
-              no = x)
+  x <- ifelse(is.na(x), yes = x_shift + x_jitter, no = x)
 
   return(x)
-
 }
 
 #' Impute numeric values below a range for graphical exploration
@@ -113,38 +104,28 @@ shift_values <- function(x,
 #' @param seed_shift a random seed to set, if you like
 #' @param ... extra arguments to pass
 #' @export
-impute_below.numeric <- function(x,
-                                 prop_below = 0.1,
-                                 jitter = 0.05,
-                                 seed_shift = 2017-7-1-1850,
-                                 ...){
-
+impute_below.numeric <- function(
+  x,
+  prop_below = 0.1,
+  jitter = 0.05,
+  seed_shift = 2017 - 7 - 1 - 1850,
+  ...
+) {
   # add an exception for cases with infinite values
   if (any(is.infinite(x))) {
-
     # use the minimum for the non infinite values
     xmin <- min(x[!is.infinite(x)], na.rm = TRUE)
 
-    shifted_values <- shift_values(x,
-                                   xmin,
-                                   prop_below,
-                                   seed_shift,
-                                   jitter)
+    shifted_values <- shift_values(x, xmin, prop_below, seed_shift, jitter)
 
     return(shifted_values)
-
   }
 
   # add an exception for when length x == 1 and variance is zero
   if (n_complete(x) == 1 | stats::var(x, na.rm = TRUE) == 0) {
-
     xmin <- min(x, na.rm = TRUE)
 
-    shifted_values <- shift_values(x,
-                                   xmin,
-                                   prop_below,
-                                   seed_shift,
-                                   jitter)
+    shifted_values <- shift_values(x, xmin, prop_below, seed_shift, jitter)
 
     return(shifted_values)
 
@@ -163,77 +144,82 @@ impute_below.numeric <- function(x,
 
   x_shift <- xmin - xrange * prop_below
 
-  ifelse(is.na(x),
-         # add the jitter around the those values that are missing
-         yes = x_shift + x_jitter,
-         no = x)
-
+  ifelse(
+    is.na(x),
+    # add the jitter around the those values that are missing
+    yes = x_shift + x_jitter,
+    no = x
+  )
 } # close function
 
 #' @export
-impute_below.POSIXct <- function(x,
-                                 prop_below = 0.1,
-                                 jitter = 0.05,
-                                 seed_shift = 2017-7-1-1850,
-                                 ...){
-
+impute_below.POSIXct <- function(
+  x,
+  prop_below = 0.1,
+  jitter = 0.05,
+  seed_shift = 2017 - 7 - 1 - 1850,
+  ...
+) {
   dates <- as.numeric(x)
 
-  imputed_vals <- impute_below(x = dates,
-                               prop_below = prop_below,
-                               jitter = jitter,
-                               seed_shift = seed_shift,
-                       ...)
+  imputed_vals <- impute_below(
+    x = dates,
+    prop_below = prop_below,
+    jitter = jitter,
+    seed_shift = seed_shift,
+    ...
+  )
   as.POSIXct(imputed_vals)
-
 }
 
 #' @export
-impute_below.POSIXlt <- function(x,
-                                 prop_below = 0.1,
-                                 jitter = 0.05,
-                                 seed_shift = 2017-7-1-1850,
-                                 ...){
-
+impute_below.POSIXlt <- function(
+  x,
+  prop_below = 0.1,
+  jitter = 0.05,
+  seed_shift = 2017 - 7 - 1 - 1850,
+  ...
+) {
   dates <- as.numeric(x)
 
-  imputed_vals <- impute_below(x = dates,
-                               prop_below = prop_below,
-                               jitter = jitter,
-                               seed_shift = seed_shift,
-                       ...)
+  imputed_vals <- impute_below(
+    x = dates,
+    prop_below = prop_below,
+    jitter = jitter,
+    seed_shift = seed_shift,
+    ...
+  )
   as.POSIXlt(imputed_vals)
-
 }
 
 #' @export
-impute_below.Date <- function(x,
-                                 prop_below = 0.1,
-                                 jitter = 0.05,
-                                 seed_shift = 2017-7-1-1850,
-                                 ...){
-
+impute_below.Date <- function(
+  x,
+  prop_below = 0.1,
+  jitter = 0.05,
+  seed_shift = 2017 - 7 - 1 - 1850,
+  ...
+) {
   dates <- as.numeric(x)
 
-  imputed_vals <- impute_below(x = dates,
-                               prop_below = prop_below,
-                               jitter = jitter,
-                               seed_shift = seed_shift,
-                       ...)
+  imputed_vals <- impute_below(
+    x = dates,
+    prop_below = prop_below,
+    jitter = jitter,
+    seed_shift = seed_shift,
+    ...
+  )
   as.Date(imputed_vals)
-
 }
 
 #' @export
-impute_below.factor <- function(x, ...){
+impute_below.factor <- function(x, ...) {
   forcats::fct_na_value_to_level(x, level = "missing")
 }
 
 #' @export
-impute_below.character <- function(x, ...){
-  dplyr::if_else(is.na(x),
-                 true = "missing",
-                 false = x)
+impute_below.character <- function(x, ...) {
+  dplyr::if_else(is.na(x), true = "missing", false = x)
 }
 
 #' Impute data with values shifted 10 percent below range.
@@ -283,21 +269,18 @@ impute_below.character <- function(x, ...){
 #' # Note that this ^^ is a long version of `geom_miss_point()`.
 #' }
 #'
-impute_below_all <- function(.tbl,
-                             prop_below = 0.1,
-                             jitter = 0.05,
-                             ...){
-
+impute_below_all <- function(.tbl, prop_below = 0.1, jitter = 0.05, ...) {
   lifecycle::signal_stage("superseded", "impute_below_all()")
 
   test_if_dataframe(.tbl)
   test_if_null(.tbl)
 
-  dplyr::mutate_all(.tbl = .tbl,
-                    .funs = impute_below,
-                    prop_below = prop_below,
-                    jitter = jitter)
-
+  dplyr::mutate_all(
+    .tbl = .tbl,
+    .funs = impute_below,
+    prop_below = prop_below,
+    jitter = jitter
+  )
 }
 
 #' Scoped variants of `impute_below`
@@ -345,23 +328,20 @@ impute_below_all <- function(.tbl,
 #'          geom_point()
 #' }
 #'
-impute_below_at <- function(.tbl,
-                            .vars,
-                            prop_below = 0.1,
-                            jitter = 0.05,
-                            ...){
-
+impute_below_at <- function(.tbl, .vars, prop_below = 0.1, jitter = 0.05, ...) {
   lifecycle::signal_stage("superseded", "impute_below_at()")
 
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
 
-  dplyr::mutate_at(.tbl = .tbl,
-                   .vars = .vars,
-                   .funs = impute_below,
-                   prop_below = prop_below,
-                   jitter = jitter)
+  dplyr::mutate_at(
+    .tbl = .tbl,
+    .vars = .vars,
+    .funs = impute_below,
+    prop_below = prop_below,
+    jitter = jitter
+  )
 }
 
 #' Scoped variants of `impute_below`
@@ -383,21 +363,24 @@ impute_below_at <- function(.tbl,
 #' airquality %>%
 #'   impute_below_if(.predicate = is.numeric)
 #'
-impute_below_if <- function(.tbl,
-                            .predicate,
-                            prop_below = 0.1,
-                            jitter = 0.05,
-                            ...){
-
+impute_below_if <- function(
+  .tbl,
+  .predicate,
+  prop_below = 0.1,
+  jitter = 0.05,
+  ...
+) {
   lifecycle::signal_stage("superseded", "impute_below_if()")
 
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
 
-  dplyr::mutate_if(.tbl = .tbl,
-                   .predicate = .predicate,
-                   .funs = impute_below,
-                   prop_below = prop_below,
-                   jitter = jitter)
+  dplyr::mutate_if(
+    .tbl = .tbl,
+    .predicate = .predicate,
+    .funs = impute_below,
+    prop_below = prop_below,
+    jitter = jitter
+  )
 }

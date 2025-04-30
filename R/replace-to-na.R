@@ -7,6 +7,6 @@
 #' @return values replaced by NA
 #' @export
 #'
-replace_to_na <- function(...){
+replace_to_na <- function(...) {
   .Defunct("replace_with_na")
 }

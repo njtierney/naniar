@@ -26,20 +26,18 @@
 #' gg_miss_var(airquality, Month, show_pct = TRUE)
 #' gg_miss_var(airquality, Month, show_pct = TRUE) + ylim(0, 100)
 #'}
-gg_miss_var <- function(x, facet, show_pct = FALSE){
-
+gg_miss_var <- function(x, facet, show_pct = FALSE) {
   # get a tidy data frame of the number of missings in each column
   test_if_dataframe(x)
   test_if_null(x)
 
   if (!missing(facet)) {
-  # collect group into
-  quo_group_by <- rlang::enquo(facet)
-  group_string <- deparse(substitute(facet))
+    # collect group into
+    quo_group_by <- rlang::enquo(facet)
+    group_string <- deparse(substitute(facet))
   }
 
   if (missing(facet)) {
-
     ggobject <- x %>%
       miss_var_summary() %>%
       gg_miss_var_create(show_pct = show_pct)
@@ -47,52 +45,43 @@ gg_miss_var <- function(x, facet, show_pct = FALSE){
     return(ggobject)
 
     # show the groupings -------------------------------------------------------
-
   }
 
   if (!missing(facet)) {
-
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
       miss_var_summary() %>%
       gg_miss_var_create(show_pct = show_pct) +
       facet_wrap(as.formula(paste("~", group_string)))
 
-  return(ggobject)
-
+    return(ggobject)
   }
-
 }
 # utility function to create the starting block for gg_miss_var ---------------
 
-gg_miss_var_create <- function(data, show_pct){
-
+gg_miss_var_create <- function(data, show_pct) {
   if (show_pct) {
     ylab <- "% Missing"
     aes_y <- "pct_miss"
   }
 
-  if (!show_pct){
+  if (!show_pct) {
     ylab <- "# Missing"
     aes_y <- "n_miss"
   }
 
-  ggplot(data = data,
-       aes(x = stats::reorder(variable, n_miss))) +
-  geom_bar(aes(y = .data[[aes_y]]),
-           stat = "identity",
-           position = "dodge",
-           width = 0.001,
-           colour = "#484878",
-           fill = "#484878") +
-  geom_point(aes(y = .data[[aes_y]]),
-             colour = "#484878",
-             fill = "#484878") +
-  coord_flip() +
-  scale_color_discrete(guide = "none") +
-  labs(y = ylab,
-       x = "Variables") +
-  theme_minimal()
-
+  ggplot(data = data, aes(x = stats::reorder(variable, n_miss))) +
+    geom_bar(
+      aes(y = .data[[aes_y]]),
+      stat = "identity",
+      position = "dodge",
+      width = 0.001,
+      colour = "#484878",
+      fill = "#484878"
+    ) +
+    geom_point(aes(y = .data[[aes_y]]), colour = "#484878", fill = "#484878") +
+    coord_flip() +
+    scale_color_discrete(guide = "none") +
+    labs(y = ylab, x = "Variables") +
+    theme_minimal()
 }
-

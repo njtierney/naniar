@@ -9,7 +9,7 @@ df_mixture2 <- data.frame(x = complete, y = misses)
 
 any_not_na <- Negate(any_na)
 
-test_that("all_na returns correct response",{
+test_that("all_na returns correct response", {
   expect_true(all_na(misses))
   expect_false(all_na(complete))
   expect_false(all_na(mixture))
@@ -19,7 +19,7 @@ test_that("all_na returns correct response",{
   expect_false(all_na(df_mixture2))
 })
 
-test_that("all_complete returns correct response",{
+test_that("all_complete returns correct response", {
   expect_false(all_complete(misses))
   expect_true(all_complete(complete))
   expect_false(all_complete(mixture))
@@ -37,7 +37,6 @@ test_that("any_na returns correct response", {
   expect_false(any_na(df_complete))
   expect_true(any_na(df_mixture))
   expect_true(any_na(df_mixture2))
-
 })
 
 test_that("any_complete returns correct response", {

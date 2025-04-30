@@ -59,8 +59,7 @@ impute_median <- function(x) UseMethod("impute_median")
 
 #' @export
 #' @rdname impute_median
-impute_median.default <- function(x){
-
+impute_median.default <- function(x) {
   x[is.na(x)] <- median(x, na.rm = TRUE)
 
   x
@@ -68,13 +67,13 @@ impute_median.default <- function(x){
 
 #' @export
 #' @rdname impute_median
-impute_median.factor <- function(x){
-
-  i_mode <- function(x){
-
+impute_median.factor <- function(x) {
+  i_mode <- function(x) {
     tab <- table(x)
     max_tab <- max(tab)
-    if (all(tab == max_tab)) {mod = NA}
+    if (all(tab == max_tab)) {
+      mod = NA
+    }
 
     if (is.numeric(x)) {
       mod <- as.numeric(names(tab)[tab == max_tab])
@@ -135,49 +134,36 @@ impute_median.factor <- function(x){
 #'              colour = any_missing)) +
 #'          geom_point()
 #'
-impute_median_all <- function(.tbl){
-
+impute_median_all <- function(.tbl) {
   lifecycle::signal_stage("superseded", "impute_median_all()")
 
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
 
-  dplyr::mutate_all(.tbl = .tbl,
-                    .funs = impute_median)
-
+  dplyr::mutate_all(.tbl = .tbl, .funs = impute_median)
 }
 
 #' @export
 #' @rdname scoped-impute_median
-impute_median_at <- function(.tbl,
-                           .vars){
-
+impute_median_at <- function(.tbl, .vars) {
   lifecycle::signal_stage("superseded", "impute_median_at()")
 
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
 
-  dplyr::mutate_at(.tbl = .tbl,
-                   .vars = .vars,
-                   .funs = impute_median)
-
+  dplyr::mutate_at(.tbl = .tbl, .vars = .vars, .funs = impute_median)
 }
 
 #' @export
 #' @rdname scoped-impute_median
-impute_median_if <- function(.tbl,
-                           .predicate){
-
+impute_median_if <- function(.tbl, .predicate) {
   lifecycle::signal_stage("superseded", "impute_median_if()")
 
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
 
-  dplyr::mutate_if(.tbl = .tbl,
-                   .predicate = .predicate,
-                   .funs = impute_median)
-
+  dplyr::mutate_if(.tbl = .tbl, .predicate = .predicate, .funs = impute_median)
 }

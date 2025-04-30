@@ -79,17 +79,19 @@
 #'  facet_wrap(~Month)
 #'}
 #' @export
-geom_miss_point <- function(mapping = NULL,
-                            data = NULL,
-                            prop_below = 0.1,
-                            jitter = 0.05,
-                            stat = "miss_point",
-                            position = "identity",
-                            colour = ..missing..,
-                            na.rm = FALSE,
-                            show.legend = NA,
-                            inherit.aes = TRUE,
-                            ...) {
+geom_miss_point <- function(
+  mapping = NULL,
+  data = NULL,
+  prop_below = 0.1,
+  jitter = 0.05,
+  stat = "miss_point",
+  position = "identity",
+  colour = ..missing..,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE,
+  ...
+) {
   layer(
     data = data,
     mapping = mapping,
@@ -105,7 +107,6 @@ geom_miss_point <- function(mapping = NULL,
       ...
     )
   )
-
 }
 
 #' @rdname naniar-ggproto
@@ -116,17 +117,17 @@ GeomMissPoint <- ggproto(
   "GeomMissPoint",
   GeomPoint,
   required_aes = c("x", "y"),
-  default_aes = aes(shape = 19,
-                    colour = "black",
-                    size = 1.5,
-                    fill = NA,
-                    alpha = NA,
-                    stroke = 0.5),
+  default_aes = aes(
+    shape = 19,
+    colour = "black",
+    size = 1.5,
+    fill = NA,
+    alpha = NA,
+    stroke = 0.5
+  ),
   draw_key = draw_key_missing_point,
   handle_na = function(self, data, params) data,
-  draw_panel = function(data,
-                        panel_scales,
-                        coord){
+  draw_panel = function(data, panel_scales, coord) {
     coords <- coord$transform(data, panel_scales)
     grid::pointsGrob(
       coords$x,
@@ -138,8 +139,7 @@ GeomMissPoint <- ggproto(
         # Stroke is added around the outside of the point
         fontsize = coords$size * .pt + coords$stroke * .stroke / 2,
         lwd = coords$stroke * .stroke / 2
-        )
+      )
     )
-    }
+  }
 )
-

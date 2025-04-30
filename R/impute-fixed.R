@@ -49,8 +49,7 @@ impute_fixed <- function(x, value) UseMethod("impute_fixed")
 
 #' @export
 #' @rdname impute_fixed
-impute_fixed.default <- function(x, value){
-
+impute_fixed.default <- function(x, value) {
   x[is.na(x)] <- value
 
   x

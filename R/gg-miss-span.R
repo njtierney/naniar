@@ -27,73 +27,76 @@
 #' gg_miss_span(pedestrian, hourly_counts, span_every = 3000) + theme_dark()
 #' }
 
-gg_miss_span <- function(data,
-                         var,
-                         span_every,
-                         facet){
-
+gg_miss_span <- function(data, var, span_every, facet) {
   var_enquo <- rlang::enquo(var)
 
   if (missing(facet)) {
-
-  ggobject <-  miss_var_span(data = data,
-                             var = !!var_enquo,
-                             span_every = span_every) %>%
-    tidyr::pivot_longer(cols = prop_miss:prop_complete,
-                        names_to = "variable",
-                        values_to = "value") %>%
-    ggplot2::ggplot(ggplot2::aes(x = span_counter,
-                                 y = value,
-                                 fill = variable)) +
-    ggplot2::geom_col(colour = "white") +
-    ggplot2::scale_fill_manual(name = "",
-                               values = c("grey80",
-                                          "grey20"),
-                               label = c("Present",
-                                         "Missing")) +
-    ggplot2::theme_minimal() +
-    ggplot2::labs(title = "Proportion of missing values",
-                  subtitle = sprintf("Over a repeating span of %s", span_every),
-                  x = "Span",
-                  y = "Proportion Missing")
-
+    ggobject <- miss_var_span(
+      data = data,
+      var = !!var_enquo,
+      span_every = span_every
+    ) %>%
+      tidyr::pivot_longer(
+        cols = prop_miss:prop_complete,
+        names_to = "variable",
+        values_to = "value"
+      ) %>%
+      ggplot2::ggplot(ggplot2::aes(
+        x = span_counter,
+        y = value,
+        fill = variable
+      )) +
+      ggplot2::geom_col(colour = "white") +
+      ggplot2::scale_fill_manual(
+        name = "",
+        values = c("grey80", "grey20"),
+        label = c("Present", "Missing")
+      ) +
+      ggplot2::theme_minimal() +
+      ggplot2::labs(
+        title = "Proportion of missing values",
+        subtitle = sprintf("Over a repeating span of %s", span_every),
+        x = "Span",
+        y = "Proportion Missing"
+      )
   }
 
-  if (!missing(facet)){
-
+  if (!missing(facet)) {
     quo_group_by <- rlang::enquo(facet)
 
     group_string <- deparse(substitute(facet))
 
     ggobject <-
-    data %>%
+      data %>%
       dplyr::group_by(!!quo_group_by) %>%
-      miss_var_span(var = !!var_enquo,
-                    span_every = span_every) %>%
-      tidyr::pivot_longer(cols = prop_miss:prop_complete,
-                          names_to = "variable",
-                          values_to = "value") %>%
-      ggplot2::ggplot(ggplot2::aes(x = span_counter,
-                                   y = value,
-                                   fill = variable)) +
+      miss_var_span(var = !!var_enquo, span_every = span_every) %>%
+      tidyr::pivot_longer(
+        cols = prop_miss:prop_complete,
+        names_to = "variable",
+        values_to = "value"
+      ) %>%
+      ggplot2::ggplot(ggplot2::aes(
+        x = span_counter,
+        y = value,
+        fill = variable
+      )) +
       ggplot2::geom_col(colour = "white") +
-      ggplot2::scale_fill_manual(name = "",
-                                 values = c("grey80",
-                                            "grey20"),
-                                 label = c("Present",
-                                           "Missing")) +
+      ggplot2::scale_fill_manual(
+        name = "",
+        values = c("grey80", "grey20"),
+        label = c("Present", "Missing")
+      ) +
       ggplot2::theme_minimal() +
-      ggplot2::labs(title = "Proportion of missing values",
-                    subtitle = sprintf("Over a repeating span of %s",
-                                       span_every),
-                    x = "Span",
-                    y = "Proportion Missing") +
+      ggplot2::labs(
+        title = "Proportion of missing values",
+        subtitle = sprintf("Over a repeating span of %s", span_every),
+        x = "Span",
+        y = "Proportion Missing"
+      ) +
       facet_wrap(as.formula(paste("~", group_string)))
-
   }
 
   return(ggobject)
-
 }
 
 # possible alternative plot for missings over a span, using loess to control
@@ -116,5 +119,3 @@ gg_miss_span <- function(data,
 #              y = pred)) +
 #   geom_line() +
 #   ylim(0,1)
-
-

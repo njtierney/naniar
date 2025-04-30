@@ -17,7 +17,7 @@
 #'
 #' @export
 #'
-where_na <- function(x){
+where_na <- function(x) {
   which(is.na(x), arr.ind = TRUE)
 }
 
@@ -37,7 +37,7 @@ where_na <- function(x){
 #'
 #' @export
 #'
-which_na <- function(x){
+which_na <- function(x) {
   which(is.na(x))
 }
 
@@ -62,8 +62,7 @@ which_na <- function(x){
 #' miss_var_which(mtcars)
 
 #'
-miss_var_which <- function(data){
-
+miss_var_which <- function(data) {
   # basic type tests
   test_if_dataframe(data)
 
@@ -73,27 +72,11 @@ miss_var_which <- function(data){
 
   # if there are no missing values, return NULL
   if (!anyNA(data)) {
-
     return(NULL)
-
   }
 
   # else return variables that contain ANY missing values
   na_vars <- names(which(colSums(is.na(data)) > 0))
 
   return(na_vars)
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

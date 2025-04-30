@@ -20,19 +20,16 @@
 #'   group_by(Month) %>%
 #'   miss_case_table()
 #' }
-miss_case_table <- function(data){
-
+miss_case_table <- function(data) {
   test_if_null(data)
 
   test_if_dataframe(data)
 
   UseMethod("miss_case_table")
-
 }
 
 #' @export
-miss_case_table.default <- function(data){
-
+miss_case_table.default <- function(data) {
   data[["n_miss_in_case"]] <- n_miss_row(data)
 
   data %>%
@@ -40,15 +37,12 @@ miss_case_table.default <- function(data){
     dplyr::tally() %>%
     dplyr::mutate(pct_cases = (n / nrow(data) * 100)) %>%
     dplyr::rename(n_cases = n)
-
 }
 
 
 #' @export
-miss_case_table.grouped_df <- function(data){
-
+miss_case_table.grouped_df <- function(data) {
   group_by_fun(data, .fun = miss_case_table)
-
 }
 
 #' Tabulate the missings in the variables
@@ -74,20 +68,17 @@ miss_case_table.grouped_df <- function(data){
 #'   miss_var_table()
 #' }
 #' @export
-miss_var_table <- function(data){
-
+miss_var_table <- function(data) {
   test_if_null(data)
 
   test_if_dataframe(data)
 
   UseMethod("miss_var_table")
-
 }
 
 #' @export
 
-miss_var_table.default <- function(data){
-
+miss_var_table.default <- function(data) {
   miss_var_summary(data) %>%
     dplyr::rename(n_miss_in_var = n_miss) %>%
     dplyr::select(-pct_miss) %>%
@@ -95,13 +86,10 @@ miss_var_table.default <- function(data){
     dplyr::tally() %>%
     dplyr::rename(n_vars = n) %>%
     dplyr::mutate(pct_vars = (n_vars / ncol(data) * 100))
-
 }
 
 #' @export
 
-miss_var_table.grouped_df <- function(data){
-
+miss_var_table.grouped_df <- function(data) {
   group_by_fun(data, .fun = miss_var_table)
-
 }

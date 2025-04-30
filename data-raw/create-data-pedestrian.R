@@ -38,8 +38,7 @@ df_time <- map2(df_time, sensors_ls, data.frame) %>%
 
 ped_full <- dat_ped %>%
   split(.$Sensor_ID) %>%
-  map2(df_time, right_join,
-       by = c("Date_Time", "Sensor_ID", "Sensor_Name")) %>%
+  map2(df_time, right_join, by = c("Date_Time", "Sensor_ID", "Sensor_Name")) %>%
   bind_rows()
 
 # could possibly use tidyr::complete?
@@ -52,31 +51,32 @@ library(lubridate)
 #          Date_Time < "2017-01-01 01:00:00 UTC")
 
 pedestrian <- ped_full %>%
-  mutate(Year = as.integer(year(Date_Time)),   # force year to be an integer
-         Month = month(Date_Time, label = TRUE, abbr = FALSE),
-         Mdate = mday(Date_Time),
-         Day = wday(Date_Time, label = TRUE, abbr = FALSE),
-         Time = hour(Date_Time)) %>%
+  mutate(
+    Year = as.integer(year(Date_Time)), # force year to be an integer
+    Month = month(Date_Time, label = TRUE, abbr = FALSE),
+    Mdate = mday(Date_Time),
+    Day = wday(Date_Time, label = TRUE, abbr = FALSE),
+    Time = hour(Date_Time)
+  ) %>%
   # drop id, as it does not give us much extra information
   select(-ID) %>%
-  rename(date_time = Date_Time,
-         year = Year,
-         month = Month,
-         month_day = Mdate,
-         week_day = Day,
-         hour = Time,
-         sensor_id = Sensor_ID,
-         sensor_name = Sensor_Name,
-         hourly_counts = Hourly_Counts) %>%
+  rename(
+    date_time = Date_Time,
+    year = Year,
+    month = Month,
+    month_day = Mdate,
+    week_day = Day,
+    hour = Time,
+    sensor_id = Sensor_ID,
+    sensor_name = Sensor_Name,
+    hourly_counts = Hourly_Counts
+  ) %>%
   filter(year == 2016) %>%
   # Birrarung Marr, Bourke Street Mall, Flagstaff, Spencer St-Collins St (south)
-  filter(sensor_id %in% c(2,7,23,13)) %>%
-  select(hourly_counts,
-         everything())
+  filter(sensor_id %in% c(2, 7, 23, 13)) %>%
+  select(hourly_counts, everything())
 
-use_data(pedestrian,
-         compress = "xz",
-         overwrite = TRUE)
+use_data(pedestrian, compress = "xz", overwrite = TRUE)
 
 # used tools::resaveRdaFiles("data/pedestrian.rda")
 # then used tools::checkRdaFiles("data/pedestrian.rda")

@@ -16,16 +16,16 @@
 #'
 #' gg_miss_var_cumsum(airquality)
 
-gg_miss_var_cumsum <- function(x){
-
+gg_miss_var_cumsum <- function(x) {
   ggobject <- x %>%
     miss_var_summary(add_cumsum = TRUE) %>%
-    ggplot(aes(x = stats::reorder(variable, n_miss_cumsum),
-               y = n_miss_cumsum,
-               group = 1)) +
+    ggplot(aes(
+      x = stats::reorder(variable, n_miss_cumsum),
+      y = n_miss_cumsum,
+      group = 1
+    )) +
     geom_line(linewidth = 2) +
-    labs(x = "Var",
-         y = "Cumsum of missing values") +
+    labs(x = "Var", y = "Cumsum of missing values") +
     theme_bw() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
   return(ggobject)

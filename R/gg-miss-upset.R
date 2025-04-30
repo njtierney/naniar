@@ -27,14 +27,8 @@
 #' gg_miss_upset(riskfactors, nsets = 10, nintersects = 10)
 #' }
 #' @export
-gg_miss_upset <- function(data, order.by = "freq", ...){
-
+gg_miss_upset <- function(data, order.by = "freq", ...) {
   data %>%
     as_shadow_upset() %>%
-    UpSetR::upset(order.by = order.by,
-                  ...)
-
+    UpSetR::upset(order.by = order.by, ...)
 }
-
-
-

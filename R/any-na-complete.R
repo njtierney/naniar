@@ -78,14 +78,13 @@ any_complete <- function(x) any(complete.cases(x))
 
 #' @rdname any-all-na-complete
 #' @export
-all_na <- function(x){
+all_na <- function(x) {
   # if there are no missings, then there cannot be all missings
   if (!anyNA(x)) {
     return(FALSE)
   }
 
   return(all(is.na(x)))
-
 }
 
 #' @rdname any-all-na-complete

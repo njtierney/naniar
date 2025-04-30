@@ -50,14 +50,13 @@ impute_factor <- function(x, value) UseMethod("impute_factor")
 
 #' @export
 #' @rdname impute_factor
-impute_factor.default <- function(x, value){
+impute_factor.default <- function(x, value) {
   vctrs::vec_assert(x, ptype = character())
 }
 
 #' @export
 #' @rdname impute_factor
-impute_factor.factor <- function(x, value){
-
+impute_factor.factor <- function(x, value) {
   x <- forcats::fct_expand(x, value)
 
   x[is.na(x)] <- factor(value)
@@ -67,8 +66,7 @@ impute_factor.factor <- function(x, value){
 
 #' @export
 #' @rdname impute_factor
-impute_factor.character <- function(x, value){
-
+impute_factor.character <- function(x, value) {
   x <- forcats::fct_expand(x, value)
 
   x[is.na(x)] <- factor(value)
@@ -78,9 +76,7 @@ impute_factor.character <- function(x, value){
 
 #' @export
 #' @rdname impute_factor
-impute_factor.shade <- function(x, value){
-
+impute_factor.shade <- function(x, value) {
   #do nothing
   x
-
 }

@@ -18,12 +18,11 @@
 #' airquality %>% add_shadow(Ozone)
 #' airquality %>% add_shadow(Ozone, Solar.R)
 #'
-add_shadow <- function(data, ...){
-
+add_shadow <- function(data, ...) {
   test_if_dots_missing(
     dots_empty = missing(...),
     msg = "{.fun add_shadow} requires variables to be selected"
-    )
+  )
   shadow_df <- dplyr::select(data, ...) %>% as_shadow()
 
   data <- tibble::as_tibble(data)
@@ -52,11 +51,9 @@ add_shadow <- function(data, ...){
 #'
 #' airquality %>% add_shadow_shift(Ozone, Solar.R)
 #'
-add_shadow_shift <- function(data, ..., suffix = "shift"){
-
+add_shadow_shift <- function(data, ..., suffix = "shift") {
   # if no variables are selected use all of the variables
   if (missing(...)) {
-
     shadow_shifted_df <- purrr::map_dfc(data, impute_below)
 
     # change names
@@ -76,7 +73,7 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
   shadow_shifted_df <- purrr::map_dfc(shadow_shifted_vars, impute_below)
 
   # change names
-  names(shadow_shifted_df) <- paste0(names(shadow_shifted_df),"_",suffix)
+  names(shadow_shifted_df) <- paste0(names(shadow_shifted_df), "_", suffix)
 
   data <- tibble::as_tibble(data)
   shadow_shifted_df <- tibble::as_tibble(shadow_shifted_df)
@@ -126,41 +123,49 @@ add_shadow_shift <- function(data, ..., suffix = "shift"){
 #' airquality %>% add_any_miss()
 #' airquality %>% add_any_miss(Ozone, Solar.R)
 #'
-add_any_miss <- function(data, ...,
-                         label = "any_miss",
-                         missing = "missing",
-                         complete = "complete"){
-
+add_any_miss <- function(
+  data,
+  ...,
+  label = "any_miss",
+  missing = "missing",
+  complete = "complete"
+) {
   # if no variables are specified, do for all, and add the label "all"
   if (missing(...)) {
-
     stub_data_label <- data %>%
-      dplyr::mutate(.temp = any_row_miss(data),
-                    .temp_label = dplyr::if_else(condition = .temp == TRUE,
-                                                 true = missing,
-                                                 false = complete)) %>%
+      dplyr::mutate(
+        .temp = any_row_miss(data),
+        .temp_label = dplyr::if_else(
+          condition = .temp == TRUE,
+          true = missing,
+          false = complete
+        )
+      ) %>%
       dplyr::select(.temp_label) %>%
       tibble::as_tibble()
 
-    names(stub_data_label) <- paste0(label,"_all")
+    names(stub_data_label) <- paste0(label, "_all")
 
     return(
       dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
     )
-
   }
 
   stub_data <- dplyr::select(data, ...)
 
   stub_data_label <- stub_data %>%
-    dplyr::mutate(.temp = any_row_miss(stub_data),
-                  .temp_label = dplyr::if_else(condition = .temp == TRUE,
-                                               true = missing,
-                                               false = complete)) %>%
+    dplyr::mutate(
+      .temp = any_row_miss(stub_data),
+      .temp_label = dplyr::if_else(
+        condition = .temp == TRUE,
+        true = missing,
+        false = complete
+      )
+    ) %>%
     dplyr::select(.temp_label) %>%
     tibble::as_tibble()
 
-  names(stub_data_label) <- paste0(label,"_vars")
+  names(stub_data_label) <- paste0(label, "_vars")
 
   dplyr::bind_cols(data, stub_data_label) %>% tibble::as_tibble()
 }
@@ -197,15 +202,16 @@ add_any_miss <- function(data, ...,
 #'                                      complete = "absolutely complete")) %>%
 #'   head()
 #' }
-label_missings <- function(data,
-                           ...,
-                           missing = "Missing",
-                           complete = "Not Missing"){
-
+label_missings <- function(
+  data,
+  ...,
+  missing = "Missing",
+  complete = "Not Missing"
+) {
   test_if_null(data)
   # find which are missing and which are not.
 
-  any_row_na <- function(x){
+  any_row_na <- function(x) {
     apply(data.frame(x), MARGIN = 1, FUN = function(x) anyNA(x))
   }
 
@@ -215,10 +221,11 @@ label_missings <- function(data,
 
   temp <- any_row_na(data)
 
-  dplyr::if_else(condition = temp == TRUE, # TRUE means missing
-                 true = missing,
-                 false = complete)
-
+  dplyr::if_else(
+    condition = temp == TRUE, # TRUE means missing
+    true = missing,
+    false = complete
+  )
 }
 
 #' Add a column describing if there are any missings in the dataset
@@ -240,24 +247,27 @@ label_missings <- function(data,
 #' airquality %>% add_label_missings(Ozone, Solar.R)
 #' airquality %>% add_label_missings(Ozone, Solar.R, missing = "yes", complete = "no")
 #'
-add_label_missings <- function(data,
-                               ...,
-                               missing = "Missing",
-                               complete = "Not Missing"){
-
+add_label_missings <- function(
+  data,
+  ...,
+  missing = "Missing",
+  complete = "Not Missing"
+) {
   # data %>%
   #   dplyr::mutate(any_missing = label_missings(.)) %>%
   #   dplyr::as_tibble()
 
   updated_data <- data %>%
-    dplyr::mutate(any_missing = label_missings(.,
-                                               ...,
-                                               missing = missing,
-                                               complete = complete))
-
+    dplyr::mutate(
+      any_missing = label_missings(
+        .,
+        ...,
+        missing = missing,
+        complete = complete
+      )
+    )
 
   return(tibble::as_tibble(updated_data))
-
 }
 
 #' Label shadow values as missing or not missing
@@ -273,11 +283,12 @@ add_label_missings <- function(data,
 #' @keywords internal
 #' @noRd
 #'
-label_shadow <- function(data,
-                         ...,
-                         missing = "Missing",
-                         complete = "Not Missing"){
-
+label_shadow <- function(
+  data,
+  ...,
+  missing = "Missing",
+  complete = "Not Missing"
+) {
   # any_shade <- function(x) any(grepl("^NA|^NA_", x))
 
   if (!missing(...)) {
@@ -287,10 +298,11 @@ label_shadow <- function(data,
   }
 
   temp <- any_row_shade(data)
-  dplyr::if_else(condition = temp == TRUE, # TRUE means missing
-                 true = missing,
-                 false = complete)
-
+  dplyr::if_else(
+    condition = temp == TRUE, # TRUE means missing
+    true = missing,
+    false = complete
+  )
 }
 
 #' Add a column describing whether there is a shadow
@@ -318,22 +330,28 @@ label_shadow <- function(data,
 #'   add_shadow(Ozone, Solar.R) %>%
 #'   add_label_shadow()
 #'
-add_label_shadow <- function(data,
-                             ...,
-                             missing = "Missing",
-                             complete = "Not Missing"){
-
+add_label_shadow <- function(
+  data,
+  ...,
+  missing = "Missing",
+  complete = "Not Missing"
+) {
   if (!any_shade(data)) {
-    rlang::abort("add_label_shadow works with shadow data, which has columns
-                 created by `shade()`, `as_shadow()`, or `bind_shadow()`")
+    rlang::abort(
+      "add_label_shadow works with shadow data, which has columns
+                 created by `shade()`, `as_shadow()`, or `bind_shadow()`"
+    )
   }
 
-  updated_data <- dplyr::mutate(data,
-                                any_missing = label_shadow(data,
-                                                           ...,
-                                                           missing = missing,
-                                                           complete = complete))
-
+  updated_data <- dplyr::mutate(
+    data,
+    any_missing = label_shadow(
+      data,
+      ...,
+      missing = missing,
+      complete = complete
+    )
+  )
 
   return(updated_data)
 }
@@ -365,17 +383,18 @@ add_label_shadow <- function(data,
 #' add_miss_cluster(airquality, n_clusters = 3)
 #' add_miss_cluster(airquality, cluster_method = "ward.D", n_clusters = 3)
 
-add_miss_cluster <- function(data,
-                             cluster_method = "mcquitty",
-                             n_clusters = 2) {
-
+add_miss_cluster <- function(
+  data,
+  cluster_method = "mcquitty",
+  n_clusters = 2
+) {
   test_if_null(data)
 
   test_if_dataframe(data)
 
   data_na <- is.na(data)
 
-  miss_cluster <- stats::dist(data_na*1) %>%
+  miss_cluster <- stats::dist(data_na * 1) %>%
     stats::hclust(method = cluster_method) %>%
     stats::cutree(k = n_clusters)
 

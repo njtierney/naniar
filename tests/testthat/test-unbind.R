@@ -1,5 +1,4 @@
-df <- data.frame(x = c(NA, 1:4),
-                 y = c(NA, NA, 1:3))
+df <- data.frame(x = c(NA, 1:4), y = c(NA, NA, 1:3))
 
 nab <- nabular(df)
 nabu <- unbind_shadow(nab)

@@ -1,13 +1,12 @@
 test_that("miss-var-which returns the right variables", {
-  expect_equal(miss_var_which(airquality),
-               c("Ozone", "Solar.R"))
+  expect_equal(miss_var_which(airquality), c("Ozone", "Solar.R"))
 })
 
 test_that("miss-var-which errors on NULL", {
   expect_snapshot(
     error = TRUE,
     miss_var_which(NULL)
-    )
+  )
 })
 
 test_that("miss-var-which returns null when no missings", {

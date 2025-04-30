@@ -7,10 +7,12 @@ library(dplyr)
 # load("~/Downloads/tao.rda")
 
 oceanbuoys <- tao %>%
-  rename(sea_temp_c = sea.surface.temp,
-                air_temp_c = air.temp,
-         wind_ew = uwind,
-         wind_ns = vwind) %>%
+  rename(
+    sea_temp_c = sea.surface.temp,
+    air_temp_c = air.temp,
+    wind_ew = uwind,
+    wind_ns = vwind
+  ) %>%
   as_tibble() %>%
   # convert the factors in a sane way
   mutate_if(is.factor, .funs = function(x) as.numeric(as.character(x)))

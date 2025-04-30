@@ -16,16 +16,17 @@ test_that("impute_factor works", {
 ## impute_factor_across --------------------------------------------------------
 test_that("impute_factor works with across", {
   expect_false(
-    mutate(chick,
-           across(where(is.factor), \(x) impute_factor(x, "wat"))) %>%
+    mutate(chick, across(where(is.factor), \(x) impute_factor(x, "wat"))) %>%
       all_na()
   )
 })
 
 test_that("impute_factor works with across and nabular", {
   expect_false(
-    mutate(chick_shadow,
-           across(where(is.factor), \(x) impute_factor(x, "wat"))) %>%
+    mutate(
+      chick_shadow,
+      across(where(is.factor), \(x) impute_factor(x, "wat"))
+    ) %>%
       all_na()
   )
 })
@@ -33,8 +34,10 @@ test_that("impute_factor works with across and nabular", {
 test_that("impute_factor retains proper shadow values when used with across", {
   expect_equal(
     unbind_data(
-      mutate(chick_shadow,
-             across(where(is.factor), \(x) impute_factor(x, "wat")))
+      mutate(
+        chick_shadow,
+        across(where(is.factor), \(x) impute_factor(x, "wat"))
+      )
     ),
     unbind_data(
       chick_shadow

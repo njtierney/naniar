@@ -18,36 +18,36 @@ test_that("set_n_miss errors appropriately", {
   expect_snapshot(
     error = TRUE,
     set_n_miss(vec, -1)
-    )
+  )
   expect_snapshot(
     error = TRUE,
     set_n_miss(vec, "a")
-    )
+  )
   expect_snapshot(
     error = TRUE,
     set_n_miss(vec, 1.5)
-    )
+  )
   expect_snapshot(
     error = TRUE,
     set_n_miss(vec, c(1.5, 2))
-    )
+  )
 })
 
 test_that("set_prop_miss errors appropriately", {
   expect_snapshot(
     error = TRUE,
     set_prop_miss(vec, -1)
-    )
+  )
   expect_snapshot(
     error = TRUE,
     set_prop_miss(vec, "a")
-    )
+  )
   expect_snapshot(
     error = TRUE,
     set_prop_miss(vec, 1.5)
-    )
+  )
   expect_snapshot(
     error = TRUE,
     set_prop_miss(vec, c(1.5, 2))
-    )
+  )
 })

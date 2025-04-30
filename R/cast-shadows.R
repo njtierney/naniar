@@ -33,18 +33,17 @@
 #'         geom_density()
 #' }
 #'
-cast_shadow <- function(data, ...){
-
+cast_shadow <- function(data, ...) {
   test_if_dots_missing(
     dots_empty = missing(...),
     msg = "{.fun cast_shadow} requires variables to be selected after the data"
-    )
+  )
 
-    shadow_vars <- tibble::as_tibble(as_shadow(dplyr::select(data, ...)))
-    my_data <- tibble::as_tibble(dplyr::select(data, ...))
+  shadow_vars <- tibble::as_tibble(as_shadow(dplyr::select(data, ...)))
+  my_data <- tibble::as_tibble(dplyr::select(data, ...))
 
-    dplyr::bind_cols(my_data, shadow_vars)
-  }
+  dplyr::bind_cols(my_data, shadow_vars)
+}
 
 #' Add a shadow and a shadow_shift column to a dataset
 #'
@@ -67,13 +66,11 @@ cast_shadow <- function(data, ...){
 #'
 #' airquality %>% cast_shadow_shift(dplyr::contains("o"))
 #'
-cast_shadow_shift <- function(data, ...){
-
+cast_shadow_shift <- function(data, ...) {
   shadow_vars <- dplyr::select(data, ...) %>% cast_shadow(...)
 
   # shift those values selected
   add_shadow_shift(shadow_vars, ...)
-
 }
 
 #' Add a shadow column and a shadow shifted column to a dataset
@@ -105,16 +102,14 @@ cast_shadow_shift <- function(data, ...){
 #'         geom_point()
 #' }
 #'
-cast_shadow_shift_label <- function(data, ...){
-
+cast_shadow_shift_label <- function(data, ...) {
   test_if_dots_missing(
     dots_empty = missing(...),
     msg = "{.fun cast_shadow_shift_label} requires variables to be selected after the data"
-    )
+  )
 
   shadow_vars <- dplyr::select(data, ...) %>% cast_shadow(...)
 
   # shift those values selected
   add_shadow_shift(shadow_vars, ...) %>% add_label_missings()
-
 }

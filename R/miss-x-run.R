@@ -51,8 +51,7 @@
 #'    miss_var_run(hourly_counts)
 #' }
 #'
-miss_var_run <- function(data, var){
-
+miss_var_run <- function(data, var) {
   test_if_null(data)
 
   test_if_missing(var)
@@ -60,38 +59,34 @@ miss_var_run <- function(data, var){
   test_if_dataframe(data)
 
   UseMethod("miss_var_run")
-
 }
 
 #' @export
-miss_var_run.default <- function(data, var){
-
+miss_var_run.default <- function(data, var) {
   var <- rlang::enquo(var)
 
-  data_pull <-  data %>% dplyr::pull(!!var)
+  data_pull <- data %>% dplyr::pull(!!var)
 
-    tibble::as_tibble(c(rle(is.na(data_pull)))) %>%
-    dplyr::rename(run_length = lengths,
-                  is_na = values) %>%
-      dplyr::mutate(is_na = dplyr::if_else(is_na == TRUE,
-                                           true = "missing",
-                                           false = "complete"))
-    # also look into `label_na`
-    # naniar::is_na(TRUE)
-
+  tibble::as_tibble(c(rle(is.na(data_pull)))) %>%
+    dplyr::rename(run_length = lengths, is_na = values) %>%
+    dplyr::mutate(
+      is_na = dplyr::if_else(
+        is_na == TRUE,
+        true = "missing",
+        false = "complete"
+      )
+    )
+  # also look into `label_na`
+  # naniar::is_na(TRUE)
 }
 
 #' @export
-miss_var_run.grouped_df <- function(data,var){
-
+miss_var_run.grouped_df <- function(data, var) {
   var <- rlang::enquo(var)
 
   tidyr::nest(data) %>%
-    dplyr::mutate(data = purrr::map(data,
-                                    var = !!var,
-                                    .f = miss_var_run)) %>%
+    dplyr::mutate(data = purrr::map(data, var = !!var, .f = miss_var_run)) %>%
     tidyr::unnest(cols = c(data))
-
 }
 
 # library(imputeTS)

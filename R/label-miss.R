@@ -16,8 +16,7 @@
 #'
 #' label_miss_1d(airquality$Ozone)
 #'
-label_miss_1d <- function(x1){
-
+label_miss_1d <- function(x1) {
   # Catch NULL entries
   test_if_null(x1)
   # find which are missing and which are not.
@@ -29,15 +28,16 @@ label_miss_1d <- function(x1){
   }
 
   as_missing_factor(temp)
-
 }
 
-as_missing_factor <- function(x){
+as_missing_factor <- function(x) {
   # factor assures that Missing and Not Missing will always have same colour
   fct <- factor(
-    x = ifelse(x == 0, # 0 means not missing, 1 means missing
-               "Not Missing", # not missing
-               "Missing"), # missing
+    x = ifelse(
+      x == 0, # 0 means not missing, 1 means missing
+      "Not Missing", # not missing
+      "Missing"
+    ), # missing
     levels = c("Not Missing", "Missing")
   )
   stats::relevel(fct, "Missing")
@@ -57,10 +57,9 @@ as_missing_factor <- function(x){
 #'
 #' label_miss_2d(airquality$Ozone, airquality$Solar.R)
 #'
-label_miss_2d <- function(x1, x2){
-
+label_miss_2d <- function(x1, x2) {
   # Catch NULL entries
-  if(is.null(x1) | is.null(x2)){
+  if (is.null(x1) | is.null(x2)) {
     cli::cli_abort(
       c(
         "Input cannot be NULL",
@@ -80,9 +79,7 @@ label_miss_2d <- function(x1, x2){
     x2[] <- NA
   }
 
-  temp <- data.frame(x1,x2) %>% is.na %>% rowSums()
+  temp <- data.frame(x1, x2) %>% is.na %>% rowSums()
 
   as_missing_factor(temp)
-
 }
-

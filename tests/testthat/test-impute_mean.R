@@ -15,27 +15,27 @@ test_that("impute_mean and scoped variants fail when given wrong input", {
   expect_snapshot(
     error = TRUE,
     impute_mean_if(numeric(0))
-    )
+  )
   expect_snapshot(
     error = TRUE,
     impute_mean_at(numeric(0))
-    )
+  )
   expect_snapshot(
     error = TRUE,
     impute_mean_all(numeric(0))
-    )
+  )
   expect_snapshot(
     error = TRUE,
     impute_mean_if(NULL)
-    )
+  )
   expect_snapshot(
     error = TRUE,
     impute_mean_at(NULL)
-    )
+  )
   expect_snapshot(
     error = TRUE,
     impute_mean_all(NULL)
-    )
+  )
 })
 
 
@@ -48,27 +48,27 @@ test_that("impute_mean and scoped variants fail when given wrong input", {
   expect_snapshot(
     error = TRUE,
     impute_mean_if(numeric(0))
-    )
+  )
   expect_snapshot(
     error = TRUE,
     impute_mean_at(numeric(0))
-    )
+  )
   expect_snapshot(
     error = TRUE,
     impute_mean_all(numeric(0))
-    )
+  )
   expect_snapshot(
     error = TRUE,
     impute_mean_if(NULL)
-    )
+  )
   expect_snapshot(
     error = TRUE,
     impute_mean_at(NULL)
-    )
+  )
   expect_snapshot(
     error = TRUE,
     impute_mean_all(NULL)
-    )
+  )
 })
 
 ## impute_mean_if -------------------------------------------------------------
@@ -82,40 +82,50 @@ test_that("impute_mean_if works with shadow", {
 })
 
 test_that("impute_mean_if retains proper shadow values", {
-  expect_equal(unbind_data(impute_mean_if(aq_shadow, is.numeric)),
-               unbind_data(aq_shadow))
+  expect_equal(
+    unbind_data(impute_mean_if(aq_shadow, is.numeric)),
+    unbind_data(aq_shadow)
+  )
 })
 
 test_that("impute_mean_if retains proper shadow values", {
-  expect_equal(unbind_data(impute_mean_if(aq_shadow, is.numeric)),
-               unbind_data(aq_shadow))
+  expect_equal(
+    unbind_data(impute_mean_if(aq_shadow, is.numeric)),
+    unbind_data(aq_shadow)
+  )
 })
 
 ## impute_mean_at -------------------------------------------------------------
 test_that("impute_mean_at works", {
-  expect_equal(impute_mean_at(airquality,
-                              vars(Ozone)) %>%
-                 miss_var_which(),
-               "Solar.R")
+  expect_equal(
+    impute_mean_at(airquality, vars(Ozone)) %>%
+      miss_var_which(),
+    "Solar.R"
+  )
 })
 
 test_that("impute_mean_at works with shadow", {
-  expect_equal(impute_mean_at(aq_shadow,
-                              vars(Ozone)) %>%
-                 miss_var_which(),
-               "Solar.R")
+  expect_equal(
+    impute_mean_at(aq_shadow, vars(Ozone)) %>%
+      miss_var_which(),
+    "Solar.R"
+  )
 })
 
 test_that("impute_mean_at retains proper shadow values", {
   skip_on_cran()
-  expect_equal(unbind_data(impute_mean_at(aq_shadow, vars(Ozone))),
-               unbind_data(aq_shadow))
+  expect_equal(
+    unbind_data(impute_mean_at(aq_shadow, vars(Ozone))),
+    unbind_data(aq_shadow)
+  )
 })
 
 test_that("impute_mean_at retains proper shadow values", {
   skip_on_cran()
-  expect_equal(unbind_data(impute_mean_at(aq_shadow, vars(Ozone))),
-               unbind_data(aq_shadow))
+  expect_equal(
+    unbind_data(impute_mean_at(aq_shadow, vars(Ozone))),
+    unbind_data(aq_shadow)
+  )
 })
 
 
@@ -130,12 +140,10 @@ test_that("impute_mean_all works with shadow", {
 
 test_that("impute_mean_all retains proper shadow values", {
   skip_on_cran()
-  expect_equal(unbind_data(impute_mean_all(aq_shadow)),
-               unbind_data(aq_shadow))
+  expect_equal(unbind_data(impute_mean_all(aq_shadow)), unbind_data(aq_shadow))
 })
 
 test_that("impute_mean_all retains proper shadow values", {
   skip_on_cran()
-  expect_equal(unbind_data(impute_mean_all(aq_shadow)),
-               unbind_data(aq_shadow))
+  expect_equal(unbind_data(impute_mean_all(aq_shadow)), unbind_data(aq_shadow))
 })

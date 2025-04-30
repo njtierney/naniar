@@ -22,8 +22,7 @@
 #' gg_miss_fct(x = riskfactors, fct = marital) + labs(title = "NA in Risk Factors and Marital status")
 #'}
 #'
-gg_miss_fct <- function(x, fct){
-
+gg_miss_fct <- function(x, fct) {
   fct <- rlang::enquo(fct)
 
   data <- x %>%
@@ -39,17 +38,18 @@ gg_miss_fct <- function(x, fct){
     )
 
   ggobject <-
-    ggplot(data,
-           aes(
-             x = .data[[fct]],
-             y = variable,
-             fill = pct_miss
-           )) +
+    ggplot(
+      data,
+      aes(
+        x = .data[[fct]],
+        y = variable,
+        fill = pct_miss
+      )
+    ) +
     geom_tile() +
     viridis::scale_fill_viridis(name = "% Miss") +
     theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45,
-                                     hjust = 1))
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
   return(ggobject)
 }

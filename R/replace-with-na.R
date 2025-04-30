@@ -30,7 +30,7 @@
 #'              replace = list(x = c(-99, -98),
 #'                           y = c("N/A"),
 #'                           z = c(-101)))
-replace_with_na <- function(data, replace = list(), ...){
+replace_with_na <- function(data, replace = list(), ...) {
   test_if_null(data)
 
   test_if_dataframe(data)
@@ -39,8 +39,7 @@ replace_with_na <- function(data, replace = list(), ...){
 }
 
 #' @export
-replace_with_na.data.frame <- function(data, replace = list(), ...){
-
+replace_with_na.data.frame <- function(data, replace = list(), ...) {
   if (!is.list(replace)) {
     cli::cli_abort(
       c(
@@ -56,13 +55,13 @@ replace_with_na.data.frame <- function(data, replace = list(), ...){
 
   missing <- setdiff(names(replace), names(new_replace))
 
-    if (length(missing) >0) {
-      cli::cli_warn(
-        c(
-          "Missing from data: {.arg {missing}}"
-        )
+  if (length(missing) > 0) {
+    cli::cli_warn(
+      c(
+        "Missing from data: {.arg {missing}}"
       )
-    }
+    )
+  }
 
   for (var in names(new_replace)) {
     data[[var]][data[[var]] %in% unlist(new_replace[[var]])] <- NA

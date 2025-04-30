@@ -14,13 +14,13 @@
 #' n_case_miss(airquality)
 #'
 #' @export
-n_var_miss <- function(data){
+n_var_miss <- function(data) {
   sum(colSums(is.na(data)) != 0)
 }
 
 #' @export
 #' @rdname n-var-case-miss
-n_case_miss <- function(data){
+n_case_miss <- function(data) {
   sum(rowSums(is.na(data)) != 0)
 }
 
@@ -41,12 +41,12 @@ n_case_miss <- function(data){
 #' n_var_complete(airquality)
 #' n_case_complete(airquality)
 #'
-n_var_complete <- function(data){
+n_var_complete <- function(data) {
   sum(colSums(is.na(data)) == 0)
 }
 
 #' @export
 #' @name n-var-case-complete
-n_case_complete <- function(data){
+n_case_complete <- function(data) {
   sum(rowSums(is.na(data)) == 0)
 }

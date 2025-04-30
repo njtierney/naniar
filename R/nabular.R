@@ -22,6 +22,6 @@
 #' all.equal(aq_nab, aq_s)
 #'
 #' @export
-nabular <- function(data, only_miss = FALSE, ...){
+nabular <- function(data, only_miss = FALSE, ...) {
   bind_shadow(data = data, only_miss = only_miss, ...)
 }

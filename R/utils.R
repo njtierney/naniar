@@ -58,8 +58,7 @@ group_by_fun <- function(data, .fun, ...) {
 #' }
 #' @keywords internal
 #' @noRd
-test_if_null <- function(x,
-                         call = rlang::caller_env()) {
+test_if_null <- function(x, call = rlang::caller_env()) {
   # test for null
   if (is.null(x)) {
     cli::cli_abort(
@@ -102,9 +101,11 @@ test_if_missing <- function(x, msg = NULL) {
 
 #' @keywords internal
 #' @noRd
-test_if_dots_missing <- function(dots_empty,
-                                 msg = NULL,
-                                 call = rlang::caller_env()) {
+test_if_dots_missing <- function(
+  dots_empty,
+  msg = NULL,
+  call = rlang::caller_env()
+) {
   # test for null
   if (dots_empty) {
     cli::cli_abort(
@@ -134,9 +135,11 @@ test_if_dots_missing <- function(dots_empty,
 #'
 #' @keywords internal
 #' @noRd
-test_if_dataframe <- function(x,
-                              arg = rlang::caller_arg(x),
-                              call = rlang::caller_env()) {
+test_if_dataframe <- function(
+  x,
+  arg = rlang::caller_arg(x),
+  call = rlang::caller_env()
+) {
   # test for dataframe
   if (!inherits(x, "data.frame")) {
     cli::cli_abort(
@@ -149,8 +152,7 @@ test_if_dataframe <- function(x,
   }
 }
 
-test_if_any_shade <- function(x,
-                              call = rlang::caller_env()) {
+test_if_any_shade <- function(x, call = rlang::caller_env()) {
   # test for dataframe
   test_if_dataframe(x)
   if (!any_shade(x)) {
@@ -189,7 +191,8 @@ any_row_miss <- function(x) {
 #' # add_span_counter(pedestrian, span_size = 100)
 #' }
 add_span_counter <- function(data, span_size) {
-  dplyr::mutate(data,
+  dplyr::mutate(
+    data,
     span_counter = rep(
       x = 1:ceiling(nrow(data)),
       each = span_size,
@@ -237,9 +240,7 @@ diag_na <- function(size = 5) {
     ncol = size
   )
   suppressMessages(
-    tibble::as_tibble(dna,
-      .name_repair = "unique"
-    )
+    tibble::as_tibble(dna, .name_repair = "unique")
   ) %>%
     set_names(paste0("x", seq_len(ncol(.))))
 }
@@ -262,8 +263,7 @@ vecIsFALSE <- Vectorize(isFALSE)
 
 are_any_false <- function(x, ...) any(vecIsFALSE(x), ...)
 
-check_btn_0_1 <- function(prop,
-                          call = rlang::caller_env()) {
+check_btn_0_1 <- function(prop, call = rlang::caller_env()) {
   if (prop < 0 || prop > 1) {
     cli::cli_abort(
       message = c(
@@ -275,8 +275,7 @@ check_btn_0_1 <- function(prop,
   }
 }
 
-check_is_integer <- function(x,
-                             call = rlang::caller_env()) {
+check_is_integer <- function(x, call = rlang::caller_env()) {
   if (x < 0) {
     cli::cli_abort(
       message = c(
@@ -289,8 +288,7 @@ check_is_integer <- function(x,
   vctrs::vec_cast(x, integer())
 }
 
-check_is_scalar <- function(x,
-                            call = rlang::caller_env()) {
+check_is_scalar <- function(x, call = rlang::caller_env()) {
   if (length(x) != 1) {
     cli::cli_abort(
       message = c(

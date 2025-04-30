@@ -64,8 +64,7 @@ impute_mean <- function(x) UseMethod("impute_mean")
 
 #' @export
 #' @rdname impute_mean
-impute_mean.default <- function(x){
-
+impute_mean.default <- function(x) {
   x[is.na(x)] <- mean(x, na.rm = TRUE)
 
   x
@@ -73,13 +72,13 @@ impute_mean.default <- function(x){
 
 #' @export
 #' @rdname impute_mean
-impute_mean.factor <- function(x){
-
-  i_mode <- function(x){
-
+impute_mean.factor <- function(x) {
+  i_mode <- function(x) {
     tab <- table(x)
     max_tab <- max(tab)
-    if (all(tab == max_tab)) {mod = NA}
+    if (all(tab == max_tab)) {
+      mod = NA
+    }
 
     if (is.numeric(x)) {
       mod <- as.numeric(names(tab)[tab == max_tab])
@@ -141,49 +140,36 @@ impute_mean.factor <- function(x){
 #'          geom_point()
 #' }
 #'
-impute_mean_all <- function(.tbl){
-
+impute_mean_all <- function(.tbl) {
   lifecycle::signal_stage("superseded", "impute_below_all()")
 
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
 
-  dplyr::mutate_all(.tbl = .tbl,
-                    .funs = impute_mean)
-
+  dplyr::mutate_all(.tbl = .tbl, .funs = impute_mean)
 }
 
 #' @export
 #' @rdname scoped-impute_mean
-impute_mean_at <- function(.tbl,
-                           .vars){
-
+impute_mean_at <- function(.tbl, .vars) {
   lifecycle::signal_stage("superseded", "impute_below_all()")
 
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
 
-  dplyr::mutate_at(.tbl = .tbl,
-                   .vars = .vars,
-                   .funs = impute_mean)
-
+  dplyr::mutate_at(.tbl = .tbl, .vars = .vars, .funs = impute_mean)
 }
 
 #' @export
 #' @rdname scoped-impute_mean
-impute_mean_if <- function(.tbl,
-                           .predicate){
-
+impute_mean_if <- function(.tbl, .predicate) {
   lifecycle::signal_stage("superseded", "impute_below_all()")
 
   test_if_dataframe(.tbl)
 
   test_if_null(.tbl)
 
-  dplyr::mutate_if(.tbl = .tbl,
-                   .predicate = .predicate,
-                   .funs = impute_mean)
-
+  dplyr::mutate_if(.tbl = .tbl, .predicate = .predicate, .funs = impute_mean)
 }

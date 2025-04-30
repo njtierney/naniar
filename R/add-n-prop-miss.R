@@ -26,8 +26,7 @@
 #' airquality %>% add_n_miss(dplyr::contains("o"))
 #'
 #'
-add_n_miss <- function(data, ..., label = "n_miss"){
-
+add_n_miss <- function(data, ..., label = "n_miss") {
   if (missing(...)) {
     data[[paste0(label, "_all")]] <- n_miss_row(data)
 
@@ -75,8 +74,7 @@ add_n_miss <- function(data, ..., label = "n_miss"){
 #' # see "Modelling missingness" in vignette "Getting Started with naniar"
 #' # for details
 
-add_prop_miss <- function(data, ..., label = "prop_miss"){
-
+add_prop_miss <- function(data, ..., label = "prop_miss") {
   if (missing(...)) {
     data[[paste0(label, "_all")]] <- prop_miss_row(data)
 
@@ -88,5 +86,4 @@ add_prop_miss <- function(data, ..., label = "prop_miss"){
   data[[paste0(label, "_vars")]] <- prop_miss_row(selected_data)
 
   return(data)
-
 }

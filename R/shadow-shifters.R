@@ -21,8 +21,7 @@
 #'     mutate(Ozone_shift = shadow_shift(Ozone))
 #' }
 #' @export
-shadow_shift <- function(...){
+shadow_shift <- function(...) {
   lifecycle::deprecate_soft("1.1.0", "shadow_shift()", "impute_below()")
   impute_below(...)
 }
-

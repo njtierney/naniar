@@ -18,21 +18,19 @@
 #' prop_miss_var(airquality)
 #' prop_complete_var(airquality)
 #'
-prop_miss_var <- function(data){
+prop_miss_var <- function(data) {
   test_if_null(data)
 
   test_if_dataframe(data)
 
   # find the proportion of variables that contain (any) missing values
   mean(colSums(is.na(data)) > 0)
-
 } # end function
 
 #' @export
 #' @rdname prop-miss-complete-var
-prop_complete_var <- function(data){
+prop_complete_var <- function(data) {
   1 - prop_miss_var(data)
-
 } # end function
 
 #' Percentage of variables containing missings or complete values
@@ -56,16 +54,15 @@ prop_complete_var <- function(data){
 #' prop_miss_var(airquality)
 #' prop_complete_var(airquality)
 #'
-pct_miss_var <- function(data){
+pct_miss_var <- function(data) {
   # turn proportion into a percent
   prop_miss_var(data) * 100
-
 } # end function
 
 #' @export
 #' @rdname pct-miss-complete-var
 
-pct_complete_var <- function(data){
+pct_complete_var <- function(data) {
   prop_complete_var(data) * 100
 }
 
@@ -89,7 +86,7 @@ pct_complete_var <- function(data){
 #' prop_miss_case(airquality)
 #' prop_complete_case(airquality)
 #'
-prop_miss_case <- function(data){
+prop_miss_case <- function(data) {
   test_if_null(data)
   test_if_dataframe(data)
 
@@ -102,7 +99,7 @@ prop_miss_case <- function(data){
 
 #' @export
 #' @rdname prop-miss-complete-case
-prop_complete_case <- function(data){
+prop_complete_case <- function(data) {
   1 - prop_miss_case(data)
 }
 
@@ -126,14 +123,13 @@ prop_complete_case <- function(data){
 #' pct_miss_case(airquality)
 #' pct_complete_case(airquality)
 #'
-pct_miss_case <- function(data){
+pct_miss_case <- function(data) {
   prop_miss_case(data) * 100
 }
 
 #' @export
 #' @rdname pct-miss-complete-case
 
-pct_complete_case <- function(data){
+pct_complete_case <- function(data) {
   prop_complete_case(data) * 100
-
 }

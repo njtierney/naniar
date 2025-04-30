@@ -1,4 +1,3 @@
-
 #' Plot which variables contain a missing value
 #'
 #' This plot produces a set of rectangles indicating whether there is a missing
@@ -17,31 +16,22 @@
 #'
 #' gg_miss_which(airquality)
 
-gg_miss_which <- function(x){
-
+gg_miss_which <- function(x) {
   col_na <- colSums(is.na(x)) == 0
   col_na_val <- dplyr::if_else(col_na, "complete", "missing")
 
-
   # tell us which columns have missing data
-  ggobject <- tibble::tibble(variable = names(col_na),
-                             value = col_na_val) %>%
+  ggobject <- tibble::tibble(variable = names(col_na), value = col_na_val) %>%
     dplyr::mutate(nheight = 1) %>%
-    ggplot(data = .,
-           aes(x = variable,
-               y = nheight,
-               fill = factor(value))) +
+    ggplot(data = ., aes(x = variable, y = nheight, fill = factor(value))) +
     geom_tile(colour = "white") +
     theme_minimal() +
     scale_fill_grey(name = "") +
     scale_x_discrete(limits = names(x)) +
     theme(legend.position = "none") +
-    scale_y_discrete(breaks = c(""),
-                     labels = c("")) +
-    labs(y = " ",
-         x = " ") +
+    scale_y_discrete(breaks = c(""), labels = c("")) +
+    labs(y = " ", x = " ") +
     coord_flip()
 
   return(ggobject)
-
 }

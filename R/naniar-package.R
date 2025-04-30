@@ -16,7 +16,7 @@
 NULL
 
 
-if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
+if (getRversion() >= "2.15.1") utils::globalVariables(c("."))
 globalVariables(
   c(
     "median",
@@ -44,5 +44,5 @@ globalVariables(
     "n_miss_cumsum",
     "as.formula",
     "complete.cases"
-    )
   )
+)

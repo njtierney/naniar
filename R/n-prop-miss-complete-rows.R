@@ -16,7 +16,7 @@
 #' n_miss_row(airquality)
 #'
 
-n_miss_row <- function(data){
+n_miss_row <- function(data) {
   test_if_null(data)
   test_if_dataframe(data)
   as.integer(rowSums(is.na(data)))
@@ -40,7 +40,7 @@ n_miss_row <- function(data){
 #' n_complete_row(airquality)
 #'
 
-n_complete_row <- function(data){
+n_complete_row <- function(data) {
   test_if_null(data)
   test_if_dataframe(data)
   as.integer(rowSums(!is.na(data)))
@@ -63,7 +63,7 @@ n_complete_row <- function(data){
 #'
 #' prop_miss_row(airquality)
 #'
-prop_miss_row <- function(data){
+prop_miss_row <- function(data) {
   test_if_null(data)
   test_if_dataframe(data)
   rowMeans(is.na(data))
@@ -86,7 +86,7 @@ prop_miss_row <- function(data){
 #'
 #' prop_complete_row(airquality)
 #'
-prop_complete_row <- function(data){
+prop_complete_row <- function(data) {
   test_if_null(data)
   test_if_dataframe(data)
   rowMeans(!is.na(data))

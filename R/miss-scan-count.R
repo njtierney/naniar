@@ -38,29 +38,30 @@
 #' miss_scan_count(dat_ms,common_na_strings)
 #'
 #'
-miss_scan_count <- function(data,search){
+miss_scan_count <- function(data, search) {
   # if there is only one value to search
   if (length(search) == 1) {
-    res <- purrr::map_dfc(data,
-                         ~length(grep(search,
-                                      x = .))) %>%
+    res <- purrr::map_dfc(data, ~ length(grep(search, x = .))) %>%
       # return the dataframe with the columns "
-      tidyr::pivot_longer(cols = dplyr::everything(),
-                          names_to = "Variable",
-                          values_to = "n")
+      tidyr::pivot_longer(
+        cols = dplyr::everything(),
+        names_to = "Variable",
+        values_to = "n"
+      )
     # but if there are more than one, we need to combine the search terms
   }
 
   if (length(search) > 1) {
-    res <- purrr::map_dfc(data,
-                         ~length(grep(paste0(search,
-                                             collapse ="|"),
-                                      x = .))) %>%
-      tidyr::pivot_longer(cols = dplyr::everything(),
-                          names_to = "Variable",
-                          values_to = "n")
+    res <- purrr::map_dfc(
+      data,
+      ~ length(grep(paste0(search, collapse = "|"), x = .))
+    ) %>%
+      tidyr::pivot_longer(
+        cols = dplyr::everything(),
+        names_to = "Variable",
+        values_to = "n"
+      )
   }
 
   return(res)
 }
-

@@ -45,16 +45,18 @@
 #' }
 #'
 #' @export
-stat_miss_point <- function(mapping = NULL,
-                            data = NULL,
-                            prop_below = 0.1,
-                            jitter = 0.05,
-                            geom = "point",
-                            position = "identity",
-                            na.rm = FALSE,
-                            show.legend = NA,
-                            inherit.aes = TRUE,
-                            ...) {
+stat_miss_point <- function(
+  mapping = NULL,
+  data = NULL,
+  prop_below = 0.1,
+  jitter = 0.05,
+  geom = "point",
+  position = "identity",
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE,
+  ...
+) {
   ggplot2::layer(
     stat = StatMissPoint,
     data = data,
@@ -63,40 +65,39 @@ stat_miss_point <- function(mapping = NULL,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
-    params = list(prop_below = prop_below,
-                  jitter = jitter,
-                  na.rm = na.rm, ...)
+    params = list(prop_below = prop_below, jitter = jitter, na.rm = na.rm, ...)
   )
-
 }
 
 #' @rdname naniar-ggproto
 #' @export
-StatMissPoint <- ggproto("StatMissPoint", Stat,
-    required_aes = c("x", "y"),
-    default_aes = aes(colour = ..missing..),
-    setup_data = function(data, params){
-      #TODO: print warning if na.rm = T
-      data$x_miss <- data$x
-      data$y_miss <- data$y
-      data$x <- impute_below(data$x,
-                             prop_below = params$prop_below,
-                             jitter = params$jitter)
-
-      data$y <- impute_below(data$y,
-                             prop_below = params$prop_below,
-                             jitter = params$jitter)
-      data
-      } ,
-
-    handle_na = function(self, data, params) data,
-    compute_group = function(data, scales, prop_below = 0.1, jitter = 0.05) {
-      missing_label <- label_miss_2d(data$x_miss, data$y_miss)
-
-      data.frame(data,
-                 missing = missing_label)
-
-      }
+StatMissPoint <- ggproto(
+  "StatMissPoint",
+  Stat,
+  required_aes = c("x", "y"),
+  default_aes = aes(colour = ..missing..),
+  setup_data = function(data, params) {
+    #TODO: print warning if na.rm = T
+    data$x_miss <- data$x
+    data$y_miss <- data$y
+    data$x <- impute_below(
+      data$x,
+      prop_below = params$prop_below,
+      jitter = params$jitter
     )
 
+    data$y <- impute_below(
+      data$y,
+      prop_below = params$prop_below,
+      jitter = params$jitter
+    )
+    data
+  },
 
+  handle_na = function(self, data, params) data,
+  compute_group = function(data, scales, prop_below = 0.1, jitter = 0.05) {
+    missing_label <- label_miss_2d(data$x_miss, data$y_miss)
+
+    data.frame(data, missing = missing_label)
+  }
+)

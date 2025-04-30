@@ -37,13 +37,13 @@
 #'
 #' @export
 replace_with_na_all <- function(data, condition) {
-  purrr::map_dfc(data, ~ na_set(.x, condition) )
+  purrr::map_dfc(data, ~ na_set(.x, condition))
 }
 
 # Future work
-  # replace_with_na_all(airquality, . < 20)
-  # replace_with_na_all(airquality, x < 20)
-  # replace_with_na_all(airquality, function(x) mean(x) < 20)
+# replace_with_na_all(airquality, . < 20)
+# replace_with_na_all(airquality, x < 20)
+# replace_with_na_all(airquality, function(x) mean(x) < 20)
 
 #' Replace specified variables with NA where a certain condition is met
 #'
@@ -138,7 +138,7 @@ replace_with_na_if <- function(data, .predicate, condition) {
 
 # utility funs for replace_with_na_*  ------------------------------------------
 
-create_mapper_na <- function(condition){
+create_mapper_na <- function(condition) {
   glue::glue("~ {rlang::f_text(condition)} & !is.na(.x)") %>%
     stats::as.formula() %>%
     purrr::as_mapper()
@@ -146,7 +146,7 @@ create_mapper_na <- function(condition){
 
 na_set <- function(vec, condition) {
   # modify this vector with this function, return NA
-  purrr::modify_if(vec, create_mapper_na(condition) , ~ NA) %>%
+  purrr::modify_if(vec, create_mapper_na(condition), ~NA) %>%
     # flatten this out into a regular vector
     purrr::reduce(c)
 

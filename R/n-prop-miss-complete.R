@@ -13,7 +13,7 @@
 #' n_miss(airquality)
 #' n_miss(airquality$Ozone)
 #'
-n_miss <- function(x){
+n_miss <- function(x) {
   test_if_null(x)
   sum(is.na(x))
 }
@@ -33,11 +33,10 @@ n_miss <- function(x){
 #' n_complete(airquality)
 #' n_complete(airquality$Ozone)
 #'
-n_complete <- function(x){
+n_complete <- function(x) {
   test_if_null(x)
   # number of total elements - number of missings
   sum(!is.na(x))
-
 }
 #' Return the proportion of missing values
 #'
@@ -54,7 +53,7 @@ n_complete <- function(x){
 #' prop_miss(airquality)
 #' prop_miss(airquality$Ozone)
 #'
-prop_miss <- function(x){
+prop_miss <- function(x) {
   test_if_null(x)
   mean(is.na(x))
 }
@@ -74,7 +73,7 @@ prop_miss <- function(x){
 #' pct_miss(airquality)
 #' pct_miss(airquality$Ozone)
 #'
-pct_miss <- function(x){
+pct_miss <- function(x) {
   prop_miss(x) * 100
 }
 
@@ -93,11 +92,10 @@ pct_miss <- function(x){
 #' prop_complete(airquality)
 #' prop_complete(airquality$Ozone)
 #'
-prop_complete <- function(x){
+prop_complete <- function(x) {
   test_if_null(x)
   # 1 - proportion of missings
   1 - mean(is.na(x))
-
 }
 
 #' Return the percent of complete values
@@ -115,8 +113,7 @@ prop_complete <- function(x){
 #' pct_complete(airquality)
 #' pct_complete(airquality$Ozone)
 #'
-pct_complete <- function(x){
+pct_complete <- function(x) {
   test_if_null(x)
   prop_complete(x) * 100
-
 }

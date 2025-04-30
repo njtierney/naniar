@@ -38,12 +38,13 @@
 #'   miss_var_summary()
 #' }
 #' @export
-miss_var_summary <- function(data,
-                             order = FALSE,
-                             add_cumsum = FALSE,
-                             digits,
-                             ...) {
-
+miss_var_summary <- function(
+  data,
+  order = FALSE,
+  add_cumsum = FALSE,
+  digits,
+  ...
+) {
   test_if_null(data)
 
   test_if_dataframe(data)
@@ -52,25 +53,28 @@ miss_var_summary <- function(data,
 }
 
 #' @export
-miss_var_summary.default <- function(data,
-                                     order = TRUE,
-                                     add_cumsum = FALSE,
-                                     digits = NULL,
-                                     ...) {
-
+miss_var_summary.default <- function(
+  data,
+  order = TRUE,
+  add_cumsum = FALSE,
+  digits = NULL,
+  ...
+) {
   col_n_miss <- colSums(is.na(data))
   col_pct_miss <- as.numeric(colMeans(is.na(data)) * 100)
 
-  res <- tibble::tibble(variable = names(col_n_miss),
-                        n_miss = as.integer(col_n_miss),
-                        pct_miss = tibble::num(
-                          x = col_pct_miss,
-                          # control how rounding is presented
-                          digits = digits)
-                        )
+  res <- tibble::tibble(
+    variable = names(col_n_miss),
+    n_miss = as.integer(col_n_miss),
+    pct_miss = tibble::num(
+      x = col_pct_miss,
+      # control how rounding is presented
+      digits = digits
+    )
+  )
 
   if (add_cumsum) {
-   res <- res %>% dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
+    res <- res %>% dplyr::mutate(n_miss_cumsum = cumsum(n_miss))
   }
 
   if (order) {
@@ -78,22 +82,23 @@ miss_var_summary.default <- function(data,
   }
 
   return(res)
-
 }
 
 #' @export
-miss_var_summary.grouped_df <- function(data,
-                                        order = TRUE,
-                                        add_cumsum = FALSE,
-                                        digits = NULL,
-                                        ...) {
-
-  group_by_fun(data,
-               .fun = miss_var_summary,
-               order = order,
-               add_cumsum = add_cumsum,
-               digits = digits)
-
+miss_var_summary.grouped_df <- function(
+  data,
+  order = TRUE,
+  add_cumsum = FALSE,
+  digits = NULL,
+  ...
+) {
+  group_by_fun(
+    data,
+    .fun = miss_var_summary,
+    order = order,
+    add_cumsum = add_cumsum,
+    digits = digits
+  )
 }
 
 #' Summarise the missingness in each case
@@ -129,11 +134,7 @@ miss_var_summary.grouped_df <- function(data,
 #'   miss_case_summary()
 #'}
 #'
-miss_case_summary <- function(data,
-                              order = TRUE,
-                              add_cumsum = FALSE,
-                              ...){
-
+miss_case_summary <- function(data, order = TRUE, add_cumsum = FALSE, ...) {
   test_if_null(data)
 
   test_if_dataframe(data)
@@ -142,35 +143,28 @@ miss_case_summary <- function(data,
 }
 
 #' @export
-miss_case_summary.default <- function(data,
-                                      order = TRUE,
-                                      add_cumsum = FALSE,
-                                      ...){
-
+miss_case_summary.default <- function(
+  data,
+  order = TRUE,
+  add_cumsum = FALSE,
+  ...
+) {
   res <- data
 
-  res[["pct_miss"]] <- rowMeans(is.na(res))*100
+  res[["pct_miss"]] <- rowMeans(is.na(res)) * 100
   res[["n_miss"]] <- as.integer(rowSums(is.na(res)))
   res[["case"]] <- seq_len(nrow(res))
 
   if (add_cumsum) {
     res[["n_miss_cumsum"]] <- cumsum(res[["n_miss"]])
     res <- dplyr::as_tibble(res)
-    res <- dplyr::select(res,
-                         case,
-                         n_miss,
-                         pct_miss,
-                         n_miss_cumsum)
+    res <- dplyr::select(res, case, n_miss, pct_miss, n_miss_cumsum)
   }
 
   if (!add_cumsum) {
     res <- dplyr::as_tibble(res)
 
-    res <- dplyr::select(res,
-                         case,
-                         n_miss,
-                         pct_miss)
-
+    res <- dplyr::select(res, case, n_miss, pct_miss)
   }
 
   if (order) {
@@ -183,16 +177,18 @@ miss_case_summary.default <- function(data,
 }
 
 #' @export
-miss_case_summary.grouped_df <- function(data,
-                                         order = TRUE,
-                                         add_cumsum = FALSE,
-                                         ...){
-
-  group_by_fun(data,
-               .fun = miss_case_summary,
-               order = order,
-               add_cumsum = add_cumsum)
-
+miss_case_summary.grouped_df <- function(
+  data,
+  order = TRUE,
+  add_cumsum = FALSE,
+  ...
+) {
+  group_by_fun(
+    data,
+    .fun = miss_case_summary,
+    order = order,
+    add_cumsum = add_cumsum
+  )
 }
 
 #' Collate summary measures from naniar into one tibble
@@ -225,21 +221,20 @@ miss_case_summary.grouped_df <- function(data,
 #' # etc, etc, etc.
 #' }
 #'
-miss_summary <- function(data, order = TRUE){
-
+miss_summary <- function(data, order = TRUE) {
   test_if_null(data)
 
   test_if_dataframe(data)
 
   return(
     tibble::tibble(
-        miss_df_prop = prop_miss(data),
-        miss_var_prop = prop_miss_var(data),
-        miss_case_prop = prop_miss_case(data),
-        miss_case_table = list(miss_case_table(data)),
-        miss_var_table = list(miss_var_table(data)),
-        miss_var_summary = list(miss_var_summary(data, order)),
-        miss_case_summary = list(miss_case_summary(data, order))
-      )
+      miss_df_prop = prop_miss(data),
+      miss_var_prop = prop_miss_var(data),
+      miss_case_prop = prop_miss_case(data),
+      miss_case_table = list(miss_case_table(data)),
+      miss_var_table = list(miss_var_table(data)),
+      miss_var_summary = list(miss_var_summary(data, order)),
+      miss_case_summary = list(miss_case_summary(data, order))
     )
-  }
+  )
+}

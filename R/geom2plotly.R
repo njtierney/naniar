@@ -13,12 +13,14 @@
 #'        instance).
 #' @param ... currently ignored
 #' @keywords internal
-to_basic.GeomMissPoint <- function(data,
-                                   prestats_data,
-                                   layout,
-                                   params,
-                                   p,
-                                   ...)  {
+to_basic.GeomMissPoint <- function(
+  data,
+  prestats_data,
+  layout,
+  params,
+  p,
+  ...
+) {
   prefix_class(data, "GeomPoint")
 }
 

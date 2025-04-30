@@ -19,18 +19,16 @@
 #' as_shadow(airquality)
 #' @export
 
-as_shadow <- function(data, ...){
-
+as_shadow <- function(data, ...) {
   test_if_null(data)
 
   test_if_dataframe(data)
 
   data_shadow <- purrr::map_dfc(data, shade)
 
-  names(data_shadow) <- paste0(names(data),"_NA")
+  names(data_shadow) <- paste0(names(data), "_NA")
 
   return(data_shadow)
-
 }
 
 #' Bind a shadow dataframe to original data
@@ -71,25 +69,23 @@ as_shadow <- function(data, ...){
 #'        ncol = 1)
 #' }
 #'
-bind_shadow <- function(data, only_miss = FALSE, ...){
-
+bind_shadow <- function(data, only_miss = FALSE, ...) {
   # If you want only the missing values to be added
   if (only_miss) {
-
     # I want to only select columns that contain a missing value.
     miss_vars <- rlang::syms(miss_var_which(data))
 
-    shadow_vars <- dplyr::as_tibble(as_shadow(dplyr::select(data,
-                                                            !!!miss_vars)))
+    shadow_vars <- dplyr::as_tibble(as_shadow(dplyr::select(
+      data,
+      !!!miss_vars
+    )))
     data <- tibble::as_tibble(data)
     shadow_data <- dplyr::bind_cols(data, shadow_vars)
 
     return(shadow_data)
-
   }
 
   if (!only_miss) {
-
     data_shadow <- tibble::as_tibble(as_shadow(data))
     data <- tibble::as_tibble(data)
     shadow_data <- dplyr::bind_cols(data, data_shadow)
@@ -99,9 +95,7 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
     }
 
     return(shadow_data)
-
   }
-
 }
 
 #' Unbind (remove) shadow from data, and vice versa
@@ -137,7 +131,7 @@ bind_shadow <- function(data, only_miss = FALSE, ...){
 #'  unbind_shadow(airquality)
 #' }
 #'
-unbind_shadow <- function(data){
+unbind_shadow <- function(data) {
   test_if_any_shade(data)
   temp <- dplyr::select(data, -dplyr::ends_with("_NA"))
   return(temp)
@@ -145,7 +139,7 @@ unbind_shadow <- function(data){
 
 #' @rdname unbinders
 #' @export
-unbind_data <- function(data){
+unbind_data <- function(data) {
   test_if_any_shade(data)
   dplyr::select(data, dplyr::ends_with("_NA"))
 }
@@ -167,13 +161,14 @@ unbind_data <- function(data){
 #'
 #' gather_shadow(airquality)
 #'
-gather_shadow <- function(data){
-
+gather_shadow <- function(data) {
   as_shadow(data) %>%
     dplyr::mutate(rows = seq_len(nrow(.))) %>%
-    tidyr::pivot_longer(cols = -rows,
-                        names_to = "variable",
-                        values_to = "missing") %>%
+    tidyr::pivot_longer(
+      cols = -rows,
+      names_to = "variable",
+      values_to = "missing"
+    ) %>%
     dplyr::rename(case = rows)
 }
 
@@ -217,8 +212,7 @@ shadow_long <- function(
   ...,
   fn_value_transform = NULL,
   only_main_vars = TRUE
-    ) {
-
+) {
   test_if_null(shadow_data)
   test_if_any_shade(shadow_data)
 
@@ -279,21 +273,22 @@ shadow_long <- function(
 #' }
 #'
 #' @export
-as_shadow_upset <- function(data){
-
-  if (n_var_miss(data) <= 1 ) {
-
+as_shadow_upset <- function(data) {
+  if (n_var_miss(data) <= 1) {
     if (n_var_miss(data) == 1) {
-      glu_st <- glue::glue("upset plots for missing data requre at least two \\
+      glu_st <- glue::glue(
+        "upset plots for missing data requre at least two \\
                          variables to have missing data, only one variable, \\
-                         '{miss_var_which(data)}' has missing values.")
+                         '{miss_var_which(data)}' has missing values."
+      )
     }
 
     if (n_var_miss(data) == 0) {
-
-      glu_st <- glue::glue("upset plots for missing data requre at least two \\
+      glu_st <- glue::glue(
+        "upset plots for missing data requre at least two \\
                          variables to have missing data, there are no missing \\
-                         values in your data! This is probably a good thing.")
+                         values in your data! This is probably a good thing."
+      )
     }
 
     rlang::abort(message = glu_st)
@@ -303,11 +298,9 @@ as_shadow_upset <- function(data){
 
   test_if_dataframe(data)
 
-  data_shadow <- as.data.frame(is.na(data)*1)
+  data_shadow <- as.data.frame(is.na(data) * 1)
 
-  names(data_shadow) <- paste0(names(data),"_NA")
+  names(data_shadow) <- paste0(names(data), "_NA")
 
   dplyr::mutate_if(data_shadow, is.numeric, as.integer)
-
 }
-

@@ -6,15 +6,13 @@
 #' @return a new shade, which is built upon a factor
 #' @keywords internal
 #' @noRd
-new_shade <- function(x, extra_levels = NULL){
-
+new_shade <- function(x, extra_levels = NULL) {
   if (!is.factor(x)) {
     rlang::abort(msg = "input to shade must be a factor")
   }
 
   levels(x) <- union(levels(x), glue::glue("NA_{extra_levels}"))
-  structure(x,
-            class = c("shade", "factor"))
+  structure(x, class = c("shade", "factor"))
 }
 
 #' Detect if this is a shade
@@ -43,20 +41,20 @@ new_shade <- function(x, extra_levels = NULL){
 #' any_shade(airquality)
 #'
 #'
-is_shade <- function(x){
+is_shade <- function(x) {
   inherits(x, "shade")
 }
 
 #' @export
 #' @rdname is_shade
-are_shade <- function(x){
+are_shade <- function(x) {
   purrr::map(x, class) %>%
-    purrr::map_lgl(~any(grepl("shade",.)))
+    purrr::map_lgl(~ any(grepl("shade", .)))
 }
 
 #' @export
 #' @rdname is_shade
-any_shade <- function(x){
+any_shade <- function(x) {
   any(are_shade(x))
 }
 
@@ -84,8 +82,7 @@ any_shade <- function(x){
 #' shade(df$wind, inst_fail = -99)
 #'
 #' @export
-shade <- function(x, ..., extra_levels = NULL){
-
+shade <- function(x, ..., extra_levels = NULL) {
   test_if_null(x)
 
   if (length(x) == 0) {
@@ -94,56 +91,57 @@ shade <- function(x, ..., extra_levels = NULL){
 
   # is list column
   if (missing(...) & is.list(x)) {
-    x <- factor(purrr::map_lgl(x, ~length(.x)==0),
-                labels = c("!NA", "NA"),
-                levels = c(FALSE, TRUE))
+    x <- factor(
+      purrr::map_lgl(x, ~ length(.x) == 0),
+      labels = c("!NA", "NA"),
+      levels = c(FALSE, TRUE)
+    )
 
     return(new_shade(x, extra_levels))
   }
 
   if (!missing(...) & is.list(x)) {
-    rlang::abort(message = "additional levels of missing are not available when shade-ing lists column")
+    rlang::abort(
+      message = "additional levels of missing are not available when shade-ing lists column"
+    )
   }
-
 
   # if no other levels are specified
   if (missing(...)) {
-    x <- factor(is.na(x),
-                labels = c("!NA", "NA"),
-                levels = c(FALSE, TRUE))
+    x <- factor(is.na(x), labels = c("!NA", "NA"), levels = c(FALSE, TRUE))
 
     return(new_shade(x, extra_levels))
   }
 
   # if additional levels are specified
   if (!missing(...)) {
-  # capture the dots
-  dict <- rlang::dots_list(...)
+    # capture the dots
+    dict <- rlang::dots_list(...)
 
-  # which values of x match the specified values
-  match_pos <- match(x, dict)
+    # which values of x match the specified values
+    match_pos <- match(x, dict)
 
-  # the name of the new NA level
-  custom_na_names <- paste0("NA_", names(dict))
+    # the name of the new NA level
+    custom_na_names <- paste0("NA_", names(dict))
 
-  # add exception for when there is no matches anywhere
-  # so skip this if there are no matches
-  if (!all_na(match_pos)) {
-    x[!is.na(match_pos)] <- custom_na_names[match_pos[!is.na(match_pos)]]
-  }
+    # add exception for when there is no matches anywhere
+    # so skip this if there are no matches
+    if (!all_na(match_pos)) {
+      x[!is.na(match_pos)] <- custom_na_names[match_pos[!is.na(match_pos)]]
+    }
 
-  # add labels to those values that are missing
-  # For those values that were not matched
+    # add labels to those values that are missing
+    # For those values that were not matched
     values_not_matched <- is.na(x[is.na(match_pos)])
 
-  # find if they were missing
-  x[is.na(match_pos)] <- ifelse(test = values_not_matched,
-                                yes = "NA",
-                                no = "!NA")
+    # find if they were missing
+    x[is.na(match_pos)] <- ifelse(
+      test = values_not_matched,
+      yes = "NA",
+      no = "!NA"
+    )
 
-
-  x <- factor(x,
-              levels = c("!NA", "NA", custom_na_names))
+    x <- factor(x, levels = c("!NA", "NA", custom_na_names))
   }
 
   # and return a new shade value
@@ -166,9 +164,8 @@ shade <- function(x, ..., extra_levels = NULL){
 #' which_are_shade(df_shadow)
 #'
 #' @export
-which_are_shade <- function(.tbl){
+which_are_shade <- function(.tbl) {
   test_if_null(.tbl)
   test_if_dataframe(.tbl)
   which(are_shade(.tbl))
 }
-

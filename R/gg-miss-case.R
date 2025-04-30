@@ -27,8 +27,7 @@
 #' gg_miss_case(airquality, facet = Month, show_pct = TRUE)
 #'}
 #' @export
-gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
-
+gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE) {
   if (!missing(facet)) {
     quo_group_by <- rlang::enquo(facet)
 
@@ -36,26 +35,21 @@ gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
   }
 
   if (order_cases & missing(facet)) {
-
     ggobject <-
       x %>%
       miss_case_summary(order = TRUE) %>%
       # overwrite case
       dplyr::mutate(case = dplyr::row_number()) %>%
       gg_miss_case_create(show_pct = show_pct)
-
   }
 
   if (!order_cases & missing(facet)) {
-
     ggobject <- x %>%
       miss_case_summary() %>%
       gg_miss_case_create(show_pct = show_pct)
-
   }
 
   if (order_cases & !missing(facet)) {
-
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
       # overwrite case
@@ -63,49 +57,48 @@ gg_miss_case <- function(x, facet, order_cases = TRUE, show_pct = FALSE){
       dplyr::mutate(case = dplyr::row_number()) %>%
       gg_miss_case_create(show_pct = show_pct) +
       facet_wrap(as.formula(paste("~", group_string)))
-
   }
 
   if (!order_cases & !missing(facet)) {
-
     ggobject <- x %>%
       dplyr::group_by(!!quo_group_by) %>%
       miss_case_summary() %>%
       gg_miss_case_create(show_pct = show_pct) +
       facet_wrap(as.formula(paste("~", group_string)))
-
   }
 
   return(ggobject)
-
 }
 
 # utility function to create the starting block for gg_miss_case ---------------
 
-gg_miss_case_create <- function(data, show_pct){
-
+gg_miss_case_create <- function(data, show_pct) {
   if (show_pct) {
-   ylab <- "% Missing"
-   aes_y <- "pct_miss"
+    ylab <- "% Missing"
+    aes_y <- "pct_miss"
   }
 
-  if (!show_pct){
+  if (!show_pct) {
     ylab <- "# Missing"
     aes_y <- "n_miss"
   }
 
-  ggplot(data = data,
-         aes(x = case,
-             # possibly include an if() statement here to change `n_miss` to
-             # `pct_miss` when the appropriate indicator is passed through
-             y = .data[[aes_y]])) +
-    geom_col(width = 1,
-             colour = "#484878", # lorikeet purple
-             fill = "#484878") + # lorikeet purple
+  ggplot(
+    data = data,
+    aes(
+      x = case,
+      # possibly include an if() statement here to change `n_miss` to
+      # `pct_miss` when the appropriate indicator is passed through
+      y = .data[[aes_y]]
+    )
+  ) +
+    geom_col(
+      width = 1,
+      colour = "#484878", # lorikeet purple
+      fill = "#484878"
+    ) + # lorikeet purple
     coord_flip() +
-    labs(y = ylab,
-         x = "Cases") +
+    labs(y = ylab, x = "Cases") +
     theme_minimal() +
     scale_x_reverse()
-
 }

@@ -89,15 +89,206 @@ Using `replace_with_na()` works well when we know the exact value to be replaced
 and for which variables we want to replace, providing there are not many 
 variables. But what do you do when you've got many variables you want to observe?
 
-## Extending `replace_with_na`
+# Notes on alternative ways to handle replacing with NAs
+
+There are some alternative ways to handle replacing values with NA in the 
+tidyverse, `na_if` and using `readr`. These are ultimately not as expressive as the `replace_with_na()` 
+functions, but they are very useful if you only have one kind of value to 
+replace with a missing, and if you know what the missing values are upon reading
+in the data.
+
+**catch NAs with `readr`**
+
+When reading in your data, you can use the `na` argument inside `readr` to 
+replace certain values with NA. For example:
+
+```{r readr-example, eval = FALSE}
+# not run
+dat_raw <- readr::read_csv("original.csv", na = na_strings)
+
+```
+
+This would convert all of the values in `na_strings` into missing values.
+
+This is useful to use if you happen to know the NA types upon reading in the 
+data. However, this is not always practical in a data analysis pipeline.
+
+**`dplyr::na_if`**
+
+This function allows you to replace exact values - similar to `replace_with_na()`, you can combine it with `across` to similar effect. Here is how you would use it in our
+examples.
+
+```{r dplyr-na-if}
+
+# instead of:
+df_1 <- df %>% replace_with_na_all(condition = ~.x == -99)
+df_1
+
+df_2 <- df %>% dplyr::mutate(
+  x = dplyr::na_if(x, -99),
+  y = dplyr::na_if(z, -99)
+)
+df_2
+
+# are they the same?
+all.equal(df_1, df_2)
+```
+
+Note, however, that `na_if()` can only take arguments of length one. This means that it cannot capture other statements like
+
+```{r replace-with-na-all-final-example}
+
+na_strings <- c("NA", "N A", "N / A", "N/A", "N/ A", "Not Available", "NOt available")
+df_3 <- df %>% replace_with_na_all(condition = ~.x %in% na_strings)
+
+```
+
+```{r replace-with-na-all-na-if, eval = FALSE}
+
+# Not run:
+df_4 <- df %>% dplyr::na_if(x = ., y = na_strings)
+# Error in check_length(y, x, fmt_args("y"), glue("same as {fmt_args(~x)}")) : 
+  # argument "y" is missing, with no default
+```
+
+It also cannot handle more complex equations, where you want to refer to values in other columns, or values less than or greater than another value.
+
+## Converting  to many variables
 
 Sometimes you have many of the same value that you want to replace. For example,
 -99 and -98 above, and also the variants of "NA", such as "N/A", and "N / A",
 and "Not Available". You might also have certain variables that you want to be
 affected by these rules, or you might have more complex rules, like, "only affect variables that are numeric, or character, with this rule".
 
-To account for these cases we have borrowed from [`dplyr`'s scoped variants](https://dplyr.tidyverse.org/reference/scoped.html) and created the 
-functions:
+To account for these cases we recommend that you use the `across` function from `dplyr` in combination with the dplyr function, `na_if`. While `naniar` has a function to also do this, `replace_with_na`, and it's scoped variants (which are discussed later in this vignette), overall we think that `na_if` is faster and with `across` is just as expressive.
+
+Below we will now consider some very simple examples of the use of these functions, so that you can better understand how to use them.
+
+### Applying `na_if` across all variables
+
+```{r}
+library(dplyr)
+
+df %>% 
+  mutate(y = na_if(y, "N/A"))
+
+df %>% 
+  mutate(
+    across(
+      where(is.double),
+      ~na_if(., -99)
+    )
+  )
+
+df %>% 
+  mutate(
+    across(
+      where(is.double),
+      ~replace_with_na(., -99)
+    )
+  )
+```
+
+
+Use `everything()` inside of `across` when you want to replace ALL values that meet a condition across an entire dataset. The syntax here is a little different.
+For example, if we want to replace all cases of -99 in our dataset, we write:
+
+```{r replace-with-na-all-ex1}
+
+df %>% replace_with_na_all(condition = ~.x == -99)
+
+```
+
+Likewise, if you have a set of (annoying) repeating strings like various 
+spellings of "NA", then I suggest you first lay out all the offending cases:
+
+```{r replace-with-na-all-ex2}
+
+# write out all the offending strings
+na_strings <- c("NA", "N A", "N / A", "N/A", "N/ A", "Not Available", "NOt available")
+```
+
+Then you write `~.x %in% na_strings` - which reads as "does this value occur
+in the list of NA strings".
+
+```{r replace-with-na-all-ex3}
+
+df %>%
+  replace_with_na_all(condition = ~.x %in% na_strings)
+
+```
+
+You can also use the built-in strings and numbers in naniar:
+
+* `common_na_numbers`
+* `common_na_strings`
+
+```{r print-common-na-numbers-strings}
+common_na_numbers
+common_na_strings
+```
+
+And you can replace values matching those strings or numbers like so:
+
+```{r using-common-na-strings}
+df %>%
+  replace_with_na_all(condition = ~.x %in% common_na_strings)
+
+```
+
+
+### Applying `na_if` across select variables
+
+This is similar to `_all`, but instead in this case you can specify the 
+variables that you want affected by the rule that you state. This is useful in 
+cases where you want to specify a rule that only affects a selected number of 
+variables.
+
+```{r replace-with-na-at-ex1}
+
+df %>% 
+  replace_with_na_at(.vars = c("x","z"),
+                     condition = ~.x == -99)
+
+```
+
+Although you can achieve this with regular `replace_with_na()`, it is more concise
+to use, `replace_with_na_at()`. Additionally, you can specify rules as function,
+for example, make a value NA if the exponent of that number is less than 1:
+
+```{r replace-with-na-at-ex2}
+
+df %>% 
+  replace_with_na_at(.vars = c("x","z"),
+                     condition = ~ exp(.x) < 1)
+```
+
+### Applying `na_if` to variables that satisfy some condition
+
+There may be some cases where you can identify variables based on some test 
+- `is.character()` - are they character variables? `is.numeric()` - Are they numeric or double? and a given value inside that type of data. For example, 
+
+```{r replace-with-na-if-ex1}
+
+df %>%
+  replace_with_na_if(.predicate = is.character,
+                     condition = ~.x %in% ("N/A"))
+
+# or
+df %>%
+  replace_with_na_if(.predicate = is.character,
+                     condition = ~.x %in% (na_strings))
+
+```
+
+This means that you are able to apply a rule to many variables that meet a 
+pre-specified condition. This can be of particular use if you have many 
+variables and don't want to list them all, and also if you know that there is a
+particular problem for variables of a particular class.
+
+## Scoped Variants of `replace_with_na`
+
+We have also borrowed from [`dplyr`'s scoped variants](https://dplyr.tidyverse.org/reference/scoped.html) and created the functions:
 
 - `replace_with_na_all()` Replaces NA for all variables. 
 - `replace_with_na_at()` Replaces NA on a subset of variables specified with
@@ -105,9 +296,12 @@ character quotes (e.g., c("var1", "var2")).
 - `replace_with_na_if()` Replaces NA based on applying an operation on the 
 subset of variables for which a predicate function (is.numeric, is.character, etc) returns TRUE.
 
+However these functions have been superceded in preference to using `across`.
+We may remove these functions in the long term, however in the interim we will only provide basic bug fixes. This is to make this package easier to maintain in the future.
+
 Below we will now consider some very simple examples of the use of these functions, so that you can better understand how to use them.
 
-## Using `replace_with_na_all`
+### Using `replace_with_na_all`
 
 Use `replace_with_na_all()` when you want to replace ALL values that meet a
 condition across an entire dataset. The syntax here is a little different, and
@@ -208,68 +402,3 @@ This means that you are able to apply a rule to many variables that meet a
 pre-specified condition. This can be of particular use if you have many 
 variables and don't want to list them all, and also if you know that there is a
 particular problem for variables of a particular class.
-
-# Notes on alternative ways to handle replacing with NAs
-
-There are some alternative ways to handle replacing values with NA in the 
-tidyverse, `na_if` and using `readr`. These are ultimately not as expressive as the `replace_with_na()` 
-functions, but they are very useful if you only have one kind of value to 
-replace with a missing, and if you know what the missing values are upon reading
-in the data.
-
-**`dplyr::na_if`**
-
-This function allows you to replace exact values - similar to `replace_with_na()`,
-but only for one single column in a data frame. Here is how you would use it in our
-examples.
-
-```{r dplyr-na-if}
-
-# instead of:
-df_1 <- df %>% replace_with_na_all(condition = ~.x == -99)
-df_1
-
-df_2 <- df %>% dplyr::mutate(
-  x = dplyr::na_if(x, -99),
-  y = dplyr::na_if(z, -99)
-)
-df_2
-
-# are they the same?
-all.equal(df_1, df_2)
-```
-
-Note, however, that `na_if()` can only take arguments of length one. This means that it cannot capture other statements like
-
-```{r replace-with-na-all-final-example}
-
-na_strings <- c("NA", "N A", "N / A", "N/A", "N/ A", "Not Available", "NOt available")
-df_3 <- df %>% replace_with_na_all(condition = ~.x %in% na_strings)
-
-```
-
-```{r replace-with-na-all-na-if, eval = FALSE}
-
-# Not run:
-df_4 <- df %>% dplyr::na_if(x = ., y = na_strings)
-# Error in check_length(y, x, fmt_args("y"), glue("same as {fmt_args(~x)}")) : 
-  # argument "y" is missing, with no default
-```
-
-It also cannot handle more complex equations, where you want to refer to values in other columns, or values less than or greater than another value.
-
-**catch NAs with `readr`**
-
-When reading in your data, you can use the `na` argument inside `readr` to 
-replace certain values with NA. For example:
-
-```{r readr-example, eval = FALSE}
-# not run
-dat_raw <- readr::read_csv("original.csv", na = na_strings)
-
-```
-
-This would convert all of the values in `na_strings` into missing values.
-
-This is useful to use if you happen to know the NA types upon reading in the 
-data. However, this is not always practical in a data analysis pipeline.
